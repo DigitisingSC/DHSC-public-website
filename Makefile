@@ -2,7 +2,7 @@ REMOTE_ALIAS = @dhsc
 
 .SILENT:
 
-install: composer-install up cim restart uli
+install: up composer-install cim restart uli
 
 uninstall: rm
 
