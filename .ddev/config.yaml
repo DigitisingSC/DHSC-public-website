@@ -1,6 +1,6 @@
 name: DHSC-public-website
 type: drupal9
-docroot: web
+docroot: docroot
 php_version: "8.0"
 webserver_type: nginx-fpm
 router_http_port: "80"
