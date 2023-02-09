@@ -42,7 +42,7 @@ Before starting setting up your local instance, you need:
 
 * [Ddev](https://ddev.readthedocs.io/en/stable/#installation)
 
-* PHP >= 8.0
+* PHP >= 8.1
 
 * [Composer](https://getcomposer.org/download/)
 
