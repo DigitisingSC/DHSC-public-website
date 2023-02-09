@@ -1,0 +1,26 @@
+uuid: e2542b01-222e-4d3e-be66-67da925d0cb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.category_page.field_categories
+    - field.field.node.category_page.field_category_description
+    - field.field.node.category_page.field_category_section_title
+    - node.type.category_page
+  module:
+    - user
+id: node.category_page.teaser
+targetEntityType: node
+bundle: category_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_categories: true
+  field_category_description: true
+  field_category_section_title: true

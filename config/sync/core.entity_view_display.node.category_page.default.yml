@@ -1,0 +1,46 @@
+uuid: d6e1ef6e-6286-4962-af7f-94ed0a495865
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.category_page.field_categories
+    - field.field.node.category_page.field_category_description
+    - field.field.node.category_page.field_category_section_title
+    - node.type.category_page
+  module:
+    - text
+    - user
+id: node.category_page.default
+targetEntityType: node
+bundle: category_page
+mode: default
+content:
+  field_categories:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_category_description:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_category_section_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

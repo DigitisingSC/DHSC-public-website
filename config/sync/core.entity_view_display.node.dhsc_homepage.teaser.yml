@@ -1,0 +1,24 @@
+uuid: 2eaa142d-4b30-4c67-bcaa-1a01fab8a683
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dhsc_homepage.field_categories
+    - field.field.node.dhsc_homepage.field_homepage_section_title
+    - node.type.dhsc_homepage
+  module:
+    - user
+id: node.dhsc_homepage.teaser
+targetEntityType: node
+bundle: dhsc_homepage
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_categories: true
+  field_homepage_section_title: true

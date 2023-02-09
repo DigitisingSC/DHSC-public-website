@@ -1,0 +1,22 @@
+uuid: a35a6a2b-b19b-47a2-bf83-b81e53796423
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dhsc_contents_list_page
+id: node.dhsc_contents_list_page.status
+field_name: status
+entity_type: node
+bundle: dhsc_contents_list_page
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

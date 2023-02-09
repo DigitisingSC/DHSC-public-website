@@ -1,0 +1,23 @@
+uuid: 6959ba26-a237-49ef-8b04-02d1da2ed0df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_link_style
+    - paragraphs.paragraphs_type.localgov_link
+  module:
+    - options
+_core:
+  default_config_hash: QoYBnwN-tCZreYO7Cq3YQZu46JZN0XzFIr1HDk8eiYU
+id: paragraph.localgov_link.localgov_link_style
+field_name: localgov_link_style
+entity_type: paragraph
+bundle: localgov_link
+label: 'Link style'
+description: 'Choose the style of the link. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

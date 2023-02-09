@@ -1,0 +1,24 @@
+uuid: 31b42fc3-fc57-4c91-882d-357e677af1ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dhsc_contents_list_page.field_body_paragraphs
+    - field.field.node.dhsc_contents_list_page.field_content_listing_title
+    - node.type.dhsc_contents_list_page
+  module:
+    - user
+id: node.dhsc_contents_list_page.teaser
+targetEntityType: node
+bundle: dhsc_contents_list_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_content_listing_title: true

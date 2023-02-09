@@ -1,0 +1,29 @@
+uuid: e9dfe875-320d-434f-8b57-0235b8058859
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.category_page
+    - node.type.dhsc_contents_list_page
+id: node.category_page.field_categories
+field_name: field_categories
+entity_type: node
+bundle: category_page
+label: Categories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dhsc_contents_list_page: dhsc_contents_list_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

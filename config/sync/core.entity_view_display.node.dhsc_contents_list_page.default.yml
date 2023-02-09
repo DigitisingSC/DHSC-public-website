@@ -1,0 +1,39 @@
+uuid: 4eb27180-e7da-4e9f-84f9-682191c7f1cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dhsc_contents_list_page.field_body_paragraphs
+    - field.field.node.dhsc_contents_list_page.field_content_listing_title
+    - node.type.dhsc_contents_list_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.dhsc_contents_list_page.default
+targetEntityType: node
+bundle: dhsc_contents_list_page
+mode: default
+content:
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_content_listing_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

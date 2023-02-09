@@ -1,0 +1,20 @@
+uuid: 966d9ff7-577c-4d34-82df-a512247ee978
+langcode: en
+status: true
+dependencies:
+  module:
+    - localgov_guides
+  theme:
+    - localgov_scarfolk
+id: guidecontents
+theme: localgov_scarfolk
+region: content_top
+weight: 0
+provider: null
+plugin: localgov_guides_contents
+settings:
+  id: localgov_guides_contents
+  label: 'Guide contents'
+  label_display: '0'
+  provider: localgov_guides
+visibility: {  }

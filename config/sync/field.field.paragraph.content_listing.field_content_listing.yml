@@ -1,0 +1,52 @@
+uuid: 1fdf4b86-8183-44ab-84a7-c9ce9d6955ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_listing
+    - paragraphs.paragraphs_type.content_listing
+    - paragraphs.paragraphs_type.content_listing_section
+  module:
+    - entity_reference_revisions
+id: paragraph.content_listing.field_content_listing
+field_name: field_content_listing
+entity_type: paragraph
+bundle: content_listing
+label: 'Content listing'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_listing_section: content_listing_section
+    negate: 0
+    target_bundles_drag_drop:
+      content_listing:
+        weight: 9
+        enabled: false
+      content_listing_section:
+        weight: 10
+        enabled: true
+      from_library:
+        weight: 11
+        enabled: false
+      localgov_contact:
+        weight: 12
+        enabled: false
+      localgov_image:
+        weight: 13
+        enabled: false
+      localgov_link:
+        weight: 14
+        enabled: false
+      localgov_text:
+        weight: 15
+        enabled: false
+      topic_list_builder:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions
