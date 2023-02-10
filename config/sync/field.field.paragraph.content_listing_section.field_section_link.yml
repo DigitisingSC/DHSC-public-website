@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_section_link
-    - node.type.category_page
     - node.type.dhsc_contents_list_page
     - node.type.dhsc_homepage
     - node.type.localgov_guides_overview
@@ -24,7 +23,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      category_page: category_page
       dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
@@ -33,5 +31,5 @@ settings:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: category_page
+    auto_create_bundle: null
 field_type: entity_reference

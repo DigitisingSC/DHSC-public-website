@@ -14,7 +14,7 @@ mode: default
 content:
   field_section_child_links:
     type: entity_reference_label
-    label: above
+    label: visually_hidden
     settings:
       link: true
     third_party_settings: {  }
@@ -22,7 +22,7 @@ content:
     region: content
   field_section_link:
     type: entity_reference_label
-    label: above
+    label: visually_hidden
     settings:
       link: true
     third_party_settings: {  }

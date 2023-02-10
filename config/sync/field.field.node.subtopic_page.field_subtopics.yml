@@ -1,21 +1,21 @@
-uuid: 8242a003-858e-4469-b780-dae148001f74
+uuid: ef535fd6-db84-4f57-9374-5fa5d22e1705
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_section_child_links
+    - field.storage.node.field_subtopics
     - node.type.dhsc_contents_list_page
-    - node.type.dhsc_homepage
+    - node.type.independent_content_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
-    - paragraphs.paragraphs_type.content_listing_section
-id: paragraph.content_listing_section.field_section_child_links
-field_name: field_section_child_links
-entity_type: paragraph
-bundle: content_listing_section
-label: 'Section child links'
+    - node.type.subtopic_page
+id: node.subtopic_page.field_subtopics
+field_name: field_subtopics
+entity_type: node
+bundle: subtopic_page
+label: Subtopics
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -26,10 +26,10 @@ settings:
       dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
-      dhsc_homepage: dhsc_homepage
+      independent_content_page: independent_content_page
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: null
+    auto_create_bundle: dhsc_contents_list_page
 field_type: entity_reference

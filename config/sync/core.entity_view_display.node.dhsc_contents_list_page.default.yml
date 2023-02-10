@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.dhsc_contents_list_page.field_body_paragraphs
-    - field.field.node.dhsc_contents_list_page.field_content_listing_title
+    - field.field.node.dhsc_contents_list_page.field_content_list_section_title
     - node.type.dhsc_contents_list_page
   module:
     - entity_reference_revisions
@@ -16,24 +16,24 @@ mode: default
 content:
   field_body_paragraphs:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: visually_hidden
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
-  field_content_listing_title:
+  field_content_list_section_title:
     type: string
     label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden: {  }

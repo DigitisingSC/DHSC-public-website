@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.dhsc_homepage.field_categories
     - field.field.node.dhsc_homepage.field_homepage_section_title
+    - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
     - user
@@ -13,21 +13,22 @@ targetEntityType: node
 bundle: dhsc_homepage
 mode: default
 content:
-  field_categories:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 103
-    region: content
   field_homepage_section_title:
     type: string
-    label: hidden
+    label: visually_hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_subtopics:
+    type: entity_reference_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 103
     region: content
   links:
     settings: {  }
