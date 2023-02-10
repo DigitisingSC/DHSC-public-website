@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.independent_content_page.body
-    - field.field.node.independent_content_page.field_independent_content_title
     - node.type.independent_content_page
   module:
     - text
@@ -20,14 +19,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
-    region: content
-  field_independent_content_title:
-    type: string
-    label: visually_hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
     region: content
   links:
     settings: {  }

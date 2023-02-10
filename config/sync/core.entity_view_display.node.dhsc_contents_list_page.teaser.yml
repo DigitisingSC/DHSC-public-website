@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.dhsc_contents_list_page.field_body_paragraphs
-    - field.field.node.dhsc_contents_list_page.field_content_list_section_title
     - node.type.dhsc_contents_list_page
   module:
     - user
@@ -21,4 +20,3 @@ content:
     region: content
 hidden:
   field_body_paragraphs: true
-  field_content_list_section_title: true

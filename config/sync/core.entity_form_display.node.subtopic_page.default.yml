@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.subtopic_page.field_subtopic_description
-    - field.field.node.subtopic_page.field_subtopic_section_title
     - field.field.node.subtopic_page.field_subtopics
     - node.type.subtopic_page
   module:
@@ -26,14 +25,6 @@ content:
     region: content
     settings:
       rows: 5
-      placeholder: ''
-    third_party_settings: {  }
-  field_subtopic_section_title:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
   field_subtopics:

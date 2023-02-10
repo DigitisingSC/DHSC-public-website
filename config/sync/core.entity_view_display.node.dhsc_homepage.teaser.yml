@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.dhsc_homepage.field_homepage_section_title
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
@@ -20,5 +19,4 @@ content:
     weight: 100
     region: content
 hidden:
-  field_homepage_section_title: true
   field_subtopics: true

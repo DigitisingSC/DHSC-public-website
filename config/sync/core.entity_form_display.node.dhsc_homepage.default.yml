@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.dhsc_homepage.field_homepage_section_title
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
@@ -18,14 +17,6 @@ content:
     weight: 4
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_homepage_section_title:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_subtopics:
     type: entity_reference_autocomplete

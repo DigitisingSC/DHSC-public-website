@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.independent_content_page.body
-    - field.field.node.independent_content_page.field_independent_content_title
     - node.type.independent_content_page
   module:
     - text
@@ -28,5 +27,4 @@ content:
     third_party_settings: {  }
     weight: 100
     region: content
-hidden:
-  field_independent_content_title: true
+hidden: {  }

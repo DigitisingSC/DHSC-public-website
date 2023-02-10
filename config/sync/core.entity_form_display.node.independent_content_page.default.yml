@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.node.independent_content_page.body
-    - field.field.node.independent_content_page.field_independent_content_title
     - node.type.independent_content_page
   module:
     - path
@@ -29,14 +28,6 @@ content:
     weight: 3
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_independent_content_title:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
