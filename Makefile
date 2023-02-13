@@ -1,4 +1,5 @@
 REMOTE_ALIAS = @dhsc
+THEME_DIR = docroot/themes/custom/dhsc_theme
 
 .SILENT:
 
@@ -45,3 +46,7 @@ export-db:
 
 coding-standards:
 	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/
+
+storybook:
+	cd ${THEME_DIR} && \
+	npm run storybook
