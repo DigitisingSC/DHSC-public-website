@@ -10,10 +10,12 @@ Drupal distribution for the Digitising Health and Social Care website. Based on 
 
 * CMS: [Drupal](http://www.drupal.org), through [recommended-project](https://github.com/drupal/recommended-project)
 
+
 To install locally, you will need Composer and we recommend using DDEV for a consistent developer environment.
 
-* Development Environment: [ddev](https://ddev.readthedocs.io/en/stable/).
 
+* Development Environment: [ddev](https://ddev.readthedocs.io/en/stable/).
+* Storybook
 * CI/CD: [GitHub Actions](https://github.com/features/actions)
 
 
@@ -89,6 +91,19 @@ make si
 Note: As you might be running a different version of PHP on your host machine from the version that DDEV runs, it is advisable to run composer install from within DDEV. This ensures dependencies reflect the PHP version that the webserver is actually running.
 
 
+## Storybook
+The Storybook implementation of this project is purely for documentation purposes. Styles have been inherited from the main `localgov_base` theme and loaded in `docroot/themes/custom/dhsc_theme/.storybook/preview.js`. The `dhsc_theme` must remain the child of `localgov_base`, and inherit component structure and templates from it.
+
+### Starting Storybook
+You can start the Storybook by running the command:
+
+`make storybook`
+
+This should spin up the Storybook in 'watch mode' and launch it in your default browser.
+
+### Make changes to the Storybook
+Once the Storybook is up and running, any changes to the markup will trigger Storybook to rebuild.
+
 ### Make utilities ###
 
 
@@ -109,6 +124,7 @@ Note: As you might be running a different version of PHP on your host machine fr
 
 *  `make export-db`: creates a DB dump/export in project root directory (will be ignored from Git)
 
+*  `make storybook`: starts Storybook in watch mode
 
 ## Authors
 
