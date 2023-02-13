@@ -1,0 +1,10 @@
+uuid: b4f2886c-0ef4-48e5-82b4-ce8d59532056
+langcode: en
+status: true
+dependencies: {  }
+id: content_listing
+label: 'Content listing'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

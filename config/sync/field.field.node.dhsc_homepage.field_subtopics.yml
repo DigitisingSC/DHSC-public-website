@@ -1,0 +1,31 @@
+uuid: 9751615b-e6cf-46f9-bce7-e2b9a633a2d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtopics
+    - node.type.dhsc_contents_list_page
+    - node.type.dhsc_homepage
+    - node.type.subtopic_page
+id: node.dhsc_homepage.field_subtopics
+field_name: field_subtopics
+entity_type: node
+bundle: dhsc_homepage
+label: Subtopics
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      dhsc_contents_list_page: dhsc_contents_list_page
+      subtopic_page: subtopic_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: dhsc_contents_list_page
+field_type: entity_reference

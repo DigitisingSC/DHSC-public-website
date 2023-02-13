@@ -1,0 +1,28 @@
+uuid: c946cab9-0bbc-4b4e-bfe3-89be63516da1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.independent_content_page.body
+    - node.type.independent_content_page
+  module:
+    - text
+    - user
+id: node.independent_content_page.default
+targetEntityType: node
+bundle: independent_content_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,22 @@
+uuid: 7fbcfbb5-339e-433f-aaed-de97f2e1e3f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: contents_list_page
+label: 'Contents list page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  7282b938-abba-4479-bd12-4b78edc12f3e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 7282b938-abba-4479-bd12-4b78edc12f3e
+    context_mapping:
+      node: node
+    bundles:
+      dhsc_contents_list_page: dhsc_contents_list_page
+selection_logic: and
+weight: -5
+relationships: {  }

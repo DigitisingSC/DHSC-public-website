@@ -1,0 +1,22 @@
+uuid: 5571a838-0f34-4992-9872-9f6a7a1ed4b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.localgov_guides_overview
+id: node.localgov_guides_overview.status
+field_name: status
+entity_type: node
+bundle: localgov_guides_overview
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,35 @@
+uuid: d28ac9d3-654a-48d3-9956-640a3547ab96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing.field_content_listing
+    - paragraphs.paragraphs_type.content_listing
+  module:
+    - paragraphs
+id: paragraph.content_listing.default
+targetEntityType: paragraph
+bundle: content_listing
+mode: default
+content:
+  field_content_listing:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: content_listing_section
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

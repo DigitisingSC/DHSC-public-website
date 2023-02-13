@@ -1,0 +1,24 @@
+uuid: b1f41a04-1ce5-4e40-8e08-aa56b88b72fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.subtopic_page.field_subtopic_description
+    - field.field.node.subtopic_page.field_subtopics
+    - node.type.subtopic_page
+  module:
+    - user
+id: node.subtopic_page.teaser
+targetEntityType: node
+bundle: subtopic_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_subtopic_description: true
+  field_subtopics: true

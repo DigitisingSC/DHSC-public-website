@@ -1,0 +1,26 @@
+uuid: d4203d2d-1119-438d-bfaf-da4977139c04
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: gBuMvULVhUm0cM8JB2Jiem5aQzueYEtq3J8BbBtz4QY
+id: paragraph.localgov_link_style
+field_name: localgov_link_style
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: button
+      label: Button
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
