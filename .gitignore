@@ -12,7 +12,7 @@
 /composer.lock
 
 # Ignore sensitive information
-/docroot/sites/*/settings*.php
+# /docroot/sites/*/settings*.php
 /docroot/sites/*/services*.yml
 
 # Ignore Drupal's file directory
