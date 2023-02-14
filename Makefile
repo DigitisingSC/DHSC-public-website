@@ -45,7 +45,7 @@ export-db:
 	ddev export-db --file=dec-$$(date +%Y%m%d--%H%M).sql.gz
 
 coding-standards:
-	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/
+	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
 
 storybook:
 	cd ${THEME_DIR} && \
