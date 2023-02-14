@@ -1,15 +1,15 @@
-uuid: b11e00f9-f91d-4c54-bf22-ae39f3a0cba4
+uuid: 15af5b30-e5d4-4b46-bb3a-906cd280023c
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - localgov_scarfolk
+    - dhsc_theme
 _core:
   default_config_hash: HMT0p1pe6D6hsYTqyWbzK2nquVWT6anaDXoNu7WYvPI
-id: localgov_breadcrumbs_scarfolk
-theme: localgov_scarfolk
+id: dhsc_theme_localgov_breadcrumbs_scarfolk
+theme: dhsc_theme
 region: breadcrumb
 weight: 0
 provider: null

@@ -1,15 +1,15 @@
-uuid: f562a2be-3247-4bef-be4e-794cd8876011
+uuid: 615c7182-adab-4bd6-b3b7-c388e5bb2caa
 langcode: en
 status: true
 dependencies:
   module:
     - localgov_core
   theme:
-    - localgov_scarfolk
+    - dhsc_theme
 _core:
   default_config_hash: _rLbHDXkhDWmFVzav5liiDU56NLoRKtMPaN4iMX-p-M
-id: localgov_poweredbylocalgovdrupal_scarfolk
-theme: localgov_scarfolk
+id: dhsc_theme_localgov_poweredbylocalgovdrupal_scarfolk
+theme: dhsc_theme
 region: footer_second
 weight: 0
 provider: null
