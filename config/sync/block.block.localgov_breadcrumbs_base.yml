@@ -1,0 +1,22 @@
+uuid: 8d2933e8-bcfc-4e8f-82e8-7434dd2f0c42
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - localgov_base
+_core:
+  default_config_hash: YPBPzkJg7gECfYgwjFpiQfchz6Tbillki4GktVIZ4AA
+id: localgov_breadcrumbs_base
+theme: localgov_base
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

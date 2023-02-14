@@ -1,0 +1,14 @@
+uuid: 1737fcb1-7007-4bd2-9953-47bf395438fe
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: deYYBttooAYkDLkqa35eU-VfGsLkYECnLG46xnvbUtc
+id: '7_3'
+label: '7:3'
+description: ''
+aspect_ratio: '7:3'
+soft_limit_width: null
+soft_limit_height: null
+hard_limit_width: null
+hard_limit_height: null

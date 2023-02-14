@@ -1,0 +1,65 @@
+uuid: 65c00644-ae66-4961-b6e7-c55843fe9c7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing_section.field_section_child_links
+    - field.field.paragraph.content_listing_section.field_section_link
+    - field.field.paragraph.content_listing_section.field_section_title
+    - paragraphs.paragraphs_type.content_listing_section
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_links:
+      children:
+        - field_section_link
+        - field_section_child_links
+      label: Links
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.content_listing_section.default
+targetEntityType: paragraph
+bundle: content_listing_section
+mode: default
+content:
+  field_section_child_links:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_link:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

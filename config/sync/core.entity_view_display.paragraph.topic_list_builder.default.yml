@@ -1,0 +1,47 @@
+uuid: 98131820-9c0a-4607-88ac-d21538ef2c30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.topic_list_builder.topic_list_header
+    - field.field.paragraph.topic_list_builder.topic_list_links
+    - field.field.paragraph.topic_list_builder.topic_list_term
+    - paragraphs.paragraphs_type.topic_list_builder
+  module:
+    - link
+_core:
+  default_config_hash: ZBwOSntBisVJjb1jvfx1nCsFYIly-McPttTuXA2XfZw
+id: paragraph.topic_list_builder.default
+targetEntityType: paragraph
+bundle: topic_list_builder
+mode: default
+content:
+  topic_list_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  topic_list_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  topic_list_term:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

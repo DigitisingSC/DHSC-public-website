@@ -1,0 +1,22 @@
+uuid: 4ee68c96-5a75-47ef-a274-8852c50f58cf
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - localgov_base
+_core:
+  default_config_hash: 2CWWONrmBQ_pQaBhmBVru3j0DfBmrstOmea7orABGDc
+id: localgov_messages_base
+theme: localgov_base
+region: messages
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: Messages
+  label_display: '0'
+  provider: system
+visibility: {  }

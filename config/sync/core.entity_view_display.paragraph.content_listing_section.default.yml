@@ -1,0 +1,39 @@
+uuid: 9e8f51ec-505e-4743-af75-fd4f51f7e81c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing_section.field_section_child_links
+    - field.field.paragraph.content_listing_section.field_section_link
+    - field.field.paragraph.content_listing_section.field_section_title
+    - paragraphs.paragraphs_type.content_listing_section
+id: paragraph.content_listing_section.default
+targetEntityType: paragraph
+bundle: content_listing_section
+mode: default
+content:
+  field_section_child_links:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_link:
+    type: entity_reference_label
+    label: visually_hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }
