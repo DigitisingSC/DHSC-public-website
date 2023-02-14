@@ -8133,7 +8133,7 @@
             "license": [
                 "GPL-2.0-or-later"
             ],
-            "description": "A demonstration seb theme for LocalGov Drupal websites.",
+            "description": "A demonstration sub theme for LocalGov Drupal websites.",
             "homepage": "https://github.com/localgovdrupal/localgov_scarfolk",
             "support": {
                 "issues": "https://github.com/localgovdrupal/localgov_scarfolk/issues",
