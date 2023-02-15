@@ -94,6 +94,7 @@ Note: As you might be running a different version of PHP on your host machine fr
 ## Storybook
 The Storybook implementation of this project is purely for documentation purposes. Styles have been inherited from the main `localgov_base` theme and loaded in `docroot/themes/custom/dhsc_theme/.storybook/preview.js`. The `dhsc_theme` must remain the child of `localgov_base`, and inherit component structure and templates from it.
 
+Storybook has been implemented in node version 16.
 ### Installing Storybook
 
 In order to install the Storybook node dependencies run `make storybook-install`.
