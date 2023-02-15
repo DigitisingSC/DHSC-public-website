@@ -87,5 +87,5 @@ theme:
   stable9: 0
   gin: 0
   localgov_base: 0
-  localgov_scarfolk: 0
+  dhsc_theme: 0
 profile: localgov

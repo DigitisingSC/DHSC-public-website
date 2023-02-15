@@ -1,0 +1,24 @@
+{
+  "name": "dhsc_theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@storybook/addon-docs": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-viewport": "^6.5.16",
+    "@storybook/html": "^6.5.16",
+    "drupal-attribute": "^1.0.2",
+    "twig": "^1.15.4",
+    "twig-drupal-filters": "^3.2.0",
+    "twig-loader": "^0.5.5",
+    "twigjs-loader": "^1.0.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook"
+  },
+  "author": "",
+  "license": "ISC"
+}
