@@ -72,3 +72,6 @@
 
 # Node modle
 **/node_modules
+
+## SB cache
+.cache/
