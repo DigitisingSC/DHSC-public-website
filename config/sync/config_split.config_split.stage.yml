@@ -9,6 +9,12 @@ weight: 0
 folder: ''
 module:
   acquia_purge: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
   dblog: 0
   memcache: 0
   shield: 0
