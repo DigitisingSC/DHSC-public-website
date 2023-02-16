@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.dhsc_contents_list_page.field_body_paragraphs
+    - field.field.node.dhsc_contents_list_page.field_image
     - node.type.dhsc_contents_list_page
   module:
     - entity_reference_revisions
@@ -20,11 +21,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_image: true

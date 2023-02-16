@@ -1,0 +1,16 @@
+uuid: 649ebf6e-597a-4f81-b981-13fad4238e98
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.dhsc
+id: dhsc_300x200
+label: 'DHSC 300x200'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: dhsc
