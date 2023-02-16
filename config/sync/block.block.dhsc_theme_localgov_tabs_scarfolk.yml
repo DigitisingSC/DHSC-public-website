@@ -1,13 +1,13 @@
-uuid: 19a36ba1-d27c-49a6-a070-41b1fc5c14ba
+uuid: c00b411a-769f-4a5b-a15e-af7b8796b13c
 langcode: en
 status: true
 dependencies:
   theme:
-    - localgov_scarfolk
+    - dhsc_theme
 _core:
   default_config_hash: 18k4pNekX8og7ZyuFH_4h0qPH5lm4OKpF5OXvHB2JGc
-id: localgov_tabs_scarfolk
-theme: localgov_scarfolk
+id: dhsc_theme_localgov_tabs_scarfolk
+theme: dhsc_theme
 region: tabs
 weight: 0
 provider: null

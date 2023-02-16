@@ -1,4 +1,4 @@
-uuid: f1c76713-7d82-410c-8a12-48027cd6f6c9
+uuid: f169dec8-46e4-42eb-b3db-147f09d7d011
 langcode: en
 status: true
 dependencies:
@@ -7,11 +7,11 @@ dependencies:
   module:
     - system
   theme:
-    - localgov_scarfolk
+    - dhsc_theme
 _core:
   default_config_hash: ktIjCIva-IVWOE3So6VaszYRegx4N9LlONs2FVGp3do
-id: localgov_servicesmenu_scarfolk
-theme: localgov_scarfolk
+id: dhsc_theme_localgov_servicesmenu_scarfolk
+theme: dhsc_theme
 region: secondary_menu
 weight: -6
 provider: null

@@ -1,4 +1,5 @@
 REMOTE_ALIAS = @dhsc
+THEME_DIR = docroot/themes/custom/dhsc_theme
 
 .SILENT:
 
@@ -44,4 +45,10 @@ export-db:
 	ddev export-db --file=dec-$$(date +%Y%m%d--%H%M).sql.gz
 
 coding-standards:
-	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/modules/custom/
+	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
+
+storybook-install:
+	npm i --prefix ${THEME_DIR}
+
+storybook:
+	npm run storybook  --prefix ${THEME_DIR}

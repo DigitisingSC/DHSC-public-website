@@ -8,9 +8,6 @@
 /docroot/profiles/contrib/
 /docroot/libraries/
 
-# Ignore composer.lock as this is template project
-/composer.lock
-
 # Ignore sensitive information
 # /docroot/sites/*/settings*.php
 /docroot/sites/*/services*.yml
@@ -71,3 +68,10 @@
 .ddev/homeadditions/
 .ddev/providers/
 .ddev/xhprof/
+
+
+# Node modle
+**/node_modules
+
+# SB cache
+.cache/
