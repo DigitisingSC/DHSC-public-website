@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bba0038c5bc780c56f7f1525b023cfc5",
+    "content-hash": "0b8b9c542726671b633273f2d1df3a3a",
     "packages": [
+        {
+            "name": "acquia/memcache-settings",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acquia/memcache-settings.git",
+                "reference": "543cb19afcd9d75000dceb924b85c2ff16997003"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acquia/memcache-settings/zipball/543cb19afcd9d75000dceb924b85c2ff16997003",
+                "reference": "543cb19afcd9d75000dceb924b85c2ff16997003",
+                "shasum": ""
+            },
+            "require": {
+                "drupal/memcache": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Acquia Engineering",
+                    "homepage": "https://www.acquia.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Recommended Memcache settings for use with Acquia hosting.",
+            "support": {
+                "issues": "https://github.com/acquia/memcache-settings/issues",
+                "source": "https://github.com/acquia/memcache-settings/tree/v1.2.0"
+            },
+            "time": "2022-08-03T15:14:53+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
@@ -252,20 +293,20 @@
         },
         {
             "name": "commerceguys/addressing",
-            "version": "v1.4.1",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/commerceguys/addressing.git",
-                "reference": "8b1bcd45971733e8f4224e539cb92838f18c4d06"
+                "reference": "406c7b5f0fbe4f6a64155c0fe03b1adb34d01308"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/8b1bcd45971733e8f4224e539cb92838f18c4d06",
-                "reference": "8b1bcd45971733e8f4224e539cb92838f18c4d06",
+                "url": "https://api.github.com/repos/commerceguys/addressing/zipball/406c7b5f0fbe4f6a64155c0fe03b1adb34d01308",
+                "reference": "406c7b5f0fbe4f6a64155c0fe03b1adb34d01308",
                 "shasum": ""
             },
             "require": {
-                "doctrine/collections": "^1.2",
+                "doctrine/collections": "^1.2 || ^2.0",
                 "php": ">=7.3"
             },
             "require-dev": {
@@ -310,9 +351,9 @@
             ],
             "support": {
                 "issues": "https://github.com/commerceguys/addressing/issues",
-                "source": "https://github.com/commerceguys/addressing/tree/v1.4.1"
+                "source": "https://github.com/commerceguys/addressing/tree/v1.4.2"
             },
-            "time": "2022-08-09T11:42:51+00:00"
+            "time": "2023-02-15T10:11:14+00:00"
         },
         {
             "name": "composer/installers",
@@ -2217,6 +2258,63 @@
             "time": "2022-05-31T18:46:25+00:00"
         },
         {
+            "name": "drupal/acquia_purge",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/acquia_purge.git",
+                "reference": "8.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/acquia_purge-8.x-1.3.zip",
+                "reference": "8.x-1.3",
+                "shasum": "d93bc6dcee78658267d7cf5baf7d480642e1e65a"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/purge": "^3.4",
+                "drupal/purge_queuer_coretags": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.3",
+                    "datestamp": "1663188605",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-1.x": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Acquia",
+                    "homepage": "http://www.acquia.com"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "nielsvm",
+                    "homepage": "https://www.drupal.org/user/163285"
+                }
+            ],
+            "description": "Top-notch cache invalidation on Acquia Cloud!",
+            "homepage": "https://www.drupal.org/project/acquia_purge",
+            "support": {
+                "source": "https://git.drupalcode.org/project/acquia_purge"
+            }
+        },
+        {
             "name": "drupal/address",
             "version": "1.11.0",
             "source": {
@@ -2428,6 +2526,148 @@
             "homepage": "https://www.drupal.org/project/condition_field",
             "support": {
                 "source": "https://git.drupalcode.org/project/condition_field"
+            }
+        },
+        {
+            "name": "drupal/config_filter",
+            "version": "1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_filter.git",
+                "reference": "8.x-1.10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_filter-8.x-1.10.zip",
+                "reference": "8.x-1.10",
+                "shasum": "c5002f2b9dece3c684db754123936d1388b80b8d"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "suggest": {
+                "drupal/config_split": "Split site configuration for different environments."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.10",
+                    "datestamp": "1656936763",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Bircher",
+                    "homepage": "https://www.drupal.org/u/bircher",
+                    "email": "opensource@fabianbircher.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nuvole Web",
+                    "homepage": "http://nuvole.org",
+                    "email": "info@nuvole.org",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "pescetti",
+                    "homepage": "https://www.drupal.org/user/436244"
+                }
+            ],
+            "description": "Config Filter allows other modules to interact with a ConfigStorage through filter plugins.",
+            "homepage": "https://www.drupal.org/project/config_filter",
+            "keywords": [
+                "Drupal",
+                "configuration",
+                "configuration management"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_filter",
+                "issues": "https://www.drupal.org/project/issues/config_filter",
+                "slack": "https://drupal.slack.com/archives/C45342CDD"
+            }
+        },
+        {
+            "name": "drupal/config_split",
+            "version": "1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/config_split.git",
+                "reference": "8.x-1.9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/config_split-8.x-1.9.zip",
+                "reference": "8.x-1.9",
+                "shasum": "cb2a17f590ae057ff8a1864f57e2e114b2395a86"
+            },
+            "require": {
+                "drupal/config_filter": "^1",
+                "drupal/core": "^9.3 || ^10"
+            },
+            "conflict": {
+                "drupal/console": "<1.3.2"
+            },
+            "suggest": {
+                "drupal/chosen": "Chosen uses the Chosen jQuery plugin to make the <select> elements more user-friendly.",
+                "drupal/select2_all": "Applies the Select2 library to all select fields on the site similar to the Chosen module."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.9",
+                    "datestamp": "1656976425",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10 || ^11"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Bircher",
+                    "homepage": "https://www.drupal.org/u/bircher",
+                    "email": "opensource@fabianbircher.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Nuvole Web",
+                    "homepage": "http://nuvole.org",
+                    "email": "info@nuvole.org",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "pescetti",
+                    "homepage": "https://www.drupal.org/user/436244"
+                }
+            ],
+            "description": "Configuration filter for importing and exporting extra config",
+            "homepage": "https://www.drupal.org/project/config_split",
+            "keywords": [
+                "Drupal",
+                "configuration",
+                "configuration management"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/config_split",
+                "issues": "https://www.drupal.org/project/issues/config_split",
+                "slack": "https://drupal.slack.com/archives/C45342CDD"
             }
         },
         {
@@ -5128,6 +5368,82 @@
             }
         },
         {
+            "name": "drupal/memcache",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/memcache.git",
+                "reference": "8.x-2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/memcache-8.x-2.5.zip",
+                "reference": "8.x-2.5",
+                "shasum": "a01db2a9b7122a397c4f4ad66e0a380d1148a157"
+            },
+            "require": {
+                "drupal/core": "^9.1 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.5",
+                    "datestamp": "1661188440",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-2.x": "2.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bdragon",
+                    "homepage": "https://www.drupal.org/user/53081"
+                },
+                {
+                    "name": "catch",
+                    "homepage": "https://www.drupal.org/user/35733"
+                },
+                {
+                    "name": "damiankloip",
+                    "homepage": "https://www.drupal.org/user/1037976"
+                },
+                {
+                    "name": "Fabianx",
+                    "homepage": "https://www.drupal.org/user/693738"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "Jeremy",
+                    "homepage": "https://www.drupal.org/user/409"
+                },
+                {
+                    "name": "jvandyk",
+                    "homepage": "https://www.drupal.org/user/2375"
+                },
+                {
+                    "name": "robertDouglass",
+                    "homepage": "https://www.drupal.org/user/5449"
+                }
+            ],
+            "description": "High performance integration with memcache.",
+            "homepage": "http://drupal.org/project/memcache",
+            "support": {
+                "source": "https://git.drupalcode.org/project/memcache",
+                "issues": "https://www.drupal.org/project/issues/memcache"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "1.22.0",
             "source": {
@@ -5467,6 +5783,111 @@
             "homepage": "https://www.drupal.org/project/preview_link",
             "support": {
                 "source": "https://git.drupalcode.org/project/preview_link"
+            }
+        },
+        {
+            "name": "drupal/purge",
+            "version": "3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/purge.git",
+                "reference": "8.x-3.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/purge-8.x-3.4.zip",
+                "reference": "8.x-3.4",
+                "shasum": "deb4eccfe88af35445e8064a9a4a8a056bfb917f"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.4",
+                    "datestamp": "1663189449",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-3.x": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Niels van Mourik",
+                    "homepage": "http://www.nielsvm.org"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "nielsvm",
+                    "homepage": "https://www.drupal.org/user/163285"
+                },
+                {
+                    "name": "SqyD",
+                    "homepage": "https://www.drupal.org/user/106525"
+                }
+            ],
+            "description": "Provides a generic external cache invalidation API and queue service.",
+            "homepage": "https://www.drupal.org/project/purge",
+            "support": {
+                "source": "https://git.drupalcode.org/project/purge"
+            }
+        },
+        {
+            "name": "drupal/purge_queuer_coretags",
+            "version": "3.4.0",
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/purge": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.4",
+                    "datestamp": "1663189449",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Niels van Mourik",
+                    "homepage": "http://www.nielsvm.org"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "nielsvm",
+                    "homepage": "https://www.drupal.org/user/163285"
+                },
+                {
+                    "name": "SqyD",
+                    "homepage": "https://www.drupal.org/user/106525"
+                }
+            ],
+            "description": "Queues every tag that Drupal invalidates internally.",
+            "homepage": "https://www.drupal.org/project/purge",
+            "support": {
+                "source": "https://git.drupalcode.org/project/purge"
             }
         },
         {
@@ -5986,6 +6407,80 @@
             }
         },
         {
+            "name": "drupal/shield",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/shield.git",
+                "reference": "8.x-1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/shield-8.x-1.7.zip",
+                "reference": "8.x-1.7",
+                "shasum": "dcb77778aaffd39a9bb80c123f086358ad1c8bf9"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10"
+            },
+            "require-dev": {
+                "drupal/key": "^1.16"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.7",
+                    "datestamp": "1661968920",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-1.x": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "badjava",
+                    "homepage": "https://www.drupal.org/user/83372"
+                },
+                {
+                    "name": "chx",
+                    "homepage": "https://www.drupal.org/user/9446"
+                },
+                {
+                    "name": "geek-merlin",
+                    "homepage": "https://www.drupal.org/user/229048"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "kalman.hosszu",
+                    "homepage": "https://www.drupal.org/user/267481"
+                },
+                {
+                    "name": "pkiraly",
+                    "homepage": "https://www.drupal.org/user/352587"
+                },
+                {
+                    "name": "vbouchet",
+                    "homepage": "https://www.drupal.org/user/1671428"
+                }
+            ],
+            "description": "Creates a general shield for the site.",
+            "homepage": "https://www.drupal.org/project/shield",
+            "support": {
+                "source": "https://git.drupalcode.org/project/shield"
+            }
+        },
+        {
             "name": "drupal/simple_sitemap",
             "version": "3.11.0",
             "source": {
@@ -6257,16 +6752,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "11.4.0",
+            "version": "11.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "d1f7809ceaf580c9e0bf4725e005975956af5629"
+                "reference": "70c0826b99a633b45b274fe3c3353ea0274d8862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/d1f7809ceaf580c9e0bf4725e005975956af5629",
-                "reference": "d1f7809ceaf580c9e0bf4725e005975956af5629",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/70c0826b99a633b45b274fe3c3353ea0274d8862",
+                "reference": "70c0826b99a633b45b274fe3c3353ea0274d8862",
                 "shasum": ""
             },
             "require": {
@@ -6390,7 +6885,7 @@
                 "forum": "http://drupal.stackexchange.com/questions/tagged/drush",
                 "issues": "https://github.com/drush-ops/drush/issues",
                 "slack": "https://drupal.slack.com/messages/C62H9CWQM",
-                "source": "https://github.com/drush-ops/drush/tree/11.4.0"
+                "source": "https://github.com/drush-ops/drush/tree/11.5.0"
             },
             "funding": [
                 {
@@ -6398,7 +6893,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-12-14T16:02:30+00:00"
+            "time": "2023-02-15T17:17:24+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -7617,16 +8112,16 @@
         },
         {
             "name": "localgovdrupal/localgov_base",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/localgovdrupal/localgov_base.git",
-                "reference": "86ea3b99e4dedb1b10bd8d83362c053067bd86b5"
+                "reference": "573f3b9a08208ef10b6f3e296dcd27919d89705e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/localgovdrupal/localgov_base/zipball/86ea3b99e4dedb1b10bd8d83362c053067bd86b5",
-                "reference": "86ea3b99e4dedb1b10bd8d83362c053067bd86b5",
+                "url": "https://api.github.com/repos/localgovdrupal/localgov_base/zipball/573f3b9a08208ef10b6f3e296dcd27919d89705e",
+                "reference": "573f3b9a08208ef10b6f3e296dcd27919d89705e",
                 "shasum": ""
             },
             "type": "drupal-theme",
@@ -7638,9 +8133,9 @@
             "homepage": "https://github.com/localgovdrupal/localgov_base",
             "support": {
                 "issues": "https://github.com/localgovdrupal/localgov_base/issues",
-                "source": "https://github.com/localgovdrupal/localgov_base/tree/1.3.0"
+                "source": "https://github.com/localgovdrupal/localgov_base/tree/1.3.1"
             },
-            "time": "2023-01-30T14:48:48+00:00"
+            "time": "2023-02-13T14:59:28+00:00"
         },
         {
             "name": "localgovdrupal/localgov_core",
@@ -7733,16 +8228,16 @@
         },
         {
             "name": "localgovdrupal/localgov_directories",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/localgovdrupal/localgov_directories.git",
-                "reference": "70dd1cac225dba5e91cfab5159da64a9f21e8d64"
+                "reference": "0a33e62fa1100cb2807fe3f9741a790ef1566020"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/localgovdrupal/localgov_directories/zipball/70dd1cac225dba5e91cfab5159da64a9f21e8d64",
-                "reference": "70dd1cac225dba5e91cfab5159da64a9f21e8d64",
+                "url": "https://api.github.com/repos/localgovdrupal/localgov_directories/zipball/0a33e62fa1100cb2807fe3f9741a790ef1566020",
+                "reference": "0a33e62fa1100cb2807fe3f9741a790ef1566020",
                 "shasum": ""
             },
             "require": {
@@ -7778,9 +8273,9 @@
             "homepage": "https://github.com/localgovdrupal/localgov_directories",
             "support": {
                 "issues": "https://github.com/localgovdrupal/localgov_directories/issues",
-                "source": "https://github.com/localgovdrupal/localgov_directories/tree/2.4.0"
+                "source": "https://github.com/localgovdrupal/localgov_directories/tree/2.4.1"
             },
-            "time": "2023-01-23T14:35:35+00:00"
+            "time": "2023-02-13T14:22:08+00:00"
         },
         {
             "name": "localgovdrupal/localgov_events",
@@ -8133,7 +8628,7 @@
             "license": [
                 "GPL-2.0-or-later"
             ],
-            "description": "A demonstration sub theme for LocalGov Drupal websites.",
+            "description": "A demonstration seb theme for LocalGov Drupal websites.",
             "homepage": "https://github.com/localgovdrupal/localgov_scarfolk",
             "support": {
                 "issues": "https://github.com/localgovdrupal/localgov_scarfolk/issues",
@@ -8210,16 +8705,16 @@
         },
         {
             "name": "localgovdrupal/localgov_services",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/localgovdrupal/localgov_services.git",
-                "reference": "693f3d481c0b2a8986f89f774620f18858417a8f"
+                "reference": "c1f686cb0e577a52f151e5df26c683d68bbad9a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/localgovdrupal/localgov_services/zipball/693f3d481c0b2a8986f89f774620f18858417a8f",
-                "reference": "693f3d481c0b2a8986f89f774620f18858417a8f",
+                "url": "https://api.github.com/repos/localgovdrupal/localgov_services/zipball/c1f686cb0e577a52f151e5df26c683d68bbad9a9",
+                "reference": "c1f686cb0e577a52f151e5df26c683d68bbad9a9",
                 "shasum": ""
             },
             "require": {
@@ -8242,9 +8737,9 @@
             "homepage": "https://github.com/localgovdrupal/localgov_services",
             "support": {
                 "issues": "https://github.com/localgovdrupal/localgov_services/issues",
-                "source": "https://github.com/localgovdrupal/localgov_services/tree/2.0.15"
+                "source": "https://github.com/localgovdrupal/localgov_services/tree/2.0.16"
             },
-            "time": "2023-01-16T14:54:11+00:00"
+            "time": "2023-02-13T15:21:40+00:00"
         },
         {
             "name": "localgovdrupal/localgov_skeleton",
@@ -8987,16 +9482,16 @@
         },
         {
             "name": "php-http/discovery",
-            "version": "1.15.0",
+            "version": "1.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/discovery.git",
-                "reference": "ebf69e00f8c58c47bc1114e38d2cfd40b7fe9b1e"
+                "reference": "5cc428320191ac1d0b6520034c2dc0698628ced5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/ebf69e00f8c58c47bc1114e38d2cfd40b7fe9b1e",
-                "reference": "ebf69e00f8c58c47bc1114e38d2cfd40b7fe9b1e",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/5cc428320191ac1d0b6520034c2dc0698628ced5",
+                "reference": "5cc428320191ac1d0b6520034c2dc0698628ced5",
                 "shasum": ""
             },
             "require": {
@@ -9023,7 +9518,8 @@
             },
             "type": "composer-plugin",
             "extra": {
-                "class": "Http\\Discovery\\Composer\\Plugin"
+                "class": "Http\\Discovery\\Composer\\Plugin",
+                "plugin-optional": true
             },
             "autoload": {
                 "psr-4": {
@@ -9054,9 +9550,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.15.0"
+                "source": "https://github.com/php-http/discovery/tree/1.15.2"
             },
-            "time": "2023-02-09T12:05:45+00:00"
+            "time": "2023-02-11T08:28:41+00:00"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -13456,16 +13952,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "2.2.19",
+            "version": "2.2.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "30ff21a9af9a10845436abaeeb0bb7276e996d24"
+                "reference": "978198befc71de0b18fc1fc5a472c03b184b504a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/30ff21a9af9a10845436abaeeb0bb7276e996d24",
-                "reference": "30ff21a9af9a10845436abaeeb0bb7276e996d24",
+                "url": "https://api.github.com/repos/composer/composer/zipball/978198befc71de0b18fc1fc5a472c03b184b504a",
+                "reference": "978198befc71de0b18fc1fc5a472c03b184b504a",
                 "shasum": ""
             },
             "require": {
@@ -13535,7 +14031,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/2.2.19"
+                "source": "https://github.com/composer/composer/tree/2.2.21"
             },
             "funding": [
                 {
@@ -13551,7 +14047,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-04T13:54:48+00:00"
+            "time": "2023-02-15T12:07:40+00:00"
         },
         {
             "name": "composer/metadata-minifier",
