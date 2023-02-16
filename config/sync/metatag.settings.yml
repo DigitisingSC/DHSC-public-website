@@ -1,0 +1,23 @@
+entity_type_groups:
+  node:
+    dhsc_contents_list_page:
+      basic: basic
+    dhsc_homepage:
+      basic: basic
+    independent_content_page:
+      basic: basic
+    localgov_guides_overview:
+      basic: basic
+    localgov_guides_page:
+      basic: basic
+    subtopic_page:
+      basic: basic
+  paragraphs_library_item:
+    paragraphs_library_item:
+      basic: basic
+tag_trim_method: beforeValue
+tag_trim_maxlength:
+  metatag_maxlength_abstract: null
+  metatag_maxlength_description: null
+  metatag_maxlength_title: null
+tag_scroll_max_height: ''

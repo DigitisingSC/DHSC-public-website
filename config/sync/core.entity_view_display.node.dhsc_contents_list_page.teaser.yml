@@ -5,6 +5,8 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.dhsc_contents_list_page.field_body_paragraphs
+    - field.field.node.dhsc_contents_list_page.field_image
+    - field.field.node.dhsc_contents_list_page.field_metatags
     - node.type.dhsc_contents_list_page
   module:
     - user
@@ -13,10 +15,20 @@ targetEntityType: node
 bundle: dhsc_contents_list_page
 mode: teaser
 content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_content_teaser
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   field_body_paragraphs: true
+  field_metatags: true

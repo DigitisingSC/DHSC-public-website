@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.subtopic_page.field_image
+    - field.field.node.subtopic_page.field_metatags
     - field.field.node.subtopic_page.field_subtopic_description
     - field.field.node.subtopic_page.field_subtopics
     - node.type.subtopic_page
@@ -14,11 +16,21 @@ targetEntityType: node
 bundle: subtopic_page
 mode: teaser
 content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_content_teaser
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
+  field_metatags: true
   field_subtopic_description: true
   field_subtopics: true

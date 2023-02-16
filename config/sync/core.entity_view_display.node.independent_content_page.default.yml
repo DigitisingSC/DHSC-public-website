@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.independent_content_page.body
+    - field.field.node.independent_content_page.field_image
+    - field.field.node.independent_content_page.field_metatags
     - node.type.independent_content_page
   module:
+    - metatag
     - text
     - user
 id: node.independent_content_page.default
@@ -18,6 +21,13 @@ content:
     label: visually_hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
     weight: 2
     region: content
   links:
@@ -25,4 +35,5 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_image: true

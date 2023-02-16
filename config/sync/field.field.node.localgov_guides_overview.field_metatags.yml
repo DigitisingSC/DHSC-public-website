@@ -1,0 +1,21 @@
+uuid: 2774d977-6ce1-4cef-99c6-4df7077af69c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.localgov_guides_overview
+  module:
+    - metatag
+id: node.localgov_guides_overview.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: localgov_guides_overview
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag
