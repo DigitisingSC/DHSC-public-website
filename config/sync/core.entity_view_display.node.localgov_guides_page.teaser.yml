@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.localgov_guides_page.body
+    - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.localgov_guides_parent
     - field.field.node.localgov_guides_page.localgov_guides_section_title
     - node.type.localgov_guides_page
@@ -25,6 +26,15 @@ content:
       trim_length: 600
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_content_teaser
+      link: false
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   links: true

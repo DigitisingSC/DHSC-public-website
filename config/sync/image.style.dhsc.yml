@@ -1,0 +1,15 @@
+uuid: 5017c7d9-7838-4277-b989-78f02b26c009
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc
+label: 'DHSC content teaser 300x200'
+effects:
+  cbb852dc-e00a-4bae-9609-4cb742ffb6a2:
+    uuid: cbb852dc-e00a-4bae-9609-4cb742ffb6a2
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 200
+      anchor: center-center

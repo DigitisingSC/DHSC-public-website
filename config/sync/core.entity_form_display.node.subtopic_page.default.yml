@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.subtopic_page.field_image
     - field.field.node.subtopic_page.field_subtopic_description
     - field.field.node.subtopic_page.field_subtopics
     - node.type.subtopic_page
   module:
+    - media_library
+    - media_library_edit
     - path
 id: node.subtopic_page.default
 targetEntityType: node
@@ -19,6 +22,15 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   field_subtopic_description:
     type: string_textarea
     weight: 2

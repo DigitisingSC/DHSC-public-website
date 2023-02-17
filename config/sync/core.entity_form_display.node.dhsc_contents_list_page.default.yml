@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.dhsc_contents_list_page.field_body_paragraphs
+    - field.field.node.dhsc_contents_list_page.field_image
     - node.type.dhsc_contents_list_page
   module:
+    - media_library
+    - media_library_edit
     - paragraphs
     - path
 id: node.dhsc_contents_list_page.default
@@ -38,6 +41,15 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
   path:
     type: path
     weight: 7
