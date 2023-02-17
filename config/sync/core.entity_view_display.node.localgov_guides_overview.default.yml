@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.localgov_guides_overview.body
+    - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.localgov_guides_description
     - field.field.node.localgov_guides_overview.localgov_guides_list_format
     - field.field.node.localgov_guides_overview.localgov_guides_pages
@@ -32,6 +33,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_image: true
   langcode: true
   localgov_guides_description: true
   localgov_guides_list_format: true
