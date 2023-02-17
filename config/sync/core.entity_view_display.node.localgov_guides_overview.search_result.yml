@@ -26,6 +26,7 @@ content:
     region: content
 hidden:
   body: true
+  langcode: true
   links: true
   localgov_guides_description: true
   localgov_guides_list_format: true

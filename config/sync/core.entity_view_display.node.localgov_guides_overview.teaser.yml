@@ -21,13 +21,14 @@ mode: teaser
 content:
   localgov_guides_description:
     type: basic_string
-    weight: 0
-    region: content
     label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   body: true
+  langcode: true
   links: true
   localgov_guides_description: true
   localgov_guides_list_format: true
