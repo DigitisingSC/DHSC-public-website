@@ -4,4 +4,4 @@ set -e
 
 echo "Installing frontend dependencies."
 
-make storybook-install
+npm i --prefix docroot/themes/custom/dhsc_theme
