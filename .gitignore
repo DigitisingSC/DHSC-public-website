@@ -11,6 +11,7 @@
 # Ignore sensitive information
 # /docroot/sites/*/settings*.php
 /docroot/sites/*/services*.yml
+/docroot/sites/*/settings.local.php
 
 # Ignore Drupal's file directory
 /docroot/sites/*/files/
