@@ -13,6 +13,7 @@
     "require": {
         "acquia/blt": "^13.0",
         "acquia/memcache-settings": "^1.2",
+        "alexku/blt-github-actions": "dev-master",
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/acquia_purge": "^1.3",
