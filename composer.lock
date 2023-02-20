@@ -4,8 +4,154 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b8b9c542726671b633273f2d1df3a3a",
+    "content-hash": "24950cebe482bf2440228576e6c60bfa",
     "packages": [
+        {
+            "name": "acquia/blt",
+            "version": "13.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acquia/blt.git",
+                "reference": "c6429b8052d03de7146dc93fefe5c69b96438d33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acquia/blt/zipball/c6429b8052d03de7146dc93fefe5c69b96438d33",
+                "reference": "c6429b8052d03de7146dc93fefe5c69b96438d33",
+                "shasum": ""
+            },
+            "require": {
+                "acquia/drupal-environment-detector": "^1.5.0",
+                "composer-plugin-api": "^2.0",
+                "composer-runtime-api": "^2.0",
+                "consolidation/comments": "^1.0",
+                "consolidation/config": "^1.0.0 || ^2.0.0",
+                "consolidation/robo": "^3 || ^4",
+                "dflydev/dot-access-data": "^1.1.0 || ^2 || ^3",
+                "doctrine/annotations": "^1.10.0",
+                "drupal/core": "^9.0.0-alpha1 || ^10.0.0-alpha1",
+                "drush/drush": "^11",
+                "enlightn/security-checker": "^1.3",
+                "ext-json": "*",
+                "grasmash/yaml-cli": "^2.0.0 || ^3.0.0",
+                "grasmash/yaml-expander": "^3.0.2",
+                "loophp/phposinfo": "^1.7.1",
+                "php": ">=7.4",
+                "symfony/config": "^4.4 || ^6",
+                "symfony/console": "^4.4.6 || ^6",
+                "symfony/twig-bridge": "^3.4 || ^4 || ^5 || ^6",
+                "symfony/yaml": "^4.4 || ^5 || ^6",
+                "webmozart/path-util": "^2.3",
+                "zumba/amplitude-php": "^1.0.3"
+            },
+            "conflict": {
+                "acquia/blt-behat": "<=1.0.0"
+            },
+            "require-dev": {
+                "acquia/coding-standards": "^1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+                "roave/security-advisories": "dev-latest",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "suggest": {
+                "davereid/drush-acquia-hook-invoke": "dev-master"
+            },
+            "bin": [
+                "bin/blt",
+                "bin/blt.bat"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "10.x-dev": "10.0.x-dev",
+                    "dev-main": "13.x-dev"
+                },
+                "class": "Acquia\\Blt\\Composer\\Plugin",
+                "phpcodesniffer-search-depth": "4"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Acquia\\Blt\\": "src/",
+                    "Acquia\\Blt\\Tests\\": "tests/phpunit/src/",
+                    "Acquia\\Blt\\Tests\\Robo\\": "tests/phpunit/Robo/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Grasmick"
+                }
+            ],
+            "description": "BLT",
+            "keywords": [
+                "automation",
+                "deployment",
+                "drupal",
+                "template"
+            ],
+            "support": {
+                "docs": "https://docs.acquia.com/blt/",
+                "issues": "https://github.com/acquia/blt/issues",
+                "source": "https://github.com/acquia/blt/tree/13.7.0"
+            },
+            "time": "2022-11-21T18:57:34+00:00"
+        },
+        {
+            "name": "acquia/drupal-environment-detector",
+            "version": "1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/acquia/drupal-environment-detector.git",
+                "reference": "b001874469c29ecd41dca1468ff4533f3cbec453"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/acquia/drupal-environment-detector/zipball/b001874469c29ecd41dca1468ff4533f3cbec453",
+                "reference": "b001874469c29ecd41dca1468ff4533f3cbec453",
+                "shasum": ""
+            },
+            "conflict": {
+                "acquia/blt": ">=12.0.0 <13.5.2"
+            },
+            "require-dev": {
+                "acquia/coding-standards": "^1.0.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpunit/phpunit": "^9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "phpcodesniffer-search-depth": "4"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Acquia\\DrupalEnvironmentDetector\\": "src/",
+                    "Acquia\\DrupalEnvironmentDetector\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Acquia Engineering",
+                    "homepage": "https://www.acquia.com",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides common methods for detecting the current Acquia environment",
+            "support": {
+                "issues": "https://github.com/acquia/drupal-environment-detector/issues",
+                "source": "https://github.com/acquia/drupal-environment-detector/tree/1.5.3"
+            },
+            "time": "2022-12-15T16:49:52+00:00"
+        },
         {
             "name": "acquia/memcache-settings",
             "version": "v1.2.0",
@@ -642,6 +788,58 @@
                 "source": "https://github.com/consolidation/annotated-command/tree/4.7.1"
             },
             "time": "2022-12-06T22:57:25+00:00"
+        },
+        {
+            "name": "consolidation/comments",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/consolidation/comments.git",
+                "reference": "908832ce3c8174a9414d741913543fd058aac5fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/consolidation/comments/zipball/908832ce3c8174a9414d741913543fd058aac5fb",
+                "reference": "908832ce3c8174a9414d741913543fd058aac5fb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/php-code-coverage": "~2|~4",
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.8",
+                "symfony/yaml": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Consolidation\\Comments\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Anderson",
+                    "email": "greg.1.anderson@greenknowe.org"
+                }
+            ],
+            "description": "A tool for preserving comments, e.g. when parsing YAML files.",
+            "support": {
+                "issues": "https://github.com/consolidation/comments/issues",
+                "source": "https://github.com/consolidation/comments/tree/1.0.2"
+            },
+            "time": "2019-07-30T05:52:24+00:00"
         },
         {
             "name": "consolidation/config",
@@ -7265,6 +7463,107 @@
             "time": "2022-04-25T22:17:46+00:00"
         },
         {
+            "name": "grasmash/yaml-cli",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grasmash/yaml-cli.git",
+                "reference": "4d9c4d97de16a881196e2310e868e3230202b4a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/4d9c4d97de16a881196e2310e868e3230202b4a7",
+                "reference": "4d9c4d97de16a881196e2310e868e3230202b4a7",
+                "shasum": ""
+            },
+            "require": {
+                "dflydev/dot-access-data": "^1.1.0 | ^2 | ^3",
+                "php": ">=5.6",
+                "symfony/console": "^4 | ^5",
+                "symfony/filesystem": "^4 | ^5",
+                "symfony/yaml": "^4 | ^5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.5.4",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.7"
+            },
+            "bin": [
+                "bin/yaml-cli"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Grasmash\\YamlCli\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Grasmick"
+                }
+            ],
+            "description": "A command line tool for reading and manipulating yaml files.",
+            "support": {
+                "issues": "https://github.com/grasmash/yaml-cli/issues",
+                "source": "https://github.com/grasmash/yaml-cli/tree/3.0.0"
+            },
+            "time": "2022-02-24T04:01:47+00:00"
+        },
+        {
+            "name": "grasmash/yaml-expander",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grasmash/yaml-expander.git",
+                "reference": "f6dd6be2a899316528e201c91fc317b16794b1c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grasmash/yaml-expander/zipball/f6dd6be2a899316528e201c91fc317b16794b1c0",
+                "reference": "f6dd6be2a899316528e201c91fc317b16794b1c0",
+                "shasum": ""
+            },
+            "require": {
+                "grasmash/expander": "^1 || ^2 || ^3",
+                "symfony/yaml": "^4 || ^5 || ^6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^8.0 || ^9",
+                "squizlabs/php_codesniffer": "^2.7 || ^3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grasmash\\YamlExpander\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Grasmick"
+                }
+            ],
+            "description": "Expands internal property references in a yaml file.",
+            "support": {
+                "issues": "https://github.com/grasmash/yaml-expander/issues",
+                "source": "https://github.com/grasmash/yaml-expander/tree/3.0.2"
+            },
+            "time": "2022-05-10T13:29:17+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.5.8",
             "source": {
@@ -8934,6 +9233,63 @@
                 "source": "https://github.com/localgovdrupal/localgov_workflows/tree/1.1.3"
             },
             "time": "2022-06-06T13:26:54+00:00"
+        },
+        {
+            "name": "loophp/phposinfo",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/loophp/phposinfo.git",
+                "reference": "9faccbfbf5364fd34fbc230961fa6fc51cc66b8f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/loophp/phposinfo/zipball/9faccbfbf5364fd34fbc230961fa6fc51cc66b8f",
+                "reference": "9faccbfbf5364fd34fbc230961fa6fc51cc66b8f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8"
+            },
+            "require-dev": {
+                "drupol/php-conventions": "^5.0.0",
+                "ext-pcov": "*",
+                "friends-of-phpspec/phpspec-code-coverage": "^6",
+                "infection/infection": "^0.26",
+                "infection/phpspec-adapter": "^0.2.0",
+                "phpspec/phpspec": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "loophp\\phposinfo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pol Dellaiera",
+                    "email": "pol.dellaiera@protonmail.com"
+                }
+            ],
+            "description": "Try to guess the host operating system.",
+            "keywords": [
+                "operating system detection"
+            ],
+            "support": {
+                "issues": "https://github.com/loophp/phposinfo/issues",
+                "source": "https://github.com/loophp/phposinfo"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/drupol",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-12-20T20:21:10+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -10621,6 +10977,84 @@
                 "source": "https://github.com/symfony-cmf/Routing/tree/2.3.4"
             },
             "time": "2021-11-08T16:33:10+00:00"
+        },
+        {
+            "name": "symfony/config",
+            "version": "v4.4.44",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/config.git",
+                "reference": "ed42f8f9da528d2c6cae36fe1f380b0c1d8f0658"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/config/zipball/ed42f8f9da528d2c6cae36fe1f380b0c1d8f0658",
+                "reference": "ed42f8f9da528d2c6cae36fe1f380b0c1d8f0658",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/filesystem": "^3.4|^4.0|^5.0",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/polyfill-php81": "^1.22"
+            },
+            "conflict": {
+                "symfony/finder": "<3.4"
+            },
+            "require-dev": {
+                "symfony/event-dispatcher": "^3.4|^4.0|^5.0",
+                "symfony/finder": "^3.4|^4.0|^5.0",
+                "symfony/messenger": "^4.1|^5.0",
+                "symfony/service-contracts": "^1.1|^2",
+                "symfony/yaml": "^3.4|^4.0|^5.0"
+            },
+            "suggest": {
+                "symfony/yaml": "To use the yaml reference dumper"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/config/tree/v4.4.44"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-07-20T09:59:04+00:00"
         },
         {
             "name": "symfony/console",
@@ -12362,6 +12796,85 @@
             "time": "2022-11-03T14:55:06+00:00"
         },
         {
+            "name": "symfony/polyfill-php81",
+            "version": "v1.27.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php81.git",
+                "reference": "707403074c8ea6e2edaf8794b0157a0bfa52157a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/707403074c8ea6e2edaf8794b0157a0bfa52157a",
+                "reference": "707403074c8ea6e2edaf8794b0157a0bfa52157a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.27-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php81\\": ""
+                },
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.1+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php81/tree/v1.27.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-11-03T14:55:06+00:00"
+        },
+        {
             "name": "symfony/process",
             "version": "v4.4.44",
             "source": {
@@ -13031,6 +13544,123 @@
             "time": "2022-06-27T16:58:25+00:00"
         },
         {
+            "name": "symfony/twig-bridge",
+            "version": "v4.4.49",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/twig-bridge.git",
+                "reference": "d6b0fbfd5e2fab79c0c7b8dfe579e47ee0999113"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/d6b0fbfd5e2fab79c0c7b8dfe579e47ee0999113",
+                "reference": "d6b0fbfd5e2fab79c0c7b8dfe579e47ee0999113",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/translation-contracts": "^1.1|^2",
+                "twig/twig": "^1.43|^2.13|^3.0.4"
+            },
+            "conflict": {
+                "symfony/console": "<3.4",
+                "symfony/form": "<4.4",
+                "symfony/http-foundation": "<4.3",
+                "symfony/translation": "<4.2",
+                "symfony/workflow": "<4.3"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10|^3",
+                "symfony/asset": "^3.4|^4.0|^5.0",
+                "symfony/console": "^3.4|^4.0|^5.0",
+                "symfony/dependency-injection": "^3.4|^4.0|^5.0",
+                "symfony/error-handler": "^4.4|^5.0",
+                "symfony/expression-language": "^3.4|^4.0|^5.0",
+                "symfony/finder": "^3.4|^4.0|^5.0",
+                "symfony/form": "^4.4.17",
+                "symfony/http-foundation": "^4.3|^5.0",
+                "symfony/http-kernel": "^4.4",
+                "symfony/intl": "^4.4|^5.0",
+                "symfony/mime": "^4.3|^5.0",
+                "symfony/polyfill-intl-icu": "~1.0",
+                "symfony/routing": "^3.4|^4.0|^5.0",
+                "symfony/security-acl": "^2.8|^3.0",
+                "symfony/security-core": "^3.0|^4.0|^5.0",
+                "symfony/security-csrf": "^3.4|^4.0|^5.0",
+                "symfony/security-http": "^3.4|^4.0|^5.0",
+                "symfony/stopwatch": "^3.4|^4.0|^5.0",
+                "symfony/templating": "^3.4|^4.0|^5.0",
+                "symfony/translation": "^4.2.1|^5.0",
+                "symfony/web-link": "^4.4|^5.0",
+                "symfony/workflow": "^4.3|^5.0",
+                "symfony/yaml": "^3.4|^4.0|^5.0",
+                "twig/cssinliner-extra": "^2.12|^3",
+                "twig/inky-extra": "^2.12|^3",
+                "twig/markdown-extra": "^2.12|^3"
+            },
+            "suggest": {
+                "symfony/asset": "For using the AssetExtension",
+                "symfony/expression-language": "For using the ExpressionExtension",
+                "symfony/finder": "",
+                "symfony/form": "For using the FormExtension",
+                "symfony/http-kernel": "For using the HttpKernelExtension",
+                "symfony/routing": "For using the RoutingExtension",
+                "symfony/security-core": "For using the SecurityExtension",
+                "symfony/security-csrf": "For using the CsrfExtension",
+                "symfony/security-http": "For using the LogoutUrlExtension",
+                "symfony/stopwatch": "For using the StopwatchExtension",
+                "symfony/templating": "For using the TwigEngine",
+                "symfony/translation": "For using the TranslationExtension",
+                "symfony/var-dumper": "For using the DumpExtension",
+                "symfony/web-link": "For using the WebLinkExtension",
+                "symfony/yaml": "For using the YamlExtension"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bridge\\Twig\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides integration for Twig with various Symfony components",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/twig-bridge/tree/v4.4.49"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-11-03T09:41:56+00:00"
+        },
+        {
             "name": "symfony/validator",
             "version": "v4.4.48",
             "source": {
@@ -13645,6 +14275,67 @@
                 "source": "https://github.com/geocoder-php/php-common/tree/4.6.0"
             },
             "time": "2022-07-30T11:09:43+00:00"
+        },
+        {
+            "name": "zumba/amplitude-php",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zumba/amplitude-php.git",
+                "reference": "99d776d1b60d2a4d8bb26e4039e368edd3d89aac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zumba/amplitude-php/zipball/99d776d1b60d2a4d8bb26e4039e368edd3d89aac",
+                "reference": "99d776d1b60d2a4d8bb26e4039e368edd3d89aac",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.2",
+                "psr/log": "^1.0 | ^2.0 | ^3.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpunit/phpunit": "8.3.* | ^9",
+                "squizlabs/php_codesniffer": "3.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zumba\\Amplitude\\": "./src/",
+                    "Zumba\\Amplitude\\Test\\": "./test/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zumba Fitness, LLC",
+                    "homepage": "https://tech.zumba.com"
+                },
+                {
+                    "name": "Jonathan Foote",
+                    "email": "jonathan.foote@zumba.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP SDK for Amplitude",
+            "homepage": "https://github.com/zumba/amplitude-php",
+            "keywords": [
+                "amplitude",
+                "analytics",
+                "sdk",
+                "tracking"
+            ],
+            "support": {
+                "issues": "https://github.com/zumba/amplitude-php/issues",
+                "source": "https://github.com/zumba/amplitude-php/tree/1.0.6"
+            },
+            "time": "2022-09-09T13:49:49+00:00"
         }
     ],
     "packages-dev": [
