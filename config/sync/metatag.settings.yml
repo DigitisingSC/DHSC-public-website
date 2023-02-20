@@ -1,0 +1,33 @@
+entity_type_groups:
+  node:
+    dhsc_contents_list_page:
+      basic: basic
+      open_graph: open_graph
+    dhsc_homepage:
+      basic: basic
+      open_graph: open_graph
+    independent_content_page:
+      basic: basic
+      open_graph: open_graph
+    localgov_guides_overview:
+      basic: basic
+      open_graph: open_graph
+    localgov_guides_page:
+      basic: basic
+      open_graph: open_graph
+    subtopic_page:
+      basic: basic
+      open_graph: open_graph
+  paragraphs_library_item:
+    paragraphs_library_item:
+      basic: basic
+      open_graph: open_graph
+tag_trim_method: beforeValue
+tag_trim_maxlength:
+  metatag_maxlength_abstract: null
+  metatag_maxlength_description: null
+  metatag_maxlength_title: null
+  metatag_maxlength_og_description: null
+  metatag_maxlength_og_site_name: null
+  metatag_maxlength_og_title: null
+tag_scroll_max_height: ''

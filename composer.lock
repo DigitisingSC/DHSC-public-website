@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b8b9c542726671b633273f2d1df3a3a",
+    "content-hash": "72201c3a0066051a52e2b334c60f5985",
     "packages": [
         {
             "name": "acquia/memcache-settings",
