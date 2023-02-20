@@ -22,7 +22,7 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   field_image:
     type: entity_reference_entity_view
@@ -31,12 +31,8 @@ content:
       view_mode: dhsc_content_teaser
       link: false
     third_party_settings: {  }
-    weight: 1
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   field_metatags: true
+  links: true

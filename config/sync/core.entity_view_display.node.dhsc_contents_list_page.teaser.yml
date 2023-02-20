@@ -22,13 +22,9 @@ content:
       view_mode: dhsc_content_teaser
       link: false
     third_party_settings: {  }
-    weight: 1
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   field_body_paragraphs: true
   field_metatags: true
+  links: true

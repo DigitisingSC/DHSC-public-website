@@ -23,14 +23,16 @@ content:
       view_mode: dhsc_content_teaser
       link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
-  links:
+  field_subtopic_description:
+    type: basic_string
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   field_metatags: true
-  field_subtopic_description: true
   field_subtopics: true
+  links: true
