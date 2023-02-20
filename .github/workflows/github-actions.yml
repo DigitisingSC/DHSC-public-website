@@ -1,5 +1,4 @@
 name: DHSC CI/CD pipeline
-name: PHP Composer
 
 on:
   push:
