@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.subtopic_page.field_description
     - field.field.node.subtopic_page.field_image
     - field.field.node.subtopic_page.field_metatags
-    - field.field.node.subtopic_page.field_subtopic_description
     - field.field.node.subtopic_page.field_subtopics
     - node.type.subtopic_page
   module:
@@ -15,6 +15,13 @@ targetEntityType: node
 bundle: subtopic_page
 mode: default
 content:
+  field_description:
+    type: basic_string
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_subtopics:
     type: entity_reference_entity_view
     label: visually_hidden
@@ -22,7 +29,7 @@ content:
       view_mode: teaser
       link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   links:
     settings: {  }
@@ -32,4 +39,3 @@ content:
 hidden:
   field_image: true
   field_metatags: true
-  field_subtopic_description: true

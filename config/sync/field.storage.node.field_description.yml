@@ -1,11 +1,11 @@
-uuid: 1a1cdeb8-7202-4a10-bc04-60cebc67481a
+uuid: 0dad47da-899a-48c0-9e87-e4f03368c175
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_subtopic_description
-field_name: field_subtopic_description
+id: node.field_description
+field_name: field_description
 entity_type: node
 type: string_long
 settings:

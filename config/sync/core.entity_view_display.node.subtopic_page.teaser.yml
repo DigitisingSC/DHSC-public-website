@@ -4,9 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.subtopic_page.field_description
     - field.field.node.subtopic_page.field_image
     - field.field.node.subtopic_page.field_metatags
-    - field.field.node.subtopic_page.field_subtopic_description
     - field.field.node.subtopic_page.field_subtopics
     - node.type.subtopic_page
   module:
@@ -25,14 +25,8 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_subtopic_description:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
+  field_description: true
   field_metatags: true
   field_subtopics: true
   links: true

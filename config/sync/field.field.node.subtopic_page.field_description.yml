@@ -1,18 +1,18 @@
-uuid: c28f1c8d-cce1-4e6b-8fd2-32f0239e7d5c
+uuid: da2ba2f7-efa8-4bdd-9cab-c56912e8959a
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_subtopic_description
+    - field.storage.node.field_description
     - node.type.subtopic_page
-id: node.subtopic_page.field_subtopic_description
-field_name: field_subtopic_description
+id: node.subtopic_page.field_description
+field_name: field_description
 entity_type: node
 bundle: subtopic_page
-label: 'Subtopic description'
+label: Description
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
