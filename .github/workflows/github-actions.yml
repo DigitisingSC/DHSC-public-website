@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: composer install
     - name: Coding Standards
-      run: vendor/bin/phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
+      run: bin/phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
