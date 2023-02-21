@@ -755,7 +755,7 @@ $settings['entity_update_backup'] = TRUE;
  * node migrations.
  */
 $settings['migrate_node_migrate_type_classic'] = FALSE;
-$settings['config_sync_directory'] = '../config/sync';
+$settings['config_sync_directory'] = '../config/default/sync';
 
 // Automatically generated include for settings managed by ddev.
 if (file_exists(__DIR__ . '/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {

@@ -6,12 +6,12 @@ on:
     branches:
       - test
       - develop
-      - master
+      - main
   pull_request:
     branches:
       - test
       - develop
-      - master
+      - main
 
 defaults:
   run:
@@ -118,7 +118,7 @@ jobs:
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
-      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/stage' || github.ref == 'refs/heads/master') }}
+      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/stage' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
       run: bash $SCRIPT_DIR/deploy_tag.sh
