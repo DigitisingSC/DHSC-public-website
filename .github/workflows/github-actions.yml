@@ -119,17 +119,10 @@ jobs:
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
-      run: bash $SCRIPT_DIR/deploy_branch.sh
-      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
-
-    - name: Deploy branch
       run: |
-        echo "$env.BLT_SSH_DEPLOYMENT_KEY"
-        echo "$env.SSH_DEPLOYMENT_KEY"
-        echo github.event_name
-        echo github.ref
-        bash $GITHUB_WORKSPACE/scripts/custom/deploy_artifact.sh
-      if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
+        git status
+        bash $SCRIPT_DIR/deploy_branch.sh
+      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
       run: bash $SCRIPT_DIR/deploy_tag.sh
