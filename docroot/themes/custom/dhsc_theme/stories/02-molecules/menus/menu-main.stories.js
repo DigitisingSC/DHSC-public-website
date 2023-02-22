@@ -1,7 +1,9 @@
 import menuItem from "./menu-main.twig";
 
-import './../../../../../contrib/localgov_base/css/components/menu-main.ie11.css';
-import './../../../../../contrib/localgov_base/css/components/menu-main.css';
+import './../../../../../custom/dhsc_theme/css/components/menu-main.ie11.css';
+import './../../../../../custom/dhsc_theme/css/components/menu-main.css';
+import './../../../../../custom/dhsc_theme/css/layout/header.ie11.css';
+import './../../../../../custom/dhsc_theme/css/layout/header.css';
 
  export default {
    title: "Design System/Molecules/Menu Main",
