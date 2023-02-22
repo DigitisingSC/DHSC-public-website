@@ -91,3 +91,7 @@ deployment_identifier
 /travis_wait*
 /files-private
 .phpcs-cache
+
+# Acquia BLT deployment
+tmp/**
+tmp/**/*
