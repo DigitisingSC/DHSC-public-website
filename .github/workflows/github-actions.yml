@@ -121,6 +121,7 @@ jobs:
     - name: Deploy branch
       run: |
         git status
+        git diff
         bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
