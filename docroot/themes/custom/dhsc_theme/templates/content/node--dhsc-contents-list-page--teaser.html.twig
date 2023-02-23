@@ -70,9 +70,11 @@
  *   in different view modes.
  */
 #}
-{% include '@molecules/homepage-card/homepage-card.twig' with {
-  'image': content.field_image,
-  'link': path('entity.node.canonical', {'node': node.id }),
-  'heading': node.label,
-  'description': content.field_description
-} %}
+<article{{ attributes}}>
+  {% include '@molecules/homepage-card/homepage-card.twig' with {
+    'image': content.field_image,
+    'link': path('entity.node.canonical', {'node': node.id }),
+    'heading': node.label,
+    'description': content.field_description
+  } %}
+</article>
