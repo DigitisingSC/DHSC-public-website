@@ -16,6 +16,13 @@ targetEntityType: node
 bundle: dhsc_contents_list_page
 mode: teaser
 content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_image:
     type: entity_reference_entity_view
     label: hidden
@@ -27,6 +34,5 @@ content:
     region: content
 hidden:
   field_body_paragraphs: true
-  field_description: true
   field_metatags: true
   links: true
