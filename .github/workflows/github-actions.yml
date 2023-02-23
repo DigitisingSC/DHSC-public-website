@@ -118,16 +118,14 @@ jobs:
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
         mkdir -p ~/.ssh
         rm -rf ~/.ssh/known_hosts
-        ssh-keyscan -H 'acquia.com' >> ~/.ssh/known_hosts
+        ssh-keyscan -H "acquia.com" >> ~/.ssh/known_hosts
         ssh-keyscan acquia.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
         echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        cat ~/.ssh/known_host
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
-      run: |
-        git status
-        git diff
-        bash $SCRIPT_DIR/deploy_branch.sh
+      run: bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
