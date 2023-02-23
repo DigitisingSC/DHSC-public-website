@@ -124,7 +124,7 @@ jobs:
         pwd
         ls -la ~/
         ls -la ~/.ssh
-        cat ~/.ssh/known_host
+        cat ~/.ssh/known_hosts
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
