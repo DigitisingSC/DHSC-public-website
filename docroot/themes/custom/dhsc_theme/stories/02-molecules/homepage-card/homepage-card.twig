@@ -1,0 +1,14 @@
+{#
+  Template
+#}
+<a class="homepage-card" href="{{ link }}" title="{{ heading }}">
+	<article>
+		<div class="image-wrapper">
+			<img {{ img_attributes }} src="{{ image.src }}" alt="{{ image.alt }}"/>
+		</div>
+		<div class="content-wrapper">
+			<h3>{{ heading }}</h3>
+			<p>{{ description }}</p>
+		</div>
+	</article>
+</a>
