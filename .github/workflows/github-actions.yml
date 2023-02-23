@@ -121,6 +121,9 @@ jobs:
         ssh-keyscan -H "acquia.com" >> ~/.ssh/known_hosts
         ssh-keyscan acquia.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
         echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        ls -la ~/
+        ls -la ~/.ssh
+        ls -la ~/.ssh/known_host
         cat ~/.ssh/known_host
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
