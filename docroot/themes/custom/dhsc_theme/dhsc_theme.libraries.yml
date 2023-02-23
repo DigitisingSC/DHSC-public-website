@@ -21,7 +21,13 @@ ia-block:
       css/components/ia-block.css: {}
 
 header:
-    css:
-      theme:
-        css/layout/header.ie11.css: {}
-        css/layout/header.css: {}
+  css:
+    theme:
+      css/layout/header.ie11.css: {}
+      css/layout/header.css: {}
+
+menu-main:
+  css:
+    theme:
+      css/components/menu-main.ie11.css: {}
+      css/components/menu-main.css: {}
