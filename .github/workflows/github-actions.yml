@@ -123,6 +123,7 @@ jobs:
         echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
         ls -la ~/.ssh/config
         cat ~/.ssh/config
+        whoami
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
