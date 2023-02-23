@@ -118,17 +118,10 @@ jobs:
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
         mkdir -p ~/.ssh
         echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-        cat ~/.ssh/known_hosts
-        cat ~/.ssh/config
-        whoami
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
-      run: |
-        cat ~/.ssh/known_hosts
-        cat ~/.ssh/config
-        whoami
-        bash $SCRIPT_DIR/deploy_branch.sh
+      run: bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
