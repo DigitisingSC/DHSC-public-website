@@ -117,11 +117,15 @@ jobs:
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
         mkdir -p ~/.ssh
+        rm -rf ~/.ssh/known_hosts
+        ssh-keyscan -H "svn-41605.prod.hosting.acquia.com" >> ~/.ssh/known_hosts
+        ssh-keyscan svn-41605.prod.hosting.acquia.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
         echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        ssh -T digitalsocialcare@svn-41605.prod.hosting.acquia.com
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
-      run: $BLT_DIR/bin/blt artifact:deploy --commit-msg "Automated commit by Github Actions for Build $GITHUB_RUN_NUMBER of workflow $GITHUB_WORKFLOW" --branch "$GITHUB_REF_NAME-build" --no-interaction --verbose
+      run: bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/test' || github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
