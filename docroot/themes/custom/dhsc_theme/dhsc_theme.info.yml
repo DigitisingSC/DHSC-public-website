@@ -13,6 +13,8 @@ libraries-extend:
     - dhsc_theme/banner
   localgov_base/ia-block:
     - dhsc_theme/ia-block
+  localgov_base/header:
+    - dhsc_theme/header
 
 regions:
   tabs: "Tabs"
