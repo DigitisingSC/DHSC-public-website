@@ -16,6 +16,13 @@ targetEntityType: node
 bundle: subtopic_page
 mode: teaser
 content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   field_image:
     type: entity_reference_entity_view
     label: hidden
@@ -26,7 +33,6 @@ content:
     weight: 0
     region: content
 hidden:
-  field_description: true
   field_metatags: true
   field_subtopics: true
   links: true
