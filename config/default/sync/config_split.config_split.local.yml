@@ -6,7 +6,7 @@ id: local
 label: Local
 description: 'Local development config.'
 weight: 0
-folder: ''
+folder: ../config/default/local
 module:
   dblog: 0
   devel: 0

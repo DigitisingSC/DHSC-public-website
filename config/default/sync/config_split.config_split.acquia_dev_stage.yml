@@ -6,7 +6,7 @@ id: acquia_dev_stage
 label: 'Acquia dev & stage'
 description: ''
 weight: 0
-folder: ''
+folder: ../config/default/acquia_dev_stage
 module:
   dblog: 0
   memcache: 0
