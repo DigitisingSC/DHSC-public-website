@@ -1,0 +1,40 @@
+project:
+  machine_name: digitalsocialcare
+
+git:
+  hooks:
+    commit-msg: false
+  remotes:
+    - digitalsocialcare@svn-41605.prod.hosting.acquia.com:digitalsocialcare.git
+
+deploy:
+  build-dependencies: true
+  exclude_file: ${repo.root}/blt/deploy/deploy-exclude.txt
+
+validate:
+  twig:
+    filters:
+      - children
+      - image_style
+    functions:
+      - drupal_block
+      - drupal_config
+      - drupal_entity
+      - drupal_view
+      - drupal_view_result
+
+# Custom tasks that are triggered at pre-defined times in the build process.
+# The tasks hook into BLT's existing commands.
+command-hooks:
+  # Executed when front end dependencies should be installed.
+  frontend-reqs:
+    # E.g., ${docroot}/themes/custom/mytheme
+    dir: ${repo.root}
+    # E.g., '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use 4.4.4 && npm install'
+    command: ./scripts/custom/frontend-reqs.sh
+  # Executed when front end assets should be generated.
+  frontend-assets:
+    # E.g., ${docroot}/themes/custom/mytheme
+    dir: ${repo.root}
+    # E.g., '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use 4.4.4 && npm build'
+    command: ./scripts/custom/frontend-assets.sh
