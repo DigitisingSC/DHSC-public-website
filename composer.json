@@ -108,6 +108,11 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches": {
+            "alexku/blt-github-actions": {
+                "Test": "patches/allowstandard-subscription-autodeployment.patch"
+            }
         }
     }
 }

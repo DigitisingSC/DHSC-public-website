@@ -118,7 +118,9 @@ jobs:
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
         mkdir -p ~/.ssh
         rm -rf ~/.ssh/known_hosts
-        echo -e "Host *.prod.hosting.acquia.com\n  StrictHostKeyChecking no\n" > ~/.ssh/config
+        ssh-keyscan -H "svn-41605.prod.hosting.acquia.com" >> ~/.ssh/known_hosts
+        ssh-keyscan svn-41605.prod.hosting.acquia.com | sort -u - ~/.ssh/known_hosts -o ~/.ssh/known_hosts
+        echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Deploy branch
