@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.independent_content_page.body
     - field.field.node.independent_content_page.field_image
+    - field.field.node.independent_content_page.field_metatags
     - node.type.independent_content_page
   module:
     - media_library
     - media_library_edit
+    - metatag
     - path
     - text
 id: node.independent_content_page.default
@@ -41,6 +43,14 @@ content:
     third_party_settings:
       media_library_edit:
         show_edit: '1'
+  field_metatags:
+    type: metatag_firehose
+    weight: 26
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   path:
     type: path
     weight: 7

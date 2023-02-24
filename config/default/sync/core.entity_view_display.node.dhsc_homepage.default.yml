@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.dhsc_homepage.field_metatags
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
@@ -16,14 +17,15 @@ content:
     type: entity_reference_entity_view
     label: visually_hidden
     settings:
-      view_mode: default
-      link: true
+      view_mode: teaser
+      link: false
     third_party_settings: {  }
-    weight: 103
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
-hidden: {  }
+hidden:
+  field_metatags: true

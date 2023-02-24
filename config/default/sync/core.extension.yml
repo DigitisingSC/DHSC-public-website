@@ -57,6 +57,8 @@ module:
   media_library_edit: 0
   menu_link_content: 0
   menu_ui: 0
+  metatag: 0
+  metatag_open_graph: 0
   mysql: 0
   node: 0
   office_hours: 0

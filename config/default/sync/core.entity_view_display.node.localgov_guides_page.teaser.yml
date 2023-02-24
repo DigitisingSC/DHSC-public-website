@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.localgov_guides_page.body
     - field.field.node.localgov_guides_page.field_image
+    - field.field.node.localgov_guides_page.field_metatags
     - field.field.node.localgov_guides_page.localgov_guides_parent
     - field.field.node.localgov_guides_page.localgov_guides_section_title
     - node.type.localgov_guides_page
@@ -37,6 +38,7 @@ content:
     weight: 1
     region: content
 hidden:
+  field_metatags: true
   links: true
   localgov_guides_parent: true
   localgov_guides_section_title: true
