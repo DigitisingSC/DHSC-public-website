@@ -755,7 +755,7 @@ $settings['entity_update_backup'] = TRUE;
  * node migrations.
  */
 $settings['migrate_node_migrate_type_classic'] = FALSE;
-$settings['config_sync_directory'] = '../config/sync';
+$settings['config_sync_directory'] = '../config/default/sync';
 
 // Automatically generated include for settings managed by ddev.
 if (file_exists(__DIR__ . '/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 'true') {
@@ -779,3 +779,41 @@ if (file_exists(__DIR__ . '/settings.ddev.php') && getenv('IS_DDEV_PROJECT') == 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
    include $app_root . '/' . $site_path . '/settings.local.php';
 }
+
+// On Cloud Platform, this include file configures Drupal to use the correct
+// database in each site environment (Dev, Stage, or Prod).
+if (file_exists('/var/www/site-php')) {
+  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/' . $_ENV['AH_SITE_GROUP'] . '-settings.inc';
+
+  // Memcached settings for Acquia Hosting
+  $memcache_settings_file = DRUPAL_ROOT . "/../vendor/acquia/memcache-settings/memcache.settings.php";
+  if (file_exists($memcache_settings_file)) {
+    require_once $memcache_settings_file;
+  }
+
+  // Base Acquia Cloud config split.
+  $config['config_split.config_split.acquia']['status'] = TRUE;
+  $config['config_split.config_split.local']['status'] = FALSE;
+
+  // Environment-specific Acquia Cloud config split.
+  $config['config_split.config_split.acquia_dev_stage']['status'] = (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] !== 'prod');
+}
+
+require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
+/**
+ * IMPORTANT.
+ *
+ * Do not include additional settings here. Instead, add them to settings
+ * included by `blt.settings.php`. See BLT's documentation for more detail.
+ *
+ * @link https://docs.acquia.com/blt/
+ */
+
+ // Config path.
+ $settings['config_sync_directory'] = '../config/default/sync';
+
+ // Automatically generated include for settings managed by ddev.
+ $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
+ if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
+   require $ddev_settings;
+ }
