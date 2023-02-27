@@ -64,7 +64,7 @@ _core:
 id: acquia_search_index
 name: 'Acquia Search Solr Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   body:
     label: Body
