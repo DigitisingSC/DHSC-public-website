@@ -30,6 +30,7 @@ hidden:
   body: true
   field_image: true
   field_metatags: true
+  langcode: true
   links: true
   localgov_guides_description: true
   localgov_guides_list_format: true

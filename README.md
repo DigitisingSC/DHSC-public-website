@@ -107,9 +107,16 @@ You can start the Storybook by running the command:
 This should spin up the Storybook in 'watch mode' and launch it in your default browser.
 
 ### Make changes to the Storybook
+
 Once the Storybook is up and running, any changes to the markup will trigger Storybook to rebuild.
 
-### Make utilities ###
+## Working with Solr
+
+The website is using Solr as a search server. On dev, staging and production we connect to Acquia.
+
+Local solr for development is accessible at `http://${project-name}.ddev.site:8983/solr/#/`.
+
+## Make utilities
 
 
 

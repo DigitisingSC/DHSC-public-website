@@ -13,6 +13,7 @@ module:
   views_ui: 0
 theme: {  }
 blacklist: {  }
-graylist: {  }
+graylist:
+  - search_api.server.acquia_search_server
 graylist_dependents: true
 graylist_skip_equal: true

@@ -46,5 +46,6 @@ content:
 hidden:
   field_image: true
   field_metatags: true
+  langcode: true
   links: true
   search_api_excerpt: true

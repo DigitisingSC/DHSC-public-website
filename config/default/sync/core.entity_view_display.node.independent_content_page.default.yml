@@ -37,3 +37,5 @@ content:
     region: content
 hidden:
   field_image: true
+  langcode: true
+  search_api_excerpt: true

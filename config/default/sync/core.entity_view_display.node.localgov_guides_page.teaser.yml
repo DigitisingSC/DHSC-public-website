@@ -39,6 +39,7 @@ content:
     region: content
 hidden:
   field_metatags: true
+  langcode: true
   links: true
   localgov_guides_parent: true
   localgov_guides_section_title: true

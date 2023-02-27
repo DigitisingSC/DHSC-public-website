@@ -58,6 +58,13 @@ content:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   localgov_guides_description:
     type: string_textarea
     weight: 4
