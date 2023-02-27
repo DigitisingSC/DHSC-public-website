@@ -3,7 +3,7 @@ import banner from "./banner.twig";
 import './../../../../../custom/dhsc_theme/css/components/banner.css';
 
 export default {
-  title: "Design System/Atoms/Banner",
+  title: "Design System/Molecules/Banner",
 };
 
 import image from '../../../assets/images/banner.jpg';
