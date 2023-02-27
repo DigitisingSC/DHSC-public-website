@@ -13,7 +13,12 @@ id: node.dhsc_homepage.teaser
 targetEntityType: node
 bundle: dhsc_homepage
 mode: teaser
-content: {  }
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
 hidden:
   field_metatags: true
   field_subtopics: true
