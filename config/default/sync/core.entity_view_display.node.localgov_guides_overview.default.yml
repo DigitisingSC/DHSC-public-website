@@ -36,6 +36,7 @@ content:
 hidden:
   field_image: true
   field_metatags: true
+  langcode: true
   localgov_guides_description: true
   localgov_guides_list_format: true
   localgov_guides_pages: true
