@@ -39,17 +39,6 @@
  */
 #}
 
-{%
-  set classes = [
-    'banner',
-    'banner--primary',
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
-  ]
-%}
-
 {% if not localgov_base_remove_css %}
 	{{ attach_library('localgov_base/banner') }}
 {% endif %}
@@ -58,19 +47,11 @@
 	{% set banner_url = paragraph.localgov_url.value %}
 {% endif %}
 
-<div{{attributes.addClass(classes)}}>
-	{% if paragraph.localgov_image.value %}
-		<div class="banner__image">
-			{{ content.localgov_image }}
-		</div>
-	{% endif %}
-	{% if banner_url %}
-		<a class="banner__link" href="{{ banner_url }}">
-		{% endif %}
-		<div class="banner__content">
-			{{ content|without('localgov_image', 'localgov_url') }}
-		</div>
-		{% if banner_url %}
-		</a>
-	{% endif %}
+<div{{attributes}}>
+	{% include '@atoms/banner/banner.twig' with {
+    'image': content.localgov_image,
+    'url': banner_url,
+    'heading': content.localgov_title,
+    'text': content.localgov_text
+} %}
 </div>

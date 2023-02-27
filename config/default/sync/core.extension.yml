@@ -19,6 +19,7 @@ module:
   crop: 0
   datetime: 0
   dbal: 0
+  dhsc_site: 0
   dynamic_page_cache: 0
   editor: 0
   entity_browser: 0
@@ -26,6 +27,7 @@ module:
   entity_reference_revisions: 0
   entity_usage: 0
   field: 0
+  field_formatter_class: 0
   field_group: 0
   field_ui: 0
   file: 0
@@ -72,7 +74,6 @@ module:
   purge: 0
   purge_drush: 0
   purge_processor_cron: 0
-  purge_queuer_coretags: 0
   purge_ui: 0
   quickedit: 0
   responsive_image: 0
