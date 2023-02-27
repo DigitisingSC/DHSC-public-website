@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.dhsc_homepage.field_metatags
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
@@ -12,13 +13,9 @@ id: node.dhsc_homepage.teaser
 targetEntityType: node
 bundle: dhsc_homepage
 mode: teaser
-content:
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
+content: {  }
 hidden:
+  field_metatags: true
   field_subtopics: true
   langcode: true
   search_api_excerpt: true

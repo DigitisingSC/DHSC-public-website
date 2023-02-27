@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.dhsc_homepage.field_metatags
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
   module:
+    - metatag
     - path
 id: node.dhsc_homepage.default
 targetEntityType: node
@@ -18,9 +20,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 2
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_subtopics:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS

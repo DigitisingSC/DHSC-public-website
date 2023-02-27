@@ -11,6 +11,7 @@
 # Ignore sensitive information
 # /docroot/sites/*/settings*.php
 /docroot/sites/*/services*.yml
+/docroot/sites/*/settings.local.php
 
 # Ignore Drupal's file directory
 /docroot/sites/*/files/
@@ -75,3 +76,23 @@
 
 # SB cache
 .cache/
+
+# Mac local file indexing
+.DS_Store
+**/.DS_Store
+
+# Acquia BLT
+local.settings.php
+local.drush.yml
+local.site.yml
+local.services.yml
+*.local
+local.blt.yml
+deployment_identifier
+/travis_wait*
+/files-private
+.phpcs-cache
+
+# Acquia BLT deployment
+tmp/**
+tmp/**/*

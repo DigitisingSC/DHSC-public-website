@@ -1,0 +1,12 @@
+diff --git a/blt-github-actions/scripts/github-actions/setup_env.sh b/blt-github-actions/scripts/github-actions/setup_env.sh
+index b215557..3d65bfa 100644
+--- a/blt-github-actions/scripts/github-actions/setup_env.sh
++++ b/blt-github-actions/scripts/github-actions/setup_env.sh
+@@ -10,6 +10,7 @@
+ chmod 600 ~/.ssh/config
+ # Trust all Acquia git/svn hosts.
+ printf "Host *.enterprise-g1.hosting.acquia.com\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
++printf "Host *.prod.hosting.acquia.com\n  StrictHostKeyChecking no\n" >> ~/.ssh/config
+ # Github actions will run steps as root.
+ # Related to https://github.community/t/how-to-run-action-as-a-non-root-user/17572
+ mkdir -p /root/.ssh
