@@ -1,0 +1,31 @@
+uuid: a72d7147-6b37-4a85-bf48-6269e5e916e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing_section_links.field_section_child_links
+    - field.field.paragraph.content_listing_section_links.field_section_link
+    - paragraphs.paragraphs_type.content_listing_section_links
+id: paragraph.content_listing_section_links.default
+targetEntityType: paragraph
+bundle: content_listing_section_links
+mode: default
+content:
+  field_section_child_links:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_link:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
