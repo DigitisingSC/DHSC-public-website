@@ -82,6 +82,7 @@ permissions:
   - 'edit own subtopic_page content'
   - 'edit paragraph library item'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
   - 'update media'
   - 'view all revisions'
   - 'view dhsc_contents_list_page revisions'

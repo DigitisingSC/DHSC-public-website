@@ -112,6 +112,7 @@ permissions:
   - 'edit own subtopic_page content'
   - 'edit paragraph library item'
   - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
   - 'revert all revisions'
   - 'revert dhsc_contents_list_page revisions'
   - 'revert dhsc_homepage revisions'
