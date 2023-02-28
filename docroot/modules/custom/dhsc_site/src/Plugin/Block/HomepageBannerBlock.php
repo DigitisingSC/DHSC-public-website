@@ -2,8 +2,6 @@
 
 namespace Drupal\dhsc_site\Plugin\Block;
 
-use Drupal\dhsc_site\Plugin\Block\HomepageAbstractBlockBase;
-
 /**
  * Class HomepageBannerBlock.
  *

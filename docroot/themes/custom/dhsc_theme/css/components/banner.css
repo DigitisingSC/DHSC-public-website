@@ -2,7 +2,12 @@
   position: relative;
 }
 
-.banner--primary h2, p {
+.banner--primary h2 {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.banner--primary p {
   color: var(--color-white);
   text-decoration: none;
 }
