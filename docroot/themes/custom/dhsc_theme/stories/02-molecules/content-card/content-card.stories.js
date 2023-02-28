@@ -1,22 +1,22 @@
-import homepageCard from "./homepage-card.twig";
+import contentCard from "./content-card.twig";
 
 export default {
-  title: "Design System/Molecules/Homepage Card",
+  title: "Design System/Molecules/Content Card",
 };
 
-import image from '../../assets/homepage-card.jpg';
+import image from '../../assets/content-card.jpg';
 const imgTag = `<img src=${image} alt='Digital Social Care'/>`
 
 const Template = ({ image, link, heading, description }) =>
-  homepageCard({
+  contentCard({
     image,
     link,
     heading,
     description,
   });
 
-export const HomepageCard = Template.bind({});
-HomepageCard.args = {
+export const ContentCard = Template.bind({});
+ContentCard.args = {
   image: imgTag,
   link: "https://www.digitalsocialcare.co.uk/",
   heading: "Get help using technology at your organisation",
