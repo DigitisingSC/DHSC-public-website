@@ -1,0 +1,30 @@
+# Application 'digitalsocialcare', environment 'dev'.
+dev:
+  root: /var/www/html/docroot
+  ac-site: digitalsocialcare
+  ac-env: dev
+  ac-realm: prod
+  uri: digitalsocialcaredev.prod.acquia-sites.com
+  host: digitalsocialcaredev.ssh.prod.acquia-sites.com
+  user: digitalsocialcare.dev
+
+# Application 'digitalsocialcare', environment 'prod'.
+prod:
+  root: /var/www/html/docroot
+  ac-site: digitalsocialcare
+  ac-env: prod
+  ac-realm: prod
+  uri: digitalsocialcareprod.prod.acquia-sites.com
+  host: digitalsocialcareprod.ssh.prod.acquia-sites.com
+  user: digitalsocialcare.prod
+
+
+# Application 'digitalsocialcare', environment 'stg'.
+stg:
+  root: /var/www/html/docroot
+  ac-site: digitalsocialcare
+  ac-env: stg
+  ac-realm: prod
+  uri: digitalsocialcarestg.prod.acquia-sites.com
+  host: digitalsocialcarestg.ssh.prod.acquia-sites.com
+  user: digitalsocialcare.stg
