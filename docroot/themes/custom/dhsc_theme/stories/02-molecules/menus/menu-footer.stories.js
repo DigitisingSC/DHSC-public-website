@@ -1,6 +1,5 @@
 import menuFooter from "./menu-footer.twig";
 
-import './../../../../../contrib/localgov_base/css/components/footer.ie11.css';
 import './../../../../../contrib/localgov_base/css/components/footer.css';
 
 export default {

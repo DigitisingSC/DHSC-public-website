@@ -5,6 +5,7 @@ module.exports = {
 		"@storybook/addon-essentials",
 		"@storybook/addon-docs",
 		"@storybook/addon-viewport",
+		'@storybook/addon-a11y',
 	],
 	staticDirs: ['../stories/assets'],
 	webpackFinal: async (config, { configType }) => {
