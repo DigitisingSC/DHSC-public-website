@@ -7,6 +7,8 @@ module:
   address: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  advagg: 0
+  autologout: 0
   automated_cron: 0
   block: 0
   block_content: 0
@@ -36,6 +38,7 @@ module:
   geolocation_google_maps: 0
   gin_login: 0
   gin_toolbar: 0
+  google_tag: 0
   help: 0
   history: 0
   image: 0
@@ -78,7 +81,11 @@ module:
   purge_queuer_coretags: 0
   purge_ui: 0
   quickedit: 0
+  rabbit_hole: 0
+  redirect: 0
   responsive_image: 0
+  rh_node: 0
+  rh_taxonomy: 0
   role_delegation: 0
   search_api: 0
   search_api_solr: 0
