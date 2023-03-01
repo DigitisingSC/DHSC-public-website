@@ -15,6 +15,11 @@ banner:
     theme:
       css/components/banner.css: {}
 
+content-listing-section:
+  css:
+    theme:
+      css/components/content-listing-section.css: {}
+
 ia-block:
   css:
     theme:
