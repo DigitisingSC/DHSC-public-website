@@ -1,0 +1,18 @@
+{#
+  Template
+#}
+<section class="banner--primary">
+	<div class="banner__image">
+		{{ image }}
+	</div>
+	{% if url %}
+		<a class="banner__link" href="{{ url }}">
+		{% endif %}
+		<div class="banner__content">
+			<h2>{{ heading }}</h2>
+			<p>{{ text }}</p>
+		</div>
+		{% if url %}
+		</a>
+	{% endif %}
+</section>
