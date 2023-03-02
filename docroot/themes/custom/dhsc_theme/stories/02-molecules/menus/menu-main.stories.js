@@ -1,8 +1,6 @@
 import menuItem from "./menu-main.twig";
 
-import './../../../../../custom/dhsc_theme/css/layout/header.ie11.css';
 import './../../../../../custom/dhsc_theme/css/layout/header.css';
-import './../../../../../custom/dhsc_theme/css/components/menu-main.ie11.css';
 import './../../../../../custom/dhsc_theme/css/components/menu-main.css';
 
  export default {
