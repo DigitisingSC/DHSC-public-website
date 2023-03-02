@@ -31,3 +31,8 @@ menu-main:
     theme:
       css/components/menu-main.ie11.css: {}
       css/components/menu-main.css: {}
+
+prev-next:
+  css:
+    theme:
+      css/components/prev-next.css: {}
