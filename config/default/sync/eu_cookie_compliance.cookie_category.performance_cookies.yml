@@ -1,0 +1,9 @@
+uuid: 417e0a11-f3b8-48a1-b96c-9f550c1f3cd2
+langcode: en
+status: true
+dependencies: {  }
+id: performance_cookies
+label: 'Performance cookies'
+description: 'These cookies collect information about how our website is used, for example, the number of visitors to parts of the site and if you get any error messages. This helps us to improve our site and its content.'
+checkbox_default_state: unchecked
+weight: -7

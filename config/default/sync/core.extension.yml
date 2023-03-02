@@ -38,7 +38,7 @@ module:
   geolocation_google_maps: 0
   gin_login: 0
   gin_toolbar: 0
-  google_tag: 0
+  google_analytics: 0
   help: 0
   history: 0
   image: 0
@@ -105,6 +105,7 @@ module:
   views: 10
   paragraphs: 11
   localgov: 1000
+  eu_cookie_compliance: 1001
 theme:
   claro: 0
   stable9: 0

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - eu_cookie_compliance
     - role_delegation
     - system
     - toolbar
@@ -21,4 +22,5 @@ permissions:
   - 'assign localgov_author role'
   - 'assign localgov_contributor role'
   - 'assign localgov_editor role'
+  - 'display eu cookie compliance popup'
   - 'view the administration theme'
