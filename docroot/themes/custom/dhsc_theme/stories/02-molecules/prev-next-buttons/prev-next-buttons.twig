@@ -1,0 +1,18 @@
+{#
+  Template
+#}
+<ul class="lgd-prev-next__list">
+		<li class="lgd-prev-next__list-item lgd-prev-next__list-item--prev">
+			<a href="{{ previous_url }}" class="lgd-prev-next__link lgd-prev-next__link--prev" aria-label="{{ prev_button_label }}: {{ previous_title }}">
+        {{ prev_icon }}
+				{{ prev_button_label }}
+			</a>
+			<span>{{ previous_title }}</span>
+		</li>
+		<li class="lgd-prev-next__list-item lgd-prev-next__list-item--next">
+			<a href="{{ next_url }}" class="lgd-prev-next__link lgd-prev-next__link--next" aria-label="{{ next_button_label }}: {{ next_title }}">
+				{{ next_button_label }}
+        {{ next_icon }}
+			</a>
+		</li>
+</ul>
