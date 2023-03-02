@@ -1,0 +1,5 @@
+name: DHSC Site
+description: Provides custom overrides for the Digital Health and Social Care website.
+core_version_requirement: ^8.9 || ^9
+type: module
+package: DHSC
