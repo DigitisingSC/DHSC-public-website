@@ -1,0 +1,19 @@
+uuid: 0a6513cf-928f-4774-8d3d-d39f57178737
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_title
+    - paragraphs.paragraphs_type.banner
+id: paragraph.banner.localgov_title
+field_name: localgov_title
+entity_type: paragraph
+bundle: banner
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
