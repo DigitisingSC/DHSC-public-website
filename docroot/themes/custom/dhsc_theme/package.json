@@ -12,7 +12,6 @@
     "drupal-attribute": "^1.0.2",
     "twig": "^1.15.4",
     "twig-drupal-filters": "^3.2.0",
-    "twig-loader": "^0.5.5",
     "twigjs-loader": "^1.0.3"
   },
   "scripts": {
