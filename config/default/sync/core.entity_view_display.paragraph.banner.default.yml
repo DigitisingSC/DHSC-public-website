@@ -1,0 +1,58 @@
+uuid: 533d9a5d-e558-4b56-a338-894ea1119816
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner.field_url
+    - field.field.paragraph.banner.localgov_image
+    - field.field.paragraph.banner.localgov_text
+    - field.field.paragraph.banner.localgov_title
+    - paragraphs.paragraphs_type.banner
+  module:
+    - field_formatter_class
+    - link
+    - text
+id: paragraph.banner.default
+targetEntityType: paragraph
+bundle: banner
+mode: default
+content:
+  field_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  localgov_image:
+    type: entity_reference_entity_view
+    label: visually_hidden
+    settings:
+      view_mode: responsive_banner
+      link: false
+    third_party_settings:
+      field_formatter_class:
+        class: ''
+    weight: 0
+    region: content
+  localgov_text:
+    type: text_default
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  localgov_title:
+    type: string
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

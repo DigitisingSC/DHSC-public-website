@@ -43,6 +43,9 @@ regions:
   disabled: "Disabled"
 
 component-libraries:
+  atoms:
+    paths:
+      - stories/01-atoms
   molecules:
     paths:
       - stories/02-molecules

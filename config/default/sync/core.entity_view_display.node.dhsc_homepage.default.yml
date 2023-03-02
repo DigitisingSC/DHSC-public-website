@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.dhsc_homepage.field_banner
     - field.field.node.dhsc_homepage.field_metatags
     - field.field.node.dhsc_homepage.field_subtopics
     - node.type.dhsc_homepage
@@ -28,6 +29,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_banner: true
   field_metatags: true
   langcode: true
   search_api_excerpt: true
