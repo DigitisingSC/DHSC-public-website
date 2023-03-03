@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * This is a template file for a banner prompting user to give their consent for
+ * the website to set cookies.
+ *
+ * When overriding this template it is important to note that jQuery will use
+ * the following classes to assign actions to buttons:
+ *
+ * agree-button      - agree to setting cookies
+ * find-more-button  - link to an information page
+ *
+ * Variables available:
+ * - message:  Contains the text that will be display whithin the banner
+ * - agree_button: Label for the primary/agree button. Note that this is the
+ *   primary button. For backwards compatibility, the name remains agree_button.
+ * - disagree_button: Contains Cookie policy button title. (Note: for historical
+ *   reasons, this label is called "disagree" even though it just displays the
+ *   privacy policy.)
+ * - secondary_button_label: Contains the secondary button label. The current
+ *   action depends on whether you're running the module in Opt-out or Opt-in
+ *   mode.
+ * - primary_button_class: Contains class names for the primary button.
+ * - secondary_button_class: Contains class names for the secondary button
+ *   (if visible).
+ * - cookie_categories: Contains a array with cookie categories that can be
+ *   agreed or disagreed to separately.
+ * - save_preferences_button_label: Label text for a button to save the consent
+ *   preferences.
+ *   category cannot be unchecked.
+ * - privacy_settings_tab_label: Label text for the Privacy settings tab.
+ * - withdraw_button_on_info_popup: Show the withdraw button on this popup.
+ * - method: Chosen consent method.
+ * - olivero_primary_button_classes: Additional primary button classes that is only populated when
+ *   option to extend Olivero theme's styles is enabled.
+ * - olivero_secondary_button_classes: Additional secondary button classes that is only populated when
+ *   option to extend Olivero theme's styles is enabled.
+ */
+#}
+
+{% set classes = [
+  'eu-cookie-compliance-banner',
+  'eu-cookie-compliance-banner-info',
+  'eu-cookie-compliance-banner--' ~ method|clean_class,
+] %}
+
+
+
+{% include '@molecules/cookie-banner/cookie-banner.twig' with {
+  attributes: attributes.addClass(classes)
+} %}

@@ -4,8 +4,6 @@ status: true
 dependencies:
   module:
     - localgov_core
-    - node
-    - system
   theme:
     - dhsc_theme
 _core:
@@ -21,19 +19,4 @@ settings:
   label: 'Page header block'
   label_display: '0'
   provider: localgov_core
-visibility:
-  request_path:
-    id: request_path
-    negate: true
-    pages: ''
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-    bundles:
-      dhsc_contents_list_page: dhsc_contents_list_page
-      independent_content_page: independent_content_page
-      localgov_guides_overview: localgov_guides_overview
-      localgov_guides_page: localgov_guides_page
-      subtopic_page: subtopic_page
+visibility: {  }

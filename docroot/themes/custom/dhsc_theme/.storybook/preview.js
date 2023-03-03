@@ -18,6 +18,7 @@ import './../css/base/variables.css';
 import './../css/base/global.css';
 import './../css/layout/layout-utilities.css';
 
+import './../../../contrib/localgov_theme/assets/css/lib/main.css';
 
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
