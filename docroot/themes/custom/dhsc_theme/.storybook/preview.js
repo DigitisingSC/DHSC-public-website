@@ -20,6 +20,8 @@ import './../css/layout/layout-utilities.css';
 
 
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import Twig from 'twig';
+import twigDrupal from 'twig-drupal-filters';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -33,3 +35,6 @@ export const parameters = {
     viewports: INITIAL_VIEWPORTS,
   },
 }
+
+// Add the filters to Twig instance.
+twigDrupal(Twig);
