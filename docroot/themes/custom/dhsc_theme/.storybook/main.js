@@ -1,5 +1,5 @@
 module.exports = {
-  stories: ['../stories/**/*.stories.@(js|mdx)'],
+  stories: ['../stories/**/*.stories.@(js|mdx|svg)'],
 	addons: [
 		"@storybook/addon-links",
 		"@storybook/addon-essentials",
@@ -10,7 +10,7 @@ module.exports = {
 	webpackFinal: async (config, { configType }) => {
 		config.module.rules.push({
 			test: /\.twig$/,
-			use: "twigjs-loader",
+			use: "twig-loader",
 		});
 
 		return config;
