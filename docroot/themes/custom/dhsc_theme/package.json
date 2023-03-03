@@ -10,13 +10,20 @@
     "@storybook/addon-viewport": "^6.5.16",
     "@storybook/html": "^6.5.16",
     "drupal-attribute": "^1.0.2",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^8.0.0",
+    "sass": "^1.58.3",
     "twig": "^1.15.4",
     "twig-drupal-filters": "^3.2.0",
     "twig-loader": "^0.5.5",
     "twigjs-loader": "^1.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp sass",
+    "dev": "gulp sass:watch",
     "storybook": "start-storybook"
   },
   "author": "",
