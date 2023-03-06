@@ -52,6 +52,10 @@ jobs:
       with:
         node-version: 16
     - run: node -v
+    - name: Recompile frontend
+      run: |
+        bash GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
+
 
     - name: Prepare environment variables
       run: |
