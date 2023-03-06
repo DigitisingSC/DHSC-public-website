@@ -1,6 +1,9 @@
 import cookieBanner from "./cookie-banner.twig";
 
 import './../../../../../custom/dhsc_theme/css/components/banner.css';
+import './css/cookie-banner.scss';
+
+import './js/cookie-banner'
 
 export default {
   title: "Design System/Molecules/Cookie Banner",
@@ -15,6 +18,8 @@ const Template = ({
   message,
   agree_button,
   save_preferences_button_label,
+  tertiary_button_label,
+  tertiary_button_class,
  }) =>
   cookieBanner({
     attributes,
@@ -24,6 +29,8 @@ const Template = ({
     message,
     agree_button,
     save_preferences_button_label,
+    tertiary_button_label,
+    tertiary_button_class,
   });
 
 export const CookieBannerHTML = Template.bind({});
@@ -32,6 +39,8 @@ CookieBannerHTML.args = {
   attributes: 'class="eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--categories" '
    + 'aria-hidden="false"',
   save_preferences_button_label: 'Save preferences',
+  tertiary_button_label: 'Reject unnecessary cookies',
+  tertiary_button_class: 'eu-cookie-compliance-reject-button',
   message: '<p>We use some essential cookies to make this service work. We’d also like to use analytics cookies so we can understand how you use the service and make improvements.<a href="#TBC-cookie-page">View Cookies</a></p>',
   cookie_categories: {
     strictly_necessary_cookies : {
