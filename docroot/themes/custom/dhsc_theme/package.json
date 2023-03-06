@@ -29,7 +29,6 @@
   "scripts": {
     "build": "gulp sass js",
     "dev": "gulp watch:all",
-    "js": "gulp js",
     "storybook": "start-storybook"
   },
   "author": "",
