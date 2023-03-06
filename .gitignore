@@ -96,3 +96,6 @@ deployment_identifier
 # Acquia BLT deployment
 tmp/**
 tmp/**/*
+
+# Ignore Dist because it's
+**/dist
