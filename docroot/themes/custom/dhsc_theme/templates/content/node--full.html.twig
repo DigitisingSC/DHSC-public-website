@@ -70,11 +70,36 @@
  *   in different view modes.
  */
 #}
-<article{{attributes}}>
-  {% include '@molecules/content-card/content-card.twig' with {
-    'image': content.field_image,
-    'link': path('entity.node.canonical', {'node': node.id }),
-    'heading': node.label,
-    'description': content.field_description
-  } %}
+
+{% set content_type = node.bundle %}
+
+{% if not localgov_base_remove_css %}
+	{{ attach_library('localgov_base/full') }}
+{% endif %}
+
+{%
+  set classes = [
+    content_type|clean_class,
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+	<div class="lgd-container padding-horizontal">
+		{{ title_prefix }}
+		{% if label and content_type != 'dhsc_homepage' %}
+			<h1{{title_attributes}}>
+				<a href="{{ url }}" rel="bookmark">{{ label }}</a>
+			</h1>
+		{% endif %}
+		{{ title_suffix }}
+		<div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
+			{{ content }}
+		</div>
+	</div>
 </article>
