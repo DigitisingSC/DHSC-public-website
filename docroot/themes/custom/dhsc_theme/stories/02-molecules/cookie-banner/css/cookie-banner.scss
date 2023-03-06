@@ -5,6 +5,8 @@
 .eu-cookie-compliance-banner {
   background: var(--color-forest-green);
   color: var(--color-white);
+	max-height: 80vh;
+	overflow: auto;
 	a {
 		color: var(--color-white);
 		&:focus,
@@ -13,17 +15,32 @@
 			color: var(--color-black);
 		}
 	}
+	.eu-cookie-compliance-message {
+		max-width: 100%;
+		float: none;
+	}
+	.eu-cookie-compliance-content {
+		margin: 0 auto;
+		padding: var(--spacing);
+		max-width: var(--width-container);
+	}
 	.eu-cookie-compliance-category {
 		margin-bottom: var(--font-size-large);
 		label {
-			font-size: var(--font-size-large);
+			display: inline-block;
 			margin-bottom: 0;
 		}
+		.eu-cookie-compliance-category-description {
+			font-size: var(--font-size-small);
+		}
 	}
+
 	.eu-cookie-compliance-buttons {
 		display: flex;
 		flex-flow: row wrap;
 		width: 100%;
+		max-width: 100%;
+		float: none;
 		.eu-cookie-compliance-categories-buttons {
 			width: 100%;
 		}

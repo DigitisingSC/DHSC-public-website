@@ -1,8 +1,9 @@
 import cookieBanner from "./cookie-banner.twig";
 
-import './../../../../../custom/dhsc_theme/css/components/banner.css';
+// Import styles
 import './css/cookie-banner.scss';
 
+// Import JS
 import './js/cookie-banner'
 
 export default {
@@ -10,28 +11,7 @@ export default {
 };
 
 
-const Template = ({
-  attributes,
-  popup_html_info,
-  cookie_categories,
-  cookie_categories_details,
-  message,
-  agree_button,
-  save_preferences_button_label,
-  tertiary_button_label,
-  tertiary_button_class,
- }) =>
-  cookieBanner({
-    attributes,
-    popup_html_info,
-    cookie_categories,
-    cookie_categories_details,
-    message,
-    agree_button,
-    save_preferences_button_label,
-    tertiary_button_label,
-    tertiary_button_class,
-  });
+const Template = ({...args}) => cookieBanner({...args});
 
 export const CookieBannerHTML = Template.bind({});
 CookieBannerHTML.args = {

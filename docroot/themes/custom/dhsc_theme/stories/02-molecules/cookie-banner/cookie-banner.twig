@@ -18,7 +18,7 @@
 			<div id="eu-cookie-compliance-categories" class="eu-cookie-compliance-categories">
 				{% for key, category in cookie_categories %}
 					<div class="eu-cookie-compliance-category">
-						<div>
+						<div class="category-wrapper">
 							<input type="checkbox" name="cookie-categories" class="eu-cookie-compliance-category-checkbox" id="cookie-category-{{ key }}"
 										value="{{ key }}"
 										{% if category.checkbox_default_state in ['checked', 'required'] %} checked {% endif %}
