@@ -54,7 +54,7 @@ jobs:
     - run: node -v
     - name: Recompile frontend
       run: |
-        bash GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
+        bash $GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
 
 
     - name: Prepare environment variables
