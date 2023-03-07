@@ -1,0 +1,83 @@
+uuid: 20ea2408-d868-4792-a278-38a65d487405
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dhsc_contents_list_page
+    - node.type.dhsc_homepage
+    - node.type.independent_content_page
+    - node.type.localgov_guides_overview
+    - node.type.localgov_guides_page
+    - node.type.subtopic_page
+  module:
+    - content_moderation
+id: editorial_workflow
+label: 'Editorial workflow'
+type: content_moderation
+type_settings:
+  states:
+    draft:
+      label: Draft
+      weight: -2
+      published: false
+      default_revision: false
+    published:
+      label: Published
+      weight: 0
+      published: true
+      default_revision: true
+    submitted_for_approval:
+      label: 'Submitted for approval'
+      weight: -1
+      published: false
+      default_revision: false
+    unpublished:
+      label: Unpublished
+      weight: 1
+      published: false
+      default_revision: true
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+        - submitted_for_approval
+        - unpublished
+      to: draft
+      weight: 0
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+        - submitted_for_approval
+        - unpublished
+      to: published
+      weight: 1
+    submit_for_approval:
+      label: 'Submit for approval'
+      from:
+        - draft
+        - published
+        - submitted_for_approval
+        - unpublished
+      to: submitted_for_approval
+      weight: 2
+    unpublish:
+      label: Unpublish
+      from:
+        - draft
+        - published
+        - submitted_for_approval
+      to: unpublished
+      weight: 3
+  entity_types:
+    node:
+      - dhsc_contents_list_page
+      - dhsc_homepage
+      - independent_content_page
+      - localgov_guides_overview
+      - localgov_guides_page
+      - subtopic_page
+  default_moderation_state: draft

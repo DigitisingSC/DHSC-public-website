@@ -2,7 +2,10 @@ uuid: d4a7b796-3687-426b-aba5-1c5a40c3a5ce
 langcode: en
 status: true
 dependencies:
+  config:
+    - workflows.workflow.editorial_workflow
   module:
+    - content_moderation
     - eu_cookie_compliance
     - role_delegation
     - system
@@ -24,3 +27,5 @@ permissions:
   - 'assign localgov_editor role'
   - 'display eu cookie compliance popup'
   - 'view the administration theme'
+  - 'use editorial_workflow transition create_new_draft'
+  - 'use editorial_workflow transition submit_for_approval'

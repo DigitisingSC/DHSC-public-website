@@ -12,7 +12,9 @@ dependencies:
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.subtopic_page
+    - workflows.workflow.editorial_workflow
   module:
+    - content_moderation
     - entity_browser
     - eu_cookie_compliance
     - media
@@ -97,3 +99,5 @@ permissions:
   - 'view subtopic_page revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
+  - 'use editorial_workflow transition create_new_draft'
+  - 'use editorial_workflow transition submit_for_approval'
