@@ -15,6 +15,7 @@ dependencies:
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
+    - editoria11y
     - entity_browser
     - eu_cookie_compliance
     - media
@@ -84,6 +85,8 @@ permissions:
   - 'edit own remote_video media'
   - 'edit own subtopic_page content'
   - 'edit paragraph library item'
+  - 'mark as hidden in editoria11y'
+  - 'mark as ok in editoria11y'
   - 'revert dhsc_contents_list_page revisions'
   - 'revert dhsc_homepage revisions'
   - 'revert independent_content_page revisions'
@@ -94,9 +97,13 @@ permissions:
   - 'revert localgov_services_sublanding revisions'
   - 'revert subtopic_page revisions'
   - 'update media'
+  - 'use editorial_workflow transition create_new_draft'
+  - 'use editorial_workflow transition publish'
+  - 'use editorial_workflow transition submit_for_approval'
   - 'view all revisions'
   - 'view dhsc_contents_list_page revisions'
   - 'view dhsc_homepage revisions'
+  - 'view editoria11y checker'
   - 'view independent_content_page revisions'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
@@ -108,6 +115,3 @@ permissions:
   - 'view subtopic_page revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
-  - 'use editorial_workflow transition create_new_draft'
-  - 'use editorial_workflow transition publish'
-  - 'use editorial_workflow transition submit_for_approval'
