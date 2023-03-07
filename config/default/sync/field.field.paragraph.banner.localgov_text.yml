@@ -1,0 +1,21 @@
+uuid: 3d677f55-9efa-4e39-8e57-d34d22a3ebc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_text
+    - paragraphs.paragraphs_type.banner
+  module:
+    - text
+id: paragraph.banner.localgov_text
+field_name: localgov_text
+entity_type: paragraph
+bundle: banner
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
