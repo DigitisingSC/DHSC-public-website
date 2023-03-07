@@ -24,6 +24,7 @@ module:
   dhsc_site: 0
   dynamic_page_cache: 0
   editor: 0
+  editoria11y: 0
   entity_browser: 0
   entity_browser_entity_form: 0
   entity_reference_revisions: 0
