@@ -23,6 +23,7 @@ module:
   crop: 0
   datetime: 0
   dbal: 0
+  dhsc_site: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0
@@ -101,6 +102,7 @@ module:
   token: 0
   toolbar: 0
   update: 0
+  upgrade_status: 0
   user: 0
   workflows: 0
   pathauto: 1
