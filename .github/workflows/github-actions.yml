@@ -120,7 +120,7 @@ jobs:
 
     - name: Deploy branch
       run: |
-        git config --global --add safe.directory /__w/{repo_name}/{repo_name}
+        git config --global --add safe.directory /__w/*
         bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
