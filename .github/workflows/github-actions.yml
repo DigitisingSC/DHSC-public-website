@@ -118,10 +118,11 @@ jobs:
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
+    - name: Configure secure directory
+      run: git config --global --add safe.directory /__w/*
+
     - name: Deploy branch
-      run: |
-        git config --global --add safe.directory /__w/*
-        bash $SCRIPT_DIR/deploy_branch.sh
+      run: bash $SCRIPT_DIR/deploy_branch.sh
       if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
 
     - name: Deploy tag
