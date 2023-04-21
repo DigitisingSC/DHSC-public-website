@@ -119,7 +119,7 @@ jobs:
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
 
     - name: Configure secure directory
-      run: git config --global --add safe.directory /__w/*
+      run: git config --global --add safe.directory "*"
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
