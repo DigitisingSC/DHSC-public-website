@@ -63,4 +63,15 @@ body {
   --color-white: #fff;
   --color-cool-grey: #616265;
   --color-black: #101820;
+  /* Content List Section */
+  --content-list-section-link-font-weight: bold;
+  --content-list-section-link-colour: var(--color-black);
+  --content-list-section-link-list-style: none;
+  --content-list-section-link-list-padding-inline: 4rem;
+  --content-list-section-link-list-padding: 0.65rem;
+  --content-list-section-link-font-size: var(--font-size-large);
+  --content-list-section-spacing-small: calc(var(--content-list-section-spacing) * 0.5);
+  --content-list-section-spacing: var(--spacing-larger);
+  --content-list-section-spacing-large: calc(var(--content-list-section-spacing) * 2);
+  --content-list-section-title: calc(var(--font-size) * 2);
 }

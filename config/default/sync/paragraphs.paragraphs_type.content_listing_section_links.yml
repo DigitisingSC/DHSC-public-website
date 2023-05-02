@@ -1,0 +1,10 @@
+uuid: f98610d7-3e67-4f2d-951c-f010b15b567a
+langcode: en
+status: true
+dependencies: {  }
+id: content_listing_section_links
+label: 'Content listing section links'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
