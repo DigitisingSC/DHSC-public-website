@@ -52,6 +52,10 @@ jobs:
       with:
         node-version: 16
     - run: node -v
+    - name: Recompile frontend
+      run: |
+        bash $GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
+
 
     - name: Prepare environment variables
       run: |
@@ -113,6 +117,9 @@ jobs:
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
+
+    - name: Configure secure directory
+      run: git config --global --add safe.directory "*"
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh

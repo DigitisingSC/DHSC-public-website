@@ -1,0 +1,9 @@
+uuid: 55fd64fa-1863-4c9b-afad-f0f919384476
+langcode: en
+status: true
+dependencies: {  }
+id: targeting_cookies
+label: 'Targeting cookies'
+description: 'These cookies are designed to gather information from you on your device to display advertisements to you based on relevant topics that interest you.'
+checkbox_default_state: unchecked
+weight: -6

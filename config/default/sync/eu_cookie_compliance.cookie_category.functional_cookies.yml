@@ -1,0 +1,9 @@
+uuid: 1fdab60f-1b25-4d1c-a52c-60435ae79a35
+langcode: en
+status: true
+dependencies: {  }
+id: functional_cookies
+label: 'Functional cookies'
+description: "These cookies are used to recognise you when you return to our website. This enables us to personalise our content for you, and remember your preferences.\r\n"
+checkbox_default_state: unchecked
+weight: -8

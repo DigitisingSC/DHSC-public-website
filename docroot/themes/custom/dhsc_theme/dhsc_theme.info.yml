@@ -3,6 +3,8 @@ description: "Digitising Health and Social Care sub-theme, which uses localgov_b
 type: theme
 core_version_requirement: ^8.8 || ^9 || ^10
 base theme: "localgov_base"
+libraries:
+  - dhsc_theme/cookie-banner
 
 libraries-extend:
   localgov_base/global:
@@ -42,10 +44,8 @@ regions:
   lower_footer_third: "Lower footer third"
   disabled: "Disabled"
 
-component-libraries:
-  atoms:
-    paths:
-      - stories/01-atoms
-  molecules:
-    paths:
-      - stories/02-molecules
+components:
+  namespaces:
+    atoms: stories/01-atoms
+    molecules: stories/02-molecules
+    assets: stories/assets

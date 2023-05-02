@@ -8,5 +8,8 @@
 		<div class="content-wrapper">
 			<h3>{{ heading }}</h3>
 			<p>{{ description }}</p>
+			{% include '@assets/icons/icons.twig' with {
+				icon: 'file'
+			} %}
 		</div>
 </a>
