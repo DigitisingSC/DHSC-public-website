@@ -48,7 +48,7 @@ coding-standards:
 	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
 
 fe-watch:
-	npm run dev --prefix ${THEME_DIR}
+	npm run watch --prefix ${THEME_DIR}
 
 fe-build:
 	npm run build --prefix ${THEME_DIR}
@@ -57,4 +57,4 @@ fe-install:
 	npm i --prefix ${THEME_DIR}
 
 storybook:
-	npm run storybook  --prefix ${THEME_DIR}
+	npm run storybook --prefix ${THEME_DIR}
