@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - node.type.event_page
     - paragraphs.paragraphs_type.localgov_text
+    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
 id: node.event_page.field_body_paragraphs
@@ -23,6 +24,7 @@ settings:
   handler_settings:
     target_bundles:
       localgov_text: localgov_text
+      video: video
     negate: 0
     target_bundles_drag_drop:
       content_listing:
@@ -45,5 +47,8 @@ settings:
         enabled: true
       topic_list_builder:
         weight: 14
-        enabled: false
+        enabled: false]
+      video:
+        weight: 16
+        enabled: true
 field_type: entity_reference_revisions
