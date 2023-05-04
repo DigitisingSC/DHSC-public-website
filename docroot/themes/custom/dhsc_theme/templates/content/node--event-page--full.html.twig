@@ -16,18 +16,24 @@
   ]
 %}
 
+{% set event_details %}
+{% include '@molecules/event-details/event-details.twig' with {
+    'date': content.field_date,
+    'start_time': content.field_start_time,
+    'end_time': content.field_end_time,
+    'link': content.field_link
+  } %}
+{% endset %}
+
+
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
 	<div class="lgd-container padding-horizontal">
 		<div class="lgd-row">
 			<div class="lgd-row__full">
-      {# todo call the event page component #}
-				{% include '@molecules/event-details/event-details.twig' with {
-            'date': content.field_date,
-            'start_time': content.field_start_time,
-            'end_time': content.field_end_time,
-            'link': content.field_link
+				{% include '@templates/event-page/event-page.twig' with {
+            'event_details': event_details,
+            'content': content.field_body_paragraphs,
           } %}
-				{{ content.field_body_paragraphs }}
 			</div>
 		</div>
 	</div>

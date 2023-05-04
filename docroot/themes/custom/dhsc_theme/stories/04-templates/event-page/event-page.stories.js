@@ -1,4 +1,4 @@
-import eventPage from "./event-page.html.twig";
+import eventPage from "./event-page.twig";
 
 export default {
   title: "Design System/Templates/Event page",
