@@ -1,0 +1,5 @@
+{% if directory %}
+	{{ source(directory ~ '/stories/assets/icons/' ~ icon ~ '.svg')}}
+{% else %}
+	{{ source('/icons/' ~ icon ~'.svg')}}
+{% endif %}

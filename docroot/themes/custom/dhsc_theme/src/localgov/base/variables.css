@@ -1,0 +1,126 @@
+/*
+  Import fonts.
+  In the base theme, we have no fonts importing so that the theme is as fast
+  as possible, and so we are not loading fonts that are then going to be
+  overridden in a subtheme in any case.
+  Want a font? Load it here, or in the html.html.twig file which should give you an
+  even faster loading time. Loading the font via html.html.twig is the preferred
+  method. That file can be found in your /templates/layout directory.
+*/
+
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=d7fca3f0-6395-46cb-b050-6d686b7ea13e&fontids=1475738,1475746");
+
+@font-face {
+  font-family:"Frutiger";
+  font-weight: normal;
+  src:
+    url("../../../assets/fonts/frutiger-roma.woff2") format("woff2"),
+    url("../../../assets/fonts/frutiger-roma.woff") format("woff")
+}
+
+@font-face {
+  font-family:"Frutiger";
+  font-weight: bold;
+  src:
+    url("../../../assets/fonts/frutiger-bold.woff2") format("woff2"),
+    url("../../../assets/fonts/frutiger-bold.woff") format("woff");
+}
+
+/*
+  Override whatever variables you want.
+  In the base theme, most item values are set as variables. These variables
+  usually reference other variables. For example, we have a certain number of
+  colours, font sizes, spacing units, etc. We then create specific variables
+  (for example a variable for the color of a link in the header) but these
+  specific variables reference our base "root" variables.
+  The overrides here give an example of what you might want to change. As you
+  can see, you can change as much or as little as you wish.
+  Examples:
+  - The base font size in the base theme is 16px (1rem). If you want
+    all your fonts to be based on a different scale, set `--font-size` variable
+    to something else.
+  - The base line-height is 1.5 in the base theme. If you want that to be 1.3,
+    set --line-height to 1.3. A lot of spacing between items is based on this
+    rhythm (1.5rem), so changing to 1.3 will update all across the board.
+  - The accent colour in our base theme is purple. If you would like it to be
+    hotpink, just set `--color-accent: hotpink;`
+*/
+
+:root {
+  /* Fonts */
+  --font-primary: "Frutiger", sans-serif;
+  --font-secondary: 'Arial', sans-serif;
+  /* Colours */
+  --color-accent: #01738f;
+  --color-accent-alt: #ffe146;
+
+  --color-green: #00ad93;
+  --color-green-20: rgb(var(--color-green) / 20%);
+  --color-green-40: rgb(var(--color-green) / 40%);
+  --color-green-60: rgb(var(--color-green) / 60%);
+  --color-green-80: rgb(var(--color-green) / 80%);
+
+  --color-forest-green: #00594c;
+  --color-forest-green-20: rgb(var(--color-forest-green) / 20%);
+  --color-forest-green-40: rgb(var(--color-forest-green) / 60%);
+  --color-forest-green-60: rgb(var(--color-forest-green) / 40%);
+  --color-forest-green-80: rgb(var(--color-forest-green) / 80%);
+
+  --color-grass-green: #2eb135;
+  --color-grass-green-20: rgb(var(--color-grass-green) / 20%);
+  --color-grass-green-40: rgb(var(--color-grass-green) / 60%);
+  --color-grass-green-60: rgb(var(--color-grass-green) / 40%);
+  --color-grass-green-80: rgb(var(--color-grass-green) / 80%);
+
+  --color-burgundy: #8b2346;
+  --color-burgundy-20: rgb(var(--color-burgundy) / 20%);
+  --color-burgundy-40: rgb(var(--color-burgundy) / 60%);
+  --color-burgundy-60: rgb(var(--color-burgundy) / 40%);
+  --color-burgundy-80: rgb(var(--color-burgundy) / 80%);
+
+  --color-pink: #cd66cc;
+  --color-pink-20: rgb(var(--color-pink) / 20%);
+  --color-pink-40: rgb(var(--color-pink) / 60%);
+  --color-pink-60: rgb(var(--color-pink) / 40%);
+  --color-pink-80: rgb(var(--color-pink) / 80%);
+
+  --color-purple: #512698;
+  --color-purple-20: rgb(var(--color-purple) / 20%);
+  --color-purple-40: rgb(var(--color-purple) / 60%);
+  --color-purple-60: rgb(var(--color-purple) / 40%);
+  --color-purple-80: rgb(var(--color-purple) / 80%);
+
+  --color-orange: #e57200;
+  --color-orange-20: rgb(var(--color-orange) / 20%);
+  --color-orange-40: rgb(var(--color-orange) / 60%);
+  --color-orange-60: rgb(var(--color-orange) / 40%);
+  --color-orange-80: rgb(var(--color-orange) / 80%);
+
+  --color-yellow: #ecac00;
+  --color-yellow-20: rgb(var(--color-yellow) / 20%);
+  --color-yellow-40: rgb(var(--color-yellow) / 60%);
+  --color-yellow-60: rgb(var(--color-yellow) / 40%);
+  --color-yellow-80: rgb(var(--color-yellow) / 80%);
+
+  --color-light-blue: #34b6e4;
+  --color-light-blue-20: rgb(var(--color-light-blue) / 20%);
+  --color-light-blue-40: rgb(var(--color-light-blue) / 60%);
+  --color-light-blue-60: rgb(var(--color-light-blue) / 40%);
+  --color-light-blue-80: rgb(var(--color-light-blue) / 80%);
+  /* Grey Scale */
+  --color-white: #fff;
+  --color-cool-grey: #616265;
+  --color-black: #101820;
+  /* Alerts */
+  --color-info: #1d70b8;
+  --color-success: #00703c;
+  --color-error: #d4351c;
+  /* Apply Variables */
+  /*font-family: var(--font-primary);*/
+  --breadcrumbs-divider: "//";
+  --breadcrumbs-background-color: var(--color-accent-alt);
+  --breadcrumbs-link-color: var(--color-black);
+  --alert-banner-bg-color-minor: var(--color-accent-alt);
+  --color-section-pre-footer-bg: var(--color-accent);
+  --sidebar-exposed-form-bg-color: var(--color-grey-lightest);
+}

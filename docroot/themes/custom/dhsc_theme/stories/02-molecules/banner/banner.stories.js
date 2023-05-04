@@ -1,6 +1,6 @@
 import banner from "./banner.twig";
 
-import './../../../../../custom/dhsc_theme/css/components/banner.css';
+import './../../../../../custom/dhsc_theme/src/localgov/components/banner.css';
 
 export default {
   title: "Design System/Molecules/Banner",

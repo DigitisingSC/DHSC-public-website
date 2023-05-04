@@ -4,7 +4,7 @@ export default {
   title: "Design System/Molecules/Homepage Card",
 };
 
-import image from '../../assets/homepage-card.jpg';
+import image from '../../assets/images/homepage-card.jpg';
 const imgTag = `<img src=${image} alt='Digital Social Care'/>`
 
 const Template = ({ image, link, heading, description }) =>

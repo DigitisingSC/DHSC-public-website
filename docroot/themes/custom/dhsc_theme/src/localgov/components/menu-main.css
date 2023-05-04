@@ -2,7 +2,7 @@
   @file Theming main menu.
 */
 .lgd-region--primary-menu {
-  background-color: var(--color-white);
+  /*background-color: var(--color-white);*/
 }
 
 .menu--main {

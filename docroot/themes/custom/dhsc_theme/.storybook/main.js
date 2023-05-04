@@ -9,7 +9,12 @@ module.exports = {
     "@storybook/preset-scss",
     "@storybook/addon-a11y",
     "@storybook/addon-links",
-    "@storybook/addon-styling",
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        postCss: true,
+      },
+    },
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     {

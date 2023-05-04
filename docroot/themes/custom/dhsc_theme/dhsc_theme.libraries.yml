@@ -1,42 +1,10 @@
 global:
   css:
     theme:
-      css/base/variables.css: {}
-      css/base/global.css: {}
-      css/layout/layout-utilities.css: {}
-
-alert-banner:
-  css:
-    theme:
-      css/components/alert-banner.css: {}
-
-banner:
-  css:
-    theme:
-      css/components/banner.css: {}
-
-ia-block:
-  css:
-    theme:
-      css/components/ia-block.css: {}
-
-header:
-  css:
-    theme:
-      css/layout/header.ie11.css: {}
-      css/layout/header.css: {}
-
-menu-main:
-  css:
-    theme:
-      css/components/menu-main.ie11.css: {}
-      css/components/menu-main.css: {}
-
-
-# Custom libraries
-cookie-banner:
+      dist/css/localgov.css: {}
+      dist/css/overrides.css: {}
+      dist/css/custom.css: {}
   js:
-    dist/02-molecules/cookie-banner/js/cookie-banner.min.js: {}
-  css:
-    theme:
-      dist/02-molecules/cookie-banner/css/cookie-banner.css: {}
+    dist/js/localgov.js: {}
+    dist/js/overrides.js: {}
+    dist/js/custom.js: {}
