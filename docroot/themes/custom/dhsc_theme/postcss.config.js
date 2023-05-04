@@ -1,6 +1,13 @@
+// postcss.config.js
+
+const nested = require('postcss-nested');
+const postcssImport = require('postcss-import');
+const autoprefixer = require('autoprefixer');
+
 module.exports = {
-  // Add your installed PostCSS plugins here:
   plugins: [
-    require('autoprefixer'),
+    nested,
+    postcssImport,
+    autoprefixer,
   ],
 };
