@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Default node template for an event page.
+ */
+#}
+{%
+  set classes = [
+    'event-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+	<div class="lgd-container padding-horizontal">
+		<div class="lgd-row">
+			<div class="lgd-row__full">
+      {# todo call the event page component #}
+				{% include '@molecules/event-details/event-details.twig' with {
+            'date': content.field_date,
+            'start_time': content.field_start_time,
+            'end_time': content.field_end_time,
+            'link': content.field_link
+          } %}
+				{{ content.field_body_paragraphs }}
+			</div>
+		</div>
+	</div>
+</article>
