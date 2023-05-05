@@ -1,0 +1,30 @@
+uuid: 69e4ebf0-39d7-4525-91a3-81125306e235
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.article.field_author
+    - field.field.node.article.field_body_paragraphs
+    - field.field.node.article.field_date
+    - field.field.node.article.field_image
+    - node.type.article
+  module:
+    - user
+id: node.article.teaser
+targetEntityType: node
+bundle: article
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_author: true
+  field_body_paragraphs: true
+  field_date: true
+  field_image: true
+  langcode: true
+  search_api_excerpt: true
