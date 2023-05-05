@@ -1,0 +1,23 @@
+uuid: 0867927d-49e4-48bf-94c7-724697a2d2dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video.localgov_title
+    - paragraphs.paragraphs_type.video
+id: paragraph.video.default
+targetEntityType: paragraph
+bundle: video
+mode: default
+content:
+  localgov_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
