@@ -4,3 +4,40 @@
  * @file
  * Theme functions for the LocalGov Drupal DHSC theme.
  */
+
+function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
+  $entity = $variables['paragraph'];
+
+  $section_links_array = array();
+
+  // Load the section_links paragraph there can be multiple values.
+  $section_links_paragraph = $entity->field_section_links->referencedEntities();
+  foreach ($section_links_paragraph as $section_links) {
+    // This is a single value field, so we can target [0].
+    $section_link = $section_links->get('field_section_link')->referencedEntities()[0];
+    $section_link_array = array(
+      'title' => $section_link->getTitle(),
+      'href' => $section_link->toUrl()->toString(),
+    );
+
+    $child_links = $section_links->get('field_section_child_links')->referencedEntities();
+    // Child links are not required so make an empty array and check
+    // if there are any before trying to fill in the array.
+    $child_links_array = array();
+    if ($child_links) {
+      foreach ($child_links as $child_link) {
+        $child_links_array[] = array(
+          'title' => $child_link->getTitle(),
+          'href' => $child_link->toUrl()->toString(),
+        );
+      }
+    }
+
+    $section_links_array[] = array(
+      'section_link' => $section_link_array,
+      'child_links' => $child_links_array,
+    );
+  }
+
+  $variables['section_links'] = $section_links_array;
+}

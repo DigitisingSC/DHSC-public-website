@@ -3,18 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.content_listing_section.field_section_child_links
-    - field.field.paragraph.content_listing_section.field_section_link
+    - field.field.paragraph.content_listing_section.field_section_links
     - field.field.paragraph.content_listing_section.field_section_title
     - paragraphs.paragraphs_type.content_listing_section
   module:
     - field_group
+    - paragraphs
 third_party_settings:
   field_group:
     group_links:
       children:
-        - field_section_link
-        - field_section_child_links
+        - field_section_links
       label: Links
       region: content
       parent_name: ''
@@ -32,25 +31,24 @@ targetEntityType: paragraph
 bundle: content_listing_section
 mode: default
 content:
-  field_section_child_links:
-    type: entity_reference_autocomplete
-    weight: 3
+  field_section_links:
+    type: paragraphs
+    weight: 4
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_section_link:
-    type: entity_reference_autocomplete
-    weight: 2
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: content_listing_section_links
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings: {  }
   field_section_title:
     type: string_textfield

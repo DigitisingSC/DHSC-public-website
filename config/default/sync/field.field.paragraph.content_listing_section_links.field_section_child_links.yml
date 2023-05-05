@@ -1,4 +1,4 @@
-uuid: 8242a003-858e-4469-b780-dae148001f74
+uuid: 28f30199-046a-45b0-b738-d7ff67d9c864
 langcode: en
 status: true
 dependencies:
@@ -8,15 +8,15 @@ dependencies:
     - node.type.dhsc_homepage
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
-    - paragraphs.paragraphs_type.content_listing_section
-id: paragraph.content_listing_section.field_section_child_links
+    - paragraphs.paragraphs_type.content_listing_section_links
+id: paragraph.content_listing_section_links.field_section_child_links
 field_name: field_section_child_links
 entity_type: paragraph
-bundle: content_listing_section
+bundle: content_listing_section_links
 label: 'Section child links'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -31,5 +31,5 @@ settings:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: null
+    auto_create_bundle: localgov_guides_page
 field_type: entity_reference

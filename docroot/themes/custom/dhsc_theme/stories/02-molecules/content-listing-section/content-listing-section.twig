@@ -1,0 +1,28 @@
+{#
+Template
+#}
+<section class="content-list-section">
+  {% if section_title %}
+    <h2 class="content-list-section-title">
+      {{ section_title }}
+    </h2>
+  {% endif %}
+
+  <ul class="content-list-section-links">
+    {% for section_link_group in section_links %}
+      <li class="content-list-section-links-group">
+        <a href="{{ section_link_group.section_link.href }}" class="content-list-section-links-group-main-link"> {{ section_link_group.section_link.title }}</a>
+        {% if section_link_group.child_links %}
+          <ul class="content-list-section-links-group-children">
+            {% for child_link in section_link_group.child_links %}
+              <li><a href="{{ child_link.href }}" class="content-list-section-links-group-children-link"> {{ child_link.title }} </a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+
+</section>
+

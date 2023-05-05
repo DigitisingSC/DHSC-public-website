@@ -1,74 +1,54 @@
 const path = require('path');
 
-const LEGACY_REGEXP = /^(\w+)::/;
-
-/**
- * Transforms legacy namespace::template/path to @namespoace/template/path
- */
-class LegacyNsResolverPlugin {
-  apply(resolver) {
-    const target = resolver.ensureHook('resolve');
-    resolver
-      .getHook('resolve')
-      .tapAsync('LegacyNsResolverPlugin', (request, resolveContext, callback) => {
-        const requestPath = request.request;
-        if (!requestPath.match(LEGACY_REGEXP)) {
-          callback();
-          return;
-        }
-
-        const newRequest = {
-          ...request,
-          request: requestPath.replace(LEGACY_REGEXP, '@$1/'),
-        };
-
-        resolver.doResolve(target, newRequest, null, resolveContext, callback);
-      });
-  }
-}
-
 module.exports = {
-  stories: ['../stories/**/*.stories.@(js|mdx)'],
-	addons: [
-		"@storybook/addon-links",
-		"@storybook/addon-essentials",
-		"@storybook/addon-docs",
-		"@storybook/addon-viewport",
-		'@storybook/addon-a11y',
-		"storybook-addon-sass-postcss",
-	],
-	staticDirs: ['../stories/assets'],
-	webpackFinal: async (config, { configType }) => {
-		config.module.rules.push({
-			test: /\.twig$/,
-			use: "twigjs-loader",
-		});
+  core: {
+    builder: "webpack5",
+  },
+  "stories": ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  "addons": [
+    "@storybook/preset-scss",
+    "@storybook/addon-a11y",
+    "@storybook/addon-links",
+    "@storybook/addon-styling",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        cssLoaderOptions: {
+          importLoaders: 1
+        },
+        postcssLoaderOptions: {
+          implementation: require('postcss')
+        }
+      }
+    }, "@storybook/addon-mdx-gfm"],
+  staticDirs: ['../stories/assets'],
+  "framework": {
+    name: '@storybook/html-webpack5',
+    options: {}
+  },
+  webpackFinal: async (config, {
+    configType
+  }) => {
 
-		config.module.rules = config.module.rules.filter((rule) => rule.test.toString() !== '/\\.css$/')
+    // Alias
+    config.resolve.alias = {
+      '@assets': path.resolve(__dirname, '../', 'stories/assets'),
+      '@base': path.resolve(__dirname, '../', 'stories/00-base'),
+      '@atoms': path.resolve(__dirname, '../', 'stories/01-atoms'),
+      '@molecules': path.resolve(__dirname, '../', 'stories/02-molecules'),
+      '@organisms': path.resolve(__dirname, '../', 'stories/03-organisms'),
+      '@templates': path.resolve(__dirname, '../', 'stories/04-templates'),
+    }
 
-		config.module.rules.push({
-			test: /\.scss$/,
-			use: [
-				{
-					loader: "sass-loader",
-					options: {
-						sassOptions: {
-							quietDeps: true,
-						},
-					},
-				},
-			],
-		})
-
-
-		// Twig namespaces
-		config.resolve = {
-			alias: {
-				'@assets': path.resolve(__dirname, '../' ,'stories/assets'),
-			},
-			plugins: [new LegacyNsResolverPlugin()],
-		};
-
-		return config;
-	}
+    config.module.rules.push({
+      test: /\.twig$/,
+      use: "twigjs-loader"
+    });
+    return config;
+  },
+  docs: {
+    autodocs: true
+  }
 };
