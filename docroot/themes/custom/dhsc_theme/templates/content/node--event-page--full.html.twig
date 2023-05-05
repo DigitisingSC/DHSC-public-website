@@ -26,18 +26,18 @@
 {% endset %}
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
-	<div class="lgd-container padding-horizontal">
-		<div class="lgd-row">
-			<div class="lgd-row__full">
-				{% if content.field_date.0['#text']|date('U') < 'now'|date('U') %}
-					{{ 'Event has expired!'|t }}
-				{% else %}
-					{% include '@templates/event-page/event-page.twig' with {
+  <div class="lgd-container padding-horizontal">
+    <div class="lgd-row">
+      <div class="lgd-row__full">
+        {% if content.field_date.0['#text']|date('U') < 'now'|date('U') %}
+          {{ 'Event has expired!'|t }}
+        {% else %}
+          {% include '@templates/event-page/event-page.twig' with {
             'event_details': event_details,
             'content': content.field_body_paragraphs,
           } %}
-				{% endif %}
-			</div>
-		</div>
-	</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </article>
