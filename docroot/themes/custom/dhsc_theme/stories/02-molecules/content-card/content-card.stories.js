@@ -1,10 +1,9 @@
 import contentCard from "./content-card.twig";
-
 export default {
   title: "Design System/Molecules/Content Card",
 };
 
-import image from '../../assets/content-card.jpg';
+import image from '../../assets/images/content-card.jpg';
 const imgTag = `<img src=${image} alt='Digital Social Care'/>`
 
 const Template = ({ image, link, heading, description }) =>
