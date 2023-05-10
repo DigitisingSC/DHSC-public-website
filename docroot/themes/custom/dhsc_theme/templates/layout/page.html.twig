@@ -108,40 +108,40 @@
 
   {# Begin Sidebars #}
   {% if has_sidebars %}
-    <div class="lgd-container">
-      <div class="lgd-row">
+    <div>
+      <div>
         {% if has_sidebar_first and not has_sidebar_second %}
-          <aside class="lgd-row__one-third sidebar sidebar--first">
+          <aside class="sidebar sidebar--first">
             {{ page.sidebar_first }}
           </aside>
-          <div class="lgd-row__two-thirds">
-            <div class="padding-horizontal">
+          <div>
+            <div>
               {{ page.content }}
             </div>
           </div>
         {% endif %}
 
         {% if has_sidebar_second and not has_sidebar_first %}
-          <div class="lgd-row__two-thirds">
-            <div class="padding-horizontal">
+          <div>
+            <div>
               {{ page.content }}
             </div>
           </div>
-          <aside class="lgd-row__one-third sidebar sidebar--second">
+          <aside class="sidebar sidebar--second">
             {{ page.sidebar_second }}
           </aside>
         {% endif %}
 
         {% if has_sidebar_first and has_sidebar_second %}
-          <aside class="lgd-row__one-quarter sidebar sidebar--first">
+          <aside class="sidebar sidebar--first">
             {{ page.sidebar_first }}
           </aside>
-          <div class="lgd-row__one-half">
-            <div class="padding-horizontal">
+          <div>
+            <div>
               {{ page.content }}
             </div>
           </div>
-          <aside class="lgd-row__one-quarter sidebar sidebar--second">
+          <aside class="sidebar sidebar--second">
             {{ page.sidebar_second }}
           </aside>
         {% endif %}
@@ -159,7 +159,7 @@
           pages, login page, etc are not bleeding to the edge of the screen.
     #}
     {% if not node %}
-      <div class="lgd-container padding-horizontal">
+      <div>
         {{ page.content }}
       </div>
       {% else %}
@@ -182,28 +182,28 @@
       are within the footer element to assist screenreaders and other
       automated tools.
     #}
-    <footer class="lgd-footer">
+    <footer>
 
     {# Begin Pre-footer #}
     {% block pre_footer %}
       {% if has_footer_first or has_footer_second or has_footer_third %}
-        <div class="lgd-footer__pre-footer">
-          <div class="lgd-container">
-            <div class="lgd-row">
+        <div>
+          <div>
+            <div>
               {% if has_footer_first %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.footer_first }}
                 </div>
               {% endif %}
 
               {% if has_footer_second %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.footer_second }}
                 </div>
               {% endif %}
 
               {% if has_footer_third %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.footer_third }}
                 </div>
               {% endif %}
@@ -217,10 +217,10 @@
     {# Begin Footer #}
     {% block footer %}
       {% if has_footer %}
-        <div class="lgd-footer__footer">
-          <div class="lgd-container">
-            <div class="lgd-row">
-              <div class="lgd-row__full">
+        <div>
+          <div>
+            <div>
+              <div>
                 {{ page.footer }}
               </div>
             </div>
@@ -233,23 +233,23 @@
     {# Begin Post-footer #}
     {% block post_footer %}
       {% if has_lower_footer_first or has_lower_footer_second or has_lower_footer_third %}
-        <div class="lgd-footer__post-footer">
-          <div class="lgd-container">
-            <div class="lgd-row">
+        <div>
+          <div>
+            <div>
               {% if has_lower_footer_first %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.lower_footer_first }}
                 </div>
               {% endif %}
 
               {% if has_lower_footer_second %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.lower_footer_second }}
                 </div>
               {% endif %}
 
               {% if has_lower_footer_third %}
-                <div class="lgd-row__one-third">
+                <div>
                   {{ page.lower_footer_third }}
                 </div>
               {% endif %}

@@ -1,7 +1,7 @@
 import video from "./video.twig";
 
 export default {
-  title: "Design System/Templates/Video",
+  title: "Design System/Atoms/Video",
 };
 
 const Template = ({ title }) =>

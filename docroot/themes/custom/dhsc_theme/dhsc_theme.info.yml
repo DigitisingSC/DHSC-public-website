@@ -4,22 +4,7 @@ type: theme
 core_version_requirement: ^8.8 || ^9 || ^10
 base theme: "localgov_base"
 libraries:
-  - dhsc_theme/cookie-banner
-
-libraries-extend:
-  localgov_base/global:
-    - dhsc_theme/global
-  localgov_base/alert-banner:
-    - dhsc_theme/alert-banner
-  localgov_base/banner:
-    - dhsc_theme/banner
-  localgov_base/ia-block:
-    - dhsc_theme/ia-block
-  localgov_base/header:
-    - dhsc_theme/header
-  localgov_base/menu-main:
-    - dhsc_theme/menu-main
-
+  - dhsc_theme/global
 regions:
   tabs: "Tabs"
   header: "Header"
@@ -48,4 +33,5 @@ components:
   namespaces:
     atoms: stories/01-atoms
     molecules: stories/02-molecules
+    organisms: stories/03-organisms
     assets: stories/assets
