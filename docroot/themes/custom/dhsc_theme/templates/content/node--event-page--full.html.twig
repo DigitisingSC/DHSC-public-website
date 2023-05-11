@@ -1,0 +1,43 @@
+{#
+/**
+ * @file
+ * Default node template for an event page.
+ */
+#}
+{%
+  set classes = [
+    'event-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% set event_details %}
+{% include '@molecules/event-details/event-details.twig' with {
+    'date': content.field_date,
+    'start_time': content.field_start_time,
+    'end_time': content.field_end_time,
+    'link': content.field_link
+  } %}
+{% endset %}
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  <div class="lgd-container padding-horizontal">
+    <div class="lgd-row">
+      <div class="lgd-row__full">
+        {% if content.field_date.0['#text']|date('U') < 'now'|date('U') %}
+          {{ 'Event has expired!'|t }}
+        {% else %}
+          {% include '@templates/event-page/event-page.twig' with {
+            'event_details': event_details,
+            'content': content.field_body_paragraphs,
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>
