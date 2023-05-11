@@ -1,0 +1,14 @@
+uuid: 2016a153-6e33-4136-a5b3-a2f1e8ec86b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event_page
+id: node_type_event_page
+entity_type_id: node_type
+entity_id: event_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

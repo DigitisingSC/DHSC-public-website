@@ -34,4 +34,5 @@ components:
     atoms: stories/01-atoms
     molecules: stories/02-molecules
     organisms: stories/03-organisms
+    templates: stories/04-templates
     assets: stories/assets
