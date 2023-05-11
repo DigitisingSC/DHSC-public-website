@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.article.field_body_paragraphs
     - field.field.node.article.field_date
     - field.field.node.article.field_image
+    - field.field.node.article.field_summary
     - node.type.article
   module:
     - datetime
@@ -51,6 +52,13 @@ content:
       link: false
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
     region: content
   links:
     settings: {  }

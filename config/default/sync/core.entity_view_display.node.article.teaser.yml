@@ -8,23 +8,44 @@ dependencies:
     - field.field.node.article.field_body_paragraphs
     - field.field.node.article.field_date
     - field.field.node.article.field_image
+    - field.field.node.article.field_summary
     - node.type.article
   module:
+    - datetime
     - user
 id: node.article.teaser
 targetEntityType: node
 bundle: article
 mode: teaser
 content:
-  links:
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: human_readable
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_featured_article
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
 hidden:
   field_author: true
   field_body_paragraphs: true
-  field_date: true
-  field_image: true
   langcode: true
+  links: true
   search_api_excerpt: true
