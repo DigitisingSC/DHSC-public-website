@@ -1,0 +1,34 @@
+uuid: c900b436-4863-4905-b6e4-e954cf65eb83
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.dhsc_featured_article
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.dhsc_573x280
+  module:
+    - responsive_image
+_core:
+  default_config_hash: jqkrCxNiSog7mNWSHrlh9HDmgLIgyT3qtEo2xoru_cQ
+id: media.image.dhsc_featured_article
+targetEntityType: media
+bundle: image
+mode: dhsc_featured_article
+content:
+  field_media_image:
+    type: responsive_image
+    label: visually_hidden
+    settings:
+      responsive_image_style: dhsc_573x280
+      image_link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

@@ -1,4 +1,4 @@
-uuid: 6aad4c46-f07e-4743-9bb1-177b10087db7
+uuid: acd78ddd-ce2b-4238-bf1c-c70ad71504da
 langcode: en
 status: true
 dependencies:
@@ -15,7 +15,7 @@ bundle: content_listing_section
 label: 'Section links'
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -26,27 +26,30 @@ settings:
     negate: 0
     target_bundles_drag_drop:
       content_listing:
-        weight: 9
-        enabled: false
-      content_listing_section:
         weight: 10
         enabled: false
-      content_listing_section_links:
+      content_listing_section:
         weight: 11
+        enabled: false
+      content_listing_section_links:
+        weight: 12
         enabled: true
       from_library:
-        weight: 12
-        enabled: false
-      localgov_image:
         weight: 13
         enabled: false
-      localgov_link:
+      localgov_image:
         weight: 14
         enabled: false
-      localgov_text:
+      localgov_link:
         weight: 15
         enabled: false
-      topic_list_builder:
+      localgov_text:
         weight: 16
+        enabled: false
+      topic_list_builder:
+        weight: 17
+        enabled: false
+      video:
+        weight: 18
         enabled: false
 field_type: entity_reference_revisions

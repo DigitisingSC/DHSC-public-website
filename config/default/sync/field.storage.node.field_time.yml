@@ -1,0 +1,19 @@
+uuid: 0e9a4036-e77b-4b70-abc6-00dc36f90b03
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - time_field
+id: node.field_time
+field_name: field_time
+entity_type: node
+type: time_range
+settings: {  }
+module: time_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,16 @@
+uuid: 3d1776dc-d72d-4753-b403-0d936be6f0cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.dhsc_573x280
+id: dhsc_573x280
+label: 'DHSC 573x280'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: dhsc_573x280
