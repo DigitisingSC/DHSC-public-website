@@ -1,0 +1,18 @@
+uuid: 87566a26-1b52-4c61-9dd7-9e6f4088ab0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Event page'
+type: event_page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

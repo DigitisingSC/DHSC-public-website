@@ -1,0 +1,21 @@
+uuid: 3a61ed5d-4b26-47e7-b72f-b63f4ca62d08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time
+    - node.type.event_page
+  module:
+    - time_field
+id: node.event_page.field_time
+field_name: field_time
+entity_type: node
+bundle: event_page
+label: Time
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: time_range
