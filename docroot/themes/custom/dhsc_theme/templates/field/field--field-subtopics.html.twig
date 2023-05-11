@@ -37,9 +37,9 @@
  * @see template_preprocess_field()
  */
 #}
-<div{{attributes.addClass('lgd-row')}}>
+<div{{attributes}}>
 	{% for item in items %}
-		<div{{item.attributes.addClass('lgd-row__one-third')}}>
+		<div{{item.attributes}}>
 			{{ item.content }}
 		</div>
 	{% endfor %}

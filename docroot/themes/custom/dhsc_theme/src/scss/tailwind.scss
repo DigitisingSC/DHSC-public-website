@@ -1,45 +1,6 @@
+@import "_fonts.scss";
 @config "../../tailwind.config.js";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=d7fca3f0-6395-46cb-b050-6d686b7ea13e&fontids=1475738,1475746");
-
-@font-face{
-  font-family:"Frutiger";
-  src:url("../../stories/assets/fonts/0811514e-6660-4043-92c1-23d0b8caaa2f.woff2") format("woff2"),url("../../stories/assets/fonts/aeae8cac-ba4d-40d2-bbcf-936f2c7dcfe6.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face{
-  font-family:"Frutiger";
-  src:url("../../stories/assets/fonts/8c92eb68-ce37-4962-a9f4-5b47d336bd1c.woff2") format("woff2"),url("../../stories/assets/fonts/9bdfdcac-bbd4-46a9-9280-056c9a4438a2.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@layer base {
-  html {
-    font-family: 'Frutiger', arial, system-ui, sans-serif;
-  }
-  h1 {
-    font-size: theme('fontSize.2xl');
-  }
-  h2 {
-    font-size: theme('fontSize.xl');
-  }
-  h3 {
-    font-size: theme('fontSize.lg');
-  }
-  h4 {
-    font-size: theme('fontSize.med');
-  }
-  h5 {
-    font-size: theme('fontSize.base');
-  }
-  h6 {
-    font-size: theme('fontSize.sm');
-  }
-}

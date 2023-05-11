@@ -40,6 +40,8 @@
     "mini-css-extract-plugin": "^2.7.5",
     "polished": "^4.2.2",
     "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "postcss-nesting": "^11.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.62.1",

@@ -85,7 +85,7 @@
 {% endif %}
 
 {% block header %}
-  {% include '@dhsc_theme/layout/header.html.twig' with {'page': page} %}
+  {% include '@dhsc_theme/layout/header.html.twig' with { 'content': page.header } %}
 {% endblock %}
 
 {% if has_banner %}
@@ -173,6 +173,12 @@
   {% endif %}
 </main>
 
+{# Begin Footer #}
+{% block footer %}
+  {% include '@dhsc_theme/layout/footer.html.twig' with { 'content' : page.footer } %}
+{% endblock %}
+{# End Footer #}
+
 {# Begin Footer Regions #}
 {% block footer_sections %}
   {% if footer_regions %}
@@ -215,19 +221,11 @@
     {# End Pre-footer #}
 
     {# Begin Footer #}
-    {% block footer %}
-      {% if has_footer %}
-        <div>
-          <div>
-            <div>
-              <div>
-                {{ page.footer }}
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% endblock %}
+{#    {% block footer %}#}
+{#      {% if has_footer %}#}
+{#        {{ page.footer }}#}
+{#      {% endif %}#}
+{#    {% endblock %}#}
     {# End Footer #}
 
     {# Begin Post-footer #}
