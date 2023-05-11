@@ -1,0 +1,38 @@
+uuid: be71c3fa-1512-440a-9b4b-eb8f5d075271
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.case_study.field_body_paragraphs
+    - field.field.node.case_study.field_image
+    - field.field.node.case_study.field_summary
+    - node.type.case_study
+  module:
+    - user
+id: node.case_study.teaser
+targetEntityType: node
+bundle: case_study
+mode: teaser
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_featured_article
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_body_paragraphs: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

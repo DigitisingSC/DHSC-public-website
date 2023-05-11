@@ -1,7 +1,7 @@
 {#
 /**
  * @file
- * Default node template for a article page.
+ * Default node template for a casestudy page.
  */
 #}
 {%
@@ -16,19 +16,11 @@
   ]
 %}
 
-{% set article_details %}
-{% include '@molecules/article-details/article-details.twig' with {
-    'date': content.field_date,
-    'author': content.field_author,
-  } %}
-{% endset %}
-
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
 	<div class="lgd-container padding-horizontal">
 		<div class="lgd-row">
 			<div class="lgd-row__full">
-					{% include '@templates/article-page/article-page.twig' with {
-            'article_details': article_details,
+					{% include '@templates/casestudy-page/casestudy-page.twig' with {
             'content': content.field_body_paragraphs,
           } %}
 			</div>

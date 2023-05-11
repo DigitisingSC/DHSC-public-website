@@ -1,0 +1,22 @@
+uuid: 4c976978-9726-41b3-99e4-37ca1a3bc237
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: case_study_page
+label: 'Case study page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  ac5a7de2-4a0c-4830-9926-74527ac38df7:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ac5a7de2-4a0c-4830-9926-74527ac38df7
+    context_mapping:
+      node: node
+    bundles:
+      case_study: case_study
+selection_logic: and
+weight: -5
+relationships: {  }
