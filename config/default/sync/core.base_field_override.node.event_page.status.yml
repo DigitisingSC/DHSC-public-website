@@ -1,0 +1,22 @@
+uuid: 65dd7aca-401b-4efa-bef6-ff18e698429a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event_page
+id: node.event_page.status
+field_name: status
+entity_type: node
+bundle: event_page
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

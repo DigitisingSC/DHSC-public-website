@@ -48,4 +48,5 @@ components:
   namespaces:
     atoms: stories/01-atoms
     molecules: stories/02-molecules
+    templates: stories/04-templates
     assets: stories/assets

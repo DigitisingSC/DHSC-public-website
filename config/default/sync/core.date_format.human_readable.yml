@@ -1,0 +1,8 @@
+uuid: 894ddcd5-91af-432e-925f-57805d3b29f7
+langcode: en
+status: true
+dependencies: {  }
+id: human_readable
+label: 'Human Readable'
+locked: false
+pattern: 'jS F Y'
