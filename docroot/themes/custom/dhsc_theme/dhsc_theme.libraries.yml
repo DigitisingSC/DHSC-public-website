@@ -3,5 +3,6 @@ global:
     theme:
       dist/css/tailwind.css: {}
       dist/css/components.css: {}
+      dist/css/global.css: {}
   js:
     dist/js/components.js: {}

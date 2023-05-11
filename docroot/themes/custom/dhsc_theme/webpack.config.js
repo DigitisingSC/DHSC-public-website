@@ -14,6 +14,9 @@ module.exports = {
       glob.sync('./stories/**/*.scss').toString(),
       glob.sync('./stories/**/*.js', { "ignore": './stories/**/*.stories.js'}).toString()
     ],
+    'global': [
+      './src/scss/global.scss',
+    ]
   },
   output: {
     filename: 'js/[name].js',
@@ -60,6 +63,18 @@ module.exports = {
         use: {
           loader: 'twigjs-loader',
         }
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts'
+            }
+          }
+        ]
       }
     ]
   },
