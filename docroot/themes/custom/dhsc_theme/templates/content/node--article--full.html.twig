@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default node template for a article page.
+ */
+#}
+{%
+  set classes = [
+    'article-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% set article_details %}
+{% include '@molecules/article-details/article-details.twig' with {
+    'date': content.field_date,
+    'author': content.field_author,
+  } %}
+{% endset %}
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+	<div class="lgd-container padding-horizontal">
+		<div class="lgd-row">
+			<div class="lgd-row__full">
+					{% include '@templates/article-page/article-page.twig' with {
+            'article_details': article_details,
+            'content': content.field_body_paragraphs,
+          } %}
+			</div>
+		</div>
+	</div>
+</article>

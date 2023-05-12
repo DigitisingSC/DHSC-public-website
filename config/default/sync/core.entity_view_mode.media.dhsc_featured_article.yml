@@ -1,0 +1,10 @@
+uuid: 8765ef54-e716-4820-b2cc-04d1e401a127
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dhsc_featured_article
+label: 'DHSC featured article'
+targetEntityType: media
+cache: true

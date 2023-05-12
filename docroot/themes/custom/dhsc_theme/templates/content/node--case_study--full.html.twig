@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Default node template for a casestudy page.
+ */
+#}
+{%
+  set classes = [
+    'casestudy-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+	<div class="lgd-container padding-horizontal">
+		<div class="lgd-row">
+			<div class="lgd-row__full">
+					{% include '@templates/casestudy-page/casestudy-page.twig' with {
+            'content': content.field_body_paragraphs,
+          } %}
+			</div>
+		</div>
+	</div>
+</article>

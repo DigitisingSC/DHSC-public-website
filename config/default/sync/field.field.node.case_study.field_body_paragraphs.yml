@@ -1,18 +1,20 @@
-uuid: acd78ddd-ce2b-4238-bf1c-c70ad71504da
+uuid: 4977b91e-2ca7-4206-9a22-37873b64cbc0
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_section_links
-    - paragraphs.paragraphs_type.content_listing_section
-    - paragraphs.paragraphs_type.content_listing_section_links
+    - field.storage.node.field_body_paragraphs
+    - node.type.case_study
+    - paragraphs.paragraphs_type.localgov_image
+    - paragraphs.paragraphs_type.localgov_text
+    - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
-id: paragraph.content_listing_section.field_section_links
-field_name: field_section_links
-entity_type: paragraph
-bundle: content_listing_section
-label: 'Section links'
+id: node.case_study.field_body_paragraphs
+field_name: field_body_paragraphs
+entity_type: node
+bundle: case_study
+label: Body
 description: ''
 required: true
 translatable: true
@@ -22,7 +24,9 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      content_listing_section_links: content_listing_section_links
+      localgov_image: localgov_image
+      localgov_text: localgov_text
+      video: video
     negate: 0
     target_bundles_drag_drop:
       content_listing:
@@ -33,23 +37,23 @@ settings:
         enabled: false
       content_listing_section_links:
         weight: 12
-        enabled: true
+        enabled: false
       from_library:
         weight: 13
         enabled: false
       localgov_image:
         weight: 14
-        enabled: false
+        enabled: true
       localgov_link:
         weight: 15
         enabled: false
       localgov_text:
         weight: 16
-        enabled: false
+        enabled: true
       topic_list_builder:
         weight: 17
         enabled: false
       video:
         weight: 18
-        enabled: false
+        enabled: true
 field_type: entity_reference_revisions
