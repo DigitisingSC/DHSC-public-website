@@ -39,10 +39,6 @@
  */
 #}
 
-{% if not localgov_base_remove_css %}
-	{{ attach_library('localgov_base/banner') }}
-{% endif %}
-
 {% if paragraph.localgov_url.value %}
 	{% set banner_url = paragraph.localgov_url.value %}
 {% endif %}

@@ -4,14 +4,12 @@ export default {
   title: "Design System/Organisms/Header",
 };
 
-const Template = ({title, content}) =>
+const Template = ({ content}) =>
   header({
-    title,
     content
   });
 
 export const Header = Template.bind({});
 Header.args = {
-  title: 'Header region',
   content: 'Content of the region'
 }

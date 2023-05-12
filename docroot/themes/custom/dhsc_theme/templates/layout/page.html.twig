@@ -100,7 +100,7 @@
   {{ page.messages }}
 {% endif %}
 
-<main class="main" id="main-content"> {# The "skip to content" link jumps to here. #}
+<main class="t-main" id="main-content"> {# The "skip to content" link jumps to here. #}
 
   {% if has_content_top %}
     {{ page.content_top }}
@@ -111,7 +111,7 @@
     <div>
       <div>
         {% if has_sidebar_first and not has_sidebar_second %}
-          <aside class="sidebar sidebar--first">
+          <aside class="t-sidebar t-sidebar--first">
             {{ page.sidebar_first }}
           </aside>
           <div>
@@ -127,13 +127,13 @@
               {{ page.content }}
             </div>
           </div>
-          <aside class="sidebar sidebar--second">
+          <aside class="t-sidebar t-sidebar--second">
             {{ page.sidebar_second }}
           </aside>
         {% endif %}
 
         {% if has_sidebar_first and has_sidebar_second %}
-          <aside class="sidebar sidebar--first">
+          <aside class="t-sidebar t-sidebar--first">
             {{ page.sidebar_first }}
           </aside>
           <div>
@@ -141,32 +141,15 @@
               {{ page.content }}
             </div>
           </div>
-          <aside class="sidebar sidebar--second">
+          <aside class="t-sidebar t-sidebar--second">
             {{ page.sidebar_second }}
           </aside>
         {% endif %}
       </div>
     </div>
-
-    {% else %}
-    {# When we have no sidebars #}
-    {#
-      If there are no sidebars, the content region take up 100% of the space, but:
-      1.  If we are on a node page, we do not constrain the content (this will be handled
-          by the node templates, so some parts of the template (hero, etc) can be the full
-          width of the screen).
-      2.  If we are not on a node page, we'll contain the content, so views pages, taxonomy
-          pages, login page, etc are not bleeding to the edge of the screen.
-    #}
-    {% if not node %}
-      <div>
-        {{ page.content }}
-      </div>
-      {% else %}
-        {{ page.content }}
-    {% endif %}
+  {% else %}
+    {{ page.content }}
   {% endif %}
-  {# End Sidebars #}
 
   {% if has_content_bottom %}
     {{ page.content_bottom }}
@@ -174,91 +157,15 @@
 </main>
 
 {# Begin Footer #}
-{% block footer %}
-  {% include '@dhsc_theme/layout/footer.html.twig' with { 'content' : page.footer } %}
-{% endblock %}
+<footer class="t-footer">
+  {{ page.footer_first }}
+  {{ page.footer_second }}
+  {{ page.footer_third }}
+  {% block footer %}
+    {% include '@dhsc_theme/layout/footer.html.twig' with { 'content' : page.footer } %}
+  {% endblock %}
+  {{ page.lower_footer_first }}
+  {{ page.lower_footer_second }}
+  {{ page.lower_footer_third }}
+</footer>
 {# End Footer #}
-
-{# Begin Footer Regions #}
-{% block footer_sections %}
-  {% if footer_regions %}
-    {#
-      Wrap all of the "lgd-footers" in a `footer` element for semantics.
-      This should ensure that all the contact/housekeeping links/etc
-      are within the footer element to assist screenreaders and other
-      automated tools.
-    #}
-    <footer>
-
-    {# Begin Pre-footer #}
-    {% block pre_footer %}
-      {% if has_footer_first or has_footer_second or has_footer_third %}
-        <div>
-          <div>
-            <div>
-              {% if has_footer_first %}
-                <div>
-                  {{ page.footer_first }}
-                </div>
-              {% endif %}
-
-              {% if has_footer_second %}
-                <div>
-                  {{ page.footer_second }}
-                </div>
-              {% endif %}
-
-              {% if has_footer_third %}
-                <div>
-                  {{ page.footer_third }}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% endblock %}
-    {# End Pre-footer #}
-
-    {# Begin Footer #}
-{#    {% block footer %}#}
-{#      {% if has_footer %}#}
-{#        {{ page.footer }}#}
-{#      {% endif %}#}
-{#    {% endblock %}#}
-    {# End Footer #}
-
-    {# Begin Post-footer #}
-    {% block post_footer %}
-      {% if has_lower_footer_first or has_lower_footer_second or has_lower_footer_third %}
-        <div>
-          <div>
-            <div>
-              {% if has_lower_footer_first %}
-                <div>
-                  {{ page.lower_footer_first }}
-                </div>
-              {% endif %}
-
-              {% if has_lower_footer_second %}
-                <div>
-                  {{ page.lower_footer_second }}
-                </div>
-              {% endif %}
-
-              {% if has_lower_footer_third %}
-                <div>
-                  {{ page.lower_footer_third }}
-                </div>
-              {% endif %}
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% endblock %}
-    {# End Post-footer #}
-
-    </footer>
-  {% endif %}
-{% endblock %}
-{# End Footer Regions #}

@@ -53,8 +53,6 @@
   {% set section_title = '' %}
 {% endif %}
 
-{{ attach_library('dhsc_theme/content-listing-section') }}
-
 <div{{ attributes.addClass(classes) }}>
   {% include '@molecules/content-listing-section/content-listing-section.twig' with {
     'section_title': content.field_section_title[0],
