@@ -2,8 +2,11 @@ uuid: 345e5401-64e5-4349-a3bf-64c13f96ca16
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.restricted_html
   module:
     - eu_cookie_compliance
+    - filter
     - media
     - system
 _core:
@@ -15,4 +18,5 @@ is_admin: false
 permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
+  - 'use text format restricted_html'
   - 'view media'
