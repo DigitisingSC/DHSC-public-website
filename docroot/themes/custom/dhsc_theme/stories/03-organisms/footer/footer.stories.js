@@ -4,14 +4,12 @@ export default {
   title: "Design System/Organisms/Footer",
 };
 
-const Template = ({ title, content}) =>
+const Template = ({ content}) =>
   footer({
-    title,
     content
   });
 
 export const Footer = Template.bind({});
 Footer.args = {
-  title: "Footer region",
-  content: "Content of teh region"
+  content: "Content of the region"
 };

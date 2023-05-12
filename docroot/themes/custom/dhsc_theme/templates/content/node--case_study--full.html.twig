@@ -17,13 +17,7 @@
 %}
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
-	<div class="lgd-container padding-horizontal">
-		<div class="lgd-row">
-			<div class="lgd-row__full">
-					{% include '@templates/casestudy-page/casestudy-page.twig' with {
-            'content': content.field_body_paragraphs,
-          } %}
-			</div>
-		</div>
-	</div>
+  {% include '@templates/casestudy-page/casestudy-page.twig' with {
+    'content': content.field_body_paragraphs,
+  } %}
 </article>
