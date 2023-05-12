@@ -84,9 +84,9 @@
   {{ page.tabs }}
 {% endif %}
 
-{% block header %}
-  {% include '@dhsc_theme/layout/header.html.twig' with { 'content': page.header } %}
-{% endblock %}
+{{ page.header }}
+
+{{ page.primary_menu }}
 
 {% if has_banner %}
   {{ page.banner }}
