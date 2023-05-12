@@ -1,0 +1,15 @@
+uuid: bb0d0def-8ab6-419c-abab-d97e191aa3bb
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_listing_image_mobile_x1
+label: 'DHSC Listing image mobile x1'
+effects:
+  5ecde1f2-e687-45ae-acb0-b77e176696ee:
+    uuid: 5ecde1f2-e687-45ae-acb0-b77e176696ee
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 302
+      height: 171
+      anchor: center-center
