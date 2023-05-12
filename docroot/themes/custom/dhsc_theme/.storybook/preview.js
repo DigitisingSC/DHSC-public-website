@@ -1,4 +1,8 @@
 import '../src/scss/tailwind.scss';
+import Twig from 'twig';
+import { setupTwig } from './setupTwig';
+
+setupTwig(Twig);
 
 const preview = {
   parameters: {
