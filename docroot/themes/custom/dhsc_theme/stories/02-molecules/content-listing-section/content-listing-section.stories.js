@@ -1,5 +1,5 @@
 import contentListingSection from './content-listing-section.twig';
-import './../../../../../custom/dhsc_theme/css/components/content-listing-section.css';
+
 export default {
   title: 'Design System/Molecules/Content Listing Section'
 }

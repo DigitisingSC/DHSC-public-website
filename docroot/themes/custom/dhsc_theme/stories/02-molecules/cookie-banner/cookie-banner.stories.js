@@ -1,11 +1,5 @@
 import cookieBanner from "./cookie-banner.twig";
 
-// Import styles
-import './css/cookie-banner.scss';
-
-// Import JS
-import './js/cookie-banner'
-
 export default {
   title: "Design System/Molecules/Cookie Banner",
 };

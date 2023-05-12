@@ -1,21 +1,21 @@
 {#
 Template
 #}
-<section class="content-list-section">
+<section class="m-content-list">
   {% if section_title %}
-    <h2 class="content-list-section-title">
+    <h2 class="m-content-list__title">
       {{ section_title }}
     </h2>
   {% endif %}
 
-  <ul class="content-list-section-links">
+  <ul class="m-content-list__links">
     {% for section_link_group in section_links %}
-      <li class="content-list-section-links-group">
-        <a href="{{ section_link_group.section_link.href }}" class="content-list-section-links-group-main-link"> {{ section_link_group.section_link.title }}</a>
+      <li class="m-content-list__links">
+        <a href="{{ section_link_group.section_link.href }}" class="m-content-list__parent"> {{ section_link_group.section_link.title }}</a>
         {% if section_link_group.child_links %}
-          <ul class="content-list-section-links-group-children">
+          <ul class="m-content-list__children">
             {% for child_link in section_link_group.child_links %}
-              <li><a href="{{ child_link.href }}" class="content-list-section-links-group-children-link"> {{ child_link.title }} </a></li>
+              <li><a href="{{ child_link.href }}" class="m-content-list__child"> {{ child_link.title }} </a></li>
             {% endfor %}
           </ul>
         {% endif %}

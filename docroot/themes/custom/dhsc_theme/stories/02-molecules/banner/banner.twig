@@ -1,15 +1,15 @@
 {#
   Template
 #}
-<section class="banner--primary">
-	<div class="banner__image">
+<section class="m-banner--primary">
+	<div class="m-banner__image">
 		{{ image }}
 	</div>
 	{% if url %}
-		<a class="banner__link" href="{{ url }}">
+		<a class="m-banner__link" href="{{ url }}">
 		{% endif %}
-		<div class="banner__content">
-			<h2>{{ heading }}</h2>
+		<div class="m-banner__content bg-green text-white">
+			<h2 class="text-display text-bold">{{ heading }}</h2>
 			<p>{{ text }}</p>
 		</div>
 		{% if url %}
