@@ -1,0 +1,15 @@
+uuid: 76e2e685-be7e-479e-bc32-ef515d8e48df
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_listing_image_desktop_x2
+label: 'DHSC Listing image desktop x2'
+effects:
+  1e9c4044-d1e2-4a11-82e4-9d4f8bd71520:
+    uuid: 1e9c4044-d1e2-4a11-82e4-9d4f8bd71520
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 792
+      height: 504
+      anchor: center-center

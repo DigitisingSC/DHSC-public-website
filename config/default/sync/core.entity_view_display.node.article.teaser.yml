@@ -31,7 +31,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: dhsc_featured_article
+      view_mode: dhsc_listing_image
       link: false
     third_party_settings: {  }
     weight: 0
