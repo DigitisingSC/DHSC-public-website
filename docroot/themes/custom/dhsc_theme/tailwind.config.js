@@ -123,9 +123,22 @@ module.exports = {
       }
     },
   },
+  corePlugins: {
+    container: false
+  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/aspect-ratio'),
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          '@screen tablet': {
+            maxWidth: '960px',
+          },
+        }
+      })
+    }
   ],
 }
