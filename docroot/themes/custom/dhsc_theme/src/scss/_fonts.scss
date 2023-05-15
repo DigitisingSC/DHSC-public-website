@@ -19,21 +19,39 @@
     font-family: 'Frutiger', arial, system-ui, sans-serif;
   }
   h1 {
-    font-size: theme('fontSize.2xl');
+    font-size: theme('fontSize.lg');
+    @screen tablet {
+      font-size: theme('fontSize.2xl');
+    }
   }
   h2 {
-    font-size: theme('fontSize.xl');
+    font-size: theme('fontSize.md');
+    @screen tablet {
+      font-size: theme('fontSize.xl');
+    }
   }
   h3 {
-    font-size: theme('fontSize.lg');
+    font-size: theme('fontSize.sm');
+    @screen tablet {
+      font-size: theme('fontSize.md');
+    }
   }
   h4 {
-    font-size: theme('fontSize.med');
+    font-size: theme('fontSize.base');
+    @screen tablet {
+      font-size: theme('fontSize.sm');
+    }
   }
   h5 {
-    font-size: theme('fontSize.base');
+    font-size: theme('fontSize.xs');
+    @screen tablet {
+      font-size: theme('fontSize.sm');
+    }
   }
   h6 {
-    font-size: theme('fontSize.sm');
+    font-size: theme('fontSize.xs');
+    @screen tablet {
+      font-size: theme('fontSize.sm');
+    }
   }
 }

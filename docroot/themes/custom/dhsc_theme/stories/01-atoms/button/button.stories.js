@@ -23,7 +23,7 @@ ButtonPrimary.args = {
   tag_name: 'button',
   children: 'Button Primary',
 };
-//
+
 export const ButtonSecondary = Template.bind({});
 ButtonSecondary.args = {
   title: 'Button secondary',
@@ -32,4 +32,4 @@ ButtonSecondary.args = {
   tag_name: 'button',
   children: 'Button Secondary',
 };
-//
+
