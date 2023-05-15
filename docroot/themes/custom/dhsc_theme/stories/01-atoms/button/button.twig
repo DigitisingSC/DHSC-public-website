@@ -1,0 +1,30 @@
+{# Defaults #}
+{% set variant = variant|default('primary') %}
+{% set tag_name = tag_name|default('button') %}
+
+{# Classes #}
+{% set classes = [
+  'a-button',
+  'a-button--' ~ variant,
+] | sort | join(' ') | trim %}
+
+{# Attributes #}
+{% if url is not empty %}
+  {% set attributes = attributes
+    .setAttribute('href', url)
+    .setAttribute('target', target)
+  %}
+  {% set tag_name = 'a' %}
+{% endif %}
+
+{% set attributes = attributes
+  .addClass(classes)
+  .setAttribute('title', title)
+%}
+
+{# Template #}
+{% if children %}
+  <{{ tag_name }} {{ attributes }}>
+  {{ children }}
+  </{{ tag_name }}>
+{% endif %}

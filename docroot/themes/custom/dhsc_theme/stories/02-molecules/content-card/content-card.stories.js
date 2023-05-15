@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import contentCard from "./content-card.twig";
 export default {
   title: "Design System/Molecules/Content Card",
