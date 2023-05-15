@@ -6,20 +6,30 @@ export default {
   title: "Design System/Atoms/Button",
 };
 
-const Template = ({ title, attributes, tag_name, variant, children }) =>
+const Template = ({ variant, title, attributes, tag_name, children }) =>
   button({
+    variant,
     title,
     attributes,
     tag_name,
-    variant,
     children,
   });
 
-export const Button = Template.bind({});
-Button.args = {
-  title: 'Button title',
+export const ButtonPrimary = Template.bind({});
+ButtonPrimary.args = {
+  title: 'Button primary',
+  variant: 'primary',
   attributes: new DrupalAttribute(),
   tag_name: 'button',
-  variant: 'primary',
-  children: 'Button',
+  children: 'Button Primary',
 };
+//
+export const ButtonSecondary = Template.bind({});
+ButtonSecondary.args = {
+  title: 'Button secondary',
+  variant: 'secondary',
+  attributes: new DrupalAttribute(),
+  tag_name: 'button',
+  children: 'Button Secondary',
+};
+//

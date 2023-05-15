@@ -6,7 +6,24 @@
 {% set classes = [
   'a-button',
   'a-button--' ~ variant,
+  'cursor-pointer',
+  'px-4 py-2',
+  'rounded-sm border-b-4'
 ] | sort | join(' ') | trim %}
+
+{% if variant == 'secondary' %}
+  {% set variantClasses = [
+    'border-coolgrey',
+    'bg-black-20 hover:bg-black-40 focus:bg-focus',
+    'text-black'
+  ] | sort | join(' ') | trim  %}
+{% else %}
+  {% set variantClasses = [
+    'border-black',
+    'bg-forestgreen hover:bg-black-80 focus:bg-focus',
+    'text-white hover:text-white focus:text-black disabled:text-white'
+  ] | sort | join(' ') | trim  %}
+{% endif %}
 
 {# Attributes #}
 {% if url is not empty %}
@@ -19,6 +36,7 @@
 
 {% set attributes = attributes
   .addClass(classes)
+  .addClass(variantClasses)
   .setAttribute('title', title)
 %}
 
