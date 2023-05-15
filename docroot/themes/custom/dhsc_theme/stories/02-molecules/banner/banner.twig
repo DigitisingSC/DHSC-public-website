@@ -2,18 +2,18 @@
   Template
 #}
 <section class="m-banner relative">
-	<div class="m-banner__image w-full md:max-height-[340px]">
+	<div class="m-banner__image w-full tablet:max-height-[340px]">
 		{{ image }}
 	</div>
   {% if url or heading or text %}
   <div class="m-banner__container container mx-auto ">
-    <div class="m-banner__content w-full md:w-9/12 md:absolute bottom-0 md:translate-y-1/2	z-1">
+    <div class="m-banner__content w-full tablet:w-9/12 tablet:absolute bottom-0 tablet:translate-y-1/2	z-1">
       {% if url %}
       <a class="m-banner__link" href="{{ url }}">
         {% endif %}
-        <div class="m-banner__copy py-4 md:py-8 px-4 lg:px-8 bg-green-20 text-black">
+        <div class="m-banner__copy py-4 tablet:py-8 px-4 lg:px-8 bg-green-20 text-black">
           <h2 class="text-display font-bold">{{ heading }}</h2>
-          <p class="text-base md:text-med">{{ text }}</p>
+          <p class="text-base tablet:text-med">{{ text }}</p>
         </div>
         {% if url %}
       </a>
