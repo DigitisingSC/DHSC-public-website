@@ -1,5 +1,5 @@
 import banner from "./banner.twig";
-
+import "./banner.scss";
 export default {
   title: "Design System/Molecules/Banner",
 };
