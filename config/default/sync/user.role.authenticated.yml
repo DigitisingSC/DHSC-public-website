@@ -3,7 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.wysiwyg
+    - filter.format.basic_html
+    - filter.format.restricted_html
   module:
     - eu_cookie_compliance
     - filter
@@ -20,5 +21,6 @@ permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
   - 'opt-in or out of google analytics tracking'
-  - 'use text format wysiwyg'
+  - 'use text format basic_html'
+  - 'use text format restricted_html'
   - 'view media'
