@@ -21,6 +21,8 @@
 
 {% if content %}
   <div{{ attributes.addClass(classes) }}>
-      {{ content }}
+    {% include "@organisms/header/header.twig" with {
+      "content": content
+    } %}
   </div>
 {% endif %}
