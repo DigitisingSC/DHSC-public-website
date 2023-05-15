@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import eventDetails from "./event-details.twig";
 
 export default {

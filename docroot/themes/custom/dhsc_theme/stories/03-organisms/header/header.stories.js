@@ -1,3 +1,4 @@
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import React from 'react';
 import header from "./header.twig";
 import { Branding } from "../../02-molecules/branding/branding.stories";

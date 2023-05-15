@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import footer from "./footer.twig";
 
 export default {

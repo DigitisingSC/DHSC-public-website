@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import articlePage from "./article-page.twig";
 
 export default {

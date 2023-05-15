@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import cookieBanner from "./cookie-banner.twig";
 
 export default {
