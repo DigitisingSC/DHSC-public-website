@@ -1,0 +1,15 @@
+uuid: e7418dbb-a2ba-4b5f-a153-ad1886dee042
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_listing_image_tablet_x2
+label: 'DHSC Listing image tablet x2'
+effects:
+  04de248a-e838-4cb0-aaa3-33685233dc76:
+    uuid: 04de248a-e838-4cb0-aaa3-33685233dc76
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 352
+      height: 298
+      anchor: center-center
