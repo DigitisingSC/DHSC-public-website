@@ -6,9 +6,10 @@
 {% set classes = [
   'a-button',
   'a-button--' ~ variant,
+  'text-xs tablet:text-base',
   'cursor-pointer',
   'px-4 py-2',
-  'rounded-sm border-b-4'
+  'rounded-md border-b-4'
 ] | sort | join(' ') | trim %}
 
 {% if variant == 'secondary' %}
