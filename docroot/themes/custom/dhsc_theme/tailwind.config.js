@@ -50,6 +50,7 @@ const careNeutrals = {
   black: {
     DEFAULT: '#101820',
     80: '#002D26',
+    40: '#9FA3A6',
     20: '#CFD1D2'
   },
   coolgrey: {
