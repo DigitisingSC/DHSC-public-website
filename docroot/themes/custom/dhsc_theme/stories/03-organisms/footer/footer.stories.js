@@ -2,6 +2,7 @@ import footer from "./footer.twig";
 
 export default {
   title: "Design System/Organisms/Footer",
+  content: 'Content of the Footer'
 };
 
 const Template = ({ content}) =>
