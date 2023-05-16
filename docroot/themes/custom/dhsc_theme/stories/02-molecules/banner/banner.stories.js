@@ -17,8 +17,8 @@ const Template = ({ image, url, heading, text }) =>
     text,
   });
 
-export const bannerHTML = Template.bind({});
-bannerHTML.args = {
+export const Banner = Template.bind({});
+Banner.args = {
   image: imgTag,
   url: "https://www.digitalsocialcare.co.uk/",
   heading: "Banner content",
