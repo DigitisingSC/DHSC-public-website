@@ -1,0 +1,16 @@
+{% set classes = [
+  "o-navigation",
+   "bg-green-20 text-black"
+] | sort | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+  .addClass(variantClasses)
+  .setAttribute('title', title)
+%}
+
+<section {{ attributes }}>
+  <div class="o-navigation__container container mx-auto w-full p-4">
+    {{ content }}
+  </div>
+</section>

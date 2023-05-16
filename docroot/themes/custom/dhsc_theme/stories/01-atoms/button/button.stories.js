@@ -32,4 +32,3 @@ ButtonSecondary.args = {
   tag_name: 'button',
   children: 'Button Secondary',
 };
-
