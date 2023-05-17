@@ -1,6 +1,6 @@
 uuid: cc723a2b-d9c7-4f47-8356-4532fe0fc447
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - filter.format.wysiwyg

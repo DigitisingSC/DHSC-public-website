@@ -50,6 +50,7 @@ const careNeutrals = {
   black: {
     DEFAULT: '#101820',
     80: '#002D26',
+    40: '#9FA3A6',
     20: '#CFD1D2'
   },
   coolgrey: {
@@ -100,12 +101,14 @@ module.exports = {
         '9': rem(60, baseFontSize),
       },
       fontSize: {
-        xs:    [rem(14, baseFontSize), {lineHeight: rem(18, baseFontSize)}],
-        sm:    [rem(16, baseFontSize), {lineHeight: rem(22, baseFontSize)}],
-        base:  [rem(19, baseFontSize), {lineHeight: rem(28, baseFontSize)}],
-        med:   [rem(24, baseFontSize), {lineHeight: rem(30, baseFontSize)}],
-        lg:    [rem(36, baseFontSize), {lineHeight: rem(40, baseFontSize)}],
-        xl:    [rem(48, baseFontSize), {lineHeight: rem(50, baseFontSize)}],
+        '2xs':  [rem(14, baseFontSize), {lineHeight: rem(18, baseFontSize)}],
+        'xs':   [rem(16, baseFontSize), {lineHeight: rem(22, baseFontSize)}],
+        'sm':   [rem(18, baseFontSize), {lineHeight: rem(22, baseFontSize)}],
+        'base': [rem(19, baseFontSize), {lineHeight: rem(28, baseFontSize)}],
+        'md':   [rem(24, baseFontSize), {lineHeight: rem(30, baseFontSize)}],
+        'lg':   [rem(32, baseFontSize), {lineHeight: rem(30, baseFontSize)}],
+        'xl':   [rem(36, baseFontSize), {lineHeight: rem(40, baseFontSize)}],
+        '2xl':  [rem(48, baseFontSize), {lineHeight: rem(50, baseFontSize)}],
       },
       fontWeight: {
         thin: '100',
@@ -120,9 +123,22 @@ module.exports = {
       }
     },
   },
+  corePlugins: {
+    container: false
+  },
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio')
+    require('@tailwindcss/aspect-ratio'),
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          '@screen tablet': {
+            maxWidth: '960px',
+          },
+        }
+      })
+    }
   ],
 }

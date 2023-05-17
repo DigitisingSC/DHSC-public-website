@@ -3,6 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
     - media.type.document
     - media.type.image
     - media.type.remote_video
@@ -18,6 +21,7 @@ dependencies:
     - editoria11y
     - entity_browser
     - eu_cookie_compliance
+    - filter
     - media
     - node
     - paragraphs
@@ -100,6 +104,9 @@ permissions:
   - 'use editorial_workflow transition create_new_draft'
   - 'use editorial_workflow transition publish'
   - 'use editorial_workflow transition submit_for_approval'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
   - 'view all revisions'
   - 'view dhsc_contents_list_page revisions'
   - 'view dhsc_homepage revisions'

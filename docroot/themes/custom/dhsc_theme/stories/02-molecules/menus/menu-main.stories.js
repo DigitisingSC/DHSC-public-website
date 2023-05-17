@@ -1,7 +1,9 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import menuItem from "./menu-main.twig";
 
  export default {
-   title: "Design System/Molecules/Menu Main",
+   title: "Design System/Molecules/Main Menu",
    argTypes: {
      type: {
        control: {
@@ -18,7 +20,7 @@ import menuItem from "./menu-main.twig";
      type,
    });
 
- export const MenuMain = Template.bind({});
- MenuMain.args = {
+ export const MainMenu = Template.bind({});
+ MainMenu.args = {
    text: "Text settings",
  };

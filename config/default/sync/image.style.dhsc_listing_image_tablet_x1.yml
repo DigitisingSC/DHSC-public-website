@@ -1,0 +1,15 @@
+uuid: 09e7769c-ff99-4d8c-b874-772741ecc4fc
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_listing_image_tablet_x1
+label: 'DHSC Listing image tablet x1'
+effects:
+  ebcfd5c0-2894-4989-a4d0-be09cf965de6:
+    uuid: ebcfd5c0-2894-4989-a4d0-be09cf965de6
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 176
+      height: 149
+      anchor: center-center

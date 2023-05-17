@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import contentListingSection from './content-listing-section.twig';
 
 export default {

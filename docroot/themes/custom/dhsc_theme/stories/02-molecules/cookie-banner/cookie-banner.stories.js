@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import cookieBanner from "./cookie-banner.twig";
 
 export default {
@@ -7,8 +9,8 @@ export default {
 
 const Template = ({...args}) => cookieBanner({...args});
 
-export const CookieBannerHTML = Template.bind({});
-CookieBannerHTML.args = {
+export const CookieBanner = Template.bind({});
+CookieBanner.args = {
   agree_button: "Accept all cookies",
   attributes: 'class="eu-cookie-compliance-banner eu-cookie-compliance-banner-info eu-cookie-compliance-banner--categories" '
    + 'aria-hidden="false"',

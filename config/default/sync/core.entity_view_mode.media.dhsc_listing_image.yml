@@ -1,0 +1,10 @@
+uuid: e8cab86e-da5f-46e4-b263-923a888cf6ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dhsc_listing_image
+label: 'DHSC listing image'
+targetEntityType: media
+cache: true

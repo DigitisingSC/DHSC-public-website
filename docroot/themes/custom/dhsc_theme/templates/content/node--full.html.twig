@@ -73,10 +73,6 @@
 
 {% set content_type = node.bundle %}
 
-{% if not localgov_base_remove_css %}
-	{{ attach_library('localgov_base/full') }}
-{% endif %}
-
 {%
   set classes = [
     content_type|clean_class,
@@ -90,16 +86,14 @@
 %}
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
-	<div class="container padding-horizontal">
-		{{ title_prefix }}
-		{% if label and content_type != 'dhsc_homepage' %}
-			<h1{{title_attributes}}>
-				<a href="{{ url }}" rel="bookmark">{{ label }}</a>
-			</h1>
-		{% endif %}
-		{{ title_suffix }}
-		<div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
-			{{ content }}
-		</div>
-	</div>
+  {{ title_prefix }}
+  {% if label and content_type != 'dhsc_homepage' %}
+    <h1{{title_attributes}}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h1>
+  {% endif %}
+  {{ title_suffix }}
+  <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
+    {{ content }}
+  </div>
 </article>

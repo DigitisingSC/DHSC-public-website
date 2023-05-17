@@ -16,6 +16,11 @@ targetEntityType: node
 bundle: dhsc_contents_list_page
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_description:
     type: basic_string
     label: hidden
@@ -27,7 +32,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: dhsc_content_teaser
+      view_mode: dhsc_listing_image
       link: false
     third_party_settings: {  }
     weight: 0

@@ -4,13 +4,74 @@ status: true
 dependencies:
   config:
     - image.style.dhsc_573x280
+    - image.style.dhsc_listing_image_mobile_x1
+    - image.style.dhsc_listing_image_mobile_x2
+    - image.style.dhsc_listing_image_tablet_x1
+    - image.style.dhsc_listing_image_tablet_x2
+  theme:
+    - dhsc_theme
 id: dhsc_573x280
-label: 'DHSC 573x280'
+label: 'DHSC Featured image'
 image_style_mappings:
   -
     image_mapping_type: image_style
     image_mapping: dhsc_573x280
-    breakpoint_id: responsive_image.viewport_sizing
+    breakpoint_id: dhsc_theme.xxlarge
     multiplier: 1x
-breakpoint_group: responsive_image
-fallback_image_style: dhsc_573x280
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: dhsc_theme.xxlarge
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: dhsc_theme.xlarge
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: dhsc_theme.xlarge
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: dhsc_theme.large
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_573x280
+    breakpoint_id: dhsc_theme.large
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_tablet_x1
+    breakpoint_id: dhsc_theme.medium
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_tablet_x2
+    breakpoint_id: dhsc_theme.medium
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_mobile_x1
+    breakpoint_id: dhsc_theme.small
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_mobile_x2
+    breakpoint_id: dhsc_theme.small
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_mobile_x1
+    breakpoint_id: dhsc_theme.xsmall
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_mobile_x2
+    breakpoint_id: dhsc_theme.xsmall
+    multiplier: 2x
+breakpoint_group: dhsc_theme
+fallback_image_style: dhsc_listing_image_mobile_x1

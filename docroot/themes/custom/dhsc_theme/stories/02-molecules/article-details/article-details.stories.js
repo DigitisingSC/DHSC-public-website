@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import articleDetails from "./article-details.twig";
 
 export default {
@@ -10,8 +12,8 @@ const Template = ({ date, author }) =>
     author,
   });
 
-export const articleDetailsHTML = Template.bind({});
-articleDetailsHTML.args = {
+export const ArticleDetails = Template.bind({});
+ArticleDetails.args = {
   date: "6 April 2023",
   author: "Matt Lambert",
 };
