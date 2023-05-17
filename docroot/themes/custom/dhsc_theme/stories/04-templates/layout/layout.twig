@@ -1,0 +1,91 @@
+{#
+We create a dedicated tabs region and place it at the top of the page.
+This is to make sure tabs don't interfere with any other content, but
+especially to make sure other content doesn't interfere with tabs (which)
+can often happen if `position: absolute` further down the page, causing
+content to cover tabs and other issues.
+
+Taking this approach also means we can have consistent styling for the
+tabs region on all localgov_drupal websites. Yay!
+#}
+{% set sidebars = [
+  'sidebar_first',
+  'sidebar_second',
+] %}
+
+<div class="t-header">
+
+  {{ header }}
+
+  {{ primary_menu }}
+
+  {{ secondary_menu }}
+
+  {{ banner }}
+
+  {{ breadcrumb }}
+
+  {{ messages }}
+
+  {{ tabs }}
+
+</div>
+
+<main class="t-content" id="main-content">
+
+  {{ content_top }}
+
+  {# Begin Sidebars #}
+  {% if sidebars %}
+    <div class="container mx-auto tablet:flex tablet:gap-4">
+      {% if sidebar_first and not sidebar_second %}
+        <aside class="t-sidebar t-sidebar--first tablet:w-3/12">
+          {{ sidebar_first }}
+        </aside>
+        <div class="t-main tablet:w-9/12">
+          {{ content }}
+        </div>
+      {% endif %}
+
+      {% if sidebar_second and not sidebar_first %}
+        <div class="t-main tablet:w-9/12">
+          {{ content }}
+        </div>
+        <aside class="t-sidebar t-sidebar--second tablet:w-3/12">
+          {{ sidebar_second }}
+        </aside>
+      {% endif %}
+
+      {% if sidebar_first and sidebar_second %}
+        <aside class="t-sidebar t-sidebar--first tablet:w-3/12">
+          {{ sidebar_first }}
+        </aside>
+        <div class="t-main tablet:w-6/12">
+          {{ content }}
+        </div>
+        <aside class="t-sidebar t-sidebar--second tablet:w-3/12">
+          {{ sidebar_second }}
+        </aside>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="container mx-auto tablet:flex">
+      <div class="t-main tablet:w-full">
+        {{ content }}
+      </div>
+    </div>
+  {% endif %}
+
+  {{ content_bottom }}
+
+</main>
+
+<footer class="t-footer">
+  {{ footer_first }}
+  {{ footer_second }}
+  {{ footer_third }}
+  {{ footer }}
+  {{ lower_footer_first }}
+  {{ lower_footer_second }}
+  {{ lower_footer_third }}
+</footer>
