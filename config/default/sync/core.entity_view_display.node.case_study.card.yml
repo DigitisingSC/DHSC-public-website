@@ -1,32 +1,20 @@
-uuid: 91becde9-5d79-4a3b-b77d-4fb8e08632ac
+uuid: 556e1380-56bc-4251-b9ef-ae4860cbad18
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
-    - field.field.node.article.field_author
-    - field.field.node.article.field_body_paragraphs
-    - field.field.node.article.field_date
-    - field.field.node.article.field_image
-    - field.field.node.article.field_summary
-    - node.type.article
+    - field.field.node.case_study.field_body_paragraphs
+    - field.field.node.case_study.field_image
+    - field.field.node.case_study.field_summary
+    - node.type.case_study
   module:
-    - datetime
     - user
-id: node.article.card
+id: node.case_study.card
 targetEntityType: node
-bundle: article
+bundle: case_study
 mode: card
 content:
-  field_date:
-    type: datetime_default
-    label: hidden
-    settings:
-      timezone_override: ''
-      format_type: human_readable
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_image:
     type: entity_reference_entity_view
     label: hidden
@@ -44,7 +32,6 @@ content:
     weight: 1
     region: content
 hidden:
-  field_author: true
   field_body_paragraphs: true
   langcode: true
   links: true

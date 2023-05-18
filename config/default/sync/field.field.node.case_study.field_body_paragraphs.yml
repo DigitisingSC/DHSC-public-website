@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.case_study
+    - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.video
@@ -24,11 +25,15 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      card_collection: card_collection
       localgov_image: localgov_image
       localgov_text: localgov_text
       video: video
     negate: 0
     target_bundles_drag_drop:
+      card_collection:
+        weight: 11
+        enabled: true
       content_listing:
         weight: 10
         enabled: false
