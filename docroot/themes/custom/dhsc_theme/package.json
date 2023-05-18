@@ -5,9 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "storybook": "storybook dev -p 6006",
-    "dev": "NODE_ENV=development webpack",
-    "watch": "NODE_ENV=development webpack --watch",
-    "build": "NODE_ENV=production webpack"
+    "build": "gulp"
   },
   "keywords": [],
   "author": "",
@@ -35,11 +33,13 @@
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
-    "copy-webpack-plugin": "^11.0.0",
     "drupal-attribute": "^1.0.2",
     "file-loader": "^6.2.0",
-    "glob": "^8.1.0",
-    "mini-css-extract-plugin": "^2.7.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
     "polished": "^4.2.2",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
@@ -50,8 +50,7 @@
     "storybook": "^7.0.11",
     "twig": "^1.16.0",
     "twig-drupal-filters": "^3.2.0",
-    "twigjs-loader": "^1.0.3",
-    "webpack-cli": "^5.0.2"
+    "twigjs-loader": "^1.0.3"
   },
   "dependencies": {
     "tailwindcss": "^3.3.2"
