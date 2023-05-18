@@ -1,3 +1,5 @@
+import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import React from 'react';
 import cardCollectionTwig from "./card-collection.twig";
 
 import { cardArticle } from "../../02-molecules/card/card.stories.js";
@@ -13,7 +15,7 @@ export default {
 };
 
 const cardArticleTemplate = (args) => cardArticeTwig({
-  ...cardArticle.args
+  ...cardArticle.args,
 });
 
 const cardEventTemplate = (args) => cardEventTwig({
@@ -31,7 +33,8 @@ const cardCollectionTemplate = ({ title, items }) =>
   });
 
 export const cardCollection = cardCollectionTemplate.bind({});
+
 cardCollection.args = {
   title: "Card collection title",
-  items: cardArticleTemplate
-};
+  items: { cardArticleTemplate, cardEventTemplate, cardCasestudyTemplate },
+}
