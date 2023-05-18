@@ -134,8 +134,17 @@ module.exports = {
       addComponents({
         '.container': {
           maxWidth: '100%',
+          paddingLeft: '.5rem',
+          paddingRight: '.5rem',
           '@screen tablet': {
             maxWidth: '960px',
+            paddingLeft: '1rem',
+            paddingRight: '1rem'
+          },
+          '@screen desktop': {
+            maxWidth: '1024px',
+            paddingLeft: '1rem',
+            paddingRight: '1rem'
           },
         }
       })
