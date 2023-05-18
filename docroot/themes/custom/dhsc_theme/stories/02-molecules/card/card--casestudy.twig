@@ -8,7 +8,11 @@
   'm-card--casestudy',
 ] | join(' ') | trim %}
 
-<div {{ attributes.addClass(classes) }}>
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
 	<a href="{{ link }}" title="{{ heading }}">
 		<div class="image-wrapper">
 		<div class="m-content-card__image">

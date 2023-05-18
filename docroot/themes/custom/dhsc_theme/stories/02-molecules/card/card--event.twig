@@ -8,7 +8,11 @@
   'm-card--event',
 ] | join(' ') | trim %}
 
-<div {{ attributes.addClass(classes) }}>
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
 	<a href="{{ link }}" title="{{ heading }}">
 		<div class="image-wrapper">
 			{{ image }}
