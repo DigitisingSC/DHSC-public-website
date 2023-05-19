@@ -1,0 +1,23 @@
+uuid: 90ee9afa-884e-4411-b604-7c5cc35a673f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_layout
+    - paragraphs.paragraphs_type.cta_banner
+id: paragraph.cta_banner.field_layout
+field_name: field_layout
+entity_type: paragraph
+bundle: cta_banner
+label: Layout
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Media on the left-hand side'
+  off_label: 'Media on the right-hand side'
+field_type: boolean
