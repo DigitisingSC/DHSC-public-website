@@ -35,6 +35,6 @@ const cardCollectionTemplate = ({ title, items }) =>
 export const cardCollection = cardCollectionTemplate.bind({});
 
 cardCollection.args = {
-  title: "Card collection title",
+  title: 'Card Collection',
   items: { cardArticleTemplate, cardEventTemplate, cardCasestudyTemplate },
 }

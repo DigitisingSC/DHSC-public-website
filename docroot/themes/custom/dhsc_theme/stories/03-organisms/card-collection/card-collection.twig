@@ -1,4 +1,8 @@
-{{ title }}
-{% for item in items %}
-	{{ item }}
-{% endfor %}
+<section class="o-card_collection">
+	<div class="o-card_collection__container container mx-auto w-full p-4">
+		{{ title }}
+		{% for key, item in items if key|first != '#' %}
+			{{ item }}
+		{% endfor %}
+	</div>
+</section>

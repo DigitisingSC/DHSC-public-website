@@ -39,16 +39,10 @@
  */
 #}
 
-{% if paragraph.localgov_url.value %}
-	{% set banner_url = paragraph.localgov_url.value %}
-{% endif %}
-
 <div{{attributes}}>
-	{% include '@molecules/banner/banner.twig' with {
-    'image': content.localgov_image,
-    'url': banner_url,
-    'heading': content.localgov_title,
-    'text': content.localgov_text
+	{% include '@organisms/card-collection/card-collection.twig' with {
+    'title': content.localgov_title,
+    'items': content.field_card_items
 } %}
 </div>
 
