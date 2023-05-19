@@ -28,7 +28,6 @@ settings:
   handler_settings:
     target_bundles:
       card_collection: card_collection
-      localgov_image: localgov_image
       localgov_text: localgov_text
       localgov_image: localgov_image
       video: video
@@ -47,9 +46,6 @@ settings:
         enabled: false
       content_listing_section_links:
         weight: 14
-        enabled: false
-      from_library:
-        weight: 11
         enabled: false
       cta_banner:
         weight: -18

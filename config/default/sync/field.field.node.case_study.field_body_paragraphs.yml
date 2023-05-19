@@ -30,7 +30,6 @@ settings:
       card_collection: card_collection
       localgov_image: localgov_image
       localgov_text: localgov_text
-      localgov_image: localgov_image
       video: video
       cta_banner: cta_banner
       from_library: from_library
