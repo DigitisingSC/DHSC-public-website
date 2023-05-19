@@ -6,6 +6,8 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - node.type.dhsc_contents_list_page
     - paragraphs.paragraphs_type.content_listing
+    - paragraphs.paragraphs_type.cta_banner
+    - paragraphs.paragraphs_type.from_library
   module:
     - entity_reference_revisions
 id: node.dhsc_contents_list_page.field_body_paragraphs
@@ -23,30 +25,38 @@ settings:
   handler_settings:
     target_bundles:
       content_listing: content_listing
+      cta_banner: cta_banner
+      from_library: from_library
     negate: 0
     target_bundles_drag_drop:
       content_listing:
-        weight: 9
+        weight: -21
         enabled: true
       content_listing_section:
-        weight: 10
+        weight: -18
         enabled: false
+      content_listing_section_links:
+        weight: -17
+        enabled: false
+      cta_banner:
+        weight: -20
+        enabled: true
       from_library:
-        weight: 11
-        enabled: false
-      localgov_contact:
-        weight: 12
-        enabled: false
+        weight: -19
+        enabled: true
       localgov_image:
-        weight: 13
+        weight: -16
         enabled: false
       localgov_link:
-        weight: 14
+        weight: -15
         enabled: false
       localgov_text:
-        weight: 15
+        weight: -14
         enabled: false
       topic_list_builder:
-        weight: 16
+        weight: -13
+        enabled: false
+      video:
+        weight: -12
         enabled: false
 field_type: entity_reference_revisions
