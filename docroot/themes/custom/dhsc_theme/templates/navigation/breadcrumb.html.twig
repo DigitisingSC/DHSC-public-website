@@ -8,10 +8,6 @@
  */
 #}
 
-{% if not localgov_base_remove_css %}
-  {{ attach_library('localgov_base/breadcrumbs') }}
-{% endif %}
-
 {% if breadcrumb %}
   <nav class="breadcrumbs" aria-labelledby="system-breadcrumbs">
     <h2 id="system-breadcrumbs" class="visually-hidden">{{ 'Breadcrumbs'|t }}</h2>

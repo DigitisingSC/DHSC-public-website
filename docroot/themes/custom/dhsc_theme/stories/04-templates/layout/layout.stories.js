@@ -8,6 +8,8 @@ import { Navigation } from "../../03-organisms/navigation/navigation.stories";
 import NavigationTwig from "../../03-organisms/navigation/navigation.twig";
 import { BannerRegion } from "../../03-organisms/banner-region/banner-region.stories";
 import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
+import { BreadcrumbRegion } from "../../03-organisms/breadcrumb-region/breadcrumb-region.stories";
+import breadcrumbRegionTwig from "../../03-organisms/breadcrumb-region/breadcrumb-region.twig";
 import {
   Footer,
   FooterFirst,
@@ -89,6 +91,9 @@ const NavigationTemplate = (args) => NavigationTwig({
 const BannerRegionTemplate = (args) => BannerRegionTwig({
   ...BannerRegion.args
 });
+const BreadcrumbRegionTemplate = (args) => breadcrumbRegionTwig({
+  ...BreadcrumbRegion.args
+});
 const FooterFirstTemplate = (args) => FooterFirstTwig({
   ...FooterFirst.args
 });
@@ -121,7 +126,7 @@ Layout.args = {
   primary_menu: NavigationTemplate,
   secondary_menu: "Secondary menu",
   banner: BannerRegionTemplate,
-  breadcrumb: "Breadcrumb",
+  breadcrumb: BreadcrumbRegionTemplate,
   messages: "Messages",
   content_top: "Content top",
   content: "Content",
