@@ -3,5 +3,11 @@
 #}
 <article class="t-article-page">
   {{ article_details }}
-  {{ content }}
+  {% if content is iterable %}
+    {% for key, item in content if key|first != '#' %}
+      {{ content }}
+    {% endfor %}
+  {% else %}
+    {{ content }}
+  {% endif %}
 </article>
