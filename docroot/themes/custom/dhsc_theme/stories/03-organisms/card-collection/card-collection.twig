@@ -1,8 +1,10 @@
 <section class="o-card_collection">
-	<div class="o-card_collection__container container mx-auto w-full p-4">
-		{{ title }}
-		{% for key, item in items if key|first != '#' %}
-			{{ item }}
-		{% endfor %}
+	<div class="o-card_collection__container py-4">
+		<h2 class="o-card_collection__title">{{ title }}</h2>
+    <div class="o-card_collection__listing tablet:flex tablet:gap-4">
+      {% for key, item in items if key|first != '#' %}
+        {{ item }}
+      {% endfor %}
+    </div>
 	</div>
 </section>
