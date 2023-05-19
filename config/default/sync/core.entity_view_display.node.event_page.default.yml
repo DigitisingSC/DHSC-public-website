@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.event_page.field_body_paragraphs
     - field.field.node.event_page.field_date
     - field.field.node.event_page.field_link
+    - field.field.node.event_page.field_location
     - field.field.node.event_page.field_time
     - node.type.event_page
   module:
@@ -26,7 +27,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 104
+    weight: 5
     region: content
   field_date:
     type: datetime_default
@@ -35,7 +36,7 @@ content:
       timezone_override: ''
       format_type: human_readable
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_link:
     type: link
@@ -47,7 +48,15 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 103
+    weight: 4
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_time:
     type: time_range_formatter
@@ -56,12 +65,12 @@ content:
       time_format: 'h:i a'
       timerange_format: 'start to end'
     third_party_settings: {  }
-    weight: 102
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   langcode: true

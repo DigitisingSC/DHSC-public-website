@@ -1,0 +1,8 @@
+{# Template #}
+{% include '@molecules/card/card--' ~ variant ~ '.twig' with {
+  image: image,
+  heading: heading,
+  link: link,
+  description: description,
+  date: date
+} %}

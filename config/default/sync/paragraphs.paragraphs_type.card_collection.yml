@@ -1,0 +1,10 @@
+uuid: 07da74d0-02b8-4703-9c4e-ed8d4a97207d
+langcode: en
+status: true
+dependencies: {  }
+id: card_collection
+label: 'Card collection'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
