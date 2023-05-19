@@ -1,0 +1,18 @@
+.m-cta-banner {
+  &--left {
+    .m-cta-banner__content {
+      @apply tablet:order-2;
+    }
+    .m-cta-banner__media {
+      @apply tablet:order-1;
+    }
+  }
+  &--right {
+    .m-cta-banner__content {
+      @apply tablet:order-1;
+    }
+    .m-cta-banner__media {
+      @apply tablet:order-2;
+    }
+  }
+}
