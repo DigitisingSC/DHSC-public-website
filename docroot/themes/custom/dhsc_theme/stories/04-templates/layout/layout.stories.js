@@ -30,6 +30,7 @@ export default {
 };
 
 const Template = ({
+  has_sidebars,
   header,
   search,
   mobile_search,
@@ -54,6 +55,7 @@ const Template = ({
   disabled
 }) =>
   layout({
+    has_sidebars,
     header,
     search,
     mobile_search,
@@ -111,6 +113,7 @@ const LowerFooterThirdTemplate = (args) => LowerFooterThirdTwig({
 
 export const Layout = Template.bind({});
 Layout.args = {
+  has_sidebars: true,
   tabs: "Tabs",
   header: HeaderTemplate,
   search: "Search",
