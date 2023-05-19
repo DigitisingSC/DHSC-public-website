@@ -7,6 +7,15 @@ const imgTag = `<img src=${image} alt='Digital Social Care'/>`
 
 export default {
   title: "Design System/Molecules/CTA Banner",
+  component: ctaBanner,
+  argTypes: {
+    layout: {
+      options: ['left', 'right'],
+      control: { type: 'radio' },
+      defaultValue: 'left'
+    },
+  },
+
 };
 
 const Template = ({
