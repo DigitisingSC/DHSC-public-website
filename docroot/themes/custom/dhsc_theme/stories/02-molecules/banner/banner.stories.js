@@ -7,7 +7,7 @@ export default {
 };
 
 import image from '../../../assets/images/banner.jpg';
-const imgTag = `<img src=${image} alt='Digital Social Care Banner'/>`
+const imgTag = `<img src=${image} alt='Digital Social Care Banner'/>`;
 
 const Template = ({ image, url, heading, text }) =>
   banner({

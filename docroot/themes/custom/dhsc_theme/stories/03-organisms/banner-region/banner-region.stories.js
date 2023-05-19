@@ -1,11 +1,11 @@
 import React from 'react';
 import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import bannerRegion from "./banner-region.twig";
+import "./banner-region.scss";
+
 import { Banner } from '../../02-molecules/banner/banner.stories';
 import banner from '../../02-molecules/banner/banner.twig'
-import "./banner-region.scss";
-import FooterSecondTwig from '../footer/footer-second.twig';
-import { FooterSecond } from '../footer/footer.stories';
+
 export default {
   title: "Design System/Organisms/Banner Region",
 };
