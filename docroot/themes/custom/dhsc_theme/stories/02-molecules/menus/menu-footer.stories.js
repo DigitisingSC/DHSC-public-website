@@ -3,7 +3,7 @@ import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import menuFooter from "./menu-footer.twig";
 
 export default {
-  title: "Design System/Molecules/Menu Footer",
+  title: "Design System/Molecules/Footer Menu",
 };
 
 const Template = () => menuFooter();

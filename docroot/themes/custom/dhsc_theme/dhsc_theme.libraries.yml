@@ -5,5 +5,5 @@ global:
       dist/css/components.css: {}
       dist/css/global.css: {}
   js:
-    https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js: { type: external, minified: true }
+    https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js: { type: external, minified: true }
     dist/js/components.js: {}

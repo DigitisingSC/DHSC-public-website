@@ -53,119 +53,28 @@
 */
 #}
 
-{#
-  We'll use this `footer_regions` array later to check if there is content in
-  at least one of them before we start rendering the footer element. It will
-  probably always return true, but no harm in checking.
-#}
-{%
-  set footer_regions = [
-    'has_footer_first',
-    'has_footer_second',
-    'has_footer_third',
-    'footer',
-    'has_lower_footer_first',
-    'has_lower_footer_second',
-    'has_lower_footer_third',
-  ]
-%}
-
-{#
-  We create a dedicated tabs region and place it at the top of the page.
-  This is to make sure tabs don't interfere with any other content, but
-  especially to make sure other content doesn't interfere with tabs (which)
-  can often happen if `position: absolute` further down the page, causing
-  content to cover tabs and other issues.
-
-  Taking this approach also means we can have consistent styling for the
-  tabs region on all localgov_drupal websites. Yay!
-#}
-{% if has_tabs %}
-  {{ page.tabs }}
-{% endif %}
-
-{{ page.header }}
-
-{{ page.primary_menu }}
-
-{% if has_banner %}
-  {{ page.banner }}
-{% endif %}
-
-{% if has_breadcrumb %}
-  {{ page.breadcrumb }}
-{% endif %}
-
-{% if has_messages %}
-  {{ page.messages }}
-{% endif %}
-
-<main class="t-main" id="main-content"> {# The "skip to content" link jumps to here. #}
-
-  {% if has_content_top %}
-    {{ page.content_top }}
-  {% endif %}
-
-  {# Begin Sidebars #}
-  {% if has_sidebars %}
-    <div>
-      <div>
-        {% if has_sidebar_first and not has_sidebar_second %}
-          <aside class="t-sidebar t-sidebar--first">
-            {{ page.sidebar_first }}
-          </aside>
-          <div>
-            <div>
-              {{ page.content }}
-            </div>
-          </div>
-        {% endif %}
-
-        {% if has_sidebar_second and not has_sidebar_first %}
-          <div>
-            <div>
-              {{ page.content }}
-            </div>
-          </div>
-          <aside class="t-sidebar t-sidebar--second">
-            {{ page.sidebar_second }}
-          </aside>
-        {% endif %}
-
-        {% if has_sidebar_first and has_sidebar_second %}
-          <aside class="t-sidebar t-sidebar--first">
-            {{ page.sidebar_first }}
-          </aside>
-          <div>
-            <div>
-              {{ page.content }}
-            </div>
-          </div>
-          <aside class="t-sidebar t-sidebar--second">
-            {{ page.sidebar_second }}
-          </aside>
-        {% endif %}
-      </div>
-    </div>
-  {% else %}
-    {{ page.content }}
-  {% endif %}
-
-  {% if has_content_bottom %}
-    {{ page.content_bottom }}
-  {% endif %}
-</main>
-
-{# Begin Footer #}
-<footer class="t-footer">
-  {{ page.footer_first }}
-  {{ page.footer_second }}
-  {{ page.footer_third }}
-  {% block footer %}
-    {% include '@dhsc_theme/layout/footer.html.twig' with { 'content' : page.footer } %}
-  {% endblock %}
-  {{ page.lower_footer_first }}
-  {{ page.lower_footer_second }}
-  {{ page.lower_footer_third }}
-</footer>
-{# End Footer #}
+{% include "@templates/layout/layout.twig" with {
+  "header": page.header,
+  "search": page.search,
+  "mobile_search": page.mobile_search,
+  "primary_menu": page.primary_menu,
+  "secondary_menu": page.secondary_menu,
+  "banner": page.banner,
+  "tabs": page.tabs,
+  "breadcrumb": page.breadcrumb,
+  "messages": page.messages,
+  "content_top": page.content_top,
+  "content": page.content,
+  "content_bottom": page.content_bottom,
+  "has_sidebars": has_sidebars,
+  "sidebar_first": page.sidebar_first,
+  "sidebar_second": page.sidebar_second,
+  "footer_first": page.footer_first,
+  "footer_second": page.footer_second,
+  "footer_third": page.footer_third,
+  "footer": page.footer,
+  "lower_footer_first": page.lower_footer_first,
+  "lower_footer_second": page.lower_footer_second,
+  "lower_footer_third": page.lower_footer_third,
+  "disabled": page.disabled
+} %}

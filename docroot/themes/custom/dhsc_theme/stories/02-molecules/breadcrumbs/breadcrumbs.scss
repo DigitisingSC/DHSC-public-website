@@ -1,0 +1,7 @@
+.m-breadcrumbs {
+  &__item:last-child {
+    .m-breadcrumbs__separator {
+      @apply hidden;
+    }
+  }
+}
