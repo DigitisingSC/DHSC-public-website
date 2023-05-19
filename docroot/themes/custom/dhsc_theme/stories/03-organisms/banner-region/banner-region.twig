@@ -1,0 +1,11 @@
+<section class="o-banner-region">
+  <div class="o-banner-region__container mx-auto w-full">
+    {% if content is iterable  %}
+      {% for item in content %}
+        {{ item }}
+      {% endfor %}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </div>
+</section>
