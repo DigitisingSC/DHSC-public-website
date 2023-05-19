@@ -58,7 +58,7 @@ settings:
         weight: -21
         enabled: true
       topic_list_builder:
-        weight: -18
+        weight: 14
         enabled: true
       video:
         weight: -20

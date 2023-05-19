@@ -7,6 +7,7 @@ dependencies:
     - node.type.article
     - paragraphs.paragraphs_type.cta_banner
     - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.video
@@ -26,6 +27,8 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      card_collection: card_collection
+      localgov_image: localgov_image
       localgov_text: localgov_text
       localgov_image: localgov_image
       video: video
@@ -33,6 +36,9 @@ settings:
       from_library: from_library
     negate: 0
     target_bundles_drag_drop:
+      card_collection:
+        weight: 11
+        enabled: true
       content_listing:
         weight: -16
         enabled: false
@@ -40,7 +46,10 @@ settings:
         weight: -15
         enabled: false
       content_listing_section_links:
-        weight: -14
+        weight: 14
+        enabled: false
+      from_library:
+        weight: 11
         enabled: false
       cta_banner:
         weight: -18

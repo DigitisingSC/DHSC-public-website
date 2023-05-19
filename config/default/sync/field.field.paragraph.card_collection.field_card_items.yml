@@ -1,0 +1,33 @@
+uuid: 03e8617d-f9a5-47e0-88e7-dd79247d9cb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_card_items
+    - node.type.article
+    - node.type.case_study
+    - node.type.event_page
+    - paragraphs.paragraphs_type.card_collection
+id: paragraph.card_collection.field_card_items
+field_name: field_card_items
+entity_type: paragraph
+bundle: card_collection
+label: 'Card items'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      case_study: case_study
+      event_page: event_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

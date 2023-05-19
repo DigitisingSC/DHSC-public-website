@@ -1,0 +1,26 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  'm-card',
+  'm-card--article',
+] | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
+	<a href="{{ link }}">
+		<div class="image-wrapper">
+			{{ image }}
+		</div>
+		<div class="content-wrapper">
+			<h3>{{ heading }}</h3>
+			<p>{{ description }}</p>
+			<p>{{ date }}</p>
+		</div>
+	</a>
+</div>
