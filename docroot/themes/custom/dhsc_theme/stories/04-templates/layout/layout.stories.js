@@ -8,14 +8,29 @@ import { Navigation } from "../../03-organisms/navigation/navigation.stories";
 import NavigationTwig from "../../03-organisms/navigation/navigation.twig";
 import { BannerRegion } from "../../03-organisms/banner-region/banner-region.stories";
 import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
-import { Footer } from "../../03-organisms/footer/footer.stories";
+import {
+  Footer,
+  FooterFirst,
+  FooterSecond,
+  FooterThird,
+  LowerFooterFirst,
+  LowerFooterSecond,
+  LowerFooterThird
+} from "../../03-organisms/footer/footer.stories";
+import FooterFirstTwig from "../../03-organisms/footer/footer-first.twig";
+import FooterSecondTwig from "../../03-organisms/footer/footer-second.twig";
+import FooterThirdTwig from "../../03-organisms/footer/footer-third.twig";
 import FooterTwig from "../../03-organisms/footer/footer.twig";
+import LowerFooterFirstTwig from "../../03-organisms/footer/lower-footer-first.twig";
+import LowerFooterSecondTwig from "../../03-organisms/footer/lower-footer-second.twig";
+import LowerFooterThirdTwig from "../../03-organisms/footer/lower-footer-third.twig";
 
 export default {
   title: "Design System/Templates/Layout",
 };
 
 const Template = ({
+  has_sidebars,
   header,
   search,
   mobile_search,
@@ -40,6 +55,7 @@ const Template = ({
   disabled
 }) =>
   layout({
+    has_sidebars,
     header,
     search,
     mobile_search,
@@ -70,16 +86,34 @@ const HeaderTemplate = (args) => HeaderTwig({
 const NavigationTemplate = (args) => NavigationTwig({
   ...Navigation.args
 });
-
 const BannerRegionTemplate = (args) => BannerRegionTwig({
   ...BannerRegion.args
+});
+const FooterFirstTemplate = (args) => FooterFirstTwig({
+  ...FooterFirst.args
+});
+const FooterSecondTemplate = (args) => FooterSecondTwig({
+  ...FooterSecond.args
+});
+const FooterThirdTemplate = (args) => FooterThirdTwig({
+  ...FooterThird.args
 });
 const FooterTemplate = (args) => FooterTwig({
   ...Footer.args
 });
+const LowerFooterFirstTemplate = (args) => LowerFooterFirstTwig({
+  ...LowerFooterFirst.args
+});
+const LowerFooterSecondTemplate = (args) => LowerFooterSecondTwig({
+  ...LowerFooterSecond.args
+});
+const LowerFooterThirdTemplate = (args) => LowerFooterThirdTwig({
+  ...LowerFooterThird.args
+});
 
 export const Layout = Template.bind({});
 Layout.args = {
+  has_sidebars: true,
   tabs: "Tabs",
   header: HeaderTemplate,
   search: "Search",
@@ -94,12 +128,12 @@ Layout.args = {
   content_bottom: "Content bottom",
   sidebar_first: "Sidebar first",
   sidebar_second: "Sidebar second",
-  footer_first: "Footer first",
-  footer_second: "Footer second",
-  footer_third: "Footer third",
+  footer_first: FooterFirstTemplate,
+  footer_second: FooterSecondTemplate,
+  footer_third: FooterThirdTemplate,
   footer: FooterTemplate,
-  lower_footer_first: "Lower footer first",
-  lower_footer_second: "Lower footer second",
-  lower_footer_third: "Lower footer third",
+  lower_footer_first: LowerFooterFirstTemplate,
+  lower_footer_second: LowerFooterSecondTemplate,
+  lower_footer_third: LowerFooterThirdTemplate,
   disabled: "Disabled"
 };

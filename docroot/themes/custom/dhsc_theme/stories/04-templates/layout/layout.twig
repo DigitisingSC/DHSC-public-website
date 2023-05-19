@@ -1,13 +1,3 @@
-{#
-We create a dedicated tabs region and place it at the top of the page.
-This is to make sure tabs don't interfere with any other content, but
-especially to make sure other content doesn't interfere with tabs (which)
-can often happen if `position: absolute` further down the page, causing
-content to cover tabs and other issues.
-
-Taking this approach also means we can have consistent styling for the
-tabs region on all localgov_drupal websites. Yay!
-#}
 {% set sidebars = [
   'sidebar_first',
   'sidebar_second',
@@ -36,7 +26,7 @@ tabs region on all localgov_drupal websites. Yay!
   {{ content_top }}
 
   {# Begin Sidebars #}
-  {% if sidebars %}
+  {% if has_sidebars %}
     <div class="container mx-auto tablet:flex tablet:gap-4">
       {% if sidebar_first and not sidebar_second %}
         <aside class="t-sidebar t-sidebar--first tablet:w-3/12">
