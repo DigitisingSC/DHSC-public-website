@@ -21,9 +21,9 @@ content:
     type: boolean
     label: hidden
     settings:
-      format: boolean
-      format_custom_false: ''
-      format_custom_true: ''
+      format: custom
+      format_custom_false: left
+      format_custom_true: right
     third_party_settings: {  }
     weight: 4
     region: content
