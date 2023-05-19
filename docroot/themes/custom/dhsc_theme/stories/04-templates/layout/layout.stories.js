@@ -6,8 +6,8 @@ import { Header } from "../../03-organisms/header/header.stories";
 import HeaderTwig from "../../03-organisms/header/header.twig";
 import { Navigation } from "../../03-organisms/navigation/navigation.stories";
 import NavigationTwig from "../../03-organisms/navigation/navigation.twig";
-import { Banner } from "../../02-molecules/banner/banner.stories";
-import BannerTwig from "../../02-molecules/banner/banner.twig";
+import { BannerRegion } from "../../03-organisms/banner-region/banner-region.stories";
+import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
 import {
   Footer,
   FooterFirst,
@@ -84,11 +84,9 @@ const HeaderTemplate = (args) => HeaderTwig({
 const NavigationTemplate = (args) => NavigationTwig({
   ...Navigation.args
 });
-
-const BannerTemplate = (args) => BannerTwig({
-  ...Banner.args
+const BannerRegionTemplate = (args) => BannerRegionTwig({
+  ...BannerRegion.args
 });
-
 const FooterFirstTemplate = (args) => FooterFirstTwig({
   ...FooterFirst.args
 });
@@ -119,7 +117,7 @@ Layout.args = {
   mobile_search: "Mobile search",
   primary_menu: NavigationTemplate,
   secondary_menu: "Secondary menu",
-  banner: BannerTemplate,
+  banner: BannerRegionTemplate,
   breadcrumb: "Breadcrumb",
   messages: "Messages",
   content_top: "Content top",
