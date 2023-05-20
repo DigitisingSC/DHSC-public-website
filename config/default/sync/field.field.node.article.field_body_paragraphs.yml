@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.article
+    - paragraphs.paragraphs_type.cta_banner
+    - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
@@ -26,39 +28,44 @@ settings:
   handler_settings:
     target_bundles:
       card_collection: card_collection
-      localgov_image: localgov_image
       localgov_text: localgov_text
+      localgov_image: localgov_image
       video: video
+      cta_banner: cta_banner
+      from_library: from_library
     negate: 0
     target_bundles_drag_drop:
       card_collection:
         weight: 11
         enabled: true
       content_listing:
-        weight: 9
+        weight: -16
         enabled: false
       content_listing_section:
-        weight: 10
+        weight: -15
         enabled: false
       content_listing_section_links:
         weight: 14
         enabled: false
+      cta_banner:
+        weight: -18
+        enabled: true
       from_library:
-        weight: 11
-        enabled: false
+        weight: -17
+        enabled: true
       localgov_image:
-        weight: 12
+        weight: -20
         enabled: true
       localgov_link:
-        weight: 13
+        weight: -13
         enabled: false
       localgov_text:
-        weight: 14
+        weight: -21
         enabled: true
       topic_list_builder:
-        weight: 15
+        weight: -12
         enabled: false
       video:
-        weight: 16
+        weight: -19
         enabled: true
 field_type: entity_reference_revisions

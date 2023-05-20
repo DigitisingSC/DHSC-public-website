@@ -1,0 +1,15 @@
+uuid: 194ec1ac-f130-42f5-9b0e-958215052eb3
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: cta_banner
+label: 'CTA Banner'
+icon_uuid: null
+icon_default: null
+description: 'CTA Banner component with a title, description, link and a left or right-hand side image.'
+behavior_plugins: {  }

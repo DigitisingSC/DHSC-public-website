@@ -1,0 +1,17 @@
+{% set classes = [
+  'm-cta-banner',
+  'm-cta-banner--' ~ layout|clean_class,
+  'py-4',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="m-cta-banner__container tablet:flex tablet:gap-4">
+    <div class="m-cta-banner__content tablet:w-6/12 tablet:flex tablet:flex-col tablet:justify-between">
+      <h2 class="m-cta-banner__title">{{ title }}</h2>
+      <div class="m-cta-banner__description tablet:grow">{{ description }}</div>
+      <div class="m-cta-banner__link">{{ link }}</div>
+    </div>
+    <div class="m-cta-banner__media tablet:w-6/12">
+      {{ media }}
+    </div>
+  </div>
+</div>
