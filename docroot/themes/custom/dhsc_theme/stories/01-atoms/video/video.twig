@@ -1,6 +1,27 @@
-{#
-  Template
-#}
-<div class="a-video">
-	{{ title }}
+{# Classes #}
+{% set classes = [
+  'a-video',
+] | sort | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+{# Template #}
+<div {{ attributes.addClass(classes) }}>
+  <div class="a-video__container">
+    {{ iframe }}
+    {% apply spaceless %}
+      <button
+        aria-label="{{ 'Play video'|t }}"
+        class="bg-no-repeat bg-cover bg-center rounded-lg",
+        style="background-image: url({{ media_thumbnail }})"
+        data-bg-legacy="{{ media_thumbnail_legacy }}"
+      >
+        <i class="flex relative justify-center items-center mx-auto w-20 h-20 bg-white rounded-full" aria-hidden="true">
+        <!-- svg icon here -->
+        </i>
+      </button>
+    {% endapply %}
+  </div>
 </div>

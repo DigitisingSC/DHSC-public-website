@@ -5,6 +5,8 @@
  * Theme functions for the LocalGov Drupal DHSC theme.
  */
 
+use Drupal\media\Entity\Media;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
@@ -47,4 +49,50 @@ function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
   }
 
   $variables['section_links'] = $section_links_array;
+}
+
+/**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
+function dhsc_theme_preprocess_paragraph__video(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $media_id = $paragraph->get('field_video')->getString();
+
+  if ($media_id) {
+    $media_entity = Media::load($media_id);
+
+    // Derive a thumbnail image + alt text.
+    $url = $media_entity->get('field_media_oembed_video')->getString();
+
+    // youtube.com vs youtu.be -- both are valid.
+    $needle = strpos($url, 'youtube.com') !== FALSE ? '?v=' : 'youtu.be/';
+    $embed_code = substr($url, strpos($url, $needle) + strlen($needle));
+
+    $variables['media_thumbnail'] = "//i.ytimg.com/vi_webp/$embed_code/maxresdefault.webp";
+    $variables['media_thumbnail_legacy'] = "//i.ytimg.com/vi/$embed_code/maxresdefault.jpg";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field.
+ */
+function dhsc_theme_preprocess_field(&$variables)
+{
+  if ($variables['element']['#field_name'] == 'field_media_oembed_video') {
+    // Set up the iframe src to be lazy loaded in.
+    $src = $variables['items'][0]['content']['#attributes']['src'];
+    $variables['items'][0]['content']['#attributes']['data-src'] = $src;
+    unset($variables['items'][0]['content']['#attributes']['src']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for media_oembed_iframe.
+ */
+function dhsc_theme_preprocess_media_oembed_iframe(&$variables)
+{
+  if (strpos((string) $variables['media'], 'youtube.com') !== FALSE || strpos((string) $variables['media'], 'youtu.be') !== FALSE) {
+    // Make the video auto-play on load.
+    $variables['media'] = str_replace('?feature=oembed', '?feature=oembed&autoplay=1', $variables['media']);
+  }
 }
