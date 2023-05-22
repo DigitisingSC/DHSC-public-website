@@ -39,8 +39,21 @@
  */
 #}
 
-<div{{attributes}}>
-	{% include '@atoms/video/video.twig' with {
-    'title': content.localgov_title,
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
+
+<div{{ attributes.addClass(classes) }}>
+	{% include '@molecules/video-component/video-component.twig' with {
+    'header': content.localgov_title,
+    'description': content.localgov_text,
+    'media_thumbnail': media_thumbnail,
+    'media_thumbnail_legacy': media_thumbnail_legacy,
+    'iframe': content.field_video
   } %}
 </div>
