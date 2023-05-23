@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.content_page
     - node.type.dhsc_contents_list_page
-    - node.type.dhsc_homepage
-    - node.type.independent_content_page
+    - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.subtopic_page
@@ -74,9 +74,9 @@ type_settings:
       weight: 3
   entity_types:
     node:
+      - content_page
       - dhsc_contents_list_page
-      - dhsc_homepage
-      - independent_content_page
+      - landing_page
       - localgov_guides_overview
       - localgov_guides_page
       - subtopic_page

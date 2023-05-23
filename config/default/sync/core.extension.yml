@@ -76,6 +76,7 @@ module:
   office_hours: 0
   options: 0
   page_cache: 0
+  paragraphs_features: 0
   paragraphs_library: 0
   path: 0
   path_alias: 0
@@ -108,6 +109,7 @@ module:
   pathauto: 1
   views: 10
   paragraphs: 11
+  paragraphs_ee: 15
   localgov: 1000
   eu_cookie_compliance: 1001
 theme:

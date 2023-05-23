@@ -1,18 +1,18 @@
-uuid: 9d75c3a8-8878-4362-b962-02b9c461bab3
+uuid: 1341fc1f-a95b-400e-881c-aaaf179f02de
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_image
     - media.type.image
-    - node.type.independent_content_page
-id: node.independent_content_page.field_image
+    - node.type.landing_page
+id: node.landing_page.field_image
 field_name: field_image
 entity_type: node
-bundle: independent_content_page
-label: Image
+bundle: landing_page
+label: 'Featured Image'
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

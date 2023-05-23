@@ -4,8 +4,8 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_subtopics
+    - node.type.content_page
     - node.type.dhsc_contents_list_page
-    - node.type.independent_content_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.subtopic_page
@@ -23,10 +23,10 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      content_page: content_page
       dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
-      independent_content_page: independent_content_page
     sort:
       field: _none
       direction: ASC

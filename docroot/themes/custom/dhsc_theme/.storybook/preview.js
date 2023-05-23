@@ -1,6 +1,7 @@
 import '../src/scss/tailwind.scss';
 import Twig from 'twig';
 import { setupTwig } from './setupTwig';
+import './drupalBehaviors';
 
 setupTwig(Twig);
 
