@@ -1,7 +1,7 @@
 import React from 'react';
 import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import videoComponentTwig from "./video-component.twig";
-import './css/video-component.scss';
+import './video-component.scss';
 
 export default {
   title: "Design System/Molecules/Video Component",
