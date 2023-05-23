@@ -1,11 +1,11 @@
-uuid: d4948c51-0954-40f1-aec5-4f7c4e011b43
+uuid: 544b06ab-e924-4562-a5a0-a5993b84e804
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.event_page
-id: node.event_page
+    - node.type.casestudy
+id: node.casestudy
 target_entity_type_id: node
-target_bundle: event_page
+target_bundle: casestudy
 default_langcode: site_default
 language_alterable: false

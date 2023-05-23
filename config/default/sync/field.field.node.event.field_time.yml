@@ -1,16 +1,16 @@
-uuid: 3a61ed5d-4b26-47e7-b72f-b63f4ca62d08
+uuid: 2cca01eb-a17a-4f07-bb98-a6e09d7fea2d
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_time
-    - node.type.event_page
+    - node.type.event
   module:
     - time_field
-id: node.event_page.field_time
+id: node.event.field_time
 field_name: field_time
 entity_type: node
-bundle: event_page
+bundle: event
 label: Time
 description: ''
 required: false

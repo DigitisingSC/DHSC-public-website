@@ -1,21 +1,21 @@
-uuid: 7cfdce7f-d250-4b3f-b4e0-c10a0c59b76b
+uuid: e07b5c54-ed8f-4a57-9cb7-55b2b18d73ed
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
-    - field.field.node.event_page.field_body_paragraphs
-    - field.field.node.event_page.field_date
-    - field.field.node.event_page.field_link
-    - field.field.node.event_page.field_location
-    - field.field.node.event_page.field_time
-    - node.type.event_page
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - node.type.event
   module:
     - datetime
     - user
-id: node.event_page.card
+id: node.event.card
 targetEntityType: node
-bundle: event_page
+bundle: event
 mode: card
 content:
   field_date:
@@ -25,7 +25,7 @@ content:
       timezone_override: ''
       format_type: human_readable
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   field_location:
     type: string
@@ -33,12 +33,16 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   field_body_paragraphs: true
   field_link: true
   field_time: true
   langcode: true
-  links: true
   search_api_excerpt: true

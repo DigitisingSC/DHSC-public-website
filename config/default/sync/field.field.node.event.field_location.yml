@@ -1,14 +1,14 @@
-uuid: 174568db-cf6f-4b14-b10e-d2ba1a74191c
+uuid: 9ea069a2-63d3-4c3c-a3fc-6dfb6969b5c7
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_location
-    - node.type.event_page
-id: node.event_page.field_location
+    - node.type.event
+id: node.event.field_location
 field_name: field_location
 entity_type: node
-bundle: event_page
+bundle: event
 label: Location
 description: ''
 required: false

@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.storage.paragraph.field_card_items
     - node.type.article
-    - node.type.case_study
-    - node.type.event_page
+    - node.type.casestudy
+    - node.type.event
     - paragraphs.paragraphs_type.card_collection
 id: paragraph.card_collection.field_card_items
 field_name: field_card_items
@@ -23,8 +23,8 @@ settings:
   handler_settings:
     target_bundles:
       article: article
-      case_study: case_study
-      event_page: event_page
+      casestudy: casestudy
+      event: event
     sort:
       field: _none
       direction: ASC

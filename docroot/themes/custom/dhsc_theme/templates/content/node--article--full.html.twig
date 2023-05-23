@@ -25,6 +25,7 @@
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
   {% include '@templates/article-page/article-page.twig' with {
+    'title': label,
     'article_details': article_details,
     'content': content.field_body_paragraphs,
   } %}

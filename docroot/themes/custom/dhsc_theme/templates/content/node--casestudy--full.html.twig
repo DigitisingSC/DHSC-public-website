@@ -18,6 +18,7 @@
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
   {% include '@templates/casestudy-page/casestudy-page.twig' with {
+    'title': label,
     'content': content.field_body_paragraphs,
   } %}
 </article>

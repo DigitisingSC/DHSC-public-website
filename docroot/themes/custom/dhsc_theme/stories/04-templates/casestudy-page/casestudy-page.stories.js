@@ -6,12 +6,14 @@ export default {
   title: "Design System/Templates/Case study page",
 };
 
-const Template = ({ content }) =>
+const Template = ({ title, content }) =>
   caseStudyPage({
+    title,
     content
   });
 
 export const CaseStudyPage= Template.bind({});
 CaseStudyPage.args = {
-  content: "Case Study page.."
+  title: "Case study",
+  content: "Case study content.."
 };

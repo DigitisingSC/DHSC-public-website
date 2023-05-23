@@ -6,14 +6,16 @@ export default {
   title: "Design System/Templates/Event page",
 };
 
-const Template = ({ event_details, content }) =>
+const Template = ({ title, event_details, content }) =>
   eventPage({
+    title,
     event_details,
     content
   });
 
 export const EventPage = Template.bind({});
 EventPage.args = {
+  title: "Event",
   event_details: "event details..",
-  content: "event page.."
+  content: "event content.."
 };

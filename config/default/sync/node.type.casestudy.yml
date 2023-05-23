@@ -1,4 +1,4 @@
-uuid: 9636abfe-06b1-4460-aa1d-e3c3bd2bffcf
+uuid: 74caa358-1fab-4a86-803a-b97fdd532d4c
 langcode: en
 status: true
 dependencies:
@@ -10,7 +10,7 @@ third_party_settings:
       - main
     parent: 'main:'
 name: 'Case study'
-type: case_study
+type: casestudy
 description: ''
 help: ''
 new_revision: true

@@ -1,28 +1,28 @@
-uuid: 026e67ce-5221-497b-9d0c-31000f517844
+uuid: 6f59e756-2ef2-420f-a8e8-15ff4a5e04cf
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.event_page.field_body_paragraphs
-    - field.field.node.event_page.field_date
-    - field.field.node.event_page.field_link
-    - field.field.node.event_page.field_location
-    - field.field.node.event_page.field_time
-    - node.type.event_page
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - node.type.event
   module:
     - datetime
     - entity_reference_revisions
     - link
     - time_field
     - user
-id: node.event_page.default
+id: node.event.default
 targetEntityType: node
-bundle: event_page
+bundle: event
 mode: default
 content:
   field_body_paragraphs:
     type: entity_reference_revisions_entity_view
-    label: hidden
+    label: above
     settings:
       view_mode: default
       link: ''
@@ -31,16 +31,16 @@ content:
     region: content
   field_date:
     type: datetime_default
-    label: hidden
+    label: above
     settings:
       timezone_override: ''
-      format_type: human_readable
+      format_type: medium
     third_party_settings: {  }
     weight: 1
     region: content
   field_link:
     type: link
-    label: hidden
+    label: above
     settings:
       trim_length: 80
       url_only: false
@@ -48,11 +48,11 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
   field_location:
     type: string
-    label: hidden
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -60,12 +60,12 @@ content:
     region: content
   field_time:
     type: time_range_formatter
-    label: hidden
+    label: above
     settings:
       time_format: 'h:i a'
-      timerange_format: 'start to end'
+      timerange_format: 'start ~ end'
     third_party_settings: {  }
-    weight: 2
+    weight: 4
     region: content
   links:
     settings: {  }
