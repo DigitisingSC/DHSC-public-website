@@ -4,7 +4,7 @@
   "description": "",
   "main": "Gulpfile.js",
   "scripts": {
-    "imageminsvgo": "node imagemin-svgo.js",
+    "imageminsvgo": "node imagemin-svgo.mjs",
     "prebuildsprite": "npm run imageminsvgo",
     "buildsprite": "svgstore -o stories/01-atoms/svg/sprite.svg assets/icons/**/*.svg",
     "storybook": "npm run buildsprite & storybook dev -p 6006",
