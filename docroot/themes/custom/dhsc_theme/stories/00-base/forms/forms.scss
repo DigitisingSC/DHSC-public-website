@@ -1,0 +1,48 @@
+.a-form-item--checkbox [type='checkbox'],
+.a-form-item--radio [type='radio'] {
+  @apply w-7 h-7 mr-1 mb-2 border-black border cursor-pointer;
+  &:hover {
+    @apply border-black;
+  }
+}
+
+.a-form-item--checkbox [type='checkbox'] {
+  background-size: 150%;
+  &:checked {
+    @apply bg-white text-black;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.74924 15.9073L2.84174 9.99978L0.830078 11.9973L8.74924 19.9164L25.7492 2.91645L23.7517 0.918945L8.74924 15.9073Z' fill='black'/%3E%3C/svg%3E%0A");
+    background-size: 16px;
+  }
+  &:focus {
+    @apply focus:ring-yellow;
+  }
+}
+
+.a-form-item--radio [type='radio'] {
+  background-size: 48px;
+  &:checked {
+    @apply bg-white;
+    background-image: url("data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27black%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3ccircle cx=%278%27 cy=%278%27 r=%273%27/%3e%3c/svg%3e");
+  }
+  &:focus {
+    @apply focus:ring-yellow;
+  }
+}
+
+.a-form-item--checkbox,
+.a-form-item--radio {
+  @apply w-full;
+  label {
+    @apply inline-block pb-4 text-base;
+  }
+}
+
+// Form element.
+.a-form-item {
+  @apply flex flex-col mb-4;
+
+  &--required .a-form-item__label:after {
+    content: '*';
+    @apply text-inherit;
+  }
+}
