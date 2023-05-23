@@ -1,22 +1,23 @@
-uuid: 682b8882-a08d-4b18-8c25-f621b47a0359
+uuid: 840fabec-5166-4a4f-8917-884bbe9c978d
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: homepage
-label: Homepage
+id: node_title
+label: 'Node title'
 type: 'canonical_entities:node'
 pattern: '[node:title]'
 selection_criteria:
-  75ff6ba4-bdef-486e-8397-7bd79b245850:
+  b6b8a71b-60da-4e9d-8d67-398829ed99ed:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 75ff6ba4-bdef-486e-8397-7bd79b245850
+    uuid: b6b8a71b-60da-4e9d-8d67-398829ed99ed
     context_mapping:
       node: node
     bundles:
-      dhsc_homepage: dhsc_homepage
+      content_page: content_page
+      landing_page: landing_page
 selection_logic: and
 weight: -5
 relationships: {  }

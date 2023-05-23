@@ -1,14 +1,14 @@
-uuid: 1c704784-df9e-436d-a6bd-2b952d54d2b4
+uuid: 3a9f1233-6fd2-4bb9-a219-a89efdec9360
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.dhsc_homepage
-id: node.dhsc_homepage.promote
-field_name: promote
+    - node.type.content_page
+id: node.content_page.status
+field_name: status
 entity_type: node
-bundle: dhsc_homepage
-label: 'Promoted to front page'
+bundle: content_page
+label: Published
 description: ''
 required: false
 translatable: true

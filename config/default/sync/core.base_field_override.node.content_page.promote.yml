@@ -1,13 +1,13 @@
-uuid: 6369bc13-6f4f-470d-9264-fc57ddee91ab
+uuid: 94596a49-ace0-4d44-84d4-3308724ddd0d
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.independent_content_page
-id: node.independent_content_page.promote
+    - node.type.content_page
+id: node.content_page.promote
 field_name: promote
 entity_type: node
-bundle: independent_content_page
+bundle: content_page
 label: 'Promoted to front page'
 description: ''
 required: false

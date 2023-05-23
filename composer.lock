@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5638e26b3da2b1ef2f43a2bf8e6fcf1e",
+    "content-hash": "171146c151f8a3566cd03c31a3515a43",
     "packages": [
         {
             "name": "acquia/blt",
@@ -6748,6 +6748,125 @@
             "homepage": "https://www.drupal.org/project/paragraphs",
             "support": {
                 "source": "https://git.drupalcode.org/project/paragraphs"
+            }
+        },
+        {
+            "name": "drupal/paragraphs_ee",
+            "version": "2.1.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs_ee.git",
+                "reference": "2.1.0-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_ee-2.1.0-alpha2.zip",
+                "reference": "2.1.0-alpha2",
+                "shasum": "69e8ca3b457f7dac65dd098e4e7d94b8cafa8584"
+            },
+            "require": {
+                "drupal/core": ">=9.2",
+                "drupal/paragraphs_features": "^2.0@beta"
+            },
+            "require-dev": {
+                "drupal/paragraphs_sets": "*",
+                "phpunit/phpunit": "^9.5",
+                "weitzman/drupal-test-traits": "^1.5"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.0-alpha2",
+                    "datestamp": "1683903397",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Borchert",
+                    "homepage": "https://www.drupal.org/user/36942",
+                    "email": "stefan.borchert@undpaul.de"
+                }
+            ],
+            "description": "Paragraphs Editor Enhancements for better usability.",
+            "homepage": "https://www.drupal.org/project/paragraphs_ee",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs_ee"
+            }
+        },
+        {
+            "name": "drupal/paragraphs_features",
+            "version": "2.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs_features.git",
+                "reference": "2.0.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_features-2.0.0-beta2.zip",
+                "reference": "2.0.0-beta2",
+                "shasum": "42c4c2fed1701e14d085850d4fa7ea58b418b85a"
+            },
+            "require": {
+                "drupal/core": "^9.2 || ^10",
+                "drupal/paragraphs": "^1.13"
+            },
+            "require-dev": {
+                "drupal/gin": "^3.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-beta2",
+                    "datestamp": "1678349934",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mladen Todorovic",
+                    "homepage": "https://www.drupal.org/user/2103716",
+                    "email": "mladen.todorovic@burda.com"
+                },
+                {
+                    "name": "Daniel Bosen",
+                    "homepage": "https://www.drupal.org/user/404865",
+                    "email": "daniel.bosen@burda.com"
+                },
+                {
+                    "name": "Christian Fritsch",
+                    "homepage": "https://www.drupal.org/user/3511180",
+                    "email": "christian.fritsch@burda.com"
+                },
+                {
+                    "name": "Volker Killesreiter",
+                    "homepage": "https://www.drupal.org/user/57527",
+                    "email": "volker.killesreiter@burda.com"
+                },
+                {
+                    "name": "Alex Pott",
+                    "email": "alex.a.pott@gmail.com"
+                }
+            ],
+            "description": "Paragraphs features for extending paragraphs widget functionality.",
+            "homepage": "https://www.drupal.org/project/paragraphs_features",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs_features"
             }
         },
         {
@@ -19721,6 +19840,7 @@
         "alexku/blt-github-actions": 20,
         "drupal/advagg": 15,
         "drupal/linkit": 5,
+        "drupal/paragraphs_ee": 15,
         "drupal/rabbit_hole": 10,
         "localgovdrupal/localgov_search_solr": 15
     },

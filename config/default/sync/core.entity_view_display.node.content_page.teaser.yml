@@ -1,17 +1,16 @@
-uuid: 2eaa142d-4b30-4c67-bcaa-1a01fab8a683
+uuid: 787212e2-d85b-41b0-9bdb-a615d714e97f
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.dhsc_homepage.field_metatags
-    - field.field.node.dhsc_homepage.field_subtopics
-    - node.type.dhsc_homepage
+    - field.field.node.content_page.field_body_paragraphs
+    - node.type.content_page
   module:
     - user
-id: node.dhsc_homepage.teaser
+id: node.content_page.teaser
 targetEntityType: node
-bundle: dhsc_homepage
+bundle: content_page
 mode: teaser
 content:
   links:
@@ -20,7 +19,6 @@ content:
     weight: 100
     region: content
 hidden:
-  field_metatags: true
-  field_subtopics: true
+  field_body_paragraphs: true
   langcode: true
   search_api_excerpt: true
