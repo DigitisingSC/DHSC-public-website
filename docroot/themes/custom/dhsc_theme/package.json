@@ -2,9 +2,12 @@
   "name": "dhsc_theme",
   "version": "1.0.0",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "Gulpfile.js",
   "scripts": {
-    "storybook": "storybook dev -p 6006",
+    "imageminsvgo": "node imagemin-svgo.js",
+    "prebuildsprite": "npm run imageminsvgo",
+    "buildsprite": "svgstore -o stories/01-atoms/svg/sprite.svg assets/icons/**/*.svg",
+    "storybook": "npm run buildsprite & storybook dev -p 6006",
     "build": "gulp"
   },
   "keywords": [],
@@ -40,6 +43,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.1.0",
+    "imagemin": "^8.0.1",
+    "imagemin-svgo": "^10.0.1",
     "polished": "^4.2.2",
     "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
@@ -48,6 +53,7 @@
     "react-dom": "^18.2.0",
     "sass": "^1.62.1",
     "storybook": "^7.0.11",
+    "svgstore-cli": "^2.0.1",
     "twig": "^1.16.0",
     "twig-drupal-filters": "^3.2.0",
     "twigjs-loader": "^1.0.3"
