@@ -2,7 +2,7 @@ import React from 'react';
 import DrupalAttribute from '../../../.storybook/drupalAttributes';
 import videoTwig from "./video.twig";
 import videoBehaviour from "./video.js";
-import './css/video.scss'
+import './video.scss'
 
 
 export default {
