@@ -2,12 +2,7 @@
   Template
 #}
 <article class="t-article-page">
-  {{ article_details }}
-  {% if content is iterable %}
-    {% for key, item in content if key|first != '#' %}
-      {{ content }}
-    {% endfor %}
-  {% else %}
-    {{ content }}
-  {% endif %}
+	<h1>{{ title }}</h1>
+	{{ article_details }}
+	{{ content }}
 </article>

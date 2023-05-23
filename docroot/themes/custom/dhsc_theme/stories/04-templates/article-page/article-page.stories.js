@@ -6,14 +6,16 @@ export default {
   title: "Design System/Templates/Article page",
 };
 
-const Template = ({ article_details, content }) =>
+const Template = ({ title, article_details, content }) =>
   articlePage({
+    title,
     article_details,
     content
   });
 
 export const ArticlePage = Template.bind({});
 ArticlePage.args = {
+  title: "Article page",
   article_details: "article details..",
-  content: "article page.."
+  content: "Article page content.."
 };

@@ -1,12 +1,12 @@
-uuid: 2016a153-6e33-4136-a5b3-a2f1e8ec86b9
+uuid: 511fff3f-965c-4294-a145-665826418a64
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.event_page
-id: node_type_event_page
+    - node.type.casestudy
+id: node_type_casestudy
 entity_type_id: node_type
-entity_id: event_page
+entity_id: casestudy
 action: display_page
 allow_override: 1
 redirect: ''

@@ -1,28 +1,34 @@
-uuid: 7c9c51f3-ec8b-43f9-92bd-8356e48d3dab
+uuid: 9684fb4d-3b5d-41c2-aeb2-303bd661cb81
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.case_study.field_body_paragraphs
-    - field.field.node.case_study.field_image
-    - field.field.node.case_study.field_summary
-    - node.type.case_study
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - node.type.event
   module:
     - content_moderation
+    - datetime
     - field_group
-    - media_library
+    - link
     - paragraphs
     - path
+    - time_field
 third_party_settings:
   field_group:
-    group_metadata:
+    group_event_details:
       children:
-        - field_image
-        - field_summary
-      label: Metadata
+        - field_date
+        - field_time
+        - field_location
+        - field_link
+      label: 'Event details'
       region: content
       parent_name: ''
-      weight: 2
+      weight: 1
       format_type: details
       format_settings:
         classes: ''
@@ -31,9 +37,9 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
-id: node.case_study.default
+id: node.event.default
 targetEntityType: node
-bundle: case_study
+bundle: event
 mode: default
 content:
   created:
@@ -44,7 +50,7 @@ content:
     third_party_settings: {  }
   field_body_paragraphs:
     type: paragraphs
-    weight: 1
+    weight: 2
     region: content
     settings:
       title: Paragraph
@@ -61,25 +67,36 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_image:
-    type: media_library_widget
-    weight: 13
+  field_date:
+    type: datetime_default
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 15
     region: content
     settings:
-      media_types: {  }
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
-  field_summary:
-    type: string_textarea
+  field_location:
+    type: string_textfield
     weight: 14
     region: content
     settings:
-      rows: 5
+      size: 60
       placeholder: ''
-    third_party_settings:
-      maxlength:
-        maxlength_js: 160
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
-        maxlength_js_enforce: false
+    third_party_settings: {  }
+  field_time:
+    type: time_range_widget
+    weight: 13
+    region: content
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 3

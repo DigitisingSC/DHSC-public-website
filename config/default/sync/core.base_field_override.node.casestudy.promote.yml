@@ -1,14 +1,14 @@
-uuid: 33756766-5a1a-4b94-82b1-502575947d47
+uuid: 9cb157c7-9013-4748-85d3-ad21dbaf3249
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.case_study
-id: node.case_study.status
-field_name: status
+    - node.type.casestudy
+id: node.casestudy.promote
+field_name: promote
 entity_type: node
-bundle: case_study
-label: Published
+bundle: casestudy
+label: 'Promoted to front page'
 description: ''
 required: false
 translatable: true

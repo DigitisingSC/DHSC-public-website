@@ -1,18 +1,18 @@
-uuid: 8b54891c-4c77-48f5-8e85-8ff867fc46c5
+uuid: 160bc6aa-aef6-469d-bfb6-89f1e72e4cf5
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.case_study.field_body_paragraphs
-    - field.field.node.case_study.field_image
-    - field.field.node.case_study.field_summary
-    - node.type.case_study
+    - field.field.node.casestudy.field_body_paragraphs
+    - field.field.node.casestudy.field_image
+    - field.field.node.casestudy.field_summary
+    - node.type.casestudy
   module:
     - entity_reference_revisions
     - user
-id: node.case_study.default
+id: node.casestudy.default
 targetEntityType: node
-bundle: case_study
+bundle: casestudy
 mode: default
 content:
   field_body_paragraphs:

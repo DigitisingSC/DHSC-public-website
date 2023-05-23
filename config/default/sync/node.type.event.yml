@@ -1,4 +1,4 @@
-uuid: 87566a26-1b52-4c61-9dd7-9e6f4088ab0f
+uuid: f57145ac-6424-4239-86f8-b2480ab58c1b
 langcode: en
 status: true
 dependencies:
@@ -9,8 +9,8 @@ third_party_settings:
     available_menus:
       - main
     parent: 'main:'
-name: 'Event page'
-type: event_page
+name: Event
+type: event
 description: ''
 help: ''
 new_revision: true

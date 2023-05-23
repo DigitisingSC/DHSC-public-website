@@ -1,14 +1,14 @@
-uuid: 810ce6bd-c2f4-4b51-8865-2fb022c3587c
+uuid: 49cce787-7a9e-4edc-a397-fa273835de78
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_summary
-    - node.type.case_study
-id: node.case_study.field_summary
+    - node.type.casestudy
+id: node.casestudy.field_summary
 field_name: field_summary
 entity_type: node
-bundle: case_study
+bundle: casestudy
 label: Summary
 description: ''
 required: false

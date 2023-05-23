@@ -1,20 +1,20 @@
-uuid: 3fc08287-5f89-4e23-bcd5-c68a5efd4eb2
+uuid: aa3ec617-19fe-4bcb-b763-45c57d64115f
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.event_page.field_body_paragraphs
-    - field.field.node.event_page.field_date
-    - field.field.node.event_page.field_link
-    - field.field.node.event_page.field_location
-    - field.field.node.event_page.field_time
-    - node.type.event_page
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - node.type.event
   module:
     - user
-id: node.event_page.teaser
+id: node.event.teaser
 targetEntityType: node
-bundle: event_page
+bundle: event
 mode: teaser
 content:
   links:
