@@ -1,0 +1,24 @@
+uuid: 787212e2-d85b-41b0-9bdb-a615d714e97f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.content_page.field_body_paragraphs
+    - node.type.content_page
+  module:
+    - user
+id: node.content_page.teaser
+targetEntityType: node
+bundle: content_page
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_body_paragraphs: true
+  langcode: true
+  search_api_excerpt: true
