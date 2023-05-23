@@ -4,7 +4,6 @@ import videoTwig from "./video.twig";
 import videoBehaviour from "./video.js";
 import './video.scss';
 
-
 export default {
   title: "Design System/Atoms/Video",
 };
