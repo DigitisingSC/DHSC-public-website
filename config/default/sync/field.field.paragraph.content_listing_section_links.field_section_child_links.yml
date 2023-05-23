@@ -5,7 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_section_child_links
     - node.type.dhsc_contents_list_page
-    - node.type.dhsc_homepage
+    - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - paragraphs.paragraphs_type.content_listing_section_links
@@ -26,7 +26,7 @@ settings:
       dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
-      dhsc_homepage: dhsc_homepage
+      landing_page: landing_page
     sort:
       field: _none
       direction: ASC
