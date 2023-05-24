@@ -4,11 +4,9 @@ status: true
 dependencies:
   config:
     - node.type.content_page
-    - node.type.dhsc_contents_list_page
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
-    - node.type.subtopic_page
   module:
     - content_moderation
 id: editorial_workflow
@@ -75,9 +73,7 @@ type_settings:
   entity_types:
     node:
       - content_page
-      - dhsc_contents_list_page
       - landing_page
       - localgov_guides_overview
       - localgov_guides_page
-      - subtopic_page
   default_moderation_state: draft
