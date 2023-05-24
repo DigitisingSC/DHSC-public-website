@@ -45,6 +45,8 @@
         "drupal/seckit": "^2.0",
         "drupal/shield": "^1.7",
         "drupal/time_field": "^2.1",
+        "drupal/viewsreference": "^2.0@beta",
+        "drupal/webform": "^6.1",
         "drush/drush": "^11.4",
         "localgovdrupal/localgov": "^2.0",
         "localgovdrupal/localgov_search_solr": "^1.0@alpha"
@@ -145,6 +147,9 @@
         "patches": {
             "alexku/blt-github-actions": {
                 "Test": "patches/allowstandard-subscription-autodeployment.patch"
+            },
+            "drupal/viewsreference": {
+                "3273497: undefined data on node save": "patches/views-reference-undefined-data-3273497.patch"
             }
         }
     }

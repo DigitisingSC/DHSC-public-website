@@ -1,0 +1,10 @@
+uuid: c6eeeec9-6eeb-4760-a7bf-1648b371997d
+langcode: en
+status: true
+dependencies: {  }
+id: dynamic_content_list
+label: 'Dynamic Content List'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

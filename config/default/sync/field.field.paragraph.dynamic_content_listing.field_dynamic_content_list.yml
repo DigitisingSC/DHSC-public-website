@@ -1,0 +1,67 @@
+uuid: 60da22f6-7593-416a-af4a-412f41e779bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_dynamic_content_list
+    - paragraphs.paragraphs_type.dynamic_content_list
+    - paragraphs.paragraphs_type.dynamic_content_listing
+  module:
+    - entity_reference_revisions
+id: paragraph.dynamic_content_listing.field_dynamic_content_list
+field_name: field_dynamic_content_list
+entity_type: paragraph
+bundle: dynamic_content_listing
+label: 'Dynamic Content List'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      dynamic_content_list: dynamic_content_list
+    negate: 0
+    target_bundles_drag_drop:
+      card_collection:
+        weight: 14
+        enabled: false
+      content_listing:
+        weight: 15
+        enabled: false
+      content_listing_section:
+        weight: 16
+        enabled: false
+      content_listing_section_links:
+        weight: 17
+        enabled: false
+      cta_banner:
+        weight: 18
+        enabled: false
+      dynamic_content_list:
+        weight: 19
+        enabled: true
+      dynamic_content_listing:
+        weight: 20
+        enabled: false
+      from_library:
+        weight: 21
+        enabled: false
+      localgov_image:
+        weight: 22
+        enabled: false
+      localgov_link:
+        weight: 23
+        enabled: false
+      localgov_text:
+        weight: 24
+        enabled: false
+      topic_list_builder:
+        weight: 25
+        enabled: false
+      video:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.cta_banner
+    - paragraphs.paragraphs_type.dynamic_content_listing
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
@@ -37,6 +38,7 @@ settings:
       content_listing: content_listing
       topic_list_builder: topic_list_builder
       from_library: from_library
+      dynamic_content_listing: dynamic_content_listing
     negate: 0
     target_bundles_drag_drop:
       card_collection:
@@ -53,6 +55,9 @@ settings:
         enabled: false
       cta_banner:
         weight: -19
+        enabled: true
+      dynamic_content_listing:
+        weight: 18
         enabled: true
       from_library:
         weight: -16
