@@ -12,14 +12,9 @@
  * @see template_preprocess_region()
  */
 #}
-{%
-  set classes = [
-    'container mx-auto',
-  ]
-%}
-
 {% if content %}
-  <div{{ attributes.addClass(classes) }}>
-    {{ content }}
-  </div>
+  {% include "@organisms/local-tasks/local-tasks.twig" with {
+    'attributes': attributes,
+    'content': content
+  } %}
 {% endif %}

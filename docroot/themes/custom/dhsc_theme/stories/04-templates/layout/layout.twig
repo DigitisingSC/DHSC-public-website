@@ -23,7 +23,9 @@
 
 <main class="t-content" id="main-content">
 
-  {{ content_top }}
+  <div class="container mx-auto">
+    {{ content_top }}
+  </div>
 
   {# Begin Sidebars #}
   {% if has_sidebars %}
@@ -66,7 +68,9 @@
     </div>
   {% endif %}
 
-  {{ content_bottom }}
+  <div class="container mx-auto">
+    {{ content_bottom }}
+  </div>
 
 </main>
 

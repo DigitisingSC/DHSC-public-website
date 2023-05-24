@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import videoComponentTwig from "./video-component.twig";
 import './video-component.scss';
 

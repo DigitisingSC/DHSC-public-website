@@ -1,4 +1,4 @@
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import React from 'react';
 import header from "./header.twig";
 import { Branding } from "../../02-molecules/branding/branding.stories";
@@ -8,8 +8,9 @@ export default {
   content: Branding
 };
 
-const Template = ({ content }) =>
+const Template = ({ attributes, content }) =>
   header({
+    attributes,
     content
   });
 
@@ -19,5 +20,6 @@ const BrandTemplate = (args) => BrandingTwig({
 
 export const Header = Template.bind({});
 Header.args = {
+  attributes: new DrupalAttributes(),
   content: BrandTemplate
 }

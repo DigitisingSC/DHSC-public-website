@@ -12,17 +12,9 @@
  * @see template_preprocess_region()
  */
 #}
-{%
-  set classes = [
-  'o-region',
-  'o-region--' ~ region|clean_class,
-  ]
-%}
-
 {% if content %}
-  <div{{ attributes.addClass(classes) }}>
-    {% include "@organisms/footer/lower-footer-second.twig" with {
-      "content": content
-    } %}
-  </div>
+  {% include "@organisms/footer/lower-footer-second.twig" with {
+    'attributes': attributes,
+    'content': content
+  } %}
 {% endif %}

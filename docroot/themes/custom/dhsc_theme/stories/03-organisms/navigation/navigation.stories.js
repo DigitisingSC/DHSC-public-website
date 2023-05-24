@@ -1,4 +1,4 @@
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import React from 'react';
 import navigation from "./navigation.twig";
 import { MainMenu } from "../../02-molecules/menus/menu-main.stories";
@@ -21,5 +21,5 @@ const MainMenuTemplate = (args) => MainMenuTwig({
 export const Navigation = Template.bind({});
 Navigation.args = {
   content: MainMenuTemplate,
-  attributes: new DrupalAttribute(),
+  attributes: new DrupalAttributes(),
 }

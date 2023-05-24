@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import branding from "./branding.twig";
 import siteLogo from "../../assets/logo.svg";
 export default {

@@ -1,7 +1,8 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import banner from "./banner.twig";
 import "./banner.scss";
+
 export default {
   title: "Design System/Molecules/Banner",
 };

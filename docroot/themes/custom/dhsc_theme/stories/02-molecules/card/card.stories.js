@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import cardArticleTwig from "./card--article.twig";
 import cardEventTwig from "./card--event.twig";
 import cardCaseStudyTwig from "./card--casestudy.twig";
@@ -47,7 +47,7 @@ cardArticle.args = {
   heading: "Get help using technology at your organisation",
   description: "Description goes here",
   date: "12 May 2023",
-  attributes: new DrupalAttribute()
+  attributes: new DrupalAttributes()
 };
 
 export const cardEvent = cardEventTemplate.bind({});
@@ -57,7 +57,7 @@ cardEvent.args = {
   heading: "Get help using technology at your organisation",
   description: "Description goes here",
   date: "Thursday 12 May 2023",
-  attributes: new DrupalAttribute()
+  attributes: new DrupalAttributes()
 };
 
 export const cardCaseStudy = cardCaseStudyTemplate.bind({});
@@ -66,5 +66,5 @@ cardCaseStudy.args = {
   link: "https://www.digitalsocialcare.co.uk/",
   heading: "Get help using technology at your organisation",
   description: "Description goes here",
-  attributes: new DrupalAttribute()
+  attributes: new DrupalAttributes()
 };
