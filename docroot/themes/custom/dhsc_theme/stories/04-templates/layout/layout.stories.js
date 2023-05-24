@@ -4,8 +4,10 @@ import layout from "./layout.twig";
 
 import { Header } from "../../03-organisms/header/header.stories";
 import HeaderTwig from "../../03-organisms/header/header.twig";
-import { Navigation } from "../../03-organisms/navigation/navigation.stories";
-import NavigationTwig from "../../03-organisms/navigation/navigation.twig";
+import { NavigationPrimary } from "../../03-organisms/navigation/navigation.stories";
+import NavigationPrimaryTwig from "../../03-organisms/navigation/navigation--primary.twig";
+import { NavigationSecondary } from "../../03-organisms/navigation/navigation.stories";
+import NavigationSecondaryTwig from "../../03-organisms/navigation/navigation--secondary.twig";
 import { BannerRegion } from "../../03-organisms/banner-region/banner-region.stories";
 import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
 import { BreadcrumbRegion } from "../../03-organisms/breadcrumb-region/breadcrumb-region.stories";
@@ -89,8 +91,11 @@ const Template = ({
 const HeaderTemplate = (args) => HeaderTwig({
   ...Header.args
 });
-const NavigationTemplate = (args) => NavigationTwig({
-  ...Navigation.args
+const NavigationPrimaryTemplate = (args) => NavigationPrimaryTwig({
+  ...NavigationPrimary.args
+});
+const NavigationSecondaryTemplate = (args) => NavigationSecondaryTwig({
+  ...NavigationSecondary.args
 });
 const BannerRegionTemplate = (args) => BannerRegionTwig({
   ...BannerRegion.args
@@ -132,8 +137,8 @@ Layout.args = {
   header: HeaderTemplate,
   search: "Search",
   mobile_search: "Mobile search",
-  primary_menu: NavigationTemplate,
-  secondary_menu: "Secondary menu",
+  primary_menu: NavigationPrimaryTemplate,
+  secondary_menu: NavigationSecondaryTemplate,
   banner: BannerRegionTemplate,
   breadcrumb: BreadcrumbRegionTemplate,
   messages: MessagesRegionTemplate,
