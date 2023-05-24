@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import caseStudyPage from "./casestudy-page.twig";
 
 export default {

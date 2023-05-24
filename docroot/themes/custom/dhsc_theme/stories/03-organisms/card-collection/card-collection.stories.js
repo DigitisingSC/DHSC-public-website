@@ -1,4 +1,4 @@
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import React from 'react';
 import cardCollectionTwig from "./card-collection.twig";
 

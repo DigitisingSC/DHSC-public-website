@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import button from "./button.twig";
 
 export default {
@@ -19,7 +19,7 @@ export const ButtonPrimary = Template.bind({});
 ButtonPrimary.args = {
   title: 'Button primary',
   variant: 'primary',
-  attributes: new DrupalAttribute(),
+  attributes: new DrupalAttributes(),
   tag_name: 'button',
   children: 'Button Primary',
 };
@@ -28,7 +28,7 @@ export const ButtonSecondary = Template.bind({});
 ButtonSecondary.args = {
   title: 'Button secondary',
   variant: 'secondary',
-  attributes: new DrupalAttribute(),
+  attributes: new DrupalAttributes(),
   tag_name: 'button',
   children: 'Button Secondary',
 };

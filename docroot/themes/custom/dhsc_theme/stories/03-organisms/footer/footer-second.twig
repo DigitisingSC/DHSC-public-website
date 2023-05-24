@@ -1,5 +1,9 @@
-<section class="o-footer o-footer--second bg-coolgrey-20">
-  <div class="o-footer__container container mx-auto w-full py-4 tablet:flex tablet:gap-4">
+{% set classes = [
+  'o-footer-region-second',
+  'bg-coolgrey-20'
+] %}
+<section{{ attributes.addClass(classes) }}>
+  <div class="container mx-auto w-full py-4 tablet:flex tablet:gap-4">
     {% if content is iterable  %}
       {% for item in content %}
         {{ item }}

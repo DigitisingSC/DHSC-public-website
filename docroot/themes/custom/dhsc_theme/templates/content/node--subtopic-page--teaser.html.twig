@@ -71,7 +71,8 @@
  */
 #}
 <article{{attributes}}>
-	{% include '@molecules/content-card/content-card.twig' with {
+	{% include '@molecules/card/card.twig' with {
+    'variant': 'article',
     'image': content.field_image,
     'link': path('entity.node.canonical', {'node': node.id }),
     'heading': node.label,

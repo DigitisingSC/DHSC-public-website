@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import footerFirst from "./footer-first.twig";
 import footerSecond from "./footer-second.twig";
 import footerThird from "./footer-third.twig";
@@ -15,8 +15,9 @@ export default {
   title: "Design System/Organisms/Footer",
 };
 
-const Template = ({ content}) =>
+const Template = ({ attributes, content}) =>
   footer({
+    attributes,
     content
   });
 
@@ -26,30 +27,37 @@ const MenuFooterTemplate = (args) => MenuFooterTwig({
 
 export const FooterFirst = Template.bind({});
 FooterFirst.args = {
+  attributes: new DrupalAttributes(),
   content: "Footer first"
 };
 export const FooterSecond = Template.bind({});
 FooterSecond.args = {
+  attributes: new DrupalAttributes(),
   content: "Footer second"
 };
 export const FooterThird = Template.bind({});
 FooterThird.args = {
+  attributes: new DrupalAttributes(),
   content: "Footer third"
 };
 export const Footer = Template.bind({});
 Footer.args = {
+  attributes: new DrupalAttributes(),
   content: { MenuFooterTemplate }
 };
 
 export const LowerFooterFirst = Template.bind({});
 LowerFooterFirst.args = {
+  attributes: new DrupalAttributes(),
   content: "Lower Footer first"
 };
 export const LowerFooterSecond = Template.bind({});
 LowerFooterSecond.args = {
+  attributes: new DrupalAttributes(),
   content: "Lower Footer second"
 };
 export const LowerFooterThird = Template.bind({});
 LowerFooterThird.args = {
+  attributes: new DrupalAttributes(),
   content: "Lower Footer third"
 };

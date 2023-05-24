@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import layout from "./layout.twig";
 
 import { Header } from "../../03-organisms/header/header.stories";
@@ -10,6 +10,10 @@ import { BannerRegion } from "../../03-organisms/banner-region/banner-region.sto
 import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
 import { BreadcrumbRegion } from "../../03-organisms/breadcrumb-region/breadcrumb-region.stories";
 import breadcrumbRegionTwig from "../../03-organisms/breadcrumb-region/breadcrumb-region.twig";
+import { LocalTasks } from "../../03-organisms/local-tasks/local-tasks.stories";
+import localTasksRegionTwig from "../../03-organisms/local-tasks/local-tasks.twig";
+import { MessagesRegion } from "../../03-organisms/messages-region/messages-region.stories";
+import messagesRegionTwig from "../../03-organisms/messages-region/messages-region.twig";
 import {
   Footer,
   FooterFirst,
@@ -94,6 +98,12 @@ const BannerRegionTemplate = (args) => BannerRegionTwig({
 const BreadcrumbRegionTemplate = (args) => breadcrumbRegionTwig({
   ...BreadcrumbRegion.args
 });
+const MessagesRegionTemplate = (args) => messagesRegionTwig({
+  ...MessagesRegion.args
+});
+const LocalTasksRegionTemplate = (args) => localTasksRegionTwig({
+  ...LocalTasks.args
+});
 const FooterFirstTemplate = (args) => FooterFirstTwig({
   ...FooterFirst.args
 });
@@ -119,7 +129,6 @@ const LowerFooterThirdTemplate = (args) => LowerFooterThirdTwig({
 export const Layout = Template.bind({});
 Layout.args = {
   has_sidebars: true,
-  tabs: "Tabs",
   header: HeaderTemplate,
   search: "Search",
   mobile_search: "Mobile search",
@@ -127,7 +136,8 @@ Layout.args = {
   secondary_menu: "Secondary menu",
   banner: BannerRegionTemplate,
   breadcrumb: BreadcrumbRegionTemplate,
-  messages: "Messages",
+  messages: MessagesRegionTemplate,
+  tabs: LocalTasksRegionTemplate,
   content_top: "Content top",
   content: "Content",
   content_bottom: "Content bottom",

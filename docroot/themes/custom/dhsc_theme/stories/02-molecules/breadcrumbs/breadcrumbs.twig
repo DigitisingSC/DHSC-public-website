@@ -1,4 +1,7 @@
-<nav class="m-breadcrumbs" aria-labelledby="system-breadcrumbs">
+{% set classes = [
+  'm-breadcrumbs'
+] %}
+<nav{{ attributes.addClass(classes) }} aria-labelledby="system-breadcrumbs">
   <h2 id="system-breadcrumbs" class="sr-only">{{ 'Breadcrumbs'|t }}</h2>
   <ol class="m-breadcrumbs__list list-none flex">
     {% for item in items %}

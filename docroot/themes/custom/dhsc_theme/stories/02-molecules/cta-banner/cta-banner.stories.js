@@ -1,5 +1,5 @@
 import React from 'react';
-import DrupalAttribute from '../../../.storybook/drupalAttributes';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import ctaBanner from "./cta-banner.twig";
 import "./cta-banner.scss";
 import image from '../../assets/images/content-card.jpg';
@@ -37,7 +37,7 @@ const Template = ({
 
 export const CTABanner = Template.bind({});
 CTABanner.args = {
-  attributes: new DrupalAttribute(),
+  attributes: new DrupalAttributes(),
   layout: "left",
   title: "CTA Banner",
   description: "This is a CTA Banner",
