@@ -9,10 +9,8 @@ dependencies:
     - media.type.document
     - media.type.image
     - media.type.remote_video
-    - node.type.dhsc_contents_list_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
-    - node.type.subtopic_page
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -52,12 +50,8 @@ permissions:
   - 'create media'
   - 'create paragraph library item'
   - 'create remote_video media'
-  - 'create subtopic_page content'
   - 'create url aliases'
-  - 'delete any dhsc_contents_list_page content'
-  - 'delete dhsc_contents_list_page revisions'
   - 'delete media'
-  - 'delete own dhsc_contents_list_page content'
   - 'delete own document media'
   - 'delete own image media'
   - 'delete own localgov_guides_overview content'
@@ -66,7 +60,6 @@ permissions:
   - 'delete own localgov_services_page content'
   - 'delete own localgov_services_sublanding content'
   - 'delete own remote_video media'
-  - 'delete own subtopic_page content'
   - 'display eu cookie compliance popup'
   - 'edit any document media'
   - 'edit any image media'
@@ -79,17 +72,14 @@ permissions:
   - 'edit own localgov_services_page content'
   - 'edit own localgov_services_sublanding content'
   - 'edit own remote_video media'
-  - 'edit own subtopic_page content'
   - 'edit paragraph library item'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
-  - 'revert dhsc_contents_list_page revisions'
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
   - 'revert localgov_services_landing revisions'
   - 'revert localgov_services_page revisions'
   - 'revert localgov_services_sublanding revisions'
-  - 'revert subtopic_page revisions'
   - 'update media'
   - 'use editorial_workflow transition create_new_draft'
   - 'use editorial_workflow transition publish'
@@ -98,7 +88,6 @@ permissions:
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view all revisions'
-  - 'view dhsc_contents_list_page revisions'
   - 'view editoria11y checker'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
@@ -107,6 +96,5 @@ permissions:
   - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
-  - 'view subtopic_page revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

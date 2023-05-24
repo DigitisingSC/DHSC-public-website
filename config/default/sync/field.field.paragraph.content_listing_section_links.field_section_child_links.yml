@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_section_child_links
-    - node.type.dhsc_contents_list_page
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
@@ -23,7 +22,6 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
       landing_page: landing_page

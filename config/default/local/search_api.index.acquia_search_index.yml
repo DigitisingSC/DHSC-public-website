@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.body
     - field.storage.node.field_body_paragraphs
-    - field.storage.node.field_description
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
     - search_api.server.acquia_search_server
@@ -82,15 +81,6 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_body_paragraphs
-  field_description:
-    label: 'Subtopic description'
-    datasource_id: 'entity:node'
-    property_path: field_description
-    type: 'solr_text_custom:edge'
-    boost: 1.5
-    dependencies:
-      config:
-        - field.storage.node.field_description
   localgov_guides_description:
     label: 'Guide description'
     datasource_id: 'entity:node'
