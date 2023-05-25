@@ -39,9 +39,7 @@
  */
 #}
 
-{% include '@organisms/teaser-collection/teaser-collection.twig' with {
+{% include '@organisms/dynamic-content-listing/dynamic-content-listing.twig' with {
   'attributes': attributes,
-  'title': content.field_listing_title,
-  'items': content.field_list_item,
-  'link': content.field_cta_link
+  'items': content.field_dynamic_content_list,
 } %}

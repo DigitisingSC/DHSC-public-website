@@ -1,0 +1,25 @@
+{% set classes = [
+  'm-teaser',
+  'pb-2 mb-2',
+  'border-b-2',
+  'border-top-coolgrey'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if title %}
+    <div class="m-teaser__title mb-2">
+      <h3 class="text-base">
+      {% if link %}
+        <a href="{{ link }}" class="text-green underline hover:no-underline">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+      </h3>
+    </div>
+  {% endif %}
+  {% if date %}
+    <div class="m-teaser__date">
+      {{ date }}
+    </div>
+  {% endif %}
+</div>
+

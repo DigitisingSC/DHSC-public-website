@@ -1,0 +1,26 @@
+{% set classes = [
+  'o-teaser-collection'
+] %}
+<section{{ attributes.addClass(classes) }}>
+	<div class="o-teaser-collection__container py-4">
+    {% if title %}
+  		<h2 class="o-teaser-collection__title text-md mb-2">{{ title }}</h2>
+    {% endif %}
+    {% if items %}
+      <div class="o-teaser-collection__items">
+        {% if items is iterable %}
+          {% for key, item in items if key|first != '#' %}
+            {{ item }}
+          {% endfor %}
+        {% else %}
+          {{ items }}
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if link %}
+      <div class="o-teaser-collection__link mt-2">
+        {{ link }}
+      </div>
+    {% endif %}
+	</div>
+</section>
