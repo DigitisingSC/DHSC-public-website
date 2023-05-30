@@ -2,25 +2,25 @@
   'o-card-collection'
 ] %}
 <section{{attributes.addClass(classes)}}>
-	<div class="o-card_collection__container py-4">
-		{% if title %}
-			<h2 class="o-card_collection__title">{{ title }}</h2>
-		{% endif %}
-		{% if items is not empty %}
-			<div class="o-card_collection__listing tablet:flex tablet:gap-4">
-				{% if items is iterable %}
-					{% for key, item in items if key|first != '#' %}
-						{{ item }}
-					{% endfor %}
-				{% else %}
-					{{ items }}
-				{% endif %}
-			</div>
-		{% endif %}
-	</div>
-  {% if link %}
-    <div class="o-card-collection__link mt-24">
-      {{ link }}
-    </div>
-  {% endif %}
+  <div class="o-card_collection__container py-4">
+    {% if title %}
+      <h2 class="o-card_collection__title">{{ title }}</h2>
+    {% endif %}
+    {% if items is not empty %}
+      <div class="o-card_collection__listing tablet:flex tablet:gap-4">
+        {% if items is iterable %}
+          {% for key, item in items if key|first != '#' %}
+            {{ item }}
+          {% endfor %}
+        {% else %}
+          {{ items }}
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if link %}
+      <div class="o-teaser-collection__link mt-2">
+        {{ link }}
+      </div>
+    {% endif %}
+  </div>
 </section>
