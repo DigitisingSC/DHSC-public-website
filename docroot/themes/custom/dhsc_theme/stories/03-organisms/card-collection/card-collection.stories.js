@@ -1,6 +1,7 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import cardCollectionTwig from "./card-collection.twig";
+import './card-collection.scss';
 
 import { cardArticle } from "../../02-molecules/card/card.stories.js";
 import cardArticleTwig from "../../02-molecules/card/card--article.twig";
@@ -25,11 +26,12 @@ const cardCaseStudyTemplate = (args) => cardCaseStudyTwig({
   ...cardCaseStudy.args
 });
 
-const cardCollectionTemplate = ({ attributes, title, items }) =>
+const cardCollectionTemplate = ({ attributes, title, items, link }) =>
   cardCollectionTwig({
     attributes,
     title,
-    items
+    items,
+    link
   });
 
 export const cardCollection = cardCollectionTemplate.bind({});
@@ -38,4 +40,5 @@ cardCollection.args = {
   attributes: new DrupalAttributes(),
   title: 'Card Collection',
   items: { cardArticleTemplate, cardEventTemplate, cardCaseStudyTemplate },
+  link: "<a href='#'>This is a link</a>",
 }
