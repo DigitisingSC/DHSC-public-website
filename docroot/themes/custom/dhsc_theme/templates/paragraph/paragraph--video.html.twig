@@ -48,12 +48,28 @@
   ]
 %}
 
+{% set spriteSrc = directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-right',
+  } %}
+{% endset %}
+
+{% set video %}
+  {% include '@atoms/video/video.twig' with {
+    'media_thumbnail': media_thumbnail,
+    'media_thumbnail_legacy': media_thumbnail_legacy,
+    'iframe': content.field_video,
+    'icon': icon,
+  } %}
+{% endset %}
+
 <div{{ attributes.addClass(classes) }}>
 	{% include '@molecules/video-component/video-component.twig' with {
     'header': content.localgov_title,
     'description': content.localgov_text,
-    'media_thumbnail': media_thumbnail,
-    'media_thumbnail_legacy': media_thumbnail_legacy,
-    'iframe': content.field_video
+    'video': video,
   } %}
 </div>

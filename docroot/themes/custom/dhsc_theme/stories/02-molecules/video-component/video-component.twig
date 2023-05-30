@@ -3,30 +3,19 @@
   'm-video',
 ] | sort | join(' ') | trim %}
 
-{% set attributes = attributes
-  .addClass(classes)
-%}
-
 {# Template #}
 <div {{ attributes.addClass(classes) }}>
-	<div class="container">
+  {% if header %}
+    <h2 class="relative flex items-center">{{ header }}</h2>
+  {% endif %}
 
-		{% if header %}
-			<h2 class="relative flex items-center">{{ header }}</h2>
-		{% endif %}
+  {% if description %}
+    <div class="m-video__description mb-4 text-secondary-500 text-base">
+      {{ description }}
+    </div>
+  {% endif %}
 
-		{% if description %}
-			<div class="m-video__description mb-8 text-secondary-500 text-xl lg:text-2xl font-serif">
-				{{ description }}
-			</div>
-		{% endif %}
-
-		<div class="m-video__content aspect-w-16 aspect-h-9">
-			{% include '@atoms/video/video.twig' with {
-        iframe: iframe,
-        media_thumbnail: media_thumbnail,
-        media_thumbnail_legacy: media_thumbnail_legacy,
-      } %}
-		</div>
-	</div>
+  <div class="m-video__content aspect-w-16 aspect-h-9">
+    {{ video }}
+  </div>
 </div>

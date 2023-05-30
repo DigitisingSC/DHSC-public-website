@@ -15,5 +15,5 @@ const Template = ({ sprite, icon }) =>
 export const svgIcon = Template.bind({});
 svgIcon.args = {
   sprite: sprite,
-  icon: 'youtube',
+  icon: 'chevron-right',
 };
