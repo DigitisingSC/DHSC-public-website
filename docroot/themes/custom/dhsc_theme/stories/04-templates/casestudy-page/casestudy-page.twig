@@ -2,6 +2,14 @@
   Template
 #}
 <article class="t-casestudy-page">
-  <h1>{{ title }}</H1>
-  {{ content }}
+  {% if title %}
+    <div class="t-casestudy-page__title">
+      <h1>{{ title }}</H1>
+    </div>
+  {% endif %}
+  {% if content %}
+    <div class="t-casestudy-page__content">
+      {{ content }}
+    </div>
+  {% endif%}
 </article>

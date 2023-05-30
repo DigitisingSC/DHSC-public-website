@@ -1,13 +1,15 @@
+{% set classes = [
+  'm-content-list'
+] %}
 {#
 Template
 #}
-<section class="m-content-list">
+<section{{ attributes.addClass(classes) }}>
   {% if section_title %}
     <h2 class="m-content-list__title">
       {{ section_title }}
     </h2>
   {% endif %}
-
   <ul class="m-content-list__links">
     {% for section_link_group in section_links %}
       <li class="m-content-list__links">
@@ -22,7 +24,5 @@ Template
       </li>
     {% endfor %}
   </ul>
-
-
 </section>
 

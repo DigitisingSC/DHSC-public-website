@@ -2,7 +2,19 @@
   Template
 #}
 <article class="t-article-page">
-	<h1>{{ title }}</h1>
-	{{ article_details }}
-	{{ content }}
+  {% if title %}
+  <div class="t-article-page__title">
+    <h1>{{ title }}</h1>
+  </div>
+	{% endif %}
+  {% if article_details %}
+    <div class="t-article-page__details">
+      {{ article_details }}
+    </div>
+  {% endif %}
+  {% if content %}
+    <div class="t-article-page__content">
+      {{ content }}
+    </div>
+  {% endif %}
 </article>

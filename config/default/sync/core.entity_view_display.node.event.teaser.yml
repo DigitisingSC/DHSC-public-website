@@ -11,22 +11,27 @@ dependencies:
     - field.field.node.event.field_time
     - node.type.event
   module:
+    - datetime
     - user
 id: node.event.teaser
 targetEntityType: node
 bundle: event
 mode: teaser
 content:
-  links:
-    settings: {  }
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: human_readable
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   field_body_paragraphs: true
-  field_date: true
   field_link: true
   field_location: true
   field_time: true
   langcode: true
+  links: true
   search_api_excerpt: true

@@ -1,0 +1,48 @@
+uuid: e291371c-5a87-432c-8ecd-3a4691a9fb63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dynamic_content_list.field_cta_link
+    - field.field.paragraph.dynamic_content_list.field_list_item
+    - field.field.paragraph.dynamic_content_list.field_listing_title
+    - paragraphs.paragraphs_type.dynamic_content_list
+  module:
+    - link
+    - viewsreference
+id: paragraph.dynamic_content_list.default
+targetEntityType: paragraph
+bundle: dynamic_content_list
+mode: default
+content:
+  field_cta_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_list_item:
+    type: viewsreference_formatter
+    label: above
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_listing_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

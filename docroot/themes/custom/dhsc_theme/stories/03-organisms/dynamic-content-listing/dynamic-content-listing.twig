@@ -1,0 +1,23 @@
+{% set classes = [
+  'o-dynamic-content-listing',
+  'py-4'
+] %}
+
+<section{{ attributes.addClass(classes) }}>
+  {% if title %}
+    <div class="o-dynamic-content-listing__title">
+      <h2>{{ title }}</h2>
+    </div>
+  {% endif %}
+  {% if items %}
+    <div class="o-dynamic-content-listing__items tablet:grid tablet:grid-cols-2 tablet:auto-rows-max tablet:gap-4">
+      {% if items is iterable %}
+        {% for key, item in items if key|first != '#' %}
+          {{ item }}
+        {% endfor %}
+      {% else %}
+        {{ items }}
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
