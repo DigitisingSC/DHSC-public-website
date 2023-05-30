@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.card_collection.field_card_items
+    - field.field.paragraph.card_collection.field_cta_link
     - field.field.paragraph.card_collection.localgov_title
     - paragraphs.paragraphs_type.card_collection
+  module:
+    - link
 id: paragraph.card_collection.default
 targetEntityType: paragraph
 bundle: card_collection
@@ -19,6 +22,18 @@ content:
       link: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_cta_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
   localgov_title:
     type: string
