@@ -1,0 +1,32 @@
+uuid: 1f9d482d-a680-4fe3-af2f-caf1b7a3d7d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_form
+    - paragraphs.paragraphs_type.newsletter_signup
+    - webform.webform.newsletter_signup
+  module:
+    - webform
+id: paragraph.newsletter_signup.field_form
+field_name: field_form
+entity_type: paragraph
+bundle: newsletter_signup
+label: Form
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 9a89275e-61dd-4a11-b559-c9a2bf4f08a9
+    default_data: ''
+    status: open
+    open: ''
+    close: ''
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

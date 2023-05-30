@@ -1,0 +1,10 @@
+uuid: b294bcaa-0134-4ed6-b6d2-1595a90579bf
+langcode: en
+status: true
+dependencies: {  }
+id: newsletter_signup
+label: 'Newsletter Signup'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }
