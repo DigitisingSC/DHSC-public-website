@@ -150,6 +150,9 @@
             },
             "drupal/viewsreference": {
                 "3273497: undefined data on node save": "patches/views-reference-undefined-data-3273497.patch"
+            },
+             "drupal/autologout": {
+                "3301642: notice on login when destination set": "patches/autologout-notice-login-destination-3301642.patch"
             }
         }
     }
