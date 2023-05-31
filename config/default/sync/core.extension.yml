@@ -24,6 +24,8 @@ module:
   crop: 0
   datetime: 0
   dbal: 0
+  dhsc_result_viewer: 0
+  dhsc_site: 0
   diff: 0
   dynamic_page_cache: 0
   editor: 0

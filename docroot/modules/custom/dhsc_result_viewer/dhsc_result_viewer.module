@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Module to create result pages.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dhsc_result_viewer_theme() {
+  return [
+    'dhsc_results_list' => [
+      'variables' => [
+        'alerts' => [],
+        'warnings' => [],
+        'positives' => [],
+        'title' => NULL,
+        'summary' => NULL,
+        'green_tab_label' => NULL,
+        'yellow_tab_label' => NULL,
+        'orange_tab_label' => NULL,
+        'no_result' => NULL,
+        'result_buttons' => NULL,
+      ],
+    ],
+    'result_item' => [
+      'variables' => [
+        'url' => NULL,
+        'category' => NULL,
+      ],
+    ],
+  ];
+}

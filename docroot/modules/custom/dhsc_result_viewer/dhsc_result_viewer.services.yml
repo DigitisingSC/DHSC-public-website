@@ -1,0 +1,4 @@
+services:
+  dhsc_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\ResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
