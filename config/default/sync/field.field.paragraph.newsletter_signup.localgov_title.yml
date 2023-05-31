@@ -1,0 +1,19 @@
+uuid: 56c18b07-c5a6-4d5b-8af8-e2612ba9bfc1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_title
+    - paragraphs.paragraphs_type.newsletter_signup
+id: paragraph.newsletter_signup.localgov_title
+field_name: localgov_title
+entity_type: paragraph
+bundle: newsletter_signup
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
