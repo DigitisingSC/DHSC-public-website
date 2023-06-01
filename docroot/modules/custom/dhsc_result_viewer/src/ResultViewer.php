@@ -110,7 +110,12 @@ class ResultViewer implements ResultViewerInterface {
         $values[] = [
           '#theme' => 'result_item',
           '#title' => $node->getTitle(),
-          '#url' => $node->toUrl()->toString(),
+          '#answer' => ucfirst(str_replace('_', ' ' , explode('_', $node->get('field_possible_answers')->value, 3)[2])),
+          '#content' => [
+            '#type' => 'processed_text',
+            '#text' => $node->get('body')->value,
+            '#format' => 'full_html',
+          ],
         ];
     }
 

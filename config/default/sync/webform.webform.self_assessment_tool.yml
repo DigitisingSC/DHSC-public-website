@@ -21,7 +21,7 @@ elements: |-
     processed_text:
       '#type': processed_text
       '#text': |
-        <p>Does you organisation have access to a reliable, fast internet connection service?</p>
+        <h3>Does you organisation have access to a reliable, fast internet connection service?</h3>
       '#format': basic_html
     internet_connection_options:
       '#type': radios
@@ -37,7 +37,7 @@ elements: |-
     processed_text_2:
       '#type': processed_text
       '#text': |
-        <p>Does you organisation have access to secure email?</p>
+        <h3>Does you organisation have access to secure email?</h3>
       '#format': basic_html
     secure_email_options:
       '#type': radios
@@ -51,6 +51,10 @@ elements: |-
     '#type': hidden
     '#title': 'Submission ID'
     '#default_value': '[webform_submission:sid]'
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Next
 css: ''
 javascript: ''
 settings:

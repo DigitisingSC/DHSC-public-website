@@ -20,8 +20,9 @@ function dhsc_result_viewer_theme() {
     ],
     'result_item' => [
       'variables' => [
-        'url' => NULL,
         'title' => NULL,
+        'answer' => NULL,
+        'content' => NULL,
       ],
     ],
   ];
