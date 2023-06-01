@@ -89,18 +89,11 @@ class DhscResultSummaryController extends ControllerBase {
   public function build() {
     $config = $this->configFactory->get(DhscResultSummaryForm::SETTINGS);
     if ($result = $this->getResults()) {
-      $result_buttons = $this->resultViewer->getButtons();
       $element = [
         '#theme' => 'dhsc_results_list',
-        '#alerts' => isset($result['alerts']) ? $result['alerts'] : [],
-        '#warnings' => isset($result['warnings']) ? $result['warnings'] : [],
-        '#positives' => isset($result['positives']) ? $result['positives'] : [],
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
-        '#green_tab_label' => $config->get('green_tab_label') ? $config->get('green_tab_label') : NULL,
-        '#yellow_tab_label' => $config->get('yellow_tab_label') ? $config->get('yellow_tab_label') : NULL,
-        '#orange_tab_label' => $config->get('orange_tab_label') ? $config->get('orange_tab_label') : NULL,
-        '#result_buttons' => $result_buttons,
+        '#result' => $result,
       ];
     }
     else {

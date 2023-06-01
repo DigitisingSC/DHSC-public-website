@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.recommendation.body
+    - field.field.node.recommendation.field_category
     - field.field.node.recommendation.field_possible_answers
     - node.type.recommendation
   module:
@@ -30,6 +31,16 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_category:
+    type: entity_reference_autocomplete
+    weight: 123
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_possible_answers:
     type: string_textfield

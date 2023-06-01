@@ -53,28 +53,6 @@ class DhscResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
-    $form['green_tab_label'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Green tab label'),
-      '#default_value' => $config->get('green_tab_label'),
-      '#required' => TRUE,
-    ];
-
-    $form['yellow_tab_label'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Yellow tab label'),
-      '#default_value' => $config->get('yellow_tab_label'),
-      '#required' => TRUE,
-    ];
-
-    $form['orange_tab_label'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Orange tab label'),
-      '#default_value' => $config->get('orange_tab_label'),
-      '#required' => TRUE,
-    ];
-
-
     return parent::buildForm($form, $form_state);
   }
 
@@ -85,9 +63,6 @@ class DhscResultSummaryForm  extends ConfigFormBase {
     $this->configFactory->getEditable(static::SETTINGS)
       ->set('title', $form_state->getValue('title'))
       ->set('summary', $form_state->getValue('summary'))
-      ->set('green_tab_label', $form_state->getValue('green_tab_label'))
-      ->set('yellow_tab_label', $form_state->getValue('yellow_tab_label'))
-      ->set('orange_tab_label', $form_state->getValue('orange_tab_label'))
       ->save();
 
     parent::submitForm($form, $form_state);

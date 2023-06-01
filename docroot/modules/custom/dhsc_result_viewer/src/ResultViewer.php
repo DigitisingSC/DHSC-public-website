@@ -103,32 +103,18 @@ class ResultViewer implements ResultViewerInterface {
     if (!$nids) {
       return;
     }
-    $color_group = [];
+
     $nodes = $this->nodeStorage->loadMultiple($nids);
+
     foreach ($nodes as $node) {
-      if (!$node->get('field_color')->isEmpty()) {
-        $values = [
+        $values[] = [
           '#theme' => 'result_item',
+          '#title' => $node->getTitle(),
           '#url' => $node->toUrl()->toString(),
-          '#category' => $this->getResultCategoryLabel($node),
         ];
-        switch ($this->getColorName($node)) {
-          case 'orange':
-            $color_group['alerts'][] = $values;
-            break;
-
-          case 'yellow':
-            $color_group['warnings'][] = $values;
-            break;
-
-          case 'green':
-            $color_group['positives'][] = $values;
-            break;
-        }
-      }
     }
 
-    return $color_group;
+    return $values;
   }
 
   /**
@@ -156,7 +142,7 @@ class ResultViewer implements ResultViewerInterface {
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data, $top_tips = FALSE) {
+  protected function getResultIds(array $data) {
     $categories = $this->getCategories();
     $nids = [];
     /** @var TermInterface $category */

@@ -46,7 +46,7 @@ elements: |-
       '#options':
         secure_email_yes: 'Yes'
         secure_email_no: 'No'
-        seucre_email_not_sure: 'Not sure'
+        secure_email_not_sure: 'Not sure'
   submission_id:
     '#type': hidden
     '#title': 'Submission ID'

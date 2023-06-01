@@ -3,20 +3,17 @@
     <div class="core">
       <div class="sub-core">
         <section class="header">
+          {% if summary %}
+            <section class="-header-intro">
+              <p>{{ summary }}</p>
+            </section>
+          {% endif %}
           <div class="section-title">
-            {% if top_tip_sub_title %}
-              <p>{{ top_tip_sub_title }}</p>
-            {% endif %}
             {% if title %}
               <h1>{{ title }}</h1>
             {% endif %}
           </div>
         </section>
-        {% if summary %}
-          <section class="-header-intro">
-            <p>{{ summary }}</p>
-          </section>
-        {% endif %}
         <section class="app_results">
           <div class="app_section_inner">
             {% if no_result %}
@@ -25,52 +22,12 @@
               </div>
             {% else %}
               <div class="app_results_table">
-                {% if alerts %}
-                  <div class="app_results_tab_content">
-                    {% if orange_tab_label %}
-                      <div class="app_results_heading alert">
-                        <h3>{{ orange_tab_label }}</h3>
-                      </div>
-                    {% endif %}
-                    <ol class="app_results_list">
-                      {% for alert in alerts %}
-                        <li class="app_results_list_item alert">{{ alert }}</li>
-                      {% endfor %}
-                    </ol>
-                  </div>
-                {% endif %}
-                {% if warnings %}
-                  <div class="app_results_tab_content">
-                    {% if yellow_tab_label %}
-                      <div class="app_results_heading warning">
-                        <h3>{{ yellow_tab_label }}</h3>
-                      </div>
-                    {% endif %}
-                    <ol class="app_results_list">
-                      {% for warning in warnings %}
-                        <li class="app_results_list_item warning">{{ warning }}</li>
-                      {% endfor %}
-                    </ol>
-                  </div>
-                {% endif %}
-                {% if positives %}
-                  <div class="app_results_tab_content">
-                    {% if green_tab_label %}
-                      <div class="app_results_heading positive">
-                        <h3>{{ green_tab_label }}</h3>
-                      </div>
-                    {% endif %}
-                    <ol class="app_results_list">
-                      {% for positive in positives %}
-                        <li class="app_results_list_item positive">{{ positive }}</li>
-                      {% endfor %}
-                    </ol>
-                  </div>
-                {% endif %}
+                <ul>
+                  {{ result }}
+                </ul>
               </div>
             {% endif %}
           </div>
-          {{ result_buttons }}
         </section>
       </div>
     </div>

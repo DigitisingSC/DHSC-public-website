@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.recommendation.body
+    - field.field.node.recommendation.field_category
     - field.field.node.recommendation.field_possible_answers
     - node.type.recommendation
   module:
@@ -29,6 +30,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_category: true
   field_possible_answers: true
   langcode: true
   search_api_excerpt: true
