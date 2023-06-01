@@ -35,8 +35,10 @@ class setSubmissionIdHandler extends WebformHandlerBase
    */
   public function postSave(WebformSubmissionInterface $webform_submission, $update = TRUE)
   {
-   // @todo save submission id in tempstore to access submission values
-   // $webform_submission->id();
+    $sid = $webform_submission->id();
+    if ($sid) {
+      $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
+      $tempstore->set('sid', $sid);
+    }
   }
-
 }
