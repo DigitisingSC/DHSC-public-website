@@ -3,24 +3,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.recommendation.body
+    - field.field.node.recommendation.field_body_paragraphs
     - field.field.node.recommendation.field_category
     - field.field.node.recommendation.field_possible_answers
     - node.type.recommendation
   module:
-    - text
+    - entity_reference_revisions
     - user
 id: node.recommendation.default
 targetEntityType: node
 bundle: recommendation
 mode: default
 content:
-  body:
-    type: text_default
-    label: hidden
-    settings: {  }
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   links:
     settings: {  }

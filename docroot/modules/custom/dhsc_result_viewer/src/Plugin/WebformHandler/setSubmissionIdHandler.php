@@ -2,7 +2,6 @@
 
 namespace Drupal\dhsc_result_viewer\Plugin\WebformHandler;
 
-use Drupal\Core\Form\FormStateInterface;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 

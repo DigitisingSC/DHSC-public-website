@@ -113,7 +113,7 @@ class ResultViewer implements ResultViewerInterface {
           '#answer' => ucfirst(str_replace('_', ' ' , explode('_', $node->get('field_possible_answers')->value, 3)[2])),
           '#content' => [
             '#type' => 'processed_text',
-            '#text' => $node->get('body')->value,
+            '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
             '#format' => 'full_html',
           ],
         ];
