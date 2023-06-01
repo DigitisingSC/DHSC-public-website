@@ -1,10 +1,18 @@
+{% if result_variant %}
+  {% set variant = {
+        '#type':   'processed_text',
+        '#text':    result_variant.value,
+        '#format': 'full_html',
+  } %}
+{% endif %}
+
 <div id="content" role="main">
   <div class="content_align">
     <div class="core">
       <div class="sub-core">
         <section class="header">
           {% if summary %}
-            <section class="-header-intro">
+            <section class="section-header-intro">
               <p>{{ summary }}</p>
             </section>
           {% endif %}
@@ -13,6 +21,11 @@
               <h1>{{ title }}</h1>
             {% endif %}
           </div>
+          {% if variant %}
+            <div class="section-result-variant">
+              {{ variant }}
+            </div>
+          {% endif %}
         </section>
         <section class="app_results">
           <div class="app_section_inner">

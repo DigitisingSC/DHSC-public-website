@@ -53,6 +53,16 @@ class DhscResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $results_variant_text_default = $config->get('results_variant_text');
+    $form['results_variant_text'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Results variant text'),
+      '#default_value' => $results_variant_text_default['value'],
+      '#format' => 'full_html',
+      '#allowed_formats' => ['full_html'],
+      '#required' => TRUE,
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -63,6 +73,7 @@ class DhscResultSummaryForm  extends ConfigFormBase {
     $this->configFactory->getEditable(static::SETTINGS)
       ->set('title', $form_state->getValue('title'))
       ->set('summary', $form_state->getValue('summary'))
+      ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 
     parent::submitForm($form, $form_state);

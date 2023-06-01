@@ -63,7 +63,7 @@ class DhscResultSummaryController extends ControllerBase {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
-      $container->get('dhsc_result_viewer.service')
+      $container->get('dhsc_result_viewer.service'),
     );
   }
 
@@ -89,12 +89,17 @@ class DhscResultSummaryController extends ControllerBase {
   public function build() {
     $config = $this->configFactory->get(DhscResultSummaryForm::SETTINGS);
 
+    // Get the value from tempstore if we need to display a result variant.
     $result_variant = $this->resultViewer->questionsAllYes();
+
+    // Reset the value if question choices are edited
+    // @todo may need to do this on another action
+    $this->resultViewer->questionsAllReset();
 
     if ($result = $this->getResults()) {
       $element = [
         '#theme' => 'dhsc_results_list',
-        '#result_variant' => $result_variant,
+        '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#result' => $result,

@@ -206,6 +206,14 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
+  public function questionsAllReset()
+  {
+    return $this->tempStore->set('yes_to_all_questions', NULL);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getSubmission() {
     $sid = $this->getSubmissionId();
     if ($sid) {

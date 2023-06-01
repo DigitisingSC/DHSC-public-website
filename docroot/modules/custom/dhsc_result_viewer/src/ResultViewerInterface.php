@@ -45,6 +45,11 @@ interface ResultViewerInterface {
   public function questionsAllYes();
 
   /**
+   * Reset webform question completion.
+   */
+  public function questionsAllReset();
+
+  /**
    * Get webform submission.
    *
    * @return mixed
