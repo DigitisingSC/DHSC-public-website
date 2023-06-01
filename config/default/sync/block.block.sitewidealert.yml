@@ -1,0 +1,20 @@
+uuid: d2319ff1-b865-4336-8f17-b7ccccb2026f
+langcode: en
+status: true
+dependencies:
+  module:
+    - sitewide_alert_block
+  theme:
+    - dhsc_theme
+id: sitewidealert
+theme: dhsc_theme
+region: content_top
+weight: -6
+provider: null
+plugin: sitewide_alert_block
+settings:
+  id: sitewide_alert_block
+  label: 'Sitewide Alert'
+  label_display: '0'
+  provider: sitewide_alert_block
+visibility: {  }
