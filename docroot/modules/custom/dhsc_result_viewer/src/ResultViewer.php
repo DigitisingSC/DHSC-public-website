@@ -198,6 +198,14 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
+  public function questionsAllYes()
+  {
+    return $this->tempStore->get('yes_to_all_questions');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getSubmission() {
     $sid = $this->getSubmissionId();
     if ($sid) {

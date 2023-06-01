@@ -88,9 +88,13 @@ class DhscResultSummaryController extends ControllerBase {
    */
   public function build() {
     $config = $this->configFactory->get(DhscResultSummaryForm::SETTINGS);
+
+    $result_variant = $this->resultViewer->questionsAllYes();
+
     if ($result = $this->getResults()) {
       $element = [
         '#theme' => 'dhsc_results_list',
+        '#result_variant' => $result_variant,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#result' => $result,

@@ -35,6 +35,15 @@ interface ResultViewerInterface {
    */
   public function getSubmissionId();
 
+
+  /**
+   * Get webform question completion.
+   *
+   * @return boolean
+   *   Return yes_to_all_questions.
+   */
+  public function questionsAllYes();
+
   /**
    * Get webform submission.
    *
