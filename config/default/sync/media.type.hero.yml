@@ -1,0 +1,14 @@
+uuid: 58f09a60-67ed-411f-b95c-a9ee12498792
+langcode: en
+status: true
+dependencies: {  }
+id: hero
+label: Hero
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

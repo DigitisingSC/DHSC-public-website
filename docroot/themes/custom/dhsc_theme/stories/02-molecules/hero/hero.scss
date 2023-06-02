@@ -1,0 +1,35 @@
+.m-hero {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+    &:before {
+      content: '';
+      @apply absolute block -z-10;
+      @apply bg-green-20;
+      @apply w-full h-64;
+    }
+
+  &__image img {
+    @apply object-fill object-center w-full max-h-[340px];
+  }
+
+  &__copy {
+    &:after {
+      content: '';
+      @apply absolute;
+      @apply -bottom-3 left-4 lg:left-8;
+      @apply w-0 h-0;
+      border-style: solid;
+      border-width: 1rem 0.875rem 0 0.875rem;
+      border-color: theme('colors.green.60') transparent transparent transparent;
+    }
+
+    p {
+      @apply text-base;
+    }
+  }
+}
