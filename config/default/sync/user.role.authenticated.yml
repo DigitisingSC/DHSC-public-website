@@ -10,6 +10,7 @@ dependencies:
     - filter
     - google_analytics
     - media
+    - sitewide_alert
     - system
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
@@ -24,3 +25,4 @@ permissions:
   - 'use text format basic_html'
   - 'use text format restricted_html'
   - 'view media'
+  - 'view published sitewide alert entities'
