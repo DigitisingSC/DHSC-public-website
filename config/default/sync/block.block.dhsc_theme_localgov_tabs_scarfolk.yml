@@ -9,7 +9,7 @@ _core:
 id: dhsc_theme_localgov_tabs_scarfolk
 theme: dhsc_theme
 region: tabs
-weight: 0
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:

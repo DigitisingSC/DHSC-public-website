@@ -9,7 +9,7 @@ dependencies:
 id: dhsc_theme_guidecontents
 theme: dhsc_theme
 region: content_top
-weight: 0
+weight: -5
 provider: null
 plugin: localgov_guides_contents
 settings:
