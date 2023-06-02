@@ -1,0 +1,19 @@
+uuid: b08a7eec-0171-44bd-903f-97fd6952f9d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.localgov_guides_overview
+id: node.localgov_guides_overview.field_summary
+field_name: field_summary
+entity_type: node
+bundle: localgov_guides_overview
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
