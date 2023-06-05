@@ -8,18 +8,26 @@ const baseFontSize = 16;
 
 const careColours = {
   green: {
-    DEFAULT: '#00ad93',
-    80: '#33BDA9',
-    60: '#66CEBE',
+    DEFAULT: '#00a189',
+    100: '#00a189',
+    80: '#33bda9',
+    60: '#66cebe',
     40: '#99D9D0',
-    20: '#CCEFE9',
+    20: '#ccefe9',
   },
-  forestgreen: {
-    DEFAULT: '#00594C',
+  forest: {
+    DEFAULT: '#00594c',
+    100: '#00594c',
+    80: '#337a70',
+    60: '#669b94',
+    20: '#ccdedb',
   },
-  grassgreen: {
-    DEFAULT: '#2EB135',
-    20: '#D5EFD7',
+  grass: {
+    DEFAULT: '#2eb135',
+    100: '#2eb135',
+    80: '#58c15d',
+    60: '#82d086',
+    20: '#d5efd7',
   },
   red: {
     DEFAULT: '#BA2109'
@@ -70,7 +78,7 @@ const systemColours = {
     DEFAULT: careColours.red,
   },
   success: {
-    DEFAULT: careColours.grassgreen,
+    DEFAULT: careColours.grass,
   },
 }
 
