@@ -47,10 +47,6 @@ elements: |-
         secure_email_yes: 'Yes'
         secure_email_no: 'No'
         secure_email_not_sure: 'Not sure'
-  submission_id:
-    '#type': hidden
-    '#title': 'Submission ID'
-    '#default_value': '[webform_submission:sid]'
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
@@ -239,10 +235,10 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  sets_webform_submission_id_in_tempstore:
+  sets_form_metadata_in_tempstore_:
     id: dhsc_set_submission_id_handler
-    handler_id: sets_webform_submission_id_in_tempstore
-    label: 'Sets webform submission ID in tempstore'
+    handler_id: sets_form_metadata_in_tempstore_
+    label: 'Sets form metadata in tempstore.'
     notes: ''
     status: true
     conditions: {  }
