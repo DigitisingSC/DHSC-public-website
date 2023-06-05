@@ -96,6 +96,7 @@ module:
   search_api_solr: 0
   seckit: 0
   simple_sitemap: 0
+  site_settings: 0
   sitewide_alert: 0
   sitewide_alert_block: 0
   syslog: 0

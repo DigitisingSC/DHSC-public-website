@@ -1,0 +1,8 @@
+uuid: f5fd2725-c6c0-4ea3-87e7-85d9c730b374
+langcode: en
+status: true
+dependencies: {  }
+id: partners
+label: Partners
+description: ''
+locked: false

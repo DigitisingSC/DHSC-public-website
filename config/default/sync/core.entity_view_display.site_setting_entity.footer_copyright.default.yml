@@ -1,0 +1,47 @@
+uuid: 8380fd30-9808-47e8-ad05-27e5a874e0d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.site_setting_entity.footer_copyright.field_copyright
+    - site_settings.site_setting_entity_type.footer_copyright
+  module:
+    - user
+id: site_setting_entity.footer_copyright.default
+targetEntityType: site_setting_entity
+bundle: footer_copyright
+mode: default
+content:
+  field_copyright:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  fieldset:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  user_id:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

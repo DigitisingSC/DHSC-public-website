@@ -1,0 +1,19 @@
+uuid: c50bf903-cf31-4e4e-852f-c83f04f9d312
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_copyright
+    - site_settings.site_setting_entity_type.footer_copyright
+id: site_setting_entity.footer_copyright.field_copyright
+field_name: field_copyright
+entity_type: site_setting_entity
+bundle: footer_copyright
+label: Copyright
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
