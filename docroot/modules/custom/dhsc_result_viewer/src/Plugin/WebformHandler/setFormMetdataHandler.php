@@ -40,27 +40,27 @@ class setFormMetdataHandler extends WebformHandlerBase
   {
     $webform = $webform_submission->getWebform();
     $data = $webform_submission->getData();
+    $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
     $submitted_values = [];
 
-    // retrieve option values for submitted data.
-    foreach ($data as $key => &$item) {
-      $element = $webform->getElement($key);
-      if (isset($element['#options'])) {
-        $value = WebformOptionsHelper::getOptionsText((array) $item, $element['#options']);
-        if (count($value) > 1) {
-          $item = $value;
-        } elseif (count($value) === 1) {
-          $item = reset($value);
+    if ($webform->id() === 'self_assessment_tool') {
+      // retrieve option values for submitted data.
+      foreach ($data as $key => &$item) {
+        $element = $webform->getElement($key);
+        if (isset($element['#options'])) {
+          $value = WebformOptionsHelper::getOptionsText((array) $item, $element['#options']);
+          if (count($value) > 1) {
+            $item = $value;
+          } elseif (count($value) === 1) {
+            $item = reset($value);
+          }
+          $submitted_values[] = $item;
         }
-        $submitted_values[] = $item;
       }
-    }
-
-    $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
-
-    // if all answers are 'Yes' set tempstore var to show result page variation.
-    if (!empty($submitted_values) && array_unique($submitted_values) === ['Yes']) {
-      $tempstore->set('yes_to_all_questions', TRUE);
+      // if all answers are 'Yes' set tempstore var to show result page variation.
+      if (!empty($submitted_values) && array_unique($submitted_values) === ['Yes']) {
+        $tempstore->set('yes_to_all_questions', TRUE);
+      }
     }
 
     // set submission id tempstore var to load submission data prior to showing results.
