@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_category
     - field.field.node.supplier.field_possible_answers
     - node.type.supplier
   module:
@@ -21,6 +22,7 @@ content:
     region: content
 hidden:
   field_body_paragraphs: true
+  field_category: true
   field_possible_answers: true
   langcode: true
   search_api_excerpt: true

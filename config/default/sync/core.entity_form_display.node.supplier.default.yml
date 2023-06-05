@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_category
     - field.field.node.supplier.field_possible_answers
     - node.type.supplier
   module:
     - content_moderation
-    - entity_reference_revisions
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
     - path
 id: node.supplier.default
 targetEntityType: node
@@ -22,8 +25,36 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_body_paragraphs:
-    type: entity_reference_revisions_autocomplete
+    type: paragraphs
     weight: 121
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: localgov_text
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+  field_category:
+    type: entity_reference_autocomplete
+    weight: 123
     region: content
     settings:
       match_operator: CONTAINS
