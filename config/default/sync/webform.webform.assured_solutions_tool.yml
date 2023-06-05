@@ -209,7 +209,7 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
-  confirmation_url: 'https://dhsc-public-website.ddev.site/dhsc-results-list'
+  confirmation_url: /dhsc-results-list-assured-solutions
   confirmation_title: ''
   confirmation_message: '<a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a>'
   confirmation_attributes: {  }

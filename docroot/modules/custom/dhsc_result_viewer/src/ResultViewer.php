@@ -184,7 +184,9 @@ class ResultViewer implements ResultViewerInterface {
             ->execute();
         }
 
-        return reset($result);
+        if (isset($result)) {
+          return reset($result);
+        }
       }
     }
 

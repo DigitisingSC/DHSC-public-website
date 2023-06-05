@@ -10,11 +10,11 @@ use Drupal\dhsc_result_viewer\ResultViewerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class DhscResultSummaryController.
+ * Class DhscResultSummarySelfAssessmentController.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class DhscResultSummaryController extends ControllerBase {
+class DhscResultSummarySelfAssessmentController extends ControllerBase {
 
   /**
    * Entity Type Manager.
