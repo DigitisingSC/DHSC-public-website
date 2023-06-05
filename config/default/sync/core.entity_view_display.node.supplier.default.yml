@@ -1,0 +1,41 @@
+uuid: 652cf0b3-c838-45c4-9c0d-564a0bf4b4f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_possible_answers
+    - node.type.supplier
+  module:
+    - entity_reference_revisions
+    - user
+id: node.supplier.default
+targetEntityType: node
+bundle: supplier
+mode: default
+content:
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_possible_answers:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true
