@@ -83,7 +83,10 @@ const systemColours = {
 }
 
 module.exports = {
-  content: ["./stories/**/*.{html,twig,js}"],
+  content: [
+    './stories/**/*.{html,twig,js}',
+    './templates/**/*.{html,twig,js}',
+  ],
   theme: {
     extend: {
       screens: {

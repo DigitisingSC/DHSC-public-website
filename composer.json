@@ -47,6 +47,7 @@
         "drupal/site_settings": "^1.20",
         "drupal/sitewide_alert": "^2.1",
         "drupal/time_field": "^2.1",
+        "drupal/twig_tweak": "^3.2",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.1",
         "drush/drush": "^11.4",
