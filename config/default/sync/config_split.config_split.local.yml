@@ -6,15 +6,14 @@ id: local
 label: Local
 description: 'Local development config.'
 weight: 0
+storage: folder
 folder: ../config/default/local
 module:
   dblog: 0
   devel: 0
   views_ui: 0
 theme: {  }
-blacklist: {  }
-graylist:
+complete_list: {  }
+partial_list:
   - autologout.settings
   - search_api.server.acquia_search_server
-graylist_dependents: true
-graylist_skip_equal: true
