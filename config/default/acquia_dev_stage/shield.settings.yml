@@ -4,8 +4,8 @@ shield_enable: true
 credential_provider: shield
 credentials:
   shield:
-    user: dhsc
-    pass: ^5Ng6lJNd9lQ
+    user: devshield
+    pass: devshield
 allow_cli: true
 debug_header: false
 unset_basic_auth_headers: true
