@@ -52,8 +52,8 @@ gulp.task('componentsJs', function () {
 });
 
 gulp.task('copyAssets', function () {
-  return gulp.src('./stories/assets/**/*')
-    .pipe(gulp.dest('./assets'));
+  return gulp.src('./stories/assets/images/**/*')
+    .pipe(gulp.dest('./assets/images'));
 });
 
 gulp.task('default', gulp.series('tailwindSass', 'componentsSass', 'globalSass', 'componentsJs', 'copyAssets'));

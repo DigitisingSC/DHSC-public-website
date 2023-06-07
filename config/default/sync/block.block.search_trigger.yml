@@ -1,0 +1,25 @@
+uuid: baf27019-95ab-4cc9-a126-a1bd242aea49
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:component_container:5bfef610-2a93-40c5-a9bd-7592408f3e42'
+  module:
+    - block_content
+  theme:
+    - dhsc_theme
+id: search_trigger
+theme: dhsc_theme
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:5bfef610-2a93-40c5-a9bd-7592408f3e42'
+settings:
+  id: 'block_content:5bfef610-2a93-40c5-a9bd-7592408f3e42'
+  label: 'Search trigger'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

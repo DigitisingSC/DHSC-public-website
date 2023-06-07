@@ -1,32 +1,29 @@
 {# Classes #}
 {% set classes = [
-  'm-menu m-menu--main',
+  'm-menu m-menu--secondary',
   'text-black',
 ] | sort | join(' ') | trim %}
 
 {# Template #}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu--level-0 relative flex" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
+    <ul class="m-menu--level-0 relative flex" x-data="{ isSelected: false }" @activedropdownsecondary.window="isSelected = $event.detail.active">
       {% for item in items %}
         <li class="mr-2 flex items-center" x-data="">
           {% if item.below %}
             <a href="{{ item.url }}" class="mr-2">{{ item.title }}</a>
             <a href="#"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
-               @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @click="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
+               @keyup.enter="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
             >{{ svgIconDown }}</a>
             <a href="#"
                x-show="isSelected == {{ loop.index }}"
-               @click="$dispatch('activedropdownmain', { active: false })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: false })"
+               @click="$dispatch('activedropdownsecondary', { active: false })"
+               @keyup.enter="$dispatch('activedropdownsecondary', { active: false })"
             >{{ svgIconUp }}</a>
           {% else %}
-            <a href="{{ item.url }}"
-               @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-            >
+            <a href="{{ item.url }}" @click="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })">
               {{ item.title }}
             </a>
           {% endif %}
@@ -35,10 +32,11 @@
     </ul>
     <div x-data="{ isActive: false }">
       {% for item in items %}
-        <div x-show="isActive == {{ loop.index }}" class="relative mt-4 -mb-4 w-[100vw] left-[50%] -translate-x-[50%] bg-white">
+        <div x-show="isActive == {{ loop.index }}" class="relative w-[100vw] left-[50%] -translate-x-[50%] bg-white">
           <div class="container mx-auto">
-            <ul class="m-menu--level-1 flex flex-col py-4 -mb-4"
-                @activedropdownmain.window="isActive = $event.detail.active"
+            {% if item.below %}
+            <ul class="m-menu--level-1 flex flex-col pt-4"
+                @activedropdownsecondary.window="isActive = $event.detail.active"
             >
               {% for subItem in item.below %}
                 <li>
@@ -46,6 +44,7 @@
                 </li>
               {% endfor %}
             </ul>
+            {% endif %}
           </div>
         </div>
       {% endfor %}

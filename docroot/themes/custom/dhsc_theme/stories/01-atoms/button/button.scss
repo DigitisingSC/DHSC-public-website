@@ -1,0 +1,7 @@
+.a-button {
+  &--search {
+    svg {
+      @apply w-3 h-3 tablet:mr-2;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{% set spriteSrc = directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set chevron_up %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-up',
+  } %}
+{% endset %}
+
+{% set chevron_down %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-down',
+  } %}
+{% endset %}
+
+{% if items %}
+  {% include "@molecules/menus/menu-main.twig" with {
+    'attributes': attributes,
+    'items': items,
+    'svgIconDown': chevron_down,
+    'svgIconUp': chevron_up,
+  } %}
+{% endif %}
+
