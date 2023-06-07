@@ -28,19 +28,19 @@
 
 {% macro menu_links(items, attributes, menu_level, menu_name) %}
   {% import _self as menus %}
-    
+
     {%
       set menu_classes = [
-        'menu',
-        'menu--' ~ menu_name,
+        'm-menu',
+        'm-menu--' ~ menu_name,
       ]
     %}
-    
+
     {%
       set sub_menu_classes = [
-        'menu',
-        'menu-' ~ menu_name ~ '--sub-menu',
-        'menu--sub-menu',
+        'm-menu',
+        'm-menu-' ~ menu_name ~ '--sub-menu',
+        'm-menu--sub-menu',
       ]
     %}
 
@@ -53,10 +53,10 @@
     {% for item in items %}
       {%
         set classes = [
-          'menu-item',
-          item.is_expanded ? 'menu-item--expanded',
-          item.is_collapsed ? 'menu-item--collapsed',
-          item.in_active_trail ? 'menu-item--active-trail',
+          'a-menu-item',
+          item.is_expanded ? 'a-menu-item--expanded',
+          item.is_collapsed ? 'a-menu-item--collapsed',
+          item.in_active_trail ? 'a-menu-item--active-trail',
         ]
       %}
       <li{{ item.attributes.addClass(classes) }}>

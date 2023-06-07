@@ -6,21 +6,33 @@
 {% set classes = [
   'a-button',
   'a-button--' ~ variant,
-  'text-xs tablet:text-base',
+  'flex items-center',
+  'text-xs',
   'cursor-pointer',
-  'px-4 py-2',
-  'rounded-md border-b-4'
+  'p-2 tablet:px-4 tablet:py-2',
 ] | sort | join(' ') | trim %}
 
 {% if variant == 'secondary' %}
   {% set variantClasses = [
     'border-coolgrey',
+    'border-b-4',
     'bg-black-20 hover:bg-black-40 focus:bg-focus',
-    'text-black'
+    'text-black',
+    'rounded-md'
+  ] | sort | join(' ') | trim  %}
+{% elseif variant == 'search' %}
+  {% set variantClasses = [
+    'border-white',
+    'bg-white hover:bg-white focus:bg-focus',
+    'text-black',
+    'rounded-3xl',
+    'w-auto tablet:w-32'
   ] | sort | join(' ') | trim  %}
 {% else %}
   {% set variantClasses = [
     'border-black',
+    'border-b-4',
+    'rounded-md',
     'bg-forest hover:bg-black-80 focus:bg-focus',
     'text-white hover:text-white focus:text-black disabled:text-white'
   ] | sort | join(' ') | trim  %}
@@ -43,7 +55,20 @@
 
 {# Template #}
 {% if children %}
-  <{{ tag_name }} {{ attributes }}>
-  {{ children }}
-  </{{ tag_name }}>
+  {% if variant == 'search' %}
+    <div x-data="{ searchIsActive : false }">
+      <{{ tag_name }} {{ attributes }}
+        @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive"
+        @keyup.enter="$dispatch('togglesearch')"
+      >
+        <div x-show="searchIsActive" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close'|t }}</span></div>
+        <div x-show="!searchIsActive" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Search'|t }}</span></div>
+      </{{ tag_name }}>
+    </div>
+
+  {% else %}
+    <{{ tag_name }} {{ attributes }}>
+    {{ children }}
+    </{{ tag_name }}>
+  {% endif %}
 {% endif %}

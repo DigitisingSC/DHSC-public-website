@@ -4,6 +4,8 @@ import layout from "./layout.twig";
 
 import { Header } from "../../03-organisms/header/header.stories";
 import HeaderTwig from "../../03-organisms/header/header.twig";
+import { SearchRegion } from "../../03-organisms/search-region/search-region.stories";
+import SearchRegionTwig from "../../03-organisms/search-region/search-region.twig";
 import { NavigationPrimary } from "../../03-organisms/navigation/navigation.stories";
 import NavigationPrimaryTwig from "../../03-organisms/navigation/navigation--primary.twig";
 import { NavigationSecondary } from "../../03-organisms/navigation/navigation.stories";
@@ -91,6 +93,9 @@ const Template = ({
 const HeaderTemplate = (args) => HeaderTwig({
   ...Header.args
 });
+const SearchRegionTemplate = (args) => SearchRegionTwig({
+  ...SearchRegion.args
+});
 const NavigationPrimaryTemplate = (args) => NavigationPrimaryTwig({
   ...NavigationPrimary.args
 });
@@ -135,7 +140,7 @@ export const Layout = Template.bind({});
 Layout.args = {
   has_sidebars: true,
   header: HeaderTemplate,
-  search: "Search",
+  search: SearchRegionTemplate,
   mobile_search: "Mobile search",
   primary_menu: NavigationPrimaryTemplate,
   secondary_menu: NavigationSecondaryTemplate,

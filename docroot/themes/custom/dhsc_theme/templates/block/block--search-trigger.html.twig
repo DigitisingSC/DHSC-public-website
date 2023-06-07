@@ -1,0 +1,28 @@
+{% extends "block.html.twig" %}
+
+{% set spriteSrc = directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon_open %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'search',
+  } %}
+{% endset %}
+
+{% set icon_close %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'close',
+  } %}
+{% endset %}
+
+{% block content %}
+  {% include "@atoms/button/button.twig" with {
+    'variant': 'search',
+    'title': 'Search',
+    'icon_open': icon_open,
+    'icon_close': icon_close,
+    'tag_name': 'button',
+    'children': 'Search',
+  } %}
+{% endblock %}

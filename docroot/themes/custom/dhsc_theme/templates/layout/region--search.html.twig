@@ -12,9 +12,8 @@
  * @see template_preprocess_region()
  */
 #}
-
 {% if content %}
-  {% include "@organisms/header/header.twig" with {
+  {% include "@organisms/search-region/search-region.twig" with {
     'attributes': attributes,
     'content': content
   } %}
