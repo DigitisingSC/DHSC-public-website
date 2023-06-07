@@ -12,22 +12,20 @@
         <li class="mr-2 flex items-center" x-data="">
           {% if item.below %}
             <a href="{{ item.url }}" class="mr-2">{{ item.title }}</a>
-            <a href="#">
-              <span
-                x-show="isSelected == false || isSelected != {{ loop.index }}"
-                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-                @keyup.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-              >{{ svgIconDown }}</span>
-              <span
-                x-show="isSelected == {{ loop.index }}"
-                @click="$dispatch('activedropdownmain', { active: false })"
-                @keyup.enter="$dispatch('activedropdownmain', { active: false })"
-              >{{ svgIconUp }}</span>
-            </a>
+            <a href="#"
+               x-show="isSelected == false || isSelected != {{ loop.index }}"
+               @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+            >{{ svgIconDown }}</a>
+            <a href="#"
+               x-show="isSelected == {{ loop.index }}"
+               @click="$dispatch('activedropdownmain', { active: false })"
+               @@keydown.enter="$dispatch('activedropdownmain', { active: false })"
+            >{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @keyup.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
               {{ item.title }}
             </a>
