@@ -16,10 +16,12 @@
               <span
                 x-show="isSelected == false || isSelected != {{ loop.index }}"
                 @click="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
+                @keyup.enter="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
               >{{ svgIconDown }}</span>
               <span
                 x-show="isSelected == {{ loop.index }}"
                 @click="$dispatch('activedropdownsecondary', { active: false })"
+                @keyup.enter="$dispatch('activedropdownsecondary', { active: false })"
               >{{ svgIconUp }}</span>
             </a>
           {% else %}
