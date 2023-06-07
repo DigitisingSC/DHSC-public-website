@@ -1,0 +1,8 @@
+uuid: 324716da-b9f8-4a08-8958-28d3562235d5
+langcode: en
+status: true
+dependencies: {  }
+id: component_container
+label: 'Component container'
+revision: 0
+description: ''
