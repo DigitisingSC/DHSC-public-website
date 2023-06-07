@@ -7,7 +7,7 @@
 {# Template #}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu--level-0 relative flex" x-data="{ isSelected: false }" @activedropdownsecondary.window="isSelected = $event.detail.active; console.log(isSelected)">
+    <ul class="m-menu--level-0 relative flex" x-data="{ isSelected: false }" @activedropdownsecondary.window="isSelected = $event.detail.active">
       {% for item in items %}
         <li class="mr-2 flex items-center" x-data="">
           {% if item.below %}
