@@ -1,0 +1,20 @@
+uuid: 91cbf188-748c-44b9-b585-624f5945e0e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: searchtrigger
+theme: dhsc_theme
+region: header
+weight: 0
+provider: null
+plugin: dhsc_site_search_trigger
+settings:
+  id: dhsc_site_search_trigger
+  label: 'Search trigger'
+  label_display: '0'
+  provider: dhsc_site
+visibility: {  }
