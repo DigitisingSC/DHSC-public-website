@@ -6,6 +6,13 @@
  */
 
 use Drupal\media\Entity\Media;
+/**
+ * Implements hook_preprocess().
+ * Adds base path as a variable for Twig templates
+ */
+function dhsc_theme_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+}
 
 /**
  * Implements hook_preprocess_HOOK().
