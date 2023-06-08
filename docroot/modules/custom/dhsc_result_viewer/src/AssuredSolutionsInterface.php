@@ -3,11 +3,11 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface ResultViewerInterface.
+ * Interface AssuredSolutionsInterface.
  *
  * @package Drupal\dhsc_result_viewer
  */
-interface ResultViewerInterface {
+interface AssuredSolutionsInterface {
 
   /**
    * Get summary.
@@ -34,20 +34,6 @@ interface ResultViewerInterface {
    *   Return sid.
    */
   public function getSubmissionId();
-
-
-  /**
-   * Get webform question completion.
-   *
-   * @return boolean
-   *   Return yes_to_all_questions.
-   */
-  public function questionsAllYes();
-
-  /**
-   * Reset webform question completion.
-   */
-  public function questionsAllReset();
 
   /**
    * Get webform submission.

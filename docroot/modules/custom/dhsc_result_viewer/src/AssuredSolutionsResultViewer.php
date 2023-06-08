@@ -11,11 +11,12 @@ use Drupal\taxonomy\TermInterface;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 
 /**
- * Class ResultViewer.
+ * Class AssuredSolutionsResultViewer.
  *
- * @package Drupal\dhsc_result_viewer
+ * @package Drupal\dhsc_assured_solutions_result_viewer
  */
-class ResultViewer implements ResultViewerInterface {
+class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
+{
 
   /**
    * Entity type manager.
@@ -91,14 +92,16 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getCategories() {
+  public function getCategories()
+  {
     return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data) {
+  public function getResultsSummary($data)
+  {
     $nids = $this->getResultIds($data);
     if (!$nids) {
       return;
@@ -107,16 +110,15 @@ class ResultViewer implements ResultViewerInterface {
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {
-        $values[] = [
-          '#theme' => 'result_item',
-          '#title' => $node->getTitle(),
-          '#answer' => ucfirst(str_replace('_', ' ' , explode('_', $node->get('field_possible_answers')->value, 3)[2])),
-          '#content' => [
-            '#type' => 'processed_text',
-            '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
-            '#format' => 'full_html',
-          ],
-        ];
+      $values[] = [
+        '#theme' => 'result_item',
+        '#title' => $node->getTitle(),
+        '#content' => [
+          '#type' => 'processed_text',
+          '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
+          '#format' => 'full_html',
+        ],
+      ];
     }
 
     return $values;
@@ -125,16 +127,17 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getSortsResultIds() {
+  public function getSortsResultIds()
+  {
     if ($data = $this->getSubmissionData()) {
       $nids = $this->getResultIds($data);
       if (!$nids) {
         return;
       }
       $nodes = $this->nodeStorage->loadMultiple($nids);
-      }
-      return $nodes;
     }
+    return $nodes;
+  }
 
   /**
    * Get ids of result nodes.
@@ -147,8 +150,68 @@ class ResultViewer implements ResultViewerInterface {
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data) {
+  protected function getResultIds(array $data)
+  {
     $categories = $this->getCategories();
+
+    $answers = [];
+
+    foreach ($data as $key => $answer) {
+
+      // check we have an answer value in both checkboxes and radio form fields.
+      if ($answer === '0' || empty($answer)) {
+        continue;
+      }
+
+      if ($answer === '1') {
+        $answer = $key;
+      }
+
+      $answers[] = $answer;
+    }
+
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'supplier');
+    $or = $query->orConditionGroup();
+    foreach ($answers as $answer) {
+      $or->condition('field_possible_answers.value', $answer);
+    }
+    $query->condition($or);
+
+    // Node ids of suppliers which match at least one answer.
+    $orResults = $query->execute();
+
+    $nodes =  \Drupal\node\Entity\Node::loadMultiple($orResults);
+    $nonMatchingResults = [];
+    $matchingResults = [];
+
+    foreach($nodes as $node){
+      foreach($node->get('field_possible_answers')->getValue() as $value) {
+
+        // Filter results where not all criteria is met.
+        if (!in_array($value['value'], $answers)) {
+          $nonMatchingResults[$node->getTitle()][] = 'Criteria not met: ' . $value['value'];
+        }
+      }
+
+       // Filter results where all criteria is met.
+       if (!$nonMatchingResults) {
+          $matchingResults[] = $node->getTitle();
+        }
+
+    }
+
+    echo "<pre>";
+    echo "Matching supplier results:";
+    print_r($matchingResults);
+    echo "</pre>";
+
+    echo "<pre>";
+    echo "Non matching supplier results:";
+    print_r($nonMatchingResults);
+    echo "</pre>";
+
+
     $nids = [];
     /** @var TermInterface $category */
     foreach ($categories as $category) {
@@ -156,7 +219,6 @@ class ResultViewer implements ResultViewerInterface {
         $nids[] = $nid;
       }
     }
-
     return $nids;
   }
 
@@ -171,38 +233,33 @@ class ResultViewer implements ResultViewerInterface {
    * @return array|int|void
    *   Return result ids.
    */
-  protected function getResultId(TermInterface $term, array $data) {
+  protected function getResultId(TermInterface $term, array $data)
+  {
     if ($term->bundle() != 'category') {
       return;
     }
+
     if (!$term->get('field_answer_machine_name')->isEmpty()) {
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
-          $result = $this->nodeStorage->getQuery()
-            ->condition('field_possible_answers', $data[$machine_name])
-            ->condition('field_category.target_id', $term->id())
-            ->execute();
-        }
+        $result = $this->nodeStorage->getQuery()
+          ->condition('field_possible_answers', $data[$machine_name])
+          ->condition('field_category.target_id', $term->id())
+          ->execute();
+      }
 
-        if (isset($result)) {
-          return reset($result);
-        }
+      if (isset($result)) {
+        return reset($result);
       }
     }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getSubmissionId() {
-    return $this->tempStore->get('sid');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllYes()
+  public function getSubmissionId()
   {
-    return $this->tempStore->get('yes_to_all_questions');
+    return $this->tempStore->get('sid');
   }
 
   /**
@@ -216,7 +273,8 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getSubmission() {
+  public function getSubmission()
+  {
     $sid = $this->getSubmissionId();
     if ($sid) {
       $submission = $this->entityTypeManager->getStorage('webform_submission')->load($sid);
@@ -231,7 +289,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return array
    *   Return webform submission data.
    */
-  protected function getSubmissionData() {
+  protected function getSubmissionData()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       return $submission->getData();
@@ -244,7 +303,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
    */
-  protected function getWebFormUrl() {
+  protected function getWebFormUrl()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -261,7 +321,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return mixed|void
    *   Return webform confirmation page path.
    */
-  protected function getConfirmationPagePath() {
+  protected function getConfirmationPagePath()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */

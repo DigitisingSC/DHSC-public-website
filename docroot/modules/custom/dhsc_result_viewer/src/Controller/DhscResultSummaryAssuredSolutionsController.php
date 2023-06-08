@@ -5,16 +5,17 @@ namespace Drupal\dhsc_result_viewer\Controller;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 use Drupal\dhsc_result_viewer\ResultViewerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class DhscResultSummaryAssuredSolutionsController.
+ * Class DHSCResultSummaryAssuredSolutionsController.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class DhscResultSummaryAssuredSolutionsController extends ControllerBase {
+class DHSCResultSummaryAssuredSolutionsController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -33,24 +34,24 @@ class DhscResultSummaryAssuredSolutionsController extends ControllerBase {
   /**
    * ResultViewer service.
    *
-   * @var \Drupal\dhsc_result_viewer\ResultViewerInterface
+   * @var \Drupal\dhsc_assured_solutions_result_viewer\AssuredSolutionsInterface
    */
   protected $resultViewer;
 
   /**
-   * DhscResultSummaryController constructor.
+   * DHSCResultSummaryAssuredSolutionsController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
-   * @param \Drupal\dhsc_result_viewer\ResultViewerInterface $result_viewer
+   * @param \Drupal\dhsc_assured_solutiions_result_viewer\AssuredSolutionsInterface $result_viewer
    *   ResultViewer service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    ResultViewerInterface $result_viewer) {
+    AssuredSolutionsInterface $result_viewer) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
     $this->resultViewer = $result_viewer;
@@ -63,7 +64,7 @@ class DhscResultSummaryAssuredSolutionsController extends ControllerBase {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
-      $container->get('dhsc_result_viewer.service'),
+      $container->get('dhsc_assured_solutions_result_viewer.service'),
     );
   }
 

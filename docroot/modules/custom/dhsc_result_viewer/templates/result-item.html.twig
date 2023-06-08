@@ -3,8 +3,10 @@
     <h3>{{ title }}</h3>
   </a>
 </li>
+{% if answer %}
 <li>
   <strong>{{ 'Your response:'|t }}
     {{ answer }}</strong>
 </li>
+{% endif %}
 <p>{{ content }}</p>
