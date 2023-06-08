@@ -1,15 +1,21 @@
-<nav class="m-menu m-menu--footer text-black">
+{% set classes = [
+  'm-menu m-menu--footer',
+  'text-black'
+] %}
+
+{% if items %}
+<nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu__links">
+    {% if title %}
+      <h3>{{ title }}</h3>
+    {% endif %}
+    <ul class="m-menu__links pb-4 tablet:pb-0">
+      {% for item in items %}
       <li class="m-menu__item">
-        <a href="http://google.com/" target="_blank">Google</a>
+        <a href="{{ item.url }}" target="_blank" class="underline hover:no-underline">{{ item.title }}</a>
       </li>
-      <li class="m-menu__item">
-        <a href="/nulla-neque-dolor-sagittis-eget" data-drupal-link-system-path="node/1">Nulla neque dolor sagittis eget</a>
-      </li>
-      <li class="m-menu__item">
-        <a href="http://gov.uk">gov.uk</a>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 </nav>
+{% endif %}
