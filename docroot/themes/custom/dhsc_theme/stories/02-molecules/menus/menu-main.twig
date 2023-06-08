@@ -14,18 +14,18 @@
             <a href="{{ item.url }}" class="mr-2">{{ item.title }}</a>
             <a href="#"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
-               @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
+               @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
             >{{ svgIconDown }}</a>
             <a href="#"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: false })"
+               @keydown.enter="$dispatch('activedropdownmain', { active: false })"
             >{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
               {{ item.title }}
             </a>
