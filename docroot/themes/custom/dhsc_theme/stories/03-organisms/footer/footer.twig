@@ -3,9 +3,11 @@
   'bg-coolgrey-20'
 ] %}
 <section{{ attributes.addClass(classes) }}>
+  {% if title %}
   <div class="o-footer-region__header container mx-auto w-full py-4">
     <h3>{{ title }}</h3>
   </div>
+  {% endif %}
   <div class="o-footer-region__content container mx-auto w-full py-4 tablet:grid tablet:grid-cols-3 table:auto-rows-max tablet:gap-4">
     {% if content is iterable  %}
       {% for item in content %}
@@ -17,10 +19,16 @@
   </div>
   <div class="o-footer-region__footer container mx-auto w-full py-4 flex gap-4 justify-between">
     {% if directory %}
+      {% if image %}
       <div class="o-footer-region__image flex justify-start items-end">{{ image }}</div>
+      {% endif %}
     {% else %}
+      {% if image %}
       <div class="o-footer-region__image flex justify-start items-end">{{ source(image) }}</div>
+      {% endif %}
     {% endif %}
-    <div class="o-footer-region__text self-end text-xs text-black-60">{{ text }}</div>
+    {% if text %}
+      <div class="o-footer-region__text self-end text-xs text-black-60">{{ text }}</div>
+    {% endif %}
   </div>
 </section>

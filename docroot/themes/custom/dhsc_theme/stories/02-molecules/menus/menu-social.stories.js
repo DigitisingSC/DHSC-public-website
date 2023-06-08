@@ -46,8 +46,8 @@ const Template = ({ items, attributes }) =>
     attributes,
   });
 
-export const MainMenu = Template.bind({});
-MainMenu.args = {
+export const MenuSocial = Template.bind({});
+MenuSocial.args = {
   attributes: new DrupalAttributes(),
   items: [
     { title: 'Item 1', url: '#', 'icon': svgIconTwitterTemplate },

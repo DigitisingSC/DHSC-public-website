@@ -8,6 +8,9 @@
 {% if items %}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
+    {% if title %}
+      <h3 class="text-base mb-2">{{ title }}</h3>
+    {% endif %}
     <ul>
       {% for item in items %}
         <li class="mb-2">

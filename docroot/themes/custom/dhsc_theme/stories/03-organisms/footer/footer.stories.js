@@ -13,6 +13,9 @@ import Logo from '../../../assets/DHSC.svg';
 import { MenuFooter } from "../../02-molecules/menus/menu-footer.stories";
 import MenuFooterTwig from "../../02-molecules/menus/menu-footer.twig";
 
+import { MenuSocial } from "../../02-molecules/menus/menu-social.stories";
+import MenuSocialTwig from "../../02-molecules/menus/menu-social.twig";
+
 export default {
   title: "Design System/Organisms/Footer",
 };
@@ -28,6 +31,16 @@ const Template = ({ attributes, title, content, image, text }) =>
 
 const MenuFooterTemplate = (args) => MenuFooterTwig({
   ...MenuFooter.args
+});
+
+const MenuPartnersTemplate = (args) => MenuFooterTwig({
+  ...MenuFooter.args,
+  title: 'Partners'
+});
+
+const MenuSocialTemplate = (args) => MenuSocialTwig({
+  ...MenuSocial.args,
+  title: 'Follow us on'
 });
 
 export const FooterFirst = Template.bind({});
@@ -49,7 +62,7 @@ export const Footer = Template.bind({});
 Footer.args = {
   attributes: new DrupalAttributes(),
   title: 'Digitising Social Care',
-  content: [ MenuFooterTemplate, MenuFooterTemplate, MenuFooterTemplate ],
+  content: [ MenuFooterTemplate, MenuPartnersTemplate, MenuSocialTemplate ],
   image: Logo,
   text: 'Copyright 2023 DHSC'
 };
