@@ -1,0 +1,19 @@
+uuid: 2c63afa6-8795-4b35-adf8-3e6d69517a16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_possible_answers
+    - node.type.supplier
+id: node.supplier.field_possible_answers
+field_name: field_possible_answers
+entity_type: node
+bundle: supplier
+label: 'Possible answers'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

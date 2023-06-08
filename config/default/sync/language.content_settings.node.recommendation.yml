@@ -1,0 +1,11 @@
+uuid: dffa3109-2da7-4901-a168-958326a4fc1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.recommendation
+id: node.recommendation
+target_entity_type_id: node
+target_bundle: recommendation
+default_langcode: site_default
+language_alterable: false

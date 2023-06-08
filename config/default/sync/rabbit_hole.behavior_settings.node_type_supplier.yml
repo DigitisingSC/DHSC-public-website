@@ -1,0 +1,14 @@
+uuid: 1b72a68d-17f0-421d-9fa0-984c23e979f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.supplier
+id: node_type_supplier
+entity_type_id: node_type
+entity_id: supplier
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

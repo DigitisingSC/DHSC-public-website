@@ -1,0 +1,8 @@
+uuid: f2020fc4-5419-4d88-bf69-4847d9ec716a
+langcode: en
+status: true
+dependencies: {  }
+name: Category
+vid: category
+description: ''
+weight: 0

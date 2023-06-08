@@ -1,0 +1,37 @@
+dhsc_result_viewer.dhsc_settings:
+  path: '/admin/dhsc-settings'
+  defaults:
+    _title: 'DHSC Settings'
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+  requirements:
+    _permission: 'editor access'
+
+dhsc_result_viewer.result_summary_settings:
+  path: '/admin/result-summary-settings'
+  defaults:
+    _form: '\Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm'
+    _title: 'Category results titles'
+  requirements:
+    _permission: 'editor access'
+  options:
+    _admin_route: TRUE
+
+dhsc_result_viewer.result_summary_self_assessment:
+  path: '/dhsc-results-list-self-assessment'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\DhscResultSummarySelfAssessmentController::build'
+    _title: 'Result Summary'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+dhsc_result_viewer.result_summary_assured_solutions:
+  path: '/dhsc-results-list-assured-solutions'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\DhscResultSummaryAssuredSolutionsController::build'
+    _title: 'Result Summary'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
