@@ -1,0 +1,25 @@
+uuid: 66ad23d7-14ac-4c23-bd7c-eceb86812135
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.partners
+  module:
+    - system
+  theme:
+    - dhsc_theme
+id: partners
+theme: dhsc_theme
+region: footer
+weight: 0
+provider: null
+plugin: 'system_menu_block:partners'
+settings:
+  id: 'system_menu_block:partners'
+  label: Partners
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

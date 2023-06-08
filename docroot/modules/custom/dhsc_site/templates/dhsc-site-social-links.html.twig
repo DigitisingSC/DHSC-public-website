@@ -1,0 +1,6 @@
+{% if social_links %}
+  {% include "@molecules/menus/menu-social.twig" with {
+    'attributes': attributes,
+    'items': social_links,
+  } %}
+{% endif %}

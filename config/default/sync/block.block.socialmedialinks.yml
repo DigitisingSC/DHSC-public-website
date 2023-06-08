@@ -1,0 +1,20 @@
+uuid: 5593ee2a-9cd2-4135-97d8-37a4b478781b
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: socialmedialinks
+theme: dhsc_theme
+region: footer
+weight: 0
+provider: null
+plugin: dhsc_site_social_media_links
+settings:
+  id: dhsc_site_social_media_links
+  label: 'Social media links'
+  label_display: visible
+  provider: dhsc_site
+visibility: {  }

@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function dhsc_site_theme() {
+  return [
+    'dhsc_site_social_links' => [
+      'variables' => [
+        'social_links' => [],
+      ],
+    ],
+  ];
+}
