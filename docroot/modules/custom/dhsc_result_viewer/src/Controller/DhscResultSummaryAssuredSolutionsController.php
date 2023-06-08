@@ -92,7 +92,6 @@ class DhscResultSummaryAssuredSolutionsController extends ControllerBase {
     if ($result = $this->getResults()) {
       $element = [
         '#theme' => 'dhsc_results_list',
-        '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#result' => $result,
