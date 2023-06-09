@@ -181,24 +181,23 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     // Node ids of suppliers which match at least one answer.
     $orResults = $query->execute();
 
-    $nodes =  \Drupal\node\Entity\Node::loadMultiple($orResults);
+    $nodes = \Drupal\node\Entity\Node::loadMultiple($orResults);
     $nonMatchingResults = [];
     $matchingResults = [];
 
     foreach($nodes as $node){
       foreach($node->get('field_possible_answers')->getValue() as $value) {
-
         // Filter results where not all criteria is met.
         if (!in_array($value['value'], $answers)) {
           $nonMatchingResults[$node->getTitle()][] = 'Criteria not met: ' . $value['value'];
         }
       }
 
-       // Filter results where all criteria is met.
-       if (!$nonMatchingResults) {
-          $matchingResults[] = $node->getTitle();
-        }
-
+      // Filter results where all criteria is met.
+      if (!isset($nonMatchingResults[$node->getTitle()]) &&
+       !array_key_exists($node->getTitle(), $nonMatchingResults)) {
+        $matchingResults[] = $node->getTitle();
+      }
     }
 
     echo "<pre>";
