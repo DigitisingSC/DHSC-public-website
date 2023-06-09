@@ -130,11 +130,22 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           ];
         }
       }
+      if ($key === 'no_matches') {
+        foreach ($result as $key => $no_match) {
+          $values['no_matches'][] = [
+            '#theme' => 'no_match',
+            '#title' => $no_match['title'],
+            '#url' => $no_match['node_url'],
+            '#answers' => $no_match['answers'],
+          ];
+        }
+      }
     }
 
     $values = [
       'partial_matches' => !empty($values['partial_matches']) ? $values['partial_matches'] : NULL,
       'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
+      'no_matches' => !empty($values['no_matches']) ? $values['no_matches'] : NULL,
     ];
 
     return $values;
@@ -241,7 +252,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
       $no_matches[$node_title]['title'] = $node_title;
       $no_matches[$node_title]['node_url'] = $node_url;
-      $no_matches[$node_title][] = $value['value'];
+      foreach ($node->get('field_possible_answers')->getValue() as $value) {
+        $no_matches[$node_title]['answers'][] = $value['value'];
+      }
     }
 
     $result_data = [

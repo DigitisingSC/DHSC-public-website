@@ -8,11 +8,13 @@
 /**
  * Implements hook_theme().
  */
-function dhsc_result_viewer_theme() {
+function dhsc_result_viewer_theme()
+{
   return [
     'dhsc_results_list' => [
       'variables' => [
         'result_variant' => NULL,
+        'no_matches' => NULL,
         'partial_matches' => NULL,
         'result' => NULL,
         'title' => NULL,
@@ -24,7 +26,14 @@ function dhsc_result_viewer_theme() {
       'variables' => [
         'title' => NULL,
         'url' => NULL,
-        'answer' => NULL,
+        'answers' => NULL,
+      ],
+    ],
+    'no_match' => [
+      'variables' => [
+        'title' => NULL,
+        'url' => NULL,
+        'answers' => NULL,
       ],
     ],
     'result_item' => [
