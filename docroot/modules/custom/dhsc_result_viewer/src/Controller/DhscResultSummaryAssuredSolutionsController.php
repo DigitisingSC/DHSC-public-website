@@ -95,7 +95,8 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase {
         '#theme' => 'dhsc_results_list',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
-        '#result' => $result,
+        '#partial_matches' => $result['partial_matches'],
+        '#result' => $result['result_items'],
       ];
     }
     else {

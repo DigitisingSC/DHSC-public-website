@@ -13,10 +13,18 @@ function dhsc_result_viewer_theme() {
     'dhsc_results_list' => [
       'variables' => [
         'result_variant' => NULL,
+        'partial_matches' => NULL,
         'result' => NULL,
         'title' => NULL,
         'summary' => NULL,
         'no_result' => NULL,
+      ],
+    ],
+    'partial_match' => [
+      'variables' => [
+        'title' => NULL,
+        'url' => NULL,
+        'answer' => NULL,
       ],
     ],
     'result_item' => [

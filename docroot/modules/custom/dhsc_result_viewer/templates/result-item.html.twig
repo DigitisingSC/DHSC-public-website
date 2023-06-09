@@ -1,12 +1,8 @@
-<li>
-  <a href="{{ url }}">
-    <h3>{{ title }}</h3>
-  </a>
-</li>
+<a href="{{ url }}">
+	<h3>{{ title }}</h3>
+</a>
 {% if answer %}
-<li>
-  <strong>{{ 'Your response:'|t }}
-    {{ answer }}</strong>
-</li>
+	<strong>{{ 'Your response:'|t }}
+		{{ answer }}</strong>
 {% endif %}
 <p>{{ content }}</p>

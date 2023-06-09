@@ -107,9 +107,19 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
 
     foreach ($results as $key => $result) {
+      if ($key === 'partial_matches') {
+        foreach ($result as $key => $partial_match) {
+          $values['partial_matches'][] = [
+            '#theme' => 'partial_match',
+            '#title' => $partial_match['title'],
+            '#url' => $partial_match['node_url'],
+            '#answers' => $partial_match['answers'],
+          ];
+        }
+      }
       if ($key === 'matches') {
         foreach ($result as $node) {
-          $values[] = [
+          $values['result_items'][] = [
             '#theme' => 'result_item',
             '#title' => $node->getTitle(),
             '#content' => [
@@ -121,6 +131,11 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         }
       }
     }
+
+    $values = [
+      'partial_matches' => !empty($values['partial_matches']) ? $values['partial_matches'] : NULL,
+      'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
+    ];
 
     return $values;
   }
@@ -196,7 +211,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
           $partial_matches[$node_title]['title'] = $node_title;
           $partial_matches[$node_title]['node_url'] = $node_url;
-          $partial_matches[$node_title][] = $value['value'];
+          $partial_matches[$node_title]['answers'][] = $value['value'];
         }
       }
 
