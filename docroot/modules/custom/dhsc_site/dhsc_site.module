@@ -5,7 +5,7 @@
  */
 function dhsc_site_theme() {
   return [
-    'dhsc_site_social_links' => [
+    'social_media_links' => [
       'variables' => [
         'social_links' => [],
       ],

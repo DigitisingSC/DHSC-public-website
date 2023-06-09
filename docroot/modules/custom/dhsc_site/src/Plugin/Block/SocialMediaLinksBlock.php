@@ -8,9 +8,9 @@ use Drupal\Core\Block\BlockBase;
  * Provides a social media links block.
  *
  * @Block(
- *   id = "dhsc_site_social_media_links",
+ *   id = "social_media_links",
  *   admin_label = @Translation("Social media links"),
- *   category = @Translation("Custom")
+ *   category = @Translation("DHSC Site")
  * )
  */
 class SocialMediaLinksBlock extends BlockBase {
@@ -21,7 +21,7 @@ class SocialMediaLinksBlock extends BlockBase {
   public function build() {
     $social_links = $this->getSocialLinks();
     return [
-      '#theme' => 'dhsc_site_social_links',
+      '#theme' => 'social_media_links',
       '#social_links' => $social_links,
     ];
   }
@@ -34,14 +34,22 @@ class SocialMediaLinksBlock extends BlockBase {
     $site_settings = \Drupal::service('site_settings.loader');
     $social_links = $site_settings->loadByFieldset('global')['social_media_links'];
 
-    foreach ($social_links as $key => $social_link) {
-      if (is_numeric($key)) {
-        $links[] = [
-          'url'   => $social_link['uri'],
-          'title' => $social_link['title'],
-          'icon'  => $this->getSocialName($social_link['uri']),
-        ];
+    if (is_array($social_links[0])) {
+      foreach ($social_links as $key => $social_link) {
+        if (is_numeric($key)) {
+          $links[] = [
+            'url'   => $social_link['uri'],
+            'title' => $social_link['title'],
+            'icon'  => $this->getSocialName($social_link['uri']),
+          ];
+        }
       }
+    } else {
+      $links[] = [
+        'url'   => $social_links['uri'],
+        'title' => $social_links['title'],
+        'icon'  => $this->getSocialName($social_links['uri']),
+      ];
     }
     return $links;
   }
