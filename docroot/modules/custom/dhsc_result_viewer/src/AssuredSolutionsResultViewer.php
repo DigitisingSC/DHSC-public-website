@@ -4,11 +4,9 @@ namespace Drupal\dhsc_result_viewer;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
-use Drupal\node\NodeInterface;
+use Drupal\node\Entity\Node;
 use Drupal\taxonomy\TermInterface;
-use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 
 /**
  * Class AssuredSolutionsResultViewer.
@@ -102,23 +100,26 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    */
   public function getResultsSummary($data)
   {
-    $nids = $this->getResultIds($data);
-    if (!$nids) {
+    $results = $this->getResultIds($data);
+
+    if (!$results) {
       return;
     }
 
-    $nodes = $this->nodeStorage->loadMultiple($nids);
-
-    foreach ($nodes as $node) {
-      $values[] = [
-        '#theme' => 'result_item',
-        '#title' => $node->getTitle(),
-        '#content' => [
-          '#type' => 'processed_text',
-          '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
-          '#format' => 'full_html',
-        ],
-      ];
+    foreach ($results as $key => $result) {
+      if ($key === 'matches') {
+        foreach ($result as $node) {
+          $values[] = [
+            '#theme' => 'result_item',
+            '#title' => $node->getTitle(),
+            '#content' => [
+              '#type' => 'processed_text',
+              '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
+              '#format' => 'full_html',
+            ],
+          ];
+        }
+      }
     }
 
     return $values;
@@ -152,24 +153,20 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    */
   protected function getResultIds(array $data)
   {
-    $categories = $this->getCategories();
-
     $answers = [];
 
     foreach ($data as $key => $answer) {
-
       // check we have an answer value in both checkboxes and radio form fields.
       if ($answer === '0' || empty($answer)) {
         continue;
       }
-
       if ($answer === '1') {
         $answer = $key;
       }
-
       $answers[] = $answer;
     }
 
+    // start by querying for all nodes which contain at least one answer.
     $query = \Drupal::entityQuery('node')
       ->condition('type', 'supplier');
     $or = $query->orConditionGroup();
@@ -178,47 +175,67 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
     $query->condition($or);
 
-    // Node ids of suppliers which match at least one answer.
-    $orResults = $query->execute();
+    $results = $query->execute();
 
-    $nodes = \Drupal\node\Entity\Node::loadMultiple($orResults);
-    $nonMatchingResults = [];
-    $matchingResults = [];
+    $nodes = Node::loadMultiple($results);
 
-    foreach($nodes as $node){
-      foreach($node->get('field_possible_answers')->getValue() as $value) {
-        // Filter results where not all criteria is met.
+    $partial_matches = [];
+    $no_matches = [];
+    $matches = [];
+    $nids = [];
+
+    foreach ($nodes as $node) {
+      foreach ($node->get('field_possible_answers')->getValue() as $value) {
+        // create array of all supplier node ids used for filtering non matching criteria.
+        $nids[] = $node->id();
+
+        // filter results where not all criteria is met.
         if (!in_array($value['value'], $answers)) {
-          $nonMatchingResults[$node->getTitle()][] = 'Criteria not met: ' . $value['value'];
+          $node_title = $node->getTitle();
+          $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+
+          $partial_matches[$node_title]['title'] = $node_title;
+          $partial_matches[$node_title]['node_url'] = $node_url;
+          $partial_matches[$node_title][] = $value['value'];
         }
       }
 
-      // Filter results where all criteria is met.
-      if (!isset($nonMatchingResults[$node->getTitle()]) &&
-       !array_key_exists($node->getTitle(), $nonMatchingResults)) {
-        $matchingResults[] = $node->getTitle();
+      // filter nodes where all criteria is met.
+      if (
+        !isset($no_matches[$node->getTitle()]) &&
+        !array_key_exists($node->getTitle(), $partial_matches)
+      ) {
+        $matches[] = $node;
       }
     }
 
-    echo "<pre>";
-    echo "Matching supplier results:";
-    print_r($matchingResults);
-    echo "</pre>";
-
-    echo "<pre>";
-    echo "Non matching supplier results:";
-    print_r($nonMatchingResults);
-    echo "</pre>";
-
-
-    $nids = [];
-    /** @var TermInterface $category */
-    foreach ($categories as $category) {
-      if ($nid = $this->getResultId($category, $data)) {
-        $nids[] = $nid;
-      }
+    // query for all supplier nodes where there is no match
+    $nids = array_unique($nids);
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'supplier');
+    foreach ($nids as $nid) {
+      $query->condition('nid', $nid, 'NOT IN');
     }
-    return $nids;
+    $result = $query->execute();
+
+    $no_result_nodes = Node::loadMultiple($result);
+
+    foreach ($no_result_nodes as $node) {
+      $node_title = $node->getTitle();
+      $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+
+      $no_matches[$node_title]['title'] = $node_title;
+      $no_matches[$node_title]['node_url'] = $node_url;
+      $no_matches[$node_title][] = $value['value'];
+    }
+
+    $result_data = [
+      'matches' => $matches,
+      'partial_matches' => $partial_matches,
+      'no_matches' => $no_matches,
+    ];
+
+    return $result_data;
   }
 
   /**
