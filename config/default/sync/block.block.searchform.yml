@@ -1,0 +1,20 @@
+uuid: 3425158f-7f59-4677-88fc-4fff1311a253
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: searchform
+theme: dhsc_theme
+region: search
+weight: 0
+provider: null
+plugin: search_form
+settings:
+  id: search_form
+  label: 'Search form'
+  label_display: '0'
+  provider: dhsc_site
+visibility: {  }
