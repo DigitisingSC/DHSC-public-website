@@ -14,18 +14,12 @@ interface AssuredSolutionsInterface {
    *
    * @param array $data
    *   Webform values.
+   * @param object $webform
+   *   Webform entity.
    *
    * @return mixed
    */
-  public function getResultsSummary($data);
-
-  /**
-   * Get sorts result ids.
-   *
-   * @return mixed
-   *   Return ids like on Result Summary page.
-   */
-  public function getSortsResultIds();
+  public function getResultsSummary($data, $webform);
 
   /**
    * Get webform submission id.

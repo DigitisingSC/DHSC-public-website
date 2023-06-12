@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\TermInterface;
+use Drupal\webform\Utility\WebformOptionsHelper;
 
 /**
  * Class AssuredSolutionsResultViewer.
@@ -98,9 +99,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data)
+  public function getResultsSummary($data, $webform)
   {
-    $results = $this->getResultIds($data);
+    $results = $this->getResultIds($data, $webform);
 
     if (!$results) {
       return;
@@ -152,34 +153,22 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function getSortsResultIds()
-  {
-    if ($data = $this->getSubmissionData()) {
-      $nids = $this->getResultIds($data);
-      if (!$nids) {
-        return;
-      }
-      $nodes = $this->nodeStorage->loadMultiple($nids);
-    }
-    return $nodes;
-  }
-
-  /**
    * Get ids of result nodes.
    *
    * @param array $data
    *   Webform values.
+   * @param object $webform
+   *   Webform entity.
    * @param bool $top_tips
    *   Check if top tip.
    *
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data)
+  protected function getResultIds(array $data, $webform)
   {
     $answers = [];
+    $search_criteria = [];
 
     foreach ($data as $key => $answer) {
       // check we have an answer value in both checkboxes and radio form fields.
@@ -189,14 +178,16 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       if ($answer === '1') {
         $answer = $key;
       }
+
       $answers[] = $answer;
+
     }
 
     // start by querying for all nodes which contain at least one answer.
     $query = \Drupal::entityQuery('node')
       ->condition('type', 'supplier');
     $or = $query->orConditionGroup();
-    foreach ($answers as $answer) {
+    foreach ($answers as $key => $answer) {
       $or->condition('field_possible_answers.value', $answer);
     }
     $query->condition($or);
@@ -222,7 +213,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
           $partial_matches[$node_title]['title'] = $node_title;
           $partial_matches[$node_title]['node_url'] = $node_url;
-          $partial_matches[$node_title]['answers'][] = $value['value'];
+          $partial_matches[$node_title]['answers'][] = $this->getFormElementValue($value['value'], $webform);
         }
       }
 
@@ -253,7 +244,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $no_matches[$node_title]['title'] = $node_title;
       $no_matches[$node_title]['node_url'] = $node_url;
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
-        $no_matches[$node_title]['answers'][] = $value['value'];
+        $no_matches[$node_title]['answers'][] = $this->getFormElementValue($value['value'], $webform);
       }
     }
 
@@ -264,6 +255,32 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     ];
 
     return $result_data;
+  }
+
+  /**
+   * Returns the webform field answer value for checkbox and radio elements.
+   *
+   * @param string $value
+   * @param entity $webform
+   * @return void
+   */
+  public function getFormElementValue($value, $webform){
+    $element = $webform->getElement($value);
+    if (isset($element['#type']) && $element['#type'] === 'checkbox') {
+      // Use the title for checkbox fields and set search criteria accordingly.
+      $title = $element['#title'];
+      return $title;
+    }
+    if (isset($element['#type']) && $element['#type'] === 'radios') {
+      // Use the options text for radio fields.
+      $value = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
+      if (count($value) > 1) {
+        $item = $value;
+      } elseif (count($value) === 1) {
+        $item = reset($value);
+      }
+      return $item;
+    }
   }
 
   /**

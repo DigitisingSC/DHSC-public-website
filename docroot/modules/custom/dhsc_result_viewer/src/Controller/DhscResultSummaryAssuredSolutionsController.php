@@ -77,7 +77,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase {
   public function getResults() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->resultViewer->getSubmission()) {
-      return $this->resultViewer->getResultsSummary($submission->getData());
+      return $this->resultViewer->getResultsSummary($submission->getData(), $submission->getWebform());
     }
   }
 
