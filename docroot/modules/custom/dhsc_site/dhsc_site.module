@@ -10,5 +10,10 @@ function dhsc_site_theme() {
         'social_links' => [],
       ],
     ],
+    'search_form' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
   ];
 }
