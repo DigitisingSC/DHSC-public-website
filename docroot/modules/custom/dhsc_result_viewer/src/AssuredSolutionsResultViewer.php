@@ -179,8 +179,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         $answer = $key;
       }
 
-      $answers[] = $answer;
-
+      $answers[$key] = $answer;
     }
 
     // start by querying for all nodes which contain at least one answer.
@@ -213,7 +212,17 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
           $partial_matches[$node_title]['title'] = $node_title;
           $partial_matches[$node_title]['node_url'] = $node_url;
-          $partial_matches[$node_title]['answers'][] = $this->getFormElementValue($value['value'], $webform);
+
+          foreach ($answers as $key => $answer) {
+            // Radio field answers do not match the key value like checkboxes
+            // In this case, use the key to lookup the field value.
+            if ($answer != $key) {
+              $field_key = $key;
+            }
+          }
+
+          $partial_matches[$node_title]['answers'][] =
+            $this->getFormElementValue($field_key, $value['value'], $webform);
         }
       }
 
@@ -244,7 +253,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $no_matches[$node_title]['title'] = $node_title;
       $no_matches[$node_title]['node_url'] = $node_url;
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
-        $no_matches[$node_title]['answers'][] = $this->getFormElementValue($value['value'], $webform);
+        $no_matches[$node_title]['answers'][] =
+          $this->getFormElementValue($field_key = NULL, $value['value'], $webform);
       }
     }
 
@@ -261,11 +271,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * Returns the webform field answer value for checkbox and radio elements.
    *
    * @param string $value
-   * @param entity $webform
+   * @param object $webform
    * @return void
    */
-  public function getFormElementValue($value, $webform){
-    $element = $webform->getElement($value);
+  public function getFormElementValue(string $field_key = NULL, $value, $webform)
+  {
+    $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
     if (isset($element['#type']) && $element['#type'] === 'checkbox') {
       // Use the title for checkbox fields and set search criteria accordingly.
       $title = $element['#title'];
