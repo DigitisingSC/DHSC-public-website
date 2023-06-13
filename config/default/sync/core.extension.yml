@@ -108,6 +108,7 @@ module:
   taxonomy: 0
   telephone: 0
   text: 0
+  themable_forms: 0
   time_field: 0
   token: 0
   toolbar: 0
