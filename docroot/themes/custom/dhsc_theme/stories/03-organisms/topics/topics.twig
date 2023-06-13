@@ -1,0 +1,21 @@
+{% set classes = [
+  'o-topics'
+] %}
+<section{{attributes.addClass(classes)}}>
+  <div class="o-topics__container container py-4">
+    {% if title %}
+      <h2 class="o-topics__title">{{ title }}</h2>
+    {% endif %}
+    {% if items is not empty %}
+      <div class="o-topics__listing tablet:grid tablet:grid-cols-3 tablet:gap-6">
+        {% if items is iterable %}
+          {% for key, item in items if key|first != '#' %}
+            {{ item }}
+          {% endfor %}
+        {% else %}
+          {{ items }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>

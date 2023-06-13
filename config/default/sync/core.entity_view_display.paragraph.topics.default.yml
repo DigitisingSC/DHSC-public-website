@@ -1,0 +1,34 @@
+uuid: a8720724-f4d3-4f33-90fd-81fcdf556fee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.topics.field_title
+    - field.field.paragraph.topics.field_topic_items
+    - paragraphs.paragraphs_type.topics
+  module:
+    - entity_reference_revisions
+id: paragraph.topics.default
+targetEntityType: paragraph
+bundle: topics
+mode: default
+content:
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_topic_items:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
