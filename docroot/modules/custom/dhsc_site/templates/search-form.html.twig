@@ -1,0 +1,18 @@
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'search',
+  } %}
+{% endset %}
+
+{% if items %}
+  {% include "@organisms/search-form/search-form.twig" with {
+    'attributes': attributes,
+    'title': 'Search',
+    'items': items,
+    'icon': icon
+  } %}
+{% endif %}
+{% set catch_cache = content|render %}

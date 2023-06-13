@@ -1,0 +1,23 @@
+uuid: 01f3124b-d1cc-40b1-9a95-ac65e10e4dc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_quicksearch_link
+    - site_settings.site_setting_entity_type.quick_search
+  module:
+    - link
+id: site_setting_entity.quick_search.field_quicksearch_link
+field_name: field_quicksearch_link
+entity_type: site_setting_entity
+bundle: quick_search
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 1
+field_type: link

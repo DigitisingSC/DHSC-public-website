@@ -1,0 +1,8 @@
+uuid: 8b5a915c-701d-4f0d-9dd1-871df9782a2f
+langcode: en
+status: true
+dependencies: {  }
+id: quick_search
+label: 'Quick search'
+fieldset: Search
+multiple: false

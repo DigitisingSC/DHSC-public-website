@@ -1,0 +1,7 @@
+.o-search-form {
+  &__form {
+    button svg {
+      @apply w-3 h-3 fill-white;
+    }
+  }
+}
