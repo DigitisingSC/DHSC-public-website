@@ -1,63 +1,87 @@
-uuid: 53c2f9ed-0dba-4a67-84fd-ded1eec9979a
+uuid: 3c684cba-9db7-4a6f-8981-3d5cbbd13307
 langcode: en
 status: true
 dependencies:
   config:
     - filter.format.basic_html
   module:
-    - ckeditor
+    - ckeditor5
 format: basic_html
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
-        -
-          name: Formatting
-          items:
-            - Format
-            - Styles
-            - Bold
-            - Italic
-            - Underline
-            - Strike
-            - HorizontalRule
-            - JustifyLeft
-            - JustifyCenter
-            - JustifyRight
-            - JustifyBlock
-            - Undo
-            - Redo
-        -
-          name: Links
-          items:
-            - DrupalLink
-            - DrupalUnlink
-        -
-          name: Lists
-          items:
-            - BulletedList
-            - NumberedList
-        -
-          name: Media
-          items:
-            - Blockquote
-            - DrupalImage
-        -
-          name: Tools
-          items:
-            - Source
+    items:
+      - heading
+      - style
+      - bold
+      - italic
+      - underline
+      - strikethrough
+      - horizontalLine
+      - alignment
+      - undo
+      - redo
+      - '|'
+      - link
+      - '|'
+      - bulletedList
+      - numberedList
+      - '|'
+      - blockQuote
+      - drupalInsertImage
+      - '|'
+      - sourceEditing
+      - '|'
+      - code
   plugins:
-    drupallink:
-      linkit_enabled: true
-      linkit_profile: default
-    stylescombo:
-      styles: ''
+    ckeditor5_heading:
+      enabled_headings:
+        - heading2
+        - heading3
+        - heading4
+        - heading5
+        - heading6
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Primary button'
+          element: '<a class="a-button a-button--primary">'
+        -
+          label: 'Secondary button'
+          element: '<a class="a-button a-button--secondary">'
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<dl>'
+        - '<dt>'
+        - '<dd>'
+        - '<span>'
+        - '<h2 id>'
+        - '<h3 id>'
+        - '<h4 id>'
+        - '<h5 id>'
+        - '<h6 id>'
+        - '<ul type>'
+        - '<ol type>'
+        - '<img data-entity-type data-entity-uuid data-align data-caption>'
+        - '<a hreflang target data-entity-type data-entity-uuid data-entity-substitution>'
+    ckeditor5_list:
+      reversed: false
+      startIndex: true
+    ckeditor5_alignment:
+      enabled_alignments:
+        - left
+        - center
+        - right
+        - justify
+    ckeditor5_imageResize:
+      allow_resize: true
+    linkit_extension:
+      linkit_enabled: false
 image_upload:
   status: false
   scheme: public
   directory: inline-images
   max_size: ''
   max_dimensions:
-    width: null
-    height: null
+    width: 0
+    height: 0

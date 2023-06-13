@@ -27,7 +27,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <dl> <dt> <dd> <span> <ul type> <ol type start> <img src alt height width data-entity-type data-entity-uuid data-align data-caption> <a hreflang href target data-entity-type data-entity-uuid data-entity-substitution> <strong> <em> <code> <li> <u> <s> <hr> <blockquote>'
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 id class="text-align-left text-align-center text-align-right text-align-justify"> <h3 id class="text-align-left text-align-center text-align-right text-align-justify"> <h4 id class="text-align-left text-align-center text-align-right text-align-justify"> <h5 id class="text-align-left text-align-center text-align-right text-align-justify"> <h6 id class="text-align-left text-align-center text-align-right text-align-justify"> <a class="a-button a-button--primary a-button--secondary" hreflang target data-entity-type data-entity-uuid data-entity-substitution href> <dl> <dt> <dd> <span> <ul type> <ol type start> <img data-entity-type data-entity-uuid data-align data-caption src alt height width> <strong> <em> <u> <code> <s> <blockquote> <li> <hr>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
