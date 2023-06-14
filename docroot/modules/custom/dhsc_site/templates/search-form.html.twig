@@ -7,12 +7,10 @@
   } %}
 {% endset %}
 
-{% if items %}
-  {% include "@organisms/search-form/search-form.twig" with {
-    'attributes': attributes,
-    'title': 'Search',
-    'items': items,
-    'icon': icon
-  } %}
-{% endif %}
+{% include "@organisms/search-form/search-form.twig" with {
+  'attributes': attributes,
+  'title': 'Search',
+  'items': items,
+  'icon': icon
+} %}
 {% set catch_cache = content|render %}

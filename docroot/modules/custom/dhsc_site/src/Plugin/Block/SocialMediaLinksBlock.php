@@ -34,22 +34,24 @@ class SocialMediaLinksBlock extends BlockBase {
     $site_settings = \Drupal::service('site_settings.loader');
     $social_links = $site_settings->loadByFieldset('global')['social_media_links'];
 
-    if (is_array($social_links[0])) {
-      foreach ($social_links as $key => $social_link) {
-        if (is_numeric($key)) {
-          $links[] = [
-            'url'   => $social_link['uri'],
-            'title' => $social_link['title'],
-            'icon'  => $this->getSocialName($social_link['uri']),
-          ];
+    if (!empty($social_links)) {
+      if (is_array($social_links[0])) {
+        foreach ($social_links as $key => $social_link) {
+          if (is_numeric($key)) {
+            $links[] = [
+              'url'   => $social_link['uri'],
+              'title' => $social_link['title'],
+              'icon'  => $this->getSocialName($social_link['uri']),
+            ];
+          }
         }
+      } else {
+        $links[] = [
+          'url'   => $social_links['uri'],
+          'title' => $social_links['title'],
+          'icon'  => $this->getSocialName($social_links['uri']),
+        ];
       }
-    } else {
-      $links[] = [
-        'url'   => $social_links['uri'],
-        'title' => $social_links['title'],
-        'icon'  => $this->getSocialName($social_links['uri']),
-      ];
     }
     return $links;
   }
