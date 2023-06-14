@@ -48,6 +48,7 @@
         "drupal/shield": "^1.7",
         "drupal/site_settings": "^1.20",
         "drupal/sitewide_alert": "^2.1",
+        "drupal/stage_file_proxy": "^2.0",
         "drupal/themable_forms": "^1.0",
         "drupal/time_field": "^2.1",
         "drupal/twig_tweak": "^3.2",
