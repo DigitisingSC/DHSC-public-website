@@ -108,6 +108,15 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
 
     foreach ($results as $key => $result) {
+      if ($key === 'search_criteria') {
+        foreach ($result as $key => $search_criteria) {
+          $values['search_criteria'][] = [
+            '#theme' => 'search_criteria',
+            '#section' => $search_criteria['section'],
+            '#answers' => $search_criteria['answers'],
+          ];
+        }
+      }
       if ($key === 'partial_matches') {
         foreach ($result as $key => $partial_match) {
           $values['partial_matches'][] = [
@@ -144,6 +153,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
 
     $values = [
+      'search_criteria' => !empty($values['search_criteria']) ? $values['search_criteria'] : NULL,
       'partial_matches' => !empty($values['partial_matches']) ? $values['partial_matches'] : NULL,
       'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
       'no_matches' => !empty($values['no_matches']) ? $values['no_matches'] : NULL,
@@ -153,7 +163,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   }
 
   /**
-   * Get ids of result nodes.
+   * Get ids of all result nodes.
    *
    * @param array $data
    *   Webform values.
@@ -180,6 +190,31 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       }
 
       $answers[$key] = $answer;
+    }
+
+    if (!empty($answers)) {
+      // Add all search criteria grouped by webform wizard title.
+      foreach ($answers as $key => $value) {
+        $element = $webform->getElement($value) ?? $webform->getElement($key);
+        if (isset($element['#type']) && $element['#type'] === 'checkbox') {
+          $section = $webform->getElement($element['#webform_parent_key'])['#title'];
+          $search_criteria[$section]['section'] = $section;
+          $search_criteria[$section]['answers'][] = $element['#title'];
+        }
+        if (isset($element['#type']) && $element['#type'] === 'radios') {
+          // Use the options text for radio fields.
+          $value = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
+          if (count($value) > 1) {
+            $item = $value;
+          } elseif (count($value) === 1) {
+            $item = reset($value);
+          }
+          $section = $webform->getElement($element['#webform_parent_key'])['#title'];
+          $search_criteria[$section]['section'] = $section;
+          $search_criteria[$section]['answers'][] = $item;
+        }
+      }
+      sort($search_criteria);
     }
 
     // start by querying for all nodes which contain at least one answer.
@@ -222,7 +257,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           }
 
           $partial_matches[$node_title]['answers'][] =
-            $this->getFormElementValue($field_key, $value['value'], $webform);
+            $this->getFormElementValue($field_key, $value['value'], $webform, $search_criteria);
         }
       }
 
@@ -254,11 +289,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $no_matches[$node_title]['node_url'] = $node_url;
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
         $no_matches[$node_title]['answers'][] =
-          $this->getFormElementValue($field_key = NULL, $value['value'], $webform);
+          $this->getFormElementValue($field_key = NULL, $value['value'], $webform, $search_criteria);
       }
     }
 
     $result_data = [
+      'search_criteria' => $search_criteria,
       'matches' => $matches,
       'partial_matches' => $partial_matches,
       'no_matches' => $no_matches,
@@ -274,11 +310,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @param object $webform
    * @return void
    */
-  public function getFormElementValue(string $field_key = NULL, $value, $webform)
+  public function getFormElementValue(string $field_key = NULL, $value, $webform, &$search_criteria)
   {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
+
     if (isset($element['#type']) && $element['#type'] === 'checkbox') {
-      // Use the title for checkbox fields and set search criteria accordingly.
+      // Use the title for checkbox fields.
       $title = $element['#title'];
       return $title;
     }
