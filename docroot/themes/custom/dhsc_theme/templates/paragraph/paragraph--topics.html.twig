@@ -39,9 +39,8 @@
  */
 #}
 
-{% include '@molecules/topic/topic.twig' with {
+{% include '@organisms/topics/topics.twig' with {
   'attributes': attributes,
-  'heading': content.field_title,
-  'description': content.field_description_html,
-  'link': content.field_link[0]['#url']
+  'title': content.field_title,
+  'items': content.field_topic_items
 } %}
