@@ -442,12 +442,20 @@ display:
           wrapper_class: item-list
           class: ''
       row:
-        type: fields
+        type: search_api
         options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+          view_modes:
+            'entity:node':
+              article: search_index
+              casestudy: search_index
+              content_page: search_index
+              event: search_index
+              landing_page: search_index
+              localgov_guides_overview: search_index
+              localgov_guides_page: search_index
+              recommendation: search_index
+              subtopic_page: search_index
+              supplier: search_index
       query:
         type: search_api_query
         options:
