@@ -1,0 +1,18 @@
+uuid: d68aaeb3-e8fb-4d1d-b19e-9b27c524f415
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Subtopic page'
+type: subtopic_page
+description: 'Used to display a grouping of Individual content pages, guide pages or content list pages.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

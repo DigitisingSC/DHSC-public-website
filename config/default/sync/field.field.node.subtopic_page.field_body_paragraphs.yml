@@ -1,0 +1,97 @@
+uuid: 07b3c4c3-b387-442c-bd71-dffadfeb2caa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_paragraphs
+    - node.type.subtopic_page
+    - paragraphs.paragraphs_type.alert
+    - paragraphs.paragraphs_type.card_collection
+    - paragraphs.paragraphs_type.cta_banner
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.localgov_image
+    - paragraphs.paragraphs_type.localgov_link
+    - paragraphs.paragraphs_type.localgov_text
+    - paragraphs.paragraphs_type.topic_list_builder
+    - paragraphs.paragraphs_type.topics
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.subtopic_page.field_body_paragraphs
+field_name: field_body_paragraphs
+entity_type: node
+bundle: subtopic_page
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      alert: alert
+      card_collection: card_collection
+      cta_banner: cta_banner
+      from_library: from_library
+      localgov_image: localgov_image
+      localgov_link: localgov_link
+      localgov_text: localgov_text
+      topic_list_builder: topic_list_builder
+      topics: topics
+      video: video
+    negate: 0
+    target_bundles_drag_drop:
+      alert:
+        weight: 18
+        enabled: true
+      card_collection:
+        weight: 19
+        enabled: true
+      content_listing:
+        weight: 20
+        enabled: false
+      content_listing_section:
+        weight: 21
+        enabled: false
+      content_listing_section_links:
+        weight: 22
+        enabled: false
+      cta_banner:
+        weight: 23
+        enabled: true
+      dynamic_content_list:
+        weight: 24
+        enabled: false
+      dynamic_content_listing:
+        weight: 25
+        enabled: false
+      from_library:
+        weight: 26
+        enabled: true
+      localgov_image:
+        weight: 27
+        enabled: true
+      localgov_link:
+        weight: 28
+        enabled: true
+      localgov_text:
+        weight: 29
+        enabled: true
+      newsletter_signup:
+        weight: 30
+        enabled: false
+      topic:
+        weight: 31
+        enabled: false
+      topic_list_builder:
+        weight: 32
+        enabled: true
+      topics:
+        weight: 33
+        enabled: true
+      video:
+        weight: 34
+        enabled: true
+field_type: entity_reference_revisions

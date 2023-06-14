@@ -1,0 +1,46 @@
+uuid: 3c0fa46b-2853-4fbd-8dc2-b83cc339e6ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.subtopic_page.field_body_paragraphs
+    - field.field.node.subtopic_page.field_image
+    - field.field.node.subtopic_page.field_metatags
+    - field.field.node.subtopic_page.field_subtopics
+    - field.field.node.subtopic_page.field_summary
+    - node.type.subtopic_page
+  module:
+    - entity_reference_revisions
+    - user
+id: node.subtopic_page.default
+targetEntityType: node
+bundle: subtopic_page
+mode: default
+content:
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_image: true
+  field_metatags: true
+  field_subtopics: true
+  langcode: true
+  search_api_excerpt: true
