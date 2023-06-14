@@ -6,11 +6,13 @@ id: local
 label: Local
 description: 'Local development config.'
 weight: 0
+stackable: false
 storage: folder
 folder: ../config/default/local
 module:
   dblog: 0
   devel: 0
+  stage_file_proxy: 0
   views_ui: 0
 theme: {  }
 complete_list: {  }
