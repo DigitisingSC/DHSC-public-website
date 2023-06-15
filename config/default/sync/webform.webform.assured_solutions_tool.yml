@@ -23,11 +23,11 @@ elements: |-
       '#text': |
         <h3>Do you need devices such as computers, tablets and phones?</h3>
       '#format': basic_html
-    devices_options:
+    device_option:
       '#type': radios
-      '#title': 'Devices options'
+      '#title': 'Device option'
       '#options':
-        device_options_yes: 'Yes'
+        device_option_yes: 'Yes'
         device_option_no: 'No'
         device_option_not_sure: 'Not sure'
   step_2:

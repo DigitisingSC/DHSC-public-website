@@ -68,6 +68,13 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   protected $tempStore;
 
   /**
+   * Device option webform keys.
+   *
+   * @var array
+   */
+  protected $device_option_keys;
+
+  /**
    * ResultViewer constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -87,6 +94,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     $this->taxonomyStorage = $entity_type_manager->getStorage('taxonomy_term');
     $this->configFactory = $config_factory;
     $this->tempStore = $temp_store_factory->get('dhsc_result_viewer');
+    $this->device_option_keys = ['device_option_yes', 'device_option_no', 'device_option_not_sure'];
   }
 
   /**
@@ -181,6 +189,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   {
     $answers = [];
     $search_criteria = [];
+    $field_key = NULL;
 
     // Extract unique submission token value from URL.
     if ($submission_token = \Drupal::request()->query->get('token')) {
@@ -245,6 +254,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     foreach ($nodes as $node) {
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
         // create array of all supplier node ids used for filtering non matching criteria.
+        $field_key = NULL;
         $nids[] = $node->id();
 
         // filter results where not all criteria is met.
@@ -255,12 +265,10 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           $partial_matches[$node_title]['title'] = $node_title;
           $partial_matches[$node_title]['node_url'] = $node_url;
 
-          foreach ($answers as $key => $answer) {
-            // Radio field answers do not match the key value like checkboxes
-            // In this case, use the key to lookup the field value.
-            if ($answer != $key) {
-              $field_key = $key;
-            }
+          // We don't have the element key for the first radio field
+          // so check against pre-defined values and set the field_key from the form.
+          if (in_array($value['value'], $this->device_option_keys)) {
+            $field_key = 'device_option';
           }
 
           $partial_matches[$node_title]['answers'][] =
@@ -289,14 +297,23 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     $no_result_nodes = Node::loadMultiple($result);
 
     foreach ($no_result_nodes as $node) {
+      $field_key = NULL;
       $node_title = $node->getTitle();
       $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
 
       $no_matches[$node_title]['title'] = $node_title;
       $no_matches[$node_title]['node_url'] = $node_url;
+
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
+
+        // We don't have the element key for the first radio field
+        // so check against pre-defined values and set the field_key from the form.
+        if (in_array($value['value'], $this->device_option_keys)) {
+          $field_key = 'device_option';
+        }
+
         $no_matches[$node_title]['answers'][] =
-          $this->getFormElementValue($field_key = NULL, $value['value'], $webform);
+          $this->getFormElementValue($field_key, $value['value'], $webform);
       }
     }
 
