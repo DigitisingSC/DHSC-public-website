@@ -56,10 +56,10 @@ jobs:
       run: |
         bash $GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
     - name: Publish to Chromatic
-      working-directory: ./docroot/themes/custom/dhsc_theme
-      # Chromatic GitHub Action options
-      run: |
-        npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      uses: chromaui/action@v1
+      with:
+        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        workingDir: ${GITHUB_WORKSPACE}/docroot/themes/custom/dhsc_theme
     - name: Prepare environment variables
       run: |
         echo "GITHUB_REF_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
