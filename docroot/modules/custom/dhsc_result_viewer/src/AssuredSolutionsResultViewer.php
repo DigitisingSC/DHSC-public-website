@@ -268,7 +268,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           // We don't have the element key for the first radio field
           // so check against pre-defined values and set the field_key from the form.
           if (in_array($value['value'], $this->device_option_keys)) {
-            $field_key = 'device_option';
+            $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
           }
 
           $partial_matches[$node_title]['answers'][] =
@@ -309,7 +309,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         // We don't have the element key for the first radio field
         // so check against pre-defined values and set the field_key from the form.
         if (in_array($value['value'], $this->device_option_keys)) {
-          $field_key = 'device_option';
+          $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
         }
 
         $no_matches[$node_title]['answers'][] =
