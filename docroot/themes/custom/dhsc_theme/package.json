@@ -10,7 +10,7 @@
     "storybook": "npm run buildsprite & storybook dev -p 6006",
     "build-storybook": "npm run buildsprite & storybook build",
     "build": "gulp",
-    "chromatic": "npx chromatic --project-token=chpt_7f0dd700cfd3dd8"
+    "chromatic": "chromatic --project-token=chpt_7f0dd700cfd3dd8"
   },
   "keywords": [],
   "author": "",
