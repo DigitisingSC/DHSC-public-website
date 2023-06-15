@@ -92,6 +92,9 @@ module.exports = {
     'border-green',
     'border-l-4',
     'pl-6',
+    'ml-6',
+    'mb-8',
+    'h3',
   ],
   theme: {
     extend: {

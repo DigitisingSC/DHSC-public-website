@@ -1,0 +1,9 @@
+.m-content-list {
+  &__links a {
+    @apply text-forest underline;
+
+    &:hover {
+      @apply no-underline;
+    }
+  }
+}
