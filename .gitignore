@@ -99,3 +99,6 @@ tmp/**/*
 
 # Ignore Dist because it's
 **/dist
+
+# Ignore strybook build folder
+docroot/themes/custom/dhsc_theme/storybook-static/
