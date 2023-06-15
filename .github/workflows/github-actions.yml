@@ -59,7 +59,7 @@ jobs:
       uses: chromaui/action@v1
       with:
         projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-        workingDir: ${GITHUB_WORKSPACE}/docroot/themes/custom/dhsc_theme
+        workingDir: ./docroot/themes/custom/dhsc_theme
     - name: Prepare environment variables
       run: |
         echo "GITHUB_REF_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV
