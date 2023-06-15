@@ -1,0 +1,23 @@
+.m-topic {
+  background: rgba(204, 222, 219, 0.5);
+
+  &:hover {
+    background: #ccdedb;
+
+    h3 {
+      @apply no-underline;
+    }
+  }
+
+  h3 {
+    @apply underline mb-2;
+  }
+
+  &:last-child {
+    background: #fbeecc;
+
+    &:hover {
+      background: #f9e6b2;
+    }
+  }
+}

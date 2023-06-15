@@ -7,6 +7,7 @@ dependencies:
     - node.type.subtopic_page
     - paragraphs.paragraphs_type.alert
     - paragraphs.paragraphs_type.card_collection
+    - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.cta_banner
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.localgov_image
@@ -31,67 +32,68 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      alert: alert
+      localgov_text: localgov_text
+      localgov_image: localgov_image
+      video: video
       card_collection: card_collection
       cta_banner: cta_banner
+      content_listing: content_listing
+      alert: alert
       from_library: from_library
-      localgov_image: localgov_image
       localgov_link: localgov_link
-      localgov_text: localgov_text
       topic_list_builder: topic_list_builder
       topics: topics
-      video: video
     negate: 0
     target_bundles_drag_drop:
       alert:
-        weight: 18
+        weight: -29
         enabled: true
       card_collection:
-        weight: 19
+        weight: -32
         enabled: true
       content_listing:
-        weight: 20
-        enabled: false
+        weight: -30
+        enabled: true
       content_listing_section:
-        weight: 21
+        weight: -28
         enabled: false
       content_listing_section_links:
-        weight: 22
+        weight: -27
         enabled: false
       cta_banner:
-        weight: 23
+        weight: -31
         enabled: true
       dynamic_content_list:
-        weight: 24
+        weight: -26
         enabled: false
       dynamic_content_listing:
-        weight: 25
+        weight: -25
         enabled: false
       from_library:
-        weight: 26
+        weight: -24
         enabled: true
       localgov_image:
-        weight: 27
+        weight: -34
         enabled: true
       localgov_link:
-        weight: 28
+        weight: -23
         enabled: true
       localgov_text:
-        weight: 29
+        weight: -35
         enabled: true
       newsletter_signup:
-        weight: 30
+        weight: -22
         enabled: false
       topic:
-        weight: 31
+        weight: -21
         enabled: false
       topic_list_builder:
-        weight: 32
+        weight: -20
         enabled: true
       topics:
-        weight: 33
+        weight: -19
         enabled: true
       video:
-        weight: 34
+        weight: -33
         enabled: true
 field_type: entity_reference_revisions

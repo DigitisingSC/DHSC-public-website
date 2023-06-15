@@ -1,5 +1,6 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
+import './topic.scss';
 import topicTwig from "./topic.twig";
 
 export default {
