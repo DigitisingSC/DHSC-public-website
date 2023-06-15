@@ -1,0 +1,23 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  'm-topic',
+  'bg-green-20 p-6 rounded-md'
+] | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
+  <a href="{{ link }}">
+    <div class="content-wrapper">
+      <h3>{{ heading }}</h3>
+      <p>{{ description }}</p>
+      <p>{{ date }}</p>
+    </div>
+  </a>
+</div>

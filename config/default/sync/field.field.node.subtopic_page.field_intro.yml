@@ -1,0 +1,19 @@
+uuid: d3f0b6c0-290c-4e63-9579-f3cd678c0e87
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro
+    - node.type.subtopic_page
+id: node.subtopic_page.field_intro
+field_name: field_intro
+entity_type: node
+bundle: subtopic_page
+label: Intro
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

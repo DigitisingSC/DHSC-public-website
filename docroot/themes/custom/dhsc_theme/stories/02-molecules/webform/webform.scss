@@ -1,0 +1,19 @@
+.m-webform {
+  .form-item {
+    h3 {
+      @apply mb-8;
+    }
+  }
+
+  details {
+    @apply mb-8;
+  }
+
+  .radios--wrapper{
+    @apply mb-8;
+  }
+
+  .webform-actions{
+    @apply flex justify-evenly mb-10;
+  }
+}

@@ -1,0 +1,19 @@
+uuid: 38efd2a5-986b-4970-bee4-ad6e1bc9759e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.subtopic_page
+id: node.subtopic_page.field_summary
+field_name: field_summary
+entity_type: node
+bundle: subtopic_page
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

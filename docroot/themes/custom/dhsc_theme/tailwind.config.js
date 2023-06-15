@@ -58,6 +58,7 @@ const careNeutrals = {
   black: {
     DEFAULT: '#101820',
     80: '#002D26',
+    60: '#545454',
     40: '#9FA3A6',
     20: '#CFD1D2'
   },
@@ -86,6 +87,14 @@ module.exports = {
   content: [
     './stories/**/*.{html,twig,js}',
     './templates/**/*.{html,twig,js}',
+  ],
+  safelist: [
+    'border-green',
+    'border-l-4',
+    'pl-6',
+    'ml-6',
+    'mb-8',
+    'h3',
   ],
   theme: {
     extend: {

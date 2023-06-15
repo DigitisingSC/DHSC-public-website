@@ -1,0 +1,23 @@
+uuid: 1959634b-8a63-4ed0-83db-acb3611c477e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_social_url
+    - site_settings.site_setting_entity_type.social_media_links
+  module:
+    - link
+id: site_setting_entity.social_media_links.field_social_url
+field_name: field_social_url
+entity_type: site_setting_entity
+bundle: social_media_links
+label: URL
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

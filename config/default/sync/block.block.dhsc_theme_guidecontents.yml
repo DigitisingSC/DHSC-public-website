@@ -1,6 +1,6 @@
 uuid: 35f8bb4f-b26d-4c69-982c-5748af74f2de
 langcode: en
-status: false
+status: true
 dependencies:
   module:
     - localgov_guides
@@ -9,7 +9,7 @@ dependencies:
 id: dhsc_theme_guidecontents
 theme: dhsc_theme
 region: content_top
-weight: -5
+weight: 0
 provider: null
 plugin: localgov_guides_contents
 settings:

@@ -14,6 +14,7 @@ dependencies:
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.newsletter_signup
     - paragraphs.paragraphs_type.topic_list_builder
+    - paragraphs.paragraphs_type.topics
     - paragraphs.paragraphs_type.video
   module:
     - entity_reference_revisions
@@ -41,8 +42,12 @@ settings:
       from_library: from_library
       dynamic_content_listing: dynamic_content_listing
       newsletter_signup: newsletter_signup
+      topics: topics
     negate: 0
     target_bundles_drag_drop:
+      alert:
+        weight: 18
+        enabled: false
       card_collection:
         weight: -20
         enabled: true
@@ -58,6 +63,9 @@ settings:
       cta_banner:
         weight: -19
         enabled: true
+      dynamic_content_list:
+        weight: 24
+        enabled: false
       dynamic_content_listing:
         weight: 18
         enabled: true
@@ -76,8 +84,14 @@ settings:
       newsletter_signup:
         weight: 26
         enabled: true
+      topic:
+        weight: 31
+        enabled: false
       topic_list_builder:
         weight: -17
+        enabled: true
+      topics:
+        weight: 32
         enabled: true
       video:
         weight: -21

@@ -1,0 +1,56 @@
+uuid: 3b62ae1b-d9e4-40f1-b90c-fe36e52548d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.topics.field_title
+    - field.field.paragraph.topics.field_topic_items
+    - paragraphs.paragraphs_type.topics
+  module:
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+id: paragraph.topics.default
+targetEntityType: paragraph
+bundle: topics
+mode: default
+content:
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topic_items:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: topic
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+hidden:
+  created: true
+  status: true

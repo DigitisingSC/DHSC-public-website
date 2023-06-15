@@ -12,29 +12,13 @@
   'p-2 tablet:px-4 tablet:py-2',
 ] | sort | join(' ') | trim %}
 
-{% if variant == 'secondary' %}
-  {% set variantClasses = [
-    'border-coolgrey',
-    'border-b-4',
-    'bg-black-20 hover:bg-black-40 focus:bg-focus',
-    'text-black',
-    'rounded-md'
-  ] | sort | join(' ') | trim  %}
-{% elseif variant == 'search' %}
+{% if variant == 'search' %}
   {% set variantClasses = [
     'border-white',
     'bg-white hover:bg-white focus:bg-focus',
     'text-black',
     'rounded-3xl',
     'w-auto tablet:w-32'
-  ] | sort | join(' ') | trim  %}
-{% else %}
-  {% set variantClasses = [
-    'border-black',
-    'border-b-4',
-    'rounded-md',
-    'bg-forest hover:bg-black-80 focus:bg-focus',
-    'text-white hover:text-white focus:text-black disabled:text-white'
   ] | sort | join(' ') | trim  %}
 {% endif %}
 
@@ -58,8 +42,9 @@
   {% if variant == 'search' %}
     <div x-data="{ searchIsActive : false }">
       <{{ tag_name }} {{ attributes }}
-        @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive"
+        @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive; $dispatch('activedropdownmain', { active: false })"
         @keyup.enter="$dispatch('togglesearch')"
+        @closesearchtrigger.window="searchIsActive = false"
       >
         <div x-show="searchIsActive" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close'|t }}</span></div>
         <div x-show="!searchIsActive" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Search'|t }}</span></div>

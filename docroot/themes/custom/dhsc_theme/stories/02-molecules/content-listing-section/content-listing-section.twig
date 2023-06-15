@@ -1,16 +1,17 @@
 {% set classes = [
-  'm-content-list'
+  'm-content-list',
+  'mb-8'
 ] %}
 {#
 Template
 #}
 <section{{ attributes.addClass(classes) }}>
   {% if section_title %}
-    <h2 class="m-content-list__title">
+    <h2 class="m-content-list__title text-base">
       {{ section_title }}
     </h2>
   {% endif %}
-  <ul class="m-content-list__links">
+  <ul class="m-content-list__links ml-6">
     {% for section_link_group in section_links %}
       <li class="m-content-list__links">
         <a href="{{ section_link_group.section_link.href }}" class="m-content-list__parent"> {{ section_link_group.section_link.title }}</a>

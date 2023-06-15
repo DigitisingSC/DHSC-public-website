@@ -11,21 +11,22 @@
       {% for item in items %}
         <li class="mr-2 flex items-center" x-data="">
           {% if item.below %}
-            <a href="{{ item.url }}" class="mr-2">{{ item.title }}</a>
+            <a href="{{ item.url }}" class="block underline hover:no-underline mr-2">{{ item.title }}</a>
             <a href="#"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
-               @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
+               @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
             >{{ svgIconDown }}</a>
             <a href="#"
                x-show="isSelected == {{ loop.index }}"
-               @click="$dispatch('activedropdownmain', { active: false })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: false })"
+               @click.prevent="$dispatch('activedropdownmain', { active: false })"
+               @keydown.enter="$dispatch('activedropdownmain', { active: false })"
             >{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
+               class="block mr-2 underline hover:no-underline"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
-               @@keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
+               @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
               {{ item.title }}
             </a>
@@ -42,7 +43,7 @@
             >
               {% for subItem in item.below %}
                 <li>
-                  <a href="{{ subItem.url }}">{{ subItem.title }}</a>
+                  <a href="{{ subItem.url }}" class="block underline hover:no-underline mb-2">{{ subItem.title }}</a>
                 </li>
               {% endfor %}
             </ul>
