@@ -17,6 +17,7 @@ function dhsc_result_viewer_theme()
         'summary' => NULL,
         'result_variant' => NULL,
         'search_criteria' => NULL,
+        'submission_url' => NULL,
         'no_matches' => NULL,
         'partial_matches' => NULL,
         'result' => NULL,

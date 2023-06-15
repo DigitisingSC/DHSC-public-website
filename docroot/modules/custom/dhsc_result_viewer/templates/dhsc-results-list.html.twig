@@ -36,6 +36,7 @@
             {% else %}
               <div class="app_results_table">
                   {{ search_criteria }}
+                  <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
                   {{ result }}
                   {{ partial_matches }}
                   {{ no_matches }}

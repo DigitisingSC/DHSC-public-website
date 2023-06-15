@@ -5,6 +5,7 @@ namespace Drupal\dhsc_result_viewer;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\taxonomy\TermInterface;
 use Drupal\webform\Utility\WebformOptionsHelper;
@@ -153,6 +154,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
 
     $values = [
+      'submission_url' => isset($results['submission_url']) ? $results['submission_url'] : NULL,
       'search_criteria' => !empty($values['search_criteria']) ? $values['search_criteria'] : NULL,
       'partial_matches' => !empty($values['partial_matches']) ? $values['partial_matches'] : NULL,
       'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
@@ -179,6 +181,11 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   {
     $answers = [];
     $search_criteria = [];
+
+    // Extract unique submission token value from URL.
+    if ($submission_token = \Drupal::request()->query->get('token')) {
+      $submission_url = Url::fromUserInput($webform->url(), ['query' => ['token' => $submission_token]])->toString();
+    }
 
     foreach ($data as $key => $answer) {
       // check we have an answer value in both checkboxes and radio form fields.
@@ -257,7 +264,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           }
 
           $partial_matches[$node_title]['answers'][] =
-            $this->getFormElementValue($field_key, $value['value'], $webform, $search_criteria);
+            $this->getFormElementValue($field_key, $value['value'], $webform);
         }
       }
 
@@ -289,7 +296,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $no_matches[$node_title]['node_url'] = $node_url;
       foreach ($node->get('field_possible_answers')->getValue() as $value) {
         $no_matches[$node_title]['answers'][] =
-          $this->getFormElementValue($field_key = NULL, $value['value'], $webform, $search_criteria);
+          $this->getFormElementValue($field_key = NULL, $value['value'], $webform);
       }
     }
 
@@ -298,6 +305,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       'matches' => $matches,
       'partial_matches' => $partial_matches,
       'no_matches' => $no_matches,
+      'submission_url' => isset($submission_url) ?? $submission_url,
     ];
 
     return $result_data;
@@ -310,7 +318,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @param object $webform
    * @return void
    */
-  public function getFormElementValue(string $field_key = NULL, $value, $webform, &$search_criteria)
+  public function getFormElementValue(string $field_key = NULL, $value, $webform)
   {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
 

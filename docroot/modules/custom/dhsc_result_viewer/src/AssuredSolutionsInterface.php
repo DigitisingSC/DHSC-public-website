@@ -24,7 +24,7 @@ interface AssuredSolutionsInterface {
   /**
    * Get webform submission id.
    *
-   * @return mixed
+   * @return string
    *   Return sid.
    */
   public function getSubmissionId();
