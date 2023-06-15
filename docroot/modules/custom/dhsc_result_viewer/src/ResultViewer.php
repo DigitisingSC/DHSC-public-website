@@ -104,6 +104,8 @@ class ResultViewer implements ResultViewerInterface {
       return;
     }
 
+    sort($nids);
+
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {
