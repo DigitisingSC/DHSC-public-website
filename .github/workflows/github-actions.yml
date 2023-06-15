@@ -43,7 +43,11 @@ jobs:
       SSH_DEPLOYMENT_KEY: ${{ secrets.BLT_SSH_DEPLOYMENT_KEY }}
 
     steps:
-    # Using older version of actions/checkout to be able to use Ubuntu 16.04
+      # Needs this step here to make sure Chromatic publishing works properly
+    - name: Configure secure directory
+      run: git config --global --add safe.directory "*"
+
+      # Using older version of actions/checkout to be able to use Ubuntu 16.04
     - uses: actions/checkout@v1
 
     # Install node
@@ -120,9 +124,6 @@ jobs:
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
         ssh-add - <<< "${{ env.SSH_DEPLOYMENT_KEY }}"
       if: ${{ env.SSH_DEPLOYMENT_KEY }}
-
-    - name: Configure secure directory
-      run: git config --global --add safe.directory "*"
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
