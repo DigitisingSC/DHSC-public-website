@@ -8,9 +8,9 @@
     "prebuildsprite": "npm run imageminsvgo",
     "buildsprite": "svgstore -o stories/01-atoms/svg/sprite.svg assets/icons/**/*.svg",
     "storybook": "npm run buildsprite & storybook dev -p 6006",
-    "build-storybook": "npm run buildsprite & storybook build",
+    "build-storybook": "npm run buildsprite & storybook build -- -o ./tmp/storybook",
     "build": "gulp",
-    "chromatic": "chromatic --project-token=chpt_7f0dd700cfd3dd8"
+    "chromatic": "npx run chromatic --project-token=chpt_7f0dd700cfd3dd8"
   },
   "keywords": [],
   "author": "",
