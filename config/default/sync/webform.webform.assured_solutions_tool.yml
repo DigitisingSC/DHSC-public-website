@@ -17,7 +17,7 @@ category: ''
 elements: |-
   step_1:
     '#type': webform_wizard_page
-    '#title': 'Step 1'
+    '#title': Devices
     processed_text:
       '#type': processed_text
       '#text': |
@@ -32,7 +32,7 @@ elements: |-
         device_option_not_sure: 'Not sure'
   step_2:
     '#type': webform_wizard_page
-    '#title': 'Step 2'
+    '#title': 'Care services'
     processed_text_2:
       '#type': processed_text
       '#text': |
@@ -61,7 +61,7 @@ elements: |-
       '#title': 'Other care services'
   step_3:
     '#type': webform_wizard_page
-    '#title': 'Step 3'
+    '#title': 'Additional features'
     processed_text_03:
       '#type': processed_text
       '#text': |
@@ -104,7 +104,7 @@ elements: |-
     '#type': webform_actions
     '#title': 'Submit button(s)'
     '#submit__label': Next
-css: ''
+css: '.webform-submission-information {display: none}'
 javascript: ''
 settings:
   ajax: false

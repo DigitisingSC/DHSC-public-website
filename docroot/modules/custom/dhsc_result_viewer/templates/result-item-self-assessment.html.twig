@@ -1,0 +1,8 @@
+<a href="{{ url }}">
+	<h3>{{ title }}</h3>
+</a>
+{% if answer %}
+	<strong>{{ 'Your response:'|t }}
+		{{ answer }}</strong>
+{% endif %}
+<p>{{ content }}</p>

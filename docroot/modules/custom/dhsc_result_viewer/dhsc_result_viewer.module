@@ -11,15 +11,27 @@
 function dhsc_result_viewer_theme()
 {
   return [
-    'dhsc_results_list' => [
+    'dhsc_results_list_assured_solutions' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'search_criteria' => NULL,
+        'count' => NULL,
+        'non_matching_count' => NULL,
+        'total_count' => NULL,
+        'submission_url' => NULL,
+        'no_matches' => NULL,
+        'partial_matches' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+      ],
+    ],
+    'dhsc_results_list_self_assessment' => [
       'variables' => [
         'title' => NULL,
         'summary' => NULL,
         'result_variant' => NULL,
-        'search_criteria' => NULL,
         'submission_url' => NULL,
-        'no_matches' => NULL,
-        'partial_matches' => NULL,
         'result' => NULL,
         'no_result' => NULL,
       ],
@@ -45,6 +57,12 @@ function dhsc_result_viewer_theme()
       ],
     ],
     'result_item' => [
+      'variables' => [
+        'title' => NULL,
+        'content' => NULL,
+      ],
+    ],
+    'result_item_self_assessment' => [
       'variables' => [
         'title' => NULL,
         'answer' => NULL,

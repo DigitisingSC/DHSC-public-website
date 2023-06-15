@@ -108,7 +108,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
 
     foreach ($nodes as $node) {
       $values[] = [
-        '#theme' => 'result_item',
+        '#theme' => 'result_item_self_assessment',
         '#title' => $node->getTitle(),
         '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_possible_answers')->value, 3)[2])),
         '#content' => [

@@ -99,7 +99,7 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
 
     if ($result = $this->getResults()) {
       $element = [
-        '#theme' => 'dhsc_results_list',
+        '#theme' => 'dhsc_results_list_self_assessment',
         '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
@@ -108,7 +108,7 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
     }
     else {
       $element = [
-        '#theme' => 'dhsc_results_list',
+        '#theme' => 'dhsc_results_list_self_assessment',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#no_result' => $this->t('No result'),

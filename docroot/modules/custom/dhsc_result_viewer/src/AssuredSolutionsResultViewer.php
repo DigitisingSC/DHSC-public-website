@@ -167,6 +167,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       'partial_matches' => !empty($values['partial_matches']) ? $values['partial_matches'] : NULL,
       'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
       'no_matches' => !empty($values['no_matches']) ? $values['no_matches'] : NULL,
+      'count' => isset($results['count']) ? $results['count'] : NULL,
+      'non_matching_count' => isset($results['non_matching_count']) ? $results['non_matching_count'] : NULL,
+      'total_count' => isset($results['total_count']) ? $results['total_count'] : NULL,
     ];
 
     return $values;
@@ -320,9 +323,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     $result_data = [
       'search_criteria' => $search_criteria,
       'matches' => $matches,
+      'count' => count($matches),
+      'non_matching_count' => count($partial_matches) + count($no_matches),
+      'total_count' => count($matches) + count($partial_matches) + count($no_matches),
       'partial_matches' => $partial_matches,
       'no_matches' => $no_matches,
-      'submission_url' => isset($submission_url) ?? $submission_url,
+      'submission_url' => isset($submission_url) ? $submission_url : NULL,
     ];
 
     return $result_data;
