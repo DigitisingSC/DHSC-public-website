@@ -1,5 +1,7 @@
 <?php
 
+use \Drupal\Core\Form\FormStateInterface;
+
 /**
  * @file
  * Module to create result pages.
@@ -70,4 +72,10 @@ function dhsc_result_viewer_theme()
       ],
     ],
   ];
+}
+
+function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ((string) $form['actions']['submit']['#value'] === 'Save') {
+    $form['actions']['submit']['#value'] = t('Next');
+  }
 }
