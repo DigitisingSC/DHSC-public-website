@@ -75,7 +75,9 @@ function dhsc_result_viewer_theme()
 }
 
 function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ((string) $form['actions']['submit']['#value'] === 'Save') {
-    $form['actions']['submit']['#value'] = t('Next');
+  // Re-write submit label when re-submitting answers.
+  if ($form_id === 'webform_submission_assured_solutions_tool_edit_form' &&
+  (string) $form['actions']['submit']['#value'] === 'Save') {
+    $form['actions']['submit']['#value'] = t('Continue');
   }
 }

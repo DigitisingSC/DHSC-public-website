@@ -131,7 +131,7 @@ settings:
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
   form_unsaved: false
-  form_disable_back: false
+  form_disable_back: true
   form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
@@ -187,7 +187,7 @@ settings:
   wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
-  wizard_next_button_label: ''
+  wizard_next_button_label: Continue
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
