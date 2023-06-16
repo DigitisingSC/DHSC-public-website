@@ -1,0 +1,23 @@
+uuid: 526ba7c4-40db-460b-a649-4e6010499934
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_list_price
+    - node.type.supplier
+id: node.supplier.field_list_price
+field_name: field_list_price
+entity_type: node
+bundle: supplier
+label: 'List price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: £
+  suffix: ''
+field_type: integer

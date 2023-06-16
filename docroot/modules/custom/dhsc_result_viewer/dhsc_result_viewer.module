@@ -60,7 +60,6 @@ function dhsc_result_viewer_theme()
     ],
     'result_item' => [
       'variables' => [
-        'title' => NULL,
         'content' => NULL,
       ],
     ],

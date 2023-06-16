@@ -121,8 +121,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         foreach ($result as $key => $search_criteria) {
           $values['search_criteria'][] = [
             '#theme' => 'search_criteria',
-            '#section' => $search_criteria['section'],
-            '#answers' => $search_criteria['answers'],
+            '#section' => isset($search_criteria['section']) ? $search_criteria['section'] : NULL,
+            '#answers' => isset($search_criteria['answers']) ? $search_criteria['answers'] : NULL,
           ];
         }
       }
@@ -130,9 +130,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         foreach ($result as $key => $partial_match) {
           $values['partial_matches'][] = [
             '#theme' => 'partial_match',
-            '#title' => $partial_match['title'],
-            '#url' => $partial_match['node_url'],
-            '#answers' => $partial_match['answers'],
+            '#title' => isset($partial_match['title']) ? $partial_match['title'] : NULL,
+            '#url' => isset($partial_match['node_url']) ? $partial_match['node_url'] : NULL,
+            '#answers' => isset($partial_match['answers']) ? $partial_match['answers'] : NULL,
           ];
         }
       }
@@ -140,12 +140,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         foreach ($result as $node) {
           $values['result_items'][] = [
             '#theme' => 'result_item',
-            '#title' => $node->getTitle(),
-            '#content' => [
-              '#type' => 'processed_text',
-              '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
-              '#format' => 'full_html',
-            ],
+            '#content' => $this->viewBuilder->view($node, 'teaser'),
           ];
         }
       }
@@ -153,9 +148,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         foreach ($result as $key => $no_match) {
           $values['no_matches'][] = [
             '#theme' => 'no_match',
-            '#title' => $no_match['title'],
-            '#url' => $no_match['node_url'],
-            '#answers' => $no_match['answers'],
+            '#title' => isset($no_match['title']) ? $no_match['title'] : NULL,
+            '#url' => isset($no_match['node_url']) ? $no_match['node_url'] : NULL,
+            '#answers' => isset($no_match['answers']) ? $no_match['answers'] : NULL,
           ];
         }
       }
@@ -241,7 +236,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       ->condition('type', 'supplier');
     $or = $query->orConditionGroup();
     foreach ($answers as $key => $answer) {
-      $or->condition('field_possible_answers.value', $answer);
+      $or->condition('field_answers_supplier.value', $answer);
     }
     $query->condition($or);
 
@@ -255,7 +250,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     $nids = [];
 
     foreach ($nodes as $node) {
-      foreach ($node->get('field_possible_answers')->getValue() as $value) {
+      foreach ($node->get('field_answers_supplier')->getValue() as $value) {
         // create array of all supplier node ids used for filtering non matching criteria.
         $field_key = NULL;
         $nids[] = $node->id();
@@ -307,7 +302,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $no_matches[$node_title]['title'] = $node_title;
       $no_matches[$node_title]['node_url'] = $node_url;
 
-      foreach ($node->get('field_possible_answers')->getValue() as $value) {
+      foreach ($node->get('field_answers_supplier')->getValue() as $value) {
 
         // We don't have the element key for the first radio field
         // so check against pre-defined values and set the field_key from the form.
@@ -383,7 +378,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
-          ->condition('field_possible_answers', $data[$machine_name])
+          ->condition('field_answers_supplier', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())
           ->execute();
       }

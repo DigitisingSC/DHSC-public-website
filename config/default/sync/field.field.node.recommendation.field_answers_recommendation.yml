@@ -1,12 +1,12 @@
-uuid: 4488154e-9789-4d49-b70f-7a52e8c6ae17
+uuid: 8234e4cc-c1d5-4136-8670-dec000d99d30
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_possible_answers
+    - field.storage.node.field_answers_recommendation
     - node.type.recommendation
-id: node.recommendation.field_possible_answers
-field_name: field_possible_answers
+id: node.recommendation.field_answers_recommendation
+field_name: field_answers_recommendation
 entity_type: node
 bundle: recommendation
 label: 'Possible answers'
