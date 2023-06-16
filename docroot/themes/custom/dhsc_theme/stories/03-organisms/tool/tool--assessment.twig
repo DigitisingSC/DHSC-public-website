@@ -1,0 +1,33 @@
+<div class="o-tool o-tool--assessment py-4 tablet:w-9/12">
+  <header class="o-tool__header pb-4 mb-6 border-b-2 border-black-20">
+    {% if summary %}
+      <div class="o-tool__summary text-md text-coolgrey mb-2">
+        {{ summary }}
+      </div>
+    {% endif %}
+    {% if title %}
+      <h2 class="o-tool__title mb-2">{{ title }}</h2>
+    {% endif %}
+    {% if variant %}
+      <div class="o-tool__variant mb-2">
+        {{ variant }}
+      </div>
+    {% endif %}
+  </header>
+  <div class="o-tool__content mb-4">
+    {% if no_result %}
+      <div class="o-tool__no-result mb-2">
+        <h3>{{ no_result }}</h3>
+      </div>
+    {% else %}
+      <div class="o-tool__result mb-4">
+        {{ result }}
+      </div>
+      {% if submission_url %}
+        <div class="o-tool__actions">
+          <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

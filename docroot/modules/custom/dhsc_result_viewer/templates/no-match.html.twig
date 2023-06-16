@@ -1,6 +1,8 @@
 <a href={{ url }}>{{ title }}</a>
-{% for key, answer in answers %}
-	<ul>
+{% if answers %}
+  <ul>
+  {% for key, answer in answers %}
 		<li>{{ answer }}</li>
-	</ul>
-{% endfor %}
+  {% endfor %}
+  </ul>
+{% endif %}

@@ -6,42 +6,12 @@
   } %}
 {% endif %}
 
-<div id="content" role="main">
-  <div class="content_align prose">
-    <div class="core">
-      <div class="sub-core">
-        <section class="header">
-          {% if summary %}
-            <section class="section-header-intro">
-              <p>{{ summary }}</p>
-            </section>
-          {% endif %}
-          <div class="section-title">
-            {% if title %}
-              <h1>{{ title }}</h1>
-            {% endif %}
-          </div>
-          {% if variant %}
-            <div class="section-result-variant">
-              {{ variant }}
-            </div>
-          {% endif %}
-        </section>
-        <section class="app_results">
-          <div class="app_section_inner">
-            {% if no_result %}
-              <div class="section-title">
-                <h1 style="color:#000000">{{ no_result }}</h1>
-              </div>
-            {% else %}
-              <div class="app_results_table">
-                  {{ result }}
-                  <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
+{% include '@organisms/tool/tool--assessment.twig' with {
+  'attributes': attributes,
+  'summary': summary,
+  'title': title,
+  'variant': variant,
+  'no_result': no_result,
+  'result': result,
+  'submission_url': submission_url
+} %}

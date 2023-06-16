@@ -30,13 +30,14 @@
 										<a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
 									{% endif %}
 								</div>
-								{{ result }}
+                <div>
+                  {{ result }}
+                </div>
 								<div>
 									<strong>{{ non_matching_count }}
-										{{'suppliers don\'t match your criteria'|t}}</h1>
+										{{'suppliers don\'t match your criteria'|t}}</strong>
 								</div>
                 {{ partial_matches }}
-                </div>
                 <div>
 								{{ no_matches }}
                 </div>
