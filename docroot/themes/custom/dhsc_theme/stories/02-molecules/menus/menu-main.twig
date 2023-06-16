@@ -7,9 +7,9 @@
 {# Template #}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu--level-0 relative flex" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
+    <ul class="m-menu--level-0 relative tablet:flex" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
       {% for item in items %}
-        <li class="mr-2 flex items-center" x-data="">
+        <li class="tablet:mr-8 flex items-center" x-data="">
           {% if item.below %}
             <a href="{{ item.url }}" class="block underline hover:no-underline mr-2">{{ item.title }}</a>
             <a href="#"
@@ -42,7 +42,7 @@
                 @activedropdownmain.window="isActive = $event.detail.active"
             >
               {% for subItem in item.below %}
-                <li>
+                <li class="tablet:mr-8 flex items-center">
                   <a href="{{ subItem.url }}" class="block underline hover:no-underline mb-2">{{ subItem.title }}</a>
                 </li>
               {% endfor %}

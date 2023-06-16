@@ -4,10 +4,10 @@
 <section{{attributes.addClass(classes)}}>
   <div class="o-topics__container py-4">
     {% if title %}
-      <h2 class="o-topics__title">{{ title }}</h2>
+      <h2 class="o-topics__title mb-4">{{ title }}</h2>
     {% endif %}
     {% if items is not empty %}
-      <div class="o-topics__listing tablet:grid tablet:grid-cols-3 tablet:gap-6">
+      <div class="o-topics__listing tablet:grid tablet:grid-cols-3 tablet:gap-4">
         {% if items is iterable %}
           {% for key, item in items if key|first != '#' %}
             {{ item }}

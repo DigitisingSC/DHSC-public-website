@@ -6,6 +6,8 @@
 {% set classes = [
   'm-card',
   'm-card--casestudy',
+  'relative',
+  'mb-4 tablet:mb-0',
 ] | join(' ') | trim %}
 
 {% set attributes = attributes
@@ -13,14 +15,20 @@
 %}
 
 <div {{ attributes }}>
-	<a href="{{ link }}">
-		<div class="image-wrapper">
-		<div class="m-content-card__image">
-			{{ image }}
-		</div>
-		<div class="m-content-card__content">
-			<h3>{{ heading }}</h3>
-			<p>{{ description }}</p>
-		</div>
-	</a>
+  {% if image %}
+  <div class="m-card__image">
+    {{ image }}
+  </div>
+  {% endif %}
+  <div class="m-card__content">
+    {% if heading %}
+    <h3>{{ heading }}</h3>
+    {% endif %}
+    {% if description %}
+    <p>{{ description }}</p>
+    {% endif %}
+  </div>
+  {% if link %}
+  <a href="{{ link }}" class="absolute top-0 bottom-0 left-0 right-0"></a>
+  {% endif %}
 </div>

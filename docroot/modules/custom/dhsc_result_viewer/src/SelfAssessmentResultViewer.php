@@ -104,6 +104,8 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       return;
     }
 
+    sort($nids);
+
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {

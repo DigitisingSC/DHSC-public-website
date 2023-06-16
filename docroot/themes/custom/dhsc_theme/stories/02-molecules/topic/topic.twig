@@ -5,7 +5,7 @@
 {# Classes #}
 {% set classes = [
   'm-topic',
-  'bg-green-20 p-6 rounded-md'
+  'relative bg-green-20 p-4 tablet:p-6 rounded-md mb-4 tablet:mb-0'
 ] | join(' ') | trim %}
 
 {% set attributes = attributes
@@ -13,11 +13,16 @@
 %}
 
 <div {{ attributes }}>
-  <a href="{{ link }}">
-    <div class="content-wrapper">
+  <div class="content-wrapper flex flex-col">
+    {% if heading %}
       <h3>{{ heading }}</h3>
+    {% endif %}
+    {% if description %}
       <p>{{ description }}</p>
-      <p>{{ date }}</p>
-    </div>
-  </a>
+    {% endif %}
+    <p class="flex justify-end pt-4 h-full">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="#00A189"/><path d="M9 7L12 10L9 13" stroke="#E5EEED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </p>
+    <a href="{{ link }}" class="absolute top-0 bottom-0 left-0 right-0"></a>
+  </div>
 </div>
