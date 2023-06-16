@@ -68,8 +68,13 @@ class setFormMetdataHandler extends WebformHandlerBase
 
     if ($update == TRUE) {
       $submission_token = \Drupal::request()->query->get('token');
+
+      $route_name = $webform->id() === 'self_assessment_tool' ?
+        'dhsc_result_viewer.result_summary_self_assessment' :
+        'dhsc_result_viewer.result_summary_assured_solutions';
+
       $path = \Drupal\Core\Url::fromRoute(
-        'dhsc_result_viewer.result_summary_assured_solutions',
+        $route_name,
         ['token' => $submission_token]
       )->toString();
       $response = new RedirectResponse($path);

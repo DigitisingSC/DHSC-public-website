@@ -35,8 +35,12 @@
               </div>
             {% else %}
               <div class="app_results_table">
-                  {{ result }}
-                  <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+                {{ result }}
+                <div>
+                  {% if submission_url %}
+                    <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+                  {% endif %}
+                </div>
               </div>
             {% endif %}
           </div>

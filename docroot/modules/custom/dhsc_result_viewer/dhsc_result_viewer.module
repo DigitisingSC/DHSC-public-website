@@ -73,10 +73,18 @@ function dhsc_result_viewer_theme()
   ];
 }
 
-function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
   // Re-write submit label when re-submitting answers.
-  if ($form_id === 'webform_submission_assured_solutions_tool_edit_form' &&
-  (string) $form['actions']['submit']['#value'] === 'Save') {
+  $form_ids = [
+    'webform_submission_assured_solutions_tool_edit_form',
+    'webform_submission_self_assessment_tool_edit_form'
+  ];
+
+  if (
+    in_array($form_id, $form_ids) &&
+    (string) $form['actions']['submit']['#value'] === 'Save'
+  ) {
     $form['actions']['submit']['#value'] = t('Continue');
   }
 }

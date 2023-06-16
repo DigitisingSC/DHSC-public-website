@@ -156,7 +156,7 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
-  confirmation_url: /dhsc-results-list-self-assessment
+  confirmation_url: '/dhsc-results-list-self-assessment?token=[webform_submission:token]'
   confirmation_title: ''
   confirmation_message: '<a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a>'
   confirmation_attributes: {  }
@@ -184,7 +184,7 @@ settings:
   results_disabled_ignore: false
   results_customize: false
   token_view: false
-  token_update: false
+  token_update: true
   token_delete: false
   serial_disabled: false
 access:
