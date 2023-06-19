@@ -231,87 +231,77 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       sort($search_criteria);
     }
 
-    // start by querying for all nodes which contain at least one answer.
-    $query = \Drupal::entityQuery('node')
-      ->condition('type', 'supplier');
-    $or = $query->orConditionGroup();
-    foreach ($answers as $key => $answer) {
-      $or->condition('field_answers_supplier.value', $answer);
-    }
-    $query->condition($or);
+    $results = $this->getResultNodes($answers);
 
-    $results = $query->execute();
+    if ($results) {
+      $nodes = Node::loadMultiple($results);
+      $partial_matches = [];
+      $no_matches = [];
+      $matches = [];
+      $nids = [];
 
-    $nodes = Node::loadMultiple($results);
+      foreach ($nodes as $node) {
+        foreach ($node->get('field_answers_supplier')->getValue() as $value) {
+          // create array of all supplier node ids used for filtering non matching criteria.
+          $field_key = NULL;
+          $nids[] = $node->id();
 
-    $partial_matches = [];
-    $no_matches = [];
-    $matches = [];
-    $nids = [];
+          // filter results where not all criteria is met.
+          if (!in_array($value['value'], $answers)) {
+            $node_title = $node->getTitle();
+            $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
 
-    foreach ($nodes as $node) {
-      foreach ($node->get('field_answers_supplier')->getValue() as $value) {
-        // create array of all supplier node ids used for filtering non matching criteria.
-        $field_key = NULL;
-        $nids[] = $node->id();
+            $partial_matches[$node_title]['title'] = $node_title;
+            $partial_matches[$node_title]['node_url'] = $node_url;
 
-        // filter results where not all criteria is met.
-        if (!in_array($value['value'], $answers)) {
+            // We don't have the element key for the first radio field
+            // so check against pre-defined values and set the field_key from the form.
+            if (in_array($value['value'], $this->device_option_keys)) {
+              $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
+            }
+
+            $partial_matches[$node_title]['answers'][] =
+              $this->getFormElementValue($field_key, $value['value'], $webform);
+          }
+        }
+
+        // filter nodes where all criteria is met.
+        if (
+          !isset($no_matches[$node->getTitle()]) &&
+          !array_key_exists($node->getTitle(), $partial_matches)
+        ) {
+          $matches[] = $node;
+        }
+      }
+
+      // query for all supplier nodes where there is no match
+      $nids = array_unique($nids);
+
+      $results = $this->getNonMatches($nids);
+
+      if ($results) {
+        $no_result_nodes = Node::loadMultiple($results);
+
+        foreach ($no_result_nodes as $node) {
+          $field_key = NULL;
           $node_title = $node->getTitle();
           $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
 
-          $partial_matches[$node_title]['title'] = $node_title;
-          $partial_matches[$node_title]['node_url'] = $node_url;
+          $no_matches[$node_title]['title'] = $node_title;
+          $no_matches[$node_title]['node_url'] = $node_url;
 
-          // We don't have the element key for the first radio field
-          // so check against pre-defined values and set the field_key from the form.
-          if (in_array($value['value'], $this->device_option_keys)) {
-            $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
+          foreach ($node->get('field_answers_supplier')->getValue() as $value) {
+
+            // We don't have the element key for the first radio field
+            // so check against pre-defined values and set the field_key from the form.
+            if (in_array($value['value'], $this->device_option_keys)) {
+              $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
+            }
+
+            $no_matches[$node_title]['answers'][] =
+              $this->getFormElementValue($field_key, $value['value'], $webform);
           }
-
-          $partial_matches[$node_title]['answers'][] =
-            $this->getFormElementValue($field_key, $value['value'], $webform);
         }
-      }
-
-      // filter nodes where all criteria is met.
-      if (
-        !isset($no_matches[$node->getTitle()]) &&
-        !array_key_exists($node->getTitle(), $partial_matches)
-      ) {
-        $matches[] = $node;
-      }
-    }
-
-    // query for all supplier nodes where there is no match
-    $nids = array_unique($nids);
-    $query = \Drupal::entityQuery('node')
-      ->condition('type', 'supplier');
-    foreach ($nids as $nid) {
-      $query->condition('nid', $nid, 'NOT IN');
-    }
-    $result = $query->execute();
-
-    $no_result_nodes = Node::loadMultiple($result);
-
-    foreach ($no_result_nodes as $node) {
-      $field_key = NULL;
-      $node_title = $node->getTitle();
-      $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
-
-      $no_matches[$node_title]['title'] = $node_title;
-      $no_matches[$node_title]['node_url'] = $node_url;
-
-      foreach ($node->get('field_answers_supplier')->getValue() as $value) {
-
-        // We don't have the element key for the first radio field
-        // so check against pre-defined values and set the field_key from the form.
-        if (in_array($value['value'], $this->device_option_keys)) {
-          $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
-        }
-
-        $no_matches[$node_title]['answers'][] =
-          $this->getFormElementValue($field_key, $value['value'], $webform);
       }
     }
 
@@ -327,6 +317,43 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     ];
 
     return $result_data;
+  }
+
+  /**
+   * Returns all result nodes which contain at least one answer.
+   *
+   * @param array $answers
+   * @return array
+   */
+  public function getResultNodes($answers)
+  {
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'supplier');
+    $or = $query->orConditionGroup();
+    foreach ($answers as $key => $answer) {
+      $or->condition('field_answers_supplier.value', $answer);
+    }
+    $query->condition($or);
+
+    $results = $query->execute();
+    return $results;
+  }
+
+  /**
+   * Returns all suplier nodes which do not match user search criteria.
+   *
+   * @param array $nids
+   * @return array
+   */
+  public function getNonMatches($nids)
+  {
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'supplier');
+    foreach ($nids as $nid) {
+      $query->condition('nid', $nid, 'NOT IN');
+    }
+    $results = $query->execute();
+    return $results;
   }
 
   /**
