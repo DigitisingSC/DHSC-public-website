@@ -50,8 +50,8 @@ elements: |-
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': Next
-css: ''
+    '#submit__label': Continue
+css: ".webform-submission-information {display: none}\r\n.webform-button--previous{display: none}"
 javascript: ''
 settings:
   ajax: false
@@ -134,7 +134,7 @@ settings:
   wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
-  wizard_next_button_label: ''
+  wizard_next_button_label: Continue
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''

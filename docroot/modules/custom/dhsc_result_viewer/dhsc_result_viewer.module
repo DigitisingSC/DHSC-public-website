@@ -78,7 +78,7 @@ function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $
   // Re-write submit label when re-submitting answers.
   $form_ids = [
     'webform_submission_assured_solutions_tool_edit_form',
-    'webform_submission_self_assessment_tool_edit_form'
+    'webform_submission_self_assessment_tool_edit_form',
   ];
 
   if (

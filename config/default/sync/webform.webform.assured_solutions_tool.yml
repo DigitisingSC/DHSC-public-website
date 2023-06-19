@@ -103,8 +103,8 @@ elements: |-
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': Next
-css: '.webform-submission-information {display: none}'
+    '#submit__label': Continue
+css: ".webform-submission-information {display: none}\r\n.webform-button--previous{display: none}"
 javascript: ''
 settings:
   ajax: false
@@ -131,7 +131,7 @@ settings:
   form_prepopulate_source_entity_required: false
   form_prepopulate_source_entity_type: ''
   form_unsaved: false
-  form_disable_back: true
+  form_disable_back: false
   form_submit_back: false
   form_disable_autocomplete: false
   form_novalidate: false
