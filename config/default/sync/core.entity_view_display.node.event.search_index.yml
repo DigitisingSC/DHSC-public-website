@@ -1,0 +1,32 @@
+uuid: 11c9bae0-38e1-4af8-aa61-7cc9a81762d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_time
+    - node.type.event
+  module:
+    - user
+id: node.event.search_index
+targetEntityType: node
+bundle: event
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_date: true
+  field_link: true
+  field_location: true
+  field_time: true
+  langcode: true
+  links: true
