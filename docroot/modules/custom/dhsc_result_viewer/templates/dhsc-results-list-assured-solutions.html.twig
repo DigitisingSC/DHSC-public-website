@@ -1,51 +1,25 @@
-{% if result_variant %}
-  {% set variant = {
-        '#type':   'processed_text',
-        '#text':    result_variant.value,
-        '#format': 'full_html',
-  } %}
-{% endif %}
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
 
-<div id="content" role="main">
-  <div class="content_align prose">
-    <div class="core">
-      <div class="sub-core">
-        <section class="header">
-          <div class="section-title">
-            <h1>{{ count ~ ' out of '|t ~ total_count }}
-              {{'suppliers match your criteria'|t}}</h1>
-          </div>
-        </section>
-        <section class="app_results">
-          <div class="app_section_inner">
-            {% if no_result %}
-              <div class="section-title">
-                <h1 style="color:#000000">{{ no_result }}</h1>
-              </div>
-            {% else %}
-              <div class="app_results_table">
-                {{ search_criteria }}
-                <div>
-                  {% if submission_url %}
-                    <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
-                  {% endif %}
-                </div>
-                {{ result }}
-                <div>
-                  <strong>{{ non_matching_count }}
-                    {{'suppliers don\'t match your criteria'|t}}</h1>
-                </div>
-                {{ partial_matches }}
-                </div>
-                <div>
-                {{ no_matches }}
-                </div>
-                {{ email_form }}
-              </div>
-            {% endif %}
-          </div>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
+{% set icon %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'triangle',
+  } %}
+{% endset %}
+
+{% include '@organisms/tool/tool--solutions.twig' with {
+  'attributes': attributes,
+  'summary': summary,
+  'title': title,
+  'icon': icon,
+  'count': count,
+  'total_count': total_count,
+  'no_result': no_result,
+  'search_criteria': search_criteria,
+  'submission_url': submission_url,
+  'result': result,
+  'non_matching_count': non_matching_count,
+  'partial_matches': partial_matches,
+  'no_matches': no_matches,
+  'email_form': email_form
+} %}

@@ -1,0 +1,51 @@
+<div class="o-tool o-tool--solutions py-4 tablet:w-9/12">
+  <header class="o-tool__header">
+    <h2 class="text-2xl mb-4">{{ count ~ ' out of '|t ~ total_count }} {{'suppliers match your criteria'|t}}</h2>
+  </header>
+  <div class="o-tool__content">
+    {% if no_result %}
+      <div class="o-tool__title">
+        <h3>{{ no_result }}</h3>
+      </div>
+    {% else %}
+      <div class="o-tool__results">
+        <div class="o-tool__criteria" x-data="{ openToolCriteria: false }">
+          <div class="m-tool-search-criteria__header mb-4 text-base">
+            <a href="#"
+               class="m-tool-search-criteria__link inline-block border-b-2 border-black hover:border-transparent"
+               @click.prevent="openToolCriteria = ! openToolCriteria"
+            >
+              <span class="inline-block" :class="{ 'rotate-180': openToolCriteria }">{{ icon }}</span>
+              <span class="inline-block">View or change search criteria:</span>
+            </a>
+          </div>
+          <div class="m-tool-search-criteria__content border-s-2 border-black-20 pl-4 text-base"
+               x-show="openToolCriteria">
+            <h3 class="font-bold text-md">{{ 'Search criteria'|t }}</h3>
+            {{ search_criteria }}
+          </div>
+        </div>
+        <div class="o-tool__actions">
+          {% if submission_url %}
+            <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+          {% endif %}
+        </div>
+        <div class="o-tool__results">
+          {{ result }}
+        </div>
+        <div class="o-tool__unmatched">
+          <h4>{{ non_matching_count }} {{'suppliers don\'t match your criteria'|t}}</h4>
+          <div class="o-tool__partial">
+            {{ partial_matches }}
+          </div>
+          <div class="o-tool__other">
+            {{ no_matches }}
+          </div>
+        </div>
+        <div class="o-tool__email">
+          {{ email_form }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

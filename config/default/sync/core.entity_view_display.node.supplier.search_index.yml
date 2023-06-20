@@ -1,0 +1,24 @@
+uuid: d05a61e3-73c7-4917-aa91-903c70389308
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.supplier.field_body_paragraphs
+    - node.type.supplier
+  module:
+    - user
+id: node.supplier.search_index
+targetEntityType: node
+bundle: supplier
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  langcode: true
+  links: true

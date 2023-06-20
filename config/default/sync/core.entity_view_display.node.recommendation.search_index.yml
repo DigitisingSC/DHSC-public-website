@@ -1,0 +1,24 @@
+uuid: 35e0d4e4-66eb-407f-9846-5bd020b76ce8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.recommendation.field_body_paragraphs
+    - node.type.recommendation
+  module:
+    - user
+id: node.recommendation.search_index
+targetEntityType: node
+bundle: recommendation
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  langcode: true
+  links: true
