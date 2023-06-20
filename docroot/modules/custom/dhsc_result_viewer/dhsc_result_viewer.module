@@ -71,7 +71,7 @@ function dhsc_result_viewer_theme()
         'content' => NULL,
       ],
     ],
-    'mimemail_messages__dhsc_result_email' => [
+    'mimemail_message__dhsc_result_viewer' => [
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
     ],
@@ -102,5 +102,5 @@ function dhsc_result_viewer_mail($key, &$message, $params)
   $message['from'] = $params['headers']['From'] ?? NULL;
   // Strip newline characters from email subjects.
   $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
-  $message['body'][] = $params['body'];
+  $message['body'] = $params['body'];
 }
