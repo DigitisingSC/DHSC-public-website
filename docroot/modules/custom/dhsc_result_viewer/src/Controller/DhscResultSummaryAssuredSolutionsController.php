@@ -193,7 +193,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
   }
 
   /**
-   * Construct email based on form email parameter.
+   * Construct results email.
    *
    * @param string $email
    * @return array
@@ -209,39 +209,47 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $params['subject'] = t('Assured solutions: Email result');
 
     $criteria = '';
-    foreach ($result['search_criteria'] as $item) {
-      $criteria .= Markup::create("<h4>{$item['#section']}</h4><ul>");
-      foreach ($item['#answers'] as $answer) {
-        $criteria .= Markup::create("<li>{$answer}</li>");
+    if ($result['search_criteria']) {
+      foreach ($result['search_criteria'] as $item) {
+        $criteria .= Markup::create("<h4>{$item['#section']}</h4><ul>");
+        foreach ($item['#answers'] as $answer) {
+          $criteria .= Markup::create("<li>{$answer}</li>");
+        }
+        $criteria .= "</ul>";
       }
-      $criteria .= "</ul>";
     }
 
     $result_items = '';
-    foreach ($result['result_items'] as $node) {
-      $result_items .= Markup::create("<h4>
+    if ($result['result_items']) {
+      foreach ($result['result_items'] as $node) {
+        $result_items .= Markup::create("<h4>
       {$node['#content']['#node']->getTitle()}</h4>
       {$node['#content']['#node']->get('field_body_paragraphs')->entity->get('localgov_text')->value}
       <p>");
-      $result_items .= "</p>";
+        $result_items .= "</p>";
+      }
     }
 
     $partial_matches = '';
-    foreach ($result['partial_matches'] as $item) {
-      $partial_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
-      foreach ($item['#answers'] as $answer) {
-        $partial_matches .= Markup::create("<li>{$answer}</li>");
+    if ($result['partial_matches']) {
+      foreach ($result['partial_matches'] as $item) {
+        $partial_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
+        foreach ($item['#answers'] as $answer) {
+          $partial_matches .= Markup::create("<li>{$answer}</li>");
+        }
+        $partial_matches .= "</ul>";
       }
-      $partial_matches .= "</ul>";
     }
 
     $no_matches = '';
-    foreach ($result['no_matches'] as $item) {
-      $no_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
-      foreach ($item['#answers'] as $answer) {
-        $no_matches .= Markup::create("<li>{$answer}</li>");
+    if ($result['no_matches']) {
+      foreach ($result['no_matches'] as $item) {
+        $no_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
+        foreach ($item['#answers'] as $answer) {
+          $no_matches .= Markup::create("<li>{$answer}</li>");
+        }
+        $no_matches .= "</ul>";
       }
-      $no_matches .= "</ul>";
     }
 
 

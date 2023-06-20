@@ -4,7 +4,6 @@ namespace Drupal\dhsc_result_viewer\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * Email results form.
