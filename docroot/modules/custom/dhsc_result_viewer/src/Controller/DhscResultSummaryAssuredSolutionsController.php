@@ -200,7 +200,6 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    */
   public function buildEmail($email)
   {
-
     $result = $this->getResults();
 
     $module = 'dhsc_result_viewer';
@@ -210,9 +209,9 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $params['subject'] = t('Assured solutions: Email result');
 
     $criteria = '';
-    foreach($result['search_criteria'] as $item){
+    foreach ($result['search_criteria'] as $item) {
       $criteria .= Markup::create("<h4>{$item['#section']}</h4><ul>");
-      foreach($item['#answers'] as $answer){
+      foreach ($item['#answers'] as $answer) {
         $criteria .= Markup::create("<li>{$answer}</li>");
       }
       $criteria .= "</ul>";
@@ -220,12 +219,41 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
 
     $result_items = '';
     foreach ($result['result_items'] as $node) {
-      $result_items .= Markup::create("<h4>{$node['#content']['#node']->getTitle()}</h4>{$node['#content']['#node']->get('field_body_paragraphs')->entity->label()}<p>");
+      $result_items .= Markup::create("<h4>
+      {$node['#content']['#node']->getTitle()}</h4>
+      {$node['#content']['#node']->get('field_body_paragraphs')->entity->get('localgov_text')->value}
+      <p>");
       $result_items .= "</p>";
     }
 
+    $partial_matches = '';
+    foreach ($result['partial_matches'] as $item) {
+      $partial_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
+      foreach ($item['#answers'] as $answer) {
+        $partial_matches .= Markup::create("<li>{$answer}</li>");
+      }
+      $partial_matches .= "</ul>";
+    }
 
-    $params['body'] = Markup::create("<div class='results'><h3>Showing {$result['count']} out of {$result['total_count']} results</h3><section class='search-criteria'>Search criteria:{$criteria}</section></div>");
+    $no_matches = '';
+    foreach ($result['no_matches'] as $item) {
+      $no_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
+      foreach ($item['#answers'] as $answer) {
+        $no_matches .= Markup::create("<li>{$answer}</li>");
+      }
+      $no_matches .= "</ul>";
+    }
+
+
+    $params['body'] = Markup::create("
+    <section class='results'><h3>Showing {$result['count']} out of {$result['total_count']} results</h3>
+    <section class='search-criteria'><h3>Search criteria:</h3>{$criteria}</section>
+    <section class='matches'><h3>Matching suppliers:</h3>{$result_items}</section>
+    <section class='matches'><h3>
+    {$result['non_matching_count']} suppliers don't match your criteria</h3>
+    {$partial_matches}{$no_matches}
+    </section>
+    </div>");
     $send = TRUE;
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
