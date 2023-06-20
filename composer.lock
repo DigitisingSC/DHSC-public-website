@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e472748db3a02e068e582e3d1fcad9a",
+    "content-hash": "c80e65cb919ee691c3e7575cd90050a2",
     "packages": [
         {
             "name": "acquia/blt",
@@ -6401,6 +6401,70 @@
             }
         },
         {
+            "name": "drupal/mailsystem",
+            "version": "4.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mailsystem.git",
+                "reference": "8.x-4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mailsystem-8.x-4.4.zip",
+                "reference": "8.x-4.4",
+                "shasum": "49b2e9efd090cdb4a282c7638b1c76d6723c47b6"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-4.4",
+                    "datestamp": "1657576306",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Les Lim",
+                    "homepage": "https://www.drupal.org/user/84263"
+                },
+                {
+                    "name": "Manuel Garcia",
+                    "homepage": "https://www.drupal.org/user/213194"
+                },
+                {
+                    "name": "miro_dietiker",
+                    "homepage": "https://www.drupal.org/user/227761"
+                },
+                {
+                    "name": "Nafes",
+                    "homepage": "https://www.drupal.org/user/2489926"
+                },
+                {
+                    "name": "pillarsdotnet",
+                    "homepage": "https://www.drupal.org/user/36148"
+                }
+            ],
+            "description": "Mail System",
+            "homepage": "https://www.drupal.org/project/mailsystem",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mailsystem"
+            }
+        },
+        {
             "name": "drupal/maxlength",
             "version": "2.1.1",
             "source": {
@@ -6664,6 +6728,55 @@
                 "source": "https://git.drupalcode.org/project/metatag",
                 "issues": "https://www.drupal.org/project/issues/metatag",
                 "docs": "https://www.drupal.org/docs/8/modules/metatag"
+            }
+        },
+        {
+            "name": "drupal/mimemail",
+            "version": "1.0.0-alpha5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/mimemail.git",
+                "reference": "8.x-1.0-alpha5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/mimemail-8.x-1.0-alpha5.zip",
+                "reference": "8.x-1.0-alpha5",
+                "shasum": "a3dd29ad5e137bcdeb1c6165654ed79e26553456"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "drupal/mailsystem": "^4"
+            },
+            "require-dev": {
+                "drupal/rules": "^3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.0-alpha5",
+                    "datestamp": "1679607103",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TR",
+                    "homepage": "https://www.drupal.org/user/202830"
+                }
+            ],
+            "description": "Sends MIME-encoded emails with embedded images and attachments.",
+            "homepage": "https://www.drupal.org/project/mimemail",
+            "support": {
+                "source": "https://git.drupalcode.org/project/mimemail",
+                "issues": "https://www.drupal.org/project/issues/mimemail"
             }
         },
         {
@@ -20327,6 +20440,7 @@
         "drupal/config_ignore": 10,
         "drupal/config_split": 5,
         "drupal/linkit": 5,
+        "drupal/mimemail": 15,
         "drupal/paragraphs_ee": 15,
         "drupal/rabbit_hole": 10,
         "drupal/viewsreference": 10,

@@ -35,3 +35,13 @@ dhsc_result_viewer.result_summary_assured_solutions:
     _permission: 'access content'
   options:
     no_cache: 'TRUE'
+
+dhsc_result_viewer.result_summary_assured_solutions_email:
+  path: '/dhsc-results-list-assured-solutions-email/{email}/{token}'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\DHSCResultSummaryAssuredSolutionsController::sendResultEmail'
+    _title: 'Result Summary Email'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
