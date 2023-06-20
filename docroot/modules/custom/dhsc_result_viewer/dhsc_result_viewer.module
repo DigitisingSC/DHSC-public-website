@@ -26,6 +26,7 @@ function dhsc_result_viewer_theme()
         'partial_matches' => NULL,
         'result' => NULL,
         'no_result' => NULL,
+        'email_form' => NULL,
       ],
     ],
     'dhsc_results_list_self_assessment' => [
@@ -60,7 +61,6 @@ function dhsc_result_viewer_theme()
     ],
     'result_item' => [
       'variables' => [
-        'title' => NULL,
         'content' => NULL,
       ],
     ],
@@ -71,13 +71,36 @@ function dhsc_result_viewer_theme()
         'content' => NULL,
       ],
     ],
+    'mimemail_messages__dhsc_result_email' => [
+      'render element' => 'elements',
+      'base hook' => 'mimemail_message',
+    ],
   ];
 }
 
-function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
   // Re-write submit label when re-submitting answers.
-  if ($form_id === 'webform_submission_assured_solutions_tool_edit_form' &&
-  (string) $form['actions']['submit']['#value'] === 'Save') {
+  $form_ids = [
+    'webform_submission_assured_solutions_tool_edit_form',
+    'webform_submission_self_assessment_tool_edit_form',
+  ];
+
+  if (
+    in_array($form_id, $form_ids) &&
+    (string) $form['actions']['submit']['#value'] === 'Save'
+  ) {
     $form['actions']['submit']['#value'] = t('Continue');
   }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function dhsc_result_viewer_mail($key, &$message, $params)
+{
+  $message['from'] = $params['headers']['From'] ?? NULL;
+  // Strip newline characters from email subjects.
+  $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
+  $message['body'][] = $params['body'];
 }

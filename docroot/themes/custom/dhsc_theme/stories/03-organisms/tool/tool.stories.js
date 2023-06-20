@@ -41,7 +41,21 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
     submission_url
   });
 
-const ToolSolutionsTemplate = ({ attributes, title, icon, count, total_count, no_result, search_criteria, submission_url, result, non_matching_count, partial_matches, no_matches }) =>
+const ToolSolutionsTemplate = ({
+  attributes,
+  title,
+  icon,
+  count,
+  total_count,
+  no_result,
+  search_criteria,
+  submission_url,
+  result,
+  non_matching_count,
+  partial_matches,
+  no_matches,
+  email_form
+}) =>
   toolSolutionsTwig({
     attributes,
     icon,
@@ -54,7 +68,8 @@ const ToolSolutionsTemplate = ({ attributes, title, icon, count, total_count, no
     result,
     non_matching_count,
     partial_matches,
-    no_matches
+    no_matches,
+    email_form
   });
 
 export const toolAssessment = ToolAssessmentTemplate.bind({});
@@ -84,5 +99,6 @@ toolSolutions.args = {
   result: '',
   non_matching_count: '',
   partial_matches: '',
-  no_matches: ''
+  no_matches: '',
+  email_form: ''
 }

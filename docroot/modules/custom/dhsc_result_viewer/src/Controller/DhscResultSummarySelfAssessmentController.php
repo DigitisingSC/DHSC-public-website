@@ -5,6 +5,7 @@ namespace Drupal\dhsc_result_viewer\Controller;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 use Drupal\dhsc_result_viewer\ResultViewerInterface;
 use Drupal\dhsc_result_viewer\SelfAssessmentInterface;
@@ -74,9 +75,9 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
    * @return mixed
    *   Resurn submission results.
    */
-  public function getResults() {
+  public function getResults($submission) {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->resultViewer->getSubmission()) {
+    if ($submission) {
       return $this->resultViewer->getResultsSummary($submission->getData());
     }
   }
@@ -97,13 +98,22 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
     // @todo may need to do this on another action
     $this->resultViewer->questionsAllReset();
 
-    if ($result = $this->getResults()) {
+    $submission = $this->resultViewer->getSubmission();
+    $webform = $submission->getWebform();
+
+    // Extract unique submission token value from URL.
+    if ($submission_token = \Drupal::request()->query->get('token')) {
+      $submission_url = Url::fromUserInput($webform->url(), ['query' => ['token' => $submission_token]])->toString();
+    }
+
+    if ($result = $this->getResults($submission)) {
       $element = [
         '#theme' => 'dhsc_results_list_self_assessment',
         '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#result' => $result,
+        '#submission_url' => isset($submission_url) ? $submission_url : NULL,
       ];
     }
     else {

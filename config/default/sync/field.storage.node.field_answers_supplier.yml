@@ -1,11 +1,11 @@
-uuid: 6715395d-9baf-4ed7-b6fd-3aab5bb186de
+uuid: cdc7f5b0-fccc-448d-b9f0-9ae3c8828503
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_possible_answers
-field_name: field_possible_answers
+id: node.field_answers_supplier
+field_name: field_answers_supplier
 entity_type: node
 type: string
 settings:
@@ -14,7 +14,7 @@ settings:
   is_ascii: false
 module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

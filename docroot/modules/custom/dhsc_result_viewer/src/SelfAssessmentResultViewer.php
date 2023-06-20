@@ -112,7 +112,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       $values[] = [
         '#theme' => 'result_item_self_assessment',
         '#title' => $node->getTitle(),
-        '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_possible_answers')->value, 3)[2])),
+        '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_answers_recommendation')->value, 3)[2])),
         '#content' => [
           '#type' => 'processed_text',
           '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
@@ -185,7 +185,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
-          ->condition('field_possible_answers', $data[$machine_name])
+          ->condition('field_answers_recommendation', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())
           ->execute();
       }
