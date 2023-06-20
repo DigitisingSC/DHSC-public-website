@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
@@ -199,12 +200,32 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    */
   public function buildEmail($email)
   {
+
+    $result = $this->getResults();
+
     $module = 'dhsc_result_viewer';
     $key = 'email_result';
     $to = $email;
     $langcode = $this->languageManager->getDefaultLanguage()->getId();
     $params['subject'] = t('Assured solutions: Email result');
-    $params['body'] = 'Result email!';
+
+    $criteria = '';
+    foreach($result['search_criteria'] as $item){
+      $criteria .= Markup::create("<h4>{$item['#section']}</h4><ul>");
+      foreach($item['#answers'] as $answer){
+        $criteria .= Markup::create("<li>{$answer}</li>");
+      }
+      $criteria .= "</ul>";
+    }
+
+    $result_items = '';
+    foreach ($result['result_items'] as $node) {
+      $result_items .= Markup::create("<h4>{$node['#content']['#node']->getTitle()}</h4>{$node['#content']['#node']->get('field_body_paragraphs')->entity->label()}<p>");
+      $result_items .= "</p>";
+    }
+
+
+    $params['body'] = Markup::create("<div class='results'><h3>Showing {$result['count']} out of {$result['total_count']} results</h3><section class='search-criteria'>Search criteria:{$criteria}</section></div>");
     $send = TRUE;
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
