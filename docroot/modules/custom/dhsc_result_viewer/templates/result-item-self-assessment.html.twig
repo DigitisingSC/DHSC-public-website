@@ -1,9 +1,8 @@
-<a href="{{ url }}">
-	<h3>{{ title }}</h3>
-</a>
-{% if answer %}
-  <div>
-    <strong>{{ 'Your response:'|t }} {{ answer }}</strong>
-  </div>
-{% endif %}
-<div>{{ content }}</div>
+{# Template #}
+{% include '@molecules/tool-result/tool-result.twig' with {
+  attributes: attributes,
+  title: title,
+  url: url,
+  answer: answer,
+  content: content
+} %}

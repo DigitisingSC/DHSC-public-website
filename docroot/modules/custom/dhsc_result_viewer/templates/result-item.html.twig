@@ -1,4 +1,7 @@
-<a href="{{ url }}">
-	<h3>{{ title }}</h3>
-</a>
-<div>{{ content }}</div>
+{# Template #}
+{% include '@molecules/tool-supplier/tool-supplier.twig' with {
+  attributes: attributes,
+  title: title,
+  url: url,
+  content: content
+} %}

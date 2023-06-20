@@ -1,8 +1,7 @@
-<a href={{ url }}>{{ title }}</a>
-{% if answers %}
-  <ul>
-  {% for key, answer in answers %}
-		<li>{{ answer }}</li>
-  {% endfor %}
-  </ul>
-{% endif %}
+{# Template #}
+{% include '@molecules/tool-supplier/tool-supplier.twig' with {
+  attributes: attributes,
+  title: title,
+  url: url,
+  content: content
+} %}

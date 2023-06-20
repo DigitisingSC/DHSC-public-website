@@ -21,11 +21,17 @@
       </div>
     {% else %}
       <div class="o-tool__result mb-4">
-        {{ result }}
+        {% if result is iterable %}
+          {% for res in result %}
+            {{ res }}
+          {% endfor %}
+        {% else %}
+          {{ result }}
+        {% endif %}
       </div>
       {% if submission_url %}
         <div class="o-tool__actions">
-          <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+          <a href="{{ submission_url }}" class="text-green underline hover:no-underline">{{ 'Change my responses'|t }}</a>
         </div>
       {% endif %}
     {% endif %}
