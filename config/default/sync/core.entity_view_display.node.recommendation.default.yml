@@ -15,14 +15,6 @@ targetEntityType: node
 bundle: recommendation
 mode: default
 content:
-  field_answers_recommendation:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_body_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -38,6 +30,7 @@ content:
     weight: 1
     region: content
 hidden:
+  field_answers_recommendation: true
   field_category: true
   langcode: true
   search_api_excerpt: true
