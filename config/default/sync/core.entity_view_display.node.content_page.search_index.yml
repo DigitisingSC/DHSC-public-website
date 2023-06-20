@@ -1,0 +1,29 @@
+uuid: 1648ee30-bb06-48da-8db1-fab83c0ff172
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.content_page.field_body_paragraphs
+    - field.field.node.content_page.field_image
+    - field.field.node.content_page.field_summary
+    - node.type.content_page
+  module:
+    - user
+id: node.content_page.search_index
+targetEntityType: node
+bundle: content_page
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_body_paragraphs: true
+  field_image: true
+  field_summary: true
+  langcode: true
+  links: true

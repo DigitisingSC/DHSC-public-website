@@ -22,34 +22,6 @@ targetEntityType: node
 bundle: localgov_guides_overview
 mode: search_index
 content:
-  content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -20
-    region: content
-  localgov_guides_description:
-    type: basic_string
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  localgov_guides_pages:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  localgov_guides_section_title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 3
-    region: content
   localgov_services_parent:
     type: entity_reference_label
     label: hidden
@@ -66,12 +38,20 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
+  content_moderation_control: true
   field_body_paragraphs: true
   field_image: true
   field_metatags: true
   field_summary: true
   langcode: true
   links: true
+  localgov_guides_description: true
   localgov_guides_list_format: true
-  search_api_excerpt: true
+  localgov_guides_pages: true
+  localgov_guides_section_title: true
