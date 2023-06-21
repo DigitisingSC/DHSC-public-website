@@ -1,3 +1,17 @@
-.o-tools {
+.o-tool {
+
+  &__icon svg {
+    @apply h-2 w-2;
+
+  }
+  &__email form {
+    @apply flex items-center;
+  }
+  &__email input {
+    @apply me-2;
+  }
+  &__email label {
+    @apply sr-only;
+  }
 
 }

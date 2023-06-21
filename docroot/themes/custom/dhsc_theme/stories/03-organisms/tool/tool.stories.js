@@ -4,6 +4,8 @@ import toolAssessmentTwig from './tool--assessment.twig';
 import toolSolutionsTwig from './tool--solutions.twig';
 import './tool.scss';
 
+import emailFormTwig from './emailForm.twig';
+
 import { toolResult } from "../../02-molecules/tool-result/tool-result.stories.js";
 import toolResultTwig from "../../02-molecules/tool-result/tool-result.twig";
 
@@ -112,8 +114,8 @@ toolSolutions.args = {
   search_criteria: toolSearchCriteriaTemplate,
   submission_url: '',
   result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
-  non_matching_count: '',
-  partial_matches: '',
-  no_matches: '',
-  email_form: ''
+  non_matching_count: '0',
+  partial_matches: '1',
+  no_matches: '1',
+  email_form: emailFormTwig
 }

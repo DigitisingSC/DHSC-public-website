@@ -1,6 +1,11 @@
 <div class="o-tool o-tool--solutions py-4 tablet:w-9/12">
   <header class="o-tool__header">
     <h2 class="text-2xl mb-4">{{ count ~ ' out of '|t ~ total_count }} {{'suppliers match your criteria'|t}}</h2>
+    {% if summary %}
+      <div class="o-tool__summary">
+        {{ summary }}
+      </div>
+    {% endif %}
   </header>
   <div class="o-tool__content">
     {% if no_result %}
@@ -9,17 +14,17 @@
       </div>
     {% else %}
       <div class="o-tool__results">
-        <div class="o-tool__criteria" x-data="{ openToolCriteria: true }">
-          <div class="m-tool-search-criteria__header mb-4 text-base">
+        <div class="o-tool__criteria" x-data="{ openToolCriteria: false }">
+          <div class="o-tool__search-criteria-header mb-4 text-base">
             <a href="#"
-               class="m-tool-search-criteria__link inline-block border-b-2 border-black hover:border-transparent"
+               class="o-tool__search-criteria-link inline-block border-b-2 border-black hover:border-transparent"
                @click.prevent="openToolCriteria = ! openToolCriteria"
             >
-              <span class="inline-block" :class="{ 'rotate-180': openToolCriteria }">{{ icon }}</span>
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openToolCriteria }">{{ icon }}</span>
               <span class="inline-block">View or change search criteria:</span>
             </a>
           </div>
-          <div class="m-tool-search-criteria__content border-s-2 border-black-20 pl-4 text-base"
+          <div class="o-tool__search-criteria-content border-s-2 border-black-20 pl-4 text-base"
                x-show="openToolCriteria">
             <h3 class="font-bold text-md">{{ 'Search criteria'|t }}</h3>
             {{ search_criteria }}
@@ -41,7 +46,7 @@
           {% endif %}
         </div>
         {% endif %}
-        <div class="o-tool__unmatched">
+        <div class="o-tool__unmatched py-4">
           <h4>{{ non_matching_count }} {{'suppliers don\'t match your criteria'|t}}</h4>
           <div class="o-tool__partial">
             {{ partial_matches }}
@@ -50,9 +55,23 @@
             {{ no_matches }}
           </div>
         </div>
-        <div class="o-tool__email">
-          {{ email_form }}
+        {% if email_form %}
+        <div class="o-tool__email" x-data="{ openEmailForm: false }">
+          <div class="o-tool__header mb-4 text-base">
+            <a href="#"
+               class="o-tool__email-link inline-block border-b-2 border-black hover:border-transparent"
+               @click.prevent="openEmailForm = ! openEmailForm"
+            >
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+              <span class="inline-block">{{ 'Email my results to me:'|t }}</span>
+            </a>
+          </div>
+          <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base"
+               x-show="openEmailForm">
+            {{ email_form }}
+          </div>
         </div>
+        {% endif %}
       </div>
     {% endif %}
   </div>
