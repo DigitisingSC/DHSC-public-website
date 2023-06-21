@@ -1,0 +1,5 @@
+.o-quick-links {
+  &__link a {
+    @apply text-black underline hover:no-underline;
+  }
+}

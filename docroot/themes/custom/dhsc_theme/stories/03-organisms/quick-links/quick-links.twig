@@ -1,0 +1,34 @@
+{% set classes = [
+  'o-quick-links'
+] %}
+<section{{attributes.addClass(classes)}}>
+  <div class="o-quick-links__container py-4">
+    {% if title %}
+      <h2 class="o-quick-links__title mb-4">{{ title }}</h2>
+    {% endif %}
+    <div class="o-quick-links__content tablet:flex tablet:gap-4">
+      {% if items_left is not empty %}
+        <div class="o-quick-links__column tablet:flex tablet:flex-col tablet:gap-4 flex-1">
+          {% if items_left is iterable %}
+            {% for key, item in items_left if key|first != '#' %}
+              {{ item }}
+            {% endfor %}
+          {% else %}
+            {{ items }}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if items_right is not empty %}
+        <div class="o-quick-links__column flex-1 grow">
+          {% if items_right is iterable %}
+            {% for key, item in items_right if key|first != '#' %}
+              {{ item }}
+            {% endfor %}
+          {% else %}
+            {{ items }}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
