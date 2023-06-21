@@ -111,7 +111,7 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
         '#theme' => 'dhsc_results_list_self_assessment',
         '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+        '#summary' => $config->get('sa_result_summary') ? $config->get('sa_result_summary') : NULL,
         '#result' => $result,
         '#submission_url' => isset($submission_url) ? $submission_url : NULL,
       ];

@@ -148,8 +148,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     if ($result = $this->getResults()) {
       $element = [
         '#theme' => 'dhsc_results_list_assured_solutions',
-        '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+        '#summary' => $config->get('as_result_summary') ? $config->get('as_result_summary') : NULL,
         '#search_criteria' => $result['search_criteria'],
         '#count' => $result['count'],
         '#non_matching_count' => $result['non_matching_count'],

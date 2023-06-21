@@ -10,7 +10,7 @@ dhsc_result_viewer.result_summary_settings:
   path: '/admin/result-summary-settings'
   defaults:
     _form: '\Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm'
-    _title: 'Category results titles'
+    _title: 'Decision tree tool settings'
   requirements:
     _permission: 'editor access'
   options:
