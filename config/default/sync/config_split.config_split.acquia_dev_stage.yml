@@ -24,5 +24,6 @@ theme: {  }
 complete_list:
   - search_api.index.acquia_search_index
   - search_api.server.acquia_search_server
+  - views.view.acquia_search
 partial_list:
   - search_api.index.acquia_search_index

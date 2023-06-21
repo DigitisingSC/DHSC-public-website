@@ -18,6 +18,7 @@ theme: {  }
 complete_list:
   - search_api.index.local_search_solr_index
   - search_api.server.local_ddev_solr_server
+  - views.view.acquia_search
 partial_list:
   - autologout.settings
   - search_api.index.acquia_search_index
