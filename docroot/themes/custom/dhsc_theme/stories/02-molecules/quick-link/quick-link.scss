@@ -1,9 +1,7 @@
-.m-topic {
+.m-quick-link {
   background: rgba(204, 222, 219, 0.5);
 
   &:hover {
-    background: #ccdedb;
-
     h3 {
       @apply no-underline;
     }
@@ -13,11 +11,20 @@
     @apply underline mb-2;
   }
 
-  &:last-child {
-    background: #fbeecc;
-
-    &:hover {
-      background: #f9e6b2;
-    }
+  &--green-20 {
+    @apply bg-green-20;
   }
+
+  &--green-60 {
+    @apply bg-green-60;
+  }
+
+  &--burgundy {
+    @apply bg-burgundy text-white;
+  }
+
+  &--forest-100 {
+    @apply bg-forest-100 text-white;
+  }
+
 }
