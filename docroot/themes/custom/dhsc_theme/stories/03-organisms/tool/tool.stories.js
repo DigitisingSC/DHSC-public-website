@@ -117,7 +117,7 @@ toolSolutions.args = {
   search_criteria: toolSearchCriteriaTemplate,
   submission_url: '',
   result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
-  non_matching_count: '0',
+  non_matching_count: '2',
   partial_matches: '1',
   no_matches: '1',
   email_form: emailFormTwig

@@ -9,7 +9,7 @@
       <h2 class="o-tool__title mb-2">{{ title }}</h2>
     {% endif %}
     {% if variant %}
-      <div class="o-tool__variant mb-2">
+      <div class="o-tool__variant prose mb-2">
         {{ variant }}
       </div>
     {% endif %}
@@ -31,7 +31,7 @@
       </div>
       {% if submission_url %}
         <div class="o-tool__actions">
-          <a href="{{ submission_url }}" class="text-green underline hover:no-underline">{{ 'Change my responses'|t }}</a>
+          <a href="{{ submission_url }}" class="a-button a-button--primary">{{ 'Change my responses'|t }}</a>
         </div>
       {% endif %}
     {% endif %}
