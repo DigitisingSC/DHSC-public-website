@@ -273,14 +273,14 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
 
 
     $params['body'] = Markup::create("
-    <div class='results'><h3>Showing {$results['count']} out of {$results['total_count']} results</h3>
-    <section class='search-criteria'><h3>Search criteria:</h3>{$criteria}</section>
-    <section class='matches'><h3>Matching suppliers:</h3>{$result_items}</section>
-    <section class='matches'><h3>
+    <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
+    <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
+    <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
+    <tr class='non-matches'><td><h3>
     {$results['non_matching_count']} suppliers don't match your criteria</h3>
-    {$partial_matches}{$no_matches}
-    </section>
-    </div>");
+    {$partial_matches}{$no_matches}</td>
+    </tr>
+    </table>");
     $send = TRUE;
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
