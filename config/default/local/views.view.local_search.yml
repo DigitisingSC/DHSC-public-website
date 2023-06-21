@@ -7,6 +7,7 @@ dependencies:
     - search_api.index.local_search_solr_index
     - system.menu.main
   module:
+    - better_exposed_filters
     - entity_reference_revisions
     - search_api
     - user
@@ -315,7 +316,7 @@ display:
             offset_label: Offset
           quantity: 9
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Search
           reset_button: true
@@ -324,6 +325,39 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: basic_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              search_api_fulltext:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              type:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: false
       access:
         type: perm
         options:
@@ -372,24 +406,29 @@ display:
           operator: and
           value: ''
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: search_api_fulltext_op
+            label: 'Fulltext search'
             description: ''
             use_operator: false
-            operator: ''
+            operator: search_api_fulltext_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: search_api_fulltext
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              anonymous: '0'
+              localgov_editor: '0'
+              localgov_author: '0'
+              localgov_contributor: '0'
+              localgov_user_manager: '0'
             expose_fields: false
             placeholder: ''
-            searched_fields_id: ''
+            searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
             label: ''
@@ -405,15 +444,68 @@ display:
           parse_mode: direct
           min_length: null
           fields: {  }
+        type:
+          id: type
+          table: search_api_index_local_search_solr_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              localgov_editor: '0'
+              localgov_author: '0'
+              localgov_contributor: '0'
+              localgov_user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
       style:
         type: default
       row:
-        type: fields
+        type: search_api
         options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+          view_modes:
+            'entity:node':
+              article: default
+              casestudy: default
+              content_page: default
+              event: default
+              landing_page: default
+              localgov_guides_overview: default
+              localgov_guides_page: default
+              recommendation: default
+              subtopic_page: default
+              supplier: default
       query:
         type: search_api_query
         options:
@@ -431,6 +523,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
@@ -461,6 +554,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
