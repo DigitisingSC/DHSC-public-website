@@ -1,7 +1,0 @@
-adding:
-  dependencies:
-    config:
-      - search_api.server.local_ddev_solr_server
-  server: local_ddev_solr_server
-removing:
-  server: null

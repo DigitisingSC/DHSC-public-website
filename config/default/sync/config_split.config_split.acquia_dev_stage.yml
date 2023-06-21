@@ -12,12 +12,18 @@ folder: ../config/default/acquia_dev_stage
 module:
   dblog: 0
   memcache: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
   purge_processor_lateruntime: 0
   purge_queuer_coretags: 0
+  purge_ui: 0
   shield: 0
   views_ui: 0
 theme: {  }
 complete_list:
+  - search_api.index.acquia_search_index
   - search_api.server.acquia_search_server
+  - views.view.acquia_search
 partial_list:
   - search_api.index.acquia_search_index
