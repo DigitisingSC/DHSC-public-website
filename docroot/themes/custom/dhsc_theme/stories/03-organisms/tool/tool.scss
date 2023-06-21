@@ -5,10 +5,10 @@
 
   }
   &__email form {
-    @apply flex items-center;
+    @apply flex-col items-center;
   }
   &__email input {
-    @apply me-2;
+    @apply mb-2;
   }
   &__email label {
     @apply sr-only;

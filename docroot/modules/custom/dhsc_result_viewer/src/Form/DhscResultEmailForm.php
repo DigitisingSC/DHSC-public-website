@@ -40,7 +40,7 @@ class DhscResultEmailForm extends FormBase
       '#attributes' => [
         'role' => 'button',
         'aria-label' => $this->t('Send email'),
-        'class' => ['a-button', 'a-button--primary']
+        'class' => ['a-button', 'a-button--secondary']
       ],
     ];
     return $form;
