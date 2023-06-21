@@ -1,8 +1,12 @@
 title: Recommendations
-summary: 'Digital readiness self-assessment tool'
+summary: null
 green_tab_label: Green
 yellow_tab_label: Yellow
 orange_tab_label: Orange
 results_variant_text:
-  value: "<p>Based on your answers, we think you have all of the essentials covered.<br />\r\n<br />\r\nThese essentials include:</p>\r\n\r\n<ul>\r\n\t<li>a strong and stable internet connection</li>\r\n\t<li>secure email set up</li>\r\n\t<li>an up-to-date Data Security and Protection Toolkit (DSPT) assessment to ensure your data and information is safe</li>\r\n\t<li>hardware and mobile devices, such as phones and tablets</li>\r\n\t<li>digital social care records&nbsp;</li>\r\n</ul>\r\n"
+  value: '<p>Based on your answers, we think you have all of the essentials covered.<br><br>These essentials include:</p><ul><li>a strong and stable internet connection</li><li>secure email set up</li><li>an up-to-date Data Security and Protection Toolkit (DSPT) assessment to ensure your data and information is safe</li><li>hardware and mobile devices, such as phones and tablets</li><li>digital social care records&nbsp;</li></ul>'
+  format: full_html
+sa_result_summary: 'Digital readiness self-assessment tool'
+as_result_summary:
+  value: '<p>Follow our guidance for <a href="https://www.google.com">buying and implementing digital social care records</a> to decide which solution is right for you</p>'
   format: full_html

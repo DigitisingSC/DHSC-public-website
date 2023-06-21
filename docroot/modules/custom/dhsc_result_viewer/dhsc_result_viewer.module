@@ -15,7 +15,6 @@ function dhsc_result_viewer_theme()
   return [
     'dhsc_results_list_assured_solutions' => [
       'variables' => [
-        'title' => NULL,
         'summary' => NULL,
         'search_criteria' => NULL,
         'count' => NULL,
