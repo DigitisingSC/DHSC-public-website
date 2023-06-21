@@ -61,6 +61,7 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
 const ToolSolutionsTemplate = ({
   attributes,
   title,
+  summary,
   icon,
   count,
   total_count,
@@ -75,8 +76,9 @@ const ToolSolutionsTemplate = ({
 }) =>
   toolSolutionsTwig({
     attributes,
-    icon,
     title,
+    summary,
+    icon,
     count,
     total_count,
     no_result,
@@ -106,6 +108,7 @@ export const toolSolutions = ToolSolutionsTemplate.bind({});
 toolSolutions.args = {
   attributes: new DrupalAttributes(),
   title: 'Solutions',
+  summary: 'Follow our guidance for buying and implementing digital social care records to decide which solution is right for you',
   variant: 'solutions',
   icon: svgIconTemplate,
   count: '5',
