@@ -10,6 +10,7 @@ export default {
 const Template = ({ attributes, title, url, answer, content }) =>
   toolSupplierTwig({
     attributes,
+    variant,
     title,
     url,
     answer,
@@ -19,6 +20,7 @@ const Template = ({ attributes, title, url, answer, content }) =>
 export const toolSupplier = Template.bind({});
 toolSupplier.args = {
   attributes: new DrupalAttributes(),
+  variant: 'match',
   title: "Microsoft",
   url: "https://www.digitalsocialcare.co.uk",
   content: "<p>Microsoft corp.</p>"
