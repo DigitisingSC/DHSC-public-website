@@ -74,7 +74,7 @@ field_settings:
     label: 'Guide description'
     datasource_id: 'entity:node'
     property_path: localgov_guides_description
-    type: text
+    type: 'solr_text_custom:edge'
     dependencies:
       config:
         - field.storage.node.localgov_guides_description
@@ -98,7 +98,7 @@ field_settings:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: string
+    type: 'solr_text_custom:edge'
     dependencies:
       module:
         - node
