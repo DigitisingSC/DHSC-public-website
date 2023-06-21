@@ -8,9 +8,9 @@ dependencies:
     - field.storage.node.localgov_guides_section_title
     - search_api.server.local_ddev_solr_server
   module:
+    - search_api_solr
     - node
     - search_api
-    - search_api_solr
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -176,4 +176,4 @@ options:
   index_directly: true
   track_changes_in_references: true
   overridden_by_acquia_search: 2
-server: local_ddev_solr_server
+server: acquia_search_server
