@@ -1,7 +1,9 @@
 {# Template #}
 {% include '@molecules/tool-supplier/tool-supplier.twig' with {
   attributes: attributes,
+  variant: 'match',
   title: title,
   url: url,
-  content: content
+  content: content,
+  answers: answers
 } %}

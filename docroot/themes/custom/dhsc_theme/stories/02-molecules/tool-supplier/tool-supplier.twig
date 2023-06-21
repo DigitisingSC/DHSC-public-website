@@ -1,12 +1,30 @@
 <div class="m-tool-supplier mb-4">
   <div class="m-tool-supplier__title mb-2">
     {% if url %}
-      <a href="{{ url }}" class="underline hover:no-underline">
+      <a href="{{ url }}" class="text-green text-md underline hover:no-underline">
         <h4>{{ title }}</h4>
       </a>
     {% else %}
       <h4>{{ title }}</h4>
     {% endif %}
   </div>
-  <div class="m-tool-supplier__content">{{ content }}</div>
+  {% if variant == 'match' %}
+    <div class="m-tool-supplier__content">{{ content }}</div>
+  {% else %}
+    <div class="m-tool-supplier__content">
+      <h4 class="text-base text-bold mb-2">{{ 'Criteria not met:'|t }}</h4>
+      {% if answers is iterable %}
+        {% for answer in answers %}
+          <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ answer['section'] }}</div>
+          <ul class="list-disc pl-4 mb-4">
+            <li>
+              <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ answer['answer'] }}</div>
+            </li>
+          </ul>
+        {% endfor %}
+      {% else %}
+        {{ answers }}
+      {% endif %}
+    </div>
+  {% endif %}
 </div>
