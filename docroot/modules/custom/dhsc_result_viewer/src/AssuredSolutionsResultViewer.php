@@ -316,6 +316,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       'submission_url' => isset($submission_url) ? $submission_url : NULL,
     ];
 
+    // Save result data in tempstore for email result behaviour.
+    $this->tempStore->set('result_data', $result_data);
+
     return $result_data;
   }
 

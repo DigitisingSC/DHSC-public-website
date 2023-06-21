@@ -9,6 +9,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
@@ -66,6 +67,13 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
   protected $messenger;
 
   /**
+   * TempStore.
+   *
+   * @var \Drupal\Core\TempStore\PrivateTempStore
+   */
+  protected $tempStore;
+
+  /**
    * DHSCResultSummaryAssuredSolutionsController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -85,7 +93,8 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     AssuredSolutionsInterface $result_viewer,
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
-    MessengerInterface $messenger
+    MessengerInterface $messenger,
+    PrivateTempStoreFactory $temp_store
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
@@ -93,6 +102,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $this->languageManager = $language_manager;
     $this->mailManager = $mail_manager;
     $this->messenger = $messenger;
+    $this->tempStore = $temp_store;
   }
 
   /**
@@ -107,6 +117,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
       $container->get('language_manager'),
       $container->get('plugin.manager.mail'),
       $container->get('messenger'),
+      $container->get('tempstore.private')
     );
   }
 
@@ -169,27 +180,37 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    */
   public function sendResultEmail($email, $token)
   {
-    $result = $this->buildEmail($email);
 
-    if (!$result['result']) {
-      $message = t('There was a problem sending assured solutions result email to @email', array('@email' => $email));
-      \Drupal::logger('Error in email sending')->error($message);
-    } else {
-      \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+    $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
+
+    // Get saved result data from tempstore.
+    $results = $tempStore->get('result_data');
+
+    if (!empty($results)) {
+
+      $result = $this->buildEmail($email, $results);
+
+      if (!$result['result']) {
+        $message = t('There was a problem sending assured solutions result email to @email', array('@email' => $email));
+        \Drupal::logger('Error in email sending')->error($message);
+      } else {
+        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+      }
+
+      $submission_url = Url::fromRoute(
+        'dhsc_result_viewer.result_summary_assured_solutions',
+        ['token' => $token]
+      )->toString();
+
+      $response = $submission_url ?
+        new RedirectResponse($submission_url) :
+        new RedirectResponse('/');
+
+      $this->messenger->addStatus(t('Email sent'));
+
+      return $response;
     }
-
-    $submission_url = Url::fromRoute(
-      'dhsc_result_viewer.result_summary_assured_solutions',
-      ['token' => $token]
-    )->toString();
-
-    $response = $submission_url ?
-      new RedirectResponse($submission_url) :
-      new RedirectResponse('/');
-
-    $this->messenger->addStatus(t('Email sent'));
-
-    return $response;
+    $this->messenger->addError(t('Unable to send email'));
   }
 
   /**
@@ -198,10 +219,8 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    * @param string $email
    * @return array
    */
-  public function buildEmail($email)
+  public function buildEmail($email, $results)
   {
-    $result = $this->getResults();
-
     $module = 'dhsc_result_viewer';
     $key = 'email_result';
     $to = $email;
@@ -209,10 +228,10 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $params['subject'] = t('Assured solutions: Email result');
 
     $criteria = '';
-    if ($result['search_criteria']) {
-      foreach ($result['search_criteria'] as $item) {
-        $criteria .= Markup::create("<h4>{$item['#section']}</h4><ul>");
-        foreach ($item['#answers'] as $answer) {
+    if ($results['search_criteria']) {
+      foreach ($results['search_criteria'] as $item) {
+        $criteria .= Markup::create("<h4>{$item['section']}</h4><ul>");
+        foreach ($item['answers'] as $answer) {
           $criteria .= Markup::create("<li>{$answer}</li>");
         }
         $criteria .= "</ul>";
@@ -220,21 +239,21 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     }
 
     $result_items = '';
-    if ($result['result_items']) {
-      foreach ($result['result_items'] as $node) {
+    if ($results['matches']) {
+      foreach ($results['matches'] as $node) {
         $result_items .= Markup::create("<h4>
-      {$node['#content']['#node']->getTitle()}</h4>
-      {$node['#content']['#node']->get('field_body_paragraphs')->entity->get('localgov_text')->value}
+      {$node->getTitle()}</h4>
+      {$node->get('field_body_paragraphs')->entity->get('localgov_text')->value}
       <p>");
         $result_items .= "</p>";
       }
     }
 
     $partial_matches = '';
-    if ($result['partial_matches']) {
-      foreach ($result['partial_matches'] as $item) {
-        $partial_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
-        foreach ($item['#answers'] as $answer) {
+    if ($results['partial_matches']) {
+      foreach ($results['partial_matches'] as $item) {
+        $partial_matches .= Markup::create("<h4>{$item['title']}</h4><ul>");
+        foreach ($item['answers'] as $answer) {
           $partial_matches .= Markup::create("<li>{$answer}</li>");
         }
         $partial_matches .= "</ul>";
@@ -242,10 +261,10 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     }
 
     $no_matches = '';
-    if ($result['no_matches']) {
-      foreach ($result['no_matches'] as $item) {
-        $no_matches .= Markup::create("<h4>{$item['#title']}</h4><ul>");
-        foreach ($item['#answers'] as $answer) {
+    if ($results['no_matches']) {
+      foreach ($results['no_matches'] as $item) {
+        $no_matches .= Markup::create("<h4>{$item['title']}</h4><ul>");
+        foreach ($item['answers'] as $answer) {
           $no_matches .= Markup::create("<li>{$answer}</li>");
         }
         $no_matches .= "</ul>";
@@ -254,11 +273,11 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
 
 
     $params['body'] = Markup::create("
-    <section class='results'><h3>Showing {$result['count']} out of {$result['total_count']} results</h3>
+    <div class='results'><h3>Showing {$results['count']} out of {$results['total_count']} results</h3>
     <section class='search-criteria'><h3>Search criteria:</h3>{$criteria}</section>
     <section class='matches'><h3>Matching suppliers:</h3>{$result_items}</section>
     <section class='matches'><h3>
-    {$result['non_matching_count']} suppliers don't match your criteria</h3>
+    {$results['non_matching_count']} suppliers don't match your criteria</h3>
     {$partial_matches}{$no_matches}
     </section>
     </div>");
