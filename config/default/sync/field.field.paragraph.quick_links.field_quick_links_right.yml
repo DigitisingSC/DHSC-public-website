@@ -1,0 +1,85 @@
+uuid: 282a473f-bbe5-46ec-a9d8-504e99aabfe6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quick_links_right
+    - paragraphs.paragraphs_type.quick_link
+    - paragraphs.paragraphs_type.quick_links
+  module:
+    - entity_reference_revisions
+id: paragraph.quick_links.field_quick_links_right
+field_name: field_quick_links_right
+entity_type: paragraph
+bundle: quick_links
+label: 'Quick links right'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      quick_link: quick_link
+    negate: 0
+    target_bundles_drag_drop:
+      alert:
+        weight: 20
+        enabled: false
+      card_collection:
+        weight: 21
+        enabled: false
+      content_listing:
+        weight: 22
+        enabled: false
+      content_listing_section:
+        weight: 23
+        enabled: false
+      content_listing_section_links:
+        weight: 24
+        enabled: false
+      cta_banner:
+        weight: 25
+        enabled: false
+      dynamic_content_list:
+        weight: 26
+        enabled: false
+      dynamic_content_listing:
+        weight: 27
+        enabled: false
+      from_library:
+        weight: 28
+        enabled: false
+      localgov_image:
+        weight: 29
+        enabled: false
+      localgov_link:
+        weight: 30
+        enabled: false
+      localgov_text:
+        weight: 31
+        enabled: false
+      newsletter_signup:
+        weight: 32
+        enabled: false
+      quick_link:
+        weight: 33
+        enabled: true
+      quick_links:
+        weight: 34
+        enabled: false
+      topic:
+        weight: 35
+        enabled: false
+      topic_list_builder:
+        weight: 37
+        enabled: false
+      topics:
+        weight: 36
+        enabled: false
+      video:
+        weight: 38
+        enabled: false
+field_type: entity_reference_revisions

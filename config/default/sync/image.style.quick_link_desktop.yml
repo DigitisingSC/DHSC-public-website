@@ -1,0 +1,15 @@
+uuid: dba1eb18-0138-4efd-ab70-9385ec885742
+langcode: en
+status: true
+dependencies: {  }
+name: quick_link_desktop
+label: 'Quick link desktop'
+effects:
+  6afc0b5a-2729-4d5d-b2ab-9b25283ca741:
+    uuid: 6afc0b5a-2729-4d5d-b2ab-9b25283ca741
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 325
+      anchor: center-center
