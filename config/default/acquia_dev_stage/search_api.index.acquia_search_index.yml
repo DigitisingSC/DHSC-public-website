@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
+    - search_api.server.local_ddev_solr_server
   module:
     - node
     - search_api
@@ -175,4 +176,4 @@ options:
   index_directly: true
   track_changes_in_references: true
   overridden_by_acquia_search: 2
-server: null
+server: local_ddev_solr_server
