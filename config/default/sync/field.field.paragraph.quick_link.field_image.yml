@@ -1,0 +1,29 @@
+uuid: 13a120b9-d3b4-4c58-ac0a-e7fa15b3b569
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.quick_link
+id: paragraph.quick_link.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: quick_link
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

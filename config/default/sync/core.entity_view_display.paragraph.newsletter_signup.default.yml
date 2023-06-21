@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.newsletter_signup.localgov_title
     - paragraphs.paragraphs_type.newsletter_signup
   module:
+    - text
     - webform
 id: paragraph.newsletter_signup.default
 targetEntityType: paragraph
@@ -15,11 +16,11 @@ bundle: newsletter_signup
 mode: default
 content:
   field_description:
-    type: basic_string
-    label: hidden
+    type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 3
     region: content
   field_form:
     type: webform_entity_reference_entity_view

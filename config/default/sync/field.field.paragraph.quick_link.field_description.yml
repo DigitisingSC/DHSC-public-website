@@ -1,25 +1,24 @@
-uuid: 53b941c7-cd68-4ea3-b06c-4aa2955a9f4b
+uuid: fe9ae022-3275-4f15-bf47-f42d32f38d75
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_description
-    - paragraphs.paragraphs_type.newsletter_signup
+    - paragraphs.paragraphs_type.quick_link
   module:
     - allowed_formats
     - text
 third_party_settings:
   allowed_formats:
-    allowed_formats:
-      - basic_html
-id: paragraph.newsletter_signup.field_description
+    allowed_formats: {  }
+id: paragraph.quick_link.field_description
 field_name: field_description
 entity_type: paragraph
-bundle: newsletter_signup
+bundle: quick_link
 label: Description
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -1,0 +1,23 @@
+uuid: 8679e0a7-2bde-4b03-b385-a88500e7f7ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_quick_link_colour_scheme
+    - paragraphs.paragraphs_type.quick_link
+  module:
+    - options
+id: paragraph.quick_link.field_quick_link_colour_scheme
+field_name: field_quick_link_colour_scheme
+entity_type: paragraph
+bundle: quick_link
+label: 'Colour scheme'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: green-20
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.newsletter_signup
+    - paragraphs.paragraphs_type.quick_links
     - paragraphs.paragraphs_type.topic_list_builder
     - paragraphs.paragraphs_type.topics
     - paragraphs.paragraphs_type.video
@@ -43,6 +44,7 @@ settings:
       dynamic_content_listing: dynamic_content_listing
       newsletter_signup: newsletter_signup
       topics: topics
+      quick_links: quick_links
     negate: 0
     target_bundles_drag_drop:
       alert:
@@ -83,6 +85,12 @@ settings:
         enabled: true
       newsletter_signup:
         weight: 26
+        enabled: true
+      quick_link:
+        weight: 33
+        enabled: false
+      quick_links:
+        weight: 34
         enabled: true
       topic:
         weight: 31
