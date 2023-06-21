@@ -283,7 +283,6 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         $no_result_nodes = Node::loadMultiple($results);
 
         foreach ($no_result_nodes as $node) {
-          $field_key = NULL;
           $node_title = $node->getTitle();
           $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
 
@@ -291,7 +290,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           $no_matches[$node_title]['node_url'] = $node_url;
 
           foreach ($node->get('field_answers_supplier')->getValue() as $value) {
-
+            $field_key = NULL;
             // We don't have the element key for the first radio field
             // so check against pre-defined values and set the field_key from the form.
             if (in_array($value['value'], $this->device_option_keys)) {
