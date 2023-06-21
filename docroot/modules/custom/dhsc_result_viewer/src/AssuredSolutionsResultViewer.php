@@ -368,11 +368,15 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getFormElementValue(string $field_key = NULL, $value, $webform)
   {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
+    $section = $webform->getElement($element['#webform_parent_key'])['#title'];
 
     if (isset($element['#type']) && $element['#type'] === 'checkbox') {
       // Use the title for checkbox fields.
       $title = $element['#title'];
-      return $title;
+      return [
+        'section' => $section,
+        'answer' => $title,
+      ];
     }
     if (isset($element['#type']) && $element['#type'] === 'radios') {
       // Use the options text for radio fields.
@@ -382,7 +386,10 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       } elseif (count($value) === 1) {
         $item = reset($value);
       }
-      return $item;
+      return [
+        'section' => $section,
+        'answer' => $item,
+      ];
     }
   }
 

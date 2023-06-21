@@ -252,9 +252,10 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $partial_matches = '';
     if ($results['partial_matches']) {
       foreach ($results['partial_matches'] as $item) {
-        $partial_matches .= Markup::create("<h4>{$item['title']}</h4><ul>");
+        $partial_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p><ul>");
         foreach ($item['answers'] as $answer) {
-          $partial_matches .= Markup::create("<li>{$answer}</li>");
+          $partial_matches .= Markup::create("<p>{$answer['section']}</p>");
+          $partial_matches .= Markup::create("<li>{$answer['answer']}</li>");
         }
         $partial_matches .= "</ul>";
       }
@@ -263,9 +264,10 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
     $no_matches = '';
     if ($results['no_matches']) {
       foreach ($results['no_matches'] as $item) {
-        $no_matches .= Markup::create("<h4>{$item['title']}</h4><ul>");
+        $no_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p<ul>");
         foreach ($item['answers'] as $answer) {
-          $no_matches .= Markup::create("<li>{$answer}</li>");
+          $no_matches .= Markup::create("<p>{$answer['section']}</p>");
+          $no_matches .= Markup::create("<li>{$answer['answer']}</li>");
         }
         $no_matches .= "</ul>";
       }

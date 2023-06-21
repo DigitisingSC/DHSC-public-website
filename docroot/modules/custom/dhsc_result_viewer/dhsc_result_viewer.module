@@ -49,14 +49,20 @@ function dhsc_result_viewer_theme()
       'variables' => [
         'title' => NULL,
         'url' => NULL,
-        'answers' => NULL,
+        'answers' => [
+          'section' => NULL,
+          'answer' => NULL,
+        ],
       ],
     ],
     'no_match' => [
       'variables' => [
         'title' => NULL,
         'url' => NULL,
-        'answers' => NULL,
+        'answers' => [
+          'section' => NULL,
+          'answer' => NULL
+        ],
       ],
     ],
     'result_item' => [
