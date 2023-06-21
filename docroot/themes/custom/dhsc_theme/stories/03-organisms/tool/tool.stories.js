@@ -12,6 +12,9 @@ import toolResultTwig from "../../02-molecules/tool-result/tool-result.twig";
 import { SupplierTeaser } from "../../02-molecules/teaser/teaser.stories.js";
 import supplierTeaserTwig from "../../02-molecules/teaser/teaser--supplier.twig";
 
+import { toolSupplierNoMatch } from '../../02-molecules/tool-supplier/tool-supplier.stories';
+import toolSupplierNoMatchTwig from '../../02-molecules/tool-supplier/tool-supplier--nomatch.twig';
+
 import { toolSearchCriteria } from '../../02-molecules/tool-search-criteria/tool-search-criteria.stories.js';
 import toolSearchCriteriaTwig from '../../02-molecules/tool-search-criteria/tool-search-criteria.twig';
 
@@ -38,6 +41,10 @@ const supplierTeaserTemplate3 = (args) => supplierTeaserTwig({
   ...SupplierTeaser.args,
 });
 
+const toolSupplierNoMatchTemplate = (args) => toolSupplierNoMatchTwig({
+  ...toolSupplierNoMatch.args,
+});
+
 const toolSearchCriteriaTemplate = (args) => toolSearchCriteriaTwig({
   ...toolSearchCriteria.args,
 })
@@ -61,7 +68,7 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
 const ToolSolutionsTemplate = ({
   attributes,
   title,
-  summary,
+  summary_text,
   icon,
   count,
   total_count,
@@ -77,7 +84,7 @@ const ToolSolutionsTemplate = ({
   toolSolutionsTwig({
     attributes,
     title,
-    summary,
+    summary_text,
     icon,
     count,
     total_count,
@@ -108,17 +115,17 @@ export const toolSolutions = ToolSolutionsTemplate.bind({});
 toolSolutions.args = {
   attributes: new DrupalAttributes(),
   title: 'Solutions',
-  summary: 'Follow our guidance for buying and implementing digital social care records to decide which solution is right for you',
+  summary_text: 'Follow our guidance for buying and implementing digital social care records to decide which solution is right for you',
   variant: 'solutions',
   icon: svgIconTemplate,
   count: '5',
   total_count: '12',
   no_result: '',
   search_criteria: toolSearchCriteriaTemplate,
-  submission_url: '',
+  submission_url: '#',
   result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
   non_matching_count: '2',
-  partial_matches: '1',
-  no_matches: '1',
+  partial_matches: toolSupplierNoMatchTemplate,
+  no_matches: toolSupplierNoMatchTemplate,
   email_form: emailFormTwig
 }
