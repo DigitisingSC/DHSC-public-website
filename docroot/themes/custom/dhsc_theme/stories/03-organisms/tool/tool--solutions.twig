@@ -9,7 +9,7 @@
       </div>
     {% else %}
       <div class="o-tool__results">
-        <div class="o-tool__criteria" x-data="{ openToolCriteria: false }">
+        <div class="o-tool__criteria" x-data="{ openToolCriteria: true }">
           <div class="m-tool-search-criteria__header mb-4 text-base">
             <a href="#"
                class="m-tool-search-criteria__link inline-block border-b-2 border-black hover:border-transparent"
@@ -25,14 +25,22 @@
             {{ search_criteria }}
           </div>
         </div>
-        <div class="o-tool__actions">
-          {% if submission_url %}
-            <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+        {% if submission_url %}
+        <div class="o-tool__actions pb-4">
+            <a href="{{ submission_url }}" class="a-button a-button--primary">{{ 'Change my responses'|t }}</a>
+        </div>
+        {% endif %}
+        {% if result %}
+        <div class="o-tool__results">
+          {% if result is iterable %}
+            {% for res in result %}
+              {{ res }}
+            {% endfor %}
+          {% else %}
+            {{ result }}
           {% endif %}
         </div>
-        <div class="o-tool__results">
-          {{ result }}
-        </div>
+        {% endif %}
         <div class="o-tool__unmatched">
           <h4>{{ non_matching_count }} {{'suppliers don\'t match your criteria'|t}}</h4>
           <div class="o-tool__partial">

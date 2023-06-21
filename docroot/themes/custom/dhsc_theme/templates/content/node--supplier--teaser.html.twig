@@ -77,8 +77,13 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-<article{{attributes.addClass(classes)}}>
-	<div{{content_attributes.addClass('node__content')}}>
-		{{ content }}
-	</div>
-</article>
+
+{% include '@molecules/teaser/teaser--supplier.twig' with {
+  attributes: attributes.addClass(classes),
+  variant: 'supplier',
+  title: label,
+  link: path('entity.node.canonical', {'node': node.id}),
+  body: content.field_body_paragraphs,
+  image: content.field_image|render,
+  listPrice: content.field_list_price|field_value
+} %}

@@ -7,6 +7,9 @@ import './tool.scss';
 import { toolResult } from "../../02-molecules/tool-result/tool-result.stories.js";
 import toolResultTwig from "../../02-molecules/tool-result/tool-result.twig";
 
+import { SupplierTeaser } from "../../02-molecules/teaser/teaser.stories.js";
+import supplierTeaserTwig from "../../02-molecules/teaser/teaser--supplier.twig";
+
 import { toolSearchCriteria } from '../../02-molecules/tool-search-criteria/tool-search-criteria.stories.js';
 import toolSearchCriteriaTwig from '../../02-molecules/tool-search-criteria/tool-search-criteria.twig';
 
@@ -14,11 +17,23 @@ import { svgIcon } from '../../01-atoms/svg/svg.stories';
 import svgIconTwig from '../../01-atoms/svg/svg.twig';
 
 export default {
-  title: "Design System/Organisms/Tool",
+  title: "Design System/Organisms/Tools",
 };
 
 const toolResultTemplate = (args) => toolResultTwig({
   ...toolResult.args,
+});
+
+const supplierTeaserTemplate1 = (args) => supplierTeaserTwig({
+  ...SupplierTeaser.args,
+});
+
+const supplierTeaserTemplate2 = (args) => supplierTeaserTwig({
+  ...SupplierTeaser.args,
+});
+
+const supplierTeaserTemplate3 = (args) => supplierTeaserTwig({
+  ...SupplierTeaser.args,
 });
 
 const toolSearchCriteriaTemplate = (args) => toolSearchCriteriaTwig({
@@ -96,7 +111,7 @@ toolSolutions.args = {
   no_result: '',
   search_criteria: toolSearchCriteriaTemplate,
   submission_url: '',
-  result: '',
+  result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
   non_matching_count: '',
   partial_matches: '',
   no_matches: '',
