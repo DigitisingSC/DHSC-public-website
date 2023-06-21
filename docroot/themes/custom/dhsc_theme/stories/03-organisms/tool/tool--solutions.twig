@@ -3,9 +3,9 @@
     {% if count and total_count %}
       <h2 class="text-2xl tablet:w-8/12 mb-8">{{ count ~ ' out of '|t ~ total_count }} {{'suppliers match your criteria'|t}}</h2>
     {% endif %}
-    {% if summary %}
+    {% if summary_text %}
       <div class="o-tool__summary tablet:w-8/12 text-md text-black-80">
-        {{ summary }}
+        {{ summary_text }}
       </div>
     {% endif %}
   </header>
