@@ -83,6 +83,13 @@ function dhsc_result_viewer_theme()
   ];
 }
 
+/**
+ * Implements hook_form_alter().
+ *
+ * @param [type] $form
+ * @param FormStateInterface $form_state
+ * @param [type] $form_id
+ */
 function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   // Re-write submit label when re-submitting answers.
@@ -108,4 +115,22 @@ function dhsc_result_viewer_mail($key, &$message, $params)
   // Strip newline characters from email subjects.
   $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
   $message['body'] = $params['body'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param $variables
+ */
+function dhsc_result_viewer_preprocess_status_messages(&$variables)
+{
+  if (isset($variables['message_list']['status'])) {
+    $status_messages = $variables['message_list']['status'];
+    foreach ($status_messages as $key => $message) {
+      // Remove status message if updating submission.
+      if (strpos((string) $message, 'Submission updated') !== FALSE) {
+        unset($variables['message_list']['status'][$key]);
+      }
+    }
+  }
 }
