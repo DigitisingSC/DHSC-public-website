@@ -1,0 +1,22 @@
+uuid: e2817fc9-befe-47a1-b9ff-a83dfc852b0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.skill
+id: node.skill.status
+field_name: status
+entity_type: node
+bundle: skill
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

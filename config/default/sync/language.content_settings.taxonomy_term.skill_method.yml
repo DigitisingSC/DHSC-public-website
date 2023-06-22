@@ -1,0 +1,11 @@
+uuid: 4f260160-83de-4dfa-bf94-0aaf1813ce47
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.skill_method
+id: taxonomy_term.skill_method
+target_entity_type_id: taxonomy_term
+target_bundle: skill_method
+default_langcode: site_default
+language_alterable: false

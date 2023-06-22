@@ -1,0 +1,14 @@
+uuid: dbd1470c-678a-453c-b489-fdd2c32ac267
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.skill_method
+id: taxonomy_vocabulary_skill_method
+entity_type_id: taxonomy_vocabulary
+entity_id: skill_method
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

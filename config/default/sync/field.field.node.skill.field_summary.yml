@@ -1,0 +1,19 @@
+uuid: 54231e66-c12f-49fc-a212-b76e1c5373cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.skill
+id: node.skill.field_summary
+field_name: field_summary
+entity_type: node
+bundle: skill
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
