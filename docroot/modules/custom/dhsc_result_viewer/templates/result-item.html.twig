@@ -1,10 +1,8 @@
-<li>
-  <a href="{{ url }}">
-    <h3>{{ title }}</h3>
-  </a>
-</li>
-<li>
-  <strong>{{ 'Your response:'|t }}
-    {{ answer }}</strong>
-</li>
-<p>{{ content }}</p>
+{# Template #}
+{% include '@molecules/tool-supplier/tool-supplier--match.twig' with {
+  attributes: attributes,
+  variant: 'match',
+  title: title,
+  url: url,
+  content: content,
+} %}

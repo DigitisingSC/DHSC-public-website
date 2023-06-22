@@ -3,9 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.recommendation.field_answers_recommendation
     - field.field.node.recommendation.field_body_paragraphs
     - field.field.node.recommendation.field_category
-    - field.field.node.recommendation.field_possible_answers
     - node.type.recommendation
   module:
     - content_moderation
@@ -23,6 +23,14 @@ content:
     weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_answers_recommendation:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_body_paragraphs:
     type: paragraphs
@@ -59,14 +67,6 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_possible_answers:
-    type: string_textfield
-    weight: 12
-    region: content
-    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }

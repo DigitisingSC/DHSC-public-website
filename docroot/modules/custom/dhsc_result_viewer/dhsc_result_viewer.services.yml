@@ -1,4 +1,7 @@
 services:
-  dhsc_result_viewer.service:
-    class: Drupal\dhsc_result_viewer\ResultViewer
+  dhsc_self_assessment_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\SelfAssessmentResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+  dhsc_assured_solutions_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']

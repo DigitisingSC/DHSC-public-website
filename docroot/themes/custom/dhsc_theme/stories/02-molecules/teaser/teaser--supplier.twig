@@ -1,0 +1,39 @@
+{% set classes = [
+  'm-teaser',
+  'm-teaser--' ~ variant,
+  'block tablet:flex tablet:gap-4',
+  'w-full tablet:justify-between tablet:items-start',
+  'border-b-2',
+  'border-black-20',
+  'pb-2 mb-2',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if image %}
+    <div class="m-teaser__media tablet:w-3/12">
+      {{ image }}
+    </div>
+  {% endif %}
+  <div class="m-teaser__body tablet:w-9/12">
+    {% if title %}
+      <div class="m-teaser__title mb-2">
+        <h3 class="text-base">
+          {% if link %}
+            <a href="{{ link }}" class="text-green underline hover:no-underline">{{ title }}</a>
+          {% else %}
+            {{ title }}
+          {% endif %}
+        </h3>
+      </div>
+    {% endif %}
+    {% if body %}
+      <div class="m-teaser__copy mb-2">
+        {{ body }}
+      </div>
+    {% endif %}
+    {% if listPrice  %}
+      <div class="m-teaser__price flex items-center">
+        <span class="me-2">{{ 'List price:'|t }}</span> {{ listPrice }}
+      </div>
+    {% endif %}
+  </div>
+</div>

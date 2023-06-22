@@ -1,0 +1,21 @@
+{% set classes = module ? (key ? module ~ '-' ~ key) %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>DHSC email result</title>
+{% if css %}
+    <style type="text/css">
+      <!-- {{ css }} -->
+    </style>
+{% endif %}
+  </head>
+  <body id="mimemail-dhsc-email-result-body"{{ attributes.addClass(classes) }}>
+    <div id="center">
+      <div id="main">
+        <h2>Result summary</h2>
+        {{ body }}
+      </div>
+    </div>
+  </body>
+</html>

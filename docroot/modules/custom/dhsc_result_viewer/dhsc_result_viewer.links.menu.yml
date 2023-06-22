@@ -5,7 +5,7 @@ dhsc_result_viewer.dhsc_settings:
   weight: -20
 
 dhsc_result_viewer.result_summary_settings:
-  title: 'Category results titles'
+  title: 'Decision tree tool settings'
   route_name: dhsc_result_viewer.result_summary_settings
   parent: dhsc_result_viewer.dhsc_settings
   weight: -15

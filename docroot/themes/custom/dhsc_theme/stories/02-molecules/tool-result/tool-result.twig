@@ -1,0 +1,17 @@
+<div class="m-tool-result mb-4">
+  <div class="m-tool-result__title mb-2">
+    {% if url %}
+    <a href="{{ url }}" class="underline hover:no-underline">
+      <h4>{{ title }}</h4>
+    </a>
+    {% else %}
+      <h4>{{ title }}</h4>
+    {% endif %}
+  </div>
+  {% if answer %}
+    <div class="m-tool-result__answer mb-4">
+      <p>{{ 'Your response:'|t }} <strong>{{ answer }}</strong></p>
+    </div>
+  {% endif %}
+  <div class="m-tool-result__content pl-4 border-s-2 border-green">{{ content }}</div>
+</div>

@@ -1,0 +1,10 @@
+uuid: 3c7b9e1c-50dc-4ab4-ab9c-15c42cc841ad
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dhsc_supplier_image
+label: 'DHSC supplier image'
+targetEntityType: media
+cache: true

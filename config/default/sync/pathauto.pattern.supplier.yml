@@ -1,0 +1,22 @@
+uuid: 8d518d6a-975b-4966-b0c4-472a2c098816
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: supplier
+label: Supplier
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  78863561-a0d5-43b9-b7df-5ab662abe750:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 78863561-a0d5-43b9-b7df-5ab662abe750
+    context_mapping:
+      node: node
+    bundles:
+      supplier: supplier
+selection_logic: and
+weight: -5
+relationships: {  }

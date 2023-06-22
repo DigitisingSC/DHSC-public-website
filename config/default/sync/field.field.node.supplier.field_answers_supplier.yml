@@ -1,18 +1,18 @@
-uuid: 2c63afa6-8795-4b35-adf8-3e6d69517a16
+uuid: 99a2b98f-e3e3-4759-bc92-dda3c636fe76
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_possible_answers
+    - field.storage.node.field_answers_supplier
     - node.type.supplier
-id: node.supplier.field_possible_answers
-field_name: field_possible_answers
+id: node.supplier.field_answers_supplier
+field_name: field_answers_supplier
 entity_type: node
 bundle: supplier
 label: 'Possible answers'
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

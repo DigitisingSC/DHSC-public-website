@@ -5,9 +5,7 @@ namespace Drupal\dhsc_result_viewer\Plugin\WebformHandler;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\Utility\WebformOptionsHelper;
-use Drupal\webform\Element\WebformEntityTrait;
-
-
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Form submission handler.
@@ -66,6 +64,21 @@ class setFormMetdataHandler extends WebformHandlerBase
     // set submission id tempstore var to load submission data prior to showing results.
     if ($sid = $webform_submission->id()) {
       $tempstore->set('sid', $sid);
+    }
+
+    if ($update == TRUE) {
+      $submission_token = \Drupal::request()->query->get('token');
+
+      $route_name = $webform->id() === 'self_assessment_tool' ?
+        'dhsc_result_viewer.result_summary_self_assessment' :
+        'dhsc_result_viewer.result_summary_assured_solutions';
+
+      $path = \Drupal\Core\Url::fromRoute(
+        $route_name,
+        ['token' => $submission_token]
+      )->toString();
+      $response = new RedirectResponse($path);
+      $response->send();
     }
   }
 }
