@@ -1,19 +1,38 @@
 .m-webform {
+
+  @apply py-4;
+
+  details {
+    @apply py-4;
+  }
+
   .form-item {
-    h3 {
-      @apply mb-8;
+    @apply pb-2;
+  }
+
+  .form-item h3 {
+    @apply tablet:w-9/12 text-lg tablet:text-2xl mb-4;
+  }
+
+  .radios--wrapper {
+    @apply py-4;
+
+    legend {
+      @apply py-4;
+      @apply text-md;
     }
   }
 
-  details {
-    @apply mb-8;
+  .webform-actions {
+    @apply flex justify-start gap-4;
   }
 
-  .radios--wrapper{
-    @apply mb-8;
-  }
-
-  .webform-actions{
-    @apply flex justify-evenly mb-10;
+  .webform-actions .form-submit {
+    @apply inline-flex items-center;
+    @apply text-xs cursor-pointer;
+    @apply p-2 tablet:px-4 tablet:py-2;
+    @apply border-black border-b-4 rounded-md;
+    @apply bg-forest hover:bg-black-80 focus:bg-focus;
+    @apply text-white hover:text-white focus:text-black disabled:text-white;
   }
 }
