@@ -1,8 +1,7 @@
-{#
-  Template
-#}
-<div class="m-event-details">
-{{ date }}
-{{ start_time }} to {{ end_time }}
-{{ link }}
-</div>
+{# Template #}
+{% include '@molecules/event-details/event-details--' ~ variant ~ '.twig' with {
+  date: date,
+  end_date: end_date,
+  start_time: start_time,
+  end_time: end_time,
+} %}

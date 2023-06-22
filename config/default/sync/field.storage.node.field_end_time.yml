@@ -1,14 +1,14 @@
-uuid: 45d74ba4-3511-4793-9bb2-4ac1557bce50
+uuid: 4cc3090b-e871-4ad0-8862-7a9d9be6148b
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - time_field
-id: node.field_time
-field_name: field_time
+id: node.field_end_time
+field_name: field_end_time
 entity_type: node
-type: time_range
+type: time
 settings: {  }
 module: time_field
 locked: false
