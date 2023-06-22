@@ -14,12 +14,12 @@
             <a href="{{ item.url }}" class="mr-2">{{ item.title }}</a>
             <a href="#"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
-               @click="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
+               @click.prevent="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
                @keyup.enter="$dispatch('activedropdownsecondary', { active: {{ loop.index }} })"
             >{{ svgIconDown }}</a>
             <a href="#"
                x-show="isSelected == {{ loop.index }}"
-               @click="$dispatch('activedropdownsecondary', { active: false })"
+               @click.prevent="$dispatch('activedropdownsecondary', { active: false })"
                @keyup.enter="$dispatch('activedropdownsecondary', { active: false })"
             >{{ svgIconUp }}</a>
           {% else %}

@@ -1,0 +1,88 @@
+uuid: cd52b67c-dac9-433e-9e8d-2e0ce1876d1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_featured_links
+    - paragraphs.paragraphs_type.link_description
+    - site_settings.site_setting_entity_type.featured_links
+  module:
+    - entity_reference_revisions
+id: site_setting_entity.featured_links.field_featured_links
+field_name: field_featured_links
+entity_type: site_setting_entity
+bundle: featured_links
+label: 'Featured links'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      link_description: link_description
+    negate: 0
+    target_bundles_drag_drop:
+      alert:
+        weight: 21
+        enabled: false
+      card_collection:
+        weight: 22
+        enabled: false
+      content_listing:
+        weight: 23
+        enabled: false
+      content_listing_section:
+        weight: 24
+        enabled: false
+      content_listing_section_links:
+        weight: 25
+        enabled: false
+      cta_banner:
+        weight: 26
+        enabled: false
+      dynamic_content_list:
+        weight: 27
+        enabled: false
+      dynamic_content_listing:
+        weight: 28
+        enabled: false
+      from_library:
+        weight: 29
+        enabled: false
+      link_description:
+        weight: 30
+        enabled: true
+      localgov_image:
+        weight: 31
+        enabled: false
+      localgov_link:
+        weight: 32
+        enabled: false
+      localgov_text:
+        weight: 33
+        enabled: false
+      newsletter_signup:
+        weight: 34
+        enabled: false
+      quick_link:
+        weight: 35
+        enabled: false
+      quick_links:
+        weight: 36
+        enabled: false
+      topic:
+        weight: 37
+        enabled: false
+      topic_list_builder:
+        weight: 39
+        enabled: false
+      topics:
+        weight: 38
+        enabled: false
+      video:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions
