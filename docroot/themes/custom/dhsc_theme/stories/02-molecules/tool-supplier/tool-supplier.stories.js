@@ -1,7 +1,5 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
-import './tool-supplier.scss';
-// import toolSupplierTwig from "./tool-supplier.twig";
 import toolSupplierMatchTwig from "./tool-supplier--match.twig";
 import toolSupplierNoMatchTwig from "./tool-supplier--nomatch.twig";
 
