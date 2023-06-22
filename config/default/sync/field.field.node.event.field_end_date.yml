@@ -1,21 +1,21 @@
-uuid: 2cca01eb-a17a-4f07-bb98-a6e09d7fea2d
+uuid: 850870dc-52f9-4684-a0dc-18796e6188de
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_time
+    - field.storage.node.field_end_date
     - node.type.event
   module:
-    - time_field
-id: node.event.field_time
-field_name: field_time
+    - datetime
+id: node.event.field_end_date
+field_name: field_end_date
 entity_type: node
 bundle: event
-label: Time
+label: 'End date'
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
-field_type: time_range
+field_type: datetime

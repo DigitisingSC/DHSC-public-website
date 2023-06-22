@@ -18,10 +18,12 @@
 
 {% set event_details %}
 {% include '@molecules/event-details/event-details.twig' with {
-    'date': content.field_date,
-    'start_time': content.field_start_time,
-    'end_time': content.field_end_time,
-    'link': content.field_link
+    'date': content.field_date[0],
+    'end_date': not content.field_end_date.isEmpty() ? content.field_end_date[0],
+    'start_time': not content.field_start_time.isEmpty() ? content.field_start_time[0],
+    'end_time': not content.field_end_time.isEmpty() ? content.field_end_time[0],
+    'link': content.field_link,
+    'variant': content.field_end_date[0] is null ? 'time' : 'date',
   } %}
 {% endset %}
 

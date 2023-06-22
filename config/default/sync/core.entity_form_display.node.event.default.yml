@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.event.field_body_paragraphs
     - field.field.node.event.field_date
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_end_time
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_start_time
     - field.field.node.event.field_summary
-    - field.field.node.event.field_time
     - node.type.event
   module:
     - content_moderation
@@ -24,7 +26,9 @@ third_party_settings:
     group_event_details:
       children:
         - field_date
-        - field_time
+        - field_end_date
+        - field_start_time
+        - field_end_time
         - field_location
         - field_link
       label: 'Event details'
@@ -91,6 +95,20 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_end_date:
+    type: datetime_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_end_time:
+    type: time_widget
+    weight: 15
+    region: content
+    settings:
+      enabled: false
+      step: 5
+    third_party_settings: {  }
   field_image:
     type: entity_reference_autocomplete
     weight: 13
@@ -103,7 +121,7 @@ content:
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 15
+    weight: 17
     region: content
     settings:
       placeholder_url: ''
@@ -111,11 +129,19 @@ content:
     third_party_settings: {  }
   field_location:
     type: string_textfield
-    weight: 14
+    weight: 16
     region: content
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_start_time:
+    type: time_widget
+    weight: 14
+    region: content
+    settings:
+      enabled: false
+      step: 5
     third_party_settings: {  }
   field_summary:
     type: string_textarea
@@ -124,14 +150,6 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
-  field_time:
-    type: time_range_widget
-    weight: 13
-    region: content
-    settings:
-      enabled: false
-      step: 5
     third_party_settings: {  }
   langcode:
     type: language_select

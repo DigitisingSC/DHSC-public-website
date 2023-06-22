@@ -1,0 +1,11 @@
+{#
+  Template
+#}
+<div class="m-event-details">
+	{{ 'Date'|t }} {{ date }}
+	{% if start_time is not empty and end_time is not empty %}
+		{{ 'Start'|t }} {{ start_time }}
+		{{ 'End'|t }} {{ end_time }}
+	{% endif %}
+	{{ link }}
+</div>

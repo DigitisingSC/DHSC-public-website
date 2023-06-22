@@ -1,23 +1,46 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
-import eventDetails from "./event-details.twig";
+import eventDetailsDateTwig from "./event-details--date.twig";
+import eventDetailsTimeTwig from "./event-details--time.twig";
 
 export default {
   title: "Design System/Molecules/Event details",
 };
 
-const Template = ({ date, start_time, end_time, link }) =>
-  eventDetails({
+const eventDetailsDateTemplate = ({ date, end_date, start_time, end_time, link }) =>
+  eventDetailsDateTwig({
     date,
+    end_date,
     start_time,
     end_time,
     link,
   });
 
-export const EventDetails = Template.bind({});
-EventDetails.args = {
-  date: "03 May, 2023",
-  start_time: "10:00 am",
-  end_time: "12:00 pm",
+const eventDetailsTimeTemplate = ({ date, end_date, start_time, end_time, link }) =>
+  eventDetailsTimeTwig({
+    date,
+    end_date,
+    start_time,
+    end_time,
+    link,
+  });
+
+export const EventDetailsDate = eventDetailsDateTemplate.bind({});
+EventDetailsDate.args = {
+  attributes: new DrupalAttributes(),
+  date: "27 July 2023",
+  end_date: "28 July 2023",
+  start_time: "10:00",
+  end_time: "14:00",
+  link: "https://www.digitalsocialcare.co.uk/",
+};
+
+export const EventDetailsTime = eventDetailsTimeTemplate.bind({});
+EventDetailsTime.args = {
+  attributes: new DrupalAttributes(),
+  date: "27 July 2023",
+  end_date : "28 July 2023",
+  start_time: "10:00",
+  end_time: "14:00",
   link: "https://www.digitalsocialcare.co.uk/",
 };
