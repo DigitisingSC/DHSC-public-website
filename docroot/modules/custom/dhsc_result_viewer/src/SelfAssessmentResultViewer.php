@@ -104,8 +104,6 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       return;
     }
 
-    sort($nids);
-
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {
@@ -161,7 +159,15 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
         $nids[] = $nid;
       }
     }
-    return $nids;
+
+    if ($nids) {
+      $weighted_nids = $this->nodeStorage->getQuery()
+        ->condition('nid', $nids, 'IN')
+        ->sort('field_weight', 'ASC')
+        ->execute();
+    }
+
+    return $weighted_nids;
   }
 
   /**

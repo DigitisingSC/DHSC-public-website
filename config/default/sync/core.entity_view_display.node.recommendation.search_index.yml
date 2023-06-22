@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
+    - field.field.node.recommendation.field_answers_recommendation
     - field.field.node.recommendation.field_body_paragraphs
+    - field.field.node.recommendation.field_category
+    - field.field.node.recommendation.field_weight
     - node.type.recommendation
   module:
     - user
@@ -19,6 +22,9 @@ content:
     weight: 0
     region: content
 hidden:
+  field_answers_recommendation: true
   field_body_paragraphs: true
+  field_category: true
+  field_weight: true
   langcode: true
   links: true

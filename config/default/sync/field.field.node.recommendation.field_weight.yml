@@ -1,0 +1,23 @@
+uuid: 48ed1f3b-b36f-490e-a1f0-d8e3a0baa47b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_weight
+    - node.type.recommendation
+id: node.recommendation.field_weight
+field_name: field_weight
+entity_type: node
+bundle: recommendation
+label: Weight
+description: 'Recommendations with a lower weight will appear higher in the results list.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
