@@ -39,25 +39,50 @@ class DhscResultSummaryForm  extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config(static::SETTINGS);
 
-    $form['title'] = [
+
+    $form['self_assessment_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Self assessment'),
+      '#collapsible' => TRUE,
+      '#group' => 'dhsc',
+    ];
+
+    $form['assured_solutions_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Assured solutions'),
+      '#collapsible' => TRUE,
+      '#group' => 'dhsc',
+    ];
+
+    $form['self_assessment_settings']['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Results listing title'),
       '#default_value' => $config->get('title'),
       '#required' => TRUE,
     ];
 
-    $form['summary'] = [
+    $form['self_assessment_settings']['sa_result_summary'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Results listing summary'),
-      '#default_value' => $config->get('summary'),
+      '#default_value' => $config->get('sa_result_summary'),
       '#required' => TRUE,
     ];
 
     $results_variant_text_default = $config->get('results_variant_text');
-    $form['results_variant_text'] = [
+    $form['self_assessment_settings']['results_variant_text'] = [
       '#type' => 'text_format',
       '#title' => $this->t('Results variant text'),
       '#default_value' => $results_variant_text_default['value'],
+      '#format' => 'full_html',
+      '#allowed_formats' => ['full_html'],
+      '#required' => TRUE,
+    ];
+
+    $as_result_summary = $config->get('as_result_summary');
+    $form['assured_solutions_settings']['as_result_summary'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Results listing text'),
+      '#default_value' => $as_result_summary['value'],
       '#format' => 'full_html',
       '#allowed_formats' => ['full_html'],
       '#required' => TRUE,
@@ -72,7 +97,8 @@ class DhscResultSummaryForm  extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory->getEditable(static::SETTINGS)
       ->set('title', $form_state->getValue('title'))
-      ->set('summary', $form_state->getValue('summary'))
+      ->set('sa_result_summary', $form_state->getValue('sa_result_summary'))
+      ->set('as_result_summary', $form_state->getValue('as_result_summary'))
       ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 

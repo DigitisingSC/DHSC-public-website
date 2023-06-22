@@ -1,0 +1,22 @@
+uuid: 0617321a-762a-4cf9-bb46-525603173343
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: recommendation
+label: Recommendation
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  531be22b-2778-4f63-965c-22f5716d91bc:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 531be22b-2778-4f63-965c-22f5716d91bc
+    context_mapping:
+      node: node
+    bundles:
+      recommendation: recommendation
+selection_logic: and
+weight: -5
+relationships: {  }

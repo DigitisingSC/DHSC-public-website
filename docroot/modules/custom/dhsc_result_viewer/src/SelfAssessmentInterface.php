@@ -3,11 +3,11 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface ResultViewerInterface.
+ * Interface SelfAssessmentInterface.
  *
  * @package Drupal\dhsc_result_viewer
  */
-interface ResultViewerInterface {
+interface SelfAssessmentInterface {
 
   /**
    * Get summary.

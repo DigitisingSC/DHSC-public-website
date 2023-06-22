@@ -1,5 +1,25 @@
 .m-teaser {
-  &__date {
-    @apply text-2xs;
+
+  $this: &;
+
+  &--listing {
+    #{$this}__date {
+      @apply text-2xs;
+    }
+  }
+
+  &--supplier {
+
+    #{$this}__content {
+      @screen tablet {
+        @apply order-1;
+      }
+    }
+
+    #{$this}__media {
+      @screen tablet {
+        @apply order-2;
+      }
+    }
   }
 }

@@ -1,0 +1,95 @@
+<div class="o-tool o-tool--solutions py-4">
+  <header class="o-tool__header mb-8">
+    {% if count and total_count %}
+      <h2 class="text-2xl tablet:w-8/12 mb-8">{{ count ~ ' out of '|t ~ total_count }} {{'suppliers match your criteria'|t}}</h2>
+    {% endif %}
+    {% if summary_text %}
+      <div class="o-tool__summary tablet:w-8/12 text-sm tablet:text-md text-black-80">
+        {{ summary_text }}
+      </div>
+    {% endif %}
+  </header>
+  <div class="o-tool__content">
+    {% if no_result %}
+      <div class="o-tool__title">
+        <h3>{{ no_result }}</h3>
+      </div>
+    {% else %}
+      <div class="o-tool__results">
+        <div class="o-tool__criteria" x-data="{ openToolCriteria: false }">
+          <div class="o-tool__search-criteria-header mb-4 text-base">
+            <a href="#"
+               class="o-tool__search-criteria-link inline-block bg-focus border-b-2 border-black hover:border-transparent"
+               @click.prevent="openToolCriteria = ! openToolCriteria"
+            >
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openToolCriteria }">{{ icon }}</span>
+              <span class="inline-block">View or change search criteria:</span>
+            </a>
+          </div>
+          <div class="o-tool__search-criteria-content border-s-2 border-black-20 pl-4 text-base"
+               x-show="openToolCriteria">
+            <h3 class="font-bold text-md">{{ 'Search criteria'|t }}</h3>
+            {{ search_criteria }}
+          </div>
+        </div>
+        {% if submission_url %}
+        <div class="o-tool__actions pb-4">
+            <a href="{{ submission_url }}" class="a-button a-button--primary">{{ 'Change my responses'|t }}</a>
+        </div>
+        {% endif %}
+        {% if result %}
+        <div class="o-tool__results">
+          {% if result is iterable %}
+            {% for res in result %}
+              {{ res }}
+            {% endfor %}
+          {% else %}
+            {{ result }}
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if non_matching_count != 0 %}
+        <div class="o-tool__unmatched py-4" x-data="{ openUnmatchedResults: false }">
+          <h4 class="text-md mb-4">{{ non_matching_count }} {{'suppliers don\'t match your criteria'|t}}</h4>
+
+          <div class="o-tool__unmatched-header mb-4 text-base">
+            <a href="#"
+               class="o-tool__unmatched-link bg-focus inline-block border-b-2 border-black hover:border-transparent"
+               @click.prevent="openUnmatchedResults = ! openUnmatchedResults"
+            >
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+              <span class="inline-block">{{ 'Show suppliers not matching your criteria:'|t }}</span>
+            </a>
+          </div>
+          <div class="o-tool__unmatched-content border-s-2 border-black-20 pl-4 text-base"
+               x-show="openUnmatchedResults">
+            <div class="o-tool__partial">
+              {{ partial_matches }}
+            </div>
+            <div class="o-tool__other">
+              {{ no_matches }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% if email_form %}
+        <div class="o-tool__email" x-data="{ openEmailForm: false }">
+          <div class="o-tool__header mb-4 text-base">
+            <a href="#"
+               class="o-tool__email-link bg-focus inline-block border-b-2 border-black hover:border-transparent"
+               @click.prevent="openEmailForm = ! openEmailForm"
+            >
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+              <span class="inline-block">{{ 'Email my results to me:'|t }}</span>
+            </a>
+          </div>
+          <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base"
+               x-show="openEmailForm">
+            {{ email_form }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

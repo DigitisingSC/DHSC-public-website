@@ -1,0 +1,17 @@
+{% if result_variant %}
+  {% set variant = {
+        '#type':   'processed_text',
+        '#text':    result_variant.value,
+        '#format': 'full_html',
+  } %}
+{% endif %}
+
+{% include '@organisms/tool/tool--assessment.twig' with {
+  'attributes': attributes,
+  'summary': summary,
+  'title': title,
+  'variant': variant,
+  'no_result': no_result,
+  'result': result,
+  'submission_url': submission_url
+} %}

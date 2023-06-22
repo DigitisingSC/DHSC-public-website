@@ -26,7 +26,7 @@ mode: default
 content:
   field_body_paragraphs:
     type: entity_reference_revisions_entity_view
-    label: hidden
+    label: above
     settings:
       view_mode: default
       link: ''
@@ -40,7 +40,7 @@ content:
       timezone_override: ''
       format_type: human_readable
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   field_end_date:
     type: datetime_default

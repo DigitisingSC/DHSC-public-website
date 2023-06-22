@@ -17,22 +17,22 @@ category: ''
 elements: |-
   step_1:
     '#type': webform_wizard_page
-    '#title': 'Step 1'
+    '#title': Devices
     processed_text:
       '#type': processed_text
       '#text': |
         <h3>Do you need devices such as computers, tablets and phones?</h3>
       '#format': basic_html
-    devices_options:
+    device_option:
       '#type': radios
-      '#title': 'Devices options'
+      '#title': 'Device option'
       '#options':
-        device_options_yes: 'Yes'
+        device_option_yes: 'Yes'
         device_option_no: 'No'
         device_option_not_sure: 'Not sure'
   step_2:
     '#type': webform_wizard_page
-    '#title': 'Step 2'
+    '#title': 'Care services'
     processed_text_2:
       '#type': processed_text
       '#text': |
@@ -61,7 +61,7 @@ elements: |-
       '#title': 'Other care services'
   step_3:
     '#type': webform_wizard_page
-    '#title': 'Step 3'
+    '#title': 'Additional features'
     processed_text_03:
       '#type': processed_text
       '#text': |
@@ -103,8 +103,8 @@ elements: |-
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
-    '#submit__label': Next
-css: ''
+    '#submit__label': Continue
+css: ".webform-submission-information {display: none}\r\n.webform-button--previous{display: none}"
 javascript: ''
 settings:
   ajax: false
@@ -121,7 +121,7 @@ settings:
   form_open_message: ''
   form_close_message: ''
   form_exception_message: ''
-  form_previous_submissions: true
+  form_previous_submissions: false
   form_confidential: false
   form_confidential_message: ''
   form_disable_remote_addr: false
@@ -176,18 +176,18 @@ settings:
   wizard_progress_bar: false
   wizard_progress_pages: false
   wizard_progress_percentage: false
-  wizard_progress_link: false
+  wizard_progress_link: true
   wizard_progress_states: false
   wizard_start_label: ''
   wizard_preview_link: false
-  wizard_confirmation: true
+  wizard_confirmation: false
   wizard_confirmation_label: ''
   wizard_auto_forward: true
   wizard_auto_forward_hide_next_button: false
   wizard_keyboard: true
   wizard_track: ''
   wizard_prev_button_label: ''
-  wizard_next_button_label: ''
+  wizard_next_button_label: Continue
   wizard_toggle: false
   wizard_toggle_show_label: ''
   wizard_toggle_hide_label: ''
@@ -209,9 +209,9 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
-  confirmation_url: /dhsc-results-list-assured-solutions
-  confirmation_title: ''
-  confirmation_message: '<a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a>'
+  confirmation_url: '/dhsc-results-list-assured-solutions/?token=[webform_submission:token]'
+  confirmation_title: Result!
+  confirmation_message: '[webform_submission:token-update-url]'
   confirmation_attributes: {  }
   confirmation_back: true
   confirmation_back_label: ''
@@ -237,7 +237,7 @@ settings:
   results_disabled_ignore: false
   results_customize: false
   token_view: false
-  token_update: false
+  token_update: true
   token_delete: false
   serial_disabled: false
 access:
@@ -295,6 +295,6 @@ handlers:
     notes: ''
     status: true
     conditions: {  }
-    weight: 0
+    weight: -49
     settings: {  }
 variants: {  }

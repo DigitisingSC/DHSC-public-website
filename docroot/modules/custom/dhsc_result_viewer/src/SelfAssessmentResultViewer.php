@@ -4,18 +4,16 @@ namespace Drupal\dhsc_result_viewer;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
-use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
-use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 
 /**
- * Class ResultViewer.
+ * Class SelfAssessmentResultViewer.
  *
- * @package Drupal\dhsc_result_viewer
+ * @package Drupal\dhsc_self_assessment_result_viewer
  */
-class ResultViewer implements ResultViewerInterface {
+class SelfAssessmentResultViewer implements SelfAssessmentInterface
+{
 
   /**
    * Entity type manager.
@@ -91,14 +89,16 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getCategories() {
+  public function getCategories()
+  {
     return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data) {
+  public function getResultsSummary($data)
+  {
     $nids = $this->getResultIds($data);
     if (!$nids) {
       return;
@@ -109,16 +109,16 @@ class ResultViewer implements ResultViewerInterface {
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {
-        $values[] = [
-          '#theme' => 'result_item',
-          '#title' => $node->getTitle(),
-          '#answer' => ucfirst(str_replace('_', ' ' , explode('_', $node->get('field_possible_answers')->value, 3)[2])),
-          '#content' => [
-            '#type' => 'processed_text',
-            '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
-            '#format' => 'full_html',
-          ],
-        ];
+      $values[] = [
+        '#theme' => 'result_item_self_assessment',
+        '#title' => $node->getTitle(),
+        '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_answers_recommendation')->value, 3)[2])),
+        '#content' => [
+          '#type' => 'processed_text',
+          '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
+          '#format' => 'full_html',
+        ],
+      ];
     }
 
     return $values;
@@ -127,16 +127,17 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getSortsResultIds() {
+  public function getSortsResultIds()
+  {
     if ($data = $this->getSubmissionData()) {
       $nids = $this->getResultIds($data);
       if (!$nids) {
         return;
       }
       $nodes = $this->nodeStorage->loadMultiple($nids);
-      }
-      return $nodes;
     }
+    return $nodes;
+  }
 
   /**
    * Get ids of result nodes.
@@ -149,16 +150,17 @@ class ResultViewer implements ResultViewerInterface {
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data) {
+  protected function getResultIds(array $data)
+  {
     $categories = $this->getCategories();
     $nids = [];
+
     /** @var TermInterface $category */
     foreach ($categories as $category) {
       if ($nid = $this->getResultId($category, $data)) {
         $nids[] = $nid;
       }
     }
-
     return $nids;
   }
 
@@ -173,29 +175,32 @@ class ResultViewer implements ResultViewerInterface {
    * @return array|int|void
    *   Return result ids.
    */
-  protected function getResultId(TermInterface $term, array $data) {
+  protected function getResultId(TermInterface $term, array $data)
+  {
     if ($term->bundle() != 'category') {
       return;
     }
+
     if (!$term->get('field_answer_machine_name')->isEmpty()) {
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
-          $result = $this->nodeStorage->getQuery()
-            ->condition('field_possible_answers', $data[$machine_name])
-            ->condition('field_category.target_id', $term->id())
-            ->execute();
-        }
+        $result = $this->nodeStorage->getQuery()
+          ->condition('field_answers_recommendation', $data[$machine_name])
+          ->condition('field_category.target_id', $term->id())
+          ->execute();
+      }
 
-        if (isset($result)) {
-          return reset($result);
-        }
+      if (isset($result)) {
+        return reset($result);
       }
     }
+  }
 
   /**
    * {@inheritdoc}
    */
-  public function getSubmissionId() {
+  public function getSubmissionId()
+  {
     return $this->tempStore->get('sid');
   }
 
@@ -218,7 +223,8 @@ class ResultViewer implements ResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getSubmission() {
+  public function getSubmission()
+  {
     $sid = $this->getSubmissionId();
     if ($sid) {
       $submission = $this->entityTypeManager->getStorage('webform_submission')->load($sid);
@@ -233,7 +239,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return array
    *   Return webform submission data.
    */
-  protected function getSubmissionData() {
+  protected function getSubmissionData()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       return $submission->getData();
@@ -246,7 +253,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
    */
-  protected function getWebFormUrl() {
+  protected function getWebFormUrl()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -263,7 +271,8 @@ class ResultViewer implements ResultViewerInterface {
    * @return mixed|void
    *   Return webform confirmation page path.
    */
-  protected function getConfirmationPagePath() {
+  protected function getConfirmationPagePath()
+  {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */

@@ -5,8 +5,10 @@ namespace Drupal\dhsc_result_viewer\Controller;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
 use Drupal\dhsc_result_viewer\ResultViewerInterface;
+use Drupal\dhsc_result_viewer\SelfAssessmentInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -14,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class DhscResultSummarySelfAssessmentController extends ControllerBase {
+class DHSCResultSummarySelfAssessmentController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -33,7 +35,7 @@ class DhscResultSummarySelfAssessmentController extends ControllerBase {
   /**
    * ResultViewer service.
    *
-   * @var \Drupal\dhsc_result_viewer\ResultViewerInterface
+   * @var \Drupal\dhsc_self_assessment_result_viewer\SelfAssessmentInterface
    */
   protected $resultViewer;
 
@@ -44,13 +46,13 @@ class DhscResultSummarySelfAssessmentController extends ControllerBase {
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
-   * @param \Drupal\dhsc_result_viewer\ResultViewerInterface $result_viewer
+   * @param \Drupal\dhsc_self_assessment_result_viewer\SelfAssessmentInterface $result_viewer
    *   ResultViewer service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    ResultViewerInterface $result_viewer) {
+    SelfAssessmentInterface $result_viewer) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
     $this->resultViewer = $result_viewer;
@@ -63,7 +65,7 @@ class DhscResultSummarySelfAssessmentController extends ControllerBase {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
-      $container->get('dhsc_result_viewer.service'),
+      $container->get('dhsc_self_assessment_result_viewer.service'),
     );
   }
 
@@ -73,9 +75,9 @@ class DhscResultSummarySelfAssessmentController extends ControllerBase {
    * @return mixed
    *   Resurn submission results.
    */
-  public function getResults() {
+  public function getResults($submission) {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->resultViewer->getSubmission()) {
+    if ($submission) {
       return $this->resultViewer->getResultsSummary($submission->getData());
     }
   }
@@ -96,18 +98,27 @@ class DhscResultSummarySelfAssessmentController extends ControllerBase {
     // @todo may need to do this on another action
     $this->resultViewer->questionsAllReset();
 
-    if ($result = $this->getResults()) {
+    $submission = $this->resultViewer->getSubmission();
+    $webform = $submission->getWebform();
+
+    // Extract unique submission token value from URL.
+    if ($submission_token = \Drupal::request()->query->get('token')) {
+      $submission_url = Url::fromUserInput($webform->url(), ['query' => ['token' => $submission_token]])->toString();
+    }
+
+    if ($result = $this->getResults($submission)) {
       $element = [
-        '#theme' => 'dhsc_results_list',
+        '#theme' => 'dhsc_results_list_self_assessment',
         '#result_variant' => $result_variant === TRUE ? $config->get('results_variant_text') : NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+        '#summary' => $config->get('sa_result_summary') ? $config->get('sa_result_summary') : NULL,
         '#result' => $result,
+        '#submission_url' => isset($submission_url) ? $submission_url : NULL,
       ];
     }
     else {
       $element = [
-        '#theme' => 'dhsc_results_list',
+        '#theme' => 'dhsc_results_list_self_assessment',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#no_result' => $this->t('No result'),
