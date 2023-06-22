@@ -12,7 +12,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
-use Drupal\dhsc_result_viewer\Form\DhscResultSummaryForm;
+use Drupal\dhsc_result_viewer\Form\DHSCResultSummaryForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -143,7 +143,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    */
   public function build()
   {
-    $config = $this->configFactory->get(DhscResultSummaryForm::SETTINGS);
+    $config = $this->configFactory->get(DHSCResultSummaryForm::SETTINGS);
 
     if ($result = $this->getResults()) {
       $element = [
@@ -157,7 +157,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
         '#no_matches' => $result['no_matches'],
         '#partial_matches' => $result['partial_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\DhscResultEmailForm'),
+        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\DHSCResultEmailForm'),
       ];
     } else {
       $element = [

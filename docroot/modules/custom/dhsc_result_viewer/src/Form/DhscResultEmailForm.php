@@ -6,9 +6,9 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Email results form.
+ * Class DHSCResultEmailForm.
  */
-class DhscResultEmailForm extends FormBase
+class DHSCResultEmailForm extends FormBase
 {
 
   /**
