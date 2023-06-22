@@ -9,7 +9,7 @@ dhsc_result_viewer.dhsc_settings:
 dhsc_result_viewer.result_summary_settings:
   path: '/admin/result-summary-settings'
   defaults:
-    _form: '\Drupal\dhsc_result_viewer\Form\DHSCResultSummaryForm'
+    _form: '\Drupal\dhsc_result_viewer\Form\ResultSummaryForm'
     _title: 'Decision tree tool settings'
   requirements:
     _permission: 'editor access'
@@ -19,7 +19,7 @@ dhsc_result_viewer.result_summary_settings:
 dhsc_result_viewer.result_summary_self_assessment:
   path: '/dhsc-results-list-self-assessment'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\DHSCResultSummarySelfAssessmentController::build'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummarySelfAssessmentController::build'
     _title: 'Result Summary'
   requirements:
     _permission: 'access content'
@@ -29,7 +29,7 @@ dhsc_result_viewer.result_summary_self_assessment:
 dhsc_result_viewer.result_summary_assured_solutions:
   path: '/dhsc-results-list-assured-solutions'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\DHSCResultSummaryAssuredSolutionsController::build'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryAssuredSolutionsController::build'
     _title: 'Result Summary'
   requirements:
     _permission: 'access content'
@@ -39,7 +39,7 @@ dhsc_result_viewer.result_summary_assured_solutions:
 dhsc_result_viewer.result_summary_assured_solutions_email:
   path: '/dhsc-results-list-assured-solutions-email/{email}/{token}'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\DHSCResultSummaryAssuredSolutionsController::sendResultEmail'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryAssuredSolutionsController::sendResultEmail'
     _title: 'Result Summary Email'
   requirements:
     _permission: 'access content'

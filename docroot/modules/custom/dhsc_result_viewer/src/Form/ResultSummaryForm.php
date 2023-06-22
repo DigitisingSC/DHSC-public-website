@@ -6,9 +6,9 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class DHSCResultSummaryForm.
+ * Class ResultSummaryForm.
  */
-class DHSCResultSummaryForm  extends ConfigFormBase {
+class ResultSummaryForm  extends ConfigFormBase {
 
   /**
    * Config settings.

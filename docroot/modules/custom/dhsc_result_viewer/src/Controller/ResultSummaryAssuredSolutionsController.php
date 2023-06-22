@@ -12,16 +12,16 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
-use Drupal\dhsc_result_viewer\Form\DHSCResultSummaryForm;
+use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Class DHSCResultSummaryAssuredSolutionsController.
+ * Class ResultSummaryAssuredSolutionsController.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
+class ResultSummaryAssuredSolutionsController extends ControllerBase
 {
 
   /**
@@ -74,7 +74,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
   protected $tempStore;
 
   /**
-   * DHSCResultSummaryAssuredSolutionsController constructor.
+   * ResultSummaryAssuredSolutionsController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
@@ -143,7 +143,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
    */
   public function build()
   {
-    $config = $this->configFactory->get(DHSCResultSummaryForm::SETTINGS);
+    $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
 
     if ($result = $this->getResults()) {
       $element = [
@@ -157,7 +157,7 @@ class DHSCResultSummaryAssuredSolutionsController extends ControllerBase
         '#no_matches' => $result['no_matches'],
         '#partial_matches' => $result['partial_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\DHSCResultEmailForm'),
+        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
       ];
     } else {
       $element = [
