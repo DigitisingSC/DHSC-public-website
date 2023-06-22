@@ -16,6 +16,7 @@ validate:
     filters:
       - children
       - image_style
+      - field_value
     functions:
       - drupal_block
       - drupal_config
