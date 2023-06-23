@@ -13,18 +13,9 @@
  */
 #}
 
-{% set title = site_settings.footer.footer_title %}
-{% set text = site_settings.footer.footer_copyright %}
-{% set image %}
-  <img alt="" src="{{ file_url(site_settings.footer.footer_logo.uri) }}" />
-{% endset %}
-
 {% if content %}
   {% include "@organisms/footer/footer.twig" with {
     'attributes': attributes,
     'content': content,
-    'title': title,
-    'image': image,
-    'text': text
   } %}
 {% endif %}

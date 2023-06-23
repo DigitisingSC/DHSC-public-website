@@ -20,5 +20,13 @@ function dhsc_site_theme() {
         'items' => [],
       ],
     ],
+    'footer_branding' => [
+      'variables' => [
+        'logo' => null,
+        'variant' => null,
+        'site_slogan' => null,
+        'site_name' => null
+      ],
+    ],
   ];
 }

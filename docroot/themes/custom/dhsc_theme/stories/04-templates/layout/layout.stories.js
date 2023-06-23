@@ -19,21 +19,15 @@ import localTasksRegionTwig from "../../03-organisms/local-tasks/local-tasks.twi
 import { MessagesRegion } from "../../03-organisms/messages-region/messages-region.stories";
 import messagesRegionTwig from "../../03-organisms/messages-region/messages-region.twig";
 import {
+  FooterTop,
   Footer,
-  FooterFirst,
-  FooterSecond,
-  FooterThird,
-  LowerFooterFirst,
-  LowerFooterSecond,
-  LowerFooterThird
+  FooterBottom,
+  FooterLegal,
 } from "../../03-organisms/footer/footer.stories";
-import FooterFirstTwig from "../../03-organisms/footer/footer-first.twig";
-import FooterSecondTwig from "../../03-organisms/footer/footer-second.twig";
-import FooterThirdTwig from "../../03-organisms/footer/footer-third.twig";
+import FooterTopTwig from "../../03-organisms/footer/footer-top.twig";
 import FooterTwig from "../../03-organisms/footer/footer.twig";
-import LowerFooterFirstTwig from "../../03-organisms/footer/lower-footer-first.twig";
-import LowerFooterSecondTwig from "../../03-organisms/footer/lower-footer-second.twig";
-import LowerFooterThirdTwig from "../../03-organisms/footer/lower-footer-third.twig";
+import FooterBottomTwig from "../../03-organisms/footer/footer-bottom.twig";
+import FooterLegalTwig from "../../03-organisms/footer/footer-legal.twig";
 
 export default {
   title: "Design System/Templates/Layout",
@@ -55,13 +49,10 @@ const Template = ({
   content_bottom,
   sidebar_first,
   sidebar_second,
-  footer_first,
-  footer_second,
-  footer_third,
+  footer_top,
   footer,
-  lower_footer_first,
-  lower_footer_second,
-  lower_footer_third,
+  footer_bottom,
+  footer_legal,
   disabled
 }) =>
   layout({
@@ -80,13 +71,10 @@ const Template = ({
     content_bottom,
     sidebar_first,
     sidebar_second,
-    footer_first,
-    footer_second,
-    footer_third,
+    footer_top,
     footer,
-    lower_footer_first,
-    lower_footer_second,
-    lower_footer_third,
+    footer_bottom,
+    footer_legal,
     disabled
   });
 
@@ -114,26 +102,18 @@ const MessagesRegionTemplate = (args) => messagesRegionTwig({
 const LocalTasksRegionTemplate = (args) => localTasksRegionTwig({
   ...LocalTasks.args
 });
-const FooterFirstTemplate = (args) => FooterFirstTwig({
-  ...FooterFirst.args
+const FooterTopTemplate = (args) => FooterTopTwig({
+  ...FooterTop.args
 });
-const FooterSecondTemplate = (args) => FooterSecondTwig({
-  ...FooterSecond.args
-});
-const FooterThirdTemplate = (args) => FooterThirdTwig({
-  ...FooterThird.args
-});
+
 const FooterTemplate = (args) => FooterTwig({
   ...Footer.args
 });
-const LowerFooterFirstTemplate = (args) => LowerFooterFirstTwig({
-  ...LowerFooterFirst.args
+const FooterBottomTemplate = (args) => FooterBottomTwig({
+  ...FooterBottom.args
 });
-const LowerFooterSecondTemplate = (args) => LowerFooterSecondTwig({
-  ...LowerFooterSecond.args
-});
-const LowerFooterThirdTemplate = (args) => LowerFooterThirdTwig({
-  ...LowerFooterThird.args
+const FooterLegalTemplate = (args) => FooterLegalTwig({
+  ...FooterLegal.args
 });
 
 export const Layout = Template.bind({});
@@ -153,12 +133,9 @@ Layout.args = {
   content_bottom: "Content bottom",
   sidebar_first: "Sidebar first",
   sidebar_second: "Sidebar second",
-  footer_first: FooterFirstTemplate,
-  footer_second: FooterSecondTemplate,
-  footer_third: FooterThirdTemplate,
+  footer_top: "Footer top",
   footer: FooterTemplate,
-  lower_footer_first: LowerFooterFirstTemplate,
-  lower_footer_second: LowerFooterSecondTemplate,
-  lower_footer_third: LowerFooterThirdTemplate,
+  footer_bottom: "Footer",
+  footer_legal: "Legal",
   disabled: "Disabled"
 };
