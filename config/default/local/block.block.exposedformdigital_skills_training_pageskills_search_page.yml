@@ -1,0 +1,28 @@
+uuid: 4bda6eae-0aa6-4417-8c3c-4241fdde9f68
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.digital_skills_training_page
+  module:
+    - system
+    - views
+  theme:
+    - dhsc_theme
+id: exposedformdigital_skills_training_pageskills_search_page
+theme: dhsc_theme
+region: sidebar_first
+weight: -8
+provider: null
+plugin: 'views_exposed_filter_block:digital_skills_training_page-skills_search_page'
+settings:
+  id: 'views_exposed_filter_block:digital_skills_training_page-skills_search_page'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /skills
