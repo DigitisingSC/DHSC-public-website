@@ -3,6 +3,7 @@ import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import cardArticleTwig from "./card--article.twig";
 import cardEventTwig from "./card--event.twig";
 import cardCaseStudyTwig from "./card--casestudy.twig";
+import './card.scss';
 
 export default {
   title: "Design System/Molecules/Card",
