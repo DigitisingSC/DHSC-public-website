@@ -2,13 +2,10 @@
   background: rgba(204, 222, 219, 0.5);
 
   &:hover {
-    h3 {
+    .m-quick-link__link {
       @apply no-underline;
+      @apply focus:underline;
     }
-  }
-
-  h3 {
-    @apply underline mb-2;
   }
 
   &--green-20 {
@@ -25,6 +22,12 @@
 
   &--forest-100 {
     @apply bg-forest-100 text-white;
+  }
+
+  &__link {
+    @apply underline font-bold;
+    @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+    @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
   }
 
 }
