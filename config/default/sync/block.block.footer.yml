@@ -10,8 +10,8 @@ dependencies:
     - dhsc_theme
 id: footer
 theme: dhsc_theme
-region: footer
-weight: 0
+region: footer_bottom
+weight: -7
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

@@ -1,15 +1,15 @@
-uuid: b179dbff-f557-4b26-bc11-8dd6e967b941
+uuid: 46c20a6f-0074-4f82-bdd8-a1940655fd94
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.site_setting_entity.footer_logo.field_settings_logo
-    - site_settings.site_setting_entity_type.footer_logo
+    - field.field.site_setting_entity.footer_secondary_logo.field_settings_logo
+    - site_settings.site_setting_entity_type.footer_secondary_logo
   module:
     - user
-id: site_setting_entity.footer_logo.default
+id: site_setting_entity.footer_secondary_logo.default
 targetEntityType: site_setting_entity
-bundle: footer_logo
+bundle: footer_secondary_logo
 mode: default
 content:
   field_settings_logo:
@@ -17,9 +17,9 @@ content:
     label: hidden
     settings:
       view_mode: default
-      link: true
+      link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   fieldset:
     type: string

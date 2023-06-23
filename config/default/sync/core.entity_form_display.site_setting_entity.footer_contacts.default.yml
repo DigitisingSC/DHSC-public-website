@@ -1,23 +1,33 @@
-uuid: 74533c99-a821-4eec-b477-b7c46e579eb0
+uuid: 804ee525-9573-456d-baea-ff75b8d0244d
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.site_setting_entity.footer_logo.field_settings_logo
-    - site_settings.site_setting_entity_type.footer_logo
+    - field.field.site_setting_entity.footer_contacts.field_settings_link
+    - field.field.site_setting_entity.footer_contacts.field_settings_phone
+    - site_settings.site_setting_entity_type.footer_contacts
   module:
-    - media_library
-id: site_setting_entity.footer_logo.default
+    - link
+    - telephone
+id: site_setting_entity.footer_contacts.default
 targetEntityType: site_setting_entity
-bundle: footer_logo
+bundle: footer_contacts
 mode: default
 content:
-  field_settings_logo:
-    type: media_library_widget
+  field_settings_link:
+    type: link_default
     weight: 11
     region: content
     settings:
-      media_types: {  }
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_settings_phone:
+    type: telephone_default
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   fieldset:
     type: string_textfield
