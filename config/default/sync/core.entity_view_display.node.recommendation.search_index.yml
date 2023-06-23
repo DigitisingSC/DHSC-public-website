@@ -19,6 +19,8 @@ content:
     weight: 0
     region: content
 hidden:
+  field_answers_recommendation: true
   field_body_paragraphs: true
+  field_category: true
   langcode: true
   links: true
