@@ -25,7 +25,7 @@
   }
 
   &__link {
-    @apply underline font-bold;
+    @apply underline font-bold mb-2;
     @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
     @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
   }
