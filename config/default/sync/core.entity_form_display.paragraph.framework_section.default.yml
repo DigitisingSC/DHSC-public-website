@@ -1,21 +1,19 @@
-uuid: f16866de-5755-48b6-af7f-9a225bb2a81f
+uuid: c3813d09-613d-47ea-89c8-1b757b8acd33
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.paragraph.skills_framework
-    - field.field.paragraph.accordion.field_accordion_items
-    - field.field.paragraph.accordion.field_framework_sections
-    - field.field.paragraph.accordion.field_header
-    - paragraphs.paragraphs_type.accordion
+    - field.field.paragraph.framework_section.field_framework_rows
+    - field.field.paragraph.framework_section.localgov_title
+    - paragraphs.paragraphs_type.framework_section
   module:
     - paragraphs
-id: paragraph.accordion.skills_framework
+id: paragraph.framework_section.default
 targetEntityType: paragraph
-bundle: accordion
-mode: skills_framework
+bundle: framework_section
+mode: default
 content:
-  field_framework_sections:
+  field_framework_rows:
     type: paragraphs
     weight: 1
     region: content
@@ -33,7 +31,7 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_header:
+  localgov_title:
     type: string_textfield
     weight: 0
     region: content
@@ -43,5 +41,4 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_accordion_items: true
   status: true

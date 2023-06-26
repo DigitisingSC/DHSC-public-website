@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_framework_sections
     - field.field.paragraph.accordion.field_header
     - paragraphs.paragraphs_type.accordion
   module:
@@ -41,4 +42,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_framework_sections: true
   status: true

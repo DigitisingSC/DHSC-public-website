@@ -35,13 +35,18 @@ function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) 
     return;
   }
 
-  if ($entity->getType() !== 'accordion'
-    // @todo switch content type to Skill.
-    && $entity->getParentEntity()->getType() !== 'landing_page') {
-    return;
-  }
+  $request_uri = \Drupal::request()->getRequestUri();
+  $node = \Drupal::routeMatch()->getParameter('node');
 
-  $form_mode = 'skills_framework';
+  // Check if this a new entity.
+  if (strpos($request_uri, 'node/add/landing_page')
+    || isset($node)
+    // @todo switch content type to Skill.
+    && $node->getType() === 'landing_page'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section'){
+    $form_mode = 'skills_framework';
+  }
 }
 
 /**
@@ -53,11 +58,11 @@ function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
     return;
   }
 
-  if ($entity->getType() !== 'accordion'
-    // @todo switch content type to Skill.
-    && $entity->getParentEntity()->getType() !== 'landing_page') {
-    return;
-  }
+  $node = \Drupal::routeMatch()->getParameter('node');
 
-  $view_mode = 'skills_framework';
+  if ($node->getType() === 'landing_page'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section') {
+    $view_mode = 'skills_framework';
+  }
 }

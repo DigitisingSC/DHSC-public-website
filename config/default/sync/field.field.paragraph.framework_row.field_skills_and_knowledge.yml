@@ -1,0 +1,25 @@
+uuid: 7a70fccd-f83b-48a4-8a50-ae4932665b50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_skills_and_knowledge
+    - paragraphs.paragraphs_type.framework_row
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: paragraph.framework_row.field_skills_and_knowledge
+field_name: field_skills_and_knowledge
+entity_type: paragraph
+bundle: framework_row
+label: 'Skills and Knowledge'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

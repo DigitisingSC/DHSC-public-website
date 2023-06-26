@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_framework_sections
     - field.field.paragraph.accordion.field_header
     - paragraphs.paragraphs_type.accordion
   module:
@@ -31,4 +32,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_framework_sections: true
   search_api_excerpt: true
