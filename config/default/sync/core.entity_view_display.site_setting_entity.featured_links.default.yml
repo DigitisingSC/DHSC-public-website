@@ -1,0 +1,28 @@
+uuid: 9dda00d0-acb7-40e2-a1f0-6e9b289ae186
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.site_setting_entity.featured_links.field_featured_links
+    - site_settings.site_setting_entity_type.featured_links
+  module:
+    - entity_reference_revisions
+id: site_setting_entity.featured_links.default
+targetEntityType: site_setting_entity
+bundle: featured_links
+mode: default
+content:
+  field_featured_links:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  fieldset: true
+  name: true
+  search_api_excerpt: true
+  user_id: true

@@ -5,4 +5,4 @@ dependencies: {  }
 id: human_readable
 label: 'Human Readable'
 locked: false
-pattern: 'jS F Y'
+pattern: 'j F Y'

@@ -15,5 +15,10 @@ function dhsc_site_theme() {
         'items' => [],
       ],
     ],
+    'featured_links' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
   ];
 }

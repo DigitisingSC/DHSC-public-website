@@ -22,13 +22,18 @@
   {% endif %}
   <div class="m-card__content">
     {% if heading %}
-    <h3>{{ heading }}</h3>
+      <h3 class="m-card__link">
+        {% if link %}
+          <a href="{{ link }}">
+        {% endif %}
+          {{ heading }}
+        {% if link %}
+          </a>
+        {% endif %}
+      </h3>
     {% endif %}
     {% if description %}
-    <p>{{ description }}</p>
+    <p class="text-coolgrey mt-2">{{ description }}</p>
     {% endif %}
   </div>
-  {% if link %}
-  <a href="{{ link }}" class="absolute top-0 bottom-0 left-0 right-0"></a>
-  {% endif %}
 </div>

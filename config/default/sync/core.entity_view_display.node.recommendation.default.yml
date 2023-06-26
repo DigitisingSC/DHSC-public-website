@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.recommendation.field_answers_recommendation
     - field.field.node.recommendation.field_body_paragraphs
     - field.field.node.recommendation.field_category
+    - field.field.node.recommendation.field_weight
     - node.type.recommendation
   module:
     - entity_reference_revisions
@@ -32,5 +33,6 @@ content:
 hidden:
   field_answers_recommendation: true
   field_category: true
+  field_weight: true
   langcode: true
   search_api_excerpt: true

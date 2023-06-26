@@ -6,16 +6,16 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Url;
-use Drupal\dhsc_result_viewer\Form\DHSCResultSummaryForm;
+use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
 use Drupal\dhsc_result_viewer\SelfAssessmentInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Class DHSCResultSummarySelfAssessmentController.
+ * Class ResultSummarySelfAssessmentController.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class DHSCResultSummarySelfAssessmentController extends ControllerBase {
+class ResultSummarySelfAssessmentController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -39,7 +39,7 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
   protected $resultViewer;
 
   /**
-   * DHSCResultSummaryController constructor.
+   * ResultSummaryController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
@@ -88,7 +88,7 @@ class DHSCResultSummarySelfAssessmentController extends ControllerBase {
    *   Return render array.
    */
   public function build() {
-    $config = $this->configFactory->get(DHSCResultSummaryForm::SETTINGS);
+    $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
 
     // Get the value from tempstore if we need to display a result variant.
     $result_variant = $this->resultViewer->questionsAllYes();

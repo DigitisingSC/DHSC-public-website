@@ -39,9 +39,17 @@
  */
 #}
 
+{% set icon %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-right',
+  } %}
+{% endset %}
+
 {% include '@molecules/topic/topic.twig' with {
   'attributes': attributes,
   'heading': content.field_title,
   'description': content.field_description_html,
-  'link': content.field_link[0]['#url']
+  'link': content.field_link[0]['#url'],
+  'icon': icon,
 } %}

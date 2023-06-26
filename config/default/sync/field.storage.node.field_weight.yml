@@ -1,16 +1,17 @@
-uuid: 45d74ba4-3511-4793-9bb2-4ac1557bce50
+uuid: bf1c2b07-4643-4961-a899-7e3343fd0ede
 langcode: en
 status: true
 dependencies:
   module:
     - node
-    - time_field
-id: node.field_time
-field_name: field_time
+id: node.field_weight
+field_name: field_weight
 entity_type: node
-type: time_range
-settings: {  }
-module: time_field
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
 locked: false
 cardinality: 1
 translatable: true

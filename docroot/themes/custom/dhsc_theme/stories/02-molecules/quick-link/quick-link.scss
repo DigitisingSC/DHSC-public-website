@@ -1,14 +1,20 @@
 .m-quick-link {
+
+  $this: &;
   background: rgba(204, 222, 219, 0.5);
 
   &:hover {
-    h3 {
-      @apply no-underline;
+    #{$this}__link {
+      a {
+        @apply no-underline focus:underline;
+      }
     }
-  }
 
-  h3 {
-    @apply underline mb-2;
+    #{$this}__icon {
+      span {
+        @apply bg-forest-100;
+      }
+    }
   }
 
   &--green-20 {
@@ -21,10 +27,52 @@
 
   &--burgundy {
     @apply bg-burgundy text-white;
+
+    #{$this}__icon {
+      span {
+        @apply bg-white;
+
+        svg {
+          @apply fill-burgundy;
+        }
+      }
+    }
+
+    &:hover {
+      #{$this}__icon {
+        span {
+          @apply bg-black/50;
+        }
+      }
+    }
   }
 
   &--forest-100 {
     @apply bg-forest-100 text-white;
+  }
+
+  &__link {
+    @apply leading-tight mb-2;
+
+    a {
+      @apply underline font-bold;
+      @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+      @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
+    }
+  }
+
+  &__icon {
+    span {
+      @apply bg-green-100;
+      padding: 8px;
+      border-radius: 100%;
+
+      svg {
+        @apply fill-forest-20;
+        height: 12px;
+        width: 12px;
+      }
+    }
   }
 
 }
