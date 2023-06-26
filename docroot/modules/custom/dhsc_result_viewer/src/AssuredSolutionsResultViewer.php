@@ -233,7 +233,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
     $results = $this->getResultNodes($answers);
 
-    if ($results) {
+    if (!empty($results)) {
       $nodes = Node::loadMultiple($results);
       $partial_matches = [];
       $no_matches = [];
@@ -279,7 +279,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
       $results = $this->getNonMatches($nids);
 
-      if ($results) {
+      if (!empty($results)) {
         $no_result_nodes = Node::loadMultiple($results);
 
         foreach ($no_result_nodes as $node) {
@@ -368,6 +368,11 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getFormElementValue(string $field_key = NULL, $value, $webform)
   {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
+
+    if ($element === NULL) {
+      return;
+    }
+
     $section = $webform->getElement($element['#webform_parent_key'])['#title'];
 
     if (isset($element['#type']) && $element['#type'] === 'checkbox') {
