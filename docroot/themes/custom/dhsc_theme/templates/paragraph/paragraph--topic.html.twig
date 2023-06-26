@@ -50,7 +50,7 @@
 
 {% include '@molecules/topic/topic.twig' with {
   'attributes': attributes,
-  'heading': content.field_title,
+  'heading': content.field_title.0,
   'description': content.field_description_html,
   'link': content.field_link[0]['#url'],
   'icon': icon,
