@@ -12,11 +12,16 @@
 
   &__link {
     @apply leading-tight mt-3;
-    
+
     a {
       @apply text-forest-100 underline font-bold;
       @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
       @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
     }
   }
+
+  &__image img {
+    @apply rounded-md;
+  }
+
 }
