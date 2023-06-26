@@ -133,9 +133,9 @@ Layout.args = {
   content_bottom: "Content bottom",
   sidebar_first: "Sidebar first",
   sidebar_second: "Sidebar second",
-  footer_top: "Footer top",
+  footer_top: FooterTopTemplate,
   footer: FooterTemplate,
-  footer_bottom: "Footer",
-  footer_legal: "Legal",
+  footer_bottom: FooterBottomTemplate,
+  footer_legal: FooterLegalTemplate,
   disabled: "Disabled"
 };

@@ -1,4 +1,4 @@
-uuid: 172c2754-057e-41bb-a85b-48d28145d33e
+uuid: cd50f6fb-6048-4fa2-adb4-b7799e1408af
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,15 @@ dependencies:
     - dhsc_site
   theme:
     - dhsc_theme
-id: footerbranding
+id: copyright
 theme: dhsc_theme
-region: footer_top
-weight: -8
+region: footer_legal
+weight: 0
 provider: null
-plugin: footer_branding_block
+plugin: site_copyright
 settings:
-  id: footer_branding_block
-  label: 'Footer Branding'
+  id: site_copyright
+  label: Copyright
   label_display: '0'
   provider: dhsc_site
 visibility: {  }

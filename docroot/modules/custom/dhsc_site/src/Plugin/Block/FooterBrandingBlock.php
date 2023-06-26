@@ -12,7 +12,7 @@ use Drupal\media\Entity\Media;
  *
  * @Block(
  *   id = "footer_branding_block",
- *   admin_label = @Translation("Footer Branding"),
+ *   admin_label = @Translation("Footer branding"),
  *   category = @Translation("DHSC Site")
  * )
  */

@@ -28,5 +28,16 @@ function dhsc_site_theme() {
         'site_name' => null
       ],
     ],
+    'site_copyright' => [
+      'variables' => [
+        'text' => null,
+      ],
+    ],
+    'footer_contact' => [
+      'variables' => [
+        'link' => null,
+        'phone' => null,
+      ],
+    ],
   ];
 }
