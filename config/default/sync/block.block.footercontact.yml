@@ -1,4 +1,4 @@
-uuid: 4b736210-3907-48e5-ae7e-2c892a567d5a
+uuid: 072c1b46-a7d3-48c7-bc8e-2ea6a19b656c
 langcode: en
 status: true
 dependencies:
@@ -6,15 +6,15 @@ dependencies:
     - dhsc_site
   theme:
     - dhsc_theme
-id: socialmedialinks
+id: footercontact
 theme: dhsc_theme
 region: footer
-weight: 0
+weight: -9
 provider: null
-plugin: social_media_links
+plugin: footer_contact
 settings:
-  id: social_media_links
-  label: 'Social media links'
-  label_display: visible
+  id: footer_contact
+  label: 'Footer contact'
+  label_display: '0'
   provider: dhsc_site
 visibility: {  }

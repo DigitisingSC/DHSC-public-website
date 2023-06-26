@@ -1,0 +1,20 @@
+uuid: cd50f6fb-6048-4fa2-adb4-b7799e1408af
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: copyright
+theme: dhsc_theme
+region: footer_legal
+weight: 0
+provider: null
+plugin: site_copyright
+settings:
+  id: site_copyright
+  label: Copyright
+  label_display: '0'
+  provider: dhsc_site
+visibility: {  }

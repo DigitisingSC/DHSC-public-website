@@ -1,0 +1,23 @@
+uuid: df24a17e-9df6-4862-809e-cf20a26c219a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_settings_phone
+    - site_settings.site_setting_entity_type.footer_contacts
+  module:
+    - telephone
+id: site_setting_entity.footer_contacts.field_settings_phone
+field_name: field_settings_phone
+entity_type: site_setting_entity
+bundle: footer_contacts
+label: Phone
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: '08081964848'
+default_value_callback: ''
+settings: {  }
+field_type: telephone

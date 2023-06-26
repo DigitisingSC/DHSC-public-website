@@ -1,27 +1,25 @@
-uuid: 191e256e-01dd-4cec-94cb-844eb9b5f717
+uuid: 87582b57-cc92-4e42-8b90-242149b28483
 langcode: en
 status: true
 dependencies:
   module:
     - file
-    - image
-    - site_settings
-id: site_setting_entity.field_logo
-field_name: field_logo
-entity_type: site_setting_entity
-type: image
+    - media
+    - svg_image_field
+id: media.field_media_svg
+field_name: field_media_svg
+entity_type: media
+type: svg_image_field
 settings:
   target_type: file
   display_field: false
   display_default: false
   uri_scheme: public
   default_image:
-    uuid: ''
+    uuid: null
     alt: ''
     title: ''
-    width: null
-    height: null
-module: image
+module: svg_image_field
 locked: false
 cardinality: 1
 translatable: true

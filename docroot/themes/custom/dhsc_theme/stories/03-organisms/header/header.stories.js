@@ -1,15 +1,14 @@
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import React from 'react';
 import header from './header.twig';
-import { Branding } from '../../02-molecules/branding/branding.stories';
-import BrandingTwig from '../../02-molecules/branding/branding.twig';
+import { BrandingHeader } from '../../02-molecules/branding/branding.stories';
+import BrandingTwig from '../../02-molecules/branding/branding--header.twig';
 
 import { ButtonSearch } from '../../01-atoms/button/button.stories';
 import SearchButtonTwig from '../../01-atoms/button/button.twig';
 
 export default {
   title: "Design System/Organisms/Header",
-  content: Branding
 };
 
 const Template = ({ attributes, content }) =>
@@ -18,8 +17,8 @@ const Template = ({ attributes, content }) =>
     content
   });
 
-const BrandTemplate = (args) => BrandingTwig({
-  ...Branding.args
+const BrandingHeaderTemplate = (args) => BrandingTwig({
+  ...BrandingHeader.args
 });
 
 const SearchButtonTemplate = (args) => SearchButtonTwig({
@@ -29,5 +28,5 @@ const SearchButtonTemplate = (args) => SearchButtonTwig({
 export const Header = Template.bind({});
 Header.args = {
   attributes: new DrupalAttributes(),
-  content: [BrandTemplate, SearchButtonTemplate]
+  content: [BrandingHeaderTemplate, SearchButtonTemplate]
 }

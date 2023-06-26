@@ -1,0 +1,19 @@
+{% set classes = [
+  'o-footer-region-top',
+] %}
+<section{{ attributes.addClass(classes) }}>
+  {% if title %}
+    <div class="o-footer-region-top__header container mx-auto w-full py-4">
+      <h3>{{ title }}</h3>
+    </div>
+  {% endif %}
+  <div class="o-footer-region-top__content container mx-auto w-full py-4">
+    {% if content is iterable  %}
+      {% for item in content %}
+        {{ item }}
+      {% endfor %}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </div>
+</section>
