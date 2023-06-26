@@ -1,4 +1,12 @@
 .m-cta-banner {
+
+  &__title {
+
+    a {
+      @apply text-forest underline hover:no-underline;
+    }
+  }
+
   &--left {
     .m-cta-banner__content {
       @apply tablet:order-2;
@@ -14,5 +22,9 @@
     .m-cta-banner__media {
       @apply tablet:order-2;
     }
+  }
+
+  img {
+    @apply rounded-md;
   }
 }
