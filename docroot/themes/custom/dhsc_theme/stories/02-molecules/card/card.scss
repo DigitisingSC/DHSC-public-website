@@ -11,7 +11,7 @@
   }
 
   &__link {
-    @apply leading-tight;
+    @apply leading-tight mt-3;
     
     a {
       @apply text-forest-100 underline font-bold;

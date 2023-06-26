@@ -71,6 +71,6 @@
     heading: label,
     link: path('entity.node.canonical', {'node': node.id}),
     description: content.field_summary,
-    date: content.field_date[0] ? content.field_date,
+    date: content.field_date[0] ? content.field_date.0,
     variant: node.getType
   } %}

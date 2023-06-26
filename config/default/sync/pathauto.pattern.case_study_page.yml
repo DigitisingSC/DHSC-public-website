@@ -7,16 +7,8 @@ dependencies:
 id: case_study_page
 label: 'Case study page'
 type: 'canonical_entities:node'
-pattern: '[node:title]'
-selection_criteria:
-  ac5a7de2-4a0c-4830-9926-74527ac38df7:
-    id: 'entity_bundle:node'
-    negate: false
-    uuid: ac5a7de2-4a0c-4830-9926-74527ac38df7
-    context_mapping:
-      node: node
-    bundles:
-      case_study: case_study
+pattern: 'case-studies/[node:title]'
+selection_criteria: {  }
 selection_logic: and
 weight: -5
 relationships: {  }

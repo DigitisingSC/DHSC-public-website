@@ -1,22 +1,22 @@
-uuid: 0617321a-762a-4cf9-bb46-525603173343
+uuid: 49e1047f-3afc-4e22-8e77-b8fe8b7a0c17
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: recommendation
-label: Recommendation
+id: events_page
+label: 'Events page'
 type: 'canonical_entities:node'
-pattern: 'recommendations/[node:title]'
+pattern: 'events/[node:title]'
 selection_criteria:
-  18fba6b5-85b6-4089-a1d3-7dac575fbe98:
+  cee00d04-a546-4964-ad54-57d3a3365247:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 18fba6b5-85b6-4089-a1d3-7dac575fbe98
+    uuid: cee00d04-a546-4964-ad54-57d3a3365247
     context_mapping:
       node: node
     bundles:
-      recommendation: recommendation
+      event: event
 selection_logic: and
 weight: -5
 relationships: {  }

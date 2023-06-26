@@ -38,20 +38,18 @@
  * @ingroup themeable
  */
 #}
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+    not paragraph.isPublished() ? 'paragraph--unpublished'
+  ]
+%}
 
-{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
-
-{% set icon %}
-  {% include '@atoms/svg/svg.twig' with {
-    'sprite': spriteSrc,
-    'icon': 'chevron-right',
+<div{{attributes.addClass(classes)}}>
+	{% include '@organisms/accordion/accordion.twig' with {
+    'header' : content.field_header,
+    'items': content.field_accordion_items,
   } %}
-{% endset %}
-
-{% include '@molecules/topic/topic.twig' with {
-  'attributes': attributes,
-  'heading': content.field_title.0,
-  'description': content.field_description_html,
-  'link': content.field_link[0]['#url'],
-  'icon': icon,
-} %}
+</div>
