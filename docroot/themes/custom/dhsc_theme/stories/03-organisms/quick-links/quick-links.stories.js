@@ -12,18 +12,23 @@ import cardCaseStudyTwig from "../../02-molecules/card/card--casestudy.twig";
 
 import { quickLink } from "../../02-molecules/quick-link/quick-link.stories.js";
 import quickLinkTwig from "../../02-molecules/quick-link/quick-link.twig";
-
+import { svgIcon } from '../../01-atoms/svg/svg.stories';
 
 export default {
   title: "Design System/Organisms/Quick Links",
 };
+
+const svgIconTemplate = (args) => svgIcon({
+  ...svgIcon.args
+});
 
 const quickLink1 = (args) => quickLinkTwig({
   ...quickLink1.args = {
     link: "https://www.digitalsocialcare.co.uk/",
     heading: "Get help using technology",
     description: "Learn how to get connected, use secure email, use mobile devices and get digital social care records",
-    attributes: new DrupalAttributes()
+    attributes: new DrupalAttributes(),
+    icon: svgIconTemplate,
   },
 });
 
@@ -34,6 +39,7 @@ const quickLink2 = (args) => quickLinkTwig({
     description: "Learn how to get connected, use secure email, use mobile devices and get digital social care records. Learn how to get connected, use secure email, use mobile devices and get digital social care records",
     quickLinkType: "burgundy",
     attributes: new DrupalAttributes(),
+    icon: svgIconTemplate,
   },
 });
 
