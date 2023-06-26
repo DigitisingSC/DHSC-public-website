@@ -1,0 +1,32 @@
+uuid: a6a1f678-7b42-4b1f-8844-6e58a3f1d3e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_item.localgov_text
+    - field.field.paragraph.accordion_item.localgov_title
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - text
+id: paragraph.accordion_item.default
+targetEntityType: paragraph
+bundle: accordion_item
+mode: default
+content:
+  localgov_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  localgov_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
