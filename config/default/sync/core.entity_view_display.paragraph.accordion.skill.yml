@@ -1,0 +1,25 @@
+uuid: e7c0137b-9c47-468f-b272-0d90a45a1e23
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.skill
+    - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_header
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.skill
+targetEntityType: paragraph
+bundle: accordion
+mode: skill
+content:
+  field_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_accordion_items: true
+  search_api_excerpt: true

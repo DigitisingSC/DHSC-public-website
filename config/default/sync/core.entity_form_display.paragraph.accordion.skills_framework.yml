@@ -1,0 +1,26 @@
+uuid: f16866de-5755-48b6-af7f-9a225bb2a81f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.skills_framework
+    - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_header
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.skills_framework
+targetEntityType: paragraph
+bundle: accordion
+mode: skills_framework
+content:
+  field_header:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_accordion_items: true
+  status: true
