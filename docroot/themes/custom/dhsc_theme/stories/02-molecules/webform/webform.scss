@@ -27,7 +27,7 @@
     @apply flex justify-start gap-4;
   }
 
-  .webform-actions .form-submit {
+  .webform-actions .form-submit:not(.webform-button--previous) {
     @apply inline-flex items-center;
     @apply text-xs cursor-pointer;
     @apply p-2 tablet:px-4 tablet:py-2;
@@ -35,4 +35,10 @@
     @apply bg-forest hover:bg-black-80 focus:bg-focus;
     @apply text-white hover:text-white focus:text-black disabled:text-white;
   }
+
+  .webform-submission-information,
+  .webform-button--previous {
+    @apply hidden;
+  }
+
 }
