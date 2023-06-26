@@ -13,10 +13,8 @@
 {# Template #}
   <div class="m-accordion-item" x-data="{ isOpen: false }"> <h3>
     <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
-      <div x-show="isOpen" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close accordion'|t }}</span>
-      </div>
-      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Open accordion'|t }}</span>
-      </div>
+      <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
+      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
       <span>{{ title }}</span>
     </button>
   </h3>
