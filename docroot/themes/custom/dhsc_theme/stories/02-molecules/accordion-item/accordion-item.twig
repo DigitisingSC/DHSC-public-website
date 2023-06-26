@@ -11,16 +11,16 @@
 {% set attributes = attributes.addClass(classes) %}
 
 {# Template #}
-	<div class="m-accordion-item" x-data="{ isOpen: false }"> <h3>
-		<button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
-			<div x-show="isOpen" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Open accordion'|t }}</span>
-			</div>
-			<div x-show="!isOpen" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Close accordion'|t }}</span>
-			</div>
-			<span>{{ title }}</span>
-		</button>
-	</h3>
-	<div class="m-accordion-item__panel" x-show="isOpen">
-		<div class="m-accordion-item__content prose">{{ text }}</div>
-	</div>
+  <div class="m-accordion-item" x-data="{ isOpen: false }"> <h3>
+    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
+      <div x-show="isOpen" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Open accordion'|t }}</span>
+      </div>
+      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Close accordion'|t }}</span>
+      </div>
+      <span>{{ title }}</span>
+    </button>
+  </h3>
+  <div class="m-accordion-item__panel" x-show="isOpen">
+    <div class="m-accordion-item__content prose">{{ text }}</div>
+  </div>
 </div>
