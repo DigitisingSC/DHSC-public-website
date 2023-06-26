@@ -7,12 +7,12 @@ dependencies:
 id: supplier
 label: Supplier
 type: 'canonical_entities:node'
-pattern: '[node:title]'
+pattern: 'suppliers/[node:title]'
 selection_criteria:
-  78863561-a0d5-43b9-b7df-5ab662abe750:
+  417aa819-0a06-4b21-a7c9-6c4d3a9bd492:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 78863561-a0d5-43b9-b7df-5ab662abe750
+    uuid: 417aa819-0a06-4b21-a7c9-6c4d3a9bd492
     context_mapping:
       node: node
     bundles:
