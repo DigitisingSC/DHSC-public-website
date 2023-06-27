@@ -23,12 +23,14 @@ class FooterContactBlock extends BlockBase {
   public function build() {
     $site_settings = \Drupal::service('site_settings.loader');
     $contacts = $site_settings->loadByFieldset('footer')['footer_contacts'];
-    $link = $contacts['field_settings_link'];
-    $link = Link::fromTextAndUrl($link['title'], Url::fromUri($link['uri']));
+    if (!empty($contacts)) {
+      $link = $contacts['field_settings_link'];
+      $link = Link::fromTextAndUrl($link['title'], Url::fromUri($link['uri']));
+    }
     return [
       '#theme' => 'footer_contact',
-      '#link' => $link,
-      '#phone' => $contacts['field_settings_phone'],
+      '#link' => $link ?? '',
+      '#phone' => $contacts['field_settings_phone'] ?? '',
     ];
   }
 
