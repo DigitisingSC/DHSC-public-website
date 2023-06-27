@@ -25,18 +25,21 @@ class FooterBrandingBlock extends BlockBase {
 
     $site_settings = \Drupal::service('site_settings.loader');
     $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_logo'];
-    $media = Media::load($footer_logo_setting);
-    $file_id = $media->getSource()->getSourceFieldValue($media);
-    $svg_file = File::load($file_id);
-    $file_path = $svg_file->createFileUrl();
+
+    if (!empty($footer_logo_setting)) {
+      $media = Media::load($footer_logo_setting);
+      $file_id = $media->getSource()->getSourceFieldValue($media);
+      $svg_file = File::load($file_id);
+      $file_path = $svg_file->createFileUrl();
+    }
 
     $site_config = \Drupal::config('system.site');
-    $site_slogan = $site_config->get('slogan') ?? 'Something else';
+    $site_slogan = $site_config->get('slogan') ?? $this->t('Digitising Social Care');
 
     return [
       '#theme' => 'footer_branding',
       '#variant' => '',
-      '#logo' => $file_path,
+      '#logo' => $file_path ?? '',
       '#site_name' => '',
       '#site_slogan' => $site_slogan,
     ];
