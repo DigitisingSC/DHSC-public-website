@@ -10,16 +10,22 @@
 
 {# Template #}
 <div class="m-accordion-item" x-data="{ isOpen: false }">
-  <h3>
-    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
-      <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
-      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
-      <span>{{ title }}</span>
-    </button>
-  </h3>
-  <div class="m-accordion-item__panel" x-show="isOpen">
-    <div class="m-accordion-item__content prose">
-      Skills framework content..
-    </div>
-  </div>
+	<h3>
+		<button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
+			<div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
+			<div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
+			<span>{{ title }}</span>
+		</button>
+	</h3>
+	<div class="m-accordion-item__panel" x-show="isOpen">
+		<div class="m-accordion-item__content prose">
+      {% if items is iterable %}
+        {% for key, item in items if key|first != '#' %}
+          {{ item }}
+        {% endfor %}
+      {% else %}
+        {{ items }}
+      {% endif %}
+		</div>
+	</div>
 </div>

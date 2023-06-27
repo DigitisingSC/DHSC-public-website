@@ -82,6 +82,17 @@ function dhsc_theme_preprocess_paragraph__video(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
+// function dhsc_theme_preprocess_paragraph__framework_section(&$variables) {
+//   $framework_section = $variables['paragraph']->getParentEntity();
+
+//   if (isset($framework_section)) {
+//     $variables['title'] = $framework_section->get('localgov_title')->value;
+//   }
+// }
+
+/**
  * Implements hook_preprocess_HOOK() for field.
  */
 function dhsc_theme_preprocess_field(&$variables) {

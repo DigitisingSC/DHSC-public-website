@@ -48,7 +48,9 @@
 %}
 
 <div{{attributes.addClass(classes)}}>
-    {{ content.field_header }}
-    {{ content.field_framework_sections }}
+	{% include '@organisms/accordion/accordion.twig' with {
+    'header' : content.field_header,
+    'items': content.field_framework_sections,
+    'variant': 'skills-framework',
+  } %}
 </div>
-

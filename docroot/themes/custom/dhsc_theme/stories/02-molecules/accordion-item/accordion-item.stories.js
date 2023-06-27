@@ -29,10 +29,10 @@ const accordionDefaultTemplate = ({ title, text, icon_open, icon_close, variant 
     variant
   });
 
-const accordionSkillFrameworkTemplate = ({ title, text, icon_open, icon_close, variant }) =>
+const accordionSkillFrameworkTemplate = ({ title, items, icon_open, icon_close, variant }) =>
   accordionItemSkillsFrameworkTwig({
     title,
-    text,
+    items,
     icon_open,
     icon_close,
     variant
@@ -54,7 +54,11 @@ AccordionItemSkillsFramework.args = {
   attributes: new DrupalAttributes(),
   icon_open: svgIconOpenTemplate,
   icon_close: svgIconCloseTemplate,
-  title: "Digital skills for all",
-  text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+  title: "Digital skills go further",
+  items: [
+      '6. Help my colleagues to learn about and understand the benefits of technology for person-centred care',
+      'I can communicate how technologies such as digital social care records (DSCRs) can help people stay safe while maintaining their independence, and reduce time on admin tasks to allow more time for care and interaction',
+      "<a href='#'>Useful link</a>",
+  ],
   variant: 'skills-framework'
 };
