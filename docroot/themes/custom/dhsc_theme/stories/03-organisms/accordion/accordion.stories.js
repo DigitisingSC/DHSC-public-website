@@ -1,11 +1,11 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
-import accordionDefault from "./accordion--default.twig";
-import { AccordionItemDefault } from "../../02-molecules/accordion-item/accordion-item.stories.js";
-import AccordionItemDefaultTwig from "../../02-molecules/accordion-item/accordion-item--default.twig";
-import accordionSkillsFramework from "./accordion--skills-framework.twig";
-import { AccordionItemSkillsFramework } from "../../02-molecules/accordion-item/accordion-item.stories.js";
-import AccordionItemSkillsFrameworkTwig from "../../02-molecules/accordion-item/accordion-item--skills-framework.twig";
+import accordionDefault from './accordion--default.twig';
+import { AccordionItemDefault } from '../../02-molecules/accordion-item/accordion-item.stories.js';
+import AccordionItemDefaultTwig from '../../02-molecules/accordion-item/accordion-item--default.twig';
+import accordionSkillsFramework from './accordion--skills-framework.twig';
+import { AccordionItemSkillsFramework } from '../../02-molecules/accordion-item/accordion-item.stories.js';
+import AccordionItemSkillsFrameworkTwig from '../../02-molecules/accordion-item/accordion-item--skills-framework.twig';
 
 import "./accordion.scss";
 
@@ -37,14 +37,16 @@ const AccordionItemSkillsFrameworkTemplate3 = (args) => AccordionItemSkillsFrame
   ...AccordionItemSkillsFramework.args,
 });
 
-const accordionDefaultTemplate = ({ header, items }) =>
+const accordionDefaultTemplate = ({ attributes, header, items }) =>
   accordionDefault({
+    attributes,
     header,
     items,
   });
 
-const accordionSkillsFrameworkTemplate = ({ header, items }) =>
+const accordionSkillsFrameworkTemplate = ({ attributes, header, items }) =>
   accordionSkillsFramework({
+    attributes,
     header,
     items,
   });
@@ -52,13 +54,13 @@ const accordionSkillsFrameworkTemplate = ({ header, items }) =>
 export const AccordionDefault = accordionDefaultTemplate.bind({});
 AccordionDefault.args = {
   attributes: new DrupalAttributes(),
-  header: "Digital skills accordion",
+  header: "Digital skills accordion - default",
   items: { AccordionItemDefaultTemplate1, AccordionItemDefaultTemplate2, AccordionItemDefaultTemplate3 },
 };
 
 export const AccordionSkillsFramework = accordionSkillsFrameworkTemplate.bind({});
 AccordionSkillsFramework.args = {
   attributes: new DrupalAttributes(),
-  header: "Digital skills accordion",
+  header: "Digital skills accordion - Skills Database",
   items: { AccordionItemSkillsFrameworkTemplate1, AccordionItemSkillsFrameworkTemplate2, AccordionItemSkillsFrameworkTemplate3 },
 };
