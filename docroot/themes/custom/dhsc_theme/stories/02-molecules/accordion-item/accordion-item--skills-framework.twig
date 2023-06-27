@@ -1,0 +1,25 @@
+{# Classes #}
+{% set icon_classes = [
+  'w-4 h-4 rotate-90 transition mt-1',
+] | sort | join(' ') | trim %}
+
+{% set classes = [
+  'block p-4 pl-6 pr-16 cursor-pointer',
+] | sort | join(' ') | trim %}
+{% set attributes = attributes.addClass(classes) %}
+
+{# Template #}
+<div class="m-accordion-item" x-data="{ isOpen: false }">
+  <h3>
+    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
+      <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
+      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
+      <span>{{ title }}</span>
+    </button>
+  </h3>
+  <div class="m-accordion-item__panel" x-show="isOpen">
+    <div class="m-accordion-item__content prose">
+      Skills framework content..
+    </div>
+  </div>
+</div>
