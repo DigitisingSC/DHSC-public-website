@@ -1,0 +1,19 @@
+{% set classes = [
+  'm-branding',
+  'm-branding--' ~ variant,
+  'flex justify-between w-full items-center text-white bg-green'
+] %}
+<div{{attributes.addClass(classes) }}>
+  {% if logo %}
+    <div class="m-branding__logo mr-4">
+      <a href="/" rel="home">
+        <img src="{{ logo }}" alt="{{ site_name }}">
+      </a>
+    </div>
+  {% endif %}
+  {% if site_slogan %}
+    <div class="m-branding__slogan text-sm font-bold hidden tablet:block">
+      {{ site_slogan }}
+    </div>
+  {% endif %}
+</div>

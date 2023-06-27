@@ -1,0 +1,6 @@
+.m-footer-contact {
+  &__phone a,
+  &__link a {
+    @apply text-forest underline hover:no-underline
+  }
+}

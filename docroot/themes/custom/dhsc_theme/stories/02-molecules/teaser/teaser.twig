@@ -1,5 +1,5 @@
 {# Template #}
-{% include '@molecules/teaser/teaser--' ~ variant ~ '.twig' with {
+{% include '@molecules/teaser/teaser--' ~ variant ?? 'listing' ~ '.twig' with {
   variant: variant,
   image: image,
   heading: heading,

@@ -13,8 +13,9 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {% include "@molecules/branding/branding.twig" with {
-      "site_logo": site_logo,
+    {% include "@molecules/branding/branding--header.twig" with {
+      "variant": 'header',
+      "logo": site_logo,
       "site_name": site_name,
       "site_slogan": site_slogan
     } %}

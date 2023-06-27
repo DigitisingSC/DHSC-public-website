@@ -1,0 +1,27 @@
+uuid: 2cd688ab-6e2a-4fcd-892e-947112a14c86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_settings_legal
+    - site_settings.site_setting_entity_type.footer_settings_legal
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - restricted_html
+      - plain_text
+id: site_setting_entity.footer_settings_legal.field_settings_legal
+field_name: field_settings_legal
+entity_type: site_setting_entity
+bundle: footer_settings_legal
+label: 'Legal information'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

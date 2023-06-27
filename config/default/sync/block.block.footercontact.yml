@@ -1,0 +1,20 @@
+uuid: 072c1b46-a7d3-48c7-bc8e-2ea6a19b656c
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: footercontact
+theme: dhsc_theme
+region: footer
+weight: -9
+provider: null
+plugin: footer_contact
+settings:
+  id: footer_contact
+  label: 'Footer contact'
+  label_display: '0'
+  provider: dhsc_site
+visibility: {  }

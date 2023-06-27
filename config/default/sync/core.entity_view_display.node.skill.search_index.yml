@@ -1,0 +1,61 @@
+uuid: dfe11745-b0ca-4fa2-be66-da86235e0b61
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.skill.field_body_paragraphs
+    - field.field.node.skill.field_metatags
+    - field.field.node.skill.field_skill_level
+    - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_summary
+    - field.field.node.skill.field_training_length
+    - node.type.skill
+  module:
+    - user
+id: node.skill.search_index
+targetEntityType: node
+bundle: skill
+mode: search_index
+content:
+  field_skill_level:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_skill_method:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_training_length:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_metatags: true
+  langcode: true
+  search_api_excerpt: true

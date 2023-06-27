@@ -1,0 +1,22 @@
+uuid: 2d8a5f9a-c000-4e7a-a4ce-4e0ec5e7775e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: skills
+label: Skills
+type: 'canonical_entities:node'
+pattern: 'skills/[node:title]'
+selection_criteria:
+  03c83bf7-ae3e-414d-9a64-619e38b3284e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 03c83bf7-ae3e-414d-9a64-619e38b3284e
+    context_mapping:
+      node: node
+    bundles:
+      skill: skill
+selection_logic: and
+weight: -5
+relationships: {  }

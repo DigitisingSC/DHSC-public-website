@@ -1,0 +1,29 @@
+uuid: 21582b70-6870-46e1-9e0a-44357baaed7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_skill_method
+    - node.type.skill
+    - taxonomy.vocabulary.skill_method
+id: node.skill.field_skill_method
+field_name: field_skill_method
+entity_type: node
+bundle: skill
+label: Method
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      skill_method: skill_method
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

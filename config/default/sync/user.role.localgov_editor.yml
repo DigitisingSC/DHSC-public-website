@@ -17,6 +17,8 @@ dependencies:
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
+    - node.type.skill
+    - taxonomy.vocabulary.skill_level
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -31,6 +33,7 @@ dependencies:
     - path
     - sitewide_alert
     - system
+    - taxonomy
     - toolbar
   enforced:
     module:
@@ -55,7 +58,6 @@ permissions:
   - 'create event content'
   - 'create hero media'
   - 'create image media'
-  - 'create landing_page content'
   - 'create localgov_guides_overview content'
   - 'create localgov_guides_page content'
   - 'create localgov_services_landing content'
@@ -64,6 +66,8 @@ permissions:
   - 'create media'
   - 'create paragraph library item'
   - 'create remote_video media'
+  - 'create skill content'
+  - 'create terms in skill_level'
   - 'create url aliases'
   - 'delete any article content'
   - 'delete any casestudy content'
@@ -80,6 +84,7 @@ permissions:
   - 'delete any localgov_services_sublanding content'
   - 'delete any media'
   - 'delete any remote_video media'
+  - 'delete any skill content'
   - 'delete article revisions'
   - 'delete casestudy revisions'
   - 'delete content_page revisions'
@@ -105,7 +110,10 @@ permissions:
   - 'delete own localgov_services_page content'
   - 'delete own localgov_services_sublanding content'
   - 'delete own remote_video media'
+  - 'delete own skill content'
   - 'delete sitewide alert entities'
+  - 'delete skill revisions'
+  - 'delete terms in skill_level'
   - 'display eu cookie compliance popup'
   - 'edit any article content'
   - 'edit any casestudy content'
@@ -121,6 +129,7 @@ permissions:
   - 'edit any localgov_services_page content'
   - 'edit any localgov_services_sublanding content'
   - 'edit any remote_video media'
+  - 'edit any skill content'
   - 'edit own article content'
   - 'edit own casestudy content'
   - 'edit own content_page content'
@@ -135,8 +144,10 @@ permissions:
   - 'edit own localgov_services_page content'
   - 'edit own localgov_services_sublanding content'
   - 'edit own remote_video media'
+  - 'edit own skill content'
   - 'edit paragraph library item'
   - 'edit sitewide alert entities'
+  - 'edit terms in skill_level'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
@@ -151,6 +162,7 @@ permissions:
   - 'revert localgov_services_landing revisions'
   - 'revert localgov_services_page revisions'
   - 'revert localgov_services_sublanding revisions'
+  - 'revert skill revisions'
   - 'update any media'
   - 'update media'
   - 'use editorial_workflow transition create_new_draft'
@@ -177,5 +189,6 @@ permissions:
   - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view skill revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

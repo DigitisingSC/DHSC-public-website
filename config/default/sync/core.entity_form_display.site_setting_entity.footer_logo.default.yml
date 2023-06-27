@@ -3,23 +3,21 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.site_setting_entity.footer_logo.field_logo
-    - image.style.thumbnail
+    - field.field.site_setting_entity.footer_logo.field_settings_logo
     - site_settings.site_setting_entity_type.footer_logo
   module:
-    - image
+    - media_library
 id: site_setting_entity.footer_logo.default
 targetEntityType: site_setting_entity
 bundle: footer_logo
 mode: default
 content:
-  field_logo:
-    type: image_image
+  field_settings_logo:
+    type: media_library_widget
     weight: 11
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      media_types: {  }
     third_party_settings: {  }
   fieldset:
     type: string_textfield

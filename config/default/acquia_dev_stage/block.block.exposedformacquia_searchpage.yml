@@ -1,4 +1,4 @@
-uuid: b3041344-898f-4065-b513-047849244e4d
+uuid: e266c422-f823-4393-8d3e-0986e71632f0
 langcode: en
 status: true
 dependencies:
@@ -11,14 +11,14 @@ dependencies:
     - dhsc_theme
 id: exposedformacquia_searchpage
 theme: dhsc_theme
-region: content_top
-weight: -5
+region: sidebar_first
+weight: 0
 provider: null
 plugin: 'views_exposed_filter_block:acquia_search-page'
 settings:
   id: 'views_exposed_filter_block:acquia_search-page'
   label: ''
-  label_display: visible
+  label_display: '0'
   provider: views
   views_label: ''
 visibility:

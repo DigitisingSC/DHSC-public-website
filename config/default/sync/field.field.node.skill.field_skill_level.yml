@@ -1,0 +1,29 @@
+uuid: 108c533d-2abc-45f8-a86b-1dcc08b0db8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_skill_level
+    - node.type.skill
+    - taxonomy.vocabulary.skill_level
+id: node.skill.field_skill_level
+field_name: field_skill_level
+entity_type: node
+bundle: skill
+label: 'Skill level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      skill_level: skill_level
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
