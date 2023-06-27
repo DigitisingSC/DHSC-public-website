@@ -8,7 +8,15 @@ id: case_study_page
 label: 'Case study page'
 type: 'canonical_entities:node'
 pattern: 'case-studies/[node:title]'
-selection_criteria: {  }
+selection_criteria:
+  3b645f45-f436-4f8f-99a6-cc6b5438c1ef:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3b645f45-f436-4f8f-99a6-cc6b5438c1ef
+    context_mapping:
+      node: node
+    bundles:
+      casestudy: casestudy
 selection_logic: and
 weight: -5
 relationships: {  }
