@@ -11,9 +11,9 @@ storage: folder
 folder: ../config/default/local
 module:
   dblog: 0
+  views_ui: 0
   devel: 0
   stage_file_proxy: 0
-  views_ui: 0
 theme: {  }
 complete_list:
   - block.block.exposedformacquia_searchpage
@@ -24,3 +24,6 @@ partial_list:
   - autologout.settings
   - search_api.index.acquia_search_index
   - search_api.index.local_digital_skills_training_index
+  - search_api.index.local_search_solr_index
+  - search_api.server.acquia_search_server
+  - search_api.server.local_ddev_solr_server
