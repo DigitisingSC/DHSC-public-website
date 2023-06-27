@@ -1,0 +1,20 @@
+uuid: 172c2754-057e-41bb-a85b-48d28145d33e
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: footerbranding
+theme: dhsc_theme
+region: footer_top
+weight: -8
+provider: null
+plugin: footer_branding_block
+settings:
+  id: footer_branding_block
+  label: 'Footer Branding'
+  label_display: '0'
+  provider: dhsc_site
+visibility: {  }

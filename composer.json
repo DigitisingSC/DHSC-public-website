@@ -53,6 +53,7 @@
         "drupal/site_settings": "^1.20",
         "drupal/sitewide_alert": "^2.1",
         "drupal/stage_file_proxy": "^2.0",
+        "drupal/svg_image_field": "^2.2",
         "drupal/themable_forms": "^1.0",
         "drupal/time_field": "^2.1",
         "drupal/twig_field_value": "^2.0",

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.landing_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.cta_banner
@@ -42,11 +43,18 @@ settings:
       topic_list_builder: topic_list_builder
       from_library: from_library
       dynamic_content_listing: dynamic_content_listing
+      accordion: accordion
       newsletter_signup: newsletter_signup
       topics: topics
       quick_links: quick_links
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 23
+        enabled: true
+      accordion_item:
+        weight: 24
+        enabled: false
       alert:
         weight: 18
         enabled: false
@@ -74,6 +82,9 @@ settings:
       from_library:
         weight: -16
         enabled: true
+      link_description:
+        weight: 34
+        enabled: false
       localgov_image:
         weight: -22
         enabled: true

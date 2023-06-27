@@ -39,6 +39,8 @@
  */
 #}
 
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
 {% set icon %}
   {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
@@ -49,7 +51,7 @@
 {% include '@molecules/quick-link/quick-link.twig' with {
   'attributes': attributes,
   'image': content.field_image,
-  'heading': content.field_title,
+  'heading': content.field_title.0,
   'description': content.field_description,
   'link': content.field_link[0]['#url'],
   'quickLinkType': paragraph.field_quick_link_colour_scheme.value,

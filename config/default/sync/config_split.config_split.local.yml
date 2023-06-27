@@ -24,8 +24,8 @@ partial_list:
   - autologout.settings
   - block.block.exposedformacquia_searchpage
   - block.block.exposedformdigital_skills_training_pageskills_search_page
-  - block.block.exposedformdigital_skills_training_searchskills_search_page
   - block.block.exposedformlocal_searchpage
+  - search_api.index.acquia_digital_skills_training_index
   - search_api.index.acquia_search_index
   - search_api.index.local_digital_skills_training_index
   - search_api.index.local_search_solr_index
@@ -34,3 +34,4 @@ partial_list:
   - views.view.digital_skills_training_page
   - views.view.digital_skills_training_search
   - views.view.local_search
+  - block.block.exposedformdigital_skills_training_searchskills_search_page

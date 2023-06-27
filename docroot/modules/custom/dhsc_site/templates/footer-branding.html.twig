@@ -1,0 +1,16 @@
+{%
+  set classes = [
+  'o-block',
+  'o-block--' ~ configuration.provider|clean_class,
+  'o-block--' ~ plugin_id|clean_class,
+  'w-full',
+]
+%}
+
+{% include "@molecules/branding/branding--footer.twig" with {
+  "attributes": attributes.addClass(classes),
+  "variant": 'header',
+  "logo": logo,
+  "site_name": site_name,
+  "site_slogan": site_slogan
+} %}

@@ -1,0 +1,19 @@
+uuid: a1fea3af-de34-456d-a01b-250c6b0b23b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_settings
+    - text
+id: site_setting_entity.field_settings_legal
+field_name: field_settings_legal
+entity_type: site_setting_entity
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,7 +1,16 @@
 .m-cta-banner {
+
+  &__title {
+
+    a {
+      @apply text-forest underline hover:no-underline;
+      @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+    }
+  }
+
   &--left {
     .m-cta-banner__content {
-      @apply tablet:order-2;
+      @apply tablet:order-2 tablet:ml-4;
     }
     .m-cta-banner__media {
       @apply tablet:order-1;
@@ -14,5 +23,9 @@
     .m-cta-banner__media {
       @apply tablet:order-2;
     }
+  }
+
+  img {
+    @apply rounded-md;
   }
 }
