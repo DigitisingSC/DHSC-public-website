@@ -1,0 +1,8 @@
+uuid: 28803ee1-0cea-48f2-b013-8217ee528d7d
+langcode: en
+status: true
+dependencies: {  }
+name: Method
+vid: skill_method
+description: ''
+weight: 0

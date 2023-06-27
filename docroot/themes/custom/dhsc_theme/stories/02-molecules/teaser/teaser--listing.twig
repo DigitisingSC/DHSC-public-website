@@ -10,11 +10,21 @@
     <div class="m-teaser__title mb-2">
       <h3 class="text-base">
         {% if link %}
-          <a href="{{ link }}" class="text-green underline hover:no-underline">{{ title }}</a>
+          <a href="{{ link }}" class="text-forest-100 underline hover:no-underline">{{ title }}</a>
         {% else %}
           {{ title }}
         {% endif %}
       </h3>
+    </div>
+  {% endif %}
+  {% if subtitle %}
+    <div class="m-teaser__subtitle mb-1 -mt-1 ">
+      <h4 class="text-xs leading-relaxed text-coolgrey"> {{ subtitle }}</h4>
+    </div>
+  {% endif %}
+  {% if description %}
+    <div class="m-teaser__description mb-2 text-xs leading-relaxed">
+     {{ description }}
     </div>
   {% endif %}
   {% if date %}
@@ -22,4 +32,24 @@
       {{ date }}
     </div>
   {% endif %}
+  {% if skillAttributes %}
+    <div class="m-teaser__skill-attributes mb-4 text-coolgrey text-xs leading-relaxed">
+      {% if skillAttributes.level %}
+        <div class="m-teaser__skill--level md:inline-block">
+          <span class="md:font-bold">{{ 'Skill level:'|t }}</span> {{ skillAttributes.level }}
+        </div>
+      {% endif %}
+      {% if skillAttributes.length %}
+        <div class="m-teaser__skill--length md:inline-block md:ml-5 first:ml-0">
+          <span class="md:font-bold">{{ 'Length:'|t }}</span> {{ skillAttributes.length }}
+        </div>
+      {% endif %}
+      {% if skillAttributes.format %}
+        <div class="m-teaser__skill--format md:inline-block md:ml-5 first:ml-0">
+          <span class="md:font-bold">{{ 'Format:'|t }}</span> {{ skillAttributes.format }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
 </div>

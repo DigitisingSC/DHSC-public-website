@@ -10,8 +10,9 @@ stackable: false
 storage: folder
 folder: ../config/default/acquia_dev_stage
 module:
-  acquia_purge: 0
   dblog: 0
+  views_ui: 0
+  acquia_purge: 0
   memcache: 0
   purge: 0
   purge_drush: 0
@@ -20,11 +21,20 @@ module:
   purge_queuer_coretags: 0
   purge_ui: 0
   shield: 0
-  views_ui: 0
 theme: {  }
 complete_list:
-  - search_api.index.acquia_search_index
-  - search_api.server.acquia_search_server
-  - views.view.acquia_search
+  - views.view.digital_skills_training_page
+  - views.view.local_search
 partial_list:
+  - block.block.exposedformacquia_searchpage
+  - block.block.exposedformdigital_skills_training_pageskills_search_page
+  - block.block.exposedformlocal_searchpage
+  - search_api.index.acquia_digital_skills_training_index
   - search_api.index.acquia_search_index
+  - search_api.index.local_digital_skills_training_index
+  - search_api.index.local_search_solr_index
+  - search_api.server.acquia_search_server
+  - search_api.server.local_ddev_solr_server
+  - views.view.acquia_search
+  - views.view.digital_skills_training_search
+  - block.block.exposedformdigital_skills_training_searchskills_search_page
