@@ -4,10 +4,19 @@
 
   details {
     @apply py-4;
+
+    summary {
+      @apply w-fit text-forest underline hover:no-underline;
+      @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+    }
   }
 
   .form-item {
     @apply pb-2;
+  }
+
+  .form-item h2 {
+    @apply tablet:w-9/12 text-lg font-bold leading-tight;
   }
 
   .form-item h3 {
@@ -39,6 +48,14 @@
   .webform-submission-information,
   .webform-button--previous {
     @apply hidden;
+  }
+
+  .webform-submission-self-assessment-tool-form {
+    .radios--wrapper {
+      legend {
+        @apply py-0;
+      }
+    }
   }
 
 }
