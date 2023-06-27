@@ -31,11 +31,13 @@ function dhsc_theme_preprocess_region(&$variables) {
   if ($variables['region'] == 'footer') {
     $site_settings = \Drupal::service('site_settings.loader');
     $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_secondary_logo'];
-    $media = Media::load($footer_logo_setting);
-    $file_id = $media->getSource()->getSourceFieldValue($media);
-    $svg_file = File::load($file_id);
-    $file_path = $svg_file->createFileUrl();
-    $variables['logo'] = $file_path;
+    if (!empty($footer_logo_setting)) {
+      $media = Media::load($footer_logo_setting);
+      $file_id = $media->getSource()->getSourceFieldValue($media);
+      $svg_file = File::load($file_id);
+      $file_path = $svg_file->createFileUrl();
+    }
+    $variables['logo'] = $file_path ?? '';
   }
 }
 
