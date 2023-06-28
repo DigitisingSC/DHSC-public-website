@@ -11,17 +11,18 @@
       {% for item in items %}
         <li class="tablet:mr-8 flex items-center" x-data="">
           {% if item.below %}
-            <a href="{{ item.url }}" class="block underline hover:no-underline mr-2">{{ item.title }}</a>
             <a href="#"
+               class="flex items-center underline hover:no-underline mr-2"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
-            >{{ svgIconDown }}</a>
+            ><span class="mr-2">{{ item.title }}</span>{{ svgIconDown }}</a>
             <a href="#"
+               class="flex items-center underline hover:no-underline mr-2"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
                @keydown.enter="$dispatch('activedropdownmain', { active: false })"
-            >{{ svgIconUp }}</a>
+            ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
                class="block mr-2 underline hover:no-underline"
