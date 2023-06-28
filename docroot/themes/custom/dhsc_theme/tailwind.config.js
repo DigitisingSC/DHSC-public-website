@@ -140,7 +140,72 @@ module.exports = {
         bold: '700',
         extrabold: '800',
         black: '900',
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: [
+            // Links.
+            {
+              a: {
+                '&:not(.a-button)': {
+                  textDecoration: 'underline',
+                  textUnderlineOffset: theme('spacing.1'),
+                  fontStyle: 'normal',
+                  color: theme('colors.forest.100'),
+                  transition: `all ${theme('transitionDuration.75')} ease-in-out`,
+                  '&:hover': {
+                    color: theme('colors.black.DEFAULT'),
+                    textDecoration: 'none',
+                  },
+                  '&:focus': {
+                    color: theme('colors.black.DEFAULT'),
+                    backgroundColor: theme('colors.focus.DEFAULT'),
+                    textDecoration: 'underline',
+                    textUnderlineOffset: theme('spacing.1'),
+                    textDecorationThickness: theme('spacing.1'),
+                  },
+                },
+              },
+            },
+          ],
+        },
+        sm: {
+          css: [
+            {
+              fontSize: theme('fontSize.sm'),
+              '@screen lg': {
+                fontSize: theme('fontSize.base'),
+              },
+            },
+          ],
+        },
+        lg: {
+          css: [
+            {
+              fontSize: theme('fontSize.xl'),
+              '@screen lg': {
+                fontSize: theme('fontSize.3xl'),
+              },
+            },
+          ],
+        },
+        'no-quotes': {
+          css: [
+            {
+              'p::before': {
+                content: 'none',
+              },
+            },
+          ],
+        },
+        'inherit-color': {
+          css: [
+            {
+              '--tw-prose-body': 'currentColor',
+            },
+          ],
+        },
+      }),
     },
   },
   corePlugins: {
