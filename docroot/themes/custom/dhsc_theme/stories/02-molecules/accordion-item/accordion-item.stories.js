@@ -55,10 +55,6 @@ AccordionItemSkillsFramework.args = {
   icon_open: svgIconOpenTemplate,
   icon_close: svgIconCloseTemplate,
   title: "Digital skills go further",
-  items: [
-      '6. Help my colleagues to learn about and understand the benefits of technology for person-centred care',
-      'I can communicate how technologies such as digital social care records (DSCRs) can help people stay safe while maintaining their independence, and reduce time on admin tasks to allow more time for care and interaction',
-      "<a href='#'>Useful link</a>",
-  ],
+  items: "<tr><td data-label='The criteria is met when...'><p>I can communicate how technologies such as digital social care records (DSCRs) can help people stay safe while maintaining their independence, and reduce time on admin tasks to allow more time for care and interaction</p></td><td data-label='I have the skills and knowledge to...'><p>6. Help my colleagues to learn about and understand the benefits of technology for person-centred care</p></td><td data-label='Learning resources'><a href='/government-drive-digital-transformation-adult-social-care-sector'>Useful link</a><a href='/government-drive-digital-transformation-adult-social-care-sector'>Useful link 2</a></td></tr>",
   variant: 'skills-framework'
 };

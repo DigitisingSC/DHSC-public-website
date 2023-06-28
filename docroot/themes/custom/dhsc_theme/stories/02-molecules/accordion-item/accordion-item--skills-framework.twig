@@ -8,24 +8,69 @@
 ] | sort | join(' ') | trim %}
 {% set attributes = attributes.addClass(classes) %}
 
+{# Set up default variables #}
+{% set field_criteria_label = '' %}
+{% set field_skills_and_knowledge_label = '' %}
+{% set field_learning_resources_label = '' %}
+{% set items_iterable = FALSE %}
+
 {# Template #}
 <div class="m-accordion-item" x-data="{ isOpen: false }">
-	<h3>
-		<button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
-			<div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
-			<div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
-			<span>{{ title }}</span>
-		</button>
-	</h3>
-	<div class="m-accordion-item__panel" x-show="isOpen">
-		<div class="m-accordion-item__content prose">
-      {% if items is iterable %}
-        {% for key, item in items if key|first != '#' %}
-          {{ item }}
-        {% endfor %}
-      {% else %}
-        {{ items }}
-      {% endif %}
-		</div>
-	</div>
+  <h3>
+    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
+      <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
+      <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
+      <span>{{ title }}</span>
+    </button>
+  </h3>
+  <div class="m-accordion-item__panel" x-show="isOpen">
+    <div class="m-accordion-item__skills_framework prose">
+      <table>
+        <tbody>
+          {% if items is iterable %}
+          {% set items_iterable = TRUE %}
+            {% for key, item in items if key|first != '#' %}
+
+              {% set field_criteria = item['#paragraph'].field_criteria %}
+              {% set field_skills_and_knowledge = item['#paragraph'].field_skills_and_knowledge %}
+              {% set field_learning_resources = item['#paragraph'].field_learning_resources %}
+
+              {% set field_criteria_label = field_criteria.fielddefinition.label  %}
+              {% set field_skills_and_knowledge_label = field_skills_and_knowledge.fielddefinition.label %}
+              {% set field_learning_resources_label = field_learning_resources.fielddefinition.label %}
+              <tr>
+                <td data-label="{{ field_criteria_label }}">{{ field_criteria.value|raw}}</td>
+                <td data-label="{{ field_skills_and_knowledge_label }}">{{ field_skills_and_knowledge.value|raw }}</td>
+                <td data-label="{{ field_learning_resources_label }}">
+                  {% if field_learning_resources|length > 1 %}
+                    {% for learning_resource in field_learning_resources %}
+                      {{ link(learning_resource.title, learning_resource.uri) }}
+                    {% endfor %}
+                  {% else %}
+                    {{ link(field_learning_resources.title, field_learning_resources.uri) }}
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            {{ items }}
+          {% endif %}
+        </tbody>
+        <thead>
+         {# populate table headers with label variables #}
+          <tr>
+            {% if items_iterable %}
+              <th scope="col">{{ field_skills_and_knowledge_label|t}}</th>
+              <th scope="col">{{ field_criteria_label|t }}</th>
+              <th scope="col">{{ field_learning_resources_label|t }}</th>
+             {% else %}
+              <th scope="col">{{ 'I have the skills and knowledge to...'|t }}</th>
+              <th scope="col">{{ 'The criteria is met when..'|t }}</th>
+              <th scope="col">{{ 'Learning resources'|t }}</th>
+            {% endif %}
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
 </div>
