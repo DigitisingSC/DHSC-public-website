@@ -169,42 +169,6 @@ module.exports = {
             },
           ],
         },
-        sm: {
-          css: [
-            {
-              fontSize: theme('fontSize.sm'),
-              '@screen lg': {
-                fontSize: theme('fontSize.base'),
-              },
-            },
-          ],
-        },
-        lg: {
-          css: [
-            {
-              fontSize: theme('fontSize.xl'),
-              '@screen lg': {
-                fontSize: theme('fontSize.3xl'),
-              },
-            },
-          ],
-        },
-        'no-quotes': {
-          css: [
-            {
-              'p::before': {
-                content: 'none',
-              },
-            },
-          ],
-        },
-        'inherit-color': {
-          css: [
-            {
-              '--tw-prose-body': 'currentColor',
-            },
-          ],
-        },
       }),
     },
   },
