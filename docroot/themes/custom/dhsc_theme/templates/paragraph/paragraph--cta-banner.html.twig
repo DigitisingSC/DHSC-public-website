@@ -41,6 +41,7 @@
 {% include '@molecules/cta-banner/cta-banner.twig' with {
   'attributes': attributes,
   'layout': content.field_layout.0['#markup'],
+  'header': content.field_title,
   'title': content.field_link,
   'description': content.localgov_text,
   'media': content.localgov_image,
