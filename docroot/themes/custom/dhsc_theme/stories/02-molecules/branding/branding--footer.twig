@@ -1,0 +1,29 @@
+{% set classes = [
+  'm-branding',
+  'm-branding--' ~ variant,
+  'py-4 tablet:flex tablet:gap-4 tablet:justify-between tablet:items-center w-full'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if directory %}
+    {% if logo %}
+      <div class="m-branding__logo order-2">
+        <a href="/" rel="home">
+          <img src="{{ logo }}" alt="{{ site_name }}">
+        </a>
+      </div>
+    {% endif%}
+  {% else %}
+    {% if logo %}
+      <div class="m-branding__logo order-2">
+        <a href="/" rel="home">
+          {{ source(logo) }}
+        </a>
+      </div>
+    {% endif %}
+  {% endif %}
+  {% if site_slogan %}
+    <div class="m-branding__slogan order-1 text-sm font-bold">
+      {{ site_slogan }}
+    </div>
+  {% endif %}
+</div>

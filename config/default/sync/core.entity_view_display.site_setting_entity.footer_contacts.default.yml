@@ -1,0 +1,62 @@
+uuid: 45565a5b-0606-4489-8f2a-dd5c82b5dab7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.site_setting_entity.footer_contacts.field_settings_link
+    - field.field.site_setting_entity.footer_contacts.field_settings_phone
+    - site_settings.site_setting_entity_type.footer_contacts
+  module:
+    - link
+    - telephone
+    - user
+id: site_setting_entity.footer_contacts.default
+targetEntityType: site_setting_entity
+bundle: footer_contacts
+mode: default
+content:
+  field_settings_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_settings_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  fieldset:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  user_id:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

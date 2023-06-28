@@ -1,24 +1,20 @@
 {# Classes #}
 {% set classes = [
   'o-accordion',
-  'o-accordion--' ~ colour,
-  spacing.padding_top,
-  spacing.padding_bottom,
 ] | sort | join(' ') | trim %}
 
 {# Template #}
-  <div {{ attributes.addClass(classes).setAttribute('id', anchor) }}> <div class="container">
-    <div class="c-size lg:w-8/12 lg:max-w-prose">
-      {% if header %}
-        <h2 class="mb-4 text-2xl md:text-4xl text-black_heading">{{ header }}</h2>
-      {% endif %}
-      {% if items is iterable %}
-        {% for key, item in items if key|first != '#' %}
-          {{ item }}
-        {% endfor %}
-      {% else %}
-        {{ items }}
-      {% endif %}
-    </div>
+<div{{ attributes.addClass(classes) }}>
+  <div class="o-accordion__container">
+    {% if header %}
+      <h2 class="mb-4 text-2xl md:text-4xl text-black_heading">{{ header }}</h2>
+    {% endif %}
+    {% if items is iterable %}
+      {% for key, item in items if key|first != '#' %}
+        {{ item }}
+      {% endfor %}
+    {% else %}
+      {{ items }}
+    {% endif %}
   </div>
 </div>

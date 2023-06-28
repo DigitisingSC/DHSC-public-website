@@ -1,4 +1,28 @@
 .m-accordion-item {
+  &__control {
+    @apply py-2;
+  }
+
+  &__trigger {
+    @apply flex justify-start items-center w-full;
+  }
+
+  &__trigger>div {
+    @apply mr-2;
+  }
+
+  &__trigger svg {
+    @apply h-4 w-4;
+  }
+
+  &__title {
+    @apply text-md;
+  }
+
+  &__panel {
+    @apply py-2;
+  }
+
   &__skills_framework {
     table {
       border: 1px solid #ccc;
@@ -62,14 +86,12 @@
         border-bottom: 1px solid #ddd;
         display: block;
         font-size: .8em;
-        text-align: right;
       }
 
       table td::before {
         content: attr(data-label);
         float: left;
         font-weight: bold;
-        text-transform: uppercase;
       }
 
       table td:last-child {

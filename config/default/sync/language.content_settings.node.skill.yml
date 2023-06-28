@@ -1,0 +1,11 @@
+uuid: 690d5088-9269-44ac-a4ca-46825f62cfa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.skill
+id: node.skill
+target_entity_type_id: node
+target_bundle: skill
+default_langcode: site_default
+language_alterable: false

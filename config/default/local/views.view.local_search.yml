@@ -496,16 +496,17 @@ display:
         options:
           view_modes:
             'entity:node':
-              article: default
-              casestudy: default
-              content_page: default
-              event: default
-              landing_page: default
-              localgov_guides_overview: default
-              localgov_guides_page: default
-              recommendation: default
-              subtopic_page: default
-              supplier: default
+              article: search_index
+              casestudy: search_index
+              content_page: search_index
+              event: search_index
+              landing_page: search_index
+              localgov_guides_overview: search_index
+              localgov_guides_page: search_index
+              recommendation: search_index
+              skill: search_index
+              subtopic_page: search_index
+              supplier: search_index
       query:
         type: search_api_query
         options:

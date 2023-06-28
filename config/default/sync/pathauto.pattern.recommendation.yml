@@ -7,12 +7,12 @@ dependencies:
 id: recommendation
 label: Recommendation
 type: 'canonical_entities:node'
-pattern: '[node:title]'
+pattern: 'recommendations/[node:title]'
 selection_criteria:
-  531be22b-2778-4f63-965c-22f5716d91bc:
+  18fba6b5-85b6-4089-a1d3-7dac575fbe98:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 531be22b-2778-4f63-965c-22f5716d91bc
+    uuid: 18fba6b5-85b6-4089-a1d3-7dac575fbe98
     context_mapping:
       node: node
     bundles:

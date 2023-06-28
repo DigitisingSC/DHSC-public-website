@@ -11,7 +11,7 @@ use Drupal\paragraphs\Entity\Paragraph;
  *
  * @Block(
  *   id = "featured_links_block",
- *   admin_label = @Translation("FeaturedLinksBock"),
+ *   admin_label = @Translation("Featured links"),
  *   category = @Translation("DHSC Site")
  * )
  */

@@ -3,30 +3,27 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.site_setting_entity.footer_logo.field_logo
+    - field.field.site_setting_entity.footer_logo.field_settings_logo
     - site_settings.site_setting_entity_type.footer_logo
   module:
-    - image
     - user
 id: site_setting_entity.footer_logo.default
 targetEntityType: site_setting_entity
 bundle: footer_logo
 mode: default
 content:
-  field_logo:
-    type: image
-    label: above
+  field_settings_logo:
+    type: entity_reference_entity_view
+    label: hidden
     settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
+      view_mode: default
+      link: true
     third_party_settings: {  }
     weight: 1
     region: content
   fieldset:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
@@ -34,7 +31,7 @@ content:
     region: content
   name:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }

@@ -16,13 +16,13 @@
 
 {# Template #}
 <div class="m-accordion-item" x-data="{ isOpen: false }">
-  <h3>
+  <div class="m-accordion-item__control">
     <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
       <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
       <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
-      <span>{{ title }}</span>
+      <span class="m-accordion-item__title">{{ title }}</span>
     </button>
-  </h3>
+  </div>
   <div class="m-accordion-item__panel" x-show="isOpen">
     <div class="m-accordion-item__skills_framework prose">
       <table>

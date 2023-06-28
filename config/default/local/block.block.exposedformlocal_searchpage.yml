@@ -11,8 +11,8 @@ dependencies:
     - dhsc_theme
 id: exposedformlocal_searchpage
 theme: dhsc_theme
-region: content_top
-weight: 0
+region: sidebar_first
+weight: -9
 provider: null
 plugin: 'views_exposed_filter_block:local_search-page'
 settings:

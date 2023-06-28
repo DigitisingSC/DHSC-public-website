@@ -1,0 +1,21 @@
+uuid: b180df43-3dbb-445b-b7e4-957947a5e26a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.skill
+  module:
+    - metatag
+id: node.skill.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: skill
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

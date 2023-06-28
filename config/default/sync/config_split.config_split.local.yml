@@ -16,10 +16,22 @@ module:
   views_ui: 0
 theme: {  }
 complete_list:
-  - search_api.index.local_search_solr_index
-  - search_api.server.local_ddev_solr_server
-  - views.view.local_search
   - views.view.acquia_search
+  - views.view.digital_skills_training_page
+  - views.view.local_search
 partial_list:
+  - acquia_search.settings
   - autologout.settings
+  - block.block.exposedformacquia_searchpage
+  - block.block.exposedformdigital_skills_training_pageskills_search_page
+  - block.block.exposedformlocal_searchpage
+  - search_api.index.acquia_digital_skills_training_index
   - search_api.index.acquia_search_index
+  - search_api.index.local_digital_skills_training_index
+  - search_api.index.local_search_solr_index
+  - search_api.server.acquia_search_server
+  - search_api.server.local_ddev_solr_server
+  - views.view.digital_skills_training_page
+  - views.view.digital_skills_training_search
+  - views.view.local_search
+  - block.block.exposedformdigital_skills_training_searchskills_search_page

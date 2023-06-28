@@ -64,6 +64,7 @@ const careNeutrals = {
   },
   coolgrey: {
     DEFAULT: '#616265',
+    40: '#DFE0E0',
     20: '#F8F8F8'
   },
   white: {

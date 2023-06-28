@@ -5,6 +5,7 @@
  * Theme functions for the LocalGov Drupal DHSC theme.
  */
 
+use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 
 /**
@@ -21,6 +22,25 @@ function dhsc_theme_preprocess(&$variables, $hook) {
 function dhsc_theme_preprocess_block(&$variables) {
   $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
 }
+
+/**
+ * Implements template_preprocess_region().
+ */
+function dhsc_theme_preprocess_region(&$variables) {
+
+  if ($variables['region'] == 'footer') {
+    $site_settings = \Drupal::service('site_settings.loader');
+    $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_secondary_logo'];
+    if (!empty($footer_logo_setting)) {
+      $media = Media::load($footer_logo_setting);
+      $file_id = $media->getSource()->getSourceFieldValue($media);
+      $svg_file = File::load($file_id);
+      $file_path = $svg_file->createFileUrl();
+    }
+    $variables['logo'] = $file_path ?? '';
+  }
+}
+
 
 function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
   $entity = $variables['paragraph'];
