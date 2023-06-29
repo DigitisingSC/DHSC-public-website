@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_theme().
  */
@@ -40,4 +42,28 @@ function dhsc_site_theme() {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param [type] $form
+ * @param FormStateInterface $form_state
+ * @param [type] $form_id
+ */
+function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $displayId = $form_state->get('view')->getDisplay()->display['id'];
+  if ($displayId == 'dhsc_search_page') {
+    $form['search']['#attributes']['placeholder'] = t('Search');
+    $form['search']['#attributes']['x-model'] = 'searchInputValue';
+    $form['search']['#attributes']['class'][] = 'o-search-page-search-form__submit-button';
+
+    // Reset search input button
+    $form['search']['#children']['reset'] = [
+      '#type' => 'inline_template',
+      '#template' => '<button type="button" x-show="searchInputValue !== \'\'" @click="searchInputValue = \'\'" class="o-search-page-search-form__reset-button button">'
+      . t('Clear input')
+      . '</button>',
+    ];
+  }
 }
