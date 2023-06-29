@@ -1,4 +1,8 @@
 adding:
   status: true
+  display:
+    default:
+      display_options:
+        use_ajax: true
 removing:
   status: false

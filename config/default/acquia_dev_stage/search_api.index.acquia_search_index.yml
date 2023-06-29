@@ -8,10 +8,13 @@ dependencies:
     - field.storage.node.localgov_guides_section_title
     - search_api.server.acquia_search_server
   module:
+    - acquia_search
     - search_api_solr
     - node
     - search_api
 third_party_settings:
+  acquia_search:
+    use_edismax: 0
   search_api_solr:
     finalize: false
     commit_before_finalize: false
@@ -62,7 +65,7 @@ _core:
 id: acquia_search_index
 name: 'Acquia Search Solr Index'
 description: ''
-read_only: false
+read_only: true
 field_settings:
   field_body_paragraphs:
     label: Body
@@ -136,7 +139,8 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - skill
     languages:
       default: true
       selected: {  }
