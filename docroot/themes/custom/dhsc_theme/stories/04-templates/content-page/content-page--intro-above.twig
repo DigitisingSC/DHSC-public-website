@@ -8,19 +8,19 @@
 ] %}
 
 <article{{attributes.addClass(classes)}}>
-	{% if intro %}
-		<div class="t-content-page__intro">
-			{{ intro }}
-		</div>
-	{% endif %}
-	{% if title %}
-		<div class="t-content-page__title">
-			<h1>{{ title }}</h1>
-		</div>
-	{% endif %}
-	{% if content %}
-		<div class="t-content-page__content">
-			{{ content }}
-		</div>
-	{% endif %}
+  {% if intro %}
+    <div class="t-content-page__intro">
+      {{ intro }}
+    </div>
+  {% endif %}
+  {% if title %}
+    <div class="t-content-page__title">
+      <h1>{{ title }}</h1>
+    </div>
+  {% endif %}
+  {% if content %}
+    <div class="t-content-page__content">
+      {{ content }}
+    </div>
+  {% endif %}
 </article>
