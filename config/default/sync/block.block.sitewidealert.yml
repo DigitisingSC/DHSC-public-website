@@ -9,7 +9,7 @@ dependencies:
 id: sitewidealert
 theme: dhsc_theme
 region: content_top
-weight: -6
+weight: -10
 provider: null
 plugin: sitewide_alert_block
 settings:

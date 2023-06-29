@@ -48,6 +48,7 @@ const careColours = {
   yellow: {
     DEFAULT: '#ECAC00',
     60: '#F4CD66',
+    20: '#FBEECC'
   },
   lightblue: {
     DEFAULT: '#34B6E4',

@@ -1,3 +1,13 @@
 .m-alert {
-
+  &__wrapper {
+    @apply bg-yellow-20;
+    @apply w-[100vw];
+    margin-left: calc((-100vw + 100%) / 2);
+    margin-right: calc((-100vw + 100%) / 2);
+  }
+  &__content {
+    a {
+      @apply text-forest underline hover:no-underline;
+    }
+  }
 }
