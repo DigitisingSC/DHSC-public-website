@@ -1,3 +1,5 @@
+import React from 'react';
+import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import alert from './alert.twig';
 import './alert.scss';
 
@@ -5,45 +7,21 @@ export default {
   title: "Design System/Molecules/Alert",
   argTypes: {
     text: { control: 'text' },
-    alertType: {
-      control: { type: 'select'},
-      options: ['primary', 'secondary', 'warning', 'success', 'price']
-    },
   },
 };
 
-const Template = ({ text, ...args }) =>
+const Template = ({ attributes, text, is_dismissible, ...args }) =>
     alert({
+      attributes,
       text,
+      is_dismissible,
       ...args,
     });
 
-export const Primary = Template.bind({});
-Primary.args = {
-  alertType: 'primary',
-  text: 'An example alert with an icon',
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  alertType: 'secondary',
-  text: 'An example alert with an icon',
-};
-
-export const Warning = Template.bind({});
-Warning.args = {
-  alertType: 'warning',
-  text: 'An example alert with an icon',
-};
-
-export const Success = Template.bind({});
-Success.args = {
-  alertType: 'success',
-  text: 'An example alert with an icon',
-};
-
-export const Price = Template.bind({});
-Price.args = {
+export const Alert = Template.bind({});
+Alert.args = {
+  attributes: new DrupalAttributes(),
   alertType: 'price',
-  text: 'An example alert with an icon',
+  text: '<p>An example alert with a <a href="#">link</a></p>',
+  is_dismissible: true,
 };
