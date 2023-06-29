@@ -1,0 +1,36 @@
+{% set classes = [
+  'm-feature-item',
+  'flex flex-col',
+  'mb-4 pb-4',
+  image is not empty ? 'm-feature-item--with-image' : 'm-feature-item--no-image',
+  'border-b-2 border-black-20',
+] | join(' ') | trim %}
+
+<div{{ attributes.addClass(classes) }}>
+  {% if image %}
+  <div class="m-featured-item__media mb-2">
+    {{ image }}
+  </div>
+  {% endif %}
+  <div class="m-featured-item__body grow flex flex-col h-auto">
+    <div class="m-featured-item__title mb-2 flex">
+      {% if link %}
+      <a href="{{ link }}" class="text-forest underline hover:no-underline">
+        {% endif %}
+        <h3 class="text-forest">{{ title }}</h3>
+        {% if link %}
+      </a>
+      {% endif %}
+    </div>
+    {% if description %}
+      <div class="m-featured-item__description mb-2 text-xs text-black-80 flex">
+        {{ description }}
+      </div>
+    {% endif %}
+    {% if date %}
+    <div class="m-featured-item__date text-xs text-coolgrey flex justify-self-end">
+      {{ date }}
+    </div>
+    {% endif %}
+  </div>
+</div>

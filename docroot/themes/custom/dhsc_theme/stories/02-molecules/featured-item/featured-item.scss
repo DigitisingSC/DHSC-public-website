@@ -1,0 +1,8 @@
+.m-featured-item {
+  &__media img {
+    @apply rounded-md h-[340px] ;
+  }
+  &__description {
+    flex: 1 1 auto;
+  }
+}
