@@ -1,0 +1,10 @@
+uuid: 6d630259-fce3-42d5-b707-174febd60a7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.featured
+label: Featured
+targetEntityType: node
+cache: true

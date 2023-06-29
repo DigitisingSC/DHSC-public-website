@@ -1,0 +1,31 @@
+uuid: fa47350e-bcc9-47fc-8ec8-d3630eedbbcc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_featured_items
+    - node.type.article
+    - node.type.event
+    - paragraphs.paragraphs_type.featured_items
+id: paragraph.featured_items.field_featured_items
+field_name: field_featured_items
+entity_type: paragraph
+bundle: featured_items
+label: Items
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      event: event
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference
