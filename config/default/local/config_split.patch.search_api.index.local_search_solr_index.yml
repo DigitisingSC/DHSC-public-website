@@ -1,0 +1,7 @@
+adding:
+  datasource_settings:
+    'entity:node':
+      bundles:
+        selected:
+          - skill
+removing: {  }
