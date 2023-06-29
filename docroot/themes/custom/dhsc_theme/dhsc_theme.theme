@@ -139,5 +139,18 @@ function dhsc_theme_theme_suggestions_form_alter(array &$suggestions, array $var
   if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page'])) {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']) . '__search';
   }
+}
 
+/**
+* Implements hook_theme_suggestions_HOOK_alter().
+*
+* Add views template suggestions.
+*
+* @inheritdoc
+*/
+function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'views_view__' . $variables['view']->getDisplay()->display['id'];
+  $suggestions[] = 'views_view__' . $variables['view']->id();
+
+ return $suggestions;
 }

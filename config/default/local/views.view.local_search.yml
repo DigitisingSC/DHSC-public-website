@@ -342,7 +342,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: 'No results found.'
+            value: '<h3 class="mb-6 font-bold leading-normal">@total results</h3>'
             format: basic_html
           tokenize: false
       sorts:
@@ -437,7 +437,17 @@ display:
           query_tags: {  }
       relationships: {  }
       use_ajax: true
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '<h3 class="mb-6 font-bold">@total results</h3>'
       footer: {  }
       display_extenders: {  }
     cache_metadata:

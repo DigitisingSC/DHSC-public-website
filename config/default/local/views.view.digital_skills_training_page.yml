@@ -363,7 +363,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: '<h3 class="mb-6 font-bold text-lg">@total results</h3>'
+          content: '<h3 class="mb-6 font-bold leading-normal">@total results</h3>'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
