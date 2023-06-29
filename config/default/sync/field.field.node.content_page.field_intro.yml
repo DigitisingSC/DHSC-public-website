@@ -1,0 +1,19 @@
+uuid: 8b2eb64a-8d80-4517-9acd-a3f3663e13bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro
+    - node.type.content_page
+id: node.content_page.field_intro
+field_name: field_intro
+entity_type: node
+bundle: content_page
+label: Intro
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

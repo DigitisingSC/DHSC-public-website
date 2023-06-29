@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.content_page.field_body_paragraphs
+    - field.field.node.content_page.field_display_intro_above_title
     - field.field.node.content_page.field_image
+    - field.field.node.content_page.field_intro
     - field.field.node.content_page.field_summary
     - node.type.content_page
   module:
@@ -27,12 +29,29 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 3
+    region: content
+  field_display_intro_above_title:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_intro:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
     weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 4
     region: content
 hidden:
   field_image: true
