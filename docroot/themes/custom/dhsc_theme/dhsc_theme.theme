@@ -132,8 +132,34 @@ function dhsc_theme_preprocess_media_oembed_iframe(&$variables) {
   }
 }
 
+function dhsc_theme_theme_suggestions_details_alter (array &$suggestions, array $variables) {
+  if ($variables['element'] && isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'details__' . str_replace('-', '_', $variables['element']['#form_id']);
+  }
+}
+
 function dhsc_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   if ($variables['element']['#form_id'] === 'dhsc_result_email_form') {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
   }
+  $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']);
+
+  // search form
+  if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']) . '__search';
+  }
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK_alter().
+*
+* Add views template suggestions.
+*
+* @inheritdoc
+*/
+function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'views_view__' . $variables['view']->getDisplay()->display['id'];
+  $suggestions[] = 'views_view__' . $variables['view']->id();
+
+ return $suggestions;
 }

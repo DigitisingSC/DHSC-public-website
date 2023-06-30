@@ -10,11 +10,13 @@ export default {
   title: "Design System/Molecules/Teaser",
 };
 
-const ListingTeaserTemplate = ({ attributes, variant, title, link, date }) =>
+const ListingTeaserTemplate = ({ attributes, variant, title, info, bundle, link, date }) =>
   teaserListingTwig({
     attributes,
     variant,
     title,
+    bundle,
+    info,
     link,
     date
   });
@@ -46,6 +48,18 @@ ListingTeaser.args = {
   attributes: new DrupalAttributes(),
   variant: 'listing',
   title: "Get help using technology at your organisation",
+  bundle: "Recommendation",
+  link: "https://www.digitalsocialcare.co.uk",
+  date: "12 May 2023"
+};
+
+export const EventTeaser = ListingTeaserTemplate.bind({});
+EventTeaser.args = {
+  attributes: new DrupalAttributes(),
+  variant: 'listing',
+  title: "Get help using technology at your organisation",
+  info: `<div>In-person</div>
+  <div><b>Location:</b> Canterbury</div>`,
   link: "https://www.digitalsocialcare.co.uk",
   date: "12 May 2023"
 };

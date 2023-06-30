@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.skill
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.localgov_text
   module:
     - entity_reference_revisions
@@ -22,9 +23,16 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
+      accordion: accordion
       localgov_text: localgov_text
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 23
+        enabled: true
+      accordion_item:
+        weight: 24
+        enabled: false
       alert:
         weight: 20
         enabled: false
@@ -51,6 +59,9 @@ settings:
         enabled: false
       from_library:
         weight: 28
+        enabled: false
+      link_description:
+        weight: 34
         enabled: false
       localgov_image:
         weight: 29
