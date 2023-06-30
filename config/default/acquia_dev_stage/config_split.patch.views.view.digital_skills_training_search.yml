@@ -1,4 +1,20 @@
 adding:
   status: true
+  display:
+    default:
+      display_options:
+        empty:
+          area_text_custom:
+            id: area_text_custom
+            table: views
+            field: area_text_custom
+            relationship: none
+            group_type: group
+            admin_label: ''
+            plugin_id: text_custom
+            empty: true
+            content: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
+            tokenize: false
+        use_ajax: true
 removing:
   status: false

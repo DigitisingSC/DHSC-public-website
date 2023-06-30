@@ -1,0 +1,44 @@
+.m-form-details {
+  > summary + * {
+    @apply transition-all;
+    max-height: 0;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+  }
+  &[open] > summary + * {
+    visibility: visible;
+    opacity: 1;
+    max-height: 999px;
+  }
+  > summary {
+    svg {
+      width: 24px;
+      height: 24px;
+      @apply mr-2 transition-all;
+    }
+    &::marker {
+      content: none;
+    }
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+  &[open] {
+    > summary svg {
+      @apply -rotate-180;
+    }
+    .m-form-details__selected {
+      @apply hidden;
+    }
+  }
+  .a-form-item--checkbox {
+    @apply pb-3 last:pb-0;
+    input {
+      @apply mb-0;
+    }
+    label {
+      @apply pb-0 text-xs;
+    }
+  }
+}

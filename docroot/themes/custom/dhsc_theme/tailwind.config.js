@@ -67,6 +67,9 @@ const careNeutrals = {
     DEFAULT: '#616265',
     20: '#F8F8F8'
   },
+  brandgrey: {
+    DEFAULT: '#CFD1D2'
+  },
   white: {
     DEFAULT: '#FFFFFF',
   },

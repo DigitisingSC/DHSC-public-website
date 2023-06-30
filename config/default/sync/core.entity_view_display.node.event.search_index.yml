@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.field_date
     - field.field.node.event.field_end_date
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_type
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
@@ -15,12 +16,28 @@ dependencies:
     - field.field.node.event.field_summary
     - node.type.event
   module:
+    - options
     - user
 id: node.event.search_index
 targetEntityType: node
 bundle: event
 mode: search_index
 content:
+  field_event_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_location:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
@@ -33,7 +50,6 @@ hidden:
   field_end_time: true
   field_image: true
   field_link: true
-  field_location: true
   field_start_time: true
   field_summary: true
   langcode: true

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.field_date
     - field.field.node.event.field_end_date
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_type
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
@@ -16,6 +17,7 @@ dependencies:
     - node.type.event
   module:
     - datetime
+    - options
     - user
 id: node.event.teaser
 targetEntityType: node
@@ -30,6 +32,13 @@ content:
       format_type: human_readable
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_event_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   field_body_paragraphs: true
