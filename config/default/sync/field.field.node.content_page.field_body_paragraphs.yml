@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.cta_banner
     - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.full_content_listings
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.video
@@ -32,40 +33,80 @@ settings:
       video: video
       cta_banner: cta_banner
       card_collection: card_collection
+      full_content_listings: full_content_listings
       from_library: from_library
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: -37
+        enabled: false
+      accordion_item:
+        weight: -36
+        enabled: false
+      alert:
+        weight: -35
+        enabled: false
       card_collection:
-        weight: -19
+        weight: -45
         enabled: true
       content_listing:
-        weight: -18
+        weight: -43
         enabled: false
       content_listing_section:
-        weight: -15
+        weight: -40
         enabled: false
       content_listing_section_links:
-        weight: -14
+        weight: -39
         enabled: false
       cta_banner:
-        weight: -20
+        weight: -46
         enabled: true
+      dynamic_content_list:
+        weight: -34
+        enabled: false
+      dynamic_content_listing:
+        weight: -33
+        enabled: false
+      featured_items:
+        weight: -32
+        enabled: false
       from_library:
-        weight: -16
+        weight: -41
         enabled: true
+      full_content_listings:
+        weight: -44
+        enabled: true
+      link_description:
+        weight: -31
+        enabled: false
       localgov_image:
-        weight: -22
+        weight: -48
         enabled: true
       localgov_link:
-        weight: -13
+        weight: -38
         enabled: false
       localgov_text:
-        weight: -23
+        weight: -49
         enabled: true
+      newsletter_signup:
+        weight: -30
+        enabled: false
+      quick_link:
+        weight: -29
+        enabled: false
+      quick_links:
+        weight: -28
+        enabled: false
+      topic:
+        weight: -27
+        enabled: false
       topic_list_builder:
-        weight: -17
+        weight: -42
+        enabled: false
+      topics:
+        weight: -26
         enabled: false
       video:
-        weight: -21
+        weight: -47
         enabled: true
 field_type: entity_reference_revisions
