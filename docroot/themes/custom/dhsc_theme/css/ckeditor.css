@@ -1,0 +1,3 @@
+.ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+  flex-wrap: wrap !important;
+}
