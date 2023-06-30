@@ -1,0 +1,13 @@
+.m-back-link {
+  @apply flex items-center py-4;
+
+  &__icon {
+    svg {
+      @apply fill-forest-100 h-2 w-2;
+    }
+  }
+
+  &__label {
+    @apply text-base underline hover:no-underline text-forest-100 ml-2;
+  }
+}
