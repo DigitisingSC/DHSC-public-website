@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.cta_banner
     - paragraphs.paragraphs_type.dynamic_content_listing
+    - paragraphs.paragraphs_type.featured_items
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
@@ -46,6 +47,7 @@ settings:
       accordion: accordion
       newsletter_signup: newsletter_signup
       topics: topics
+      featured_items: featured_items
       quick_links: quick_links
     negate: 0
     target_bundles_drag_drop:
@@ -78,6 +80,9 @@ settings:
         enabled: false
       dynamic_content_listing:
         weight: 18
+        enabled: true
+      featured_items:
+        weight: 34
         enabled: true
       from_library:
         weight: -16

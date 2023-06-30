@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.cta_banner.field_layout
     - field.field.paragraph.cta_banner.field_link
+    - field.field.paragraph.cta_banner.field_title
     - field.field.paragraph.cta_banner.localgov_image
     - field.field.paragraph.cta_banner.localgov_text
     - field.field.paragraph.cta_banner.localgov_title
@@ -33,6 +34,7 @@ third_party_settings:
         width_breakpoint: 640
     group_content:
       children:
+        - field_title
         - localgov_image
         - localgov_title
         - localgov_text
@@ -77,22 +79,30 @@ content:
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 6
+    weight: 31
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   localgov_image:
     type: media_library_widget
-    weight: 3
+    weight: 28
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   localgov_text:
     type: text_textarea
-    weight: 5
+    weight: 30
     region: content
     settings:
       rows: 5
@@ -100,7 +110,7 @@ content:
     third_party_settings: {  }
   localgov_title:
     type: string_textfield
-    weight: 4
+    weight: 29
     region: content
     settings:
       size: 60

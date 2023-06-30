@@ -1,0 +1,28 @@
+{% set classes = [
+  'o-featured-items',
+  'py-4'
+] %}
+
+<section{{ attributes.addClass(classes) }} data-layout="{{ layout }}">
+  {% if title %}
+    <h2 class="o-featured-items__title text-lg leading-tight font-bold mb-4">
+      {{ title }}
+    </h2>
+  {% endif %}
+  {% if items %}
+    <div class="o-featured-items__items mb-4">
+      {% if items is iterable %}
+        {% for key, item in items if key|first != '#' %}
+          {{ item }}
+        {% endfor %}
+      {% else %}
+        {{ items }}
+      {% endif %}
+    </div>
+  {% endif %}
+  {% if link_url %}
+  <div class="o-featured-items__link">
+    <a href="{{ link_url }}" class="text-forest text-base underline hover:no-underline focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4">{{ link_text }}</a>
+  </div>
+  {% endif %}
+</section>

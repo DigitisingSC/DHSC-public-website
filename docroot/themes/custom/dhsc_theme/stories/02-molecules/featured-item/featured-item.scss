@@ -1,0 +1,12 @@
+.m-featured-item {
+  &__media img {
+    @apply rounded-md h-[340px] object-cover;
+  }
+  &__description {
+    flex: 1 1 auto;
+  }
+  &__title a {
+    @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+    @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
+  }
+}

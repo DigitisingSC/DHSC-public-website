@@ -1,0 +1,26 @@
+{#
+  Template
+#}
+
+{% set classes = [
+  't-content-page',
+	't-content-page--default'
+] %}
+
+<article{{attributes.addClass(classes)}}>
+  {% if title %}
+    <div class="t-content-page__title">
+      <h1>{{ title }}</h1>
+    </div>
+  {% endif %}
+  {% if intro %}
+    <div class="t-content-page__intro">
+      {{ intro }}
+    </div>
+  {% endif %}
+  {% if content %}
+    <div class="t-content-page__content">
+      {{ content }}
+    </div>
+  {% endif %}
+</article>

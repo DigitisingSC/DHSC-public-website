@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.casestudy.field_body_paragraphs
     - field.field.node.casestudy.field_image
+    - field.field.node.casestudy.field_intro
     - field.field.node.casestudy.field_summary
     - node.type.casestudy
   module:
@@ -21,6 +22,13 @@ content:
     settings:
       view_mode: default
       link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_intro:
+    type: basic_string
+    label: hidden
+    settings: {  }
     third_party_settings: {  }
     weight: 1
     region: content

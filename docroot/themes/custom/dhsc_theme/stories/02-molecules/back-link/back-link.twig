@@ -1,0 +1,13 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  'm-back-link',
+] %}
+
+<a{{attributes.addClass(classes|sort|join('')|trim)}} href="#" title="{{ label|t }}">
+    <span class="m-back-link__icon">{{ icon }}</span>
+    <span class="m-back-link__label">{{ label|t }}</span>
+</a>

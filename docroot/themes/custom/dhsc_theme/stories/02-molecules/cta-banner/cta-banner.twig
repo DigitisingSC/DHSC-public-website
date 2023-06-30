@@ -4,13 +4,24 @@
   'py-4',
 ] %}
 <div{{ attributes.addClass(classes) }}>
+  {% if header %}
+  <h2 class="m-cta-banner__header text-lg leading-tight font-bold mb-4">
+    {{ header }}
+  </h2>
+  {% endif %}
   <div class="m-cta-banner__container tablet:flex tablet:gap-4">
     <div class="m-cta-banner__content tablet:w-6/12 tablet:flex tablet:flex-col tablet:justify-between">
+      {% if title %}
       <h2 class="m-cta-banner__title text-md mb-4">{{ title }}</h2>
+      {% endif %}
+      {% if description %}
       <div class="m-cta-banner__description tablet:grow">{{ description }}</div>
+      {% endif %}
     </div>
+    {% if media %}
     <div class="m-cta-banner__media tablet:w-6/12 mb-4 tablet:mb-0">
       {{ media }}
     </div>
+    {% endif %}
   </div>
 </div>

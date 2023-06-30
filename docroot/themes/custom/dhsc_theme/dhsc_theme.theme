@@ -82,6 +82,15 @@ function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
 /**
  * Implements hook_preprocess_paragraph__HOOK()
  */
+function dhsc_theme_preprocess_paragraph__featured_items(&$variables) {
+  $entity = $variables['paragraph'];
+  $featured_items_paragraph = $entity->field_featured_items->referencedEntities();
+  $variables['layout'] = count($featured_items_paragraph);
+}
+
+/**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
 function dhsc_theme_preprocess_paragraph__video(&$variables) {
   $paragraph = $variables['paragraph'];
   $media_id = $paragraph->get('field_video')->getString();

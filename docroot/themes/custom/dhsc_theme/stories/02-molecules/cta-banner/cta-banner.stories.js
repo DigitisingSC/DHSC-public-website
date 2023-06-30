@@ -11,7 +11,7 @@ export default {
   argTypes: {
     layout: {
       options: ['left', 'right'],
-      control: { type: 'radio' },
+      control: { type: 'select' },
       defaultValue: 'left'
     },
   },
@@ -21,6 +21,7 @@ export default {
 const Template = ({
   attributes,
   layout,
+  header,
   title,
   description,
   media,
@@ -28,6 +29,7 @@ const Template = ({
   ctaBanner({
     attributes,
     layout,
+    header,
     title,
     description,
     media,
@@ -37,6 +39,7 @@ export const CTABanner = Template.bind({});
 CTABanner.args = {
   attributes: new DrupalAttributes(),
   layout: "left",
+  header: "CTA Banner header",
   title: "<a href='#'>CTA Banner</a>",
   description: "This is a CTA Banner",
   media: imgTag,

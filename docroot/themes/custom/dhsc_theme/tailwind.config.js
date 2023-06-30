@@ -48,6 +48,7 @@ const careColours = {
   yellow: {
     DEFAULT: '#ECAC00',
     60: '#F4CD66',
+    20: '#FBEECC'
   },
   lightblue: {
     DEFAULT: '#34B6E4',
@@ -57,7 +58,7 @@ const careColours = {
 const careNeutrals = {
   black: {
     DEFAULT: '#101820',
-    80: '#002D26',
+    80: '#40464D',
     60: '#545454',
     40: '#9FA3A6',
     20: '#CFD1D2'
@@ -143,7 +144,36 @@ module.exports = {
         bold: '700',
         extrabold: '800',
         black: '900',
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: [
+            // Links.
+            {
+              a: {
+                '&:not(.a-button)': {
+                  textDecoration: 'underline',
+                  textUnderlineOffset: theme('spacing.1'),
+                  fontStyle: 'normal',
+                  color: theme('colors.forest.100'),
+                  transition: `all ${theme('transitionDuration.75')} ease-in-out`,
+                  '&:hover': {
+                    color: theme('colors.black.DEFAULT'),
+                    textDecoration: 'none',
+                  },
+                  '&:focus': {
+                    color: theme('colors.black.DEFAULT'),
+                    backgroundColor: theme('colors.focus.DEFAULT'),
+                    textDecoration: 'underline',
+                    textUnderlineOffset: theme('spacing.1'),
+                    textDecorationThickness: theme('spacing.1'),
+                  },
+                },
+              },
+            },
+          ],
+        },
+      }),
     },
   },
   corePlugins: {
