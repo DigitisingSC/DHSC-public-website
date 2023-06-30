@@ -3,6 +3,7 @@ import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import detailsTwig from "./form-details.twig";
 import './form-details.scss';
 import '../../00-base/forms/forms.scss';
+import './form-details.js';
 
 export default {
   title: "Design System/Molecules/Form Details",

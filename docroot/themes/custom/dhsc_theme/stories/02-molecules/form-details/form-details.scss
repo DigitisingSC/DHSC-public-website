@@ -28,6 +28,9 @@
     > summary svg {
       @apply -rotate-180;
     }
+    .m-form-details__selected {
+      @apply hidden;
+    }
   }
   .a-form-item--checkbox {
     @apply pb-3 last:pb-0;
