@@ -5,9 +5,9 @@
 
 <section{{ attributes.addClass(classes) }} data-layout="{{ layout }}">
   {% if title %}
-    <div class="o-featured-items__title mb-4">
-      <h2>{{ title }}</h2>
-    </div>
+    <h2 class="o-featured-items__title text-lg leading-tight font-bold mb-4">
+      {{ title }}
+    </h2>
   {% endif %}
   {% if items %}
     <div class="o-featured-items__items mb-4">
