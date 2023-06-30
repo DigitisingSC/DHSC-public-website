@@ -1,6 +1,6 @@
 {% set attributes = attributes.addClass([
   'js-exposed-form-target',
-  'pl-4 border-l-2 border--brandgrey tablet:border-none tablet:pl-0',
+  'pl-4 border-l-2 border--brandgrey tablet:border-none tablet:pl-0 mb-4 tablet:mb-0',
 ]) %}
 
 <section class="o-exposed-filters" x-data="{ isOpen: false }">
@@ -9,7 +9,7 @@
   </div>
   <button class="o-exposed-filters__toggle js-exposed-form-toggle tablet:hidden mb-5" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
     <div class="flex">
-      <svg class="transition" :class="isOpen ? '-rotate-180' : -rotate-0" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="transition" :class="isOpen ? '-rotate-180' : '-rotate-0'" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12.5 16.1455C12.1875 16.1455 11.9792 16.0413 11.7708 15.833L6.5625 10.6247C6.14583 10.208 6.14583 9.58301 6.5625 9.16634C6.97917 8.74967 7.60417 8.74967 8.02083 9.16634L12.5 13.6455L16.9792 9.16634C17.3958 8.74967 18.0208 8.74967 18.4375 9.16634C18.8542 9.58301 18.8542 10.208 18.4375 10.6247L13.2292 15.833C13.0208 16.0413 12.8125 16.1455 12.5 16.1455Z" fill="#00594C"/>
       </svg>
       {{ title }}
