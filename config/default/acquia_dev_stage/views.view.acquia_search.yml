@@ -271,7 +271,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: 'No results found.'
+            value: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
             format: basic_html
           tokenize: false
       sorts:
