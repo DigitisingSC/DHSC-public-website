@@ -342,7 +342,7 @@ display:
           plugin_id: text
           empty: true
           content:
-            value: '<h3 class="mb-6 font-bold leading-normal">@total results</h3>'
+            value: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
             format: basic_html
           tokenize: false
       sorts:
