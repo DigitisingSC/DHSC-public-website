@@ -48,6 +48,7 @@
         "drupal/paragraphs_ee": "^2.1@alpha",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.8",
+        "drupal/scheduler": "^1.5",
         "drupal/search_api_solr": "^4.2",
         "drupal/seckit": "^2.0",
         "drupal/shield": "^1.7",

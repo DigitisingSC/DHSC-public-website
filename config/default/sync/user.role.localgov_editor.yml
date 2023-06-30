@@ -31,6 +31,7 @@ dependencies:
     - paragraphs
     - paragraphs_library
     - path
+    - scheduler
     - sitewide_alert
     - system
     - taxonomy
@@ -163,6 +164,7 @@ permissions:
   - 'revert localgov_services_page revisions'
   - 'revert localgov_services_sublanding revisions'
   - 'revert skill revisions'
+  - 'schedule publishing of nodes'
   - 'update any media'
   - 'update media'
   - 'use editorial_workflow transition create_new_draft'
@@ -189,6 +191,7 @@ permissions:
   - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view scheduled content'
   - 'view skill revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
