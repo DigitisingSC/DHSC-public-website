@@ -5,6 +5,7 @@
  * Theme functions for the LocalGov Drupal DHSC theme.
  */
 
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 
@@ -101,9 +102,18 @@ function dhsc_theme_preprocess_paragraph__video(&$variables) {
     // Derive a thumbnail image + alt text.
     $url = $media_entity->get('field_media_oembed_video')->getString();
 
+    $embed_code = '';
     // youtube.com vs youtu.be -- both are valid.
-    $needle = strpos($url, 'youtube.com') !== FALSE ? '?v=' : 'youtu.be/';
-    $embed_code = substr($url, strpos($url, $needle) + strlen($needle));
+    if (strpos($url, 'youtube.com') !== FALSE) {
+      $parsedUrl = UrlHelper::parse($url);
+      if (isset($parsedUrl['query']) && isset($parsedUrl['query']['v'])) {
+        $embed_code = $parsedUrl['query']['v'];
+      } else {
+        $embed_code = substr($url, strpos($url, '?v=') + strlen('?v='));
+      }
+    } else {
+      $embed_code = trim(parse_url($url, PHP_URL_PATH), '/');
+    }
 
     $variables['media_thumbnail'] = "//i.ytimg.com/vi_webp/$embed_code/maxresdefault.webp";
     $variables['media_thumbnail_legacy'] = "//i.ytimg.com/vi/$embed_code/maxresdefault.jpg";
