@@ -155,7 +155,7 @@ function dhsc_theme_theme_suggestions_form_alter(array &$suggestions, array $var
   $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']);
 
   // search form
-  if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page'])) {
+  if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page', 'views-exposed-form-acquia-search-dhsc-search-page'])) {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']) . '__search';
   }
 }
