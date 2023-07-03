@@ -6,16 +6,16 @@
 {# Template #}
 <div {{ attributes.addClass(classes) }}>
   {% if header %}
-    <h2 class="relative flex items-center">{{ header }}</h2>
+    <h2 class="relative flex items-center text-black mb-4">{{ header }}</h2>
   {% endif %}
 
   {% if description %}
-    <div class="m-video__description mb-4 text-secondary-500 text-base">
+    <div class="m-video__description mb-7 text-base leading-relaxed text-black">
       {{ description }}
     </div>
   {% endif %}
 
-  <div class="m-video__content aspect-w-16 aspect-h-9">
+  <div class="m-video__content aspect-video max-w-[31.125rem]">
     {{ video }}
   </div>
 </div>
