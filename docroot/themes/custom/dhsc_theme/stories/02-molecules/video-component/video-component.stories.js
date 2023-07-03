@@ -25,6 +25,6 @@ export const videoComponent = Template.bind({});
 videoComponent.args = {
   attributes: new DrupalAttributes(),
   header: "Video",
-  description: "Video description",
+  description: "Video description, Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus ullamcorper ipsum rutrum nunc. Phasellus tempus. Suspendisse faucibus, nunc et pellentesque egestas, lacus ante convallis tellus, vitae iaculis lacus elit id tortor. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero.",
   video: videoTemplate,
 };
