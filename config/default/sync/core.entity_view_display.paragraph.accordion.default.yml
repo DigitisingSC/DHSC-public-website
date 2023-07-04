@@ -23,6 +23,15 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_framework_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
   field_header:
     type: string
     label: hidden
@@ -32,5 +41,4 @@ content:
     weight: 0
     region: content
 hidden:
-  field_framework_sections: true
   search_api_excerpt: true
