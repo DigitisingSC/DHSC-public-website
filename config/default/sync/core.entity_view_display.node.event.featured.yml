@@ -51,7 +51,6 @@ hidden:
   field_body_paragraphs: true
   field_end_date: true
   field_end_time: true
-  field_event_type: true
   field_link: true
   field_location: true
   field_start_time: true

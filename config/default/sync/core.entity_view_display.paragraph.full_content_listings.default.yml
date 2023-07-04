@@ -1,0 +1,27 @@
+uuid: 0a91e823-9835-4a23-8b7f-dbc32955226f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.full_content_listings.field_full_listing
+    - field.field.paragraph.full_content_listings.localgov_title
+    - paragraphs.paragraphs_type.full_content_listings
+  module:
+    - viewsreference
+id: paragraph.full_content_listings.default
+targetEntityType: paragraph
+bundle: full_content_listings
+mode: default
+content:
+  field_full_listing:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  localgov_title: true
+  search_api_excerpt: true

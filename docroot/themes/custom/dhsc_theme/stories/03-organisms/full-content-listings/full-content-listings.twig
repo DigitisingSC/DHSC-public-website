@@ -1,0 +1,20 @@
+{% set classes = [
+  'o-full-content-listings',
+  'py-4'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if title %}
+    <h2 class="o-full-content-listings__title text-lg leading-tight font-bold mb-4">{{ title }}</h2>
+  {% endif %}
+  {% if content %}
+    <div class="o-full-content-listings__listings">
+      {% if content is iterable %}
+        {% for key, item in content if key|first != '#' %}
+          {{ item }}
+        {% endfor %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

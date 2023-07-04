@@ -1,0 +1,21 @@
+uuid: 9d5dd183-43e3-4c3b-9689-636ac00c7d9b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - views
+    - viewsreference
+id: paragraph.field_full_listing
+field_name: field_full_listing
+entity_type: paragraph
+type: viewsreference
+settings:
+  target_type: view
+module: viewsreference
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
