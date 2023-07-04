@@ -23,79 +23,50 @@
     @apply py-2;
   }
 
+  @apply p-2 mb-4 rounded-sm w-full bg-coolgrey-20 border-2 border-black-40;
+
   &__skills_framework {
+
     table {
-      border: 1px solid #ccc;
-      border-collapse: collapse;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      table-layout: fixed;
+      @apply table-fixed m-0 p-0 w-full border-collapse;
+
+      th {
+        @apply text-base border-b;
+      }
+
+      th,
+      td {
+        @apply p-2 text-center align-top;
+      }
+
+      a {
+        @apply text-green-100 mr-2 hover:underline;
+      }
     }
 
-    table caption {
-      font-size: 1.5em;
-      margin: .5em 0 .75em;
-    }
+    @media screen and (max-width: 834px) {
 
-    table tr {
-      background-color: #f8f8f8;
-      border: 1px solid #ddd;
-      padding: .35em;
-    }
-
-    table th,
-    table td {
-      padding: .625em;
-      text-align: center;
-    }
-
-    table th {
-      font-size: .85em;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    @media screen and (max-width: 600px) {
       table {
-        border: 0;
-      }
+        thead {
+          @apply border-none text-clip h-px -m-1 overflow-hidden p-0 absolute w-px;
+        }
 
-      table caption {
-        font-size: 1.3em;
-      }
+        td {
+          @apply block border-b text-xs flex text-left;
 
-      table thead {
-        border: none;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-      }
+          &::before {
+            content: attr(data-label);
+            @apply font-bold float-left w-1/2;
+          }
 
-      table tr {
-        border-bottom: 3px solid #ddd;
-        display: block;
-        margin-bottom: .625em;
-      }
+          p {
+            @apply w-1/2;
+          }
 
-      table td {
-        border-bottom: 1px solid #ddd;
-        display: block;
-        font-size: .8em;
-      }
-
-      table td::before {
-        content: attr(data-label);
-        float: left;
-        font-weight: bold;
-      }
-
-      table td:last-child {
-        border-bottom: 0;
+          &:last-child {
+            @apply border-none;
+          }
+        }
       }
     }
   }
