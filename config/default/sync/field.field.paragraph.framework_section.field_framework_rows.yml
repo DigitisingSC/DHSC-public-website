@@ -1,0 +1,103 @@
+uuid: 2df71de9-c02c-4e85-98f5-e33013ddfc29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_framework_rows
+    - paragraphs.paragraphs_type.framework_row
+    - paragraphs.paragraphs_type.framework_section
+  module:
+    - entity_reference_revisions
+id: paragraph.framework_section.field_framework_rows
+field_name: field_framework_rows
+entity_type: paragraph
+bundle: framework_section
+label: 'Framework rows'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      framework_row: framework_row
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 26
+        enabled: false
+      accordion_item:
+        weight: 27
+        enabled: false
+      alert:
+        weight: 28
+        enabled: false
+      card_collection:
+        weight: 29
+        enabled: false
+      content_listing:
+        weight: 30
+        enabled: false
+      content_listing_section:
+        weight: 31
+        enabled: false
+      content_listing_section_links:
+        weight: 32
+        enabled: false
+      cta_banner:
+        weight: 33
+        enabled: false
+      dynamic_content_list:
+        weight: 34
+        enabled: false
+      dynamic_content_listing:
+        weight: 35
+        enabled: false
+      framework:
+        weight: 36
+        enabled: false
+      framework_row:
+        weight: 37
+        enabled: true
+      framework_section:
+        weight: 38
+        enabled: false
+      from_library:
+        weight: 39
+        enabled: false
+      link_description:
+        weight: 40
+        enabled: false
+      localgov_image:
+        weight: 41
+        enabled: false
+      localgov_link:
+        weight: 42
+        enabled: false
+      localgov_text:
+        weight: 43
+        enabled: false
+      newsletter_signup:
+        weight: 44
+        enabled: false
+      quick_link:
+        weight: 45
+        enabled: false
+      quick_links:
+        weight: 46
+        enabled: false
+      topic:
+        weight: 47
+        enabled: false
+      topic_list_builder:
+        weight: 49
+        enabled: false
+      topics:
+        weight: 48
+        enabled: false
+      video:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

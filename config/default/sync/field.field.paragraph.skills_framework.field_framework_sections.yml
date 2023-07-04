@@ -1,0 +1,106 @@
+uuid: 1fd72d1a-ddcb-467a-9aa4-e6886bfd03c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_framework_sections
+    - paragraphs.paragraphs_type.framework_section
+    - paragraphs.paragraphs_type.skills_framework
+  module:
+    - entity_reference_revisions
+id: paragraph.skills_framework.field_framework_sections
+field_name: field_framework_sections
+entity_type: paragraph
+bundle: skills_framework
+label: 'Framework sections'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      framework_section: framework_section
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 27
+        enabled: false
+      accordion_item:
+        weight: 28
+        enabled: false
+      alert:
+        weight: 29
+        enabled: false
+      card_collection:
+        weight: 30
+        enabled: false
+      content_listing:
+        weight: 31
+        enabled: false
+      content_listing_section:
+        weight: 32
+        enabled: false
+      content_listing_section_links:
+        weight: 33
+        enabled: false
+      cta_banner:
+        weight: 34
+        enabled: false
+      dynamic_content_list:
+        weight: 35
+        enabled: false
+      dynamic_content_listing:
+        weight: 36
+        enabled: false
+      framework:
+        weight: 37
+        enabled: false
+      framework_row:
+        weight: 38
+        enabled: false
+      framework_section:
+        weight: 39
+        enabled: true
+      from_library:
+        weight: 40
+        enabled: false
+      link_description:
+        weight: 41
+        enabled: false
+      localgov_image:
+        weight: 42
+        enabled: false
+      localgov_link:
+        weight: 43
+        enabled: false
+      localgov_text:
+        weight: 44
+        enabled: false
+      newsletter_signup:
+        weight: 45
+        enabled: false
+      quick_link:
+        weight: 46
+        enabled: false
+      quick_links:
+        weight: 47
+        enabled: false
+      skills_framework:
+        weight: 48
+        enabled: false
+      topic:
+        weight: 49
+        enabled: false
+      topic_list_builder:
+        weight: 51
+        enabled: false
+      topics:
+        weight: 50
+        enabled: false
+      video:
+        weight: 52
+        enabled: false
+field_type: entity_reference_revisions

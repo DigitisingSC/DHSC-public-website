@@ -81,6 +81,12 @@ settings:
       dynamic_content_listing:
         weight: 18
         enabled: true
+      framework_row:
+        weight: 35
+        enabled: false
+      framework_table:
+        weight: 36
+        enabled: false
       featured_items:
         weight: 34
         enabled: true

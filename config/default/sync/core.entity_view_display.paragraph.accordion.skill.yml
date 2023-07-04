@@ -1,28 +1,20 @@
-uuid: 1904add1-b42a-4b2e-8202-7d862b6d7f10
+uuid: e7c0137b-9c47-468f-b272-0d90a45a1e23
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.paragraph.skill
     - field.field.paragraph.accordion.field_accordion_items
     - field.field.paragraph.accordion.field_framework_sections
     - field.field.paragraph.accordion.field_header
     - paragraphs.paragraphs_type.accordion
   module:
     - entity_reference_revisions
-id: paragraph.accordion.default
+id: paragraph.accordion.skill
 targetEntityType: paragraph
 bundle: accordion
-mode: default
+mode: skill
 content:
-  field_accordion_items:
-    type: entity_reference_revisions_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 1
-    region: content
   field_framework_sections:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -30,7 +22,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   field_header:
     type: string
@@ -41,4 +33,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_accordion_items: true
   search_api_excerpt: true

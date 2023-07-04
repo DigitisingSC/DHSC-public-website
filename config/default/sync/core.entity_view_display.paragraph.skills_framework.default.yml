@@ -1,0 +1,25 @@
+uuid: 40f05471-f551-4d56-827c-33f280286996
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.skills_framework.field_framework_sections
+    - paragraphs.paragraphs_type.skills_framework
+  module:
+    - entity_reference_revisions
+id: paragraph.skills_framework.default
+targetEntityType: paragraph
+bundle: skills_framework
+mode: default
+content:
+  field_framework_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

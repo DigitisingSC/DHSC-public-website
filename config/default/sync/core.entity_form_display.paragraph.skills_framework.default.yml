@@ -1,22 +1,20 @@
-uuid: a2a4d207-f6a4-430d-a70e-fd3560c73b65
+uuid: 23934450-d1c8-4c56-a877-b1a4a250af70
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.accordion.field_accordion_items
-    - field.field.paragraph.accordion.field_framework_sections
-    - field.field.paragraph.accordion.field_header
-    - paragraphs.paragraphs_type.accordion
+    - field.field.paragraph.skills_framework.field_framework_sections
+    - paragraphs.paragraphs_type.skills_framework
   module:
     - paragraphs
-id: paragraph.accordion.default
+id: paragraph.skills_framework.default
 targetEntityType: paragraph
-bundle: accordion
+bundle: skills_framework
 mode: default
 content:
-  field_accordion_items:
+  field_framework_sections:
     type: paragraphs
-    weight: 1
+    weight: 0
     region: content
     settings:
       title: Paragraph
@@ -32,15 +30,6 @@ content:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
     third_party_settings: {  }
-  field_header:
-    type: string_textfield
-    weight: 0
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
 hidden:
   created: true
-  field_framework_sections: true
   status: true

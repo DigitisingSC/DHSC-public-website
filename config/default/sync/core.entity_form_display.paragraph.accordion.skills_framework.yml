@@ -1,20 +1,21 @@
-uuid: a2a4d207-f6a4-430d-a70e-fd3560c73b65
+uuid: f16866de-5755-48b6-af7f-9a225bb2a81f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.paragraph.skills_framework
     - field.field.paragraph.accordion.field_accordion_items
     - field.field.paragraph.accordion.field_framework_sections
     - field.field.paragraph.accordion.field_header
     - paragraphs.paragraphs_type.accordion
   module:
     - paragraphs
-id: paragraph.accordion.default
+id: paragraph.accordion.skills_framework
 targetEntityType: paragraph
 bundle: accordion
-mode: default
+mode: skills_framework
 content:
-  field_accordion_items:
+  field_framework_sections:
     type: paragraphs
     weight: 1
     region: content
@@ -42,5 +43,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_framework_sections: true
+  field_accordion_items: true
   status: true

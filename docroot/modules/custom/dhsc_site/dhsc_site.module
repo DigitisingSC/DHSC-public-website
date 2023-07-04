@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -45,6 +47,46 @@ function dhsc_site_theme() {
 }
 
 /**
+ * Implements hook_entity_form_mode_alter().
+ */
+function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
+
+  if (!$entity instanceof ParagraphInterface) {
+    return;
+  }
+
+  $request_uri = \Drupal::request()->getRequestUri();
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  // Check if this a new entity.
+  if (strpos($request_uri, 'node/add/skill')
+    || isset($node)
+    && $node->getType() === 'skill'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section'){
+    $form_mode = 'skills_framework';
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
+{
+  if (!$entity instanceof ParagraphInterface) {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node->getType() === 'skill'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section') {
+    $view_mode = 'skills_framework';
+  }
+}
+
+ /**
  * Implements hook_form_alter().
  *
  * @param [type] $form
