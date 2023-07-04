@@ -20,15 +20,8 @@ content:
       plugin_types:
         - block
     third_party_settings: {  }
-    weight: 1
-    region: content
-  localgov_title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
+  localgov_title: true
   search_api_excerpt: true
