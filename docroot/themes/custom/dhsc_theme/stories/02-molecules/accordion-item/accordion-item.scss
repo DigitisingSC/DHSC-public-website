@@ -54,17 +54,29 @@
         td {
           @apply block border-b text-xs flex text-left;
 
+          @media screen and (max-width: 480px) {
+            @apply flex-col;
+          }
+
           &::before {
             content: attr(data-label);
             @apply font-bold float-left w-1/2;
+
+            @media screen and (max-width: 480px) {
+              @apply w-full mb-2;
+            }
           }
 
           p {
             @apply w-1/2;
+
+            @media screen and (max-width: 480px) {
+              @apply w-full;
+            }
           }
 
           &:last-child {
-            @apply border-none;
+            @apply border-b-4 pt-4;
           }
         }
       }
