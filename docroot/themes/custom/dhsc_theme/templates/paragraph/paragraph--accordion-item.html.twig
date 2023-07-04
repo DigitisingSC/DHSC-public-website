@@ -38,6 +38,23 @@
  * @ingroup themeable
  */
 #}
+
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon_open %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'accordion-open',
+  } %}
+{% endset %}
+
+{% set icon_close %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'accordion-close',
+  } %}
+{% endset %}
+
 {%
   set classes = [
     'paragraph',
@@ -51,6 +68,8 @@
 	{% include '@molecules/accordion-item/accordion-item.twig' with {
     'title': content.localgov_title,
     'text': content.localgov_text,
+    'icon_open': icon_open,
+    'icon_close': icon_close,
     'variant': 'default'
   } %}
 </div>
