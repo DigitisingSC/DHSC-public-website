@@ -67,9 +67,9 @@
 <div{{attributes.addClass(classes)}}>
 	{% include '@molecules/accordion-item/accordion-item.twig' with {
     'title': content.localgov_title,
-    'text': content.localgov_text,
+    'items': content.field_framework_rows,
     'icon_open': icon_open,
     'icon_close': icon_close,
-    'variant': 'default'
+    'variant': 'skills-framework',
   } %}
 </div>
