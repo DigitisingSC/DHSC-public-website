@@ -59,10 +59,9 @@ function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) 
   $node = \Drupal::routeMatch()->getParameter('node');
 
   // Check if this a new entity.
-  if (strpos($request_uri, 'node/add/landing_page')
+  if (strpos($request_uri, 'node/add/skill')
     || isset($node)
-    // @todo switch content type to Skill.
-    && $node->getType() === 'landing_page'
+    && $node->getType() === 'skill'
     && $entity->getType() === 'accordion'
     || $entity->getType() === 'framework_section'){
     $form_mode = 'skills_framework';
@@ -80,7 +79,7 @@ function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
 
   $node = \Drupal::routeMatch()->getParameter('node');
 
-  if ($node->getType() === 'landing_page'
+  if ($node->getType() === 'skill'
     && $entity->getType() === 'accordion'
     || $entity->getType() === 'framework_section') {
     $view_mode = 'skills_framework';
