@@ -1,11 +1,14 @@
 {% set classes = [
   'o-search-region',
+  'w-full order-4'
 ] %}
-<section{{ attributes.addClass(classes) }} x-data="{ searchOpen: false }" id="search_region">
+<section{{ attributes.addClass(classes) }}
+  x-data="{ searchOpen: false }"
+  x-init="$watch('searchOpen', value => { if (value) { $nextTick(() => { $refs.searchTerm.focus() }); } })">
   <div class="container mx-auto w-full py-4 tablet:flex tablet:gap-4"
        x-show="searchOpen"
        @togglesearch.window="searchOpen = !searchOpen"
-       @click.away="searchOpen = false; $dispatch('closesearchtrigger')"
+       @click.away="searchOpen = false; $dispatch('closesearchtrigger');"
   >
     {% if content is iterable  %}
       {% for item in content %}
