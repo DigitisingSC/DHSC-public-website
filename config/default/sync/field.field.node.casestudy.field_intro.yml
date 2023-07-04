@@ -1,0 +1,19 @@
+uuid: 22ab3bcf-65c7-4fae-a872-e5ad4b3125ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_intro
+    - node.type.casestudy
+id: node.casestudy.field_intro
+field_name: field_intro
+entity_type: node
+bundle: casestudy
+label: Intro
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

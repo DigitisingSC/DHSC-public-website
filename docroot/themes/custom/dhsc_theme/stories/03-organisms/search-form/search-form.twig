@@ -10,7 +10,7 @@
     <form action="/search" class="flex relative items-stretch w-full">
       <div class="a-form-item flex flex-col w-full">
         <label for="search-term" class="sr-only">{{ 'Search'|t }}</label>
-        <input type="text" name="search-term" id="search-term" class="border-2 border-black"/>
+        <input x-ref="searchTerm" :class="{ 'focus': searchOpen }"  type="text" name="search-term" id="search-term" class="border-2 border-black"/>
       </div>
       <div class="a-form-item">
         <button type="submit" class="flex h-full w-full bg-forest justify-center items-center px-3"><span class="sr-only">{{ "Search"|t }}</span>{{ icon }}</button>

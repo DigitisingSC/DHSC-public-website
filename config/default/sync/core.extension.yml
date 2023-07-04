@@ -24,6 +24,7 @@ module:
   content_moderation: 0
   contextual: 0
   crop: 0
+  current_page_crumb: 0
   datetime: 0
   datetime_range: 0
   dbal: 0
@@ -97,6 +98,7 @@ module:
   rh_node: 0
   rh_taxonomy: 0
   role_delegation: 0
+  scheduler: 0
   search_api: 0
   search_api_solr: 0
   seckit: 0

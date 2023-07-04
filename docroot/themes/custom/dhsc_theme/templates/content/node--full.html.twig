@@ -86,14 +86,12 @@
 %}
 
 <article{{attributes.addClass(classes).removeAttribute('role')}}>
-  {{ title_prefix }}
-  {% if label and content_type != 'dhsc_homepage' %}
-    <h1{{title_attributes}}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h1>
-  {% endif %}
-  {{ title_suffix }}
   <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
-    {{ content }}
+    {% include '@templates/content-page/content-page.twig' with {
+      'title': label,
+      'intro': content.field_intro,
+      'intro_above_title': content.field_display_intro_above_title,
+      'content': content.field_body_paragraphs,
+    } %}
   </div>
 </article>

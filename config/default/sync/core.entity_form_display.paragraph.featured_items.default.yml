@@ -1,0 +1,45 @@
+uuid: a7351ca3-d6b0-48dd-9023-b16304b03420
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_items.field_featured_items
+    - field.field.paragraph.featured_items.field_link
+    - field.field.paragraph.featured_items.localgov_title
+    - paragraphs.paragraphs_type.featured_items
+  module:
+    - link
+id: paragraph.featured_items.default
+targetEntityType: paragraph
+bundle: featured_items
+mode: default
+content:
+  field_featured_items:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  localgov_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

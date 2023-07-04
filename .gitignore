@@ -99,3 +99,7 @@ tmp/**/*
 
 # Ignore Dist because it's
 **/dist
+
+# Ignore Storyboo static folder
+docroot/themes/custom/dhsc_theme/storybook-static
+docroot/themes/custom/dhsc_theme/build-storybook.log

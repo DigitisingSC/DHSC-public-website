@@ -9,9 +9,17 @@ dependencies:
     - media.type.document
     - media.type.image
     - media.type.remote_video
+    - node.type.article
+    - node.type.casestudy
+    - node.type.content_page
+    - node.type.event
+    - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
+    - node.type.recommendation
     - node.type.skill
+    - node.type.subtopic_page
+    - node.type.supplier
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -24,6 +32,7 @@ dependencies:
     - paragraphs
     - paragraphs_library
     - path
+    - scheduler
     - system
     - toolbar
   enforced:
@@ -41,8 +50,13 @@ permissions:
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
   - 'access toolbar'
+  - 'create article content'
+  - 'create casestudy content'
+  - 'create content_page content'
   - 'create document media'
+  - 'create event content'
   - 'create image media'
+  - 'create landing_page content'
   - 'create localgov_guides_overview content'
   - 'create localgov_guides_page content'
   - 'create localgov_services_landing content'
@@ -50,41 +64,69 @@ permissions:
   - 'create localgov_services_sublanding content'
   - 'create media'
   - 'create paragraph library item'
+  - 'create recommendation content'
   - 'create remote_video media'
   - 'create skill content'
+  - 'create subtopic_page content'
+  - 'create supplier content'
   - 'create url aliases'
   - 'delete media'
+  - 'delete own article content'
+  - 'delete own casestudy content'
+  - 'delete own content_page content'
   - 'delete own document media'
+  - 'delete own event content'
   - 'delete own image media'
+  - 'delete own landing_page content'
   - 'delete own localgov_guides_overview content'
   - 'delete own localgov_guides_page content'
   - 'delete own localgov_services_landing content'
   - 'delete own localgov_services_page content'
   - 'delete own localgov_services_sublanding content'
+  - 'delete own recommendation content'
   - 'delete own remote_video media'
   - 'delete own skill content'
+  - 'delete own subtopic_page content'
+  - 'delete own supplier content'
   - 'display eu cookie compliance popup'
   - 'edit any document media'
   - 'edit any image media'
   - 'edit any remote_video media'
+  - 'edit own article content'
+  - 'edit own casestudy content'
+  - 'edit own content_page content'
   - 'edit own document media'
+  - 'edit own event content'
   - 'edit own image media'
+  - 'edit own landing_page content'
   - 'edit own localgov_guides_overview content'
   - 'edit own localgov_guides_page content'
   - 'edit own localgov_services_landing content'
   - 'edit own localgov_services_page content'
   - 'edit own localgov_services_sublanding content'
+  - 'edit own recommendation content'
   - 'edit own remote_video media'
   - 'edit own skill content'
+  - 'edit own subtopic_page content'
+  - 'edit own supplier content'
   - 'edit paragraph library item'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
+  - 'revert article revisions'
+  - 'revert casestudy revisions'
+  - 'revert content_page revisions'
+  - 'revert event revisions'
+  - 'revert landing_page revisions'
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
   - 'revert localgov_services_landing revisions'
   - 'revert localgov_services_page revisions'
   - 'revert localgov_services_sublanding revisions'
+  - 'revert recommendation revisions'
   - 'revert skill revisions'
+  - 'revert subtopic_page revisions'
+  - 'revert supplier revisions'
+  - 'schedule publishing of nodes'
   - 'update media'
   - 'use editorial_workflow transition create_new_draft'
   - 'use editorial_workflow transition publish'
@@ -93,7 +135,12 @@ permissions:
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view all revisions'
+  - 'view article revisions'
+  - 'view casestudy revisions'
+  - 'view content_page revisions'
   - 'view editoria11y checker'
+  - 'view event revisions'
+  - 'view landing_page revisions'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
   - 'view localgov_services_landing revisions'
@@ -101,6 +148,10 @@ permissions:
   - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view recommendation revisions'
+  - 'view scheduled content'
   - 'view skill revisions'
+  - 'view subtopic_page revisions'
+  - 'view supplier revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

@@ -11,20 +11,21 @@
       {% for item in items %}
         <li class="tablet:mr-8 flex items-center" x-data="">
           {% if item.below %}
-            <a href="{{ item.url }}" class="block underline hover:no-underline mr-2">{{ item.title }}</a>
             <a href="#"
+               class="flex items-center text-black underline hover:no-underline mr-2"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
-            >{{ svgIconDown }}</a>
+            ><span class="mr-2">{{ item.title }}</span>{{ svgIconDown }}</a>
             <a href="#"
+               class="flex items-center text-black underline hover:no-underline mr-2"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
                @keydown.enter="$dispatch('activedropdownmain', { active: false })"
-            >{{ svgIconUp }}</a>
+            ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
-               class="block mr-2 underline hover:no-underline"
+               class="block mr-2 text-black underline hover:no-underline"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
@@ -49,7 +50,7 @@
                 >
                 {% for subItem in item.below %}
                   <li class="tablet:mr-8 flex items-center">
-                    <a href="{{ subItem.url }}" class="block text-green underline hover:no-underline mb-2">{{ subItem.title }}</a>
+                    <a href="{{ subItem.url }}" class="block text-forest underline hover:no-underline mb-2">{{ subItem.title }}</a>
                   </li>
                 {% endfor %}
                 </ul>

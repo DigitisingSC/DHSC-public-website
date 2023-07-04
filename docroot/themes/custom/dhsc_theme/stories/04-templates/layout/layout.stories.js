@@ -10,14 +10,16 @@ import { NavigationPrimary } from "../../03-organisms/navigation/navigation.stor
 import NavigationPrimaryTwig from "../../03-organisms/navigation/navigation--primary.twig";
 import { NavigationSecondary } from "../../03-organisms/navigation/navigation.stories";
 import NavigationSecondaryTwig from "../../03-organisms/navigation/navigation--secondary.twig";
+import { MessagesRegion } from "../../03-organisms/messages-region/messages-region.stories";
+import messagesRegionTwig from "../../03-organisms/messages-region/messages-region.twig";
+import { ContentTopRegion } from '../../03-organisms/content-top-region/content-top-region.stories';
+import ContentTopRegionTwig from '../../03-organisms/content-top-region/content-top-region.twig';
 import { BannerRegion } from "../../03-organisms/banner-region/banner-region.stories";
 import BannerRegionTwig from "../../03-organisms/banner-region/banner-region.twig";
 import { BreadcrumbRegion } from "../../03-organisms/breadcrumb-region/breadcrumb-region.stories";
 import breadcrumbRegionTwig from "../../03-organisms/breadcrumb-region/breadcrumb-region.twig";
 import { LocalTasks } from "../../03-organisms/local-tasks/local-tasks.stories";
 import localTasksRegionTwig from "../../03-organisms/local-tasks/local-tasks.twig";
-import { MessagesRegion } from "../../03-organisms/messages-region/messages-region.stories";
-import messagesRegionTwig from "../../03-organisms/messages-region/messages-region.twig";
 import {
   FooterTop,
   Footer,
@@ -40,10 +42,10 @@ const Template = ({
   mobile_search,
   primary_menu,
   secondary_menu,
+  messages,
   banner,
   tabs,
   breadcrumb,
-  messages,
   content_top,
   content,
   content_bottom,
@@ -62,10 +64,10 @@ const Template = ({
     mobile_search,
     primary_menu,
     secondary_menu,
+    messages,
     banner,
     tabs,
     breadcrumb,
-    messages,
     content_top,
     content,
     content_bottom,
@@ -99,6 +101,9 @@ const BreadcrumbRegionTemplate = (args) => breadcrumbRegionTwig({
 const MessagesRegionTemplate = (args) => messagesRegionTwig({
   ...MessagesRegion.args
 });
+const ContentTopRegionTemplate = (args) => ContentTopRegionTwig({
+  ...ContentTopRegion.args
+});
 const LocalTasksRegionTemplate = (args) => localTasksRegionTwig({
   ...LocalTasks.args
 });
@@ -128,7 +133,7 @@ Layout.args = {
   breadcrumb: BreadcrumbRegionTemplate,
   messages: MessagesRegionTemplate,
   tabs: LocalTasksRegionTemplate,
-  content_top: "Content top",
+  content_top: ContentTopRegionTemplate,
   content: "Content",
   content_bottom: "Content bottom",
   sidebar_first: "Sidebar first",

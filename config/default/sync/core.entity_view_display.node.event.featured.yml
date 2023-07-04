@@ -1,0 +1,60 @@
+uuid: 312778a3-3cc3-4462-804d-787edaa19db1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.featured
+    - field.field.node.event.field_body_paragraphs
+    - field.field.node.event.field_date
+    - field.field.node.event.field_end_date
+    - field.field.node.event.field_end_time
+    - field.field.node.event.field_image
+    - field.field.node.event.field_link
+    - field.field.node.event.field_location
+    - field.field.node.event.field_start_time
+    - field.field.node.event.field_summary
+    - node.type.event
+  module:
+    - datetime
+    - user
+id: node.event.featured
+targetEntityType: node
+bundle: event
+mode: featured
+content:
+  field_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: human_readable
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_featured_article
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_end_date: true
+  field_end_time: true
+  field_event_type: true
+  field_link: true
+  field_location: true
+  field_start_time: true
+  langcode: true
+  links: true
+  search_api_excerpt: true
