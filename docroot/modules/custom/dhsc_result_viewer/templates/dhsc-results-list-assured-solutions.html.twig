@@ -3,6 +3,18 @@
 {% set icon %}
 {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
+    'icon': 'chevron-left',
+  } %}
+{% endset %}
+
+{% include '@molecules/back-link/back-link.twig' with {
+  label: 'Back',
+  icon: icon,
+} %}
+
+{% set icon %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
     'icon': 'triangle',
   } %}
 {% endset %}
