@@ -17,7 +17,10 @@ dependencies:
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
+    - node.type.recommendation
     - node.type.skill
+    - node.type.subtopic_page
+    - node.type.supplier
     - taxonomy.vocabulary.skill_level
     - workflows.workflow.editorial_workflow
   module:
@@ -36,6 +39,7 @@ dependencies:
     - system
     - taxonomy
     - toolbar
+    - webform
   enforced:
     module:
       - localgov_roles
@@ -46,12 +50,17 @@ label: Editor
 weight: 2
 is_admin: null
 permissions:
+  - 'access administration pages'
+  - 'access any webform configuration'
   - 'access content overview'
   - 'access media overview'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
   - 'access toolbar'
+  - 'access webform help'
+  - 'access webform overview'
   - 'add sitewide alert entities'
+  - 'administer webform element access'
   - 'create article content'
   - 'create casestudy content'
   - 'create content_page content'
@@ -59,6 +68,7 @@ permissions:
   - 'create event content'
   - 'create hero media'
   - 'create image media'
+  - 'create landing_page content'
   - 'create localgov_guides_overview content'
   - 'create localgov_guides_page content'
   - 'create localgov_services_landing content'
@@ -66,10 +76,14 @@ permissions:
   - 'create localgov_services_sublanding content'
   - 'create media'
   - 'create paragraph library item'
+  - 'create recommendation content'
   - 'create remote_video media'
   - 'create skill content'
+  - 'create subtopic_page content'
+  - 'create supplier content'
   - 'create terms in skill_level'
   - 'create url aliases'
+  - 'create webform'
   - 'delete any article content'
   - 'delete any casestudy content'
   - 'delete any content_page content'
@@ -84,8 +98,11 @@ permissions:
   - 'delete any localgov_services_page content'
   - 'delete any localgov_services_sublanding content'
   - 'delete any media'
+  - 'delete any recommendation content'
   - 'delete any remote_video media'
   - 'delete any skill content'
+  - 'delete any subtopic_page content'
+  - 'delete any supplier content'
   - 'delete article revisions'
   - 'delete casestudy revisions'
   - 'delete content_page revisions'
@@ -110,10 +127,16 @@ permissions:
   - 'delete own localgov_services_landing content'
   - 'delete own localgov_services_page content'
   - 'delete own localgov_services_sublanding content'
+  - 'delete own recommendation content'
   - 'delete own remote_video media'
   - 'delete own skill content'
+  - 'delete own subtopic_page content'
+  - 'delete own supplier content'
+  - 'delete recommendation revisions'
   - 'delete sitewide alert entities'
   - 'delete skill revisions'
+  - 'delete subtopic_page revisions'
+  - 'delete supplier revisions'
   - 'delete terms in skill_level'
   - 'display eu cookie compliance popup'
   - 'edit any article content'
@@ -129,8 +152,12 @@ permissions:
   - 'edit any localgov_services_landing content'
   - 'edit any localgov_services_page content'
   - 'edit any localgov_services_sublanding content'
+  - 'edit any recommendation content'
   - 'edit any remote_video media'
   - 'edit any skill content'
+  - 'edit any subtopic_page content'
+  - 'edit any supplier content'
+  - 'edit any webform'
   - 'edit own article content'
   - 'edit own casestudy content'
   - 'edit own content_page content'
@@ -144,8 +171,11 @@ permissions:
   - 'edit own localgov_services_landing content'
   - 'edit own localgov_services_page content'
   - 'edit own localgov_services_sublanding content'
+  - 'edit own recommendation content'
   - 'edit own remote_video media'
   - 'edit own skill content'
+  - 'edit own subtopic_page content'
+  - 'edit own supplier content'
   - 'edit paragraph library item'
   - 'edit sitewide alert entities'
   - 'edit terms in skill_level'
@@ -163,7 +193,10 @@ permissions:
   - 'revert localgov_services_landing revisions'
   - 'revert localgov_services_page revisions'
   - 'revert localgov_services_sublanding revisions'
+  - 'revert recommendation revisions'
   - 'revert skill revisions'
+  - 'revert subtopic_page revisions'
+  - 'revert supplier revisions'
   - 'schedule publishing of nodes'
   - 'update any media'
   - 'update media'
@@ -191,7 +224,10 @@ permissions:
   - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
+  - 'view recommendation revisions'
   - 'view scheduled content'
   - 'view skill revisions'
+  - 'view subtopic_page revisions'
+  - 'view supplier revisions'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
