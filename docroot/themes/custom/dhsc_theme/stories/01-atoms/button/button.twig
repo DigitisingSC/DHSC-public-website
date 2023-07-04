@@ -40,8 +40,9 @@
     <div x-data="{ searchIsActive : false }">
       <{{ tag_name }} {{ attributes }}
         @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive; $dispatch('activedropdownmain', { active: false })"
-        @keyup.enter="$dispatch('togglesearch')"
         @closesearchtrigger.window="searchIsActive = false"
+        x-bind:aria-expanded="searchIsActive.toString()"
+        aria-controls="search_region"
       >
         <div x-show="searchIsActive" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close'|t }}</span></div>
         <div x-show="!searchIsActive" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Search'|t }}</span></div>
