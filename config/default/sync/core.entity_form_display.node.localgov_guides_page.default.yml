@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
     - field.field.node.localgov_guides_page.field_summary
+    - field.field.node.localgov_guides_page.field_topic_term
     - field.field.node.localgov_guides_page.localgov_guides_parent
     - field.field.node.localgov_guides_page.localgov_guides_section_title
     - node.type.localgov_guides_page
@@ -20,12 +21,14 @@ dependencies:
     - paragraphs_ee
     - paragraphs_features
     - path
+    - scheduler
 third_party_settings:
   field_group:
     group_guide_page_details:
       children:
         - localgov_guides_section_title
         - localgov_guides_parent
+        - field_topic_term
       label: 'Guide page details'
       region: content
       parent_name: ''
@@ -112,7 +115,7 @@ content:
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 4
+    weight: 5
     region: content
     settings:
       rows: 5
@@ -122,6 +125,12 @@ content:
         maxlength_js: 160
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
+  field_topic_term:
+    type: options_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 1
@@ -131,13 +140,13 @@ content:
     third_party_settings: {  }
   localgov_guides_parent:
     type: options_select
-    weight: 2
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   localgov_guides_section_title:
     type: string_textfield
-    weight: 1
+    weight: 5
     region: content
     settings:
       size: 60
@@ -161,6 +170,17 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 20
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -193,6 +213,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   url_redirects:
     weight: 9
