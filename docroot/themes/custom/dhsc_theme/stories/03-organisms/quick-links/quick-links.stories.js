@@ -19,7 +19,8 @@ export default {
 };
 
 const svgIconTemplate = (args) => svgIcon({
-  ...svgIcon.args
+  ...svgIcon.args,
+  icon: 'card-arrow',
 });
 
 const quickLink1 = (args) => quickLinkTwig({

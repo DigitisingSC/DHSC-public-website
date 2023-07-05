@@ -4,19 +4,6 @@
 
   &:hover {
     background: #ccdedb;
-
-    #{$this}__link {
-      a {
-        @apply no-underline;
-        @apply focus:underline;
-      }
-    }
-
-    #{$this}__icon {
-      span {
-        @apply bg-forest-100;
-      }
-    }
   }
 
   &__link {
@@ -29,16 +16,11 @@
   }
 
   &__icon {
-    span {
-      @apply bg-green-100;
-      padding: 8px;
-      border-radius: 100%;
+    @apply text-green-100;
 
-      svg {
-        @apply fill-forest-20;
-        height: 12px;
-        width: 12px;
-      }
+    svg {
+      height: 20px;
+      width: 20px;
     }
   }
 

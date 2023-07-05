@@ -53,6 +53,9 @@ const careColours = {
   lightblue: {
     DEFAULT: '#34B6E4',
   },
+  linkhover: {
+    DEFAULT: '#002D26',
+  },
 }
 
 const careNeutrals = {
@@ -174,17 +177,17 @@ module.exports = {
       addComponents({
         '.container': {
           maxWidth: '100%',
-          paddingLeft: '.5rem',
-          paddingRight: '.5rem',
+          paddingLeft: '.938rem',
+          paddingRight: '.938rem',
           '@screen tablet': {
             maxWidth: '960px',
-            paddingLeft: '1rem',
-            paddingRight: '1rem'
+            paddingLeft: '1.875rem',
+            paddingRight: '1.875rem'
           },
           '@screen desktop': {
             maxWidth: '1024px',
-            paddingLeft: '1rem',
-            paddingRight: '1rem'
+            paddingLeft: '1.875rem',
+            paddingRight: '1.875rem'
           },
         }
       })

@@ -4,72 +4,64 @@
   background: rgba(204, 222, 219, 0.5);
 
   &:hover {
-    #{$this}__link {
-      a {
-        @apply no-underline focus:underline;
-      }
-    }
 
-    #{$this}__icon {
-      span {
-        @apply bg-forest-100;
-      }
-    }
   }
 
   &--green-20 {
-    @apply bg-green-20;
+    @apply bg-green-20 hover:bg-green-40;
+
+    #{$this}__icon {
+      svg {
+        @apply text-forest-100;
+      }
+    }
   }
 
   &--green-60 {
-    @apply bg-green-60;
+    @apply bg-green-60 hover:bg-green-80;
+
+    #{$this}__icon {
+      svg {
+        @apply text-forest-100;
+      }
+    }
   }
 
   &--burgundy {
-    @apply bg-burgundy text-white;
+    @apply bg-burgundy text-white hover:bg-[#791d3c];
 
     #{$this}__icon {
-      span {
-        @apply bg-white;
-
-        svg {
-          @apply fill-burgundy;
-        }
-      }
-    }
-
-    &:hover {
-      #{$this}__icon {
-        span {
-          @apply bg-black/50;
-        }
+      svg {
+        @apply text-white;
       }
     }
   }
 
   &--forest-100 {
-    @apply bg-forest-100 text-white;
+    @apply bg-forest-100 text-white hover:bg-linkhover;
+
+    #{$this}__icon {
+      svg {
+        @apply text-white;
+      }
+    }
   }
 
   &__link {
     @apply leading-tight mb-2;
 
     a {
-      @apply underline;
       @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
     }
   }
 
   &__icon {
     span {
-      @apply bg-green-100;
-      padding: 8px;
-      border-radius: 100%;
 
       svg {
-        @apply fill-forest-20;
-        height: 12px;
-        width: 12px;
+        @apply text-green-100;
+        height: 20px;
+        width: 20px;
       }
     }
   }

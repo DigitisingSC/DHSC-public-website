@@ -3,6 +3,7 @@ import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import './quick-link.scss';
 import quickLinkTwig from "./quick-link.twig";
 import { svgIcon } from '../../01-atoms/svg/svg.stories';
+import svgIconTwig from '../../01-atoms/svg/svg.twig';
 
 export default {
   title: "Design System/Molecules/Quick Link",
@@ -14,8 +15,9 @@ export default {
   },
 };
 
-const svgIconTemplate = (args) => svgIcon({
-  ...svgIcon.args
+const svgIconTemplate = (args) => svgIconTwig({
+  ...svgIcon.args,
+  icon: 'card-arrow',
 });
 
 import image from '../../assets/images/content-card.jpg';
