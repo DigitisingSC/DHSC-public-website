@@ -34,31 +34,6 @@
           {% endif %}
         </li>
       {% endfor %}
-        <li class="m-menu__show-more tablet:hidden"
-            x-data="{ mobileDropDownActive: false }">
-
-          <a href="#"
-             class="flex items-center text-black"
-             x-show="mobileDropDownActive == false"
-             @click.prevent=" mobileDropDownActive = true "
-             @keydown.enter=" mobileDropDownActive = true "
-          ><span class="mr-2">More</span>{{ svgIconDown }}</a>
-          <a href="#"
-             class="flex items-center text-black"
-             x-show="mobileDropDownActive == true"
-             @click.prevent=" mobileDropDownActive = false "
-             @keydown.enter=" mobileDropDownActive = false "
-          ><span class="mr-2">More</span>{{ svgIconUp }}</a>
-          <ul x-show="mobileDropDownActive == true">
-            {% for item in items %}
-              {% if loop.index > 1 %}
-                <li class="mt-4">
-                  <a href="{{ item.url }}">{{ item.title }}</a>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </li>
     </ul>
     <div x-data="{ isActive: false }">
       {% for item in items %}
@@ -70,9 +45,15 @@
               <div class="tablet:w-6/12">
                 <h3 class="text-sm tablet:text-md">{{ item.title }}</h3>
             {% endif %}
-              <ul class="m-menu--level-1 py-4"
+            {% if loop.last %}
+                <ul class="m-menu--level-1 py-7"
                     @activedropdownmain.window="isActive = $event.detail.active"
                 >
+            {% else %}
+                  <ul class="m-menu--level-1 py-4"
+                      @activedropdownmain.window="isActive = $event.detail.active"
+                  >
+            {% endif %}
                 {% for subItem in item.below %}
                   <li class="tablet:mr-8 flex items-center">
                     <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>

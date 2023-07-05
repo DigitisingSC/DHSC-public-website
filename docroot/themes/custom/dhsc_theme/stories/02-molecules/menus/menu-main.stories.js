@@ -59,6 +59,7 @@ const Template = ({ items, attributes, svgIconUp, svgIconDown, featuredLinks }) 
      { title: 'Item 1', url: '#', below: [{ title: 'subitem 1', url: '#'}, { title: 'subitem 2', url: '#'}] },
      { title: 'Item 2', url: '#' },
      { title: 'Item 3', url: '#' },
+     { title: 'More', url: '#', below: [{ title: 'subitem 1', url: '#'}, { title: 'subitem 2', url: '#'}]  },
    ],
    svgIconUp: svgIconUpTemplate,
    svgIconDown: svgIconDownTemplate,
