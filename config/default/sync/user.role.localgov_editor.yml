@@ -21,7 +21,10 @@ dependencies:
     - node.type.skill
     - node.type.subtopic_page
     - node.type.supplier
+    - taxonomy.vocabulary.category
+    - taxonomy.vocabulary.localgov_topic
     - taxonomy.vocabulary.skill_level
+    - taxonomy.vocabulary.skill_method
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -56,6 +59,7 @@ permissions:
   - 'access media overview'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
+  - 'access taxonomy overview'
   - 'access toolbar'
   - 'access webform help'
   - 'access webform overview'
@@ -81,7 +85,10 @@ permissions:
   - 'create skill content'
   - 'create subtopic_page content'
   - 'create supplier content'
+  - 'create terms in category'
+  - 'create terms in localgov_topic'
   - 'create terms in skill_level'
+  - 'create terms in skill_method'
   - 'create url aliases'
   - 'create webform'
   - 'delete any article content'
@@ -137,7 +144,10 @@ permissions:
   - 'delete skill revisions'
   - 'delete subtopic_page revisions'
   - 'delete supplier revisions'
+  - 'delete terms in category'
+  - 'delete terms in localgov_topic'
   - 'delete terms in skill_level'
+  - 'delete terms in skill_method'
   - 'display eu cookie compliance popup'
   - 'edit any article content'
   - 'edit any casestudy content'
@@ -178,7 +188,10 @@ permissions:
   - 'edit own supplier content'
   - 'edit paragraph library item'
   - 'edit sitewide alert entities'
+  - 'edit terms in category'
+  - 'edit terms in localgov_topic'
   - 'edit terms in skill_level'
+  - 'edit terms in skill_method'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
