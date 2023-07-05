@@ -1,9 +1,6 @@
 .m-topic {
-
-  $this: &;
-
   &:hover {
-    background: #ccdedb;
+    @apply bg-[#ccdedb];
   }
 
   &__link {
@@ -25,10 +22,10 @@
   }
 
   &:last-child {
-    background: #fbeecc;
+    @apply bg-[#fbeecc];
 
     &:hover {
-      background: #f9e6b2;
+      @apply bg-[#f9e6b2];
     }
   }
 }
