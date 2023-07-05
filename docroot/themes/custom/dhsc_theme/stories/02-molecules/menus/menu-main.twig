@@ -7,7 +7,7 @@
 {# Template #}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu--level-0 relative flex items-start" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
+    <ul class="m-menu--level-0 relative flex items-start py-[15px]" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
       {% for item in items %}
         <li class="flex items-center" x-data="">
           {% if item.below %}
@@ -63,12 +63,12 @@
     <div x-data="{ isActive: false }">
       {% for item in items %}
         <div x-show="isActive == {{ loop.index }}"
-             class="relative mt-4 -mb-4 w-[100vw] left-[50%] -translate-x-[50%] bg-white">
+             class="relative w-[100vw] left-[50%] -translate-x-[50%] bg-white">
           <div class="container mx-auto">
             {% if loop.index == 1 %}
-            <div class="tablet:flex tablet:items-start py-4 tablet:py-6">
+            <div class="tablet:flex tablet:items-start py-7">
               <div class="tablet:w-6/12">
-                <h3 class="text-sm tablet:text-md mt-4">{{ item.title }}</h3>
+                <h3 class="text-sm tablet:text-md">{{ item.title }}</h3>
             {% endif %}
               <ul class="m-menu--level-1 py-4"
                     @activedropdownmain.window="isActive = $event.detail.active"
