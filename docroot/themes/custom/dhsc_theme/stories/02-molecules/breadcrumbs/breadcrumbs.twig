@@ -7,7 +7,7 @@
     {% for item in items %}
       <li class="m-breadcrumbs__item">
         {% if item.url %}
-          <a class="m-breadcrumbs__link underline hover:no-underline" href="{{ item.url }}">{{ item.text }}</a>
+          <a class="m-breadcrumbs__link" href="{{ item.url }}">{{ item.text }}</a>
           <span class="m-breadcrumbs__separator mx-2">></span>
         {% else %}
           {{ item.text }}

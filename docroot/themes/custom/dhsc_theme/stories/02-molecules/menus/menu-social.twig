@@ -22,11 +22,11 @@
                 'icon': item.icon,
               } %}
             {% endset %}
-            <a href="{{ item.url }}" class="flex items-center text-forest underline hover:no-underline">
+            <a href="{{ item.url }}" class="flex items-center text-forest">
               <span class="mr-2">{{ socialIcon }}</span>{{ item.title }}
             </a>
           {% else %}
-            <a href="{{ item.url }}" class="flex items-center text-forest underline hover:no-underline">
+            <a href="{{ item.url }}" class="flex items-center text-forest">
               <span class="mr-2">{{ item.icon }}</span>{{ item.title }}
             </a>
           {% endif %}

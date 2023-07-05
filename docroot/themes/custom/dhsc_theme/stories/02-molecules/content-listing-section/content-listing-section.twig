@@ -18,11 +18,11 @@ Template
         {% if section_link_group.child_links %}
           <ul class="m-content-list__children ml-4">
             <li class="my-2">
-              <a href="{{ section_link_group.section_link.href }}" class="m-content-list__child text-base underline hover:underline ">{{ 'Overview'|t }}</a>
+              <a href="{{ section_link_group.section_link.href }}" class="m-content-list__child text-base">{{ 'Overview'|t }}</a>
             </li>
             {% for child_link in section_link_group.child_links %}
               <li class="my-2">
-                <a href="{{ child_link.href }}" class="m-content-list__child text-base underline hover:underline ">{{ child_link.title }}</a>
+                <a href="{{ child_link.href }}" class="m-content-list__child text-base">{{ child_link.title }}</a>
               </li>
             {% endfor %}
           </ul>

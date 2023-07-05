@@ -1,6 +1,5 @@
 .o-card-collection {
   &__link a {
-    @apply text-forest-100 underline hover:no-underline;
-    @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+    @apply text-forest-100;
   }
 }

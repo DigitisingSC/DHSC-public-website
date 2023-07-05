@@ -2,9 +2,6 @@
   &__content > div {
     @apply mb-2;
   }
-  &__content a {
-    @apply underline hover:no-underline;
-  }
   &__content p {
     @apply mb-4;
     &:last-child {

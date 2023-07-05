@@ -12,20 +12,20 @@
         <li class="tablet:mr-8 flex items-center" x-data="">
           {% if item.below %}
             <a href="#"
-               class="flex items-center text-black underline hover:no-underline mr-2"
+               class="flex items-center text-black mr-2"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconDown }}</a>
             <a href="#"
-               class="flex items-center text-black underline hover:no-underline mr-2"
+               class="flex items-center text-black mr-2"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
                @keydown.enter="$dispatch('activedropdownmain', { active: false })"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
-               class="block mr-2 text-black underline hover:no-underline"
+               class="block mr-2 text-black"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
@@ -43,14 +43,14 @@
             {% if loop.index == 1 %}
             <div class="tablet:flex tablet:items-start">
               <div class="tablet:w-6/12">
-                <h3 class="text-md text-bold mt-4">{{ item.title }}</h3>
+                <h3 class="text-md mt-4">{{ item.title }}</h3>
             {% endif %}
               <ul class="m-menu--level-1 py-4"
                     @activedropdownmain.window="isActive = $event.detail.active"
                 >
                 {% for subItem in item.below %}
                   <li class="tablet:mr-8 flex items-center">
-                    <a href="{{ subItem.url }}" class="block text-forest underline hover:no-underline mb-2">{{ subItem.title }}</a>
+                    <a href="{{ subItem.url }}" class="block text-forest mb-2">{{ subItem.title }}</a>
                   </li>
                 {% endfor %}
                 </ul>

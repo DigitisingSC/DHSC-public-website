@@ -23,8 +23,7 @@
     @apply leading-tight mb-2;
 
     a {
-      @apply text-black underline font-bold;
-      @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+      @apply text-black;
       @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
     }
   }

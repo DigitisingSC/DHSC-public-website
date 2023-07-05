@@ -18,6 +18,9 @@
   html {
     font-family: 'Frutiger', arial, system-ui, sans-serif;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: theme('fontWeight.bold'),
+  }
   h1 {
     font-size: theme('fontSize.lg');
     @screen tablet {
@@ -52,6 +55,21 @@
     font-size: theme('fontSize.xs');
     @screen tablet {
       font-size: theme('fontSize.sm');
+    }
+  }
+  a {
+    text-decoration-line: underline;
+
+    &:hover {
+      text-decoration-line: none;
+    }
+    &:focus {
+      outline: none;
+      color: theme('colors.black.DEFAULT') !important;
+      background-color: theme('colors.focus.DEFAULT');
+      text-decoration-line: underline;
+      text-decoration-thickness: 4px;
+      text-underline-offset: 4px;
     }
   }
 }

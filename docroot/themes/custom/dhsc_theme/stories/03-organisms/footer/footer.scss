@@ -5,8 +5,4 @@
       @apply object-contain;
     }
   }
-
-  a {
-    @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
-  }
 }
