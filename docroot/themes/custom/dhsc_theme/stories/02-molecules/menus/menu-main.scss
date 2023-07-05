@@ -6,11 +6,11 @@
   .m-menu--level-0 > li {
     @apply mr-4 tablet:mr-[80px] desktop:mr-[100px];
   }
-  .m-menu--level-0 > li:nth-last-child(-n + 2) {
-    @apply mr-0;
+  .m-menu--level-0 > li:last-child {
+    @apply flex tablet:hidden mr-0;
   }
 
-  .m-menu--level-0 > li:nth-child(n+2):not(.m-menu__show-more) {
+  .m-menu--level-0 > li:nth-child(n+2):not(:last-child) {
     @apply hidden tablet:flex;
   }
 
