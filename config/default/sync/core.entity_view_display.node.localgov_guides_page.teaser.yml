@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
     - field.field.node.localgov_guides_page.field_summary
+    - field.field.node.localgov_guides_page.field_topic_term
     - field.field.node.localgov_guides_page.localgov_guides_parent
     - field.field.node.localgov_guides_page.localgov_guides_section_title
     - node.type.localgov_guides_page
@@ -38,6 +39,7 @@ hidden:
   field_body_paragraphs: true
   field_metatags: true
   field_summary: true
+  field_topic_term: true
   langcode: true
   links: true
   localgov_guides_parent: true
