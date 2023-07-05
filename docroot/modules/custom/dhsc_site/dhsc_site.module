@@ -79,7 +79,7 @@ function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
 
   $node = \Drupal::routeMatch()->getParameter('node');
 
-  if ($node->getType() === 'skill'
+  if (isset($node) && $node->getType() === 'skill'
     && $entity->getType() === 'accordion'
     || $entity->getType() === 'framework_section') {
     $view_mode = 'skills_framework';
