@@ -16,12 +16,16 @@
                x-show="isSelected == false || isSelected != {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
+               aria-expanded="false"
+               aria-controls="menu_main_sub_{{ loop.index }}"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconDown }}</a>
             <a href="#"
                class="flex items-center text-black"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
                @keydown.enter="$dispatch('activedropdownmain', { active: false })"
+               aria-expanded="true"
+               aria-controls="menu_main_sub_{{ loop.index }}"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
@@ -38,6 +42,7 @@
     <div x-data="{ isActive: false }">
       {% for item in items %}
         <div x-show="isActive == {{ loop.index }}"
+            id="menu_main_sub_{{ loop.index }}"
              class="relative w-[100vw] left-[50%] -translate-x-[50%] bg-white">
           <div class="container mx-auto">
             {% if loop.index == 1 %}
