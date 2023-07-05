@@ -1,5 +1,17 @@
 .m-menu--main {
   .m-menu--level-0 li svg {
-    @apply h-2 w-2;
+    @apply h-3 w-3;
   }
+
+  .m-menu--level-0 > li {
+    @apply mr-4 tablet:mr-[80px] desktop:mr-[100px];
+  }
+  .m-menu--level-0 > li:nth-last-child(-n + 2) {
+    @apply mr-0;
+  }
+
+  .m-menu--level-0 > li:nth-child(n+2):not(.m-menu__show-more) {
+    @apply hidden tablet:flex;
+  }
+
 }

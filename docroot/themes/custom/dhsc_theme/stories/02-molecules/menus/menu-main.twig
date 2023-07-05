@@ -7,25 +7,25 @@
 {# Template #}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    <ul class="m-menu--level-0 relative tablet:flex" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
+    <ul class="m-menu--level-0 relative flex items-start" x-data="{ isSelected: false }" @activedropdownmain.window="isSelected = $event.detail.active">
       {% for item in items %}
-        <li class="tablet:mr-8 flex items-center" x-data="">
+        <li class="flex items-center" x-data="">
           {% if item.below %}
             <a href="#"
-               class="flex items-center text-black mr-2"
+               class="flex items-center text-black"
                x-show="isSelected == false || isSelected != {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} }); $dispatch('closesearchtrigger')"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconDown }}</a>
             <a href="#"
-               class="flex items-center text-black mr-2"
+               class="flex items-center text-black"
                x-show="isSelected == {{ loop.index }}"
                @click.prevent="$dispatch('activedropdownmain', { active: false })"
                @keydown.enter="$dispatch('activedropdownmain', { active: false })"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
           {% else %}
             <a href="{{ item.url }}"
-               class="block mr-2 text-black"
+               class="block text-black"
                @click="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
                @keydown.enter="$dispatch('activedropdownmain', { active: {{ loop.index }} })"
             >
@@ -34,6 +34,31 @@
           {% endif %}
         </li>
       {% endfor %}
+        <li class="m-menu__show-more tablet:hidden"
+            x-data="{ mobileDropDownActive: false }">
+
+          <a href="#"
+             class="flex items-center text-black"
+             x-show="mobileDropDownActive == false"
+             @click.prevent=" mobileDropDownActive = true "
+             @keydown.enter=" mobileDropDownActive = true "
+          ><span class="mr-2">More</span>{{ svgIconDown }}</a>
+          <a href="#"
+             class="flex items-center text-black"
+             x-show="mobileDropDownActive == true"
+             @click.prevent=" mobileDropDownActive = false "
+             @keydown.enter=" mobileDropDownActive = false "
+          ><span class="mr-2">More</span>{{ svgIconUp }}</a>
+          <ul x-show="mobileDropDownActive == true">
+            {% for item in items %}
+              {% if loop.index > 1 %}
+                <li class="mt-4">
+                  <a href="{{ item.url }}">{{ item.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
     </ul>
     <div x-data="{ isActive: false }">
       {% for item in items %}
@@ -41,16 +66,16 @@
              class="relative mt-4 -mb-4 w-[100vw] left-[50%] -translate-x-[50%] bg-white">
           <div class="container mx-auto">
             {% if loop.index == 1 %}
-            <div class="tablet:flex tablet:items-start">
+            <div class="tablet:flex tablet:items-start py-4 tablet:py-6">
               <div class="tablet:w-6/12">
-                <h3 class="text-md mt-4">{{ item.title }}</h3>
+                <h3 class="text-sm tablet:text-md mt-4">{{ item.title }}</h3>
             {% endif %}
               <ul class="m-menu--level-1 py-4"
                     @activedropdownmain.window="isActive = $event.detail.active"
                 >
                 {% for subItem in item.below %}
                   <li class="tablet:mr-8 flex items-center">
-                    <a href="{{ subItem.url }}" class="block text-forest mb-2">{{ subItem.title }}</a>
+                    <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>
                   </li>
                 {% endfor %}
                 </ul>
