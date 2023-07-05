@@ -3,6 +3,7 @@
   'm-branding--' ~ variant,
   'flex justify-between w-full items-center text-white bg-green'
 ] %}
+{% set attributes = attributes.removeAttribute('id') %}
 <div{{attributes.addClass(classes) }}>
   {% if logo %}
     <div class="m-branding__logo mr-4">
