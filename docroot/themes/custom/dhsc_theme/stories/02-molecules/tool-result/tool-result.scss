@@ -1,4 +1,6 @@
 .m-tool-result {
+  @apply pb-7 mb-7 border-b border-black-20;
+
   &__content > div {
     @apply mb-2;
   }
