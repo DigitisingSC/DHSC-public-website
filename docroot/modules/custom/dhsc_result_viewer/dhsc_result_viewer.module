@@ -57,8 +57,8 @@ function dhsc_result_viewer_theme()
       'variables' => [
         'title' => NULL,
         'url' => NULL,
+        'section' => NULL,
         'answers' => [
-          'section' => NULL,
           'answer' => NULL
         ],
       ],

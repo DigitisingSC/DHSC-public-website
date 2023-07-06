@@ -48,6 +48,7 @@
           {% endif %}
         </div>
         {% endif %}
+
         {% if non_matching_count != 0 %}
         <div class="o-tool__unmatched py-4" x-data="{ openUnmatchedResults: false }">
           <h4 class="text-md mb-4">{{ non_matching_count }} {{'suppliers don\'t match your criteria'|t}}</h4>
@@ -63,9 +64,6 @@
           </div>
           <div class="o-tool__unmatched-content border-s-2 border-black-20 pl-4 text-base"
                x-show="openUnmatchedResults">
-            <div class="o-tool__partial">
-              {{ partial_matches }}
-            </div>
             <div class="o-tool__other">
               {{ no_matches }}
             </div>

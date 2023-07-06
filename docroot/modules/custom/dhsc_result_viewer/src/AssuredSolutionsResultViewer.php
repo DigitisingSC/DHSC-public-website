@@ -140,6 +140,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
             '#theme' => 'no_match',
             '#title' => isset($no_match['title']) ? $no_match['title'] : NULL,
             '#url' => isset($no_match['node_url']) ? $no_match['node_url'] : NULL,
+            '#section' => isset($no_match['section']) ? $no_match['section'] : NULL,
             '#answers' => isset($no_match['answers']) ? $no_match['answers'] : NULL,
           ];
         }
@@ -263,7 +264,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
                   $field_key = substr($answer, 0, strrpos($answer, '_'));
                 }
                 $answer_value = $this->getFormElementValue($field_key, $answer, $webform);
-                $no_matches[$node_title]['answers'][] = $answer_value;
+                $no_matches[$node_title]['section'] = $answer_value['section'];
+                $no_matches[$node_title]['answers'][] = $answer_value['answer'];
               }
             }
           }
