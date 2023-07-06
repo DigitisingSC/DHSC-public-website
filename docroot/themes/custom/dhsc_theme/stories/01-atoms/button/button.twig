@@ -45,8 +45,19 @@
         x-bind:aria-expanded="searchIsActive.toString()"
         aria-controls="search_region"
       >
-        <div x-show="searchIsActive" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close'|t }}</span></div>
-        <div x-show="!searchIsActive" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Search'|t }}</span></div>
+        <div x-show="searchIsActive" class="flex items-center">
+          {{ icon_close }}
+          <span class="hidden tablet:inline-block">
+            {{ 'Close'|t }}
+            <span class="sr-only">{{ ' search menu'|t }}</span>
+          </span>
+          </div>
+        <div x-show="!searchIsActive" class="flex items-center">
+          {{ icon_open }}
+          <span class="sr-only">{{ 'Open '|t }}</span>
+          <span class="hidden tablet:inline-block">{{ 'Search'|t }}</span>
+          <span class="sr-only">{{ ' menu'|t }}</span>
+        </div>
       </{{ tag_name }}>
     </div>
 
