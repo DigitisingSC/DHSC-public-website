@@ -6,9 +6,9 @@
     {% if title %}
       <h2 class="o-quick-links__title text-lg leading-tight font-bold mb-4">{{ title }}</h2>
     {% endif %}
-    <div class="o-quick-links__content tablet:flex tablet:gap-4">
+    <div class="o-quick-links__content tablet:flex tablet:gap-6">
       {% if items_left is not empty %}
-        <div class="o-quick-links__column tablet:flex tablet:flex-col tablet:gap-4 flex-1">
+        <div class="o-quick-links__column tablet:flex tablet:flex-col tablet:gap-6 flex-1">
           {% if items_left is iterable %}
             {% for key, item in items_left if key|first != '#' %}
               {{ item }}
