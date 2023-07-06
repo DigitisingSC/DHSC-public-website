@@ -1,8 +1,8 @@
 .a-button {
   @apply inline-flex items-center;
   @apply text-xs cursor-pointer;
-  @apply p-2 tablet:px-4 tablet:py-2;
-
+  @apply p-2 tablet:pl-3 tablet:pr-3 tablet:py-2;
+  @apply focus:outline-none focus:ring focus:ring-yellow;
   &--primary {
     @apply border-black border-b-4 rounded-md;
     @apply bg-forest hover:bg-black-80 focus:bg-focus;
@@ -16,8 +16,11 @@
   }
 
   &--search {
+    @apply focus:bg-forest-20 focus:ring-forest-200 focus:text-black;
+    @apply active:bg-focus active:drop-shadow	;
     svg {
-      @apply w-3 h-3 tablet:mr-2;
+      @apply w-[20px] h-[20px] tablet:mr-1;
     }
+
   }
 }

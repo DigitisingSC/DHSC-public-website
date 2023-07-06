@@ -17,6 +17,8 @@ const careColours = {
   },
   forest: {
     DEFAULT: '#00594c',
+    300: '#002D26',
+    200: '#335751',
     100: '#00594c',
     80: '#337a70',
     60: '#669b94',
@@ -118,6 +120,7 @@ module.exports = {
         ...systemColours
       },
       spacing: {
+        '0': 0,
         '1': rem(5, baseFontSize),
         '2': rem(10, baseFontSize),
         '3': rem(15, baseFontSize),
