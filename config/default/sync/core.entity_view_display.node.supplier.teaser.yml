@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.supplier.field_body_paragraphs
     - field.field.node.supplier.field_image
     - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
     - node.type.supplier
   module:
     - entity_reference_revisions
@@ -46,6 +47,7 @@ content:
     region: content
 hidden:
   field_answers_supplier: true
+  field_non_possible_answers: true
   langcode: true
   links: true
   search_api_excerpt: true
