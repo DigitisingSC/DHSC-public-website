@@ -9,7 +9,7 @@
 
   &--left {
     .m-cta-banner__content {
-      @apply tablet:order-2 tablet:ml-4;
+      @apply tablet:order-2;
     }
     .m-cta-banner__media {
       @apply tablet:order-1;
