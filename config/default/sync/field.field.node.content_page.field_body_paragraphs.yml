@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.content_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.cta_banner
     - paragraphs.paragraphs_type.from_library
@@ -35,11 +36,12 @@ settings:
       card_collection: card_collection
       full_content_listings: full_content_listings
       from_library: from_library
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: -37
-        enabled: false
+        enabled: true
       accordion_item:
         weight: -36
         enabled: false
@@ -70,6 +72,12 @@ settings:
       featured_items:
         weight: -32
         enabled: false
+      framework_row:
+        weight: 39
+        enabled: false
+      framework_section:
+        weight: 40
+        enabled: false
       from_library:
         weight: -41
         enabled: true
@@ -96,6 +104,9 @@ settings:
         enabled: false
       quick_links:
         weight: -28
+        enabled: false
+      skills_framework:
+        weight: 50
         enabled: false
       topic:
         weight: -27
