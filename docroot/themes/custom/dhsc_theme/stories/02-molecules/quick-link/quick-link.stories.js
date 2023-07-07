@@ -21,7 +21,7 @@ const svgIconTemplate = (args) => svgIconTwig({
 });
 
 import image from '../../assets/images/content-card.jpg';
-const imgTag = `<img src=${image} alt='Digital Social Care'/>`
+const imgTag = `<div><img src=${image} alt='Digital Social Care'/></div>`
 
 
 const Template = ({ image, link, heading, description, attributes, quickLinkType, icon }) =>

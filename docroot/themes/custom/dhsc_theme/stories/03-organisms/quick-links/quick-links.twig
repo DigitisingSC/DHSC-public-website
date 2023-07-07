@@ -8,7 +8,7 @@
     {% endif %}
     <div class="o-quick-links__content tablet:flex tablet:gap-6">
       {% if items_left is not empty %}
-        <div class="o-quick-links__column tablet:flex tablet:flex-col tablet:gap-6 flex-1">
+        <div class="o-quick-links__column tablet:flex tablet:gap-6 flex-1 tablet:items-stretch tablet:flex-row tablet:flex-wrap">
           {% if items_left is iterable %}
             {% for key, item in items_left if key|first != '#' %}
               {{ item }}
@@ -19,7 +19,7 @@
         </div>
       {% endif %}
       {% if items_right is not empty %}
-        <div class="o-quick-links__column flex-1 grow">
+        <div class="o-quick-links__column grow tablet:flex tablet:gap-6 flex-1 tablet:items-stretch tablet:flex-row tablet:flex-wrap">
           {% if items_right is iterable %}
             {% for key, item in items_right if key|first != '#' %}
               {{ item }}
