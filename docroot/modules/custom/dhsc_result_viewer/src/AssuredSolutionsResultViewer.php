@@ -249,12 +249,14 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
           $node_title = $node->getTitle();
           $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
-          $no_matches[$node_title]['title'] = $node_title;
-          $no_matches[$node_title]['node_url'] = $node_url;
 
-          foreach ($node->get('field_non_possible_answers')->getValue() as $key => $value) {
+          foreach ($node->get('field_non_possible_answers')->getValue() as $value) {
             foreach ($answers as $answer) {
               if ($value['value'] === $answer) {
+
+                $no_matches[$node_title]['title'] = $node_title;
+                $no_matches[$node_title]['node_url'] = $node_url;
+
                 $field_key = NULL;
                 // We don't have the element key for the first radio field
                 // so check against pre-defined values and set the field_key from the form.
