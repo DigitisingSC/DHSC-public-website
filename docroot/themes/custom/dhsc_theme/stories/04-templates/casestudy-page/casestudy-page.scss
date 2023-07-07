@@ -1,0 +1,7 @@
+.t-casestudy-page{
+  &__content {
+    p {
+      @apply text-base mt-0 mb-5 tablet:mb-7;
+    }
+  }
+}
