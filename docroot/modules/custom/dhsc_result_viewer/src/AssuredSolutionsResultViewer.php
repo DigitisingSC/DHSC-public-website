@@ -220,7 +220,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       sort($search_criteria);
     }
 
-    $results = $this->getResultNodes($answers);
+    if (!empty($answers)) {
+      $results = $this->getResultNodes($answers);
+    }
 
     if (!empty($results)) {
       $nodes = Node::loadMultiple($results);
@@ -274,12 +276,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
     $result_data = [
       'search_criteria' => $search_criteria,
-      'matches' => $matches,
-      'non_matching_count' => count($no_matches),
-      'count' => count($matches),
-      'total_count' => count($matches) + count($no_matches),
-      'no_matches' => $no_matches,
-      'submission_url' => isset($submission_url) ? $submission_url : NULL,
+      'matches' => !empty($no_matches) ? $matches : [],
+      'non_matching_count' => !empty($no_matches) ? count($no_matches) : [],
+      'count' => !empty($no_matches) ? count($matches) : [],
+      'total_count' => !empty($no_matches) ? count($matches) + count($no_matches) : [],
+      'no_matches' => !empty($no_matches) ? $no_matches : [],
+      'submission_url' => isset($submission_url) ? $submission_url : [],
     ];
 
     // Save result data in tempstore for email result behaviour.
