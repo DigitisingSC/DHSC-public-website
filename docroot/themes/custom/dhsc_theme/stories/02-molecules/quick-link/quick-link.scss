@@ -67,6 +67,6 @@
   }
 
   &__image img {
-    @apply rounded-t-md;
+    @apply rounded-t-md w-full h-auto;
   }
 }
