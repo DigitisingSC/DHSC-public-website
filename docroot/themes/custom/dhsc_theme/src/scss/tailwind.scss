@@ -4,3 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .l--care-logo {
+    @apply flex relative outline-none hover:ring hover:ring-black focus:ring focus:ring-focus;
+    &:focus:after {
+      content:'';
+      @apply block h-1 w-full bg-black;
+      width: calc(100% + 8px);
+      @apply absolute -bottom-[8px] -left-[4px] right-0;
+    }
+  }
+}
