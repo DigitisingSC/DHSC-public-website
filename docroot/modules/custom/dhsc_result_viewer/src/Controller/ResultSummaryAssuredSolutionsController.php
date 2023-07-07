@@ -155,7 +155,6 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#total_count' => $result['total_count'],
         '#submission_url' => $result['submission_url'],
         '#no_matches' => $result['no_matches'],
-        '#partial_matches' => $result['partial_matches'],
         '#result' => $result['result_items'],
         '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
       ];
@@ -248,18 +247,6 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       }
     }
 
-    $partial_matches = '';
-    if ($results['partial_matches']) {
-      foreach ($results['partial_matches'] as $item) {
-        $partial_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p><ul>");
-        foreach ($item['answers'] as $answer) {
-          $partial_matches .= Markup::create("<p>{$answer['section']}</p>");
-          $partial_matches .= Markup::create("<li>{$answer['answer']}</li>");
-        }
-        $partial_matches .= "</ul>";
-      }
-    }
-
     $no_matches = '';
     if ($results['no_matches']) {
       foreach ($results['no_matches'] as $item) {
@@ -279,7 +266,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
     <tr class='non-matches'><td><h3>
     {$results['non_matching_count']} suppliers don't match your criteria</h3>
-    {$partial_matches}{$no_matches}</td>
+    {$no_matches}</td>
     </tr>
     </table>");
     $send = TRUE;

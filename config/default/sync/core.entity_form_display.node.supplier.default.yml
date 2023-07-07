@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.supplier.field_body_paragraphs
     - field.field.node.supplier.field_image
     - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
     - node.type.supplier
   module:
     - content_moderation
@@ -16,6 +17,7 @@ dependencies:
     - paragraphs_ee
     - paragraphs_features
     - path
+    - scheduler
 third_party_settings:
   field_group:
     group_metadata:
@@ -23,6 +25,7 @@ third_party_settings:
         - field_image
         - field_list_price
         - field_answers_supplier
+        - field_non_possible_answers
       label: Metadata
       region: content
       parent_name: ''
@@ -96,6 +99,14 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_non_possible_answers:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   langcode:
     type: language_select
     weight: 1
@@ -121,6 +132,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -153,6 +170,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   url_redirects:
     weight: 7

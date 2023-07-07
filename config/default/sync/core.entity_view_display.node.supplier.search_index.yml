@@ -4,7 +4,11 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
+    - field.field.node.supplier.field_answers_supplier
     - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_image
+    - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
     - node.type.supplier
   module:
     - user
@@ -23,5 +27,6 @@ hidden:
   field_body_paragraphs: true
   field_image: true
   field_list_price: true
+  field_non_possible_answers: true
   langcode: true
   links: true

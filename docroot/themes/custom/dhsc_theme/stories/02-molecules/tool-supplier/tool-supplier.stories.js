@@ -40,8 +40,5 @@ toolSupplierNoMatch.args = {
   variant: 'nomatch',
   title: "Microsoft",
   url: "https://www.digitalsocialcare.co.uk",
-  answers: [
-    { 'section': 'Section 1', 'answer': 'answer 1' },
-    { 'section': 'Section 2', 'answer': 'answer 2' }
-  ]
+  answers: ['Extra care services', 'Domiciliary care services']
 };

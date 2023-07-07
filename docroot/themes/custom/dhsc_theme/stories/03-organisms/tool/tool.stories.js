@@ -77,7 +77,6 @@ const ToolSolutionsTemplate = ({
   submission_url,
   result,
   non_matching_count,
-  partial_matches,
   no_matches,
   email_form
 }) =>
@@ -93,7 +92,6 @@ const ToolSolutionsTemplate = ({
     submission_url,
     result,
     non_matching_count,
-    partial_matches,
     no_matches,
     email_form
   });
@@ -125,7 +123,6 @@ toolSolutions.args = {
   submission_url: '#',
   result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
   non_matching_count: '2',
-  partial_matches: toolSupplierNoMatchTemplate,
   no_matches: toolSupplierNoMatchTemplate,
   email_form: emailFormTwig
 }

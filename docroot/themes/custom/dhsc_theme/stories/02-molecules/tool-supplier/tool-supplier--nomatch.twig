@@ -3,7 +3,7 @@
   'tool-supplier--' ~ variant,
   'mb-4'
 ] %}
-<div{{ attributes.addClass(classes) }}>
+<div{{attributes.addClass(classes)}}>
   <div class="m-tool-supplier__title mb-2">
     {% if url %}
       <a href="{{ url }}" class="text-forest text-md">
@@ -16,13 +16,15 @@
   <div class="m-tool-supplier__content">
     <h4 class="text-base text-bold mb-2">{{ 'Criteria not met:'|t }}</h4>
     {% if answers is iterable %}
-      {% for answer in answers %}
-        <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ answer.section }}</div>
-        <ul class="list-disc pl-4 mb-4">
-          <li>
-            <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ answer.answer }}</div>
-          </li>
-        </ul>
+      {% for key, value in answers %}
+        <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ key }}</div>
+        {% for answer in value %}
+          <ul class="list-disc pl-4 mb-4">
+            <li>
+              <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ answer }}</div>
+            </li>
+          </ul>
+        {% endfor %}
       {% endfor %}
     {% else %}
       {{ answers }}
