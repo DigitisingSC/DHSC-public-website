@@ -140,7 +140,6 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
             '#theme' => 'no_match',
             '#title' => isset($no_match['title']) ? $no_match['title'] : NULL,
             '#url' => isset($no_match['node_url']) ? $no_match['node_url'] : NULL,
-            '#section' => isset($no_match['section']) ? $no_match['section'] : NULL,
             '#answers' => isset($no_match['answers']) ? $no_match['answers'] : NULL,
           ];
         }
@@ -253,10 +252,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           $no_matches[$node_title]['title'] = $node_title;
           $no_matches[$node_title]['node_url'] = $node_url;
 
-          foreach ($node->get('field_non_possible_answers')->getValue() as $value) {
+          foreach ($node->get('field_non_possible_answers')->getValue() as $key => $value) {
             foreach ($answers as $answer) {
               if ($value['value'] === $answer) {
-
                 $field_key = NULL;
                 // We don't have the element key for the first radio field
                 // so check against pre-defined values and set the field_key from the form.
@@ -264,8 +262,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
                   $field_key = substr($answer, 0, strrpos($answer, '_'));
                 }
                 $answer_value = $this->getFormElementValue($field_key, $answer, $webform);
-                $no_matches[$node_title]['section'] = $answer_value['section'];
-                $no_matches[$node_title]['answers'][] = $answer_value['answer'];
+                $no_matches[$node_title]['answers'][$answer_value['section']][] = $answer_value['answer'];
               }
             }
           }

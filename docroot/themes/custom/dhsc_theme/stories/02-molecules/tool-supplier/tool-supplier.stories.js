@@ -16,13 +16,12 @@ const toolSupplierMatchTemplate = ({ attributes, variant, title, url, content })
     content
   });
 
-const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, section, answers }) =>
+const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, answers }) =>
   toolSupplierNoMatchTwig({
     attributes,
     variant,
     title,
     url,
-    section,
     answers,
   });
 
@@ -41,6 +40,5 @@ toolSupplierNoMatch.args = {
   variant: 'nomatch',
   title: "Microsoft",
   url: "https://www.digitalsocialcare.co.uk",
-  section: "Care services",
   answers: ['Extra care services', 'Domiciliary care services']
 };
