@@ -11,7 +11,7 @@
 {# Template #}
 <div class="m-accordion-item" x-data="{ isOpen: false }">
   <div class="m-accordion-item__control">
-    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen">
+    <button class="m-accordion-item__trigger" type="button" :aria-expanded="isOpen" x-on:click="isOpen = ! isOpen"  x-bind:class="{ 'pb-3': isOpen }">
       <div x-show="isOpen" class="flex items-center">{{ icon_close }}</div>
       <div x-show="!isOpen" class="flex items-center">{{ icon_open }}</div>
       <span class="m-accordion-item__title">{{ title }}</span>

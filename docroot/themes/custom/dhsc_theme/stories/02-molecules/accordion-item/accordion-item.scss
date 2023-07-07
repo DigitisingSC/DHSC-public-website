@@ -1,7 +1,4 @@
 .m-accordion-item {
-  &__control {
-    @apply py-2;
-  }
 
   &__trigger {
     @apply flex justify-start items-center w-full;
@@ -13,17 +10,14 @@
 
   &__trigger svg {
     @apply h-4 w-4;
+    fill: #00594C;
   }
 
   &__title {
-    @apply text-md;
+    @apply text-base text-left text-forest underline;
   }
 
-  &__panel {
-    @apply py-2;
-  }
-
-  @apply p-2 mb-4 rounded-sm w-full bg-coolgrey-20 border-2 border-black-40;
+  @apply p-3 mb-4 rounded-md w-full bg-white border border-black-40;
 
   &__skills_framework {
 
@@ -31,16 +25,28 @@
       @apply table-fixed m-0 p-0 w-full border-collapse;
 
       th {
-        @apply text-base border-b;
+        @apply text-base border-b-2 text-left;
       }
 
       th,
       td {
-        @apply p-2 text-center align-top;
+        @apply py-3 align-top;
+      }
+      td {
+        @apply text-base leading-relaxed border-b relative;
       }
 
       a {
         @apply text-green-100 mr-2 hover:underline;
+      }
+      ul, ol {
+        @apply pl-6;
+      }
+      ul {
+        list-style: disc;
+      }
+      ol {
+        list-style-type: auto;
       }
     }
 
@@ -76,8 +82,19 @@
           }
 
           &:last-child {
-            @apply border-b-4 pt-4;
+            @apply border-b-4;
           }
+        }
+      }
+    }
+
+    @media screen and (min-width: 835px) {
+      table td {
+        @apply px-[4px] last:pr-0 first:pl-0;
+        &:not(:last-child)::after {
+          @apply block absolute -bottom-[1px] -right-[-4px];
+          @apply bg-white h-[1px] w-[8px] -right-[4px];
+          content: '';
         }
       }
     }
