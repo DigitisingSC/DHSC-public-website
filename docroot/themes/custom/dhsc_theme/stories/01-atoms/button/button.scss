@@ -17,7 +17,7 @@
 
   &--search {
     @apply focus:bg-forest-20 focus:ring-forest-200 focus:text-black;
-    @apply active:bg-focus active:drop-shadow	;
+    @apply active:bg-focus;
     svg {
       @apply w-[20px] h-[20px] tablet:mr-1;
     }
