@@ -6,14 +6,21 @@ export default {
   title: "Design System/Templates/Case study page",
 };
 
-const Template = ({ title, content }) =>
+import image from '../../assets/images/featured-item.png';
+const imgTag = `<div><img src=${image} alt='Digital Social Care'/></div>`
+
+const Template = ({ title, image, lead, content }) =>
   caseStudyPage({
     title,
+    image,
+    lead,
     content
   });
 
 export const CaseStudyPage= Template.bind({});
 CaseStudyPage.args = {
-  title: "Case study",
+  title: "Using technology for a seamless recruitment process",
+  image: imgTag,
+  lead: 'Blissfull Care Homes',
   content: "Case study content.."
 };
