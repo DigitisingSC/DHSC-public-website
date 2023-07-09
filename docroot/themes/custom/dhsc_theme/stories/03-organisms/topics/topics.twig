@@ -7,7 +7,7 @@
       <h2 class="o-topics__title text-lg leading-tight font-bold mb-4">{{ title }}</h2>
     {% endif %}
     {% if items is not empty %}
-      <div class="o-topics__listing tablet:grid tablet:grid-cols-3 tablet:gap-6">
+      <div class="o-topics__listing space-y-3 stablet:grid tablet:grid-cols-3 tablet:gap-6 tablet:space-y-0">
         {% if items is iterable %}
           {% for key, item in items if key|first != '#' %}
             {{ item }}
