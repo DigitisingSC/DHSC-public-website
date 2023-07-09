@@ -10,6 +10,7 @@ dependencies:
     - node.type.casestudy
   module:
     - entity_reference_revisions
+    - media
     - user
 id: node.casestudy.default
 targetEntityType: node
@@ -23,14 +24,25 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 3
+    region: content
+  field_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_intro:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   links:
     settings: {  }
@@ -38,7 +50,6 @@ content:
     weight: 0
     region: content
 hidden:
-  field_image: true
   field_summary: true
   langcode: true
   search_api_excerpt: true
