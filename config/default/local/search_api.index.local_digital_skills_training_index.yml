@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_skill_price
     - field.storage.node.field_skill_level
     - field.storage.node.field_skills_for_care_endorsed
+    - field.storage.node.field_themes
     - field.storage.node.field_training_length
     - search_api.server.local_ddev_solr_server
   module:
@@ -105,6 +106,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_skills_for_care_endorsed
+  field_themes:
+    label: Themes
+    datasource_id: 'entity:node'
+    property_path: field_themes
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_themes
   field_training_length:
     label: 'Training length'
     datasource_id: 'entity:node'
