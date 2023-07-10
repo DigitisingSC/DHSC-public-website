@@ -33,4 +33,5 @@ visibility:
       event: event
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
+      skill: skill
       subtopic_page: subtopic_page
