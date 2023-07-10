@@ -32,6 +32,10 @@ details.args = {
   <div class="a-form-item--checkbox">
   <input type="checkbox" id="option-2" name="option-2">
   <label for="option-2">Option 2</label>
+  </div>
+  <div class="a-form-item--checkbox">
+  <input type="checkbox" id="option-3" name="option-3">
+  <label for="option-3">Theme 1: Using technology to support person-centred care</label>
   </div>`,
   value: ''
 };

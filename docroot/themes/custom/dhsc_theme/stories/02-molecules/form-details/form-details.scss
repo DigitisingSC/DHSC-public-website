@@ -33,7 +33,7 @@
     }
   }
   .a-form-item--checkbox {
-    @apply pb-3 last:pb-0;
+    @apply pb-3 last:pb-0 flex flex-row flex-nowrap;
     input {
       @apply mb-0;
     }
