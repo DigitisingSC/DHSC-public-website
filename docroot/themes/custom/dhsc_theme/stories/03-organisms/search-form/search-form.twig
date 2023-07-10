@@ -13,7 +13,9 @@
         <input x-ref="searchTerm" :class="{ 'focus': searchOpen }"  type="text" name="search-term" id="search-term" class="border-2 border-black"/>
       </div>
       <div class="a-form-item">
-        <button type="submit" class="flex h-full w-full bg-forest justify-center items-center px-3"><span class="sr-only">{{ "Search"|t }}</span>{{ icon }}</button>
+        <button type="submit" class="flex h-full w-full bg-forest justify-center items-center px-3">
+          <span class="sr-only">{{ "Search"|t }}</span>{{ icon }}
+        </button>
       </div>
     </form>
   </div>

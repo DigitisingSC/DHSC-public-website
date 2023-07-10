@@ -6,6 +6,10 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 sass.compiler = require('sass');
 const tailwindCSS = require('tailwindcss');
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
+const rename = require('gulp-rename');
+const path = require('path');
 
 const PATHS = {
   TWConfig: './tailwind.config.js'
@@ -56,4 +60,23 @@ gulp.task('copyAssets', function () {
     .pipe(gulp.dest('./assets/images'));
 });
 
-gulp.task('default', gulp.series('tailwindSass', 'componentsSass', 'globalSass', 'componentsJs', 'copyAssets'));
+gulp.task('svgstore', () => {
+  return gulp
+    .src('stories/assets/icons/*.svg')
+    .pipe(svgmin((file) => {
+      const prefix = path.basename(file.relative, path.extname(file.relative));
+      return {
+        plugins: [{
+          cleanupIDs: {
+            minify: true,
+          }
+        }]
+      }
+    }))
+    .pipe(svgstore())
+    .pipe(rename({ basename: 'sprite' }))
+    .pipe(gulp.dest('stories/01-atoms/svg'));
+});
+
+gulp.task('watch', gulp.series('svgstore', 'tailwindSass', 'componentsSass', 'globalSass', 'componentsJs'));
+gulp.task('default', gulp.series('svgstore', 'tailwindSass', 'componentsSass', 'globalSass', 'componentsJs'));
