@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_body_paragraphs
-    - field.storage.node.field_skill_level
     - field.storage.node.field_skill_method
+    - field.storage.node.field_skill_price
+    - field.storage.node.field_skill_level
+    - field.storage.node.field_skills_for_care_endorsed
     - field.storage.node.field_training_length
     - search_api.server.local_ddev_solr_server
   module:
@@ -87,6 +89,22 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_skill_method
+  field_skill_price:
+    label: Price
+    datasource_id: 'entity:node'
+    property_path: field_skill_price
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_skill_price
+  field_skills_for_care_endorsed:
+    label: 'Skills for Care endorsed'
+    datasource_id: 'entity:node'
+    property_path: field_skills_for_care_endorsed
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_skills_for_care_endorsed
   field_training_length:
     label: 'Training length'
     datasource_id: 'entity:node'
