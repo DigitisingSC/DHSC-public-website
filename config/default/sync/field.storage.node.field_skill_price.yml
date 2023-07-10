@@ -1,0 +1,27 @@
+uuid: 7193de57-37c9-43d2-995f-f64678648183
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_skill_price
+field_name: field_skill_price
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: free
+      label: Free
+    -
+      value: paid
+      label: Paid
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

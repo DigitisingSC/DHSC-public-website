@@ -1,0 +1,21 @@
+uuid: e9b9c542-e78a-4604-9599-8a49326c18da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_skills_for_care_endorsed
+    - node.type.skill
+  module:
+    - options
+id: node.skill.field_skills_for_care_endorsed
+field_name: field_skills_for_care_endorsed
+entity_type: node
+bundle: skill
+label: 'Skills for Care endorsed'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

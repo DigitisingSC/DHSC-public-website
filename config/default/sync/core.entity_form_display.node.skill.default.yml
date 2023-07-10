@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.skill.field_metatags
     - field.field.node.skill.field_skill_level
     - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_skill_price
+    - field.field.node.skill.field_skills_for_care_endorsed
     - field.field.node.skill.field_summary
     - field.field.node.skill.field_training_length
     - node.type.skill
@@ -16,13 +18,16 @@ dependencies:
     - metatag
     - paragraphs
     - path
+    - scheduler
 third_party_settings:
   field_group:
     group_skill_details:
       children:
-        - field_skill_level
         - field_skill_method
+        - field_skill_level
+        - field_skill_price
         - field_training_length
+        - field_skills_for_care_endorsed
       label: 'Skill details'
       region: content
       parent_name: ''
@@ -74,7 +79,7 @@ content:
     third_party_settings: {  }
   field_skill_level:
     type: entity_reference_autocomplete_tags
-    weight: 13
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -92,6 +97,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_skill_price:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_skills_for_care_endorsed:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_summary:
     type: string_textarea
     weight: 11
@@ -106,7 +123,7 @@ content:
         maxlength_js_enforce: false
   field_training_length:
     type: string_textfield
-    weight: 15
+    weight: 17
     region: content
     settings:
       size: 60
@@ -137,6 +154,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -169,6 +192,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   url_redirects:
     weight: 8

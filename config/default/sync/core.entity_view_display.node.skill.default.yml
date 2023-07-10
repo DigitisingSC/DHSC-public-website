@@ -7,11 +7,14 @@ dependencies:
     - field.field.node.skill.field_metatags
     - field.field.node.skill.field_skill_level
     - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_skill_price
+    - field.field.node.skill.field_skills_for_care_endorsed
     - field.field.node.skill.field_summary
     - field.field.node.skill.field_training_length
     - node.type.skill
   module:
     - entity_reference_revisions
+    - options
     - user
 id: node.skill.default
 targetEntityType: node
@@ -42,6 +45,20 @@ content:
       link: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_skill_price:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_skills_for_care_endorsed:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_training_length:
     type: string
