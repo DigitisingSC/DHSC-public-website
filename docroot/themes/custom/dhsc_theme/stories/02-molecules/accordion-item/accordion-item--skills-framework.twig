@@ -28,7 +28,7 @@
       <table>
         <tbody>
           {% if items is iterable %}
-          {% set items_iterable = TRUE %}
+            {% set items_iterable = TRUE %}
             {% for key, item in items if key|first != '#' %}
 
               {% set field_criteria = item['#paragraph'].field_criteria %}
@@ -42,12 +42,10 @@
                 <td data-label="{{ field_criteria_label }}">{{ field_criteria.value|raw}}</td>
                 <td data-label="{{ field_skills_and_knowledge_label }}">{{ field_skills_and_knowledge.value|raw }}</td>
                 <td data-label="{{ field_learning_resources_label }}">
-                  {% if field_learning_resources|length > 1 %}
+                  {% if field_learning_resources|length > 0 %}
                     {% for learning_resource in field_learning_resources %}
                       {{ link(learning_resource.title, learning_resource.uri) }}
                     {% endfor %}
-                  {% else %}
-                    {{ link(field_learning_resources.title, field_learning_resources.uri) }}
                   {% endif %}
                 </td>
               </tr>
@@ -57,13 +55,13 @@
           {% endif %}
         </tbody>
         <thead>
-         {# populate table headers with label variables #}
+          {# populate table headers with label variables #}
           <tr>
             {% if items_iterable %}
               <th scope="col">{{ field_skills_and_knowledge_label|t}}</th>
               <th scope="col">{{ field_criteria_label|t }}</th>
               <th scope="col">{{ field_learning_resources_label|t }}</th>
-             {% else %}
+            {% else %}
               <th scope="col">{{ 'I have the skills and knowledge to...'|t }}</th>
               <th scope="col">{{ 'The criteria is met when..'|t }}</th>
               <th scope="col">{{ 'Learning resources'|t }}</th>
