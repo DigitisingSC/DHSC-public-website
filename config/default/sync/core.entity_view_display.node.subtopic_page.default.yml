@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.subtopic_page.field_metatags
     - field.field.node.subtopic_page.field_subtopics
     - field.field.node.subtopic_page.field_summary
-    - field.field.node.subtopic_page.field_theme
     - node.type.subtopic_page
   module:
     - entity_reference_revisions
@@ -34,14 +33,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_theme:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
     region: content
   links:
     settings: {  }
