@@ -40,8 +40,9 @@ const NavigationSecondaryTemplate = ({ attributes, variant, content }) =>
     content,
   });
 
-const PagerTemplate = ({ attributes, iconArrowLeft, iconArrowRight, heading_id, items }) => PagerTwig({
+const PagerTemplate = ({ attributes, variant, iconArrowLeft, iconArrowRight, heading_id, items }) => PagerTwig({
   attributes,
+  variant,
   iconArrowLeft,
   iconArrowRight,
   heading_id,
@@ -73,6 +74,7 @@ NavigationSecondary.args = {
 export const Pager = PagerTemplate.bind({});
 Pager.args = {
   attributes: new DrupalAttributes(),
+  variant: 'views',
   iconArrowLeft: svgIconLeftTemplate,
   iconArrowRight: svgIconRightTemplate,
   heading_id: 'Pager',
@@ -86,6 +88,41 @@ Pager.args = {
       attributes: new DrupalAttributes(),
       href: '#',
       text: 'Previous'
+    },
+    pages: [
+      {
+        attributes: new DrupalAttributes(),
+        href: '#',
+      },
+      {
+        attributes: new DrupalAttributes(),
+        href: '#',
+      },
+      {
+        attributes: new DrupalAttributes(),
+        href: '#',
+      },
+    ],
+  }
+}
+
+export const NodePager = PagerTemplate.bind({});
+NodePager.args = {
+  attributes: new DrupalAttributes(),
+  variant: 'node',
+  iconArrowLeft: svgIconLeftTemplate,
+  iconArrowRight: svgIconRightTemplate,
+  heading_id: 'Pager',
+  items: {
+    next: {
+      attributes: new DrupalAttributes(),
+      href: '#',
+      text: 'Next node'
+    },
+    previous: {
+      attributes: new DrupalAttributes(),
+      href: '#',
+      text: 'Previous node'
     },
     pages: [
       {

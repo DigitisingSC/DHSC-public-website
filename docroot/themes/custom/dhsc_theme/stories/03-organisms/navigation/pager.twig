@@ -7,7 +7,7 @@
         {% set previousClasses = [
           'flex','flex-col','no-underline'
         ] %}
-        <li class="o-pager__item o-pager__item--previous">
+        <li class="o-pager__item o-pager__item--previous mb-2">
           <a
             href="{{ items.previous.href }}"
             title="{{ 'Go to previous page'|t }}"
@@ -18,13 +18,21 @@
             <div class="flex items-center mb-2">
               {{ iconArrowLeft }}
               <span class="sr-only">{{ 'Previous page'|t }}</span>
-              <span aria-hidden="true" class="text-md font-bold">{{ items.previous.text|default('Previous'|t) }}</span>
-            </div>
-            {% for key, item in items.pages %}
-              {% if current == key %}
-                <span class="underline">{{ current }} of {{ loop.length }}</span>
+              {% if variant == 'views' %}
+                <span aria-hidden="true" class="text-md font-bold">{{ items.previous.text|default('Previous'|t) }}</span>
+              {% else %}
+                <span aria-hidden="true" class="text-md font-bold">{{ 'Previous'|t }}</span>
               {% endif %}
-            {% endfor %}
+            </div>
+            {% if variant == 'views' %}
+              {% for key, item in items.pages %}
+                {% if current == key %}
+                  <span class="underline">{{ current }} of {{ loop.length }}</span>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <span class="underline">{{ items.previous.text }}</span>
+            {% endif %}
           </a>
         </li>
       {% endif %}
@@ -40,14 +48,21 @@
             <div class="flex items-center mb-2">
               {{ iconArrowRight }}
               <span class="sr-only">{{ 'Next page'|t }}</span>
-              <span aria-hidden="true" class="text-md font-bold">{{ items.next.text|default('Next'|t) }}</span>
-            </div>
-            {% for key, item in items.pages %}
-              {% if current == key %}
-                <span class="underline">{{ current + 1 }} of {{ loop.length }}</span>
+              {% if variant == 'views' %}
+                <span aria-hidden="true" class="text-md font-bold">{{ items.next.text|default('Next'|t) }}</span>
+              {% else %}
+                <span aria-hidden="true" class="text-md font-bold">{{ 'Next'|t }}</span>
               {% endif %}
-            {% endfor %}
-
+            </div>
+            {% if variant == 'views' %}
+              {% for key, item in items.pages %}
+                {% if current == key %}
+                  <span class="underline">{{ current + 1 }} of {{ loop.length }}</span>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+                <span class="underline">{{ items.next.text }}</span>
+            {% endif %}
           </a>
         </li>
       {% endif %}
