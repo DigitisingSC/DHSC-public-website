@@ -1,0 +1,31 @@
+uuid: e769d67f-f95e-49ca-80b2-4ae937e9bd57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pagination.field_next_content
+    - field.field.paragraph.pagination.field_previous_content
+    - paragraphs.paragraphs_type.pagination
+id: paragraph.pagination.default
+targetEntityType: paragraph
+bundle: pagination
+mode: default
+content:
+  field_next_content:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_previous_content:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
