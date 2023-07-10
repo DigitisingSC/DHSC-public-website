@@ -2,13 +2,11 @@
   'o-content-top-region',
 ] %}
 <section{{ attributes.addClass(classes) }}>
-  <div class="container mx-auto w-full">
-    {% if content is iterable  %}
-      {% for item in content %}
-        {{ item }}
-      {% endfor %}
-    {% else %}
-      {{ content }}
-    {% endif %}
-  </div>
+  {% if content is iterable  %}
+    {% for item in content %}
+      {{ item }}
+    {% endfor %}
+  {% else %}
+    {{ content }}
+  {% endif %}
 </section>

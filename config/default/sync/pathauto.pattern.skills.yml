@@ -7,12 +7,12 @@ dependencies:
 id: skills
 label: Skills
 type: 'canonical_entities:node'
-pattern: 'skills/[node:title]'
+pattern: 'digital-skills/[node:title]'
 selection_criteria:
-  03c83bf7-ae3e-414d-9a64-619e38b3284e:
+  106b6deb-e510-47fb-b029-0fb1df90f6c4:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 03c83bf7-ae3e-414d-9a64-619e38b3284e
+    uuid: 106b6deb-e510-47fb-b029-0fb1df90f6c4
     context_mapping:
       node: node
     bundles:

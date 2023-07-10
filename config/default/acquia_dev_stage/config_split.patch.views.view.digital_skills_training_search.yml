@@ -3,6 +3,7 @@ adding:
   display:
     default:
       display_options:
+        title: 'Digital skills training'
         empty:
           area_text_custom:
             id: area_text_custom
@@ -16,5 +17,15 @@ adding:
             content: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
             tokenize: false
         use_ajax: true
+    skills_search_page:
+      display_options:
+        path: digital-skills
 removing:
   status: false
+  display:
+    default:
+      display_options:
+        title: 'Digital skills training Page'
+    skills_search_page:
+      display_options:
+        path: skills
