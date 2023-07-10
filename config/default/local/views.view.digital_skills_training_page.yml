@@ -501,7 +501,7 @@ display:
       display_description: ''
       exposed_block: true
       display_extenders: {  }
-      path: skills
+      path: digital-skills
     cache_metadata:
       max-age: -1
       contexts:
