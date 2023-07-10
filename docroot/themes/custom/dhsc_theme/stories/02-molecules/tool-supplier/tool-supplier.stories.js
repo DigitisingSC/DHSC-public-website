@@ -16,13 +16,14 @@ const toolSupplierMatchTemplate = ({ attributes, variant, title, url, content })
     content
   });
 
-const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, answers }) =>
+const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, answers, preview_component }) =>
   toolSupplierNoMatchTwig({
     attributes,
     variant,
     title,
     url,
     answers,
+    preview_component
   });
 
 export const toolSupplierMatch = toolSupplierMatchTemplate.bind({});
@@ -40,5 +41,19 @@ toolSupplierNoMatch.args = {
   variant: 'nomatch',
   title: "Microsoft",
   url: "https://www.digitalsocialcare.co.uk",
-  answers: ['Extra care services', 'Domiciliary care services']
+  preview_component: true,
+  answers: [
+    {
+      section: 'Section 1',
+      answer: [
+        'answer 1', 'answer 2', 'answer 3'
+      ]
+    },
+    {
+      section: 'Section 2',
+      answer: [
+        'answer 1', 'answer 2', 'answer 3'
+      ]
+    },
+  ]
 };
