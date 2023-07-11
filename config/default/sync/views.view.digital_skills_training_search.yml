@@ -1,6 +1,6 @@
 uuid: 7b450e49-0372-46bf-9c4c-a2880e2b7f16
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - field.storage.node.field_body_paragraphs
@@ -25,7 +25,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Digital skills training Page'
+      title: 'Digital skills training'
       fields:
         field_body_paragraphs:
           id: field_body_paragraphs
@@ -168,7 +168,18 @@ display:
       cache:
         type: none
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
+          tokenize: false
       sorts:
         search_api_relevance:
           id: search_api_relevance
@@ -339,6 +350,7 @@ display:
           preserve_facet_query_args: false
           query_tags: {  }
       relationships: {  }
+      use_ajax: true
       header:
         result:
           id: result
@@ -374,7 +386,7 @@ display:
       display_description: ''
       exposed_block: true
       display_extenders: {  }
-      path: skills
+      path: digital-skills
     cache_metadata:
       max-age: -1
       contexts:

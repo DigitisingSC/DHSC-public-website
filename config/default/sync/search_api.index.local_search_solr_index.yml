@@ -1,6 +1,6 @@
 uuid: e5a8b3d7-d12c-4b5e-830e-d3fc60cad739
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - field.storage.node.field_body_paragraphs
@@ -8,9 +8,9 @@ dependencies:
     - field.storage.node.localgov_guides_section_title
     - search_api.server.local_ddev_solr_server
   module:
-    - search_api_solr
     - node
     - search_api
+    - search_api_solr
 third_party_settings:
   search_api_solr:
     finalize: false

@@ -107,7 +107,6 @@ module:
   sitewide_alert: 0
   sitewide_alert_block: 0
   svg_image_field: 0
-  syslog: 0
   system: 0
   taxonomy: 0
   telephone: 0

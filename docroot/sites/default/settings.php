@@ -58,6 +58,8 @@
  * implementations with custom ones.
  */
 
+use phpDocumentor\Reflection\PseudoTypes\False_;
+
 /**
  * Database settings:
  *
@@ -792,11 +794,12 @@ if (file_exists('/var/www/site-php')) {
   }
 
   // Base Acquia Cloud config split.
-  $config['config_split.config_split.acquia_dev_stage']['status'] = TRUE;
+  $config['config_split.config_split.acquia']['status'] = TRUE;
   $config['config_split.config_split.local']['status'] = FALSE;
 
   // Environment-specific Acquia Cloud config split.
-  //$config['config_split.config_split.acquia_dev_stage']['status'] = (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] !== 'prod');
+  $config['config_split.config_split.acquia_dev_stage']['status'] = (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] !== 'prod');
+  $config['config_split.config_split.acquia_prod']['status'] = (isset($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod');
 }
 
 require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";

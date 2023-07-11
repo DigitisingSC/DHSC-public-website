@@ -1,36 +1,37 @@
-uuid: aaf54588-5a37-4df8-81b2-0dedf95c7dec
+uuid: 7536642e-5d76-4184-9527-121addf4453f
 langcode: en
 status: true
 dependencies: {  }
-id: local
-label: Local
-description: 'Local development config.'
+id: acquia
+label: Acquia
+description: ''
 weight: 0
 stackable: false
 storage: folder
-folder: ../config/default/local
+folder: ../config/default/acquia
 module:
   dblog: 0
-  devel: 0
-  stage_file_proxy: 0
-  views_ui: 0
+  acquia_purge: 0
+  memcache: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
+  syslog: 0
 theme: {  }
-complete_list:
-  - views.view.acquia_search
-  - views.view.digital_skills_training_page
-  - views.view.local_search
+complete_list: {  }
 partial_list:
-  - autologout.settings
   - block.block.exposedformacquia_searchpage
   - block.block.exposedformdigital_skills_training_pageskills_search_page
-  - block.block.exposedformlocal_searchpage
   - search_api.index.acquia_digital_skills_training_index
   - search_api.index.acquia_search_index
   - search_api.index.local_digital_skills_training_index
   - search_api.index.local_search_solr_index
   - search_api.server.acquia_search_server
   - search_api.server.local_ddev_solr_server
-  - views.view.digital_skills_training_page
+  - views.view.acquia_search
   - views.view.digital_skills_training_search
-  - views.view.local_search
   - block.block.exposedformdigital_skills_training_searchskills_search_page
+  - block.block.exposedformlocal_searchpage

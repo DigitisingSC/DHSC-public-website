@@ -6,7 +6,6 @@ dependencies:
     - core.entity_view_mode.node.search_index
     - field.field.node.subtopic_page.field_body_paragraphs
     - field.field.node.subtopic_page.field_image
-    - field.field.node.subtopic_page.field_intro
     - field.field.node.subtopic_page.field_metatags
     - field.field.node.subtopic_page.field_subtopics
     - field.field.node.subtopic_page.field_summary

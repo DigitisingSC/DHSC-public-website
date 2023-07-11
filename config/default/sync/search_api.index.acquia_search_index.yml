@@ -1,16 +1,15 @@
 uuid: 5c8488ae-0496-47aa-8a69-0f99fc698edc
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
-    - search_api.server.acquia_search_server
   module:
-    - search_api_solr
     - node
     - search_api
+    - search_api_solr
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -62,7 +61,7 @@ _core:
 id: acquia_search_index
 name: 'Acquia Search Solr Index'
 description: ''
-read_only: true
+read_only: false
 field_settings:
   field_body_paragraphs:
     label: Body
@@ -136,7 +135,8 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - skill
     languages:
       default: true
       selected: {  }
@@ -175,5 +175,4 @@ options:
   cron_limit: 50
   index_directly: true
   track_changes_in_references: true
-  overridden_by_acquia_search: 2
-server: acquia_search_server
+server: null

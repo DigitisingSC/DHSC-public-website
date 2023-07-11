@@ -7,7 +7,6 @@ dependencies:
     - node.type.skill
     - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.localgov_text
-    - paragraphs.paragraphs_type.pagination
   module:
     - entity_reference_revisions
 id: node.skill.field_body_paragraphs
@@ -26,7 +25,6 @@ settings:
     target_bundles:
       accordion: accordion
       localgov_text: localgov_text
-      pagination: pagination
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -59,20 +57,8 @@ settings:
       dynamic_content_listing:
         weight: 27
         enabled: false
-      featured_items:
-        weight: 39
-        enabled: false
-      framework_row:
-        weight: 40
-        enabled: false
-      framework_section:
-        weight: 41
-        enabled: false
       from_library:
         weight: 28
-        enabled: false
-      full_content_listings:
-        weight: 43
         enabled: false
       link_description:
         weight: 34
@@ -89,17 +75,11 @@ settings:
       newsletter_signup:
         weight: 32
         enabled: false
-      pagination:
-        weight: 49
-        enabled: true
       quick_link:
         weight: 33
         enabled: false
       quick_links:
         weight: 34
-        enabled: false
-      skills_framework:
-        weight: 52
         enabled: false
       topic:
         weight: 35
