@@ -1,0 +1,32 @@
+adding:
+  dependencies:
+    config:
+      - field.storage.node.field_skill_price
+      - field.storage.node.field_skills_for_care_endorsed
+      - field.storage.node.field_themes
+  field_settings:
+    field_skill_price:
+      label: Price
+      datasource_id: 'entity:node'
+      property_path: field_skill_price
+      type: string
+      dependencies:
+        config:
+          - field.storage.node.field_skill_price
+    field_skills_for_care_endorsed:
+      label: 'Skills for Care endorsed'
+      datasource_id: 'entity:node'
+      property_path: field_skills_for_care_endorsed
+      type: string
+      dependencies:
+        config:
+          - field.storage.node.field_skills_for_care_endorsed
+    field_themes:
+      label: Themes
+      datasource_id: 'entity:node'
+      property_path: field_themes
+      type: string
+      dependencies:
+        config:
+          - field.storage.node.field_themes
+removing: {  }

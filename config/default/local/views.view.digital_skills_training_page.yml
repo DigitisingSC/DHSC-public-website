@@ -7,6 +7,7 @@ dependencies:
     - search_api.index.local_digital_skills_training_index
     - taxonomy.vocabulary.skill_level
     - taxonomy.vocabulary.skill_method
+    - taxonomy.vocabulary.theme
     - user.role.anonymous
     - user.role.authenticated
   module:
@@ -105,7 +106,7 @@ display:
         type: mini
         options:
           offset: 0
-          items_per_page: 10
+          items_per_page: 6
           total_pages: null
           id: 0
           tags:
@@ -165,6 +166,39 @@ display:
                 select_all_none: false
                 select_all_none_nested: false
                 display_inline: true
+              field_skill_price:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: false
+              field_themes:
+                plugin_id: bef
+                advanced:
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+              field_skills_for_care_endorsed:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
       access:
         type: role
         options:
@@ -191,44 +225,6 @@ display:
           exposed: false
       arguments: {  }
       filters:
-        status:
-          id: status
-          table: search_api_index_local_digital_skills_training_index
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: search_api_boolean
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         field_skill_method:
           id: field_skill_method
           table: search_api_index_local_digital_skills_training_index
@@ -332,6 +328,184 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        field_skill_price:
+          id: field_skill_price
+          table: search_api_index_local_digital_skills_training_index
+          field: field_skill_price
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_skill_price_op
+            label: Price
+            description: ''
+            use_operator: false
+            operator: field_skill_price_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: price
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              localgov_editor: '0'
+              localgov_author: '0'
+              localgov_contributor: '0'
+              localgov_user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_themes:
+          id: field_themes
+          table: search_api_index_local_digital_skills_training_index
+          field: field_themes
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_term
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_themes_op
+            label: Themes
+            description: ''
+            use_operator: false
+            operator: field_themes_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_themes
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              localgov_editor: '0'
+              localgov_author: '0'
+              localgov_contributor: '0'
+              localgov_user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: theme
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_skills_for_care_endorsed:
+          id: field_skills_for_care_endorsed
+          table: search_api_index_local_digital_skills_training_index
+          field: field_skills_for_care_endorsed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_options
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_skills_for_care_endorsed_op
+            label: 'Skills for Care endorsed'
+            description: ''
+            use_operator: false
+            operator: field_skills_for_care_endorsed_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: skills_for_care_endorsed
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              localgov_editor: '0'
+              localgov_author: '0'
+              localgov_contributor: '0'
+              localgov_user_manager: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        status:
+          id: status
+          table: search_api_index_local_digital_skills_training_index
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
@@ -389,7 +563,7 @@ display:
       display_description: ''
       exposed_block: true
       display_extenders: {  }
-      path: skills
+      path: digital-skills
     cache_metadata:
       max-age: -1
       contexts:

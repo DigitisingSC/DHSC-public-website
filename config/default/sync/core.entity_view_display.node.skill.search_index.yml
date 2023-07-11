@@ -8,7 +8,10 @@ dependencies:
     - field.field.node.skill.field_metatags
     - field.field.node.skill.field_skill_level
     - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_skill_price
+    - field.field.node.skill.field_skills_for_care_endorsed
     - field.field.node.skill.field_summary
+    - field.field.node.skill.field_themes
     - field.field.node.skill.field_training_length
     - node.type.skill
   module:
@@ -57,5 +60,8 @@ content:
 hidden:
   field_body_paragraphs: true
   field_metatags: true
+  field_skill_price: true
+  field_skills_for_care_endorsed: true
+  field_themes: true
   langcode: true
   search_api_excerpt: true

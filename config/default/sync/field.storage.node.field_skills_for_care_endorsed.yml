@@ -1,0 +1,27 @@
+uuid: 0139d26d-de5f-4118-91f2-2a2a5271e961
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_skills_for_care_endorsed
+field_name: field_skills_for_care_endorsed
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'yes'
+      label: 'Yes'
+    -
+      value: 'no'
+      label: 'No'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

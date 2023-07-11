@@ -1,12 +1,12 @@
-uuid: 32e94df7-d24c-4287-92f9-ff8f83957058
+uuid: 089b0b75-6623-4107-b89a-34f5ce70906d
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - taxonomy
-id: node.field_skill_method
-field_name: field_skill_method
+id: node.field_themes
+field_name: field_themes
 entity_type: node
 type: entity_reference
 settings:
