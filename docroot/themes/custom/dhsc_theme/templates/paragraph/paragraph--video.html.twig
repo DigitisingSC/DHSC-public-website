@@ -68,8 +68,9 @@
 
 <div{{ attributes.addClass(classes) }}>
 	{% include '@molecules/video-component/video-component.twig' with {
-    'header': content.localgov_title,
-    'description': content.localgov_text,
+    'header': content.localgov_title.0 ? content.localgov_title : null,
+    'description': content.localgov_text.0 ? content.localgov_text : null,
     'video': video,
+    'caption': content.field_caption.0 ? content.field_caption : null,
   } %}
 </div>
