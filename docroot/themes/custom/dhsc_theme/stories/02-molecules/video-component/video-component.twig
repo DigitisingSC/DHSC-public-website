@@ -17,5 +17,10 @@
 
   <div class="m-video__content aspect-video max-w-[31.125rem] mb-4">
     {{ video }}
+    {% if caption %}
+      <figcaption class="video__caption text-ssm text-coolgrey mt-1">
+        {{ caption }}
+      </figcaption>
+    {% endif %}
   </div>
 </div>
