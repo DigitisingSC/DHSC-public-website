@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.localgov_guides_page.field_body_paragraphs
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
+    - field.field.node.localgov_guides_page.field_sidebar_related
     - field.field.node.localgov_guides_page.field_summary
     - field.field.node.localgov_guides_page.field_topic_term
     - field.field.node.localgov_guides_page.localgov_guides_parent
@@ -113,6 +114,34 @@ content:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_sidebar_related:
+    type: paragraphs
+    weight: 31
+    region: content
+    settings:
+      title: 'Related information'
+      title_plural: 'Related information'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        duplicate: '0'
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: false
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
   field_summary:
     type: string_textarea
     weight: 5
