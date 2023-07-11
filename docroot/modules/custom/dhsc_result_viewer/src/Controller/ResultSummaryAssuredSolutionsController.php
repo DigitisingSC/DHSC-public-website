@@ -228,9 +228,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $criteria = '';
     if ($results['search_criteria']) {
       foreach ($results['search_criteria'] as $item) {
-        $criteria .= Markup::create("<h4>{$item['section']}</h4><ul>");
+        $criteria .= "<h4>{$item['section']}</h4><ul>";
         foreach ($item['answers'] as $answer) {
-          $criteria .= Markup::create("<li>{$answer}</li>");
+          $criteria .= "<li>{$answer}</li>";
         }
         $criteria .= "</ul>";
       }
@@ -239,10 +239,10 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $result_items = '';
     if ($results['matches']) {
       foreach ($results['matches'] as $node) {
-        $result_items .= Markup::create("<h4>
+        $result_items .= "<h4>
       {$node->getTitle()}</h4>
       {$node->get('field_body_paragraphs')->entity->get('localgov_text')->value}
-      <p>");
+      <p>";
         $result_items .= "</p>";
       }
     }
@@ -250,10 +250,12 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $no_matches = '';
     if ($results['no_matches']) {
       foreach ($results['no_matches'] as $item) {
-        $no_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p<ul>");
-        foreach ($item['answers'] as $answer) {
-          $no_matches .= Markup::create("<p>{$answer['section']}</p>");
-          $no_matches .= Markup::create("<li>{$answer['answer']}</li>");
+        $no_matches .= "<h4>{$item['title']}</h4><p>Criteria not met:</p<ul>";
+        foreach ($item['answers'] as $key => $answers) {
+          $no_matches .= "<p>$key</p>";
+          foreach ($answers as $answer) {
+            $no_matches .= "<li>{$answer}</li>";
+          }
         }
         $no_matches .= "</ul>";
       }
