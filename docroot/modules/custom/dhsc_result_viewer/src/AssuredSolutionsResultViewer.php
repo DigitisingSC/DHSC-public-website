@@ -276,7 +276,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
     $result_data = [
       'search_criteria' => $search_criteria,
-      'matches' => !empty($no_matches) ? $matches : [],
+      'matches' => !empty($matches) ? $matches : [],
       'non_matching_count' => !empty($no_matches) ? count($no_matches) : [],
       'count' => !empty($no_matches) ? count($matches) : [],
       'total_count' => !empty($no_matches) ? count($matches) + count($no_matches) : [],
