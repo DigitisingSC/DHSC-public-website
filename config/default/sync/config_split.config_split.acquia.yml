@@ -12,7 +12,6 @@ folder: ../config/default/acquia
 module:
   acquia_connector: 0
   acquia_purge: 0
-  acquia_search: 0
   dblog: 0
   memcache: 0
   purge: 0

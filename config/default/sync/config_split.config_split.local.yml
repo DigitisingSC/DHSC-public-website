@@ -20,7 +20,6 @@ complete_list:
   - views.view.digital_skills_training_page
   - views.view.local_search
 partial_list:
-  - acquia_search.settings
   - autologout.settings
   - block.block.exposedformacquia_searchpage
   - block.block.exposedformdigital_skills_training_pageskills_search_page

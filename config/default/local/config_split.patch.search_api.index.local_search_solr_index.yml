@@ -1,7 +1,9 @@
 adding:
+  status: true
   datasource_settings:
     'entity:node':
       bundles:
         selected:
           - skill
-removing: {  }
+removing:
+  status: false
