@@ -4,17 +4,16 @@
     @apply flex justify-start items-center w-full;
   }
 
-  &__trigger>div {
+  &__trigger > div {
     @apply mr-2;
   }
 
   &__trigger svg {
-    @apply h-4 w-4;
-    fill: #00594C;
+    //@apply fill-forest;
   }
 
   &__title {
-    @apply text-base text-left text-forest underline;
+    @apply text-base text-left underline;
   }
 
   @apply p-3 mb-4 rounded-md w-full bg-white border border-black-40;

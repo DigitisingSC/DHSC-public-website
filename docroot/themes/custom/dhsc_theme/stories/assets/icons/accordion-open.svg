@@ -1,4 +1,4 @@
 <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="12.5" cy="12.5" r="12.5" fill="#00594C"/>
+<circle cx="12.5" cy="12.5" r="12.5" fill="currentColor"/>
 <path d="M13.288 20H10.912V14.357H5.269V11.981H10.912V6.338H13.288V11.981H18.931V14.357H13.288V20Z" fill="#FAFAFA"/>
 </svg>
