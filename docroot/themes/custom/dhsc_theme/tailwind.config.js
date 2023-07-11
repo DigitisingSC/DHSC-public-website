@@ -156,6 +156,24 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: [
+            // Paragraphs
+            {
+              p: {
+                fontSize: theme('fontSize.xs'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.base')
+                }
+              }
+            },
+            // Lists
+            {
+              li: {
+                fontSize: theme('fontSize.xs'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.base')
+                }
+              }
+            },
             // Links.
             {
               a: {
