@@ -1,0 +1,18 @@
+uuid: da20ce62-c37b-4619-be81-b4f2cca99374
+langcode: en
+status: true
+dependencies: {  }
+id: acquia
+label: Acquia
+description: ''
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/default/acquia
+module:
+  acquia_connector: 0
+  acquia_search: 0
+  syslog: 0
+theme: {  }
+complete_list: {  }
+partial_list: {  }

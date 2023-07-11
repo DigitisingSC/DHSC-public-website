@@ -1,0 +1,40 @@
+uuid: 5b83a430-a9ba-474c-b7f1-65ea4efe6d1d
+langcode: en
+status: true
+dependencies: {  }
+id: acquia_prod
+label: 'Acquia prod'
+description: ''
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/default/acquia_prod
+module:
+  dblog: 0
+  views_ui: 0
+  acquia_purge: 0
+  memcache: 0
+  purge: 0
+  purge_drush: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
+  purge_queuer_coretags: 0
+  purge_ui: 0
+  shield: 0
+theme: {  }
+complete_list:
+  - views.view.digital_skills_training_page
+  - views.view.local_search
+partial_list:
+  - block.block.exposedformacquia_searchpage
+  - block.block.exposedformdigital_skills_training_pageskills_search_page
+  - block.block.exposedformlocal_searchpage
+  - search_api.index.acquia_digital_skills_training_index
+  - search_api.index.acquia_search_index
+  - search_api.index.local_digital_skills_training_index
+  - search_api.index.local_search_solr_index
+  - search_api.server.acquia_search_server
+  - search_api.server.local_ddev_solr_server
+  - views.view.acquia_search
+  - views.view.digital_skills_training_search
+  - block.block.exposedformdigital_skills_training_searchskills_search_page
