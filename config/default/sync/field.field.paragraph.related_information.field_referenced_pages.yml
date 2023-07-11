@@ -1,0 +1,49 @@
+uuid: 7add6a4d-b212-4e2a-a73e-1b94caeb4d74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_referenced_pages
+    - node.type.article
+    - node.type.casestudy
+    - node.type.content_page
+    - node.type.event
+    - node.type.landing_page
+    - node.type.localgov_guides_overview
+    - node.type.localgov_guides_page
+    - node.type.recommendation
+    - node.type.skill
+    - node.type.subtopic_page
+    - node.type.supplier
+    - paragraphs.paragraphs_type.related_information
+id: paragraph.related_information.field_referenced_pages
+field_name: field_referenced_pages
+entity_type: paragraph
+bundle: related_information
+label: Links
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      casestudy: casestudy
+      content_page: content_page
+      event: event
+      localgov_guides_overview: localgov_guides_overview
+      localgov_guides_page: localgov_guides_page
+      landing_page: landing_page
+      recommendation: recommendation
+      skill: skill
+      subtopic_page: subtopic_page
+      supplier: supplier
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

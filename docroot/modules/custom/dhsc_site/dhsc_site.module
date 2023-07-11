@@ -43,6 +43,12 @@ function dhsc_site_theme() {
         'phone' => null,
       ],
     ],
+    'related_information' => [
+      'variables' => [
+        'title' => null,
+        'items' => [],
+      ],
+    ],
   ];
 }
 

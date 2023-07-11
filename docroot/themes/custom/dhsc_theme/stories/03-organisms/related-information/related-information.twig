@@ -1,0 +1,17 @@
+{% set classes = [
+  'o-related-information border-t-2 pt-3 pb-6 border-t-forest'
+] %}
+
+{% if items|length > 0 %}
+  <section{{attributes.addClass(classes)}}>
+    {% if title %}
+      <h2 class="o-related-information__title text-black text-base tablet:text-md text-bold mb-3">{{ title }}</h2>
+    {% endif %}
+
+    {% for item in items %}
+      <div class="o-related-information_links mb-3 last:mb-0">
+        <a class="o-related-information_link text-forest" href="{{ item.url }}">{{ item.title }}</a>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}
