@@ -1,14 +1,14 @@
-uuid: e8c33542-5f7b-4ebd-998e-c29ade9057d7
+uuid: 5b83a430-a9ba-474c-b7f1-65ea4efe6d1d
 langcode: en
 status: true
 dependencies: {  }
-id: acquia_dev_stage
-label: 'Acquia dev & stage'
+id: acquia_prod
+label: 'Acquia prod'
 description: ''
 weight: 0
 stackable: false
 storage: folder
-folder: ../config/default/acquia_dev_stage
+folder: ../config/default/acquia_prod
 module:
   views_ui: 0
   shield: 0

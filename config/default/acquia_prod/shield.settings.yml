@@ -1,0 +1,17 @@
+_core:
+  default_config_hash: FLJZME3II5fjmMSrdEvJHp95ZJf8V_X0jbX0VdVU1BU
+shield_enable: false
+credential_provider: shield
+credentials:
+  shield:
+    user: devshield
+    pass: devshield
+allow_cli: true
+debug_header: false
+unset_basic_auth_headers: true
+print: 'Please login using your site authentication details:'
+method: 0
+paths: ''
+allowlist: ''
+http_method_allowlist: {  }
+domains: ''

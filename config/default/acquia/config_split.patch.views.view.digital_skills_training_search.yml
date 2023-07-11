@@ -1,15 +1,20 @@
 adding:
-  status: true
   dependencies:
     config:
       - taxonomy.vocabulary.theme
   display:
     default:
       display_options:
-        title: 'Digital skills training'
         pager:
+          type: full
           options:
             items_per_page: 6
+            tags:
+              next: 'Next ›'
+              previous: '‹ Previous'
+              first: '« First'
+              last: 'Last »'
+            quantity: 9
         exposed_form:
           options:
             bef:
@@ -47,18 +52,6 @@ adding:
                   select_all_none: false
                   select_all_none_nested: false
                   display_inline: true
-        empty:
-          area_text_custom:
-            id: area_text_custom
-            table: views
-            field: area_text_custom
-            relationship: none
-            group_type: group
-            admin_label: ''
-            plugin_id: text_custom
-            empty: true
-            content: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
-            tokenize: false
         filters:
           field_skill_price:
             id: field_skill_price
@@ -204,19 +197,14 @@ adding:
           operator: AND
           groups:
             1: AND
-        use_ajax: true
-    skills_search_page:
-      display_options:
-        path: digital-skills
 removing:
-  status: false
   display:
     default:
       display_options:
-        title: 'Digital skills training Page'
         pager:
+          type: mini
           options:
             items_per_page: 10
-    skills_search_page:
-      display_options:
-        path: skills
+            tags:
+              next: ››
+              previous: ‹‹

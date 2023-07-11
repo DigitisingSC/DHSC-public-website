@@ -1,4 +1,5 @@
 adding:
+  status: true
   dependencies:
     config:
       - field.storage.node.field_skill_price
@@ -25,8 +26,9 @@ adding:
       label: Themes
       datasource_id: 'entity:node'
       property_path: field_themes
-      type: string
+      type: integer
       dependencies:
         config:
           - field.storage.node.field_themes
-removing: {  }
+removing:
+  status: false
