@@ -17,7 +17,7 @@
 {# Template #}
 <div class="m-accordion-item" x-data="{ isOpen: false }">
   <div class="m-accordion-item__control">
-    <a href="#" class="m-accordion-item__trigger text-base text-forest focus:text-black" :aria-expanded="isOpen" @click.prevent="isOpen = ! isOpen" :class="{ 'mb-3': isOpen }">
+    <a href="#" class="m-accordion-item__trigger text-xs tablet:text-base text-forest focus:text-black" :aria-expanded="isOpen" @click.prevent="isOpen = ! isOpen" :class="{ 'mb-3': isOpen }">
       <span x-show="isOpen" class="h-5 w-5 mr-2">{{ icon_close }}</span>
       <span x-show="!isOpen" class="h-5 w-5 mr-2">{{ icon_open }}</span>
       <span class="m-accordion-item__title">{{ title }}</span>
