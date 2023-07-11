@@ -28,5 +28,16 @@ Breadcrumbs.args = {
       text: 'Parent',
       url: '#',
     },
+    {
+      text: 'Child',
+      url: '#',
+    },
+    {
+      text: 'Grandchild',
+      url: '#',
+    },
+    {
+      text: 'Current',
+    },
   ]
 };
