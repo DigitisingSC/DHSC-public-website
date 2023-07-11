@@ -19,7 +19,7 @@
     font-family: 'Frutiger', arial, system-ui, sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-weight: theme('fontWeight.bold'),
+    font-weight: theme('fontWeight.bold');
   }
   h1 {
     font-size: theme('fontSize.lg');
