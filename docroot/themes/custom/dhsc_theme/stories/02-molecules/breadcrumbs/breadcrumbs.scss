@@ -3,5 +3,19 @@
     .m-breadcrumbs__separator {
       @apply hidden;
     }
+    @apply hidden;
+    @screen tablet {
+      @apply block;
+    }
   }
+  &__item:not(:nth-last-child(-n+2)) {
+    @apply hidden;
+    @screen tablet {
+      @apply block;
+    }
+  }
+  @screen tablet {
+
+  }
+
 }
