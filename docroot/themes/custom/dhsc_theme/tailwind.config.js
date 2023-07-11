@@ -109,8 +109,9 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'tablet': '767px',
-        'desktop': '959px',
+        'mobile': '320px',
+        'tablet': '768px',
+        'desktop': '1024px',
       },
       colors: {
         transparent: 'transparent',
@@ -183,7 +184,7 @@ module.exports = {
           paddingLeft: '.938rem',
           paddingRight: '.938rem',
           '@screen tablet': {
-            maxWidth: '960px',
+            maxWidth: '768px',
             paddingLeft: '1.875rem',
             paddingRight: '1.875rem'
           },

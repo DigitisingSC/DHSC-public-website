@@ -1,17 +1,17 @@
 {#
   Template
 #}
-<section class="m-hero relative">
-  <div class="m-hero__container container mx-auto mb-6 tablet:flex tablet:flex-row-reverse">
-  	<div class="m-hero__image w-full tablet:w-4/12 tablet:max-height-[340px]">
+<section class="m-hero relative mb-32 mobile:mb-24 tablet:mb-16">
+  <div class="m-hero__container container mx-auto mb-6 tablet:flex tablet:flex-row-reverse relative">
+  	<div class="m-hero__image w-full tablet:w-6/12 desktop:w-4/12">
   		{{ image }}
   	</div>
     {% if heading or text %}
-      <div class="m-hero__content w-full tablet:w-8/12 relative z-1 mt-9">
-        <div class="m-hero__copy py-4 tablet:py-8 px-4 lg:px-8 bg-green-60 text-black relative">
-          <h2 class="font-bold">{{ heading }}</h2>
+      <div class="m-hero__content absolute mobile:max-w-[530px] tablet:max-w-full tablet:w-[660px] desktop:w-7/12 z-1 left-4 right-4 tablet:left-6 tablet:right-0 -mt-[60px] mobile:-mt-[80px] tablet:mt-[100px] tablet:mt-[80px]">
+        <div class="m-hero__copy py-3 tablet:py-6 px-3 lg:px-6 bg-green-60 text-black relative">
+          <h2 class="font-bold text-lg tablet:text-xl desktop:text-2xl leading-tight mb-3">{{ heading }}</h2>
           <div>{{ icon }}</div>
-          {{ text }}
+          <div class="m-hero__text text-xs tablet:text-sm">{{ text }}</div>
         </div>
       </div>
     {% endif %}
