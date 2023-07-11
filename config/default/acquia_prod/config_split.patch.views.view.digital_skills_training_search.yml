@@ -6,8 +6,15 @@ adding:
     default:
       display_options:
         pager:
+          type: full
           options:
             items_per_page: 6
+            tags:
+              next: 'Next ›'
+              previous: '‹ Previous'
+              first: '« First'
+              last: 'Last »'
+            quantity: 9
         exposed_form:
           options:
             bef:
@@ -195,5 +202,9 @@ removing:
     default:
       display_options:
         pager:
+          type: mini
           options:
             items_per_page: 10
+            tags:
+              next: ››
+              previous: ‹‹
