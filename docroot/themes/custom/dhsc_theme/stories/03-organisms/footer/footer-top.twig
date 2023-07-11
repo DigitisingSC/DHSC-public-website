@@ -1,6 +1,6 @@
 {% set classes = [
   'o-footer-region-top',
-  'pt-6 pb-4'
+  'tablet:pt-6 tablet:pb-4'
 ] %}
 <section{{ attributes.addClass(classes) }}>
   {% if title %}
@@ -8,7 +8,7 @@
       <h3>{{ title }}</h3>
     </div>
   {% endif %}
-  <div class="o-footer-region-top__content container mx-auto w-full py-4">
+  <div class="o-footer-region-top__content container mx-auto w-full tablet:py-4">
     {% if content is iterable  %}
       {% for item in content %}
         {{ item }}
