@@ -7,6 +7,10 @@ adding:
   third_party_settings:
     acquia_search:
       use_edismax: 0
+  read_only: true
+  options:
+    overridden_by_acquia_search: 2
   server: acquia_search_server
 removing:
+  read_only: false
   server: null

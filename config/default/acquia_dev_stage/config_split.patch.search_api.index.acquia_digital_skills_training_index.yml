@@ -4,6 +4,12 @@ adding:
       - field.storage.node.field_skill_price
       - field.storage.node.field_skills_for_care_endorsed
       - field.storage.node.field_themes
+      - search_api.server.acquia_search_server
+    module:
+      - acquia_search
+  third_party_settings:
+    acquia_search:
+      use_edismax: 0
   field_settings:
     field_skill_price:
       label: Price
@@ -29,4 +35,6 @@ adding:
       dependencies:
         config:
           - field.storage.node.field_themes
-removing: {  }
+  server: acquia_search_server
+removing:
+  server: null

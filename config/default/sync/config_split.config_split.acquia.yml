@@ -10,7 +10,6 @@ stackable: false
 storage: folder
 folder: ../config/default/acquia
 module:
-  acquia_connector: 0
   acquia_purge: 0
   dblog: 0
   memcache: 0
