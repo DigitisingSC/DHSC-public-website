@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.video.field_caption
     - field.field.paragraph.video.field_video
     - field.field.paragraph.video.localgov_text
     - field.field.paragraph.video.localgov_title
@@ -14,6 +15,14 @@ targetEntityType: paragraph
 bundle: video
 mode: default
 content:
+  field_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_video:
     type: entity_reference_entity_view
     label: hidden
