@@ -89,6 +89,9 @@ module:
   page_cache: 0
   paragraphs_features: 0
   paragraphs_library: 0
+  password_policy_character_types: 0
+  password_policy_history: 0
+  password_policy_length: 0
   path: 0
   path_alias: 0
   quickedit: 0
@@ -124,6 +127,7 @@ module:
   webform_ui: 0
   workflows: 0
   pathauto: 1
+  password_policy: 10
   views: 10
   paragraphs: 11
   paragraphs_ee: 15
