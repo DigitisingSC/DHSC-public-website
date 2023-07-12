@@ -43,7 +43,8 @@
 	{% include '@organisms/card-collection/card-collection.twig' with {
     'title': content.localgov_title,
     'items': content.field_card_items,
-    'link': content.field_cta_link
+    'link_url': content.field_cta_link[0]['#url'],
+    'link_text': content.field_cta_link[0]['#title'] 
 } %}
 </div>
 
