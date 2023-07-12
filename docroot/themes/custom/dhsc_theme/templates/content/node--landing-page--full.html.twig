@@ -95,6 +95,10 @@
       'heading': node.label,
       'text': content.field_formatted_description
     } %}
+  {% else %}
+    <div class="t-content-page__title">
+      <h1>{{ node.label }}</h1>
+    </div>
   {% endif %}
 
   <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
