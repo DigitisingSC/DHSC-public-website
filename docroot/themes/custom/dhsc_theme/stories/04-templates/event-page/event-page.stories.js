@@ -1,21 +1,26 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
-import eventPage from "./event-page.twig";
+import EventPageTwig from "./event-page.twig";
+import './event-page.scss';
 
 export default {
-  title: "Design System/Templates/Event page",
+  title: "Design System/Templates/Event Page",
 };
 
-const Template = ({ title, event_details, content }) =>
-  eventPage({
+const Template = ({ attributes, title, event_details, related, content }) =>
+  EventPageTwig({
+    attributes,
     title,
     event_details,
+    related,
     content
   });
 
 export const EventPage = Template.bind({});
 EventPage.args = {
-  title: "Event",
-  event_details: "event details..",
-  content: "event content.."
+  attributes: new DrupalAttributes(),
+  title: 'Event',
+  event_details: 'event details..',
+  related: 'Related info',
+  content: 'event content..'
 };

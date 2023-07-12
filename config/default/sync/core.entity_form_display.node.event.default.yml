@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
     - field.field.node.event.field_summary
     - node.type.event
@@ -21,7 +22,10 @@ dependencies:
     - link
     - media_library
     - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
     - path
+    - scheduler
     - time_field
 third_party_settings:
   field_group:
@@ -37,7 +41,7 @@ third_party_settings:
       label: 'Event details'
       region: content
       parent_name: ''
-      weight: 1
+      weight: 2
       format_type: details
       format_settings:
         classes: ''
@@ -53,7 +57,7 @@ third_party_settings:
       label: Metadata
       region: content
       parent_name: ''
-      weight: 3
+      weight: 5
       format_type: details
       format_settings:
         classes: ''
@@ -75,7 +79,7 @@ content:
     third_party_settings: {  }
   field_body_paragraphs:
     type: paragraphs
-    weight: 2
+    weight: 3
     region: content
     settings:
       title: Paragraph
@@ -141,6 +145,34 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_sidebar_related:
+    type: paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: 'Other event'
+      title_plural: 'Other events'
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: related_information
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        duplicate: '0'
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: false
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
   field_start_time:
     type: time_widget
     weight: 14
@@ -159,7 +191,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 4
+    weight: 6
     region: content
     settings:
       include_locked: true
@@ -182,6 +214,17 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 14
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -207,13 +250,19 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 16
+    region: content
+    settings: {  }
     third_party_settings: {  }
   url_redirects:
     weight: 11

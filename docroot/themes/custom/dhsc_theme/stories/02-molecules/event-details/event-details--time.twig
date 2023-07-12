@@ -2,12 +2,31 @@
   Template
 #}
 <div class="m-event-details">
-  {{ 'Date'|t }} {{ date }}
-  {% if start_time is not empty and end_time is not empty %}
-    {{ 'Start'|t }} {{ start_time }}
-    {{ 'End'|t }} {{ end_time }}
+  {% if expired %}
+    <div class="m-event-details__expired">
+      <span>{{ 'This event has expired'|t }}</span>
+    </div>
+  {% else %}
+    {% if date %}
+    <div class="m-event-details__date flex flex-col">
+      <h3>{{ 'Date and time'|t }}</h3>
+      <div>{{ 'Date'|t }} {{ date }}</div>
+      {% if start_time is not empty and end_time is not empty %}
+        <div>{{ 'Start'|t }} {{ start_time }}</div>
+        <div>{{ 'End'|t }} {{ end_time }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if location %}
+    <div class="m-event-details__location">
+      <h3>{{ 'Location'|t }}</h3>
+      {{ location }}
+    </div>
+    {% endif %}
+    {% if link %}
+    <div class="m-event-details__link break-words">
+      {{ link }}
+    </div>
+    {% endif%}
   {% endif %}
-  <div class="break-words">
-    {{ link }}
-  </div>
 </div>
