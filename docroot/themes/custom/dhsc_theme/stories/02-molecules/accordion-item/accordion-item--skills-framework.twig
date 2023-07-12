@@ -39,13 +39,23 @@
               {% set field_skills_and_knowledge_label = field_skills_and_knowledge.fielddefinition.label %}
               {% set field_learning_resources_label = field_learning_resources.fielddefinition.label %}
               <tr>
-                <td data-label="{{ field_criteria_label }}">{{ field_criteria.value|raw}}</td>
-                <td data-label="{{ field_skills_and_knowledge_label }}">{{ field_skills_and_knowledge.value|raw }}</td>
+                <td data-label="{{ field_criteria_label }}">
+                  <div class="column-text">
+                    {{ field_criteria.value|raw}}
+                  </div>
+                </td>
+                <td data-label="{{ field_skills_and_knowledge_label }}">
+                  <div class="column-text">
+                    {{ field_skills_and_knowledge.value|raw }}
+                  </div>
+                </td>
                 <td data-label="{{ field_learning_resources_label }}">
                   {% if field_learning_resources|length > 0 %}
-                    {% for learning_resource in field_learning_resources %}
-                      {{ link(learning_resource.title, learning_resource.uri) }}
-                    {% endfor %}
+                    <div class="column-text">
+                      {% for learning_resource in field_learning_resources %}
+                          {{ link(learning_resource.title, learning_resource.uri) }}
+                      {% endfor %}
+                    </div>
                   {% endif %}
                 </td>
               </tr>
@@ -58,13 +68,13 @@
           {# populate table headers with label variables #}
           <tr>
             {% if items_iterable %}
-              <th scope="col">{{ field_skills_and_knowledge_label|t}}</th>
               <th scope="col">{{ field_criteria_label|t }}</th>
+              <th scope="col">{{ field_skills_and_knowledge_label|t}}</th>
               <th scope="col">{{ field_learning_resources_label|t }}</th>
             {% else %}
-              <th scope="col">{{ 'I have the skills and knowledge to...'|t }}</th>
-              <th scope="col">{{ 'The criteria is met when..'|t }}</th>
-              <th scope="col">{{ 'Learning resources'|t }}</th>
+              <th scope="col">{{ 'Knowledge criteria'|t }}</th>
+              <th scope="col">{{ 'Additional information'|t }}</th>
+              <th scope="col">{{ 'Useful resources'|t }}</th>
             {% endif %}
           </tr>
         </thead>
