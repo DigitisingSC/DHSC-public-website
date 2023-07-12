@@ -36,7 +36,7 @@
       }
 
       a {
-        @apply text-green-100 mr-2 hover:underline;
+        @apply text-green-100 mb-2 hover:underline block;
       }
       ul, ol {
         @apply pl-6;
@@ -72,11 +72,10 @@
             }
           }
 
-          p {
-            @apply w-1/2;
-
-            @media screen and (max-width: 480px) {
-              @apply w-full;
+          .column-text {
+            @apply w-full;
+            @media screen and (min-width: 835px) {
+              @apply w-1/2;
             }
           }
 
