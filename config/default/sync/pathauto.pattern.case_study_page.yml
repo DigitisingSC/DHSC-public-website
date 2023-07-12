@@ -7,12 +7,12 @@ dependencies:
 id: case_study_page
 label: 'Case study page'
 type: 'canonical_entities:node'
-pattern: 'case-studies/[node:title]'
+pattern: 'success-stories/[node:title]'
 selection_criteria:
-  3b645f45-f436-4f8f-99a6-cc6b5438c1ef:
+  92bff1cc-e570-4963-9518-5478d07e5102:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3b645f45-f436-4f8f-99a6-cc6b5438c1ef
+    uuid: 92bff1cc-e570-4963-9518-5478d07e5102
     context_mapping:
       node: node
     bundles:

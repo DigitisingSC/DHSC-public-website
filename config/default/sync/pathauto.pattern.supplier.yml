@@ -7,12 +7,12 @@ dependencies:
 id: supplier
 label: Supplier
 type: 'canonical_entities:node'
-pattern: 'suppliers/[node:title]'
+pattern: 'assured-solutions/[node:title]'
 selection_criteria:
-  417aa819-0a06-4b21-a7c9-6c4d3a9bd492:
+  70c80c6c-1ada-4a34-afe8-0ea17705d9ba:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 417aa819-0a06-4b21-a7c9-6c4d3a9bd492
+    uuid: 70c80c6c-1ada-4a34-afe8-0ea17705d9ba
     context_mapping:
       node: node
     bundles:
