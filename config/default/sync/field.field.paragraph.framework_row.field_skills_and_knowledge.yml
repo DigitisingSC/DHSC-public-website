@@ -15,7 +15,7 @@ id: paragraph.framework_row.field_skills_and_knowledge
 field_name: field_skills_and_knowledge
 entity_type: paragraph
 bundle: framework_row
-label: 'Skills and Knowledge'
+label: 'Additional information'
 description: ''
 required: true
 translatable: false

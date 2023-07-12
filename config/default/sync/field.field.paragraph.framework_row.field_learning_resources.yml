@@ -11,7 +11,7 @@ id: paragraph.framework_row.field_learning_resources
 field_name: field_learning_resources
 entity_type: paragraph
 bundle: framework_row
-label: 'Learning Resources'
+label: 'Useful resources'
 description: ''
 required: false
 translatable: false

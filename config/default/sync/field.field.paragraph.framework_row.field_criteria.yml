@@ -15,7 +15,7 @@ id: paragraph.framework_row.field_criteria
 field_name: field_criteria
 entity_type: paragraph
 bundle: framework_row
-label: Criteria
+label: 'Knowledge criteria'
 description: ''
 required: true
 translatable: false
