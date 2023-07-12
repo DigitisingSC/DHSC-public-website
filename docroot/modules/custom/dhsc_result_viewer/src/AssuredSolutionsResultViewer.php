@@ -278,8 +278,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       'search_criteria' => $search_criteria,
       'matches' => !empty($matches) ? $matches : [],
       'non_matching_count' => !empty($no_matches) ? count($no_matches) : [],
-      'count' => !empty($no_matches) ? count($matches) : [],
-      'total_count' => !empty($no_matches) ? count($matches) + count($no_matches) : [],
+      'count' => !empty($matches) ? count($matches) : [],
+      'total_count' => !empty($matches) ? count($matches) + count($no_matches) : [],
       'no_matches' => !empty($no_matches) ? $no_matches : [],
       'submission_url' => isset($submission_url) ? $submission_url : [],
     ];
