@@ -38,7 +38,7 @@
         "drupal/eu_cookie_compliance": "^1.24",
         "drupal/field_formatter_class": "^1.6",
         "drupal/google_analytics": "^4.0",
-        "drupal/linkit": "^6.0@RC",
+        "drupal/linkit": "^6.0",
         "drupal/mailsystem": "^4.4",
         "drupal/maxlength": "^2.1",
         "drupal/memcache": "^2.5",
