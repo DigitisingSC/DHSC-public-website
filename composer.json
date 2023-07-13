@@ -49,6 +49,7 @@
         "drupal/password_policy": "^4.0",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.8",
+        "drupal/robotstxt": "^1.5",
         "drupal/scheduler": "^1.5",
         "drupal/search_api_solr": "^4.2",
         "drupal/seckit": "^2.0",
@@ -129,6 +130,9 @@
                     "mode": "replace",
                     "overwrite": false,
                     "path": "docroot/core/assets/scaffold/files/default.settings.php"
+                },
+                "[web-root]/robots.txt": {
+                    "mode": "skip"
                 }
             },
             "initial": {
