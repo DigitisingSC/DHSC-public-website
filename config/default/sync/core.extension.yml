@@ -89,6 +89,10 @@ module:
   page_cache: 0
   paragraphs_features: 0
   paragraphs_library: 0
+  password_policy_blacklist: 0
+  password_policy_character_types: 0
+  password_policy_history: 0
+  password_policy_length: 0
   path: 0
   path_alias: 0
   quickedit: 0
@@ -102,6 +106,7 @@ module:
   search_api: 0
   search_api_solr: 0
   seckit: 0
+  session_limit: 0
   simple_sitemap: 0
   site_settings: 0
   sitewide_alert: 0
@@ -124,6 +129,7 @@ module:
   webform_ui: 0
   workflows: 0
   pathauto: 1
+  password_policy: 10
   views: 10
   paragraphs: 11
   paragraphs_ee: 15
