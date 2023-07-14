@@ -12,25 +12,36 @@ Classes
   <div class="t-event__header">
     {% if title %}
       <div class="t-event__title">
-        <h1>{{ title }}</H1>
+        <h1 class="mb-3">{{ title }}</H1>
       </div>
     {% endif %}
+    {% if subtitle %}
+      <div class="t-event__subtitle text-md text-coolgrey mb-5 tablet:mb-7">
+        {{ subtitle }}
+      </div>
+    {% endif %}
+
   </div>
-  <div class="t-event__main">
-    {% if event_details %}
-      <div class="t-event__details">
-        {{ event_details }}
-      </div>
-    {% endif %}
-    {% if content %}
+  <div class="t-event__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+    <div class="t-event__conten-wrapper{% if related %} tablet:w-9/12{% endif %}">
+      {% if featured_image %}
+        <div class="t-event__details mb-5 tablet:mb-7">
+          {{ featured_image }}
+        </div>
+      {% endif %}
+      {% if event_details %}
+        <div class="t-event__details">
+          {{ event_details }}
+        </div>
+      {% endif %}
       <div class="t-event__content">
         {{ content }}
       </div>
-    {% endif %}
+    </div>
     {% if related %}
-      <div class="t-event__related">
+      <aside class="t-event__related tablet:w-3/12">
         {{ related }}
-      </div>
+      </aside>
     {% endif %}
   </div>
 </article>
