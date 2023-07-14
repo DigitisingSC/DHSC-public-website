@@ -10,8 +10,19 @@
 
     {% for item in items %}
       <div class="o-related-information_links mb-3 last:mb-0">
-        <a class="o-related-information_link text-forest" href="{{ item.url }}">{{ item.title }}</a>
+        <a class="o-related-information_link text-forest font-bold text-base" href="{{ item.url }}">{{ item.title }}</a>
+        {% if item.subtitle %}
+          <div class="o-related-information_date border-b boder-black-20 pb-3 mt-1 mb-2 text-coolgrey">
+            {{ item.subtitle }}
+          </div>
+        {% endif %}
       </div>
     {% endfor %}
+
+    {% if read_more_link %}
+      <div class="o-related-information_read-more text-forest">
+        {{ read_more_link }}
+      </div>
+    {% endif %}
   </section>
 {% endif %}
