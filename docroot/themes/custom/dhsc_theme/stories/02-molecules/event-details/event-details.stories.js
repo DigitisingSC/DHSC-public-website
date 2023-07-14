@@ -38,7 +38,10 @@ EventDetailsDate.args = {
   start_time: "10:00",
   end_time: "14:00",
   expired: false,
-  location:'123 avenue road, The place, Townsville, SE1 123',
+  location: {
+    place: '123 avenue road, The place, Townsville, SE1 123',
+    link: '#',
+  },
   link: "https://www.digitalsocialcare.co.uk/",
 };
 
@@ -50,7 +53,10 @@ EventDetailsExpiredDate.args = {
   start_time: "10:00",
   end_time: "14:00",
   expired: true,
-  location:'123 avenue road, The place, Townsville, SE1 123',
+  location: {
+    place: '123 avenue road, The place, Townsville, SE1 123',
+    link: '#',
+  },
   link: "https://www.digitalsocialcare.co.uk/",
 };
 
@@ -62,6 +68,9 @@ EventDetailsTime.args = {
   start_time: "10:00",
   end_time: "14:00",
   expired: false,
-  location:'123 avenue road, The place, Townsville, SE1 123',
+  location: {
+    place: '123 avenue road, The place, Townsville, SE1 123',
+    link: null,
+  },
   link: "https://www.digitalsocialcare.co.uk/",
 };
