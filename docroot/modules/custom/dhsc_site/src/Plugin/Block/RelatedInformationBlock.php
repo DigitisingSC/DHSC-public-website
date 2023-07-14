@@ -72,7 +72,7 @@ class RelatedInformationBlock extends BlockBase {
 
                 break;
               case 'article':
-                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y"');
+                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
                 break;
               case 'case_study':
                 // TODO: Add care provide name as subtitle
