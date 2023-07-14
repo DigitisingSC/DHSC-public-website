@@ -24,7 +24,7 @@ const Template = ({ title, list_price, summary, image, content, last_updated }) 
 export const SupplierPage= Template.bind({});
 SupplierPage.args = {
   title: "Using technology for a seamless recruitment process",
-  list_price: "List price: Coming soon",
+  list_price: "Coming soon",
   summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.',
   image: imgTag,
   content: `<h2>Nulla neque dolor sagittis eget</h2>
