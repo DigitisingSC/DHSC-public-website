@@ -2,15 +2,30 @@ import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import articlePage from "./article-page.twig";
 
+import {RelatedInformation} from "../../03-organisms/related-information/related-information.stories.js";
+import relatedInformationTwig from "../../03-organisms/related-information/related-information.twig";
+
+
 export default {
   title: "Design System/Templates/Article page",
 };
 
-const Template = ({ attributes, title, article_details, content }) =>
+
+import image from '../../../assets/images/banner.jpg';
+const imgTag = `<img src=${image} alt='Digital Social Care Banner'/>`;
+
+const relatedInformationTemplate = (args) => relatedInformationTwig({
+  ...RelatedInformation.args
+});
+
+
+const Template = ({ attributes, title, featured_image, related, article_details, content }) =>
   articlePage({
     attributes,
     title,
     article_details,
+    featured_image,
+    related,
     content
   });
 
@@ -18,10 +33,12 @@ export const ArticlePage = Template.bind({});
 ArticlePage.args = {
   attributes: new DrupalAttributes(),
   title: "Article page",
+  featured_image: imgTag,
   article_details: {
     author: "Jane Doe",
     date: '2014-07-02',
   },
+  related: relatedInformationTemplate,
   content: `Vestibulum turpis sem, aliquet eget, lobortis pellentesque, rutrum eu, nisl. Donec mollis hendrerit risus. Praesent blandit laoreet nibh. Suspendisse enim turpis, dictum sed, iaculis a, condimentum nec, nisi. Phasellus gravida semper nisi.
 
   Duis lobortis massa imperdiet quam. Curabitur vestibulum aliquam leo. Vestibulum ullamcorper mauris at ligula. Ut non enim eleifend felis pretium feugiat. Nullam tincidunt adipiscing enim.

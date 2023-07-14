@@ -17,20 +17,30 @@ Template
     </div>
   {% endif %}
 
-  {% if featured_image %}
-    <div class="t-article-page__featured-image mb-5 tablet:mb-7">
-      {{ featured_image }}
-    </div>
-  {% endif %}
-  {% if summary %}
-    <div class="t-article-page__summary mb-5 tablet:mb-7">
-      {{ summary }}
-    </div>
-  {% endif %}
+  <div class="t-event__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+    <div class="t-event__conten-wrapper{% if related %} tablet:w-9/12{% endif %}">
 
-  {% if content %}
-    <div class="t-article-page__content">
-      {{ content }}
+      {% if featured_image %}
+        <div class="t-article-page__featured-image mb-5 tablet:mb-7">
+          {{ featured_image }}
+        </div>
+      {% endif %}
+      {% if summary %}
+        <div class="t-article-page__summary mb-5 tablet:mb-7">
+          {{ summary }}
+        </div>
+      {% endif %}
+
+      {% if content %}
+        <div class="t-article-page__content">
+          {{ content }}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+
+    {% if related %}
+      <aside class="t-event__related tablet:w-3/12">
+        {{ related }}
+      </aside>
+    {% endif %}
 </article>

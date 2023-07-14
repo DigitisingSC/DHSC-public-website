@@ -1,20 +1,47 @@
 {#
+Classes
+#}
+{% set classes = [
+  't-event'
+] %}
+
+{#
   Template
 #}
-<article class="t-event-page">
-  {% if title %}
-  <div class="t-event-page__title">
-    <h1>{{ title }}</H1>
+<article{{ attributes.addClass(classes) }}>
+  <div class="t-event__header">
+    {% if title %}
+      <div class="t-event__title">
+        <h1 class="mb-3">{{ title }}</H1>
+      </div>
+    {% endif %}
+    {% if subtitle %}
+      <div class="t-event__subtitle text-md text-coolgrey mb-5 tablet:mb-7">
+        {{ subtitle }}
+      </div>
+    {% endif %}
+
   </div>
-  {% endif %}
-  {% if event_details %}
-    <div class="t-event-page__details">
-      {{ event_details }}
+  <div class="t-event__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+    <div class="t-event__conten-wrapper{% if related %} tablet:w-9/12{% endif %}">
+      {% if featured_image %}
+        <div class="t-event__details mb-5 tablet:mb-7">
+          {{ featured_image }}
+        </div>
+      {% endif %}
+      {% if event_details %}
+        <div class="t-event__details">
+          {{ event_details }}
+        </div>
+      {% endif %}
+      <div class="t-event__content">
+        {{ content }}
+      </div>
     </div>
-  {% endif %}
-  {% if content %}
-    <div class="t-event-page__content">
-      {{ content }}
-    </div>
-  {% endif %}
+    {% if related %}
+      <aside class="t-event__related tablet:w-3/12">
+        {{ related }}
+      </aside>
+    {% endif %}
+  </div>
 </article>

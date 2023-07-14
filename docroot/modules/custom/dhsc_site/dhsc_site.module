@@ -47,6 +47,7 @@ function dhsc_site_theme() {
       'variables' => [
         'title' => null,
         'items' => [],
+        'read_more_link' => null,
       ],
     ],
   ];

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_body_paragraphs
     - field.field.node.article.field_date
     - field.field.node.article.field_image
+    - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
     - node.type.article
   module:
@@ -46,6 +47,7 @@ content:
 hidden:
   field_author: true
   field_body_paragraphs: true
+  field_sidebar_related: true
   langcode: true
   links: true
   search_api_excerpt: true

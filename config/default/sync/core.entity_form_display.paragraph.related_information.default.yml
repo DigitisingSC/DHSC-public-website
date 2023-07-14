@@ -3,14 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.related_information.field_link
     - field.field.paragraph.related_information.field_referenced_pages
     - field.field.paragraph.related_information.field_title
     - paragraphs.paragraphs_type.related_information
+  module:
+    - link
 id: paragraph.related_information.default
 targetEntityType: paragraph
 bundle: related_information
 mode: default
 content:
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_referenced_pages:
     type: entity_reference_autocomplete
     weight: 1

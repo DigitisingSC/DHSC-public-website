@@ -16,6 +16,12 @@
   ]
 %}
 
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
 
 {% include '@templates/article-page/article-page.twig' with {
   'attributes': attributes.addClass(classes).removeAttribute('role'),
@@ -24,5 +30,7 @@
     'date': content.field_date.value,
     'author': content.field_author.0,
   },
+  'featured_image': content.field_image,
   'content': content.field_body_paragraphs,
+  'related': relatedBlock|striptags|trim != "" ? relatedBlock : null,
 } %}

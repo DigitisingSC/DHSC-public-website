@@ -12,7 +12,10 @@ dependencies:
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_location_link
+    - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_subtitle
     - field.field.node.event.field_summary
     - node.type.event
   module:
@@ -50,7 +53,10 @@ hidden:
   field_end_time: true
   field_image: true
   field_link: true
+  field_location_link: true
+  field_sidebar_related: true
   field_start_time: true
+  field_subtitle: true
   field_summary: true
   langcode: true
   links: true

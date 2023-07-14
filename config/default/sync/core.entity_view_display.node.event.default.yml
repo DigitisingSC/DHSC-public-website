@@ -11,13 +11,18 @@ dependencies:
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_location_link
+    - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_subtitle
     - field.field.node.event.field_summary
+    - image.style.dhsc_event_full_image
     - node.type.event
   module:
     - datetime
     - entity_reference_revisions
     - link
+    - media
     - time_field
     - user
 id: node.event.default
@@ -60,6 +65,17 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: dhsc_event_full_image
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 11
+    region: content
   field_link:
     type: link
     label: hidden
@@ -80,6 +96,27 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_location_link:
+    type: link_separate
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_sidebar_related:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
   field_start_time:
     type: time_formatter
     label: hidden
@@ -88,14 +125,21 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_subtitle:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: content
 hidden:
   field_event_type: true
-  field_image: true
   field_summary: true
   langcode: true
   search_api_excerpt: true
