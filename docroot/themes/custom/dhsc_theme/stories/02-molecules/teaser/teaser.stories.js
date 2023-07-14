@@ -32,13 +32,13 @@ const SkillTeaserTemplate = ({ attributes, variant, title, subtitle, link, descr
     skillAttributes,
   });
 
-const SupplierTeaserTemplate = ({ attributes, variant, title, link, body, listPrice, image }) =>
+const SupplierTeaserTemplate = ({ attributes, variant, title, link, summary, listPrice, image }) =>
   teaserSupplierTwig({
     attributes,
     variant,
     title,
     link,
-    body,
+    summary,
     listPrice,
     image
   });
@@ -86,7 +86,7 @@ SupplierTeaser.args = {
   variant: 'supplier',
   title: "Get help using technology at your organisation",
   link: "https://www.digitalsocialcare.co.uk",
-  body: "Body text",
+  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat lobortis id viverra viverra ultrices. Dolor sit ultrices diam nunc, lorem morbi.",
   listPrice: "£150",
   image: imgTag
 };
