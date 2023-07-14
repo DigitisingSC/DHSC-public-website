@@ -1,17 +1,33 @@
+{% set classes = [
+  't-article-page'
+] %}
 {#
-  Template
+Template
 #}
-<article class="t-article-page">
+<article{{ attributes.addClass(classes) }}>
   {% if title %}
   <div class="t-article-page__title">
     <h1>{{ title }}</h1>
   </div>
 	{% endif %}
   {% if article_details %}
-    <div class="t-article-page__details">
-      {{ article_details }}
+    <div class="t-article-page__details text-md text-coolgrey mb-5 tablet:mb-7">
+        <span itemprop="author">{{ article_details.author }}</span>,
+        <time itemprop="datePublished" datetime="{{ article_details.date|date("Y-m-d") }}">{{ article_details.date|date("d F Y") }}</time>
     </div>
   {% endif %}
+
+  {% if featured_image %}
+    <div class="t-article-page__featured-image mb-5 tablet:mb-7">
+      {{ featured_image }}
+    </div>
+  {% endif %}
+  {% if summary %}
+    <div class="t-article-page__summary mb-5 tablet:mb-7">
+      {{ summary }}
+    </div>
+  {% endif %}
+
   {% if content %}
     <div class="t-article-page__content">
       {{ content }}

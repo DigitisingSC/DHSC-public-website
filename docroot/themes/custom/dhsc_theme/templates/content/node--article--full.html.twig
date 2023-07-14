@@ -16,17 +16,13 @@
   ]
 %}
 
-{% set article_details %}
-{% include '@molecules/article-details/article-details.twig' with {
-    'date': content.field_date,
-    'author': content.field_author,
-  } %}
-{% endset %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
-  {% include '@templates/article-page/article-page.twig' with {
-    'title': label,
-    'article_details': article_details,
-    'content': content.field_body_paragraphs,
-  } %}
-</article>
+{% include '@templates/article-page/article-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role'),
+  'title': label,
+  'article_details': {
+    'date': content.field_date.value,
+    'author': content.field_author.0,
+  },
+  'content': content.field_body_paragraphs,
+} %}
