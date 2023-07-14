@@ -31,6 +31,7 @@ class RelatedInformationBlock extends BlockBase {
       '#theme' => 'related_information',
       '#title' => $config['title'],
       '#items' => $config['items'],
+      '#read_more_link' => $config['read_more_link'],
     ];
   }
 
@@ -51,15 +52,46 @@ class RelatedInformationBlock extends BlockBase {
           }
 
           /** @var \Drupal\node\Entity\Node $link */
-          foreach ($paragraph->field_referenced_pages->referencedEntities() as $link) {
-            $return['items'][] = [
-              'title' => $link->label(),
-              'url' => $link->toUrl()->toString(),
+          foreach ($paragraph->field_referenced_pages->referencedEntities() as $referencedNode) {
+            $item = [
+              'title' => $referencedNode->label(),
+              'url' => $referencedNode->toUrl()->toString(),
             ];
+            // Add subtitle to items
+            switch ($referencedNode->bundle()) {
+              case 'event':
+                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
+
+                /** @var Drupal\Core\Field\FieldItemList $type */
+                $type = $referencedNode->get('field_event_type')->view();
+
+                // Add event type to subtitle
+                if (isset($type[0]) && isset($type[0]['#markup'])) {
+                  $item['subtitle'] .= ' - ' . $type[0]['#markup'];
+                }
+
+                break;
+              case 'article':
+                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y"');
+                break;
+              case 'case_study':
+                // TODO: Add care provide name as subtitle
+                break;
+            }
+
+            $return['items'][] = $item;
           }
+
+          // Add read more link if exists
+          if ($paragraph->field_link->uri) {
+
+            $return['read_more_link'] = $paragraph->field_link->view(['label' => 'hidden']);
+          }
+
         }
       }
     }
+
 
     return $return;
   }
