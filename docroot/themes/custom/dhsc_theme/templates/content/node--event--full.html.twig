@@ -32,15 +32,19 @@
     } %}
 {% endset %}
 
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+
 {% include '@templates/event-page/event-page.twig' with {
   'attributes': attributes.addClass(classes).removeAttribute('role'),
   'title': label,
   'subtitle': content.field_subtitle,
   'featured_image': content.field_image,
   'event_details': event_details,
-  'related': drupal_block('related_information_block', {
-    label_display: false,
-    context_mapping: {node: '@node.node_route_context:node'},
-  }),
+  'related': relatedBlock|striptags|trim != "" ? relatedBlock : null,
   'content': content.field_body_paragraphs,
 } %}
