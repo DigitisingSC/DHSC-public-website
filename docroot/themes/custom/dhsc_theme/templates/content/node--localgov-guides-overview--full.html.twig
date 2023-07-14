@@ -16,6 +16,15 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
+
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+{% set hasRelated = relatedBlock|striptags|trim != "" %}
+
 <article{{ attributes.addClass(classes).removeAttribute('role') }}>
   <div class="lgd-container padding-horizontal">
     {{ title_prefix }}
@@ -23,13 +32,22 @@
         {{ 'Overview'|t }}
       </h2>
       <h3 class="text-coolgrey">{{ label }}</h3>
-    {{ title_suffix }} 
+    {{ title_suffix }}
 
     {{ drupal_block('localgov_guides_contents') }}
 
     {% if content %}
-      <div{{ content_attributes.addClass('lgd-guides__content', 'node__content') }}>
-        {{ content }}
+      <div class="t-guide__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+        <div class="t-guide__conten-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
+          <div{{ content_attributes.addClass('lgd-guides__content', 'node__content', ) }}>
+            {{ content }}
+          </div>
+        </div>
+        {% if hasRelated %}
+          <aside class="t-guide__related tablet:w-3/12">
+            {{ relatedBlock }}
+          </aside>
+        {% endif %}
       </div>
     {% endif %}
   </div>
