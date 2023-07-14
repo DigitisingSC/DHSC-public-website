@@ -21,4 +21,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/search\r\n/digital-skills"
+    pages: "/search\r\n/digital-skills/search"

@@ -211,7 +211,18 @@ display:
       cache:
         type: none
         options: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text_custom
+          empty: true
+          content: 'No results found'
+          tokenize: false
       sorts:
         search_api_relevance:
           id: search_api_relevance
@@ -540,7 +551,7 @@ display:
           admin_label: ''
           plugin_id: result
           empty: false
-          content: '<h3 class="mb-6 font-bold leading-normal">@total results</h3>'
+          content: '@total results'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -566,7 +577,7 @@ display:
       display_description: ''
       exposed_block: true
       display_extenders: {  }
-      path: digital-skills
+      path: digital-skills/search
     cache_metadata:
       max-age: -1
       contexts:
