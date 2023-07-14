@@ -11,8 +11,10 @@ dependencies:
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_location_link
     - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_subtitle
     - field.field.node.event.field_summary
     - node.type.event
   module:
@@ -37,11 +39,12 @@ third_party_settings:
         - field_end_time
         - field_event_type
         - field_location
+        - field_location_link
         - field_link
       label: 'Event details'
       region: content
       parent_name: ''
-      weight: 2
+      weight: 3
       format_type: details
       format_settings:
         classes: ''
@@ -57,7 +60,7 @@ third_party_settings:
       label: Metadata
       region: content
       parent_name: ''
-      weight: 5
+      weight: 6
       format_type: details
       format_settings:
         classes: ''
@@ -73,13 +76,13 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_body_paragraphs:
     type: paragraphs
-    weight: 3
+    weight: 4
     region: content
     settings:
       title: Paragraph
@@ -110,7 +113,7 @@ content:
     third_party_settings: {  }
   field_end_time:
     type: time_widget
-    weight: 15
+    weight: 16
     region: content
     settings:
       enabled: false
@@ -118,7 +121,7 @@ content:
     third_party_settings: {  }
   field_event_type:
     type: options_select
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -131,7 +134,7 @@ content:
     third_party_settings: {  }
   field_link:
     type: link_default
-    weight: 18
+    weight: 20
     region: content
     settings:
       placeholder_url: ''
@@ -139,15 +142,23 @@ content:
     third_party_settings: {  }
   field_location:
     type: string_textfield
-    weight: 17
+    weight: 18
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_location_link:
+    type: link_default
+    weight: 19
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_sidebar_related:
     type: paragraphs
-    weight: 4
+    weight: 5
     region: content
     settings:
       title: 'Other event'
@@ -175,11 +186,19 @@ content:
           dialog_style: tiles
   field_start_time:
     type: time_widget
-    weight: 14
+    weight: 15
     region: content
     settings:
       enabled: false
       step: 5
+    third_party_settings: {  }
+  field_subtitle:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_summary:
     type: string_textarea
@@ -191,51 +210,56 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 6
+    weight: 7
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 12
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 8
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 15
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 14
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 13
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 9
+    weight: 10
     region: content
     settings:
       display_label: true
@@ -250,7 +274,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -260,12 +284,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 16
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 11
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
