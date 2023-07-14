@@ -65,10 +65,17 @@
  *
  * @see template_preprocess_node()
  *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
  */
 #}
+
+{% set content_type = node.bundle %}
+
 {%
   set classes = [
+    content_type|clean_class,
     'node',
     'node--type-' ~ node.bundle|clean_class,
     node.isPromoted() ? 'node--promoted',
@@ -78,12 +85,16 @@
   ]
 %}
 
-{% include '@molecules/teaser/teaser--supplier.twig' with {
-  attributes: attributes.addClass(classes),
-  variant: 'supplier',
-  title: label,
-  link: path('entity.node.canonical', {'node': node.id}),
-  summary: content.field_summary,
-  image: content.field_image|render,
-  listPrice: content.field_list_price|field_value
-} %}
+<article{{attributes.addClass(classes).removeAttribute('role')}}>
+  <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
+    {% include '@templates/supplier-page/supplier-page.twig' with {
+      'title': label,
+      'list_price': content.field_list_price.0['#markup'],
+      'summary': content.field_summary|field_value,
+      'image': content.field_image,
+      'content': content.field_body_paragraphs,
+      'last_updated': node.changed.value|date("j F Y"),
+    } %}
+  </div>
+</article>
+

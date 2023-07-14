@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.card
+    - core.entity_view_mode.node.teaser
     - node.type.article
     - node.type.event
     - node.type.supplier
@@ -292,8 +293,21 @@ display:
         operator: AND
         groups:
           1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
       defaults:
         title: false
+        style: false
+        row: false
         filters: false
         filter_groups: false
       display_description: 'A full listing of Suppliers with pagination'

@@ -1,0 +1,8 @@
+.t-supplier-page{
+  &__content,
+  &__summary {
+    p {
+      @apply text-base mt-0 mb-5 tablet:mb-7;
+    }
+  }
+}

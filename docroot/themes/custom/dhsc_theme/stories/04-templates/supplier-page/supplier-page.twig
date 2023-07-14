@@ -1,0 +1,38 @@
+{#
+  Template
+#}
+<article class="t-supplier-page">
+  <div class="t-supplier-page__heading-wrapper max-w-[672px]">
+    {% if title %}
+      <div class="t-supplier-page__title mb-3 leading-[2rem] tablet:leading-[3.438rem]">
+        <h1>{{ title }}</H1>
+      </div>
+    {% endif %}
+    {% if list_price %}
+      <div class="t-supplier-page__list_price">
+        {{ 'List price' ~ ": " ~ list_price }}
+      {% endif %}
+    </div>
+    {% if summary %}
+      <div class="t-supplier-page__summary prose">
+        <h2>{{ 'Summary' }}</h2>
+        <p>{{ summary }}</p>
+      </div>
+    {% endif %}
+    {% if image %}
+      <div class="t-supplier-page__image">
+        {{ image }}
+      </div>
+    {% endif %}
+  </div>
+  {% if content %}
+    <div class="t-supplier-page__content">
+      {{ content }}
+    </div>
+  {% endif %}
+  {% if last_updated %}
+    <div class="t-supplier-page__last_updated">
+      {{ 'Last updated' ~ ": " ~ last_updated }}
+    </div>
+  {% endif %}
+</article>
