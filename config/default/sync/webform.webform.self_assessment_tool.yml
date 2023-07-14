@@ -20,37 +20,180 @@ elements: |-
     '#title': 'Step 1'
     processed_text:
       '#type': processed_text
-      '#text': |
-        <h3>Does you organisation have access to a reliable, fast internet connection service?</h3>
-      '#format': basic_html
+      '#text': '<h1>Does your organisation have access to a reliable, fast internet connection?</h1>'
+      '#format': full_html
+    what_does_this_mean_:
+      '#type': details
+      '#title': 'What does this mean?'
+      '#description': 'This means you have a consistent, good connection to the internet in all locations where people in your organisation work. This could be a mobile or fixed-line broadband connection.&nbsp;'
+      '#attributes':
+        class:
+          - prose
     internet_connection_options:
       '#type': radios
-      '#title': 'Internet connection options'
+      '#title': 'Does your organisation have access to a reliable, fast internet connection?'
       '#title_display': invisible
       '#options':
         internet_connection_yes: 'Yes'
         internet_connection_no: 'No'
         internet_connection_not_sure: 'Not sure'
+      '#required': true
   step_2:
     '#type': webform_wizard_page
     '#title': 'Step 2'
     processed_text_2:
       '#type': processed_text
-      '#text': |
-        <h3>Does you organisation have access to secure email?</h3>
-      '#format': basic_html
+      '#text': '<h1>Has your organisation completed a Data Security and Protection Toolkit (DSPT) assessment within the past year?</h1>'
+      '#format': full_html
+    what_is_a_dspt_assessment:
+      '#type': details
+      '#title': 'What is a DSPT assessment?'
+      '#description': |-
+        <p>The DSPT is an annual self-assessment for health and social care organisations.</p>
+
+        <p>Completing the assessment will show you what you need to do to keep people&rsquo;s information safe, and to protect your organisation from the risk of a data breach or a cyber attack. It covers both paper and digital records, and it reassures everyone you work with that you are taking data security seriously.</p>
+      '#attributes':
+        class:
+          - prose
+    dspt_assessment_options:
+      '#type': radios
+      '#title': 'Has your organisation completed a Data Security and Protection Toolkit (DSPT) assessment within the past year?'
+      '#title_display': invisible
+      '#options':
+        dspt_assessment_yes: 'Yes'
+        dspt_assessment_no: 'No'
+        dspt_assessment_not_sure: 'Not sure'
+      '#required': true
+  step_3:
+    '#type': webform_wizard_page
+    '#title': 'Step 3'
+    processed_text_03:
+      '#type': processed_text
+      '#text': '<h1>Does your organisation have access to secure email?</h1>'
+      '#format': full_html
+    what_is_secure_email_:
+      '#type': details
+      '#title': 'What is secure email? '
+      '#description': |-
+        Any emails you send which contain health and care information need to meet the secure email standard (DCB1596).<br />
+        <br />
+        This means your organisation needs to send emails through NHSmail, or another secure email provider which has been accredited to meet the standard.&nbsp;
+      '#attributes':
+        class:
+          - prose
     secure_email_options:
       '#type': radios
-      '#title': 'Secure email options'
+      '#title': 'Does your organisation have access to secure email?'
       '#title_display': invisible
       '#options':
         secure_email_yes: 'Yes'
         secure_email_no: 'No'
         secure_email_not_sure: 'Not sure'
+      '#required': true
+  step_4:
+    '#type': webform_wizard_page
+    '#title': 'Step 4'
+    processed_text_04:
+      '#type': processed_text
+      '#text': '<h1><span>Does your organisation have access to mobile and tablet devices?</span></h1>'
+      '#format': full_html
+    what_does_access_mean_:
+      '#type': details
+      '#title': 'What does access mean?'
+      '#description': 'This could apply to phones and tablets that the organisation provides, or that staff bring in themselves and use for work purposes.&nbsp;'
+      '#attributes':
+        class:
+          - prose
+    devices_options:
+      '#type': radios
+      '#title': 'Does your organisation have access to mobile and tablet devices?'
+      '#title_display': invisible
+      '#options':
+        devices_options_yes: 'Yes'
+        devices_options_no: 'No'
+        devices_options_not_sure: 'Not sure'
+      '#required': true
+  step_5:
+    '#type': webform_wizard_page
+    '#title': 'Step 5'
+    processed_text_05:
+      '#type': processed_text
+      '#text': '<h1><span>Does your organisation use a digital solution for care planning ( digital social care records)?</span></h1>'
+      '#format': full_html
+    what_is_a_digital_social_care_record_:
+      '#type': details
+      '#title': 'What is a digital social care record? '
+      '#description': |-
+        Digital social care records (DSCRs) allow you to record care information about individuals and share this information securely. They replace paper records. You may know them as electronic or digital care plans.&nbsp;<br />
+        &nbsp;
+      '#attributes':
+        class:
+          - prose
+    digital_care_options:
+      '#type': radios
+      '#title': 'Does your organisation use a digital solution for care planning (a digital social care record)?'
+      '#title_display': invisible
+      '#options':
+        digital_care_yes: 'Yes'
+        digital_care_no: 'No'
+        digital_care_not_sure: 'Not sure'
+      '#required': true
+      '#options__properties': ''
+  step_6:
+    '#type': webform_wizard_page
+    '#title': 'Step 6'
+    processed_text_06:
+      '#type': processed_text
+      '#text': '<h1><span>Do you use personal alarms, monitoring systems or other equipment connected to the public phone network (telecare)?</span></h1>'
+      '#format': full_html
+    telecare_devices_options:
+      '#type': radios
+      '#title': 'Do you use personal alarms, monitoring systems or other equipment connected to the public phone network (telecare)?'
+      '#title_display': invisible
+      '#options':
+        telecare_devices_yes: 'Yes'
+        telecare_devices_no: 'No'
+        telecare_devices_not_sure: 'Not sure'
+      '#required': true
+  step_7:
+    '#type': webform_wizard_page
+    '#title': 'Step 7'
+    processed_text_07:
+      '#type': processed_text
+      '#text': '<h1>Are you aware of the Digital Skills Framework?</h1>'
+      '#format': full_html
+    what_is_the_digital_skills_framework_:
+      '#type': details
+      '#title': 'What is the Digital Skills Framework? '
+      '#description': 'The Digital Skills Framework is a resource to help people working in adult social care understand and develop the digital skills they need.&nbsp;'
+      '#attributes':
+        class:
+          - prose
+    digital_skills_options:
+      '#type': radios
+      '#title': 'Are you aware of the Digital Skills Framework?'
+      '#title_display': invisible
+      '#options':
+        digital_skills_yes: 'Yes'
+        digital_skills_no: 'No'
+        digital_skills_not_sure: 'Not sure'
+      '#options__properties': ''
+      '#required': true
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'
     '#submit__label': Continue
+    '#submit__attributes':
+      class:
+        - a-button
+        - a-button--primary
+    '#wizard_prev_hide': true
+    '#wizard_prev__label': Previous
+    '#wizard_next__label': Continue
+    '#wizard_next__attributes':
+      class:
+        - a-button
+        - a-button--primary
 css: ".webform-submission-information {display: none}\r\n.webform-button--previous{display: none}"
 javascript: ''
 settings:
@@ -235,10 +378,10 @@ access:
     users: {  }
     permissions: {  }
 handlers:
-  sets_form_metadata_in_tempstore_:
+  sets_form_metadata_in_tempstore:
     id: dhsc_set_submission_id_handler
-    handler_id: sets_form_metadata_in_tempstore_
-    label: 'Sets form metadata in tempstore.'
+    handler_id: sets_form_metadata_in_tempstore
+    label: 'Sets form metadata in tempstore'
     notes: ''
     status: true
     conditions: {  }
