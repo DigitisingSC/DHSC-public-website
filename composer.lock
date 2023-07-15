@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "044e93e18b21435e7194402c41e0c1f5",
+    "content-hash": "9bb8f0d92f5540c383cbc103889695c5",
     "packages": [
         {
             "name": "acquia/blt",
@@ -2808,10 +2808,6 @@
                     "homepage": "https://www.drupal.org/user/1231722"
                 },
                 {
-                    "name": "Dane Powell",
-                    "homepage": "https://www.drupal.org/user/339326"
-                },
-                {
                     "name": "irek02",
                     "homepage": "https://www.drupal.org/user/736644"
                 },
@@ -3195,6 +3191,10 @@
                 {
                     "name": "NickDickinsonWilde",
                     "homepage": "https://www.drupal.org/user/3094661"
+                },
+                {
+                    "name": "poker10",
+                    "homepage": "https://www.drupal.org/user/272316"
                 },
                 {
                     "name": "rupl",
@@ -7098,7 +7098,7 @@
             "extra": {
                 "drupal": {
                     "version": "2.1.1",
-                    "datestamp": "1681722499",
+                    "datestamp": "1689354615",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
