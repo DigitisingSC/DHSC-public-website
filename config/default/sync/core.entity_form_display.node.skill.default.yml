@@ -128,7 +128,7 @@ content:
     weight: 15
     region: content
     settings:
-      match_operator: CONTAINS
+      match_operator: STARTS_WITH
       match_limit: 10
       size: 60
       placeholder: ''

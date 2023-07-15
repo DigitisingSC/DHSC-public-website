@@ -52,6 +52,9 @@ adding:
                   select_all_none: false
                   select_all_none_nested: false
                   display_inline: true
+        empty:
+          area_text_custom:
+            content: 'No results found'
         filters:
           field_skill_price:
             id: field_skill_price
@@ -197,6 +200,12 @@ adding:
           operator: AND
           groups:
             1: AND
+        header:
+          result:
+            content: '@total results'
+    skills_search_page:
+      display_options:
+        path: digital-skills/search
 removing:
   display:
     default:
@@ -208,3 +217,24 @@ removing:
             tags:
               next: ››
               previous: ‹‹
+        empty:
+          area_text_custom:
+            content: '<h3 class="mb-6 font-bold leading-normal">No results found</h3>'
+        header:
+          result:
+            content: '<h3 class="mb-6 font-bold text-lg">@total results</h3>'
+      cache_metadata:
+        contexts:
+          - 'user.node_grants:view'
+        tags:
+          - 'config:search_api.index.acquia_digital_skills_training_index'
+          - 'search_api_list:acquia_digital_skills_training_index'
+    skills_search_page:
+      display_options:
+        path: digital-skills
+      cache_metadata:
+        contexts:
+          - 'user.node_grants:view'
+        tags:
+          - 'config:search_api.index.acquia_digital_skills_training_index'
+          - 'search_api_list:acquia_digital_skills_training_index'
