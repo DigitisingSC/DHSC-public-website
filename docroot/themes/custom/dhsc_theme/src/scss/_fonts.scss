@@ -57,19 +57,27 @@
       font-size: theme('fontSize.sm');
     }
   }
-  a {
+  a:not(.a-button) {
     text-decoration-line: underline;
+    transition: all 75ms ease-in-out;
 
     &:hover {
       text-decoration-line: none;
     }
     &:focus {
       outline: none;
-      color: theme('colors.black.DEFAULT') !important;
+      color: theme('colors.black.100') !important;
       background-color: theme('colors.focus.DEFAULT');
       text-decoration-line: underline;
       text-decoration-thickness: 4px;
       text-underline-offset: 4px;
+    }
+  }
+  .t-content a:not(.a-button) {
+    color: theme('colors.forest.100');
+
+    &:hover {
+      color: theme('colors.forest.300');
     }
   }
 }

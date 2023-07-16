@@ -63,6 +63,7 @@ const careColours = {
 const careNeutrals = {
   black: {
     DEFAULT: '#101820',
+    100: '#101820',
     80: '#40464D',
     60: '#545454',
     40: '#9FA3A6',
@@ -156,6 +157,9 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: [
+            {
+              color: theme('colors.black.100')
+            },
             // Paragraphs
             {
               p: {
@@ -172,7 +176,14 @@ module.exports = {
                 '@screen tablet': {
                   fontSize: theme('fontSize.base')
                 }
-              }
+              },
+              ul: {
+                '> li': {
+                  '&::marker': {
+                    color: theme('colors.black.100')
+                  },
+                },
+              },
             },
             // Links.
             {
