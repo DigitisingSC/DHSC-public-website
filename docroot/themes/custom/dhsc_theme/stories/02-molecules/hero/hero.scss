@@ -35,4 +35,9 @@
       }
     }
   }
+  &__text {
+    p, a {
+      @apply text-black #{!important};
+    }
+  }
 }
