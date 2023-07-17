@@ -191,6 +191,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
+          ->condition('status', 1)
           ->condition('field_answers_recommendation', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())
           ->execute();
