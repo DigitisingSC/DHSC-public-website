@@ -27,6 +27,30 @@
                aria-expanded="true"
                aria-controls="menu_main_sub_{{ loop.index }}"
             ><span class="mr-2">{{ item.title }}</span>{{ svgIconUp }}</a>
+            <div
+              class="container absolute top-16 left-0 right-0 flex items-start"
+              x-show="isSelected == true"
+            >
+              <div class="tablet:w-6/12">
+                <h3 class="text-sm tablet:text-md mb-4">{{ item.title }}</h3>
+                <ul class="">
+                  {% for subItem in item.below %}
+                    <li class="tablet:mr-8 flex items-center">
+                      <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% if loop.index == 1 %}
+                {% if featuredLinks %}
+                  <div class="tablet:w-6/12">
+                    {{ featuredLinks }}
+                  </div>
+                {% endif %}
+            {% endif %}
+
+            </div>
+
           {% else %}
             <a href="{{ item.url }}"
                class="block text-black"
@@ -35,48 +59,49 @@
             >
               {{ item.title }}
             </a>
+
           {% endif %}
         </li>
       {% endfor %}
     </ul>
-    <div x-data="{ isActive: false }">
-      {% for item in items %}
-        <div x-show="isActive == {{ loop.index }}"
-            id="menu_main_sub_{{ loop.index }}"
-             class="relative w-[100vw] left-[50%] -translate-x-[50%] bg-white">
-          <div class="container mx-auto">
-            {% if loop.index == 1 %}
-            <div class="tablet:flex tablet:items-start py-7">
-              <div class="tablet:w-6/12">
-                <h3 class="text-sm tablet:text-md">{{ item.title }}</h3>
-            {% endif %}
-            {% if loop.last %}
-                <ul class="m-menu--level-1 py-7"
-                    @activedropdownmain.window="isActive = $event.detail.active"
-                >
-            {% else %}
-                  <ul class="m-menu--level-1 py-4"
-                      @activedropdownmain.window="isActive = $event.detail.active"
-                  >
-            {% endif %}
-                {% for subItem in item.below %}
-                  <li class="tablet:mr-8 flex items-center">
-                    <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>
-                  </li>
-                {% endfor %}
-                </ul>
-            {% if loop.index == 1 %}
-              </div>
-              {% if featuredLinks %}
-              <div class="tablet:w-6/12">
-                {{ featuredLinks }}
-              </div>
-              {% endif %}
-            </div>
-            {% endif %}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
+{#    <div x-data="{ isActive: false }">#}
+{#      {% for item in items %}#}
+{#        <div x-show="isActive == {{ loop.index }}"#}
+{#            id="menu_main_sub_{{ loop.index }}"#}
+{#             class="relative w-[100vw] left-[50%] -translate-x-[50%] bg-white">#}
+{#          <div class="container mx-auto">#}
+{#            {% if loop.index == 1 %}#}
+{#            <div class="tablet:flex tablet:items-start py-7">#}
+{#              <div class="tablet:w-6/12">#}
+{#                <h3 class="text-sm tablet:text-md">{{ item.title }}</h3>#}
+{#            {% endif %}#}
+{#            {% if loop.last %}#}
+{#                <ul class="m-menu--level-1 py-7"#}
+{#                    @activedropdownmain.window="isActive = $event.detail.active"#}
+{#                >#}
+{#            {% else %}#}
+{#                  <ul class="m-menu--level-1 py-4"#}
+{#                      @activedropdownmain.window="isActive = $event.detail.active"#}
+{#                  >#}
+{#            {% endif %}#}
+{#                {% for subItem in item.below %}#}
+{#                  <li class="tablet:mr-8 flex items-center">#}
+{#                    <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>#}
+{#                  </li>#}
+{#                {% endfor %}#}
+{#                </ul>#}
+{#            {% if loop.index == 1 %}#}
+{#              </div>#}
+{#              {% if featuredLinks %}#}
+{#              <div class="tablet:w-6/12">#}
+{#                {{ featuredLinks }}#}
+{#              </div>#}
+{#              {% endif %}#}
+{#            </div>#}
+{#            {% endif %}#}
+{#          </div>#}
+{#        </div>#}
+{#      {% endfor %}#}
+{#    </div>#}
   </div>
 </nav>
