@@ -22,5 +22,6 @@ hidden:
   field_answers_recommendation: true
   field_body_paragraphs: true
   field_category: true
+  field_weight: true
   langcode: true
   links: true
