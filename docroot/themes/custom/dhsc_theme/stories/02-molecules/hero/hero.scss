@@ -35,7 +35,7 @@
       }
     }
 
-    a:not(.a-button) {
+    a {
       @apply text-black hover:text-black;
     }
   }

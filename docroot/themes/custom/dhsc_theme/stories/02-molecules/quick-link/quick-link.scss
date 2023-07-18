@@ -4,7 +4,9 @@
   background: rgba(204, 222, 219, 0.5);
 
   &:hover {
-
+    #{$this}__link a {
+      @apply text-black;
+    }
   }
 
   &--green-20 {
@@ -55,13 +57,23 @@
         @apply text-white;
       }
     }
+
+    #{$this}__link a {
+      @apply text-white;
+    }
+
+    &:hover {
+      #{$this}__link a {
+        @apply text-white;
+      }
+    }
   }
 
   &__link {
     @apply leading-tight mb-2;
 
     a {
-      @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
+      @apply text-black after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
     }
   }
 
