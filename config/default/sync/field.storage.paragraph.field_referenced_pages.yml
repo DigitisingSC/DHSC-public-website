@@ -1,17 +1,16 @@
-uuid: c53f0125-d2de-40ab-9bc5-0ca6de7e59c9
+uuid: 7374d5e6-55f0-4965-96a0-09053432736f
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - link
     - paragraphs
 id: paragraph.field_referenced_pages
 field_name: field_referenced_pages
 entity_type: paragraph
-type: entity_reference
-settings:
-  target_type: node
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 4
 translatable: true
