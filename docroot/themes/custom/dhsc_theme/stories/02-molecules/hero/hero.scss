@@ -34,10 +34,9 @@
         @apply mb-0;
       }
     }
-  }
-  &__text {
-    p, a {
-      @apply text-black #{!important};
+
+    a:not(.a-button) {
+      @apply text-black hover:text-black;
     }
   }
 }

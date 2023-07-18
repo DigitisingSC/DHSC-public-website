@@ -35,6 +35,16 @@
         @apply text-white;
       }
     }
+
+    #{$this}__link a {
+      @apply text-white;
+    }
+
+    &:hover {
+      #{$this}__link a {
+        @apply text-white;
+      }
+    }
   }
 
   &--forest-100 {
