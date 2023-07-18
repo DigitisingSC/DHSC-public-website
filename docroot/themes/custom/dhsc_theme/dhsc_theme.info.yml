@@ -35,3 +35,12 @@ components:
     organisms: stories/03-organisms
     templates: stories/04-templates
     assets: stories/assets
+libraries-override:
+  eu_cookie_compliance/eu_cookie_compliance_default:
+    css:
+      state:
+        css/eu_cookie_compliance.css: false
+  eu_cookie_compliance/eu_cookie_compliance_bare:
+    css:
+      state:
+        css/eu_cookie_compliance.bare.css: {}
