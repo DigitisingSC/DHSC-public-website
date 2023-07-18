@@ -57,7 +57,7 @@
       font-size: theme('fontSize.sm');
     }
   }
-  a:not(.a-button) {
+  a {
     text-decoration-line: underline;
     transition: all 75ms ease-in-out;
 
@@ -73,7 +73,7 @@
       text-underline-offset: 4px;
     }
   }
-  .t-content a:not(.a-button) {
+  .t-content a {
     color: theme('colors.forest.100');
 
     &:hover {
