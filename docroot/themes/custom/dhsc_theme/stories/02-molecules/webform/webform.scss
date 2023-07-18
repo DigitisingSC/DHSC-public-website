@@ -15,13 +15,8 @@
     @apply pb-2;
   }
 
-  .form-item h2 {
-    @apply tablet:w-9/12 text-lg font-bold leading-tight mt-4;
-  }
-
-  .form-item h1,
-  .form-item h3 {
-    @apply tablet:w-9/12 text-lg tablet:text-2xl mb-4;
+  .form-item h1 {
+    @apply tablet:w-9/12 text-md tablet:text-lg leading-tight tablet:leading-tight mb-4;
   }
 
   .radios--wrapper {
