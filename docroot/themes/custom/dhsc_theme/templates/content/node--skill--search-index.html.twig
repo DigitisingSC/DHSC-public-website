@@ -74,13 +74,13 @@
 {# TODO: add subtitle when ready / decision about it has been made #}
 {% set skillAttributes = {} %}
 {% if content.field_skill_level %}
-  {% set skillAttributes = skillAttributes|merge({'level': content.field_skill_level|render|striptags|trim|lower }) %}
+  {% set skillAttributes = skillAttributes|merge({'level': content.field_skill_level.0 }) %}
 {% endif %}
 {% if content.field_training_length %}
-  {% set skillAttributes = skillAttributes|merge({'length': content.field_training_length|render|striptags|trim|lower }) %}
+  {% set skillAttributes = skillAttributes|merge({'length': content.field_training_length.0 }) %}
 {% endif %}
 {% if content.field_skill_method %}
-  {% set skillAttributes = skillAttributes|merge({'format': content.field_skill_method|render|striptags|trim|lower }) %}
+  {% set skillAttributes = skillAttributes|merge({'format': content.field_skill_method.0 }) %}
 {% endif %}
 
 {% include '@molecules/teaser/teaser.twig' with {
@@ -90,6 +90,6 @@
   subtitle: null,
   date: null,
   link: path('entity.node.canonical', {'node': node.id}),
-  description: content.field_summary|render|striptags|trim|lower,
+  description: content.field_summary.0,
   skillAttributes: skillAttributes,
 } %}
