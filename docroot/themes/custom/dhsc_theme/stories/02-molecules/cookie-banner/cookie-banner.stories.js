@@ -1,6 +1,7 @@
 import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import cookieBanner from "./cookie-banner.twig";
+import './cookie-banner.scss';
 
 export default {
   title: "Design System/Molecules/Cookie Banner",
