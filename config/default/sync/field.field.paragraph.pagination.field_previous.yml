@@ -1,0 +1,23 @@
+uuid: 9941cd7e-f729-4fea-9f3c-ac0a8e933951
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_previous
+    - paragraphs.paragraphs_type.pagination
+  module:
+    - link
+id: paragraph.pagination.field_previous
+field_name: field_previous
+entity_type: paragraph
+bundle: pagination
+label: Previous
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 1
+field_type: link

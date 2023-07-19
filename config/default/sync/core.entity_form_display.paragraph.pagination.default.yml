@@ -3,34 +3,43 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.pagination.field_next_content
-    - field.field.paragraph.pagination.field_previous_content
+    - field.field.paragraph.pagination.field_next
+    - field.field.paragraph.pagination.field_previous
     - paragraphs.paragraphs_type.pagination
+  module:
+    - linkit
+    - maxlength
 id: paragraph.pagination.default
 targetEntityType: paragraph
 bundle: pagination
 mode: default
 content:
-  field_next_content:
-    type: entity_reference_autocomplete
-    weight: 1
+  field_next:
+    type: linkit
+    weight: 2
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_previous_content:
-    type: entity_reference_autocomplete
-    weight: 0
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_previous:
+    type: linkit
+    weight: 3
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
 hidden:
   created: true
   status: true
