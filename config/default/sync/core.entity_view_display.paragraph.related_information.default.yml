@@ -27,12 +27,16 @@ content:
     weight: 2
     region: content
   field_referenced_pages:
-    type: entity_reference_label
+    type: link_separate
     label: hidden
     settings:
-      link: true
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 3
     region: content
   field_title:
     type: string

@@ -34,5 +34,9 @@
         @apply mb-0;
       }
     }
+
+    a {
+      @apply text-black hover:text-black;
+    }
   }
 }

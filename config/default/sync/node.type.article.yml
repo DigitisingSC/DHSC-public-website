@@ -23,7 +23,7 @@ third_party_settings:
     unpublish_enable: true
     unpublish_required: false
     unpublish_revision: false
-name: Article
+name: News
 type: article
 description: ''
 help: ''

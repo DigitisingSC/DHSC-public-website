@@ -3,11 +3,21 @@
   @apply py-4;
 
   details {
-    @apply py-4;
+    @apply py-4 text-base;
 
     summary {
-      @apply w-fit text-forest underline hover:no-underline;
+      @apply w-fit text-forest mb-2.5;
+      @apply underline hover:no-underline;
       @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+
+      &::marker {
+        @apply mr-[15px];
+      }
+    }
+
+    .webform-element-description {
+      @apply py-3.5 pl-6;
+      @apply border-s-4 border-black-20;
     }
   }
 
@@ -15,13 +25,8 @@
     @apply pb-2;
   }
 
-  .form-item h2 {
-    @apply tablet:w-9/12 text-lg font-bold leading-tight mt-4;
-  }
-
-  .form-item h1,
-  .form-item h3 {
-    @apply tablet:w-9/12 text-lg tablet:text-2xl mb-4;
+  .form-item h1 {
+    @apply tablet:w-9/12 text-md tablet:text-lg leading-tight tablet:leading-tight mb-4;
   }
 
   .radios--wrapper {

@@ -9,6 +9,8 @@ dependencies:
     - paragraphs.paragraphs_type.related_information
   module:
     - link
+    - linkit
+    - maxlength
 id: paragraph.related_information.default
 targetEntityType: paragraph
 bundle: related_information
@@ -23,15 +25,18 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
   field_referenced_pages:
-    type: entity_reference_autocomplete
+    type: linkit
     weight: 1
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
   field_title:
     type: string_textfield
     weight: 0

@@ -23,8 +23,10 @@
   }
   h1 {
     font-size: theme('fontSize.lg');
+    line-height: 1.1;
     @screen tablet {
       font-size: theme('fontSize.2xl');
+      line-height: 1.15;
     }
   }
   h2 {
@@ -35,8 +37,10 @@
   }
   h3 {
     font-size: theme('fontSize.sm');
+    line-height: 1.4;
     @screen tablet {
       font-size: theme('fontSize.md');
+      line-height: 1.25;
     }
   }
   h4 {
@@ -57,7 +61,7 @@
       font-size: theme('fontSize.sm');
     }
   }
-  a:not(.a-button) {
+  a {
     text-decoration-line: underline;
     transition: all 75ms ease-in-out;
 
@@ -73,7 +77,7 @@
       text-underline-offset: 4px;
     }
   }
-  .t-content a:not(.a-button) {
+  .t-content a {
     color: theme('colors.forest.100');
 
     &:hover {

@@ -1,4 +1,5 @@
-.a-button {
+.a-button,
+.t-content .a-button {
   @apply inline-flex items-center;
   @apply text-xs no-underline cursor-pointer;
   @apply p-2 tablet:pl-3 tablet:pr-3 tablet:py-2;

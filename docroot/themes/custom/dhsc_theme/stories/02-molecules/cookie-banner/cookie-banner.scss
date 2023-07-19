@@ -1,0 +1,9 @@
+#sliding-popup {
+  @apply fixed z-10 left-0 right-0;
+  p {
+    @apply mb-2;
+  }
+  a {
+    @apply text-forest hover:no-underline;
+  }
+}

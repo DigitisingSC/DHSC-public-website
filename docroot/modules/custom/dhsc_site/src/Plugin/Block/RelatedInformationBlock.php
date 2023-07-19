@@ -22,10 +22,14 @@ use Drupal\paragraphs\Entity\Paragraph;
  */
 class RelatedInformationBlock extends BlockBase {
 
+  private $entityRepository;
+
   /**
    * {@inheritdoc}
    */
   public function build() {
+    $this->entityRepository = \Drupal::service('entity.repository');
+
     $config = $this->getConfig();
     return [
       '#theme' => 'related_information',
@@ -51,32 +55,42 @@ class RelatedInformationBlock extends BlockBase {
             $return['title'] = $paragraph->field_title->value;
           }
 
-          /** @var \Drupal\node\Entity\Node $link */
-          foreach ($paragraph->field_referenced_pages->referencedEntities() as $referencedNode) {
+          /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $link */
+          foreach ($paragraph->field_referenced_pages as $link) {
             $item = [
-              'title' => $referencedNode->label(),
-              'url' => $referencedNode->toUrl()->toString(),
+              'title' => $link->title,
+              'url' => $link->getUrl()->toString(),
+              'external' => $link->isExternal(),
             ];
-            // Add subtitle to items
-            switch ($referencedNode->bundle()) {
-              case 'event':
-                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
 
-                /** @var Drupal\Core\Field\FieldItemList $type */
-                $type = $referencedNode->get('field_event_type')->view();
+            // Load internal link referenced node
+            if (!$link->isExternal() && $link->getUrl()->getRouteName() === 'entity.node.canonical') {
+              $params = $link->getUrl()->getRouteParameters();
+              $referencedNode = Node::load($params['node']);
 
-                // Add event type to subtitle
-                if (isset($type[0]) && isset($type[0]['#markup'])) {
-                  $item['subtitle'] .= ' - ' . $type[0]['#markup'];
+              if($referencedNode instanceof \Drupal\node\Entity\Node) {
+               // Add subtitle to items
+                switch ($referencedNode->bundle()) {
+                  case 'event':
+                    $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
+
+                    /** @var Drupal\Core\Field\FieldItemList $type */
+                    $type = $referencedNode->get('field_event_type')->view();
+
+                    // Add event type to subtitle
+                    if (isset($type[0]) && isset($type[0]['#markup'])) {
+                      $item['subtitle'] .= ' - ' . $type[0]['#markup'];
+                    }
+
+                    break;
+                  case 'article':
+                    $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
+                    break;
+                  case 'case_study':
+                    // TODO: Add care provide name as subtitle
+                    break;
                 }
-
-                break;
-              case 'article':
-                $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
-                break;
-              case 'case_study':
-                // TODO: Add care provide name as subtitle
-                break;
+              }
             }
 
             $return['items'][] = $item;
@@ -91,7 +105,6 @@ class RelatedInformationBlock extends BlockBase {
         }
       }
     }
-
 
     return $return;
   }
