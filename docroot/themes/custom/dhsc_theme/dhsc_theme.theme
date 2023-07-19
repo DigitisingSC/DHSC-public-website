@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 
@@ -95,22 +96,21 @@ function dhsc_theme_preprocess_paragraph__featured_items(&$variables) {
 function dhsc_theme_preprocess_paragraph__pagination(&$variables) {
 
   $entity = $variables['paragraph'];
-
   $links = [];
 
-  $previous = $entity->field_previous_content->referencedEntities();
-  $next = $entity->field_next_content->referencedEntities();
+  $previous = $entity->field_previous;
+  $next = $entity->field_next;
 
-  if (!empty($previous[0])) {
+  if (!empty($previous)) {
     $links['previous'] = [
-      'href' => Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $previous[0]->id()], []),
-      'text' => $previous[0]->label()
+      'href' => Url::fromUri($previous->uri)->toString(),
+      'text' => $previous->title
     ];
   }
-  if (!empty($next[0])) {
+  if (!empty($next)) {
     $links['next'] = [
-      'href' => Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $next[0]->id()], []),
-      'text' => $next[0]->label()
+      'href' => Url::fromUri($next->uri)->toString(),
+      'text' => $next->title
     ];
   }
 
