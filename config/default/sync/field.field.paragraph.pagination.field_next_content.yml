@@ -4,7 +4,17 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_next_content
+    - node.type.article
+    - node.type.casestudy
+    - node.type.content_page
+    - node.type.event
+    - node.type.landing_page
+    - node.type.localgov_guides_overview
+    - node.type.localgov_guides_page
+    - node.type.recommendation
     - node.type.skill
+    - node.type.subtopic_page
+    - node.type.supplier
     - paragraphs.paragraphs_type.pagination
 id: paragraph.pagination.field_next_content
 field_name: field_next_content
@@ -20,10 +30,20 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      casestudy: casestudy
+      content_page: content_page
+      event: event
+      localgov_guides_overview: localgov_guides_overview
+      localgov_guides_page: localgov_guides_page
+      landing_page: landing_page
+      article: article
+      recommendation: recommendation
       skill: skill
+      subtopic_page: subtopic_page
+      supplier: supplier
     sort:
       field: title
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: casestudy
 field_type: entity_reference
