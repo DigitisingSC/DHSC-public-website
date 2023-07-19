@@ -261,18 +261,18 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       }
     }
 
+    $non_matching_count = count($results['non_matching_count']);
 
     $params['body'] = Markup::create("
     <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
     <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
     <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
     <tr class='non-matches'><td><h3>
-    {$results['non_matching_count']} suppliers don't match your criteria</h3>
+    {$non_matching_count} suppliers don't match your criteria</h3>
     {$no_matches}</td>
     </tr>
     </table>");
-    $send = TRUE;
 
-    return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+    return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
   }
 }
