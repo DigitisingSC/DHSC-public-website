@@ -34,20 +34,12 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 3
-    region: content
-  localgov_guides_parent:
-    type: entity_reference_label
-    label: hidden
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
 hidden:
   field_image: true
@@ -56,5 +48,6 @@ hidden:
   field_summary: true
   field_topic_term: true
   langcode: true
+  localgov_guides_parent: true
   localgov_guides_section_title: true
   search_api_excerpt: true
