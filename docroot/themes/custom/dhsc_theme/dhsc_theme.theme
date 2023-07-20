@@ -101,13 +101,13 @@ function dhsc_theme_preprocess_paragraph__pagination(&$variables) {
   $previous = $entity->field_previous;
   $next = $entity->field_next;
 
-  if (!empty($previous)) {
+  if (!empty($previous->uri) && !empty($previous->title)) {
     $links['previous'] = [
       'href' => Url::fromUri($previous->uri)->toString(),
       'text' => $previous->title
     ];
   }
-  if (!empty($next)) {
+  if (!empty($next->uri) && !empty($next->title)) {
     $links['next'] = [
       'href' => Url::fromUri($next->uri)->toString(),
       'text' => $next->title
