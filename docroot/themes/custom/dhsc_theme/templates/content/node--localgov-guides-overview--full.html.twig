@@ -38,7 +38,7 @@
 
     {% if content %}
       <div class="t-guide__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
-        <div class="t-guide__conten-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
+        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
           <div{{ content_attributes.addClass('lgd-guides__content', 'node__content', ) }}>
             {{ content }}
           </div>
