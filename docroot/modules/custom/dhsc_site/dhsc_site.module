@@ -4,7 +4,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Form\FormStateInterface;
 
-/**
+/*
  * Implements hook_theme().
  */
 function dhsc_site_theme() {
@@ -115,4 +115,30 @@ function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $for
       . '</button>',
     ];
   }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function dhsc_site_site_setting_entity_update(EntityInterface $entity) {
+  dhsc_site_clear_router_builder_cache();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function dhsc_site_site_setting_entity_delete(EntityInterface $entity) {
+  dhsc_site_clear_router_builder_cache();
+}
+
+/**
+ * Helper function to clear Drupal's render cache.
+ */
+function dhsc_site_clear_router_builder_cache() {
+  $routerBuilderCache = \Drupal::service('router.builder');
+  $routerBuilderCache->rebuild();
+
+  \Drupal::logger('dhsc_site')
+    ->notice('A change to a site settings entity triggered a cache rebuild');
 }
