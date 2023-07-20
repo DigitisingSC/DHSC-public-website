@@ -1,17 +1,29 @@
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% if directory %}
+  {% set icon %}
+    {% include '@atoms/svg/svg.twig' with {
+      'sprite': spriteSrc,
+      'icon': 'chevron-right',
+    } %}
+  {% endset %}
+{% endif  %}
+
 {% set classes = [
   'm-breadcrumbs'
 ] %}
+
 <nav{{ attributes.addClass(classes) }} aria-labelledby="system-breadcrumbs">
   <h2 id="system-breadcrumbs" class="sr-only">{{ 'Breadcrumbs'|t }}</h2>
-  <ol class="m-breadcrumbs__list list-none flex text-2xs tablet:text-xs">
+  <ol class="m-breadcrumbs__list list-none flex text-2xs tablet:text-xs tablet:text-xs">
     {% for item in items %}
       <li class="m-breadcrumbs__item mb-2 tablet:mb-0 flex items-center">
         {% if item.url %}
-          <a class="m-breadcrumbs__link order-1 tablet:order-0" href="{{ item.url }}">{{ item.text }}</a>
-          <span class="m-breadcrumbs__separator mx-2 order-0 tablet:order-1 rotate-180 tablet:rotate-0">></span>
+          <a class="m-breadcrumbs__link order-1 tablet:order-0 text-forest" href="{{ item.url }}">{{ item.text }}</a>
+          <span class="m-breadcrumbs__separator block order-0 tablet:order-1 rotate-180 ml-1 mr-2 tablet:ml-2 tablet:mr-1 tablet:rotate-0">{{ icon }}</span>
         {% else %}
-          {{ item.text }}
-          <span class="m-breadcrumbs__separator mx-2">></span>
+          <span class="text-coolgrey">{{ item.text }}</span>
+          <span class="m-breadcrumbs__separator block ml-2 mr-1">{{ icon }}</span>
         {% endif %}
       </li>
     {% endfor %}

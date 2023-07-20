@@ -1,17 +1,22 @@
 .m-breadcrumbs {
+
+  .m-breadcrumbs__separator svg {
+    @apply h-2 w-2 text-coolgrey;
+  }
+
   &__item:last-child {
     .m-breadcrumbs__separator {
       @apply hidden;
     }
     @apply hidden;
     @screen tablet {
-      @apply block;
+      @apply flex;
     }
   }
   &__item:not(:nth-last-child(-n+2)) {
     @apply hidden;
     @screen tablet {
-      @apply block;
+      @apply flex;
     }
   }
 }
