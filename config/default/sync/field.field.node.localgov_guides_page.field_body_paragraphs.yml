@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.localgov_guides_page
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.alert
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.cta_banner
@@ -35,8 +36,18 @@ settings:
       card_collection: card_collection
       cta_banner: cta_banner
       from_library: from_library
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 31
+        enabled: true
+      accordion_digital_skills:
+        weight: 32
+        enabled: false
+      accordion_item:
+        weight: 33
+        enabled: false
       alert:
         weight: -28
         enabled: true
@@ -61,9 +72,24 @@ settings:
       dynamic_content_listing:
         weight: -21
         enabled: false
+      featured_items:
+        weight: 42
+        enabled: false
+      framework_row:
+        weight: 43
+        enabled: false
+      framework_section:
+        weight: 44
+        enabled: false
       from_library:
         weight: -20
         enabled: true
+      full_content_listings:
+        weight: 46
+        enabled: false
+      link_description:
+        weight: 47
+        enabled: false
       localgov_image:
         weight: -30
         enabled: true
@@ -76,8 +102,29 @@ settings:
       newsletter_signup:
         weight: -18
         enabled: false
+      pagination:
+        weight: 52
+        enabled: false
+      quick_link:
+        weight: 53
+        enabled: false
+      quick_links:
+        weight: 54
+        enabled: false
+      related_information:
+        weight: 55
+        enabled: false
+      skills_framework:
+        weight: 56
+        enabled: false
+      topic:
+        weight: 57
+        enabled: false
       topic_list_builder:
         weight: -17
+        enabled: false
+      topics:
+        weight: 58
         enabled: false
       video:
         weight: -29

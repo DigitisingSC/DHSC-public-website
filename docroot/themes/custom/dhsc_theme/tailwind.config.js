@@ -102,6 +102,8 @@ module.exports = {
   safelist: [
     'border-green',
     'border-l-4',
+    'bg-black-60',
+    'h-[1px]',
     'pl-6',
     'ml-6',
     'mb-8',
