@@ -6,13 +6,13 @@
     }
   }
   &__column:nth-child(2) {
-    > div:first-child {
+    > div {
       @apply order-2;
       @screen tablet {
         @apply order-1;
       }
     }
-    > div:last-child {
+    > nav {
       @apply order-1;
       @screen tablet {
         @apply order-2;
