@@ -106,6 +106,7 @@ module.exports = {
     'h-[1px]',
     'pl-6',
     'ml-6',
+    'mr-3',
     'mb-8',
     'h3',
   ],
