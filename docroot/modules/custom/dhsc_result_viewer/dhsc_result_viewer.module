@@ -36,6 +36,7 @@ function dhsc_result_viewer_theme()
         'submission_url' => NULL,
         'result' => NULL,
         'no_result' => NULL,
+        'email_form' => NULL,
       ],
     ],
     'search_criteria' => [
@@ -115,7 +116,7 @@ function dhsc_result_viewer_mail($key, &$message, $params)
   $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
   $message['body'] = $params['body'];
 
-  $message['params'] = $params['params'];
+  $message['params'] = isset($params['params']) ?? $params['params'];
 }
 
 /**

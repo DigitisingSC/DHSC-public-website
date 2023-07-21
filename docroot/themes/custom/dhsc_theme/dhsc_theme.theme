@@ -201,3 +201,13 @@ function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, arra
 
  return $suggestions;
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add template suggestions for result viewer status messages
+ */
+function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables)
+{
+  $suggestions[] = 'status_messages__dhsc_result_viewer';
+}

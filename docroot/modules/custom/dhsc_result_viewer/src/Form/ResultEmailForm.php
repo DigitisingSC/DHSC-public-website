@@ -53,8 +53,9 @@ class ResultEmailForm extends FormBase
   {
     $email = $form_state->getValue('email', '');
     $token = \Drupal::request()->query->get('token');
+    $result_summary_type = explode('.' , \Drupal::routeMatch()->getRouteName())[1];
 
-    $form_state->setRedirect('dhsc_result_viewer.result_summary_assured_solutions_email', [
+    $form_state->setRedirect("dhsc_result_viewer." . $result_summary_type . "_email", [
       'email' => $email,
       'token' => $token,
     ]);
