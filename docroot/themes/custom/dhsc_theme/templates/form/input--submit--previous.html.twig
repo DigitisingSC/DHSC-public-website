@@ -10,20 +10,4 @@
  * @see template_preprocess_input()
  */
 #}
-
-{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
-
-{% set icon %}
-{% include '@atoms/svg/svg.twig' with {
-    'sprite': spriteSrc,
-    'icon': 'chevron-left',
-  } %}
-{% endset %}
-
-{# Include back link component passing an additional argument to disable
-the click behavior instead using the previous behaviour in Webforms. #}
-{% include '@molecules/back-link/back-link.twig' with {
-  label: 'Back',
-  icon: icon,
-} %}
-
+<input{{ attributes }} />{{ children }}
