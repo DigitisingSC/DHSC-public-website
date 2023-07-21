@@ -54,7 +54,7 @@ const svgIconTemplate = (args) => svgIconTwig({
   icon: 'triangle',
 });
 
-const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url }) =>
+const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url, email_form }) =>
   toolAssessmentTwig({
     attributes,
     summary,
@@ -62,7 +62,8 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
     variant,
     no_result,
     result,
-    submission_url
+    submission_url,
+    email_form
   });
 
 const ToolSolutionsTemplate = ({
@@ -105,7 +106,8 @@ toolAssessment.args = {
   summary: 'summary',
   no_result: '',
   result: { toolResultTemplate },
-  submission_url: 'https://google.co.uk'
+  submission_url: 'https://google.co.uk',
+  email_form: emailFormTwig
 }
 
 export const toolSolutions = ToolSolutionsTemplate.bind({});

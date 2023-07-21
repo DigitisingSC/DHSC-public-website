@@ -182,7 +182,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
-    $results = $tempStore->get('result_data');
+    $results = $tempStore->get('assured_solutions_result_data');
 
     if (!empty($results)) {
 
@@ -261,7 +261,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       }
     }
 
-    $non_matching_count = count($results['non_matching_count']);
+    $non_matching_count = $results['non_matching_count'];
 
     $params['body'] = Markup::create("
     <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
