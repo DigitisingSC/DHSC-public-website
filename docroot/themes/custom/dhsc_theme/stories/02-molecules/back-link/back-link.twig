@@ -4,10 +4,19 @@
 
 {# Classes #}
 {% set classes = [
-  'm-back-link',
+  variant == 'default' ? 'm-back-link-default' : 'm-back-link-form',
 ] %}
 
-<a{{attributes.addClass(classes|sort|join('')|trim)}} href="#" title="{{ label|t }}">
-    <span class="m-back-link__icon">{{ icon }}</span>
-    <span class="m-back-link__label">{{ label|t }}</span>
-</a>
+{% if variant == 'default' %}
+  <a{{attributes.addClass(classes|sort|join('')|trim)}} href="#" title="{{ label|t }}">
+    <span class="m-back-link-default__icon">{{ icon }}</span>
+    <span class="m-back-link-default__label">{{ label|t }}</span>
+  </a>
+{% endif %}
+
+{% if variant == 'form' %}
+  <div{{attributes.addClass(classes|sort|join('')|trim)}}>
+    <span class="m-back-link-form__icon">{{ icon }}</span>
+    <input class="m-back-link-form__label" {{ attributes }}/>
+  </div>
+{% endif %}
