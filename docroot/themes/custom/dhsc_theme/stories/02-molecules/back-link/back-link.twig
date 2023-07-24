@@ -15,8 +15,8 @@
 {% endif %}
 
 {% if variant == 'form' %}
-  <div{{attributes.addClass(classes|sort|join('')|trim)}}>
+  <a{{attributes.addClass(classes|sort|join('')|trim)}}>
     <span class="m-back-link-form__icon">{{ icon }}</span>
     <input class="m-back-link-form__label" {{ attributes }}/>
-  </div>
+  </a>
 {% endif %}
