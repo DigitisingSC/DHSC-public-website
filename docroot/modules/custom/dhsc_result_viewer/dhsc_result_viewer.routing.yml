@@ -20,7 +20,7 @@ dhsc_result_viewer.result_summary_self_assessment:
   path: '/dhsc-results-list-self-assessment'
   defaults:
     _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummarySelfAssessmentController::build'
-    _title: 'Result Summary'
+    _title: 'Recommendations'
   requirements:
     _permission: 'access content'
   options:
