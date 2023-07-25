@@ -1,8 +1,0 @@
-uuid: 330b4fee-03f2-4d5e-8a3f-2c67602b0359
-langcode: en
-status: true
-dependencies: {  }
-id: footer_settings_legal
-label: 'Footer legal'
-fieldset: Footer
-multiple: false

@@ -215,3 +215,13 @@ function dhsc_theme_theme_suggestions_input_alter(&$suggestions, array $variable
     $suggestions[] = 'input__' . $element['#type'] . '__' . str_replace(':', '', $element['#submit'][0]);
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add template suggestions for result viewer status messages
+ */
+function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables)
+{
+  $suggestions[] = 'status_messages__dhsc_result_viewer';
+}

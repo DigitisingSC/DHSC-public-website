@@ -285,7 +285,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     ];
 
     // Save result data in tempstore for email result behaviour.
-    $this->tempStore->set('result_data', $result_data);
+    $this->tempStore->set('assured_solutions_result_data', $result_data);
 
     return $result_data;
   }
