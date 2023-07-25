@@ -23,7 +23,9 @@ const Template = ({
   layout,
   header,
   title,
+  link,
   description,
+  secondary_title,
   media,
   }) =>
   ctaBanner({
@@ -31,7 +33,9 @@ const Template = ({
     layout,
     header,
     title,
+    link,
     description,
+    secondary_title,
     media,
   });
 
@@ -40,7 +44,9 @@ CTABanner.args = {
   attributes: new DrupalAttributes(),
   layout: "left",
   header: "CTA Banner header",
-  title: "<a href='#'>CTA Banner</a>",
-  description: "This is a CTA Banner",
+  title: "CTA Banner",
+  link: "#",
+  description: "Nam pretium turpis et arcu. Aenean imperdiet. Maecenas malesuada. Etiam vitae tortor. Aenean imperdiet. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Mauris sollicitudin fermentum libero. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. - Description",
+  secondary_title: "Secondary title",
   media: imgTag,
 };

@@ -19,7 +19,7 @@ field_name: localgov_text
 entity_type: paragraph
 bundle: cta_banner
 label: Description
-description: ''
+description: '<b>Only use this on <i>Landing pages</i></b>'
 required: false
 translatable: true
 default_value: {  }

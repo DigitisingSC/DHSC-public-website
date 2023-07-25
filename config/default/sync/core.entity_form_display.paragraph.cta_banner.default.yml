@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.cta_banner.field_layout
     - field.field.paragraph.cta_banner.field_link
+    - field.field.paragraph.cta_banner.field_secondary_title
     - field.field.paragraph.cta_banner.field_title
     - field.field.paragraph.cta_banner.localgov_image
     - field.field.paragraph.cta_banner.localgov_text
@@ -39,6 +40,7 @@ third_party_settings:
         - localgov_title
         - localgov_text
         - field_link
+        - field_secondary_title
       label: Content
       region: content
       parent_name: group_fields
@@ -84,6 +86,14 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_secondary_title:
+    type: string_textfield
+    weight: 32
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_title:
     type: string_textfield
