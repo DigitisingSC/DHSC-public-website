@@ -76,6 +76,9 @@ function dhsc_result_viewer_theme()
         'content' => NULL,
       ],
     ],
+    'self_assessment_tool__step_1' => [
+      'variables' => [],
+    ],
     'mimemail_message__dhsc_result_viewer' => [
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
@@ -104,6 +107,7 @@ function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $
   ) {
     $form['actions']['submit']['#value'] = t('Continue');
   }
+
 }
 
 /**
@@ -131,8 +135,7 @@ function dhsc_result_viewer_preprocess_mimemail_message(&$variables) {
  *
  * @param $variables
  */
-function dhsc_result_viewer_preprocess_status_messages(&$variables)
-{
+function dhsc_result_viewer_preprocess_status_messages(&$variables) {
   if (isset($variables['message_list']['status'])) {
     $status_messages = $variables['message_list']['status'];
     foreach ($status_messages as $key => $message) {

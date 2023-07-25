@@ -205,6 +205,20 @@ function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, arra
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  *
+ * Add theme suggestion for previous input submit.
+ *
+ * @inheritdoc
+ */
+function dhsc_theme_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (!empty($element['#submit']) && $element['#submit'][0] == '::previous') {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . str_replace(':', '', $element['#submit'][0]);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
  * Add template suggestions for result viewer status messages
  */
 function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables)

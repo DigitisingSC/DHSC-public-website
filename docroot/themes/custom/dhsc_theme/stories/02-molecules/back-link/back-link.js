@@ -2,7 +2,7 @@
 if (typeof Drupal !== 'undefined') {
   Drupal.behaviors.back_link = {
     attach: function (context) {
-      const back_link = context.querySelector('.m-back-link');
+      const back_link = context.querySelector('.m-back-link-default');
       if (back_link) {
         back_link.addEventListener('click', function (event) {
           event.preventDefault();

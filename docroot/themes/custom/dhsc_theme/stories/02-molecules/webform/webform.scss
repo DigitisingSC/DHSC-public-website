@@ -51,8 +51,7 @@
     @apply text-white hover:text-white focus:text-black disabled:text-white;
   }
 
-  .webform-submission-information,
-  .webform-button--previous {
+  .webform-submission-information {
     @apply hidden;
   }
 

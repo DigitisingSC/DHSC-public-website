@@ -1,5 +1,5 @@
-.m-back-link {
-  @apply flex items-center py-4;
+.m-back-link-default, .m-back-link-form {
+  @apply flex items-center py-4 focus:outline-none focus:bg-[#FDE74C] w-full;
 
   &__icon {
     svg {
@@ -8,6 +8,6 @@
   }
 
   &__label {
-    @apply text-xs text-forest-100 ml-2;
+    @apply text-xs text-forest-100 ml-2 cursor-pointer;
   }
 }
