@@ -63,4 +63,7 @@
     }
   }
 
+  &--title-prefix {
+    @apply text-md text-coolgrey mb-1;
+  }
 }
