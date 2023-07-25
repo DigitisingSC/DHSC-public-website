@@ -145,24 +145,3 @@ function dhsc_result_viewer_preprocess_status_messages(&$variables) {
     }
   }
 }
-
-/**
- * Implements hook_webform_submission_form_alter().
- */
-function dhsc_result_viewer_webform_submission_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  if ($form['#webform_id'] === 'self_assessment_tool' && ($current_page = $form_state->get('current_page')) !== '') {
-    $form['current_step'] = [
-      '#type' => 'value',
-      '#value' =>  $current_page,
-    ];
-  }
-}
-
-/**
- * Implements hook_theme_suggestions_HOOK_alter().
- */
-function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook) {
-  if ($variables['form']['#webform_id'] === 'self_assessment_tool') {
-    $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
-  }
-}
