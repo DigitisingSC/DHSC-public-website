@@ -4,6 +4,8 @@ adding:
     'entity:node':
       bundles:
         selected:
+          - recommendation
           - skill
+          - supplier
 removing:
   status: false
