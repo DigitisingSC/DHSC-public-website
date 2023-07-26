@@ -41,7 +41,7 @@
       <div class="t-guide-overview__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
         <div class="t-guide-overview__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
           <div{{ content_attributes.addClass('lgd-guides__content', 'node__content') }}>
-            {{ content }}
+            {{ content|without('field_date') }}
           </div>
         </div>
         {% if hasRelated %}
@@ -52,9 +52,9 @@
       </div>
     {% endif %}
 
-    {% if node.getCreatedTime %}
+    {% if content.field_date.0 %}
       <div class="t-guide-overview__last-updated text-coolgrey">
-        {{ 'Page last updated'|t }}: {{ node.getCreatedTime|date("d F Y") }}
+        {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
       </div>
     {% endif %}
 
