@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.localgov_guides_overview.field_body_paragraphs
+    - field.field.node.localgov_guides_overview.field_date
     - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.field_metatags
     - field.field.node.localgov_guides_overview.field_sidebar_related
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.localgov_guides_overview.localgov_guides_section_title
     - node.type.localgov_guides_overview
   module:
+    - datetime
     - entity_reference_revisions
     - user
 _core:
@@ -37,6 +39,15 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'd F Y'
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }

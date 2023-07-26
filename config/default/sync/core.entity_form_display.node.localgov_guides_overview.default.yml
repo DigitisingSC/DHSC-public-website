@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.localgov_guides_overview.field_body_paragraphs
+    - field.field.node.localgov_guides_overview.field_date
     - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.field_metatags
     - field.field.node.localgov_guides_overview.field_sidebar_related
@@ -17,6 +18,7 @@ dependencies:
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
+    - datetime
     - field_group
     - localgov_core
     - media_library
@@ -36,6 +38,7 @@ third_party_settings:
         - localgov_guides_pages
         - localgov_guides_list_format
         - field_topic_term
+        - field_date
       label: 'Guide overview details'
       region: content
       parent_name: ''
@@ -105,6 +108,12 @@ content:
         paragraphs_ee:
           dialog_off_canvas: false
           dialog_style: tiles
+  field_date:
+    type: datetime_default
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_image:
     type: media_library_widget
     weight: 4
@@ -152,7 +161,7 @@ content:
           dialog_style: tiles
   field_summary:
     type: string_textarea
-    weight: 6
+    weight: 5
     region: content
     settings:
       rows: 5
