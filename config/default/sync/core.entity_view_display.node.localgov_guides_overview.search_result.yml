@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_result
     - field.field.node.localgov_guides_overview.field_body_paragraphs
+    - field.field.node.localgov_guides_overview.field_date
     - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.field_metatags
     - field.field.node.localgov_guides_overview.field_sidebar_related
@@ -36,6 +37,7 @@ content:
     region: content
 hidden:
   field_body_paragraphs: true
+  field_date: true
   field_image: true
   field_metatags: true
   field_sidebar_related: true
