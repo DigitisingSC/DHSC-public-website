@@ -54,8 +54,6 @@ class SelfAssessmentBreadcrumbBuilder implements BreadcrumbBuilderInterface {
       $breadcrumb->addLink(Link::fromTextAndUrl($this->t('Get started with digital'), $webformURL));
     }
 
-    $breadcrumb->addLink(Link::createFromRoute($this->t('Recommendations'), '<none>'));
-
     return $breadcrumb;
   }
 
