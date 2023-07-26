@@ -50,5 +50,12 @@
         {% endif %}
       </div>
     {% endif %}
+
+    {% if node.getCreatedTime %}
+      <div class="t-guide-overview__last-updated text-coolgrey">
+        {{ 'Page last updated'|t }}: {{ node.getCreatedTime|date("d F Y") }}
+      </div>
+    {% endif %}
+
   </div>
 </article>
