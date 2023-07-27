@@ -23,10 +23,15 @@
     </div>
   {% endif %}
 
-  {% if further_information %}
-    <section class="t-casestudy-page__related w-full tablet:w-9/12">
-      {{ further_information }}
-    </section>
-  {% endif %}
+  <did class="t-casestudy-page__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+    {% if further_information %}
+      <section class="t-casestudy-page__related w-full tablet:w-9/12">
+        {{ further_information }}
+      </section>
+    {% endif %}
+    <div class="t-casestudy-page__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+      {% include "@molecules/back-to-top/back-to-top.twig" %}
+    </div>
+  </div>
 
 </article>

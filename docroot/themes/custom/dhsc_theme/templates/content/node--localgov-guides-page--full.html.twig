@@ -52,11 +52,16 @@
       </div>
     {% endif %}
 
-    {% if content.field_date.0 %}
-      <div class="t-guide-overview__last-updated text-coolgrey">
-        {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
+    <did class="t-guide-overview__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+      {% if content.field_date.0 %}
+        <div class="t-guide-overview__last-updated text-coolgrey">
+          {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
+        </div>
+      {% endif %}
+      <div class="t-guide-overview__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+        {% include "@molecules/back-to-top/back-to-top.twig" %}
       </div>
-    {% endif %}
+    </div>
 
   </div>
 </article>
