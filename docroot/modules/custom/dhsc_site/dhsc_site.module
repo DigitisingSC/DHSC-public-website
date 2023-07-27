@@ -136,8 +136,9 @@ function dhsc_site_site_setting_entity_delete(EntityInterface $entity) {
  * Helper function to clear Drupal's render cache.
  */
 function dhsc_site_clear_router_builder_cache() {
-  $routerBuilderCache = \Drupal::service('router.builder');
-  $routerBuilderCache->rebuild();
+  \Drupal::service('cache.config')->invalidateAll();
+  \Drupal::service('cache.render')->invalidateAll();
+  \Drupal::service("router.builder")->rebuild();
 
   \Drupal::logger('dhsc_site')
     ->notice('A change to a site settings entity triggered a cache rebuild');
