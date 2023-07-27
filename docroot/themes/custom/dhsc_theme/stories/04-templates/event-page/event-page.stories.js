@@ -9,6 +9,9 @@ import relatedInformationTwig from "../../03-organisms/related-information/relat
 import {EventDetailsTime} from "../../02-molecules/event-details/event-details.stories.js";
 import eventDetailsTimeTwig from "../../02-molecules/event-details/event-details--time.twig";
 
+import {FurtherInformation} from "../../03-organisms/further-information/further-information.stories.js";
+import furtherInformationTwig from "../../03-organisms/further-information/further-information.twig";
+
 import image from '../../../assets/images/banner.jpg';
 const imgTag = `<img src=${image} alt='Digital Social Care Banner'/>`;
 
@@ -20,12 +23,15 @@ const eventDetailsTemplate = (args) => eventDetailsTimeTwig({
   ...EventDetailsTime.args
 });
 
+const furtherInformationTemplate = (args) => furtherInformationTwig({
+  ...FurtherInformation.args
+});
 
 export default {
   title: "Design System/Templates/Event Page",
 };
 
-const Template = ({ attributes, title, subtitle, event_details, featured_image, related, content }) =>
+const Template = ({ attributes, title, subtitle, event_details, featured_image, related, content, further_information }) =>
   EventPageTwig({
     attributes,
     title,
@@ -33,7 +39,8 @@ const Template = ({ attributes, title, subtitle, event_details, featured_image, 
     featured_image,
     event_details,
     related,
-    content
+    content,
+    further_information,
   });
 
 export const EventPage = Template.bind({});
@@ -52,5 +59,6 @@ EventPage.args = {
 
   Vivamus consectetuer hendrerit lacus. Phasellus accumsan cursus velit. Cras dapibus. Fusce a quam. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.
 
-  Quisque ut nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque rutrum. Suspendisse non nisl sit amet velit hendrerit rutrum. Aenean viverra rhoncus pede.`
+  Quisque ut nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque rutrum. Suspendisse non nisl sit amet velit hendrerit rutrum. Aenean viverra rhoncus pede.`,
+  further_information: furtherInformationTemplate,
 };
