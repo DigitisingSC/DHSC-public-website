@@ -13,7 +13,7 @@ field_name: field_sidebar_related
 entity_type: node
 bundle: article
 label: 'Related information'
-description: ''
+description: 'Displayed in the <b>sidebar</b>'
 required: false
 translatable: true
 default_value: {  }
@@ -72,6 +72,9 @@ settings:
         enabled: false
       full_content_listings:
         weight: 46
+        enabled: false
+      further_information:
+        weight: 48
         enabled: false
       link_description:
         weight: 47

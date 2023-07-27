@@ -5,6 +5,9 @@ import articlePage from "./article-page.twig";
 import {RelatedInformation} from "../../03-organisms/related-information/related-information.stories.js";
 import relatedInformationTwig from "../../03-organisms/related-information/related-information.twig";
 
+import {FurtherInformation} from "../../03-organisms/further-information/further-information.stories.js";
+import furtherInformationTwig from "../../03-organisms/further-information/further-information.twig";
+
 
 export default {
   title: "Design System/Templates/Article page",
@@ -18,15 +21,20 @@ const relatedInformationTemplate = (args) => relatedInformationTwig({
   ...RelatedInformation.args
 });
 
+const furtherInformationTemplate = (args) => furtherInformationTwig({
+  ...FurtherInformation.args
+});
 
-const Template = ({ attributes, title, featured_image, related, article_details, content }) =>
+
+const Template = ({ attributes, title, featured_image, related, article_details, content, further_information }) =>
   articlePage({
     attributes,
     title,
     article_details,
     featured_image,
     related,
-    content
+    content,
+    further_information,
   });
 
 export const ArticlePage = Template.bind({});
@@ -47,5 +55,6 @@ ArticlePage.args = {
 
   Nunc nulla. Vivamus laoreet. Nullam quis ante. Pellentesque commodo eros a enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
 
-  In hac habitasse platea dictumst. Ut varius tincidunt libero. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Aenean ut eros et nisl sagittis vestibulum.`
+  In hac habitasse platea dictumst. Ut varius tincidunt libero. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Aenean ut eros et nisl sagittis vestibulum.`,
+  further_information: furtherInformationTemplate,
 };

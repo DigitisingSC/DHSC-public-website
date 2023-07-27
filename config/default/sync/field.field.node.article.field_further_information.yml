@@ -1,121 +1,121 @@
-uuid: 372ed7a3-d467-40f6-9f86-fd4bc0dfac32
+uuid: c5b2004f-5658-431b-beee-47664659f6ad
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_sidebar_related
-    - node.type.event
-    - paragraphs.paragraphs_type.related_information
+    - field.storage.node.field_further_information
+    - node.type.article
+    - paragraphs.paragraphs_type.further_information
   module:
     - entity_reference_revisions
-id: node.event.field_sidebar_related
-field_name: field_sidebar_related
+id: node.article.field_further_information
+field_name: field_further_information
 entity_type: node
-bundle: event
-label: 'Other events'
-description: 'Displayed in the <b>sidebar</b>'
+bundle: article
+label: 'Further information'
+description: 'Displayed in the <b>below content</b>'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      related_information: related_information
+      further_information: further_information
     negate: 0
     target_bundles_drag_drop:
       accordion:
-        weight: 31
-        enabled: false
-      accordion_digital_skills:
         weight: 32
         enabled: false
-      accordion_item:
+      accordion_digital_skills:
         weight: 33
         enabled: false
-      alert:
+      accordion_item:
         weight: 34
         enabled: false
-      card_collection:
+      alert:
         weight: 35
         enabled: false
-      content_listing:
+      card_collection:
         weight: 36
         enabled: false
-      content_listing_section:
+      content_listing:
         weight: 37
         enabled: false
-      content_listing_section_links:
+      content_listing_section:
         weight: 38
         enabled: false
-      cta_banner:
+      content_listing_section_links:
         weight: 39
         enabled: false
-      dynamic_content_list:
+      cta_banner:
         weight: 40
         enabled: false
-      dynamic_content_listing:
+      dynamic_content_list:
         weight: 41
         enabled: false
-      featured_items:
+      dynamic_content_listing:
         weight: 42
         enabled: false
-      framework_row:
+      featured_items:
         weight: 43
         enabled: false
-      framework_section:
+      framework_row:
         weight: 44
         enabled: false
-      from_library:
+      framework_section:
         weight: 45
         enabled: false
-      full_content_listings:
+      from_library:
         weight: 46
+        enabled: false
+      full_content_listings:
+        weight: 47
         enabled: false
       further_information:
         weight: 48
-        enabled: false
+        enabled: true
       link_description:
-        weight: 47
-        enabled: false
-      localgov_image:
-        weight: 48
-        enabled: false
-      localgov_link:
         weight: 49
         enabled: false
-      localgov_text:
+      localgov_image:
         weight: 50
         enabled: false
-      newsletter_signup:
+      localgov_link:
         weight: 51
         enabled: false
-      pagination:
+      localgov_text:
         weight: 52
         enabled: false
-      quick_link:
+      newsletter_signup:
         weight: 53
         enabled: false
-      quick_links:
+      pagination:
         weight: 54
         enabled: false
-      related_information:
+      quick_link:
         weight: 55
-        enabled: true
-      skills_framework:
+        enabled: false
+      quick_links:
         weight: 56
         enabled: false
-      topic:
+      related_information:
         weight: 57
         enabled: false
-      topic_list_builder:
+      skills_framework:
         weight: 58
         enabled: false
-      topics:
+      topic:
         weight: 59
         enabled: false
-      video:
+      topic_list_builder:
+        weight: 61
+        enabled: false
+      topics:
         weight: 60
+        enabled: false
+      video:
+        weight: 62
         enabled: false
 field_type: entity_reference_revisions
