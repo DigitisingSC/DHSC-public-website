@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.field_end_date
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_further_information
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
@@ -134,6 +135,34 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_further_information:
+    type: paragraphs
+    weight: 26
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: '0'
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: false
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
   field_image:
     type: media_library_widget
     weight: 6

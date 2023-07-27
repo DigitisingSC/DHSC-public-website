@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.event.field_end_date
     - field.field.node.event.field_end_time
     - field.field.node.event.field_event_type
+    - field.field.node.event.field_further_information
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
@@ -69,6 +70,7 @@ hidden:
   field_body_paragraphs: true
   field_end_date: true
   field_end_time: true
+  field_further_information: true
   field_link: true
   field_location_link: true
   field_sidebar_related: true
