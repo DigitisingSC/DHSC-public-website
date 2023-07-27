@@ -14,7 +14,7 @@ bundle: further_information
 mode: default
 content:
   field_referenced_pages:
-    type: link_separate
+    type: link
     label: hidden
     settings:
       trim_length: 80

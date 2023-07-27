@@ -30,7 +30,7 @@ third_party_settings:
       label: Metadata
       region: content
       parent_name: ''
-      weight: 3
+      weight: 5
       format_type: details
       format_settings:
         classes: ''
@@ -110,7 +110,7 @@ content:
     third_party_settings: {  }
   field_further_information:
     type: paragraphs
-    weight: 5
+    weight: 4
     region: content
     settings:
       title: Paragraph
@@ -145,7 +145,7 @@ content:
     third_party_settings: {  }
   field_sidebar_related:
     type: paragraphs
-    weight: 4
+    weight: 3
     region: content
     settings:
       title: Paragraph

@@ -13,7 +13,7 @@ field_name: field_further_information
 entity_type: node
 bundle: event
 label: 'Further information'
-description: ''
+description: 'Displayed in the <b>below content</b>'
 required: false
 translatable: true
 default_value: {  }
