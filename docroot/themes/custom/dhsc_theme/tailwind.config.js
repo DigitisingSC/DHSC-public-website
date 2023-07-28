@@ -116,6 +116,7 @@ module.exports = {
         'mobile': '320px',
         'tablet': '768px',
         'desktop': '1024px',
+        'print': { 'raw': 'print' },
       },
       colors: {
         transparent: 'transparent',

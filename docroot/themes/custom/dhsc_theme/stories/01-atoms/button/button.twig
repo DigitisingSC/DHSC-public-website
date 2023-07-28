@@ -38,7 +38,7 @@
 {% if children %}
   {% if variant == 'search' %}
     {% set attributes = attributes.removeAttribute('id') %}
-    <div x-data="{ searchIsActive : false }">
+    <div x-data="{ searchIsActive : false }" class="print:hidden">
       <{{ tag_name }} {{ attributes }}
         @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive; $dispatch('activedropdownmain', { active: false })"
         @closesearchtrigger.window="searchIsActive = false"
