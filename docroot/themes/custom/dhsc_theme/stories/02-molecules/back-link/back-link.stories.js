@@ -14,11 +14,12 @@ const svgBackLinkTemplate = (args) => svgIconTwig({
   icon: 'chevron-left',
 });
 
-const Template = ({ attributes, label, icon, variant }) =>
+const Template = ({ attributes, label, icon, link, variant }) =>
   backLinkTwig({
    attributes,
    label,
    icon,
+   link,
    variant
   });
 
@@ -27,5 +28,6 @@ backLink.args = {
   attributes: new DrupalAttributes(),
   label: 'Back',
   icon: svgBackLinkTemplate,
+  link: '#',
   variant: 'default'
 };
