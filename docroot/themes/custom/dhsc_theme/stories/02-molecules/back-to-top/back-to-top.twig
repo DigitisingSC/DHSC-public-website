@@ -1,0 +1,13 @@
+<div class="m-back-to-top relative">
+  <a
+  x-data
+  x-on:click.prevent="window.scrollTo({top: 0, behavior: 'smooth'});document.querySelector('a.skip-link').focus({preventScroll: true});"
+  href="#" class="m-back-to-top__link text-forest text-base group">
+    <span>
+      {{ 'Back to top'|t }}
+    </span>
+    <svg class="inline-block transition-transform group-hover:-translate-y-2" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.66 7.4L11.66 10.13C11.59 10.2001 11.5419 10.2891 11.5217 10.386C11.5014 10.483 11.5098 10.5838 11.5458 10.6761C11.5819 10.7683 11.6441 10.8481 11.7247 10.9056C11.8054 10.9632 11.9011 10.996 12 11L14 11L14 22C14 22.2652 14.1054 22.5196 14.2929 22.7071C14.4805 22.8946 14.7348 23 15 23C15.2653 23 15.5196 22.8946 15.7071 22.7071C15.8947 22.5196 16 22.2652 16 22L16 11L18 11C18.0999 10.9987 18.1971 10.9675 18.2791 10.9105C18.3611 10.8535 18.4241 10.7732 18.46 10.68C18.4741 10.6208 18.4741 10.5592 18.46 10.5C18.4593 10.4308 18.4448 10.3624 18.4174 10.2989C18.3899 10.2353 18.35 10.1779 18.3 10.13L15.3 7.4C15.2102 7.32517 15.097 7.28419 14.98 7.28419C14.8631 7.28419 14.7499 7.32517 14.66 7.4Z" fill="#00594C"/>
+    </svg>
+  </a>
+</div>
