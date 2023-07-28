@@ -29,8 +29,7 @@ class SelfAssessmentBreadcrumbBuilder implements BreadcrumbBuilderInterface {
    */
   public function applies(RouteMatchInterface $route_match) {
     // Check if the current route matches your custom page controller route.
-    return ($route_match->getRouteName() == 'dhsc_result_viewer.result_summary_self_assessment') ||
-    ($route_match->getParameter('webform')->id() === 'self_assessment_tool');
+    return ($route_match->getRouteName() == 'dhsc_result_viewer.result_summary_self_assessment');
   }
 
   /**
