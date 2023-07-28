@@ -29,5 +29,5 @@ backLink.args = {
   label: 'Back',
   icon: svgBackLinkTemplate,
   link: '#',
-  variant: 'form'
+  variant: 'default'
 };
