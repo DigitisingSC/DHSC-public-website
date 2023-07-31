@@ -7,13 +7,10 @@ if (typeof Drupal !== 'undefined') {
       const form = context.querySelector('form.m-webform__submission-form--hide-breadcrumbs');
       // If exists
       if (form) {
-        const step = form.querySelector('.webform-step-use-page-title');
+        const step = form.querySelector('div[data-webform-key]');
         // Check if on first step
-        if (step && step.dataset.webformKey === 'step_1') {
-          // If so hide back button
-          document.querySelector('.m-back-link').style.display = 'none'
-        } else {
-          // Else hide breadcrumbs
+        if (step && step.dataset.webformKey !== 'step_1') {
+          // If not hide back button
           document.querySelector('.o-breadcrumb-region').style.display = 'none'
         }
       }

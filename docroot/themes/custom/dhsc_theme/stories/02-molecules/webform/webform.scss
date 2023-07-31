@@ -29,6 +29,10 @@
     @apply tablet:w-9/12 text-md tablet:text-lg leading-tight tablet:leading-tight mb-4;
   }
 
+  .form-item p {
+    @apply text-md;
+  }
+
   .radios--wrapper {
     @apply py-4;
 
@@ -65,5 +69,42 @@
 
   &--title-prefix {
     @apply text-md text-coolgrey mb-1;
+  }
+
+  // Assured solution form amends
+  .form-item[data-drupal-selector="edit-device-option"] {
+    @apply mt-0 pt-0;
+    legend {
+      @apply sr-only;
+    }
+  }
+  .webform-submission-assured-solutions-tool-form {
+    .js-form-type-checkbox {
+      @apply grid pb-3 last:pb-0;
+      grid-template-columns: 48px 1fr;
+      .form-checkbox {
+        grid-row: 1 / span 2;
+        margin-right: 8px;
+      }
+      label {
+        @apply block font-bold py-1 leading-[30px];
+      }
+      .description {
+        @apply leading-8 text-coolgrey text-base;
+      }
+    }
+    .js-form-type-processed-text {
+      @apply mb-7 text-black-80;
+    }
+    h4 {
+      @apply text-md mt-7 pb-2;
+    }
+    .webform-actions {
+      @apply mt-9;
+    }
+  }
+  // End - Assured solution specific CSS
+  .webform-actions.webform-step-back-button {
+    @apply mt-0;
   }
 }
