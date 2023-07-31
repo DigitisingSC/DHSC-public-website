@@ -1,7 +1,17 @@
+{% if items.previous and items.next %}
+  {% set pager_class = 'o-pager__between' %}
+{% else %}
+  {% if items.previous %}
+    {% set pager_class = 'o-pager__last' %}
+  {% else %}
+    {% set pager_class = 'o-pager__first' %}
+  {% endif %}
+{% endif %}
+
 {% if items %}
   <nav class="o-pager py-6" role="navigation" aria-labelledby="{{ heading_id }}">
     <h4 id="{{ heading_id }}" class="sr-only">{{ 'Pagination'|t }}</h4>
-    <ul class="o-pager__items js-pager__items list-none flex flex-col">
+    <ul class="o-pager__items js-pager__items list-none flex flex-col {{ pager_class }}">
 
       {% if items.previous %}
         {% set previousClasses = [
