@@ -1,7 +1,6 @@
 {% set classes = [
   'm-tool-supplier',
   'tool-supplier--' ~ variant,
-  'mb-4'
 ] %}
 <div{{attributes.addClass(classes)}}>
   <div class="m-tool-supplier__title mb-2">
@@ -19,7 +18,7 @@
       {% if preview_component %}
         {% for answer in answers %}
           <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ answer.section }}</div>
-          <ul class="list-disc pl-4 mb-4">
+          <ul class="list-disc pl-4 mb-4 last:mb-0">
             {% for item in answer.answer %}
               <li>
                 <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ item }}</div>
@@ -32,7 +31,7 @@
         {% for key, value in answers %}
           <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ key }}</div>
           {% for answer in value %}
-            <ul class="list-disc pl-4 mb-4">
+            <ul class="list-disc pl-4 mb-4 last:mb-0">
               <li>
                 <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ answer }}</div>
               </li>
