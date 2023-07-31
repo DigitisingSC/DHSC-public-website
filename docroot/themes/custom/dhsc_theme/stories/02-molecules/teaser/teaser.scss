@@ -21,6 +21,9 @@
       @screen tablet {
         @apply order-2;
       }
+      img {
+        @apply w-full h-auto;
+      }
     }
   }
 }
