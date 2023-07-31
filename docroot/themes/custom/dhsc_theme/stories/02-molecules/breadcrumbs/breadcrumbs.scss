@@ -5,15 +5,15 @@
   }
 
   &__item:last-child {
+    @apply flex;
     .m-breadcrumbs__separator {
-      @apply hidden;
-    }
-    @apply hidden;
-    @screen tablet {
       @apply flex;
+      @screen tablet {
+        @apply hidden;
+      }
     }
   }
-  &__item:not(:nth-last-child(-n+2)) {
+  &__item:not(:nth-last-child(-n+1)) {
     @apply hidden;
     @screen tablet {
       @apply flex;
