@@ -79,6 +79,9 @@
     }
   }
   .webform-submission-assured-solutions-tool-form {
+    h1 {
+      @apply tablet:text-2xl tablet:mb-7;
+    }
     .js-form-type-checkbox {
       @apply grid pb-3 last:pb-0;
       grid-template-columns: 48px 1fr;
