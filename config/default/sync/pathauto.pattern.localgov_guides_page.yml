@@ -9,12 +9,12 @@ _core:
 id: localgov_guides_page
 label: 'Guide page'
 type: 'canonical_entities:node'
-pattern: '[node:localgov_guides_parent:entity:url:relative]/[node:title]'
+pattern: '[node:title]'
 selection_criteria:
-  d03dd2d8-3ba2-421a-a2cc-7a761f05ba45:
+  f21bb767-aa5c-4b81-a8f4-d29e7e811158:
     id: 'entity_bundle:node'
     negate: false
-    uuid: d03dd2d8-3ba2-421a-a2cc-7a761f05ba45
+    uuid: f21bb767-aa5c-4b81-a8f4-d29e7e811158
     context_mapping:
       node: node
     bundles:
