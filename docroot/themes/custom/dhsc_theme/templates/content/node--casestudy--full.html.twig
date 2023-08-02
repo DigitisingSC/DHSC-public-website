@@ -16,12 +16,11 @@
   ]
 %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
-  {% include '@templates/casestudy-page/casestudy-page.twig' with {
-    'title': label,
-    'lead': content.field_intro,
-    'image': content.field_image,
-    'content': content.field_body_paragraphs,
-    'further_information': content.field_further_information,
-  } %}
-</article>
+{% include '@templates/casestudy-page/casestudy-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role'),
+  'title': label,
+  'lead': content.field_intro,
+  'image': content.field_image,
+  'content': content.field_body_paragraphs,
+  'further_information': content.field_further_information,
+} %}

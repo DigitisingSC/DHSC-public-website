@@ -85,16 +85,12 @@
   ]
 %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
-  <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
-    {% include '@templates/supplier-page/supplier-page.twig' with {
-      'title': label,
-      'list_price': content.field_list_price.0['#markup'],
-      'summary': content.field_summary|field_value,
-      'image': content.field_image,
-      'content': content.field_body_paragraphs,
-      'last_updated': node.changed.value|date("j F Y"),
-    } %}
-  </div>
-</article>
-
+{% include '@templates/supplier-page/supplier-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content'),
+  'title': label,
+  'list_price': content.field_list_price.0['#markup'],
+  'summary': content.field_summary|field_value,
+  'image': content.field_image,
+  'content': content.field_body_paragraphs,
+  'last_updated': node.changed.value|date("j F Y"),
+} %}

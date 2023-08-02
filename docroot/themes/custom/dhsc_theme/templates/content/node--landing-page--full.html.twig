@@ -85,7 +85,7 @@
   ]
 %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
+<div{{attributes.addClass(classes).removeAttribute('role')}}>
   {{ title_prefix }}
   {{ title_suffix }}
 
@@ -104,4 +104,4 @@
   <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
     {{ content|without('field_hero_image', 'field_formatted_description') }}
   </div>
-</article>
+</div>

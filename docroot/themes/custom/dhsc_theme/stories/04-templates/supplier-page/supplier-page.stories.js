@@ -11,8 +11,9 @@ export default {
 import image from '../../assets/images/supplier-image.png';
 const imgTag = `<div><img src=${image} alt='Digital Social Care'/></div>`
 
-const Template = ({ title, list_price, summary, image, content, last_updated }) =>
+const Template = ({ attributes, title, list_price, summary, image, content, last_updated }) =>
   supplierPage({
+    attributes,
     title,
     list_price,
     summary,
@@ -23,6 +24,7 @@ const Template = ({ title, list_price, summary, image, content, last_updated }) 
 
 export const SupplierPage= Template.bind({});
 SupplierPage.args = {
+  attributes: new DrupalAttributes(),
   title: "Using technology for a seamless recruitment process",
   list_price: "Coming soon",
   summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.',

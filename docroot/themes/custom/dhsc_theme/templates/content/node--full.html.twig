@@ -85,13 +85,10 @@
   ]
 %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
-  <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
-    {% include '@templates/content-page/content-page.twig' with {
-      'title': label,
-      'intro': content.field_intro,
-      'intro_above_title': content.field_display_intro_above_title,
-      'content': content.field_body_paragraphs,
-    } %}
-  </div>
-</article>
+{% include '@templates/content-page/content-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content'),
+  'title': label,
+  'intro': content.field_intro,
+  'intro_above_title': content.field_display_intro_above_title,
+  'content': content.field_body_paragraphs,
+} %}

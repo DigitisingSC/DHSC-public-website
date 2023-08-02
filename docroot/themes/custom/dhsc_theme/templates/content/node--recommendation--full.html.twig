@@ -81,7 +81,7 @@
   ]
 %}
 
-<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+<div{{ attributes.addClass(classes).removeAttribute('role') }}>
 
   {{ title_prefix }}
   {% if label and not page %}
@@ -108,4 +108,4 @@
     {% include "@molecules/back-to-top/back-to-top.twig" %}
   </div>
 
-</article>
+</div>
