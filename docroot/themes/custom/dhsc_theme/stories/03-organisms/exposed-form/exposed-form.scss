@@ -1,4 +1,7 @@
 .o-exposed-filters {
+  .form-actions {
+    @apply order-1;
+  }
   .form-submit {
     @apply text-forest-100 underline hover:no-underline cursor-pointer;
   }
@@ -14,5 +17,5 @@
         background-size: 10px;
       }
     }
-  } 
+  }
 }
