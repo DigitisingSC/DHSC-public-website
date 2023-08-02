@@ -1,14 +1,29 @@
-{% extends "@localgov_base/layout/status-pages/page-status.html.twig" %}
-
-{% block page_content %}
-  <div class="lgd-container">
-      <div class="lgd-row">
-        <div class="lgd-row__full">
-          <div class="padding-horizontal container m-auto p-10 pt-4 pb-14 text-center">
-            <h1>{{ 'Page not found'|t }}</h1>
-            <p>{{ 'The page you are requesting cannot be found.'|t }}</p>
-          </div>
-        </div>
-      </div>
+{% set page_content %}
+  <div class="">
+    <h1 class="mb-5">{{ 'Page not found'|t }}</h1>
+    <p>{{ 'The page you are requesting cannot be found.'|t }}</p>
   </div>
-{% endblock %}
+{% endset %}
+
+{% include "@templates/layout/layout.twig" with {
+  "header": page.header,
+  "mobile_search": page.mobile_search,
+  "primary_menu": page.primary_menu,
+  "search": page.search,
+  "secondary_menu": page.secondary_menu,
+  "banner": page.banner,
+  "tabs": page.tabs,
+  "breadcrumb": page.breadcrumb,
+  "messages": page.messages,
+  "content_top": page.content_top,
+  "content": page_content,
+  "content_bottom": page.content_bottom,
+  "has_sidebars": has_sidebars,
+  "sidebar_first": page.sidebar_first,
+  "sidebar_second": page.sidebar_second,
+  "footer_top": page.footer_top,
+  "footer": page.footer,
+  "footer_bottom": page.footer_bottom,
+  "footer_legal": page.footer_legal,
+  "disabled": page.disabled
+} %}
