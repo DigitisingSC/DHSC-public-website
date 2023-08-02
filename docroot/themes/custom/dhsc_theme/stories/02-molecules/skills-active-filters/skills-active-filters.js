@@ -7,7 +7,7 @@ if (typeof Drupal !== 'undefined') {
         activeFilter.addEventListener('click', function (e) {
           e.preventDefault();
           if (activeFilter && activeFilter.dataset && activeFilter.dataset.target) {
-            const filter = document.querySelector(`form#views-exposed-form-digital-skills-training-page-skills-search-page input[value="${activeFilter.dataset.target}"]`);
+            const filter = document.querySelector(`form.js-exposed-form-target input[value="${activeFilter.dataset.target}"]`);
             if (filter) {
               filter.click();
             }
