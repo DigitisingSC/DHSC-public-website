@@ -35,7 +35,7 @@
   {% endif %}
   {% if description %}
     <div class="m-teaser__description mb-2 text-xs leading-relaxed">
-     {{ description }}
+     {{ description|raw }}
     </div>
   {% endif %}
   {% if date %}
@@ -44,7 +44,7 @@
     </div>
   {% endif %}
   {% if skillAttributes %}
-    <div class="m-teaser__skill-attributes mb-4 text-coolgrey text-xs leading-relaxed">
+    <div class="m-teaser__skill-attributes text-coolgrey text-xs leading-relaxed">
       {% if skillAttributes.level %}
         <div class="m-teaser__skill--level md:inline-block">
           <span class="md:font-bold">{{ 'Skill level:'|t }}</span> {{ skillAttributes.level }}

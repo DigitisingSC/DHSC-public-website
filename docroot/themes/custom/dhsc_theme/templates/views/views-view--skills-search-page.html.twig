@@ -61,6 +61,12 @@
     </div>
   {% endif %}
 
+  <div class="view-digital-skills-training-page__pills hidden tablet:block tablet:mb-7">
+    {% include "@molecules/skills-active-filters/skills-active-filters.twig" with {
+      links: []
+    } %}
+  </div>
+
   {% if rows %}
     <div class="view-content">
       {{ rows }}

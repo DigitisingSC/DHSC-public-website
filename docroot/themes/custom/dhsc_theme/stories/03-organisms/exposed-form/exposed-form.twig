@@ -16,7 +16,14 @@
     </div>
 
   </button>
-  <form {{attributes}} :class="isOpen ? 'block' : 'hidden tablet:block'">
+  <form {{attributes}} :class="isOpen ? 'flex flex-col flex-wrap' : 'hidden tablet:block'">
     {{ children }}
+
+    <div class="view-digital-skills-training-page__pills block tablet:hidden mb-5 tablet:mb-0">
+      {% include "@molecules/skills-active-filters/skills-active-filters.twig" with {
+        links: []
+      } %}
+    </div>
+
   </form>
 </section>

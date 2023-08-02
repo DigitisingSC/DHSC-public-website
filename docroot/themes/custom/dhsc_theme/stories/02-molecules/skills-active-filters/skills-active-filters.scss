@@ -1,0 +1,8 @@
+.m-active-filter {
+  &:focus {
+    @apply no-underline;
+  }
+  &__text {
+    width: calc(100% - 24px);
+  }
+}
