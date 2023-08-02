@@ -1,0 +1,6 @@
+services:
+  dhsc_site.ajax_response_subscriber:
+    class: Drupal\dhsc_site\EventSubscriber\AjaxResponseSubscriber
+    arguments: ['@renderer']
+    tags:
+      - { name: event_subscriber }

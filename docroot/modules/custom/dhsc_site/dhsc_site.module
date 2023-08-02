@@ -50,6 +50,11 @@ function dhsc_site_theme() {
         'read_more_link' => null,
       ],
     ],
+    'skills_active_filters' => [
+      'variables' => [
+        'links' => [],
+      ],
+    ],
   ];
 }
 
