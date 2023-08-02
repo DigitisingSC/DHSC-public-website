@@ -81,7 +81,7 @@
   ]
 %}
 
-<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+<div{{ attributes.addClass(classes).removeAttribute('role') }}>
 
   {{ title_prefix }}
   {% if label and not page %}
@@ -105,4 +105,4 @@
     {{ content }}
   </div>
 
-</article>
+</div>

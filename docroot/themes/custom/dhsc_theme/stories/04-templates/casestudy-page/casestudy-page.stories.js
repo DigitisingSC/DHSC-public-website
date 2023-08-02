@@ -29,6 +29,7 @@ const Template = ({ title, image, lead, content, further_information }) =>
 
 export const CaseStudyPage= Template.bind({});
 CaseStudyPage.args = {
+  attributes: new DrupalAttributes(),
   title: "Using technology for a seamless recruitment process",
   image: imgTag,
   lead: 'Blissfull Care Homes',

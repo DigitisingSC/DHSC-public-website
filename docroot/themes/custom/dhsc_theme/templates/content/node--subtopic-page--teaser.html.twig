@@ -70,12 +70,12 @@
  *   in different view modes.
  */
 #}
-<article{{attributes}}>
-	{% include '@molecules/card/card.twig' with {
-    'variant': 'article',
-    'image': content.field_image,
-    'link': path('entity.node.canonical', {'node': node.id }),
-    'heading': node.label,
-    'description': content.field_description
-  } %}
-</article>
+{% include '@molecules/card/card.twig' with {
+  'attributes': attributes,
+  'variant': 'article',
+  'image': content.field_image,
+  'link': path('entity.node.canonical', {'node': node.id }),
+  'heading': node.label,
+  'description': content.field_description
+} %}
+
