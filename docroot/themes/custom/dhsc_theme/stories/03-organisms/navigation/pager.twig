@@ -37,7 +37,7 @@
             {% if variant == 'views' %}
               {% for key, item in items.pages %}
                 {% if current == key %}
-                  <span class="underline text-2xs tablet:text-xs">{{ current }} of {{ loop.length }}</span>
+                  <span class="underline text-2xs tablet:text-xs">{{ current - 1 }} of {{ loop.length }}</span>
                 {% endif %}
               {% endfor %}
             {% else %}
