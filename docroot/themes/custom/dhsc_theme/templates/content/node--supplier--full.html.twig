@@ -86,7 +86,7 @@
 %}
 
 {% include '@templates/supplier-page/supplier-page.twig' with {
-  'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content')
+  'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content'),
   'title': label,
   'list_price': content.field_list_price.0['#markup'],
   'summary': content.field_summary|field_value,
