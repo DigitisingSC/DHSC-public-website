@@ -3,16 +3,10 @@ if (typeof Drupal !== 'undefined') {
 
   Drupal.behaviors.multi_step_webform_breadcrumbs = {
     attach: function (context) {
-      // Find webform with class
-      const form = context.querySelector('form.m-webform__submission-form--hide-breadcrumbs');
-      // If exists
-      if (form) {
-        const step = form.querySelector('div[data-webform-key]');
-        // Check if on first step
-        if (step && step.dataset.webformKey !== 'step_1') {
-          // If not hide back button
-          document.querySelector('.o-breadcrumb-region').style.display = 'none'
-        }
+      // Find webform with class exists
+      if (context.querySelector('form.m-webform__submission-form--hide-breadcrumbs')) {
+        // If not hide breadcrumbs
+        context.querySelector('.o-breadcrumb-region').style.display = 'none';
       }
     }
   }
