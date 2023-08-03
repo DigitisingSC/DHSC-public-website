@@ -90,6 +90,18 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['assured_solutions_settings']['as_landing_page'] = [
+      '#type' => 'linkit',
+      '#title' => $this->t('Tool start page'),
+      '#description' => $this->t('Start typing to see a list of results.'),
+      '#required' => TRUE,
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
+      '#default_value' => $config->get('as_landing_page'),
+    ];
+
     $as_result_summary = $config->get('as_result_summary');
     $form['assured_solutions_settings']['as_result_summary'] = [
       '#type' => 'text_format',
@@ -112,6 +124,7 @@ class ResultSummaryForm  extends ConfigFormBase {
       ->set('sa_result_summary', $form_state->getValue('sa_result_summary'))
       ->set('sa_landing_page', $form_state->getValue('sa_landing_page'))
       ->set('as_result_summary', $form_state->getValue('as_result_summary'))
+      ->set('as_landing_page', $form_state->getValue('as_landing_page'))
       ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 
