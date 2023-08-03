@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - system
+    - webform
   theme:
     - dhsc_theme
 _core:
@@ -24,3 +25,13 @@ visibility:
     id: request_path
     negate: true
     pages: '<front>'
+  webform:
+    id: webform
+    negate: true
+    context_mapping:
+      webform: '@webform.webform_route_context:webform'
+      webform_submission: '@webform.webform_submission_route_context:webform_submission'
+      node: '@node.node_route_context:node'
+    webforms:
+      assured_solutions_tool: assured_solutions_tool
+      self_assessment_tool: self_assessment_tool
