@@ -23,7 +23,7 @@
 
 </div>
 
-<main class="t-content" id="main-content">
+<main class="t-content"{% if not remove_main_id %} id="main-content"{% endif %}>
 
   <div class="container mx-auto">
     {{ content_top }}
