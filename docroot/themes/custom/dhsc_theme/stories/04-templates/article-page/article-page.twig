@@ -7,11 +7,11 @@ Template
 <article{{ attributes.addClass(classes) }}>
   {% if title %}
   <div class="t-article-page__title">
-    <h1>{{ title }}</h1>
+    <h1 class="mb-4">{{ title }}</h1>
   </div>
 	{% endif %}
   {% if article_details|render is not empty %}
-    <div class="t-article-page__details text-md text-coolgrey mb-5 tablet:mb-7">
+    <div class="t-article-page__details text-md text-coolgrey mb-4 tablet:mb-7">
         <span itemprop="author">{{ article_details.author }}</span>,
         <time itemprop="datePublished" datetime="{{ article_details.date|date("Y-m-d") }}">{{ article_details.date|date("d F Y") }}</time>
     </div>

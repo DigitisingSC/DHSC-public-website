@@ -4,7 +4,7 @@
 ] %}
 <div{{ attributes.addClass(classes) }}>
   <div class="o-search-form__header mb-4">
-    <h2 class="text-bold text-md mb-2">{{ title }}</h2>
+    <h2>{{ title }}</h2>
   </div>
   <div class="o-search-form__form mb-4">
     <form action="/search" class="flex relative items-stretch w-full">
@@ -21,7 +21,7 @@
   </div>
   {% if items %}
   <div class="o-search-form__quick-search mb-4">
-    <h3 class="text-bold text-sm mb-2">{{ 'Quick search'|t }}</h3>
+    <h3 class="mb-2">{{ 'Quick search'|t }}</h3>
     <ul class="text-xs">
       {% for item in items %}
       <li class="mb-2">

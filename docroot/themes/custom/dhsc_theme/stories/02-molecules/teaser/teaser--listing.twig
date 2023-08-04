@@ -8,7 +8,7 @@
 <div{{ attributes.addClass(classes) }}>
   {% if title %}
     <div class="m-teaser__title tablet:flex tablet:flex-nowrap mb-2">
-      <h3 class="text-base tablet:mr-2">
+      <h3 class="tablet:mr-2">
         {% if link %}
           <a href="{{ link }}" class="text-forest-100">{{ title }}</a>
         {% else %}
@@ -16,7 +16,7 @@
         {% endif %}
       </h3>
       {% if bundle %}
-        <div class="m-teaser__bundle ml-auto mr-0 mb-auto text-[0.875rem] leading-normal text-coolgrey">
+        <div class="m-teaser__bundle ml-auto mr-0 mb-auto text-coolgrey">
           {{ bundle }}
         </div>
       {% endif %}

@@ -10,11 +10,11 @@
 <article{{attributes.addClass(classes)}}>
   {% if title %}
     <div class="t-content-page__title">
-      <h1>{{ title }}</h1>
+      <h1 class="mb-4">{{ title }}</h1>
     </div>
   {% endif %}
   {% if intro %}
-    <div class="t-content-page__intro">
+    <div class="t-content-page__intro text-md text-coolgrey mb-4 tablet:mb-7">
       {{ intro }}
     </div>
   {% endif %}
