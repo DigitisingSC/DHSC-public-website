@@ -1,0 +1,15 @@
+uuid: 1e7e4d86-0a50-409b-949e-cafbbcee5102
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_supplier_logo_mobile
+label: 'DHSC Supplier logo (mobile)'
+effects:
+  07d55b38-9c17-4488-9492-5dd50272b85b:
+    uuid: 07d55b38-9c17-4488-9492-5dd50272b85b
+    id: image_scale
+    weight: 1
+    data:
+      width: 708
+      height: null
+      upscale: false
