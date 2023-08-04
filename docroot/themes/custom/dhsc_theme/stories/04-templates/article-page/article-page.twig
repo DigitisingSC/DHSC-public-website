@@ -10,7 +10,7 @@ Template
     <h1>{{ title }}</h1>
   </div>
 	{% endif %}
-  {% if article_details %}
+  {% if article_details|render is not empty %}
     <div class="t-article-page__details text-md text-coolgrey mb-5 tablet:mb-7">
         <span itemprop="author">{{ article_details.author }}</span>,
         <time itemprop="datePublished" datetime="{{ article_details.date|date("Y-m-d") }}">{{ article_details.date|date("d F Y") }}</time>
@@ -20,7 +20,7 @@ Template
   <div class="t-article__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
     <div class="t-article__conten-wrapper{% if related %} tablet:w-9/12{% endif %}">
 
-      {% if featured_image %}
+      {% if featured_image|render is not empty %}
         <div class="t-article-page__featured-image mb-5 tablet:mb-7">
           {{ featured_image }}
         </div>
@@ -45,7 +45,7 @@ Template
       {% endif %}
   </div>
 
-  <did class="t-article__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+  <div class="t-article__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
     {% if further_information %}
       <section class="t-article__related w-full tablet:w-9/12">
         {{ further_information }}

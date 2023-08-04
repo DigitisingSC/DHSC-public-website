@@ -33,9 +33,9 @@ class RelatedInformationBlock extends BlockBase {
     $config = $this->getConfig();
     return [
       '#theme' => 'related_information',
-      '#title' => $config['title'],
-      '#items' => $config['items'],
-      '#read_more_link' => $config['read_more_link'],
+      '#title' => $config['title'] ?? '',
+      '#items' => $config['items'] ?? '',
+      '#read_more_link' => isset($config['read_more_link']) ?? '',
     ];
   }
 
@@ -63,13 +63,13 @@ class RelatedInformationBlock extends BlockBase {
               'external' => $link->isExternal(),
             ];
 
-            // Load internal link referenced node
+            // Load internal link referenced node.
             if (!$link->isExternal() && $link->getUrl()->getRouteName() === 'entity.node.canonical') {
               $params = $link->getUrl()->getRouteParameters();
               $referencedNode = Node::load($params['node']);
 
-              if($referencedNode instanceof \Drupal\node\Entity\Node) {
-               // Add subtitle to items
+              if ($referencedNode instanceof Node) {
+                // Add subtitle to items.
                 switch ($referencedNode->bundle()) {
                   case 'event':
                     $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
@@ -77,17 +77,19 @@ class RelatedInformationBlock extends BlockBase {
                     /** @var Drupal\Core\Field\FieldItemList $type */
                     $type = $referencedNode->get('field_event_type')->view();
 
-                    // Add event type to subtitle
+                    // Add event type to subtitle.
                     if (isset($type[0]) && isset($type[0]['#markup'])) {
                       $item['subtitle'] .= ' - ' . $type[0]['#markup'];
                     }
 
                     break;
+
                   case 'article':
                     $item['subtitle'] = $referencedNode->field_date->date->format('d F Y');
                     break;
+
                   case 'case_study':
-                    // TODO: Add care provide name as subtitle
+                    // @todo Add care provide name as subtitle
                     break;
                 }
               }
@@ -96,7 +98,7 @@ class RelatedInformationBlock extends BlockBase {
             $return['items'][] = $item;
           }
 
-          // Add read more link if exists
+          // Add read more link if exists.
           if ($paragraph->field_link->uri) {
 
             $return['read_more_link'] = $paragraph->field_link->view(['label' => 'hidden']);
@@ -115,4 +117,5 @@ class RelatedInformationBlock extends BlockBase {
   public function getCacheContexts() {
     return Cache::mergeContexts(parent::getCacheContexts(), ['route']);
   }
+
 }
