@@ -3,7 +3,7 @@
 ] %}
 <div{{ attributes.addClass(classes) }}>
   {% if title %}
-    <h2 class="m-content-grid__title text-lg leading-tight font-bold mb-4">{{ title }}</h2>
+    <h2 class="m-content-grid__title">{{ title }}</h2>
   {% endif %}
   {% if items %}
   <ul class="m-content-grid__items list-unstyled tablet:grid tablet:grid-cols-{{ columns }} tablet:gap-4 py-4">

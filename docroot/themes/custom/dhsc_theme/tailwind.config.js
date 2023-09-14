@@ -164,6 +164,36 @@ module.exports = {
             {
               color: theme('colors.black.100')
             },
+            // Headings
+            {
+              h1 : {
+                fontSize: theme('fontSize.lg'),
+                lineHeight: '35px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.2xl'),
+                  lineHeight: '55px'
+                },
+              },
+              h2 : {
+                fontSize: theme('fontSize.md'),
+                lineHeight: '30px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.lg'),
+                  lineHeight: '40px'
+                },
+              },
+              h3 : {
+                fontSize: theme('fontSize.sm'),
+                lineHeight: '25px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.md'),
+                  lineHeight: '30px'
+                },
+              },
+            },
             // Paragraphs
             {
               p: {

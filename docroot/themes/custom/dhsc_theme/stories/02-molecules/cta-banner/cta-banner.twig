@@ -8,7 +8,7 @@
 
 <div{{ attributes.addClass(classes) }}>
   {% if header %}
-    <h2 class="m-cta-banner__header text-lg leading-tight mb-4">
+    <h2 class="m-cta-banner__header mb-6">
       {{ header }}
     </h2>
   {% endif %}
@@ -16,7 +16,7 @@
   <div class="m-cta-banner__container relative tablet:flex tablet:gap-6">
     <div class="m-cta-banner__content tablet:w-6/12 tablet:flex tablet:flex-col">
       {% if title %}
-        <{{ titleTag }} class="m-cta-banner__title text-md leading-tight mb-3">
+        <{{ titleTag }} class="m-cta-banner__title mb-3">
           <a href="{{ link }}" class="m-cta-banner__link">
             {{ title }}
           </a>

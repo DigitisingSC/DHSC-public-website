@@ -5,7 +5,7 @@
 {% if items|length > 0 %}
   <div{{attributes.addClass(classes)}}>
     {% if title %}
-      <h2 class="o-further-information__title text-black text-base tablet:text-lg text-bold mb-3 tablet:mb-4">{{ title }}</h2>
+      <h2 class="o-further-information__title text-black">{{ title }}</h2>
     {% endif %}
 
     {% for key, item in items if key|first != '#' %}
