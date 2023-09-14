@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70e3a08ef99dd8daca63ee269f735809",
+    "content-hash": "b97689bf3ae12d02ba85d1a960917473",
     "packages": [
         {
             "name": "acquia/blt",
@@ -7098,6 +7098,59 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/maxlength",
                 "issues": "https://www.drupal.org/project/issues/maxlength"
+            }
+        },
+        {
+            "name": "drupal/media_download",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_download.git",
+                "reference": "1.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_download-1.2.0.zip",
+                "reference": "1.2.0",
+                "shasum": "0e8d48cc9e98af4d56ad023001b4255952e2de12"
+            },
+            "require": {
+                "drupal/core": "^9.3 || ^10",
+                "php": ">=7.4"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.2.0",
+                    "datestamp": "1671570845",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "enable-patching": true,
+                "patches": []
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Clay Freeman",
+                    "homepage": "https://www.drupal.org/user/860806",
+                    "email": "clay@librarymarket.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "jeremyvii",
+                    "homepage": "https://www.drupal.org/user/3626035"
+                }
+            ],
+            "description": "Adds support for direct downloads of media entities when using their canonical path.",
+            "homepage": "https://www.drupal.org/project/media_download",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_download"
             }
         },
         {
