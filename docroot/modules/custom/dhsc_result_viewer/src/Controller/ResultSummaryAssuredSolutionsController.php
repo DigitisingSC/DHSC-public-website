@@ -156,7 +156,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#submission_url' => $result['submission_url'],
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
+        '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
       ];
     } else {
       $element = [
