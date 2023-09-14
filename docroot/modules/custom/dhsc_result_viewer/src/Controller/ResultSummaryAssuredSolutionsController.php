@@ -156,7 +156,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#submission_url' => $result['submission_url'],
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
+        '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
       ];
     } else {
       $element = [
@@ -239,9 +239,14 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $result_items = '';
     if ($results['matches']) {
       foreach ($results['matches'] as $node) {
+        if ($node->get('field_body_paragraphs')->entity->getType() === 'localgov_text') {
+          $summary = $node->get('field_body_paragraphs')->entity->get('localgov_text')->value;
+        } else {
+          $summary = '';
+        }
         $result_items .= "<h4>
       {$node->getTitle()}</h4>
-      {$node->get('field_body_paragraphs')->entity->get('localgov_text')->value}
+      {$summary}
       <p>";
         $result_items .= "</p>";
       }
@@ -250,7 +255,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $no_matches = '';
     if ($results['no_matches']) {
       foreach ($results['no_matches'] as $item) {
-        $no_matches .= "<h4>{$item['title']}</h4><p>Criteria not met:</p<ul>";
+        $no_matches .= "<h4>{$item['title']}</h4><strong>Criteria not met:</strong><ul>";
         foreach ($item['answers'] as $key => $answers) {
           $no_matches .= "<p>$key</p>";
           foreach ($answers as $answer) {
@@ -261,16 +266,22 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       }
     }
 
-    $non_matching_count = $results['non_matching_count'];
+    $non_matching_count = !empty($results['non_matching_count']) ?
+    $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
+    $non_matching_html = '';
+
+    if ($non_matching_count) {
+      $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
+      {$non_matching_count}</h3>
+      {$no_matches}</td>
+      </tr>");
+    }
 
     $params['body'] = Markup::create("
     <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
     <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
     <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
-    <tr class='non-matches'><td><h3>
-    {$non_matching_count} suppliers don't match your criteria</h3>
-    {$no_matches}</td>
-    </tr>
+    {$non_matching_html}
     </table>");
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
