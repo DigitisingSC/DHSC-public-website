@@ -55,7 +55,8 @@ const Template = ({
   footer,
   footer_bottom,
   footer_legal,
-  disabled
+  disabled,
+  remove_main_id
 }) =>
   layout({
     has_sidebars,
@@ -77,7 +78,8 @@ const Template = ({
     footer,
     footer_bottom,
     footer_legal,
-    disabled
+    disabled,
+    remove_main_id,
   });
 
 const HeaderTemplate = (args) => HeaderTwig({
@@ -142,5 +144,6 @@ Layout.args = {
   footer: FooterTemplate,
   footer_bottom: FooterBottomTemplate,
   footer_legal: FooterLegalTemplate,
-  disabled: "Disabled"
+  disabled: "Disabled",
+  remove_main_id: false,
 };
