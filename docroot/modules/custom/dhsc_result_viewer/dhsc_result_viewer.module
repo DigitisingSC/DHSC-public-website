@@ -86,6 +86,16 @@ function dhsc_result_viewer_theme()
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
     ],
+    'dhsc_results_pdf_content' => [
+      'variables' => [
+        'content' => [],
+      ],
+    ],
+    'dhsc_pdf_results' => [
+      'variables' => [
+        'results' => [],
+      ],
+    ],
   ];
 }
 
