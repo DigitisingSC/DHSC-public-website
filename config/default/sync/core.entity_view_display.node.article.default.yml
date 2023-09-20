@@ -40,11 +40,10 @@ content:
     weight: 3
     region: content
   field_date:
-    type: datetime_default
+    type: datetime_plain
     label: hidden
     settings:
       timezone_override: ''
-      format_type: medium
     third_party_settings: {  }
     weight: 1
     region: content
