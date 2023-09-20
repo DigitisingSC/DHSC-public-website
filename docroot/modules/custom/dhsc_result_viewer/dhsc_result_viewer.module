@@ -26,6 +26,7 @@ function dhsc_result_viewer_theme()
         'result' => NULL,
         'no_result' => NULL,
         'email_form' => NULL,
+        'download_results_path' => NULL,
       ],
     ],
     'dhsc_results_list_self_assessment' => [

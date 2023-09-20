@@ -158,6 +158,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
         '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString()
       ];
     } else {
       $element = [
