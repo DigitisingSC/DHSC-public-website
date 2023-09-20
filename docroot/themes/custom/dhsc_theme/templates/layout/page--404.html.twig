@@ -1,8 +1,10 @@
 {% set page_content %}
-  <div class="">
-    <h1 class="mb-5">{{ 'Page not found'|t }}</h1>
-    <p>{{ 'The page you are requesting cannot be found.'|t }}</p>
-  </div>
+<div class="">
+  <h1 class="mt-10 mb-5">{{ 'Page not found'|t }}</h1>
+  <p class="mb-4">{{ 'If you typed the web address, check it is correct.'|t }}</p>
+  <p class="mb-4">{{ 'If you pasted the web address, check you copied the entire address.'|t }}</p>
+  <p>{{'Alternatively '|t}}<a href="/search">{{ 'use the search function'|t }}</a>{{ 'to find the page you need.'|t}}</p>
+</div>
 {% endset %}
 
 {% include "@templates/layout/layout.twig" with {
@@ -13,7 +15,6 @@
   "secondary_menu": page.secondary_menu,
   "banner": page.banner,
   "tabs": page.tabs,
-  "breadcrumb": page.breadcrumb,
   "messages": page.messages,
   "content_top": page.content_top,
   "content": page_content,
