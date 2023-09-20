@@ -26,6 +26,7 @@ function dhsc_result_viewer_theme()
         'result' => NULL,
         'no_result' => NULL,
         'email_form' => NULL,
+        'download_results_path' => NULL,
       ],
     ],
     'dhsc_results_list_self_assessment' => [
@@ -85,6 +86,11 @@ function dhsc_result_viewer_theme()
     'mimemail_message__dhsc_result_viewer' => [
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
+    ],
+    'dhsc_results_pdf_content' => [
+      'variables' => [
+        'content' => [],
+      ],
     ],
   ];
 }

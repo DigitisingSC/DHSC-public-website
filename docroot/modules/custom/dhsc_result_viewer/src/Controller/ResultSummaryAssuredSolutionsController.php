@@ -13,6 +13,7 @@ use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
+use Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -157,6 +158,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
         '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString()
       ];
     } else {
       $element = [
@@ -186,13 +188,20 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
 
     if (!empty($results)) {
 
-      $result = $this->buildEmail($email, $results);
+      $module = 'dhsc_result_viewer';
+      $key = 'email_result';
+      $to = $email;
+      $langcode = $this->languageManager->getDefaultLanguage()->getId();
+      $params['subject'] = t('Assured solutions: Email result');
+      $params['body'] = $this->buildResultMarkup($results);
 
-      if (!$result['result']) {
+      try {
+        $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
+        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+      } catch (Exception $e) {
         $message = t('There was a problem sending assured solutions result email to @email', array('@email' => $email));
         \Drupal::logger('Error in email sending')->error($message);
-      } else {
-        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+        \Drupal::logger('Error in email sending')->error($e);
       }
 
       $submission_url = Url::fromRoute(
@@ -212,19 +221,12 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
   }
 
   /**
-   * Construct results email.
+   * Construct results markup given a set of results.
    *
-   * @param string $email
    * @return array
    */
-  public function buildEmail($email, $results)
+  public static function buildResultMarkup($results, $pdf = FALSE)
   {
-    $module = 'dhsc_result_viewer';
-    $key = 'email_result';
-    $to = $email;
-    $langcode = $this->languageManager->getDefaultLanguage()->getId();
-    $params['subject'] = t('Assured solutions: Email result');
-
     $criteria = '';
     if ($results['search_criteria']) {
       foreach ($results['search_criteria'] as $item) {
@@ -270,20 +272,41 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
     $non_matching_html = '';
 
-    if ($non_matching_count) {
+    if ($pdf) {
+
+      if ($non_matching_count) {
+      $non_matching_html = Markup::create("<div class='non-matches'><h3>
+      {$non_matching_count}</h3>
+      {$no_matches}
+      </div>");
+      }
+
+      $params['body'] = Markup::create("
+      <div>
+      <h3>Showing {$results['count']} out of {$results['total_count']} results</h3>
+      <h3>Search criteria:</h3><div class='criteria'>{$criteria}</div>
+      {$result_items}
+      {$non_matching_html}
+      </div>");
+    }
+
+    if (!$pdf) {
+
+      if ($non_matching_count) {
       $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
       {$non_matching_count}</h3>
       {$no_matches}</td>
       </tr>");
+      }
+
+      $params['body'] = Markup::create("
+      <table class='results'><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
+      <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
+      <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
+      {$non_matching_html}
+      </table>");
     }
 
-    $params['body'] = Markup::create("
-    <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
-    <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
-    <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
-    {$non_matching_html}
-    </table>");
-
-    return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
+    return $params['body'];
   }
 }

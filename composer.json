@@ -47,6 +47,7 @@
         "drupal/office_hours": "^1.11",
         "drupal/paragraphs_ee": "^2.1@alpha",
         "drupal/password_policy": "^4.0",
+        "drupal/pdf_generator": "^2.0",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.8",
         "drupal/robotstxt": "^1.5",
