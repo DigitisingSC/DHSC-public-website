@@ -1,7 +1,10 @@
 <div id="pdf-print-wrapper">
-  <div class="front-page page_break">
-    <img align="left" border="0" src="{{ base_url }}/themes/custom/dhsc_theme/logo.svg" alt="" title="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 114px;" width="114"/>
-    <h2>{{ 'Result summary'|t }} </h2>
-    {{ content }}
-  </div>
+  <table class="branding">
+    <tr>
+      <td><img src="/themes/custom/dhsc_theme/assets/images/logo.jpg"></td>
+      <td>{{ 'Digitising Social Care'|t }}</td>
+    </tr>
+  </table>
+  <h2>{{'Result summary'|t }}</h2>
+  {{ content }}
 </div>

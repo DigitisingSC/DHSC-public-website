@@ -84,8 +84,7 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container)
-  {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('renderer'),
@@ -103,13 +102,12 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    *
    * @throws \Exception
    */
-  public function generate()
-  {
+  public function generate() {
     $content = $this->getContent();
     $pdf_generator = $this->dompdfGenerator;
-    $stylesheet = '';
+    $stylesheet = \Drupal::service('extension.path.resolver')->getPath('module', 'dhsc_result_viewer') . '/css/style.css';
     $filename = 'dhsc-assured-solutions-results';
-    $response = $pdf_generator->getResponse($filename, $content, FALSE, [], 'A4', 'portrait', NULL, $stylesheet);
+    $response = $pdf_generator->getResponse($filename, $content, FALSE, [], 'A4', 0, 0, 0, 'portrait', NULL, $stylesheet);
 
     return $response;
   }
@@ -120,19 +118,14 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    * @return array
    *   Render array.
    */
-  protected function getSubmissionResult()
-  {
-
+  protected function getSubmissionResult() {
     // Get saved result data from tempstore.
     // $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
     $result_data = $this->tempStore->get('dhsc_result_viewer')->get('assured_solutions_result_data');
-    $result_markup = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data);
+    $data = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data, $pdf=TRUE);
 
+    return $data;
 
-    return [
-      '#theme' => 'dhsc_pdf_results',
-      '#results' => $result_markup,
-    ];
   }
 
   /**
@@ -141,8 +134,7 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    * @return array
    *   Render array.
    */
-  protected function getContent()
-  {
+  protected function getContent() {
 
     $results = $this->getSubmissionResult();
 

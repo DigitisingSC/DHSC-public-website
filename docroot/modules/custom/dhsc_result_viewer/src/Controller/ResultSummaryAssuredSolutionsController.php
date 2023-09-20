@@ -224,7 +224,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
    *
    * @return array
    */
-  public static function buildResultMarkup($results)
+  public static function buildResultMarkup($results, $pdf = FALSE)
   {
     $criteria = '';
     if ($results['search_criteria']) {
@@ -271,19 +271,40 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
     $non_matching_html = '';
 
-    if ($non_matching_count) {
+    if ($pdf) {
+
+      if ($non_matching_count) {
+      $non_matching_html = Markup::create("<div class='non-matches'><h3>
+      {$non_matching_count}</h3>
+      {$no_matches}
+      </div>");
+      }
+
+      $params['body'] = Markup::create("
+      <div>
+      <h3>Showing {$results['count']} out of {$results['total_count']} results</h3>
+      <h3>Search criteria:</h3><div class='criteria'>{$criteria}</div>
+      {$result_items}
+      {$non_matching_html}
+      </div>");
+    }
+
+    if (!$pdf) {
+
+      if ($non_matching_count) {
       $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
       {$non_matching_count}</h3>
       {$no_matches}</td>
       </tr>");
-    }
+      }
 
-    $params['body'] = Markup::create("
-    <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
-    <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
-    <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
-    {$non_matching_html}
-    </table>");
+      $params['body'] = Markup::create("
+      <table class='results'><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
+      <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
+      <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
+      {$non_matching_html}
+      </table>");
+    }
 
     return $params['body'];
   }

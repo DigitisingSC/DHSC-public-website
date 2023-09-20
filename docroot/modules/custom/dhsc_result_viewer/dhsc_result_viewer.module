@@ -91,11 +91,6 @@ function dhsc_result_viewer_theme()
         'content' => [],
       ],
     ],
-    'dhsc_pdf_results' => [
-      'variables' => [
-        'results' => [],
-      ],
-    ],
   ];
 }
 
