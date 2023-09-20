@@ -1,6 +1,9 @@
 {% set classes = [
   't-article-page'
 ] %}
+
+{% set article_date = article_details.date|render %}
+
 {#
 Template
 #}
@@ -13,7 +16,7 @@ Template
   {% if article_details|render is not empty %}
     <div class="t-article-page__details text-md text-coolgrey mb-4 tablet:mb-7">
         <span itemprop="author">{{ article_details.author }}</span>,
-        <time itemprop="datePublished" datetime="{{ article_details.date|date("Y-m-d") }}">{{ article_details.date|date("d F Y") }}</time>
+        <time itemprop="datePublished" datetime="{{ article_date|date("Y-m-d") }}">{{ article_date|date("d F Y") }}</time>
     </div>
   {% endif %}
 
