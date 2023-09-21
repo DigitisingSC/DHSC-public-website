@@ -3,7 +3,7 @@
 ]| join(' ') | trim %}
 
 <div{{ attributes.addClass(classes) }} role="alert" x-show="alertOpen" x-data="{ alertOpen: true }">
-  <div class="m-alert__wrapper py-4">
+  <div class="m-alert__wrapper py-3">
     <div class="m-alert__container container mx-auto flex items-center justify-stretch">
       {% if text %}
         <div class="m-alert__content grow mr-2">
