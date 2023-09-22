@@ -1,4 +1,5 @@
 import typography from "./typography.twig";
+import "./typography.scss";
 
  export default {
    title: "Design System/Base/Typography",
