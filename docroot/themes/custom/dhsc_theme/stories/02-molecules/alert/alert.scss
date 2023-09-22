@@ -4,17 +4,17 @@
   margin-right: calc((-100vw + 100%) / 2);
   border: none;
   background-color: unset;
+}
 
-  .alert-dsc-info {
-    .m-alert {
-      &__wrapper {
-        @apply bg-yellow-20;
-      }
+.alert-dsc-info {
+  .m-alert {
+    &__wrapper {
+      @apply bg-yellow-20;
+    }
 
-      &__content {
-        a {
-          @apply text-forest;
-        }
+    &__content {
+      a {
+        @apply text-forest;
       }
     }
   }
