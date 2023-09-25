@@ -111,7 +111,7 @@
             "phpcs -p ./docroot/modules/contrib ./docroot/modules/custom ./docroot/themes/custom --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.1  --extensions=php,module,install,inc --report-full=./drupal9-php8-compatibility.txt"
         ],
         "post-drupal-scaffold-cmd": [
-          "[ -f '/patches/htaccess_changes.patch' ] && patch -p2 /docroot/.htaccess < /patches/htaccess_changes.patch || echo 'Skipping htaccess_changes patch'"
+          "patch -p1 < patches/htaccess_changes.patch"
         ]
       },
     "extra": {
