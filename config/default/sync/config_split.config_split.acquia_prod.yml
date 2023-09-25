@@ -10,10 +10,11 @@ stackable: false
 storage: folder
 folder: ../config/default/acquia_prod
 module:
-  views_ui: 0
   shield: 0
+  views_ui: 0
 theme: {  }
 complete_list:
   - views.view.digital_skills_training_page
   - views.view.local_search
-partial_list: {  }
+partial_list:
+  - robotstxt.settings
