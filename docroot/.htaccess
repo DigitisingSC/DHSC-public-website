@@ -163,10 +163,6 @@ AddEncoding gzip svgz
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # redirect beta url to main domain
-  RewriteCond %{HTTP_HOST} ^beta.digitisingsocialcare.co.uk$ [NC]
-  RewriteRule ^ https://www.digitisingsocialcare.co.uk/$1 [R=301,L]
-
   # Rules to correctly serve gzip compressed CSS and JS files.
   # Requires both mod_rewrite and mod_headers to be enabled.
   <IfModule mod_headers.c>
