@@ -52,8 +52,12 @@
 
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav role="navigation" aria-label="{{ configuration.label }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
+  {% if derivative_plugin_id == 'footer' %}
+    <h2 class="text-base text-bold pb-4">
+      {{ label }}
+    </h2>
+  {% endif %}
   {# We removed labels and invisible headings for better accessibility #}
-
   {# Menu. #}
   {% block content %}
     {{ content }}
