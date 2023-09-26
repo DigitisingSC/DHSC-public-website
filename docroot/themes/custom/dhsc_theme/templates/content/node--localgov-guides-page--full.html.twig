@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Default node template for localgov_guides_overview pages.
+ */
+#}
+{%
+  set classes = [
+    'lgd-guides',
+    'lgd-guides--page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+{% set hasRelated = relatedBlock|striptags|trim != "" %}
+
+<div{{ attributes.addClass(classes).removeAttribute('role') }}>
+  <div class="lgd-container padding-horizontal">
+    {{ title_prefix }}
+      <h1{{ title_attributes.addClass('lgd-guides__title mb-4') }}>
+        {{ node.label }}
+      </h1>
+    {{ title_suffix }}
+
+    <h3 class="text-coolgrey">{{ content.localgov_guides_parent }}</h3>
+
+    {{ drupal_block('localgov_guides_contents') }}
+
+    {% if content %}
+      <div class="t-guide-overview__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+        <div class="t-guide-overview__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
+          <div{{ content_attributes.addClass('lgd-guides__content', 'node__content') }}>
+            {{ content|without('field_date') }}
+          </div>
+        </div>
+        {% if hasRelated %}
+          <aside class="t-guide-overview__related tablet:w-3/12">
+            {{ relatedBlock }}
+          </aside>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <did class="t-guide-overview__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+      {% if content.field_date.0 %}
+        <div class="t-guide-overview__last-updated text-coolgrey">
+          {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
+        </div>
+      {% endif %}
+      <div class="t-guide-overview__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+        {% include "@molecules/back-to-top/back-to-top.twig" %}
+      </div>
+    </div>
+
+  </div>
+</div>

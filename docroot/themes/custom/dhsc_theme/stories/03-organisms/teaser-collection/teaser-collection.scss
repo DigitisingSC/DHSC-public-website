@@ -1,0 +1,8 @@
+.o-teaser-collection {
+  .viewsreference--view-title {
+    @apply hidden;
+  }
+  &__link a {
+    @apply text-forest;
+  }
+}

@@ -1,0 +1,28 @@
+adding:
+  dependencies:
+    config:
+      - search_api.server.acquia_search_server
+    module:
+      - acquia_search
+  third_party_settings:
+    acquia_search:
+      use_edismax: 0
+  read_only: true
+  field_settings:
+    status:
+      label: Published
+  datasource_settings:
+    'entity:node':
+      bundles:
+        selected:
+          - recommendation
+          - supplier
+  options:
+    overridden_by_acquia_search: 2
+  server: acquia_search_server
+removing:
+  read_only: false
+  field_settings:
+    status:
+      label: status
+  server: null

@@ -1,0 +1,20 @@
+uuid: 5b83a430-a9ba-474c-b7f1-65ea4efe6d1d
+langcode: en
+status: true
+dependencies: {  }
+id: acquia_prod
+label: 'Acquia prod'
+description: ''
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/default/acquia_prod
+module:
+  shield: 0
+  views_ui: 0
+theme: {  }
+complete_list:
+  - views.view.digital_skills_training_page
+  - views.view.local_search
+partial_list:
+  - robotstxt.settings

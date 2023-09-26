@@ -1,0 +1,31 @@
+uuid: dc362820-72cf-457d-acaa-9cf761c767f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.site_setting_entity.field_settings_logo
+    - media.type.image
+    - media.type.svg
+    - site_settings.site_setting_entity_type.footer_logo
+id: site_setting_entity.footer_logo.field_settings_logo
+field_name: field_settings_logo
+entity_type: site_setting_entity
+bundle: footer_logo
+label: Logo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      svg: svg
+    sort:
+      field: name
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: image
+field_type: entity_reference

@@ -1,0 +1,46 @@
+uuid: f5814409-9668-4803-babd-b6cef3cc3430
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.card
+    - field.field.node.casestudy.field_body_paragraphs
+    - field.field.node.casestudy.field_further_information
+    - field.field.node.casestudy.field_image
+    - field.field.node.casestudy.field_intro
+    - field.field.node.casestudy.field_summary
+    - node.type.casestudy
+  module:
+    - user
+id: node.casestudy.card
+targetEntityType: node
+bundle: casestudy
+mode: card
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_listing_image
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_further_information: true
+  field_intro: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,5 +1,0 @@
-blockquote {
-  padding-left: var(--spacing-largest);
-  border-left: var(--border-large);
-  border-color: var(--color-accent);
-}

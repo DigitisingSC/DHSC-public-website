@@ -1,0 +1,14 @@
+uuid: 511fff3f-965c-4294-a145-665826418a64
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.casestudy
+id: node_type_casestudy
+entity_type_id: node_type
+entity_id: casestudy
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

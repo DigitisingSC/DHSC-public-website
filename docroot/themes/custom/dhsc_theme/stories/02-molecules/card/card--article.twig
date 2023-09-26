@@ -1,0 +1,42 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  'm-card',
+  'm-card--article',
+  'relative',
+  'mb-4 tablet:mb-0',
+] | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
+  {% if image %}
+  <div class="m-card__image">
+    {{ image }}
+  </div>
+  {% endif %}
+  <div class="m-card__content">
+    {% if heading %}
+      <h3 class="m-card__link">
+        {% if link %}
+          <a href="{{ link }}">
+        {% endif %}
+          {{ heading }}
+        {% if link %}
+          </a>
+        {% endif %}
+      </h3>
+    {% endif %}
+    {% if date %}
+      <p class="text-coolgrey mt-2">{{ date }}</p>
+    {% endif %}
+    {% if description %}
+      <p class="text-coolgrey">{{ description }}</p>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{# Template #}
+	{% include '@molecules/accordion-item/accordion-item--' ~ variant ~ '.twig' with {
+    attributes: attributes,
+    title: title,
+    text: text,
+    items: items,
+    icon_close: icon_close,
+    icon_open: icon_open,
+    variant: variant
+} %}

@@ -1,0 +1,15 @@
+services:
+  dhsc_self_assessment_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\SelfAssessmentResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+  dhsc_assured_solutions_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+  dhsc_result_viewer.breadcrumb:
+    class: Drupal\dhsc_result_viewer\Breadcrumb\SelfAssessmentBreadcrumbBuilder
+    arguments: ['@string_translation']
+    tags:
+      - { name: breadcrumb_builder, priority: 1008}
+  dhsc_result_viewer.dompdf_generator:
+    class: \Drupal\dhsc_result_viewer\DhscDomPdfGenerator
+    arguments: ['@renderer', '@request_stack', '@module_handler']

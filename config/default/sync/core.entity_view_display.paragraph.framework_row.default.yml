@@ -1,0 +1,45 @@
+uuid: 28763ef4-5793-443b-8ccb-28255e5b7cc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.framework_row.field_criteria
+    - field.field.paragraph.framework_row.field_learning_resources
+    - field.field.paragraph.framework_row.field_skills_and_knowledge
+    - paragraphs.paragraphs_type.framework_row
+  module:
+    - link
+    - text
+id: paragraph.framework_row.default
+targetEntityType: paragraph
+bundle: framework_row
+mode: default
+content:
+  field_criteria:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_learning_resources:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_skills_and_knowledge:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

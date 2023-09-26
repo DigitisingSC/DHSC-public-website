@@ -1,0 +1,10 @@
+uuid: c537652c-6ef4-4496-8d20-a86941ea176c
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.quick_link
+label: 'Quick link'
+targetEntityType: media
+cache: true

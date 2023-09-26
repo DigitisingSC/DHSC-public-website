@@ -1,0 +1,69 @@
+{# Defaults #}
+{% set variant = variant|default('primary') %}
+{% set tag_name = tag_name|default('button') %}
+
+{# Classes #}
+{% set classes = [
+  'a-button',
+  'a-button--' ~ variant,
+  'p-2 tablet:px-4 tablet:py-2',
+] | sort | join(' ') | trim %}
+
+{% if variant == 'search' %}
+  {% set variantClasses = [
+    'border-white',
+    'bg-white hover:bg-white focus:bg-focus',
+    'text-black',
+    'rounded-3xl',
+    'w-auto'
+  ] | sort | join(' ') | trim  %}
+{% endif %}
+
+{# Attributes #}
+{% if url is not empty %}
+  {% set attributes = attributes
+    .setAttribute('href', url)
+    .setAttribute('target', target)
+  %}
+  {% set tag_name = 'a' %}
+{% endif %}
+
+{% set attributes = attributes
+  .addClass(classes)
+  .addClass(variantClasses)
+  .setAttribute('title', title)
+%}
+
+{# Template #}
+{% if children %}
+  {% if variant == 'search' %}
+    {% set attributes = attributes.removeAttribute('id') %}
+    <div x-data="{ searchIsActive : false }" class="print:hidden">
+      <{{ tag_name }} {{ attributes }}
+        @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive; $dispatch('activedropdownmain', { active: false })"
+        @closesearchtrigger.window="searchIsActive = false"
+        x-bind:aria-expanded="searchIsActive.toString()"
+        aria-controls="search_region"
+      >
+        <div x-show="searchIsActive" class="flex items-center">
+          {{ icon_close }}
+          <span class="hidden tablet:inline-block">
+            {{ 'Close'|t }}
+            <span class="sr-only">{{ ' search menu'|t }}</span>
+          </span>
+          </div>
+        <div x-show="!searchIsActive" class="flex items-center">
+          {{ icon_open }}
+          <span class="sr-only">{{ 'Open '|t }}</span>
+          <span class="hidden tablet:inline-block">{{ 'Search'|t }}</span>
+          <span class="sr-only">{{ ' menu'|t }}</span>
+        </div>
+      </{{ tag_name }}>
+    </div>
+
+  {% else %}
+    <{{ tag_name }} {{ attributes }}>
+    {{ children }}
+    </{{ tag_name }}>
+  {% endif %}
+{% endif %}

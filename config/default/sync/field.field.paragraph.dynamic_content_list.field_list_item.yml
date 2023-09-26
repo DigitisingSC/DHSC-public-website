@@ -1,0 +1,58 @@
+uuid: 1ab3eaec-0d3a-4de5-bbb4-87c05d46f866
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_list_item
+    - paragraphs.paragraphs_type.dynamic_content_list
+  module:
+    - viewsreference
+id: paragraph.dynamic_content_list.field_list_item
+field_name: field_list_item
+entity_type: paragraph
+bundle: dynamic_content_list
+label: 'List item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+    default: '0'
+    page: '0'
+    feed: '0'
+    entity_browser: '0'
+    entity_reference: '0'
+  preselect_views:
+    dynamic_content_listing: dynamic_content_listing
+    acquia_search: '0'
+    block_content: '0'
+    content: '0'
+    content_recent: '0'
+    files: '0'
+    frontpage: '0'
+    media: '0'
+    media_library: '0'
+    moderated_content: '0'
+    paragraphs_library: '0'
+    paragraphs_library_browser: '0'
+    redirect: '0'
+    taxonomy_term: '0'
+    topics: '0'
+    user_admin_people: '0'
+    watchdog: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  enabled_settings:
+    argument: '0'
+    limit: '0'
+    offset: '0'
+    pager: '0'
+    title: '0'
+field_type: viewsreference

@@ -1,0 +1,18 @@
+<div class="m-tool-search-criteria pb-3 border-b border-black-20 mb-3">
+  <div class="m-tool-search-criteria__listing mt-2">
+    {% if section %}
+      <div class="m-tool-search-criteria__criteria">
+        <h4 class="font-bold">{{ section }}</h4>
+      </div>
+    {% endif %}
+    {% if answers %}
+      <div class="m-tool-search-criteria__answers">
+        <ul class="list-disc pt-2 pl-4">
+          {% for key, answer in answers %}
+            <li class="text-xs text-coolgrey">{{ answer }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>

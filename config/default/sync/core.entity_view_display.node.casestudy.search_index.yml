@@ -1,0 +1,32 @@
+uuid: ea1265f9-a97f-45a0-9a65-9daa9db465e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.casestudy.field_body_paragraphs
+    - field.field.node.casestudy.field_further_information
+    - field.field.node.casestudy.field_image
+    - field.field.node.casestudy.field_intro
+    - field.field.node.casestudy.field_summary
+    - node.type.casestudy
+  module:
+    - user
+id: node.casestudy.search_index
+targetEntityType: node
+bundle: casestudy
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_further_information: true
+  field_image: true
+  field_intro: true
+  field_summary: true
+  langcode: true
+  links: true

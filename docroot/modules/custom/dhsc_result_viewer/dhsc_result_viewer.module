@@ -1,0 +1,206 @@
+<?php
+
+use \Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * @file
+ * Module to create result pages.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function dhsc_result_viewer_theme()
+{
+  return [
+    'dhsc_results_list_assured_solutions' => [
+      'variables' => [
+        'summary' => NULL,
+        'search_criteria' => NULL,
+        'count' => NULL,
+        'non_matching_count' => NULL,
+        'total_count' => NULL,
+        'submission_url' => NULL,
+        'no_matches' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+        'download_results_path' => NULL,
+      ],
+    ],
+    'dhsc_results_list_self_assessment' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'result_variant' => NULL,
+        'submission_url' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+      ],
+    ],
+    'search_criteria' => [
+      'variables' => [
+        'section' => NULL,
+        'answers' => NULL,
+      ],
+    ],
+    'partial_match' => [
+      'variables' => [
+        'title' => NULL,
+        'url' => NULL,
+        'answers' => [
+          'section' => NULL,
+          'answer' => NULL,
+        ],
+      ],
+    ],
+    'no_match' => [
+      'variables' => [
+        'title' => NULL,
+        'url' => NULL,
+        'answers' => [
+          'answer' => NULL
+        ],
+      ],
+    ],
+    'result_item' => [
+      'variables' => [
+        'content' => NULL,
+      ],
+    ],
+    'result_item_self_assessment' => [
+      'variables' => [
+        'title' => NULL,
+        'answer' => NULL,
+        'content' => NULL,
+      ],
+    ],
+    'self_assessment_tool__step_1' => [
+      'variables' => [],
+    ],
+    'assured_solutions_tool__step_1' => [
+      'variables' => [],
+    ],
+    'mimemail_message__dhsc_result_viewer' => [
+      'render element' => 'elements',
+      'base hook' => 'mimemail_message',
+    ],
+    'dhsc_results_pdf_content' => [
+      'variables' => [
+        'content' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param [type] $form
+ * @param FormStateInterface $form_state
+ * @param [type] $form_id
+ */
+function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  // Re-write submit label when re-submitting answers.
+  $form_ids = [
+    'webform_submission_assured_solutions_tool_edit_form',
+    'webform_submission_self_assessment_tool_edit_form',
+  ];
+
+  if (
+    in_array($form_id, $form_ids) &&
+    (string) $form['actions']['submit']['#value'] === 'Save'
+  ) {
+    $form['actions']['submit']['#value'] = t('Continue');
+  }
+
+}
+
+/**
+ * Implements hook_mail().
+ */
+function dhsc_result_viewer_mail($key, &$message, $params)
+{
+  $message['from'] = $params['headers']['From'] ?? NULL;
+  // Strip newline characters from email subjects.
+  $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
+  $message['body'] = $params['body'];
+
+  $message['params'] = isset($params['params']) ?? $params['params'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_mimemail_message(&$variables) {
+  $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param $variables
+ */
+function dhsc_result_viewer_preprocess_status_messages(&$variables) {
+  if (isset($variables['message_list']['status'])) {
+    $status_messages = $variables['message_list']['status'];
+    foreach ($status_messages as $key => $message) {
+      // Remove status message if updating submission.
+      if (strpos((string) $message, 'Submission updated') !== FALSE) {
+        unset($variables['message_list']['status'][$key]);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_webform_submission_form_alter().
+ */
+function dhsc_result_viewer_webform_submission_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool']) && ($current_page = $form_state->get('current_page')) !== '') {
+    $form['current_step'] = [
+      '#type' => 'value',
+      '#value' =>  $current_page,
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook)
+{
+  if (in_array($variables['form']['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool'])) {
+    $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
+  }
+}
+
+/**
+ * Implements hook_theme_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
+{
+  // Get tool landing page uri from config.
+  $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
+  $landing_page_uri = $config->get('sa_landing_page');
+
+  // Pass url from config for back behaviour.
+  $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+}
+
+/**
+ * Implements hook_theme_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables)
+{
+  // Get tool landing page uri from config.
+  $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
+  $landing_page_uri = $config->get('as_landing_page');
+
+  // Pass url from config for back behaviour.
+  $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+}

@@ -4,9 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_result
-    - field.field.node.localgov_guides_page.body
+    - field.field.node.localgov_guides_page.field_body_paragraphs
+    - field.field.node.localgov_guides_page.field_date
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
+    - field.field.node.localgov_guides_page.field_sidebar_related
+    - field.field.node.localgov_guides_page.field_summary
+    - field.field.node.localgov_guides_page.field_topic_term
     - field.field.node.localgov_guides_page.localgov_guides_parent
     - field.field.node.localgov_guides_page.localgov_guides_section_title
     - node.type.localgov_guides_page
@@ -19,15 +23,24 @@ targetEntityType: node
 bundle: localgov_guides_page
 mode: search_result
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
     weight: 0
     region: content
 hidden:
-  body: true
+  field_body_paragraphs: true
+  field_date: true
   field_image: true
   field_metatags: true
+  field_sidebar_related: true
+  field_summary: true
+  field_topic_term: true
   langcode: true
   links: true
   localgov_guides_parent: true

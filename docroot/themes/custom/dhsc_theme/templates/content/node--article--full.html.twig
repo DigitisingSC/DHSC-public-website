@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Default node template for a article page.
+ */
+#}
+{%
+  set classes = [
+    'article-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+
+{% include '@templates/article-page/article-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role'),
+  'title': label,
+  'article_details': {
+    'date': content.field_date.0,
+    'author': content.field_author.0,
+  },
+  'featured_image': content.field_image,
+  'content': content.field_body_paragraphs,
+  'related': relatedBlock|striptags|trim != "" ? relatedBlock : null,
+  'further_information': content.field_further_information,
+} %}

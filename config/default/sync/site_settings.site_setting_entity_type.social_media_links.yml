@@ -1,0 +1,8 @@
+uuid: f0ce59ee-5adc-42e2-96f4-76bf8d11e50b
+langcode: en
+status: true
+dependencies: {  }
+id: social_media_links
+label: 'Social media links'
+fieldset: Global
+multiple: false

@@ -1,0 +1,7 @@
+uuid: ed7a5681-0d0c-4e3f-8432-55fdd30592aa
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_573x280
+label: 'DHSC featured article (573x280)'
+effects: {  }

@@ -1,0 +1,45 @@
+uuid: 92e7ea58-ebaa-42c0-a952-23746f746b76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.pagination.field_next
+    - field.field.paragraph.pagination.field_previous
+    - paragraphs.paragraphs_type.pagination
+  module:
+    - linkit
+    - maxlength
+id: paragraph.pagination.default
+targetEntityType: paragraph
+bundle: pagination
+mode: default
+content:
+  field_next:
+    type: linkit
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_previous:
+    type: linkit
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+hidden:
+  created: true
+  status: true

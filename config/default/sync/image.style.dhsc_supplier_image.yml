@@ -1,0 +1,15 @@
+uuid: d7488bb2-8939-466b-bad4-b840471b9778
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_supplier_image
+label: 'DHSC supplier image (271x189)'
+effects:
+  3acfb6cd-75b9-4831-b42e-30eda60ae33e:
+    uuid: 3acfb6cd-75b9-4831-b42e-30eda60ae33e
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 271
+      height: 189
+      anchor: center-center

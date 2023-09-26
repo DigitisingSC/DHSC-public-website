@@ -1,0 +1,9 @@
+{% set attributes = attributes.addClass([
+  'js-search-page-search-form search-page-search-form__form',
+]) %}
+
+<div class="o-search-page-search-form" x-data="{ searchInputValue: '' }">
+  <form {{attributes}}>
+    {{ children }}
+  </form>
+</div>

@@ -1,0 +1,50 @@
+uuid: 5c745dc6-ca62-4897-92fa-53667a3dc891
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.related_information.field_link
+    - field.field.paragraph.related_information.field_referenced_pages
+    - field.field.paragraph.related_information.field_title
+    - paragraphs.paragraphs_type.related_information
+  module:
+    - link
+    - linkit
+    - maxlength
+id: paragraph.related_information.default
+targetEntityType: paragraph
+bundle: related_information
+mode: default
+content:
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_referenced_pages:
+    type: linkit
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

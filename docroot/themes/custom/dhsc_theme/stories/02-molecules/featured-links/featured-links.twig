@@ -1,0 +1,15 @@
+<div class="m-featured-links">
+  <h3>{{ 'Quick links'|t }}</h3>
+  {% if links %}
+  <ul class="py-4">
+    {% for link in links %}
+    <li class="mb-4">
+      <a href="{{ link.url }}" class="block underline text-forest text-2xs tablet:text-xs hover:no-underline mb-2">{{ link.title }}</a>
+      {% if link.description %}
+        <div class="block text-coolgrey text-2xs tablet:text-xs">{{ link.description }}</div>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>

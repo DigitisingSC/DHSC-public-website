@@ -1,0 +1,14 @@
+uuid: 6f33e015-47ac-4041-be3a-9832ab02ee8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.recommendation
+id: node_type_recommendation
+entity_type_id: node_type
+entity_id: recommendation
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

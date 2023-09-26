@@ -1,0 +1,10 @@
+uuid: e804deca-a250-4fac-808e-2d34a340d9ce
+langcode: en
+status: true
+dependencies: {  }
+id: further_information
+label: 'Further information'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

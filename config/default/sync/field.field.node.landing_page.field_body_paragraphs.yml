@@ -1,0 +1,134 @@
+uuid: 9617cd9e-adc4-42ad-bb75-3de636fff963
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_paragraphs
+    - node.type.landing_page
+    - paragraphs.paragraphs_type.accordion
+    - paragraphs.paragraphs_type.card_collection
+    - paragraphs.paragraphs_type.content_listing
+    - paragraphs.paragraphs_type.cta_banner
+    - paragraphs.paragraphs_type.dynamic_content_listing
+    - paragraphs.paragraphs_type.featured_items
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.full_content_listings
+    - paragraphs.paragraphs_type.localgov_image
+    - paragraphs.paragraphs_type.localgov_text
+    - paragraphs.paragraphs_type.newsletter_signup
+    - paragraphs.paragraphs_type.quick_links
+    - paragraphs.paragraphs_type.topic_list_builder
+    - paragraphs.paragraphs_type.topics
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.landing_page.field_body_paragraphs
+field_name: field_body_paragraphs
+entity_type: node
+bundle: landing_page
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      localgov_text: localgov_text
+      localgov_image: localgov_image
+      video: video
+      card_collection: card_collection
+      cta_banner: cta_banner
+      content_listing: content_listing
+      topic_list_builder: topic_list_builder
+      from_library: from_library
+      dynamic_content_listing: dynamic_content_listing
+      accordion: accordion
+      newsletter_signup: newsletter_signup
+      topics: topics
+      featured_items: featured_items
+      quick_links: quick_links
+      full_content_listings: full_content_listings
+    negate: 0
+    target_bundles_drag_drop:
+      accordion:
+        weight: 23
+        enabled: true
+      accordion_item:
+        weight: 24
+        enabled: false
+      alert:
+        weight: 18
+        enabled: false
+      card_collection:
+        weight: -20
+        enabled: true
+      content_listing:
+        weight: -18
+        enabled: true
+      content_listing_section:
+        weight: -15
+        enabled: false
+      content_listing_section_links:
+        weight: -14
+        enabled: false
+      cta_banner:
+        weight: -19
+        enabled: true
+      dynamic_content_list:
+        weight: 24
+        enabled: false
+      dynamic_content_listing:
+        weight: 18
+        enabled: true
+      featured_items:
+        weight: 34
+        enabled: true
+      framework_row:
+        weight: 35
+        enabled: false
+      framework_table:
+        weight: 36
+        enabled: false
+      from_library:
+        weight: -16
+        enabled: true
+      full_content_listings:
+        weight: 37
+        enabled: true
+      link_description:
+        weight: 34
+        enabled: false
+      localgov_image:
+        weight: -22
+        enabled: true
+      localgov_link:
+        weight: -13
+        enabled: false
+      localgov_text:
+        weight: -23
+        enabled: true
+      newsletter_signup:
+        weight: 26
+        enabled: true
+      quick_link:
+        weight: 33
+        enabled: false
+      quick_links:
+        weight: 34
+        enabled: true
+      topic:
+        weight: 31
+        enabled: false
+      topic_list_builder:
+        weight: -17
+        enabled: true
+      topics:
+        weight: 32
+        enabled: true
+      video:
+        weight: -21
+        enabled: true
+field_type: entity_reference_revisions

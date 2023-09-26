@@ -1,0 +1,26 @@
+.m-card {
+
+  $this: &;
+
+  &:hover {
+    #{$this}__link {
+      a {
+        @apply no-underline focus:underline;
+      }
+    }
+  }
+
+  &__link {
+    @apply leading-tight mt-3;
+
+    a {
+      @apply text-forest-100 font-bold;
+      @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
+    }
+  }
+
+  &__image img {
+    @apply rounded-md;
+  }
+
+}

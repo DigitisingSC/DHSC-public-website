@@ -1,0 +1,64 @@
+uuid: 652cf0b3-c838-45c4-9c0d-564a0bf4b4f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.supplier.field_answers_supplier
+    - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_image
+    - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
+    - field.field.node.supplier.field_summary
+    - node.type.supplier
+  module:
+    - entity_reference_revisions
+    - user
+id: node.supplier.default
+targetEntityType: node
+bundle: supplier
+mode: default
+content:
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_supplier_image
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_list_price:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_answers_supplier: true
+  field_non_possible_answers: true
+  langcode: true
+  search_api_excerpt: true

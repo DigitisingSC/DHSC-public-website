@@ -1,0 +1,31 @@
+{% set page_content %}
+<div class="prose">
+  <h1 class="mt-10 mb-5">{{ 'Page not found'|t }}</h1>
+  <p class="mb-4">{{ 'If you typed the web address, check it is correct.'|t }}</p>
+  <p class="mb-4">{{ 'If you pasted the web address, check you copied the entire address.'|t }}</p>
+  <p>{{'Alternatively '|t}}<a href="/search">{{ 'use the search function'|t }}</a>{{ ' to find the page you need.'|t}}</p>
+</div>
+{% endset %}
+
+{% include "@templates/layout/layout.twig" with {
+  "header": page.header,
+  "mobile_search": page.mobile_search,
+  "primary_menu": page.primary_menu,
+  "search": page.search,
+  "secondary_menu": page.secondary_menu,
+  "banner": page.banner,
+  "tabs": page.tabs,
+  "messages": page.messages,
+  "content_top": page.content_top,
+  "content": page_content,
+  "content_bottom": page.content_bottom,
+  "has_sidebars": has_sidebars,
+  "sidebar_first": page.sidebar_first,
+  "sidebar_second": page.sidebar_second,
+  "footer_top": page.footer_top,
+  "footer": page.footer,
+  "footer_bottom": page.footer_bottom,
+  "footer_legal": page.footer_legal,
+  "disabled": page.disabled,
+  "remove_main_id": false,
+} %}

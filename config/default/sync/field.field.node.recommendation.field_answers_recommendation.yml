@@ -1,0 +1,19 @@
+uuid: 8234e4cc-c1d5-4136-8670-dec000d99d30
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_answers_recommendation
+    - node.type.recommendation
+id: node.recommendation.field_answers_recommendation
+field_name: field_answers_recommendation
+entity_type: node
+bundle: recommendation
+label: 'Possible answers'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

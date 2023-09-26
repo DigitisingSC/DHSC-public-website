@@ -1,0 +1,8 @@
+.m-footer-contact {
+  flex-direction: column;
+  align-items: baseline;
+  &__phone a,
+  &__link a {
+    @apply text-forest font-bold;
+  }
+}

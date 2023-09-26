@@ -1,0 +1,19 @@
+uuid: ed8f84a7-e513-479c-8037-5be2aaa17f5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_answer_machine_name
+    - taxonomy.vocabulary.category
+id: taxonomy_term.category.field_answer_machine_name
+field_name: field_answer_machine_name
+entity_type: taxonomy_term
+bundle: category
+label: 'Answer machine name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

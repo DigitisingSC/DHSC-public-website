@@ -1,0 +1,45 @@
+uuid: faf08730-c4c8-4664-bbbb-d008097f034a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_collection.field_card_items
+    - field.field.paragraph.card_collection.field_cta_link
+    - field.field.paragraph.card_collection.localgov_title
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - link
+id: paragraph.card_collection.default
+targetEntityType: paragraph
+bundle: card_collection
+mode: default
+content:
+  field_card_items:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cta_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  localgov_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

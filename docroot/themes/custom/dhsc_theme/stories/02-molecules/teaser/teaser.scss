@@ -1,0 +1,29 @@
+.m-teaser {
+
+  $this: &;
+
+  &--listing {
+    #{$this}__event-type,
+    #{$this}__date {
+      @apply text-2xs;
+    }
+  }
+
+  &--supplier {
+
+    #{$this}__content {
+      @screen tablet {
+        @apply order-1;
+      }
+    }
+
+    #{$this}__media {
+      @screen tablet {
+        @apply order-2;
+      }
+      img {
+        @apply w-full h-auto;
+      }
+    }
+  }
+}

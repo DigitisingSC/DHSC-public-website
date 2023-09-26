@@ -6,16 +6,14 @@ id: acquia_dev_stage
 label: 'Acquia dev & stage'
 description: ''
 weight: 0
+stackable: false
+storage: folder
 folder: ../config/default/acquia_dev_stage
 module:
-  dblog: 0
-  memcache: 0
-  purge_processor_lateruntime: 0
-  purge_queuer_coretags: 0
-  shield: 0
   views_ui: 0
+  shield: 0
 theme: {  }
-blacklist: {  }
-graylist: {  }
-graylist_dependents: true
-graylist_skip_equal: true
+complete_list:
+  - views.view.digital_skills_training_page
+  - views.view.local_search
+partial_list: {  }

@@ -1,0 +1,25 @@
+uuid: 31ea753a-37dd-4343-b229-d20d6c8e295b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.dynamic_content_listing.field_dynamic_content_list
+    - paragraphs.paragraphs_type.dynamic_content_listing
+  module:
+    - entity_reference_revisions
+id: paragraph.dynamic_content_listing.default
+targetEntityType: paragraph
+bundle: dynamic_content_listing
+mode: default
+content:
+  field_dynamic_content_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

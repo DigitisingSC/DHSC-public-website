@@ -1,0 +1,33 @@
+uuid: 1bc212a4-30e8-431d-b0af-12c259afc566
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.subtopic_page.field_body_paragraphs
+    - field.field.node.subtopic_page.field_image
+    - field.field.node.subtopic_page.field_metatags
+    - field.field.node.subtopic_page.field_subtopics
+    - field.field.node.subtopic_page.field_summary
+    - node.type.subtopic_page
+  module:
+    - user
+id: node.subtopic_page.search_index
+targetEntityType: node
+bundle: subtopic_page
+mode: search_index
+content:
+  search_api_excerpt:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_image: true
+  field_intro: true
+  field_metatags: true
+  field_subtopics: true
+  field_summary: true
+  langcode: true
+  links: true

@@ -1,0 +1,17 @@
+.m-banner {
+  &__image img {
+    @apply object-fill object-center w-full max-h-[340px];
+  }
+
+  &__content {
+    &:after {
+      content: '';
+      @apply absolute;
+      @apply -bottom-3 left-4 lg:left-8;
+      @apply w-0 h-0;
+      border-style: solid;
+      border-width: 1rem 0.875rem 0 0.875rem;
+      border-color: theme('colors.green.40') transparent transparent transparent;
+    }
+  }
+}

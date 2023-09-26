@@ -1,0 +1,37 @@
+uuid: 4f94840e-d9ac-4795-b04e-f8923cc807da
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.skill.field_body_paragraphs
+    - field.field.node.skill.field_metatags
+    - field.field.node.skill.field_skill_level
+    - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_summary
+    - field.field.node.skill.field_training_length
+    - node.type.skill
+  module:
+    - user
+id: node.skill.teaser
+targetEntityType: node
+bundle: skill
+mode: teaser
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_metatags: true
+  field_skill_level: true
+  field_skill_method: true
+  field_skill_price: true
+  field_skills_for_care_endorsed: true
+  field_summary: true
+  field_themes: true
+  field_training_length: true
+  langcode: true
+  search_api_excerpt: true

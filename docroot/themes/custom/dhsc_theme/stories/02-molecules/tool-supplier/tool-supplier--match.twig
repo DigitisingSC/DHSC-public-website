@@ -1,0 +1,17 @@
+{% set classes = [
+  'm-tool-supplier',
+  'tool-supplier--' ~ variant,
+  'mb-4'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="m-tool-supplier__title mb-2">
+    {% if url %}
+      <a href="{{ url }}" class="text-forest text-md">
+        <h4>{{ title }}</h4>
+      </a>
+    {% else %}
+      <h4>{{ title }}</h4>
+    {% endif %}
+  </div>
+  <div class="m-tool-supplier__content">{{ content }}</div>
+</div>

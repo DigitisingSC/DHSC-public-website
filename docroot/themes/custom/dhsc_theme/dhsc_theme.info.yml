@@ -3,21 +3,10 @@ description: "Digitising Health and Social Care sub-theme, which uses localgov_b
 type: theme
 core_version_requirement: ^8.8 || ^9 || ^10
 base theme: "localgov_base"
-
-libraries-extend:
-  localgov_base/global:
-    - dhsc_theme/global
-  localgov_base/alert-banner:
-    - dhsc_theme/alert-banner
-  localgov_base/banner:
-    - dhsc_theme/banner
-  localgov_base/ia-block:
-    - dhsc_theme/ia-block
-  localgov_base/header:
-    - dhsc_theme/header
-  localgov_base/menu-main:
-    - dhsc_theme/menu-main
-
+libraries:
+  - dhsc_theme/global
+ckeditor5-stylesheets:
+  - css/ckeditor.css
 regions:
   tabs: "Tabs"
   header: "Header"
@@ -33,16 +22,25 @@ regions:
   content_bottom: "Content bottom"
   sidebar_first: "Sidebar first"
   sidebar_second: "Sidebar second"
-  footer_first: "Footer first"
-  footer_second: "Footer second"
-  footer_third: "Footer third"
+  footer_top: "Footer top"
   footer: "Footer"
-  lower_footer_first: "Lower footer first"
-  lower_footer_second: "Lower footer second"
-  lower_footer_third: "Lower footer third"
+  footer_bottom: "Footer bottom"
+  footer_legal: "Footer legal"
   disabled: "Disabled"
 
-component-libraries:
-  molecules:
-    paths:
-      - stories/02-molecules
+components:
+  namespaces:
+    atoms: stories/01-atoms
+    molecules: stories/02-molecules
+    organisms: stories/03-organisms
+    templates: stories/04-templates
+    assets: stories/assets
+libraries-override:
+  eu_cookie_compliance/eu_cookie_compliance_default:
+    css:
+      state:
+        css/eu_cookie_compliance.css: false
+  eu_cookie_compliance/eu_cookie_compliance_bare:
+    css:
+      state:
+        css/eu_cookie_compliance.bare.css: {}

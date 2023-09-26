@@ -1,0 +1,22 @@
+uuid: 8d518d6a-975b-4966-b0c4-472a2c098816
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: supplier
+label: Supplier
+type: 'canonical_entities:node'
+pattern: 'assured-solutions/[node:title]'
+selection_criteria:
+  70c80c6c-1ada-4a34-afe8-0ea17705d9ba:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 70c80c6c-1ada-4a34-afe8-0ea17705d9ba
+    context_mapping:
+      node: node
+    bundles:
+      supplier: supplier
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,36 @@
+uuid: f6cdd332-0656-48f6-94b8-4c6b5ba61fa7
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_alert_type
+field_name: field_alert_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: primary
+      label: Primary
+    -
+      value: secondary
+      label: Secondary
+    -
+      value: warning
+      label: Warning
+    -
+      value: success
+      label: Success
+    -
+      value: price
+      label: Price
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

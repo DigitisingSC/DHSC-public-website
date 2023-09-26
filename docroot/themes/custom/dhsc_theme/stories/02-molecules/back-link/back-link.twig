@@ -1,0 +1,25 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  variant == 'default' ? 'm-back-link-default' : 'm-back-link-form',
+] %}
+
+{# Set back link #}
+{% set link = link ? link : '#' %}
+
+{% if variant == 'default' %}
+  <a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ label|t }}">
+    <span class="m-back-link-default__icon">{{ icon }}</span>
+    <span class="m-back-link-default__label">{{ label|t }}</span>
+  </a>
+{% endif %}
+
+{% if variant == 'form' %}
+  <a class="{{ classes|sort|join('')|trim }}">
+    <span class="m-back-link-form__icon">{{ icon }}</span>
+    <input class="m-back-link-form__label" value="Back" {{ attributes }}/>
+  </a>
+{% endif %}

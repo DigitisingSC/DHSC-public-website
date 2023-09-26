@@ -1,0 +1,7 @@
+'editor access':
+  title: 'Editor level permission'
+  description: 'Gives editor level permission to the users.'
+
+'access to people':
+  title: 'Access to people page'
+  description: 'Gives for users access to people page.'

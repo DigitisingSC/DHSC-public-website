@@ -1,0 +1,23 @@
+uuid: 39c070e0-25d6-44be-8c27-8d5b4a72dbba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_skill_price
+    - node.type.skill
+  module:
+    - options
+id: node.skill.field_skill_price
+field_name: field_skill_price
+entity_type: node
+bundle: skill
+label: Price
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: free
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,150 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/*
+ * Implements hook_theme().
+ */
+function dhsc_site_theme() {
+  return [
+    'social_media_links' => [
+      'variables' => [
+        'social_links' => [],
+      ],
+    ],
+    'search_form' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'featured_links' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+    'footer_branding' => [
+      'variables' => [
+        'logo' => null,
+        'variant' => null,
+        'site_slogan' => null,
+        'site_name' => null
+      ],
+    ],
+    'site_copyright' => [
+      'variables' => [
+        'text' => null,
+      ],
+    ],
+    'footer_contact' => [
+      'variables' => [
+        'link' => null,
+        'phone' => null,
+      ],
+    ],
+    'related_information' => [
+      'variables' => [
+        'title' => null,
+        'items' => [],
+        'read_more_link' => null,
+      ],
+    ],
+    'skills_active_filters' => [
+      'variables' => [
+        'links' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_form_mode_alter().
+ */
+function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
+
+  if (!$entity instanceof ParagraphInterface) {
+    return;
+  }
+
+  $request_uri = \Drupal::request()->getRequestUri();
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  // Check if this a new entity.
+  if (strpos($request_uri, 'node/add/skill')
+    || isset($node)
+    && $node->getType() === 'skill'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section'){
+    $form_mode = 'skills_framework';
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
+{
+  if (!$entity instanceof ParagraphInterface) {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if (isset($node) && $node->getType() === 'skill'
+    && $entity->getType() === 'accordion'
+    || $entity->getType() === 'framework_section') {
+    $view_mode = 'skills_framework';
+  }
+}
+
+ /**
+ * Implements hook_form_alter().
+ *
+ * @param [type] $form
+ * @param FormStateInterface $form_state
+ * @param [type] $form_id
+ */
+function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $displayId = $form_state->get('view')->getDisplay()->display['id'];
+  if ($displayId == 'dhsc_search_page') {
+    $form['search']['#attributes']['placeholder'] = t('Search');
+    $form['search']['#attributes']['x-model'] = 'searchInputValue';
+    $form['search']['#attributes']['class'][] = 'o-search-page-search-form__submit-button';
+
+    // Reset search input button
+    $form['search']['#children']['reset'] = [
+      '#type' => 'inline_template',
+      '#template' => '<button type="button" x-show="searchInputValue !== \'\'" @click="searchInputValue = \'\'" class="o-search-page-search-form__reset-button button">'
+      . t('Clear input')
+      . '</button>',
+    ];
+  }
+}
+
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function dhsc_site_site_setting_entity_update(EntityInterface $entity) {
+  dhsc_site_clear_router_builder_cache();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function dhsc_site_site_setting_entity_delete(EntityInterface $entity) {
+  dhsc_site_clear_router_builder_cache();
+}
+
+/**
+ * Helper function to clear Drupal's render cache.
+ */
+function dhsc_site_clear_router_builder_cache() {
+  \Drupal::service('cache.config')->invalidateAll();
+  \Drupal::service('cache.render')->invalidateAll();
+  \Drupal::service("router.builder")->rebuild();
+
+  \Drupal::logger('dhsc_site')
+    ->notice('A change to a site settings entity triggered a cache rebuild');
+}

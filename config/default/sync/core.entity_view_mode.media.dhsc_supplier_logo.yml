@@ -1,0 +1,10 @@
+uuid: 62de8b4c-3e43-4749-9ba9-e16b9c0fba46
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.dhsc_supplier_logo
+label: 'DHSC Supplier logo'
+targetEntityType: media
+cache: true

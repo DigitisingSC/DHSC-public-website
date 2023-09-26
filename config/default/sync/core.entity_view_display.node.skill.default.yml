@@ -1,0 +1,66 @@
+uuid: 7babeae0-38d0-41f6-8aa7-2ae924496e85
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.skill.field_body_paragraphs
+    - field.field.node.skill.field_metatags
+    - field.field.node.skill.field_skill_level
+    - field.field.node.skill.field_skill_method
+    - field.field.node.skill.field_summary
+    - field.field.node.skill.field_training_length
+    - node.type.skill
+  module:
+    - entity_reference_revisions
+    - user
+id: node.skill.default
+targetEntityType: node
+bundle: skill
+mode: default
+content:
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_skill_level:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_skill_method:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_training_length:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_metatags: true
+  field_skill_price: true
+  field_skills_for_care_endorsed: true
+  field_summary: true
+  field_themes: true
+  langcode: true
+  search_api_excerpt: true

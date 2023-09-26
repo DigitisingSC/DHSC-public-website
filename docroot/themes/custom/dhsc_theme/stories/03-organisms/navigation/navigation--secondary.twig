@@ -1,0 +1,16 @@
+{% set classes = [
+  'o-navigation-region',
+  'o-navigation-region--secondary',
+  'bg-white text-black',
+  'w-full order-3'
+] | sort | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<section{{ attributes }}>
+  <div class="container mx-auto w-full py-4">
+    {{ content }}
+  </div>
+</section>

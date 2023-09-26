@@ -1,0 +1,22 @@
+.o-tool {
+
+  &__icon svg {
+    @apply h-3 w-3;
+
+  }
+  &__email form {
+    @apply flex-col items-center;
+  }
+  &__email input {
+    @apply mb-2;
+  }
+  &__email label {
+    @apply sr-only;
+  }
+
+  &--solutions {
+    .o-tool__email label {
+      @apply not-sr-only block mb-3;
+    }
+  }
+}

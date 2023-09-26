@@ -1,0 +1,10 @@
+uuid: 981c0d9d-4ecf-4206-b1ba-2d5121a892b2
+langcode: en
+status: true
+dependencies: {  }
+id: framework_row
+label: 'Framework row'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

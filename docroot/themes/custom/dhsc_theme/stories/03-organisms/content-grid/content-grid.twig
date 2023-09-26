@@ -1,0 +1,20 @@
+{% set classes = [
+  'm-content-grid'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if title %}
+    <h2 class="m-content-grid__title">{{ title }}</h2>
+  {% endif %}
+  {% if items %}
+  <ul class="m-content-grid__items list-unstyled tablet:grid tablet:grid-cols-{{ columns }} tablet:gap-4 py-4">
+    {% for item in items %}
+      <li class="tablet:basis-1/{{ columns }}">{{ item }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% if pager %}
+  <div class="m-content-grid__pager">
+    {{ pager }}
+  </div>
+  {% endif %}
+</div>

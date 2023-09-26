@@ -1,0 +1,10 @@
+uuid: f08d3426-efb2-4001-83c3-1b389baada7c
+langcode: en
+status: true
+dependencies: {  }
+id: quick_links
+label: 'Quick links'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

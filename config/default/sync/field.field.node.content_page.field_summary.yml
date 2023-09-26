@@ -1,0 +1,19 @@
+uuid: 58f52c77-1214-45c0-acec-6b45d4539f43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.content_page
+id: node.content_page.field_summary
+field_name: field_summary
+entity_type: node
+bundle: content_page
+label: Summary
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

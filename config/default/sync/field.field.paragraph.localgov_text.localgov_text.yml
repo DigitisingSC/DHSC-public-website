@@ -6,7 +6,13 @@ dependencies:
     - field.storage.paragraph.localgov_text
     - paragraphs.paragraphs_type.localgov_text
   module:
+    - allowed_formats
     - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+      - full_html
 _core:
   default_config_hash: coOUNwEHi31kSbDURy8GVhyFNMMgBVCAT0CkJt1iLzI
 id: paragraph.localgov_text.localgov_text

@@ -1,0 +1,10 @@
+uuid: 359f7eb3-87bd-4c04-aefb-195a40a4e79a
+langcode: en
+status: true
+dependencies: {  }
+id: skills_framework
+label: 'Skills Framework'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

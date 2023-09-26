@@ -1,0 +1,19 @@
+{#
+  Template
+#}
+
+{% if intro_above_title %}
+  {% include "@templates/content-page/content-page--intro-above.twig" with {
+    attributes: attributes,
+    title: title,
+    intro: intro,
+    content: content,
+  } %}
+{% else %}
+  {% include "@templates/content-page/content-page--default.twig" with {
+    attributes: attributes,
+    title: title,
+    intro: intro,
+    content: content,
+  } %}
+{% endif %}

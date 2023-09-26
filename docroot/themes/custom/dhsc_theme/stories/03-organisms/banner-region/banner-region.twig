@@ -1,0 +1,20 @@
+{%
+  set classes = [
+  'o-banner-region',
+  'w-full order-6'
+  ]
+%}
+
+{% if content %}
+  <section{{ attributes.addClass(classes) }}>
+    <div class="o-banner-region__container mx-auto w-full">
+      {% if content is iterable  %}
+        {% for item in content %}
+          {{ item }}
+        {% endfor %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </div>
+  </section>
+{% endif %}

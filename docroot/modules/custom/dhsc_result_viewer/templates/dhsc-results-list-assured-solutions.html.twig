@@ -1,0 +1,45 @@
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-left',
+  } %}
+{% endset %}
+
+{% include '@molecules/back-link/back-link.twig' with {
+  label: 'Back',
+  icon: icon,
+} %}
+
+{% set icon %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'triangle',
+  } %}
+{% endset %}
+
+{% if summary %}
+	{% set summary_text = {
+    '#type':   'processed_text',
+    '#text':    summary.value,
+    '#format': 'full_html',
+  } %}
+{% endif %}
+
+{% include '@organisms/tool/tool--solutions.twig' with {
+  'attributes': attributes,
+  'summary': summary_text,
+  'title': title,
+  'icon': icon,
+  'count': count,
+  'total_count': total_count,
+  'no_result': no_result,
+  'search_criteria': search_criteria,
+  'submission_url': submission_url,
+  'result': result,
+  'non_matching_count': non_matching_count,
+  'no_matches': no_matches,
+  'email_form': email_form,
+  'download_results_path': download_results_path
+} %}

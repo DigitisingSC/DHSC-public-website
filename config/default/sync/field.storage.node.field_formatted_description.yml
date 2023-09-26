@@ -1,0 +1,19 @@
+uuid: 5f4e21aa-d20b-46ab-b9d5-3717e98747f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_formatted_description
+field_name: field_formatted_description
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

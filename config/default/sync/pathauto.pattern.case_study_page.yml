@@ -1,0 +1,22 @@
+uuid: 4c976978-9726-41b3-99e4-37ca1a3bc237
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: case_study_page
+label: 'Case study page'
+type: 'canonical_entities:node'
+pattern: 'success-stories/[node:title]'
+selection_criteria:
+  92bff1cc-e570-4963-9518-5478d07e5102:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 92bff1cc-e570-4963-9518-5478d07e5102
+    context_mapping:
+      node: node
+    bundles:
+      casestudy: casestudy
+selection_logic: and
+weight: -5
+relationships: {  }

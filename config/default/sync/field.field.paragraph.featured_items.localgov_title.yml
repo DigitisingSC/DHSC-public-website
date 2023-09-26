@@ -1,0 +1,19 @@
+uuid: bba9891a-9b42-4f98-a45a-4f23063b4f18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_title
+    - paragraphs.paragraphs_type.featured_items
+id: paragraph.featured_items.localgov_title
+field_name: localgov_title
+entity_type: paragraph
+bundle: featured_items
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

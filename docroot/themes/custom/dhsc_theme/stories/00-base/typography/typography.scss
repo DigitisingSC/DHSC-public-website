@@ -1,0 +1,6 @@
+.messages--status {
+  @apply w-[100vw];
+  @apply bg-yellow-20;
+  margin-left: calc((-100vw + 100%) / 2);
+  margin-right: calc((-100vw + 100%) / 2);
+}

@@ -1,0 +1,35 @@
+{% set classes = [
+  'o-search-form',
+  'w-full'
+] %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="o-search-form__header mb-4">
+    <h2>{{ title }}</h2>
+  </div>
+  <div class="o-search-form__form mb-4">
+    <form action="/search" class="flex relative items-stretch w-full">
+      <div class="a-form-item flex flex-col w-full">
+        <label for="search-term" class="sr-only">{{ 'Search'|t }}</label>
+        <input x-ref="searchTerm" :class="{ 'focus': searchOpen }"  type="text" name="search" id="search-term" class="border-[3px] border-black focus:border-[3px] focus:border-black focus:ring-focus focus:ring-[3px] outline-offset-[3px]"/>
+      </div>
+      <div class="a-form-item">
+        <button type="submit" class="flex h-full w-full bg-forest justify-center items-center px-3 border-b-[3px] border-black rounded-r-md hover:bg-forest-300 active:bg-focus">
+          <span class="sr-only">{{ "Search"|t }}</span>{{ icon }}
+        </button>
+      </div>
+    </form>
+  </div>
+  {% if items %}
+  <div class="o-search-form__quick-search mb-4">
+    <h3 class="mb-2">{{ 'Quick search'|t }}</h3>
+    <ul class="text-xs">
+      {% for item in items %}
+      <li class="mb-2">
+        <a href="{{ item.url }}" class="underline hover:no-underline">{{ item.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</div>
+

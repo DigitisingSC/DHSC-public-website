@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Default node template for a casestudy page.
+ */
+#}
+{%
+  set classes = [
+    'casestudy-page',
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% include '@templates/casestudy-page/casestudy-page.twig' with {
+  'attributes': attributes.addClass(classes).removeAttribute('role'),
+  'title': label,
+  'lead': content.field_intro,
+  'image': content.field_image,
+  'content': content.field_body_paragraphs,
+  'further_information': content.field_further_information,
+} %}

@@ -1,0 +1,16 @@
+{% set classes = [
+  'o-header',
+  'bg-green text-white',
+  'w-full order-1'
+] %}
+<header{{ attributes.addClass(classes) }}>
+  <div class="container mx-auto w-full pt-[19px] pb-[19px] flex justify-between items-center gap-4">
+    {% if content is iterable  %}
+      {% for item in content %}
+        {{ item }}
+      {% endfor %}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </div>
+</header>

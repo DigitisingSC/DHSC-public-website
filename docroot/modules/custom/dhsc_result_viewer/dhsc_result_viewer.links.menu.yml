@@ -1,0 +1,11 @@
+dhsc_result_viewer.dhsc_settings:
+  title: 'DHSC Settings'
+  route_name: dhsc_result_viewer.dhsc_settings
+  parent: system.admin
+  weight: -20
+
+dhsc_result_viewer.result_summary_settings:
+  title: 'Decision tree tool settings'
+  route_name: dhsc_result_viewer.result_summary_settings
+  parent: dhsc_result_viewer.dhsc_settings
+  weight: -15

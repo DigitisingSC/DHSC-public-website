@@ -1,0 +1,15 @@
+uuid: 463954e2-7bf4-4f6a-9519-835d9a0dd76f
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_supplier_logo_desktop
+label: 'DHSC Supplier logo (desktop)'
+effects:
+  ed8a939c-4a1f-41a9-b831-b2e1d89741b8:
+    uuid: ed8a939c-4a1f-41a9-b831-b2e1d89741b8
+    id: image_scale
+    weight: 1
+    data:
+      width: 271
+      height: null
+      upscale: false

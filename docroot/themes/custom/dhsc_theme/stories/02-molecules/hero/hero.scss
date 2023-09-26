@@ -1,0 +1,42 @@
+.m-hero {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+    &:before {
+      content: '';
+      @apply absolute block -z-10 -top-4 tablet:top-0;
+      @apply bg-green-20;
+      @apply w-full h-[200px] tablet:h-[225px];
+    }
+
+  &__image img {
+    @apply object-contain object-center w-full max-h-[175px] tablet:max-h-[225px];
+  }
+
+  &__copy {
+    &:after {
+      content: '';
+      @apply absolute;
+      @apply -bottom-3 left-4 tablet:left-8;
+      @apply w-0 h-0;
+      border-style: solid;
+      border-width: 1rem 0.875rem 0 0.875rem;
+      border-color: theme('colors.green.60') transparent transparent transparent;
+    }
+
+    p {
+      @apply mb-2;
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+
+    a {
+      @apply text-black hover:text-black;
+    }
+  }
+}

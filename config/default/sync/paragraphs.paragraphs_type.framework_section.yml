@@ -1,0 +1,10 @@
+uuid: c2e74ce0-4ec4-4004-a379-6fb049de9251
+langcode: en
+status: true
+dependencies: {  }
+id: framework_section
+label: 'Framework section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

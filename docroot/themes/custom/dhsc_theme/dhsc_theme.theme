@@ -4,3 +4,224 @@
  * @file
  * Theme functions for the LocalGov Drupal DHSC theme.
  */
+
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\media\Entity\Media;
+
+/**
+ * Implements hook_preprocess().
+ * Adds base path as a variable for Twig templates
+ */
+function dhsc_theme_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dhsc_theme_preprocess_block(&$variables) {
+  $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+}
+
+/**
+ * Implements template_preprocess_region().
+ */
+function dhsc_theme_preprocess_region(&$variables) {
+
+  if ($variables['region'] == 'footer') {
+    $site_settings = \Drupal::service('site_settings.loader');
+    $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_secondary_logo'];
+    if (!empty($footer_logo_setting)) {
+      $media = Media::load($footer_logo_setting);
+      $file_id = $media->getSource()->getSourceFieldValue($media);
+      $svg_file = File::load($file_id);
+      $file_path = $svg_file->createFileUrl();
+    }
+    $variables['logo'] = $file_path ?? '';
+  }
+}
+
+
+function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
+  $entity = $variables['paragraph'];
+
+  $section_links_array = array();
+
+  // Load the section_links paragraph there can be multiple values.
+  $section_links_paragraph = $entity->field_section_links->referencedEntities();
+  foreach ($section_links_paragraph as $section_links) {
+    // This is a single value field, so we can target [0].
+    $section_link = $section_links->get('field_section_link')->referencedEntities()[0];
+    $section_link_array = array(
+      'title' => $section_link->getTitle(),
+      'href' => $section_link->toUrl()->toString(),
+    );
+
+    $child_links = $section_links->get('field_section_child_links')->referencedEntities();
+    // Child links are not required so make an empty array and check
+    // if there are any before trying to fill in the array.
+    $child_links_array = array();
+    if ($child_links) {
+      foreach ($child_links as $child_link) {
+        $child_links_array[] = array(
+          'title' => $child_link->getTitle(),
+          'href' => $child_link->toUrl()->toString(),
+        );
+      }
+    }
+
+    $section_links_array[] = array(
+      'section_link' => $section_link_array,
+      'child_links' => $child_links_array,
+    );
+  }
+
+  $variables['section_links'] = $section_links_array;
+}
+
+/**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
+function dhsc_theme_preprocess_paragraph__featured_items(&$variables) {
+  $entity = $variables['paragraph'];
+  $featured_items_paragraph = $entity->field_featured_items->referencedEntities();
+  $variables['layout'] = count($featured_items_paragraph);
+}
+
+/**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
+function dhsc_theme_preprocess_paragraph__pagination(&$variables) {
+
+  $entity = $variables['paragraph'];
+  $links = [];
+
+  $previous = $entity->field_previous;
+  $next = $entity->field_next;
+
+  if (!empty($previous->uri) && !empty($previous->title)) {
+    $links['previous'] = [
+      'href' => Url::fromUri($previous->uri)->toString(),
+      'text' => $previous->title
+    ];
+  }
+  if (!empty($next->uri) && !empty($next->title)) {
+    $links['next'] = [
+      'href' => Url::fromUri($next->uri)->toString(),
+      'text' => $next->title
+    ];
+  }
+
+  $variables['items'] = $links;
+}
+
+/**
+ * Implements hook_preprocess_paragraph__HOOK()
+ */
+function dhsc_theme_preprocess_paragraph__video(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $media_id = $paragraph->get('field_video')->getString();
+
+  if ($media_id) {
+    $media_entity = Media::load($media_id);
+
+    // Derive a thumbnail image + alt text.
+    $url = $media_entity->get('field_media_oembed_video')->getString();
+
+    $embed_code = '';
+    // youtube.com vs youtu.be -- both are valid.
+    if (strpos($url, 'youtube.com') !== FALSE) {
+      $parsedUrl = UrlHelper::parse($url);
+      if (isset($parsedUrl['query']) && isset($parsedUrl['query']['v'])) {
+        $embed_code = $parsedUrl['query']['v'];
+      } else {
+        $embed_code = substr($url, strpos($url, '?v=') + strlen('?v='));
+      }
+    } else {
+      $embed_code = trim(parse_url($url, PHP_URL_PATH), '/');
+    }
+
+    $variables['media_thumbnail'] = "//i.ytimg.com/vi_webp/$embed_code/maxresdefault.webp";
+    $variables['media_thumbnail_legacy'] = "//i.ytimg.com/vi/$embed_code/maxresdefault.jpg";
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for field.
+ */
+function dhsc_theme_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] == 'field_media_oembed_video') {
+    // Set up the iframe src to be lazy loaded in.
+    $src = $variables['items'][0]['content']['#attributes']['src'];
+    $variables['items'][0]['content']['#attributes']['data-src'] = $src;
+    unset($variables['items'][0]['content']['#attributes']['src']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for media_oembed_iframe.
+ */
+function dhsc_theme_preprocess_media_oembed_iframe(&$variables) {
+  if (strpos((string) $variables['media'], 'youtube.com') !== FALSE || strpos((string) $variables['media'], 'youtu.be') !== FALSE) {
+    // Make the video auto-play on load.
+    $variables['media'] = str_replace('?feature=oembed', '?feature=oembed&autoplay=1', $variables['media']);
+  }
+}
+
+function dhsc_theme_theme_suggestions_details_alter (array &$suggestions, array $variables) {
+  if ($variables['element'] && isset($variables['element']['#form_id'])) {
+    $suggestions[] = 'details__' . str_replace('-', '_', $variables['element']['#form_id']);
+  }
+}
+
+function dhsc_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  if ($variables['element']['#form_id'] === 'dhsc_result_email_form') {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+  $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']);
+
+  // search form
+  if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page', 'views-exposed-form-acquia-search-dhsc-search-page'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']) . '__search';
+  }
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK_alter().
+*
+* Add views template suggestions.
+*
+* @inheritdoc
+*/
+function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'views_view__' . $variables['view']->getDisplay()->display['id'];
+  $suggestions[] = 'views_view__' . $variables['view']->id();
+
+ return $suggestions;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add theme suggestion for previous input submit.
+ *
+ * @inheritdoc
+ */
+function dhsc_theme_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (!empty($element['#submit']) && $element['#submit'][0] == '::previous') {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . str_replace(':', '', $element['#submit'][0]);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add template suggestions for result viewer status messages
+ */
+function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables)
+{
+  $suggestions[] = 'status_messages__dhsc_result_viewer';
+}

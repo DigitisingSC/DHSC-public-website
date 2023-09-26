@@ -1,0 +1,6 @@
+{% if text %}
+  {% include "@molecules/legal/copyright.twig" with {
+    'attributes': attributes,
+    'text': text,
+  } %}
+{% endif %}

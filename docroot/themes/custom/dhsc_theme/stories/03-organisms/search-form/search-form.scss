@@ -1,0 +1,14 @@
+.o-search-form {
+  &__form {
+    button {
+      svg {
+        @apply w-4 h-4 text-white;
+      }
+      &:active {
+        svg {
+          @apply text-black;
+        }
+      }
+    }
+  }
+}

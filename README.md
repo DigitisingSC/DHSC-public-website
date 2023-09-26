@@ -97,7 +97,7 @@ The Storybook implementation of this project is purely for documentation purpose
 Storybook has been implemented in node version 16.
 ### Installing Storybook
 
-In order to install the Storybook node dependencies run `make storybook-install`.
+In order to install the Storybook node dependencies run `make fe-install`.
 
 ### Starting Storybook
 You can start the Storybook by running the command:
@@ -136,7 +136,11 @@ Local solr for development is accessible at `http://${project-name}.ddev.site:89
 
 *  `make export-db`: creates a DB dump/export in project root directory (will be ignored from Git)
 
-*  `make storybook-install`: installs the Storybook dependencies
+*  `make fe-install`: installs the Frontend dependencies
+
+*  `make fe-watch`: listen to front end changes and compile SCSS, JS resources
+
+*  `make fe-build`: compile Frontend assets for production
 
 *  `make storybook`: starts Storybook in watch mode
 

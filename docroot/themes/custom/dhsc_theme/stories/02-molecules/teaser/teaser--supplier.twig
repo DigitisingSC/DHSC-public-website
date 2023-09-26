@@ -1,0 +1,39 @@
+{% set classes = [
+  'm-teaser',
+  'm-teaser--' ~ variant,
+  'block tablet:flex tablet:gap-4',
+  'w-full tablet:justify-between tablet:items-start',
+  'border-b',
+  'border-black-20',
+  'pb-5 tablet:pb-7 mb-5 tablet:mb-7',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  {% if image %}
+    <div class="m-teaser__media tablet:w-3/12 border border-black-20 rounded-md overflow-hidden mb-3 tablet:mb-0 max-w-[60%] tablet:max-w-full">
+      {{ image }}
+    </div>
+  {% endif %}
+  <div class="m-teaser__body tablet:w-9/12">
+    {% if title %}
+      <div class="m-teaser__title mb-3 last:mb-0">
+        <h3>
+          {% if link %}
+            <a href="{{ link }}" class="text-forest">{{ title }}</a>
+          {% else %}
+            {{ title }}
+          {% endif %}
+        </h3>
+      </div>
+    {% endif %}
+    {% if summary %}
+      <div class="m-teaser__copy mb-3 last:mb-0 tablet:text-base">
+        {{ summary }}
+      </div>
+    {% endif %}
+    {% if listPrice  %}
+      <div class="m-teaser__price flex items-center tablet:text-base">
+        <span class="me-2">{{ 'List price:'|t }}</span> {{ listPrice }}
+      </div>
+    {% endif %}
+  </div>
+</div>

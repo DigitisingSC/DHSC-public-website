@@ -1,0 +1,131 @@
+uuid: 1d935328-b37a-4fa1-8da3-924e39603e9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta_banner.field_layout
+    - field.field.paragraph.cta_banner.field_link
+    - field.field.paragraph.cta_banner.field_secondary_title
+    - field.field.paragraph.cta_banner.field_title
+    - field.field.paragraph.cta_banner.localgov_image
+    - field.field.paragraph.cta_banner.localgov_text
+    - field.field.paragraph.cta_banner.localgov_title
+    - paragraphs.paragraphs_type.cta_banner
+  module:
+    - field_group
+    - link
+    - media_library
+    - text
+third_party_settings:
+  field_group:
+    group_fields:
+      children:
+        - group_content
+        - group_settings
+      label: Fields
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_content:
+      children:
+        - field_title
+        - localgov_image
+        - localgov_title
+        - localgov_text
+        - field_link
+        - field_secondary_title
+      label: Content
+      region: content
+      parent_name: group_fields
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_settings:
+      children:
+        - field_layout
+      label: Settings
+      region: content
+      parent_name: group_fields
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: paragraph.cta_banner.default
+targetEntityType: paragraph
+bundle: cta_banner
+mode: default
+content:
+  field_layout:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 31
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_secondary_title:
+    type: string_textfield
+    weight: 32
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  localgov_image:
+    type: media_library_widget
+    weight: 28
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  localgov_text:
+    type: text_textarea
+    weight: 30
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  localgov_title:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

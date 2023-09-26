@@ -1,0 +1,38 @@
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set classes = [
+  'm-menu m-menu--social',
+  'text-black'
+] %}
+
+{% if items %}
+<nav{{ attributes.addClass(classes) }}>
+  <div class="m-menu__container w-full">
+    {% if title %}
+      <h3 class="mb-2">{{ title }}</h3>
+    {% endif %}
+    <ul>
+      {% for item in items %}
+        <li class="mb-3">
+          {% if directory %}
+            {% set socialIcon %}
+              {% include '@atoms/svg/svg.twig' with {
+                'sprite': spriteSrc,
+                'icon': item.icon,
+              } %}
+            {% endset %}
+            <a href="{{ item.url }}" class="flex items-center text-forest">
+              <span class="mr-2">{{ socialIcon }}</span>{{ item.title }}
+            </a>
+          {% else %}
+            <a href="{{ item.url }}" class="flex items-center text-forest">
+              <span class="mr-2">{{ item.icon }}</span>{{ item.title }}
+            </a>
+          {% endif %}
+
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+{% endif %}

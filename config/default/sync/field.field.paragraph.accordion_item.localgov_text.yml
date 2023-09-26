@@ -1,0 +1,25 @@
+uuid: 177df934-9750-4e04-bb0a-8e5749e718cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.localgov_text
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: paragraph.accordion_item.localgov_text
+field_name: localgov_text
+entity_type: paragraph
+bundle: accordion_item
+label: Text
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,26 @@
+{# Classes #}
+{% set classes = [
+  'm-video',
+] | sort | join(' ') | trim %}
+
+{# Template #}
+<div {{ attributes.addClass(classes) }}>
+  {% if header %}
+    <h2 class="relative flex items-center text-black">{{ header }}</h2>
+  {% endif %}
+
+  {% if description %}
+    <div class="m-video__description mb-7 text-base leading-relaxed text-black">
+      {{ description }}
+    </div>
+  {% endif %}
+
+  <div class="m-video__content aspect-video max-w-[31.125rem] mb-4">
+    {{ video }}
+    {% if caption %}
+      <figcaption class="video__caption text-ssm text-coolgrey mt-1">
+        {{ caption }}
+      </figcaption>
+    {% endif %}
+  </div>
+</div>

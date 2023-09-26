@@ -4,8 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_subtopics
-    - node.type.dhsc_contents_list_page
-    - node.type.independent_content_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.subtopic_page
@@ -15,7 +13,7 @@ entity_type: node
 bundle: subtopic_page
 label: Subtopics
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -23,13 +21,11 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
-      dhsc_contents_list_page: dhsc_contents_list_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
-      independent_content_page: independent_content_page
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: dhsc_contents_list_page
+    auto_create_bundle: localgov_guides_overview
 field_type: entity_reference

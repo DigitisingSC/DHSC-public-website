@@ -1,0 +1,52 @@
+uuid: bef18736-4619-4488-9ced-9208901e2dbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.supplier.field_answers_supplier
+    - field.field.node.supplier.field_body_paragraphs
+    - field.field.node.supplier.field_image
+    - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
+    - field.field.node.supplier.field_summary
+    - node.type.supplier
+  module:
+    - user
+id: node.supplier.teaser
+targetEntityType: node
+bundle: supplier
+mode: teaser
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: dhsc_supplier_logo
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_list_price:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_answers_supplier: true
+  field_body_paragraphs: true
+  field_non_possible_answers: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

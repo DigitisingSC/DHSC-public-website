@@ -1,0 +1,8 @@
+uuid: 09522140-a6f6-4b59-9af6-6dfe96555450
+langcode: en
+status: true
+dependencies: {  }
+id: footer_contacts
+label: 'Footer contacts'
+fieldset: Footer
+multiple: false

@@ -1,0 +1,10 @@
+uuid: ecaf3b7c-18f2-4fb0-bd72-2e1263d018bf
+langcode: en
+status: true
+dependencies: {  }
+id: topics
+label: Topics
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

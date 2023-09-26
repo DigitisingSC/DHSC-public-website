@@ -1,0 +1,34 @@
+uuid: 61ed49b0-3f18-4345-9cf2-f0b5dbbf7bf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_digital_skills.field_framework_sections
+    - field.field.paragraph.accordion_digital_skills.field_header
+    - paragraphs.paragraphs_type.accordion_digital_skills
+  module:
+    - entity_reference_revisions
+id: paragraph.accordion_digital_skills.default
+targetEntityType: paragraph
+bundle: accordion_digital_skills
+mode: default
+content:
+  field_framework_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

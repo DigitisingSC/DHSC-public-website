@@ -1,0 +1,23 @@
+uuid: 736d0067-ff4d-487d-9ba0-6d447c6e1821
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_intro_above_title
+    - node.type.content_page
+id: node.content_page.field_display_intro_above_title
+field_name: field_display_intro_above_title
+entity_type: node
+bundle: content_page
+label: 'Display intro above title?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean

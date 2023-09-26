@@ -10,9 +10,9 @@ id: node.subtopic_page.field_image
 field_name: field_image
 entity_type: node
 bundle: subtopic_page
-label: Image
+label: 'Featured Image'
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

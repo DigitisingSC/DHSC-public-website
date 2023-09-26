@@ -1,0 +1,12 @@
+{% set classes = [
+  'o-content-top-region',
+] %}
+<section{{ attributes.addClass(classes) }}>
+  {% if content is iterable  %}
+    {% for item in content %}
+      {{ item }}
+    {% endfor %}
+  {% else %}
+    {{ content }}
+  {% endif %}
+</section>

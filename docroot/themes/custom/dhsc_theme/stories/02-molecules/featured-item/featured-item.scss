@@ -1,0 +1,11 @@
+.m-featured-item {
+  &__media img {
+    @apply rounded-md h-[340px] object-cover;
+  }
+  &__description {
+    flex: 1 1 auto;
+  }
+  &__title a {
+    @apply after:content-[''] after:absolute after:block after:inset-x-0 after:inset-y-0;
+  }
+}

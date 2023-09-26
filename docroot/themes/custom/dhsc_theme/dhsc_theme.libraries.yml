@@ -1,33 +1,9 @@
 global:
   css:
     theme:
-      css/base/variables.css: {}
-      css/base/global.css: {}
-      css/layout/layout-utilities.css: {}
-
-alert-banner:
-  css:
-    theme:
-      css/components/alert-banner.css: {}
-
-banner:
-  css:
-    theme:
-      css/components/banner.css: {}
-
-ia-block:
-  css:
-    theme:
-      css/components/ia-block.css: {}
-
-header:
-  css:
-    theme:
-      css/layout/header.ie11.css: {}
-      css/layout/header.css: {}
-
-menu-main:
-  css:
-    theme:
-      css/components/menu-main.ie11.css: {}
-      css/components/menu-main.css: {}
+      dist/css/tailwind.css: {}
+      dist/css/components.css: {}
+      dist/css/global.css: {}
+  js:
+    https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js: { type: external, minified: true }
+    dist/js/components.js: {}

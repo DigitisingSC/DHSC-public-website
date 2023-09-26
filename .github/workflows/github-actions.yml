@@ -43,16 +43,30 @@ jobs:
       SSH_DEPLOYMENT_KEY: ${{ secrets.BLT_SSH_DEPLOYMENT_KEY }}
 
     steps:
-    # Using older version of actions/checkout to be able to use Ubuntu 16.04
+      # Needs this step here to make sure Chromatic publishing works properly
+    - name: Configure secure directory
+      run: git config --global --add safe.directory "*"
+
+      # Using older version of actions/checkout to be able to use Ubuntu 16.04
     - uses: actions/checkout@v1
 
     # Install node
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - uses: actions/setup-node@v3
       with:
         node-version: 16
     - run: node -v
-
+    - name: Recompile frontend
+      run: |
+        bash $GITHUB_WORKSPACE/scripts/custom/frontend-assets.sh
+#    - name: Publish to Chromatic
+#      uses: chromaui/action@v1
+#      with:
+#        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+#        workingDir: ./docroot/themes/custom/dhsc_theme
+#        exitZeroOnChanges: true
     - name: Prepare environment variables
       run: |
         echo "GITHUB_REF_NAME=$(echo ${GITHUB_REF##*/})" >> $GITHUB_ENV

@@ -1,33 +1,18 @@
-<div class="lgd-footer">
-	<div class="lgd-footer__pre-footer">
-		<div class="lgd-row">
+{% set classes = [
+  'm-menu m-menu--footer',
+  'text-black'
+] %}
 
-			<div class="lgd-row__one-third">
-				<ul class="menu menu--footer">
-					<li class="menu-item">
-						<a href="http://google.com/" target="_blank">Google</a>
-					</li>
-					<li class="menu-item">
-						<a href="/nulla-neque-dolor-sagittis-eget" data-drupal-link-system-path="node/1">Nulla neque dolor sagittis eget</a>
-					</li>
-					<li class="menu-item">
-						<a href="http://gov.uk">gov.uk</a>
-					</li>
-				</ul>
-			</div>
-			<div class="lgd-row__one-third">
-				<ul class="menu menu--footer">
-					<li class="menu-item">
-						<a href="http://google.com/" target="_blank">Google</a>
-					</li>
-					<li class="menu-item">
-						<a href="/nulla-neque-dolor-sagittis-eget" data-drupal-link-system-path="node/1">Nulla neque dolor sagittis eget</a>
-					</li>
-					<li class="menu-item">
-						<a href="http://gov.uk">gov.uk</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
+{% if items %}
+<nav{{ attributes.addClass(classes) }}>
+  <div class="m-menu__container w-full">
+    <ul class="m-menu__links pb-4 tablet:grid grid-cols-2 tablet:gap-3 tablet:justify-end pb-2">
+      {% for item in items %}
+      <li class="m-menu__item mb-2 tablet:mb-0">
+        <a href="{{ item.url }}" class="text-2xs tablet:text-xs">{{ item.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+{% endif %}

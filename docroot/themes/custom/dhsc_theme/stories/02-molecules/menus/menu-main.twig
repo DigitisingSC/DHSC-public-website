@@ -1,17 +1,63 @@
-<header class="lgd-header">
-	<div class="lgd-container">
-		<div class="lgd-region--primary-menu">
-			<ul class="menu menu--main">
-				<li class="menu-item">
-					<a href="https://www.google.com/">Google</a>
-				</li>
-				<li class="menu-item">
-					<a href="/nulla-neque-dolor-sagittis-eget" data-drupal-link-system-path="node/1">Nulla neque dolor sagittis eget</a>
-				</li>
-				<li class="menu-item">
-					<a href="https://www.gov.uk">gov.uk</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-</header>
+{# Classes #}
+{% set classes = [
+  'm-menu m-menu--main',
+  'text-black',
+] | sort | join(' ') | trim %}
+
+{# Template #}
+<nav{{ attributes.addClass(classes) }}>
+  <div class="m-menu__container w-full">
+    <ul class="m-menu--level-0 relative flex items-start py-[15px]">
+      {% for item in items %}
+        <li class="flex items-center" x-data="{isSelected: false}">
+          {% if item.below %}
+            <a href="#"
+               class="flex items-center text-black"
+               @click.prevent="isSelected = !isSelected"
+               @click.outside="isSelected = false"
+               @keyup.enter="isSelected = !isSelected"
+               aria-expanded="false"
+               aria-controls="menu_main_sub_{{ loop.index }}"
+            >
+              <span class="mr-2">{{ item.title }}</span>
+              <span :class="{ 'rotate-180' : isSelected }" class="transition-all">{{ svgIconDown }}</span>
+            </a>
+            <div
+              class="m-menu__stretcher absolute z-10 top-[100%] left-0 right-0 bg-coolgrey-20 w-[100vw]"
+              x-show="isSelected == true"
+            >
+              <div class="container mx-auto flex flex-col tablet:flex-row py-4 tablet:py-8 tablet:items-start">
+                <div class="tablet:w-6/12">
+                  <h3 class="mb-4">{{ item.title }}</h3>
+                  <ul class="">
+                    {% for subItem in item.below %}
+                      <li class="tablet:mr-8 flex items-center">
+                        <a href="{{ subItem.url }}" class="block text-forest text-2xs tablet:text-xs mb-4">{{ subItem.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% if loop.index == 1 %}
+                  {% if featuredLinks %}
+                    <div class="tablet:w-6/12">
+                      {{ featuredLinks }}
+                    </div>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            <a href="{{ item.url }}"
+               class="block text-black"
+               @click="isSelected = !isSelected"
+               @click.outside="isSelected = false"
+               @keyup.enter="isSelected = !isSelected"
+            >
+              {{ item.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,19 @@
+uuid: e8d54cf1-8e21-440a-99e8-e0278e48ebd5
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.dhsc_supplier_logo_desktop
+    - image.style.dhsc_supplier_logo_mobile
+  module:
+    - localgov_media
+id: dhsc_supplier_logo
+label: 'DHSC Supplier logo'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_supplier_logo_desktop
+    breakpoint_id: localgov_media.bootstrap4_md_768px
+    multiplier: 1x
+breakpoint_group: localgov_media
+fallback_image_style: dhsc_supplier_logo_mobile

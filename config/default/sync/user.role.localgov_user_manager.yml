@@ -2,7 +2,15 @@ uuid: d4a7b796-3687-426b-aba5-1c5a40c3a5ce
 langcode: en
 status: true
 dependencies:
+  config:
+    - filter.format.basic_html
+    - filter.format.full_html
+    - filter.format.restricted_html
+    - workflows.workflow.editorial_workflow
   module:
+    - content_moderation
+    - eu_cookie_compliance
+    - filter
     - role_delegation
     - system
     - toolbar
@@ -21,4 +29,10 @@ permissions:
   - 'assign localgov_author role'
   - 'assign localgov_contributor role'
   - 'assign localgov_editor role'
+  - 'display eu cookie compliance popup'
+  - 'use editorial_workflow transition create_new_draft'
+  - 'use editorial_workflow transition submit_for_approval'
+  - 'use text format basic_html'
+  - 'use text format full_html'
+  - 'use text format restricted_html'
   - 'view the administration theme'

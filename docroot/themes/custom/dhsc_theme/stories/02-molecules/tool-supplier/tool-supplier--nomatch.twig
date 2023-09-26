@@ -1,0 +1,43 @@
+{% set classes = [
+  'm-tool-supplier',
+  'tool-supplier--' ~ variant,
+] %}
+<div{{attributes.addClass(classes)}}>
+  <div class="m-tool-supplier__title mb-2">
+    {% if url %}
+      <a href="{{ url }}" class="text-forest text-md">
+        <h4>{{ title }}</h4>
+      </a>
+    {% else %}
+      <h4>{{ title }}</h4>
+    {% endif %}
+  </div>
+  <div class="m-tool-supplier__content">
+    <h4 class="text-base text-bold mb-2">{{ 'Criteria not met:'|t }}</h4>
+    {% if answers is iterable %}
+      {% if preview_component %}
+        {% for answer in answers %}
+          <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ answer.section }}</div>
+          <ul class="list-disc pl-4 mb-4 last:mb-0">
+            {% for item in answer.answer %}
+              <li>
+                <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ item }}</div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      {% else %}
+        {# Drupal component rendering #}
+        {% for key, value in answers %}
+          <div class="m-tool-supplier__section text-coolgrey text-xs mb-2">{{ key }}</div>
+          {% for answer in value %}
+            <ul class="list-disc pl-4 mb-4 last:mb-0">
+              <li>
+                <div class="m-tool-supplier__answer text-coolgrey text-xs">{{ answer }}</div>
+              </li>
+            </ul>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+  </div>

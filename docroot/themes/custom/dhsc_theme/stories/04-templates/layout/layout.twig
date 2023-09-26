@@ -1,0 +1,84 @@
+{% set sidebars = [
+  'sidebar_first',
+  'sidebar_second',
+] %}
+
+<div class="t-header flex flex-wrap flex-row">
+
+  {{ header }}
+
+  {{ search }}
+
+  {{ primary_menu }}
+
+  {{ secondary_menu }}
+
+  {{ messages }}
+
+  {{ banner }}
+
+  {{ breadcrumb }}
+
+  {{ tabs }}
+
+</div>
+
+<main class="t-content"{% if not remove_main_id %} id="main-content"{% endif %}>
+
+  <div class="container mx-auto">
+    {{ content_top }}
+  </div>
+
+  {# Begin Sidebars #}
+  {% if has_sidebars %}
+    <div class="container mx-auto tablet:flex tablet:gap-4">
+      {% if sidebar_first and not sidebar_second %}
+        <aside class="t-sidebar t-sidebar--first tablet:w-3/12">
+          {{ sidebar_first }}
+        </aside>
+        <div class="t-main tablet:w-9/12">
+          {{ content }}
+        </div>
+      {% endif %}
+
+      {% if sidebar_second and not sidebar_first %}
+        <div class="t-main tablet:w-9/12">
+          {{ content }}
+        </div>
+        <aside class="t-sidebar t-sidebar--second tablet:w-3/12">
+          {{ sidebar_second }}
+        </aside>
+      {% endif %}
+
+      {% if sidebar_first and sidebar_second %}
+        <aside class="t-sidebar t-sidebar--first tablet:w-3/12">
+          {{ sidebar_first }}
+        </aside>
+        <div class="t-main tablet:w-6/12">
+          {{ content }}
+        </div>
+        <aside class="t-sidebar t-sidebar--second tablet:w-3/12">
+          {{ sidebar_second }}
+        </aside>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="container mx-auto tablet:flex">
+      <div class="t-main tablet:w-full">
+        {{ content }}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="container mx-auto">
+    {{ content_bottom }}
+  </div>
+
+</main>
+
+<footer class="t-footer border-t-4 border-green mt-8">
+  {{ footer_top }}
+  {{ footer }}
+  {{ footer_bottom }}
+  {{ footer_legal }}
+</footer>

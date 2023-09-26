@@ -1,0 +1,5 @@
+name: DHSC Result Viewer
+description: Module to create result pages.
+core_version_requirement: ^8 || ^9
+type: module
+package: DHSC

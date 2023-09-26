@@ -1,0 +1,59 @@
+{#
+Classes
+#}
+{% set classes = [
+  't-event'
+] %}
+
+{#
+  Template
+#}
+<article{{ attributes.addClass(classes) }}>
+  <div class="t-event__header">
+    {% if title %}
+      <div class="t-event__title">
+        <h1 class="mb-4">{{ title }}</H1>
+      </div>
+    {% endif %}
+    {% if subtitle %}
+      <div class="t-event__subtitle text-coolgrey mb-4 tablet:mb-7">
+        <span class="text-md">{{ subtitle }}</span>
+      </div>
+    {% endif %}
+
+  </div>
+  <div class="t-event__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+    <div class="t-event__content-wrapper{% if related %} tablet:w-9/12{% endif %}">
+      {% if featured_image|render is not empty %}
+        <div class="t-event__details mb-5 tablet:mb-7">
+          {{ featured_image }}
+        </div>
+      {% endif %}
+      {% if event_details %}
+        <div class="t-event__details">
+          {{ event_details }}
+        </div>
+      {% endif %}
+      <div class="t-event__content">
+        {{ content }}
+      </div>
+    </div>
+    {% if related %}
+      <aside class="t-event__related tablet:w-3/12">
+        {{ related }}
+      </aside>
+    {% endif %}
+  </div>
+
+  <div class="t-event__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+    {% if further_information %}
+      <section class="t-event__related w-full tablet:w-9/12">
+        {{ further_information }}
+      </section>
+    {% endif %}
+    <div class="t-event__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+      {% include "@molecules/back-to-top/back-to-top.twig" %}
+    </div>
+  </div>
+
+</article>

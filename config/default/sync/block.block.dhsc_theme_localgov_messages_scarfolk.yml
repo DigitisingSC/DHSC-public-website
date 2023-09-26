@@ -11,7 +11,7 @@ _core:
 id: dhsc_theme_localgov_messages_scarfolk
 theme: dhsc_theme
 region: messages
-weight: 0
+weight: -7
 provider: null
 plugin: system_messages_block
 settings:

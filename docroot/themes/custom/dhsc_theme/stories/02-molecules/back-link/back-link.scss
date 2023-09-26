@@ -1,0 +1,13 @@
+.m-back-link-default, .m-back-link-form {
+  @apply flex items-center py-4;
+
+  &__icon {
+    svg {
+      @apply fill-forest-100 h-2 w-2;
+    }
+  }
+
+  &__label {
+    @apply text-xs text-forest-100 ml-2 cursor-pointer;
+  }
+}

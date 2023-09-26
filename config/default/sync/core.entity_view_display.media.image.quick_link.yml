@@ -1,0 +1,36 @@
+uuid: fc596f58-6f3d-4db5-8a0d-3ac44dc50d58
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.quick_link
+    - field.field.media.image.field_media_image
+    - image.style.quick_link_desktop
+    - media.type.image
+  module:
+    - image
+_core:
+  default_config_hash: jqkrCxNiSog7mNWSHrlh9HDmgLIgyT3qtEo2xoru_cQ
+id: media.image.quick_link
+targetEntityType: media
+bundle: image
+mode: quick_link
+content:
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: quick_link_desktop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

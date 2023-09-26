@@ -1,0 +1,22 @@
+.m-menu--main {
+  .m-menu--level-0 li svg {
+    @apply h-3 w-3;
+  }
+
+  .m-menu--level-0 > li {
+    @apply mr-4 tablet:mr-[80px] desktop:mr-[100px];
+  }
+  .m-menu--level-0 > li:last-child {
+    @apply flex tablet:hidden mr-0;
+  }
+
+  .m-menu--level-0 > li:nth-child(n+2):not(:last-child) {
+    @apply hidden tablet:flex;
+  }
+
+  .m-menu__stretcher {
+    margin-left: calc((-100vw + 100%) / 2);
+    margin-right: calc((-100vw + 100%) / 2);
+  }
+
+}

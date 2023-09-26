@@ -1,0 +1,25 @@
+{% set classes = [
+  'm-newsletter-signup',
+] %}
+
+<div{{attributes.addClass(classes)}}>
+  {% if title or description %}
+    <div class="m-newsletter-signup__title mb-2">
+    {% if title %}
+      <h3>
+        {{ title }}
+      </h3>
+    {% endif %}
+    {% if description %}
+      <div class="m-newsletter-signup__description">
+        {{ description }}
+      </div>
+    {% endif %}
+    </div>
+    {% if form %}
+      <div class="m-newsletter-signup__form">
+        {{ form }}
+      </div>
+    {% endif %}
+  {% endif %}
+</div>

@@ -1,0 +1,14 @@
+.a-video {
+  &__container {
+    @apply max-w-[31rem] relative;
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
+    iframe {
+      @apply w-full h-full object-cover absolute;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{#
+  Template
+#}
+<div class="m-event-details mb-5 tablet:mb-8 text-base">
+  {% if expired %}
+    <div class="m-event-details__expired">
+      <span>{{ 'This event has expired'|t }}</span>
+    </div>
+  {% else %}
+    <div class="m-event-details__wrapper tablet:flex tablet:flex-row tablet:gap-6 pt-3 border-t border-t-black-20">
+      {% if date %}
+        <div class="m-event-details__date tablet:w-2/4">
+          <h3 class="mb-2">{{ 'Date and time'|t }}</h3>
+
+          <div>
+            <b>{{ 'Date'|t }}:</b> {{ date }}
+          </div>
+
+          {% if start_time is not empty and end_time is not empty %}
+            <div>
+              <b>{{ 'Start'|t }}:</b> {{ start_time }}
+            </div>
+            <div>
+              <b>{{ 'End'|t }}:</b> {{ end_time }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if location or link %}
+        <div class="m-event-details__location__link tablet:w-2/4">
+
+          {% if location %}
+            <div class="m-event-details__location">
+              <h3 class="mb-2">{{ 'Location'|t }}</h3>
+
+              {% if location.link %}
+                <a href="{{ location.link }}" class="text-base text-forest" target="_blank">{{ location.place }}</a>
+              {% else %}
+                {{ location.place }}
+              {% endif %}
+
+            </div>
+          {% endif %}
+
+          {% if link %}
+            <div class="m-event-details__link break-words text-forest">
+              {{ link }}
+            </div>
+          {% endif %}
+
+        </div> {# End of right side #}
+      {% endif %}
+    </div> {# End of bordered component #}
+  {% endif %}
+</div>

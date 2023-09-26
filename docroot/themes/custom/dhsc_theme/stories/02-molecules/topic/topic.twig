@@ -1,0 +1,36 @@
+{#
+  Template
+#}
+
+{# Classes #}
+{% set classes = [
+  'm-topic',
+  'bg-forest-20 bg-opacity-50 hover:bg-opacity-100 hover:cursor',
+  'relative p-4 tablet:p-6 rounded-md'
+] | join(' ') | trim %}
+
+{% set attributes = attributes
+  .addClass(classes)
+%}
+
+<div {{ attributes }}>
+  <div class="content-wrapper flex flex-col justify-between h-full">
+    {% if heading %}
+      <h3 class="m-topic__link">
+        {% if link %}
+          <a href="{{ link }}" >
+        {% endif %}
+          {{ heading }}
+        {% if link %}
+          </a>
+        {% endif %}
+      </h3>
+    {% endif %}
+    {% if description %}
+      <div class="grow text-black/75">{{ description }}</div>
+    {% endif %}
+    <p class="m-topic__icon flex justify-end pt-4 text-white">
+      <span>{{ icon }}</span>
+    </p>
+  </div>
+</div>

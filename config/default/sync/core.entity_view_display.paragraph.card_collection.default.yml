@@ -1,0 +1,47 @@
+uuid: 06afa14d-d6b9-4580-b723-477758eb9fa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_collection.field_card_items
+    - field.field.paragraph.card_collection.field_cta_link
+    - field.field.paragraph.card_collection.localgov_title
+    - paragraphs.paragraphs_type.card_collection
+  module:
+    - link
+id: paragraph.card_collection.default
+targetEntityType: paragraph
+bundle: card_collection
+mode: default
+content:
+  field_card_items:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: card
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cta_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  localgov_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

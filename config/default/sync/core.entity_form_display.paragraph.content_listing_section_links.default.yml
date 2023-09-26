@@ -1,0 +1,36 @@
+uuid: 7febd8d1-6fc0-4f05-8950-fbde2c04e45d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing_section_links.field_section_child_links
+    - field.field.paragraph.content_listing_section_links.field_section_link
+    - paragraphs.paragraphs_type.content_listing_section_links
+id: paragraph.content_listing_section_links.default
+targetEntityType: paragraph
+bundle: content_listing_section_links
+mode: default
+content:
+  field_section_child_links:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_link:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

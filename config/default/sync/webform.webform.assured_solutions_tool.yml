@@ -1,0 +1,419 @@
+uuid: e3e3c211-d231-47d8-81d6-3c6be642e76b
+langcode: en
+status: open
+dependencies:
+  module:
+    - dhsc_result_viewer
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: assured_solutions_tool
+title: 'Assured Solutions Tool'
+description: ''
+category: ''
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': Devices
+    processed_text:
+      '#type': processed_text
+      '#text': '<h1>Do you need your software supplier to provide you with devices such as computers, tablets and phones?</h1><p>If you already have and use these devices at your organisation, for any reason, select ‘no’</p>'
+      '#format': full_html
+    device_option:
+      '#type': radios
+      '#title': 'Do you need your software supplier to provide you with devices such as computers, tablets and phones?'
+      '#title_display': invisible
+      '#options':
+        device_option_yes: 'Yes'
+        device_option_no: 'No'
+        device_option_not_sure: 'Not sure'
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Care services'
+    processed_text_2:
+      '#type': processed_text
+      '#text': '<h1>What types of services do you provide?</h1><p>Select all that apply</p>'
+      '#format': full_html
+    domiciliary_care_services:
+      '#type': checkbox
+      '#title': 'Domiciliary care services'
+      '#description': 'Including caring for people in their homes or giving live in care'
+      '#description_display': after
+    extra_care_services:
+      '#type': checkbox
+      '#title': 'Extra care services'
+      '#description': 'Including supporting older people in assisted living accommodation'
+      '#description_display': after
+    supported_living_care_services:
+      '#type': checkbox
+      '#title': 'Supported living care services'
+      '#description': 'Including supporting people to live independently in local authority housing'
+      '#description_display': after
+    shared_lives_services:
+      '#type': checkbox
+      '#title': 'Shared lives services'
+      '#description': 'Including matching a carer to a recipient for a shared home or family life'
+      '#description_display': after
+    care_home_services_including_nursing:
+      '#type': checkbox
+      '#title': 'Care home services, including nursing'
+      '#description': 'Including in nursing homes, convalescent homes, respite care and mental health crisis houses'
+      '#description_display': after
+    care_home_services_not_including_nursing:
+      '#type': checkbox
+      '#title': 'Care home services, not including nursing'
+      '#description': 'Including in residential homes, rest homes, convalescent homes, respite care, mental health crisis houses and therapeutic communities'
+      '#description_display': after
+    other_care_services:
+      '#type': checkbox
+      '#title': 'Other care services'
+      '#description': 'Including in unregulated settings'
+      '#description_display': after
+  step_3:
+    '#type': webform_wizard_page
+    '#title': 'Additional features'
+    processed_text_03:
+      '#type': processed_text
+      '#text': '<p>&lt;1&gt; What do you need your digital social care record solution to do?</p><p>All solutions will offer <a href="https://www.google.com">core features</a>, so these are additional features that only some solutions offer. If you’re not sure which features you need, get advice on <a href="https://www.google.com">working out what you need.</a></p>'
+      '#format': full_html
+    markup:
+      '#type': webform_markup
+      '#markup': '<h4>Work offline</h4>'
+    view_care_records_offline:
+      '#type': checkbox
+      '#title': 'View care records offline'
+    automatically_update_changes_made_offline_when_back_online:
+      '#type': checkbox
+      '#title': 'Automatically update changes made offline when back online'
+    flag_if_a_record_edited_simultaneously_online_offline:
+      '#type': checkbox
+      '#title': 'Flag if a record edited simultaneously online/offline doesn’t match'
+    markup_01:
+      '#type': webform_markup
+      '#markup': '<h4>Save photos, videos or body maps to records</h4>'
+    capture_information_using_body_maps:
+      '#type': checkbox
+      '#title': 'Capture information using body maps'
+      '#description': 'For example, treatment details or signs of visible harm'
+      '#description_display': after
+    add_videos_to_records:
+      '#type': checkbox
+      '#title': 'Add videos to records'
+      '#description': 'For example, to show someone&rsquo;s progress carrying out certain tasks'
+      '#description_display': after
+    add_photos_to_records:
+      '#type': checkbox
+      '#title': 'Add photos to records'
+      '#description': 'For example, to capture important moments in someone&rsquo;s journey'
+      '#description_display': after
+    markup_02:
+      '#type': webform_markup
+      '#markup': '<h4>Get records read out to you</h4>'
+    capture_voice_recordings_in_structured_formats:
+      '#type': checkbox
+      '#title': 'Capture voice recordings in structured formats'
+      '#description': 'For example, ICD11 or Snomed'
+      '#description_display': after
+    get_records_read_out_to_you:
+      '#type': checkbox
+      '#title': 'Get records read out to you'
+      '#description': 'For example, if you&rsquo;re on the go'
+      '#description_display': after
+    markup_03:
+      '#type': webform_markup
+      '#markup': '<h4>Allow non-staff including family to see or contribute to records</h4>'
+    allow_care_recipients_to_contribute_to_their_own_care_plan:
+      '#type': checkbox
+      '#title': 'Allow care recipients to contribute to their own care plan'
+    allow_care_recipients_to_record_notes_for_staff_performing_tasks:
+      '#type': checkbox
+      '#title': 'Allow care recipients to record notes for staff performing tasks'
+      '#description': 'For example, their tea or coffee preference'
+      '#description_display': after
+    allow_third_parties_to_view_care_plans:
+      '#type': checkbox
+      '#title': 'Allow third parties to view care plans'
+      '#description': 'For example, family members'
+      '#description_display': after
+    allow_third_parties_to_contribute_to_care_plans:
+      '#type': checkbox
+      '#title': 'Allow third parties to contribute to care plans'
+      '#description': 'For example, family members'
+      '#description_display': after
+    markup_04:
+      '#type': webform_markup
+      '#markup': '<h4>Access and share data with the NHS in real time</h4>'
+    see_live_primary_care_records:
+      '#type': checkbox
+      '#title': 'See live primary care records'
+      '#description': 'For example, from GPs and pharmacies'
+      '#description_display': after
+    see_other_live_nhs_records:
+      '#type': checkbox
+      '#title': 'See other live NHS records'
+      '#description': 'For example, summary care records'
+      '#description_display': after
+    access_the_electronic_medications:
+      '#type': checkbox
+      '#title': 'Access the Electronic Medications Administration and Recording (EMAR) systems'
+      '#description': 'May require use of a third party solution'
+      '#description_display': after
+    share_records_for_emergency_hospital_admissions:
+      '#type': checkbox
+      '#title': 'Share records for emergency hospital admissions'
+      '#description': 'Transfers your data in a shareable format other systems can access'
+      '#description_display': after
+    receive_hospital_discharge_information:
+      '#type': checkbox
+      '#title': 'Receive hospital discharge information'
+      '#description': 'Captures the data in a shareable format your system can access'
+      '#description_display': after
+    markup_05:
+      '#type': webform_markup
+      '#markup': '<h4>Capture and display staff skills and training</h4>'
+    record_care_workers_skills_or_training:
+      '#type': checkbox
+      '#title': 'Record care workers’ skills or training'
+    record_care_workers_skills_or_training_against_set_categories:
+      '#type': checkbox
+      '#title': 'Record care workers’ skills or training against set categories'
+      '#description': 'This may make it easier to search for people with a specific qualification, for example'
+      '#description_display': after
+    markup_06:
+      '#type': webform_markup
+      '#markup': '<h4>Support in-system messaging or get alerts from third party solutions</h4>'
+    show_alerts_from_third_party_solutions:
+      '#type': checkbox
+      '#title': 'Show alerts from third party solutions'
+    allow_care_workers_to_send_each_other_notifications:
+      '#type': checkbox
+      '#title': 'Allow care workers to send each other notifications'
+    markup_07:
+      '#type': webform_markup
+      '#markup': '<h4>Create bespoke reports</h4>'
+    create_bespoke_reports_about_care_recipients:
+      '#type': checkbox
+      '#title': 'Create bespoke reports about care recipients'
+    create_bespoke_reports_about_your_organisation_or_service:
+      '#type': checkbox
+      '#title': 'Create bespoke reports about your organisation or service'
+    recipients_needs_against_staff_skills:
+      '#type': checkbox
+      '#title': 'Create reports comparing care recipients’ needs against staff skills'
+      '#description': 'These can help with recruiting and training staff'
+      '#description_display': after
+    create_reports_showing_time_allocated_to_providing_care:
+      '#type': checkbox
+      '#title': 'Create reports showing time allocated to providing care'
+      '#description': 'These can help with business planning'
+      '#description_display': after
+    markup_08:
+      '#type': webform_markup
+      '#markup': '<h4>Add to needs assessment template or measure progress against goals</h4>'
+    measure_progress_against_goals:
+      '#type': checkbox
+      '#title': 'Measure progress against goals'
+    add_to_needs_assessment_templates:
+      '#type': checkbox
+      '#title': 'Add to needs assessment templates'
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Continue
+css: ".webform-submission-information {display: none}\r\n.webform-button--previous{display: none}"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: true
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: false
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: Continue
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: url
+  confirmation_url: '/dhsc-results-list-assured-solutions/?token=[webform_submission:token]'
+  confirmation_title: Result!
+  confirmation_message: '[webform_submission:token-update-url]'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: true
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  sets_form_metadata_in_tempstore_:
+    id: dhsc_set_submission_id_handler
+    handler_id: sets_form_metadata_in_tempstore_
+    label: 'Sets form metadata in tempstore.'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: -49
+    settings: {  }
+variants: {  }

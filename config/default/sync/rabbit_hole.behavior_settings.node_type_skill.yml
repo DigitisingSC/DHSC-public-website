@@ -1,0 +1,14 @@
+uuid: 775c8645-4df5-4820-b221-ce9bff4144df
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.skill
+id: node_type_skill
+entity_type_id: node_type
+entity_id: skill
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

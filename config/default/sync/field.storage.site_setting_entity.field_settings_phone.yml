@@ -1,0 +1,19 @@
+uuid: 15172e5a-a712-4701-980c-954030fdc84e
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_settings
+    - telephone
+id: site_setting_entity.field_settings_phone
+field_name: field_settings_phone
+entity_type: site_setting_entity
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
