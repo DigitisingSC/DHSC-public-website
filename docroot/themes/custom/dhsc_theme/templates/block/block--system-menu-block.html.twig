@@ -49,11 +49,22 @@
     {{ attach_library('localgov_base/menu-main') }}
   {% endif %}
 {% endif %}
-
+{%
+  set title_classes = [
+  'text-base text-bold',
+  'pb-4',
+  'mb-4',
+  'min-w-[16.25rem]',
+]
+%}
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav role="navigation" aria-label="{{ configuration.label }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
+  {% if derivative_plugin_id == 'footer' %}
+    <h2 {{title_attributes.addClass(title_classes)}}>
+      {{ label }}
+    </h2>
+  {% endif %}
   {# We removed labels and invisible headings for better accessibility #}
-
   {# Menu. #}
   {% block content %}
     {{ content }}

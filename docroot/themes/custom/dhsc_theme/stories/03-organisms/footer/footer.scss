@@ -5,8 +5,18 @@
       @apply object-contain;
     }
   }
+  &__column {
+    @media screen and (min-width: 835px) {
+      flex: 0 0 16.25rem;
+    }
+  }
   &__column:nth-child(2) {
     > div {
+      border-top: 1px solid rgb(207, 209, 210);
+      padding-top: 1.25rem;
+      @media screen and (min-width: 835px) {
+        padding-top: 1.875rem;
+      }
       @apply order-2;
       @screen tablet {
         @apply order-1;
@@ -18,5 +28,11 @@
         @apply order-2;
       }
     }
+  }
+}
+
+.o-footer-region-top__content {
+  h2 {
+    border-bottom: 1px solid rgb(207, 209, 210);
   }
 }
