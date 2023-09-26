@@ -53,7 +53,7 @@
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
 <nav role="navigation" aria-label="{{ configuration.label }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
   {% if derivative_plugin_id == 'footer' %}
-    <h2 class="text-base text-bold pb-4">
+    <h2 class="text-base text-bold mt-8 tablet:mt-0 pb-4">
       {{ label }}
     </h2>
     <div class="with-border mb-4"></div>

@@ -8,10 +8,10 @@
   </div>
   {% endif %}
   <div class="o-footer-region__content container mx-auto w-full pb-4 flex flex-col tablet:flex-row tablet:justify-between tablet:items-end">
-    <div class="o-footer-region__column order-1 tablet:order-0 mb-0">
+    <div class="o-footer-region__column order-0 tablet:order-1 mt-8 mb-4 tablet:mt-0 tablet:mb-0">
       <img src="{{ logo }}" alt="">
     </div>
-    <div class="o-footer-region__column order-0 tablet:order-1 mb-0 flex flex-col">
+    <div class="o-footer-region__column order-1 tablet:order-0 mb-0 flex flex-col">
       {% if content is iterable  %}
         {% for item in content %}
           {{ item }}
