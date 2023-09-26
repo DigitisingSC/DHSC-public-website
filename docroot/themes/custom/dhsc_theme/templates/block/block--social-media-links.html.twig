@@ -36,13 +36,14 @@
   set title_classes = [
   'text-base text-bold',
   'pb-4',
+  'mb-4',
+  'min-w-[16.25rem]',
 ]
 %}
 <div{{attributes.addClass(classes)}}>
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes.addClass(title_classes)}}>{{ label }}</h2>
-    <div class="with-border mb-4 min-w-[16.25rem]"></div>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
