@@ -42,10 +42,11 @@
   {{ title_prefix }}
   {% if label %}
     <h2{{title_attributes.addClass(title_classes)}}>{{ label }}</h2>
+    <div class="with-border mb-4 min-w-[16.25rem]"></div>
   {% endif %}
   {{ title_suffix }}
   {% block content %}
     {{ content }}
   {% endblock %}
+  <div class="with-border mt-[3.5rem]"></div>
 </div>
-

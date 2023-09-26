@@ -5,6 +5,9 @@
       @apply object-contain;
     }
   }
+  &__column{
+    flex: 0 0 16.25rem;
+  }
   &__column:nth-child(2) {
     > div {
       @apply order-2;
