@@ -228,6 +228,28 @@ module.exports = {
                 },
               },
             },
+            // Tables
+            {
+              table: {
+                th:{
+                  fontSize: '1.1875rem',
+                  lineHeight: '1.75rem',
+                  verticalAlign: 'top',
+                  paddingTop: '0.9375rem',
+                  paddingBottom: '0.9375rem',
+                  borderBottomWidth: '0.125rem',
+                },
+                td: {
+                  fontSize: '1.1875rem',
+                  lineHeight: '1.625rem',
+                  paddingTop: '0.9375rem',
+                  paddingBottom: '0.9375rem',
+                  paddingLeft: '0.25rem',
+                  paddingRight: '0.25rem',
+                  borderBottomWidth: '1px',
+                },
+              }
+            },
           ],
         },
       }),

@@ -98,6 +98,7 @@ module:
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0
+  responsive_tables_filter: 0
   rh_node: 0
   rh_taxonomy: 0
   robotstxt: 0

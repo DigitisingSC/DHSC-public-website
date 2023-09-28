@@ -5,6 +5,7 @@ dependencies:
   module:
     - editor
     - linkit
+    - responsive_tables_filter
 name: 'Basic HTML'
 format: basic_html
 weight: 0
@@ -27,7 +28,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 id class="text-align-left text-align-center text-align-right text-align-justify"> <h3 id class="text-align-left text-align-center text-align-right text-align-justify"> <h4 id class="text-align-left text-align-center text-align-right text-align-justify"> <h5 id class="text-align-left text-align-center text-align-right text-align-justify"> <h6 id class="text-align-left text-align-center text-align-right text-align-justify"> <a class="a-button a-button--primary a-button--secondary" hreflang target data-entity-type data-entity-uuid data-entity-substitution href> <dl> <dt> <dd> <span> <ul type> <ol type start> <img data-entity-type data-entity-uuid data-align data-caption src alt height width> <strong> <em> <u> <code> <s> <blockquote> <li> <hr>'
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right text-align-justify"> <h2 id class="text-align-left text-align-center text-align-right text-align-justify"> <h3 id class="text-align-left text-align-center text-align-right text-align-justify"> <h4 id class="text-align-left text-align-center text-align-right text-align-justify"> <h5 id class="text-align-left text-align-center text-align-right text-align-justify"> <h6 id class="text-align-left text-align-center text-align-right text-align-justify"> <a class="a-button a-button--primary a-button--secondary" hreflang target data-entity-type data-entity-uuid data-entity-substitution href> <dl> <dt> <dd> <span> <ul type> <ol type start> <img data-entity-type data-entity-uuid data-align data-caption src alt height width> <strong> <em> <u> <code> <s> <blockquote> <li> <hr> <table> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -56,3 +57,11 @@ filters:
     weight: 0
     settings:
       title: true
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: true
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'
