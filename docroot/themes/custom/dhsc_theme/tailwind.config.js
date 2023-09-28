@@ -247,6 +247,17 @@ module.exports = {
                   paddingLeft: '0.25rem',
                   paddingRight: '0.25rem',
                   borderBottomWidth: '1px',
+                  position: 'relative',
+                  '&:not(:last-child)::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-1px',
+                    display: 'block',
+                    right: '-4px',
+                    height: '1px',
+                    width: '8px',
+                    backgroundColor: 'rgb(255 255 255 / 1)',
+                  },
                 },
               }
             },
