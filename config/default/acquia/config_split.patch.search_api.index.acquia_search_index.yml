@@ -7,7 +7,7 @@ adding:
   third_party_settings:
     acquia_search:
       use_edismax: 0
-  read_only: true
+  read_only: false
   field_settings:
     status:
       label: Published
