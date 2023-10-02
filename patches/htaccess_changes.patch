@@ -16,6 +16,9 @@ index 1575c51..e5f3464 100644
 +  # ensure https
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
 +  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
++  # redirect main domain to beta url
++  RewriteCond %{HTTP_HOST} ^dev.digitisingsocialcare.co.uk$ [NC]
++  RewriteRule ^ https://beta.digitisingsocialcare.co.uk/$1 [R=301,L]
 +
    # Rules to correctly serve gzip compressed CSS and JS files.
    # Requires both mod_rewrite and mod_headers to be enabled.
