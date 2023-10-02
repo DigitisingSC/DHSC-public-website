@@ -30,6 +30,7 @@
     'o-block',
     'o-block--' ~ configuration.provider|clean_class,
     'o-block--' ~ plugin_id|clean_class,
+    'w-full',
   ]
 %}
 {%
@@ -37,7 +38,6 @@
   'text-base text-bold',
   'pb-4',
   'mb-4',
-  'min-w-[16.25rem]',
 ]
 %}
 <div{{attributes.addClass(classes)}}>

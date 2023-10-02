@@ -56,11 +56,12 @@
   'mt-[2.5rem]',
   'tablet:mt-0',
   'mb-4',
-  'min-w-[16.25rem]',
-]
+  ]
 %}
+{% set footer_classes = derivative_plugin_id == 'footer' ? 'max-w-[39.563rem]' : '' %}
+
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-<nav role="navigation" aria-label="{{ configuration.label }}" {{ attributes.addClass(classes)|without('role', 'aria-labelledby') }}>
+<nav role="navigation" aria-label="{{ configuration.label }}" {{ attributes.addClass(classes, footer_classes)|without('role', 'aria-labelledby') }}>
   {% if derivative_plugin_id == 'footer' %}
     <h2 {{title_attributes.addClass(title_classes)}}>
       {{ label }}
