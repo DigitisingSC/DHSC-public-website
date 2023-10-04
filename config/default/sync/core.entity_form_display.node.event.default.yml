@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.event.field_subtitle
     - field.field.node.event.field_summary
     - node.type.event
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - datetime
@@ -207,10 +208,10 @@ content:
       closed_mode_threshold: 0
       add_mode: button
       form_display_mode: default
-      default_paragraph_type: related_information
+      default_paragraph_type: _none
       features:
         add_above: '0'
-        collapse_edit_all: '0'
+        collapse_edit_all: collapse_edit_all
         duplicate: '0'
     third_party_settings:
       paragraphs_features:
