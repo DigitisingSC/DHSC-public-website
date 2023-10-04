@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: accordion
 label: 'Accordion items'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
@@ -27,6 +27,9 @@ settings:
     target_bundles_drag_drop:
       accordion:
         weight: 23
+        enabled: false
+      accordion_digital_skills:
+        weight: 33
         enabled: false
       accordion_item:
         weight: 24
@@ -55,8 +58,23 @@ settings:
       dynamic_content_listing:
         weight: 32
         enabled: false
+      featured_items:
+        weight: 43
+        enabled: false
+      framework_row:
+        weight: 44
+        enabled: false
+      framework_section:
+        weight: 45
+        enabled: false
       from_library:
         weight: 33
+        enabled: false
+      full_content_listings:
+        weight: 47
+        enabled: false
+      further_information:
+        weight: 48
         enabled: false
       link_description:
         weight: 34
@@ -73,11 +91,20 @@ settings:
       newsletter_signup:
         weight: 38
         enabled: false
+      pagination:
+        weight: 54
+        enabled: false
       quick_link:
         weight: 39
         enabled: false
       quick_links:
         weight: 40
+        enabled: false
+      related_information:
+        weight: 57
+        enabled: false
+      skills_framework:
+        weight: 58
         enabled: false
       topic:
         weight: 41
