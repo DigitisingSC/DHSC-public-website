@@ -59,6 +59,15 @@
       margin: 0 auto;
       }
       }
+      .email-content{
+      font-size: 16px
+      }
+      .email-content a {
+      color: #00594c !important;
+      }
+      .email-content h4 {
+      margin-top: 60px;
+      }
       body {
       margin: 0;
       padding: 0;
@@ -215,8 +224,10 @@
                                                                                  {# Main email content #}
                                                                                  <div id="center" style="border-bottom: 1px solid #cfd1d2;">
                                                                                     <div id="main">
-                                                                                      <h2>Result summary</h2>
-                                                                                      {{ body }}
+                                                                                      <h2 style="font-size:24px; margin-bottom:0;">Get started with digital Recommendations</h2>
+                                                                                      <div class="email-content">
+                                                                                        {{ body }}
+                                                                                      </div>
                                                                                     </div>
                                                                                   </div>
                                                                                  {# End - Main email content #}

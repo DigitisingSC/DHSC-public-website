@@ -226,7 +226,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase
     $key = 'email_result';
     $to = $email;
     $langcode = $this->languageManager->getDefaultLanguage()->getId();
-    $params['subject'] = t('Self assessment: Email result');
+    $params['subject'] = t('Get started with email recommendations');
 
     $result_items = '';
     if ($results) {
