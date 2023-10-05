@@ -23,7 +23,11 @@
         <!-- {{ css }} -->
       </style>
     {% endif %}
+    <!--[if !mso]><!-->
+    <link href="https://fonts.cdnfonts.com/css/frutiger" rel="stylesheet">
+    <!--<![endif]-->
     <style type="text/css">
+      @import url('https://fonts.cdnfonts.com/css/frutiger');
       @media only screen and (min-width: 520px) {
       .u-row {
       width: 500px !important;
@@ -67,6 +71,9 @@
       }
       .email-content h4 {
       margin-top: 60px;
+      }
+      .email-content p, span, h2 {
+      font-family: 'Frutiger', sans-serif;
       }
       body {
       margin: 0;
