@@ -1,11 +1,9 @@
-uuid: da72d6d5-c63a-4555-966f-4c1e94399459
+uuid: 679948e1-e37b-47e7-b9c0-1936d4f99516
 langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.basic_html
     - filter.format.full_html
-    - filter.format.restricted_html
     - media.type.document
     - media.type.hero
     - media.type.image
@@ -32,7 +30,6 @@ dependencies:
     - content_moderation
     - editoria11y
     - entity_browser
-    - eu_cookie_compliance
     - filter
     - media
     - node
@@ -40,6 +37,7 @@ dependencies:
     - paragraphs_library
     - path
     - quick_node_clone
+    - role_delegation
     - scheduler
     - simple_sitemap
     - site_settings
@@ -48,14 +46,9 @@ dependencies:
     - taxonomy
     - toolbar
     - webform
-  enforced:
-    module:
-      - localgov_roles
-_core:
-  default_config_hash: 4An-9EwjN-WBPoDDXW2pHfJSkp7TOTuMXMl4PND1xbg
-id: localgov_editor
-label: Editor
-weight: 2
+id: super_editor
+label: 'Super Editor'
+weight: 6
 is_admin: null
 permissions:
   - 'access administration pages'
@@ -74,6 +67,9 @@ permissions:
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'
+  - 'assign localgov_author role'
+  - 'assign localgov_contributor role'
+  - 'assign localgov_editor role'
   - 'clone article content'
   - 'clone casestudy content'
   - 'clone content_page content'
@@ -95,9 +91,6 @@ permissions:
   - 'create landing_page content'
   - 'create localgov_guides_overview content'
   - 'create localgov_guides_page content'
-  - 'create localgov_services_landing content'
-  - 'create localgov_services_page content'
-  - 'create localgov_services_sublanding content'
   - 'create media'
   - 'create paragraph library item'
   - 'create recommendation content'
@@ -123,9 +116,6 @@ permissions:
   - 'delete any landing_page content'
   - 'delete any localgov_guides_overview content'
   - 'delete any localgov_guides_page content'
-  - 'delete any localgov_services_landing content'
-  - 'delete any localgov_services_page content'
-  - 'delete any localgov_services_sublanding content'
   - 'delete any media'
   - 'delete any recommendation content'
   - 'delete any remote_video media'
@@ -140,9 +130,6 @@ permissions:
   - 'delete landing_page revisions'
   - 'delete localgov_guides_overview revisions'
   - 'delete localgov_guides_page revisions'
-  - 'delete localgov_services_landing revisions'
-  - 'delete localgov_services_page revisions'
-  - 'delete localgov_services_sublanding revisions'
   - 'delete media'
   - 'delete own article content'
   - 'delete own casestudy content'
@@ -154,9 +141,6 @@ permissions:
   - 'delete own landing_page content'
   - 'delete own localgov_guides_overview content'
   - 'delete own localgov_guides_page content'
-  - 'delete own localgov_services_landing content'
-  - 'delete own localgov_services_page content'
-  - 'delete own localgov_services_sublanding content'
   - 'delete own recommendation content'
   - 'delete own remote_video media'
   - 'delete own skill content'
@@ -174,7 +158,6 @@ permissions:
   - 'delete terms in skill_level'
   - 'delete terms in skill_method'
   - 'delete terms in theme'
-  - 'display eu cookie compliance popup'
   - 'edit any article content'
   - 'edit any casestudy content'
   - 'edit any content_page content'
@@ -185,9 +168,6 @@ permissions:
   - 'edit any landing_page content'
   - 'edit any localgov_guides_overview content'
   - 'edit any localgov_guides_page content'
-  - 'edit any localgov_services_landing content'
-  - 'edit any localgov_services_page content'
-  - 'edit any localgov_services_sublanding content'
   - 'edit any recommendation content'
   - 'edit any remote_video media'
   - 'edit any skill content'
@@ -205,9 +185,6 @@ permissions:
   - 'edit own landing_page content'
   - 'edit own localgov_guides_overview content'
   - 'edit own localgov_guides_page content'
-  - 'edit own localgov_services_landing content'
-  - 'edit own localgov_services_page content'
-  - 'edit own localgov_services_sublanding content'
   - 'edit own recommendation content'
   - 'edit own remote_video media'
   - 'edit own skill content'
@@ -233,9 +210,6 @@ permissions:
   - 'revert landing_page revisions'
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
-  - 'revert localgov_services_landing revisions'
-  - 'revert localgov_services_page revisions'
-  - 'revert localgov_services_sublanding revisions'
   - 'revert recommendation revisions'
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
@@ -247,9 +221,7 @@ permissions:
   - 'use editorial_workflow transition publish'
   - 'use editorial_workflow transition submit_for_approval'
   - 'use editorial_workflow transition unpublish'
-  - 'use text format basic_html'
   - 'use text format full_html'
-  - 'use text format restricted_html'
   - 'view all revisions'
   - 'view all sitewide alert revisions'
   - 'view any unpublished content'
@@ -262,9 +234,6 @@ permissions:
   - 'view latest version'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
-  - 'view localgov_services_landing revisions'
-  - 'view localgov_services_page revisions'
-  - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view published site setting entities'

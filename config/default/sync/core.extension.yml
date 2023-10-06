@@ -5,6 +5,7 @@ module:
   acquia_search: 0
   address: 0
   admin_toolbar: 0
+  admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
   advagg: 0
   allowed_formats: 0
@@ -39,7 +40,6 @@ module:
   entity_usage: 0
   field: 0
   field_group: 0
-  field_ui: 0
   file: 0
   filter: 0
   geolocation: 0
@@ -95,10 +95,12 @@ module:
   path: 0
   path_alias: 0
   pdf_generator: 0
+  quick_node_clone: 0
   quickedit: 0
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0
+  responsive_tables_filter: 0
   rh_node: 0
   rh_taxonomy: 0
   robotstxt: 0
