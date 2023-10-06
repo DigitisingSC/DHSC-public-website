@@ -36,6 +36,7 @@ dependencies:
     - paragraphs
     - paragraphs_library
     - path
+    - quick_node_clone
     - role_delegation
     - scheduler
     - simple_sitemap
@@ -69,6 +70,17 @@ permissions:
   - 'assign localgov_author role'
   - 'assign localgov_contributor role'
   - 'assign localgov_editor role'
+  - 'clone article content'
+  - 'clone casestudy content'
+  - 'clone content_page content'
+  - 'clone event content'
+  - 'clone landing_page content'
+  - 'clone localgov_guides_overview content'
+  - 'clone localgov_guides_page content'
+  - 'clone recommendation content'
+  - 'clone skill content'
+  - 'clone subtopic_page content'
+  - 'clone supplier content'
   - 'create article content'
   - 'create casestudy content'
   - 'create content_page content'
