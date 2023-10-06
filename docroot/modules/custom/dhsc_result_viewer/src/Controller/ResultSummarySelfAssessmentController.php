@@ -160,7 +160,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase
         '#summary' => $config->get('sa_result_summary') ? $config->get('sa_result_summary') : NULL,
         '#result' => $result,
         '#submission_url' => isset($submission_url) ? $submission_url : NULL,
-        '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
       ];
     } else {
       $element = [
@@ -226,7 +226,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase
     $key = 'email_result';
     $to = $email;
     $langcode = $this->languageManager->getDefaultLanguage()->getId();
-    $params['subject'] = t('Self assessment: Email result');
+    $params['subject'] = t('Get started with email recommendations');
 
     $result_items = '';
     if ($results) {
