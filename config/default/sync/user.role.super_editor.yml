@@ -37,7 +37,6 @@ dependencies:
     - paragraphs_library
     - path
     - quick_node_clone
-    - role_delegation
     - scheduler
     - simple_sitemap
     - site_settings
@@ -67,9 +66,6 @@ permissions:
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'
-  - 'assign localgov_author role'
-  - 'assign localgov_contributor role'
-  - 'assign localgov_editor role'
   - 'clone article content'
   - 'clone casestudy content'
   - 'clone content_page content'
