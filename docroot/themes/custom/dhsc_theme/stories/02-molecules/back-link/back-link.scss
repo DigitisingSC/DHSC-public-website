@@ -1,4 +1,5 @@
-.m-back-link {
+.m-back-link-default,
+.m-back-link-form {
   @apply flex items-center py-4;
 
   &__icon {
