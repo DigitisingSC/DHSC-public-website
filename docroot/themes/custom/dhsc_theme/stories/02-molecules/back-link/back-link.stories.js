@@ -29,6 +29,7 @@ backLink.args = {
   attributes: new DrupalAttributes(),
   label: 'Back',
   icon: svgBackLinkTemplate,
+  variant: 'default'
 };
 
 export const backLinkForm = Template.bind({});
