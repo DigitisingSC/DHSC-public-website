@@ -7,19 +7,22 @@ Template
 #}
 <section{{ attributes.addClass(classes) }}>
   {% if section_title %}
-    <h2 class="m-content-list__title text-base mb-2">
+    <h2 class="m-content-list__title">
       {{ section_title }}
     </h2>
   {% endif %}
   <ul class="m-content-list__links ml-0">
     {% for section_link_group in section_links %}
       <li class="m-content-list__links mb-4">
-        <a href="{{ section_link_group.section_link.href }}" class="m-content-list__parent text-forest text-md underline hover:underline mb-2">{{ section_link_group.section_link.title }}</a>
+        <a href="{{ section_link_group.section_link.href }}" class="m-content-list__parent text-forest text-md font-bold mb-2">{{ section_link_group.section_link.title }}</a>
         {% if section_link_group.child_links %}
           <ul class="m-content-list__children ml-4">
+            <li class="my-2">
+              <a href="{{ section_link_group.section_link.href }}" class="m-content-list__child text-base">{{ 'Overview'|t }}</a>
+            </li>
             {% for child_link in section_link_group.child_links %}
               <li class="my-2">
-                <a href="{{ child_link.href }}" class="m-content-list__child text-base underline hover:underline ">{{ child_link.title }}</a>
+                <a href="{{ child_link.href }}" class="m-content-list__child text-base">{{ child_link.title }}</a>
               </li>
             {% endfor %}
           </ul>

@@ -1,0 +1,69 @@
+uuid: 6460d28c-f073-4663-88ef-a42249969675
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_full_listing
+    - paragraphs.paragraphs_type.full_content_listings
+    - views.view.content_listings
+  module:
+    - viewsreference
+id: paragraph.full_content_listings.field_full_listing
+field_name: field_full_listing
+entity_type: paragraph
+bundle: full_content_listings
+label: Listing
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: e3486255-d4c3-4d9a-86bb-f69a2b1265b4
+    display_id: block_articles_full
+    data: 'a:5:{s:8:"argument";N;s:5:"limit";N;s:6:"offset";N;s:5:"pager";N;s:5:"title";N;}'
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+    default: '0'
+    page: '0'
+    feed: '0'
+    entity_browser: '0'
+    entity_reference: '0'
+    embed: '0'
+  preselect_views:
+    content_listings: content_listings
+    acquia_search: '0'
+    block_content: '0'
+    content: '0'
+    content_recent: '0'
+    digital_skills_training_page: '0'
+    digital_skills_training_search: '0'
+    dynamic_content_listing: '0'
+    files: '0'
+    frontpage: '0'
+    local_search: '0'
+    media: '0'
+    media_library: '0'
+    moderated_content: '0'
+    paragraphs_library: '0'
+    paragraphs_library_browser: '0'
+    redirect: '0'
+    taxonomy_term: '0'
+    topics: '0'
+    user_admin_people: '0'
+    watchdog: '0'
+    webform_submissions: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  enabled_settings:
+    argument: '0'
+    limit: '0'
+    offset: '0'
+    pager: '0'
+    title: '0'
+field_type: viewsreference

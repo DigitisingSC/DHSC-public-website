@@ -1,0 +1,46 @@
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set detailsClasses = [
+  'm-form-details',
+  'mb-3 pb-3 border-b border--brandgrey'
+] %}
+
+{% set attributes = attributes.addClass(detailsClasses) %}
+
+{% set summary_attributes = summary_attributes.addClass([
+  'tablet:text-base leading-6 text-forest-100 cursor-pointer'
+]) %}
+
+<details{{ attributes }}
+  aria-label="Toggle {{ title }} filters"
+  aria-controls="{{ attributes.storage['id']|render }}"
+  x-data="{ isOpen: false }"
+  x-bind:aria-expanded="isOpen ? 'true' : 'false'"
+  >
+  {%- if title -%}
+    <summary{{ summary_attributes }} x-on:click="isOpen = !isOpen">
+      <div class="flex">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12.5 16.1455C12.1875 16.1455 11.9792 16.0413 11.7708 15.833L6.5625 10.6247C6.14583 10.208 6.14583 9.58301 6.5625 9.16634C6.97917 8.74967 7.60417 8.74967 8.02083 9.16634L12.5 13.6455L16.9792 9.16634C17.3958 8.74967 18.0208 8.74967 18.4375 9.16634C18.8542 9.58301 18.8542 10.208 18.4375 10.6247L13.2292 15.833C13.0208 16.0413 12.8125 16.1455 12.5 16.1455Z" fill="#00594C"/>
+        </svg>
+
+        {{ title }}
+      </div>
+      <div class="m-form-details__selected hidden text-black ml-[2.125rem] text-2xs leading-6">
+        <span class="m-form-details__counter"></span> {{ 'Selected'|t }}
+      </div>
+    </summary>
+  {%- endif -%}
+
+  {% if errors %}
+    <div>
+      {{ errors }}
+    </div>
+  {% endif %}
+  <div class="pt-3">
+    {{ description }}
+    {{ children }}
+    {{ value }}
+  </div>
+
+</details>

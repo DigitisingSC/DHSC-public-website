@@ -1,0 +1,18 @@
+.o-pager {
+  svg {
+    @apply h-4 w-4 mr-2 text-forest;
+  }
+
+  &__first {
+    .o-pager__item--next {
+      @apply text-right;
+    }
+  }
+
+  &__last {
+    .o-pager__item--previous {
+      @apply text-left;
+    }
+  }
+
+}

@@ -9,7 +9,7 @@ id: node.supplier.field_answers_supplier
 field_name: field_answers_supplier
 entity_type: node
 bundle: supplier
-label: 'Possible answers'
+label: 'Matching answers'
 description: ''
 required: true
 translatable: false

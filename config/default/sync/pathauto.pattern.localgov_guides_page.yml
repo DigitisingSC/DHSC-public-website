@@ -9,16 +9,16 @@ _core:
 id: localgov_guides_page
 label: 'Guide page'
 type: 'canonical_entities:node'
-pattern: '[node:localgov_guides_parent:entity:url:relative]/[node:title]'
+pattern: '[node:field_topic_term]/[node:title]'
 selection_criteria:
-  1ceaab92-3301-4e34-a8de-9dbcae184528:
+  bab178e8-8b08-4157-a261-9318e204d2c8:
     id: 'entity_bundle:node'
-    bundles:
-      localgov_guides_page: localgov_guides_page
     negate: false
+    uuid: bab178e8-8b08-4157-a261-9318e204d2c8
     context_mapping:
       node: node
-    uuid: 1ceaab92-3301-4e34-a8de-9dbcae184528
+    bundles:
+      localgov_guides_page: localgov_guides_page
 selection_logic: and
 weight: -5
 relationships: {  }

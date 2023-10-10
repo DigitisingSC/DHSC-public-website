@@ -5,6 +5,7 @@ module:
   acquia_search: 0
   address: 0
   admin_toolbar: 0
+  admin_toolbar_links_access_filter: 0
   admin_toolbar_tools: 0
   advagg: 0
   allowed_formats: 0
@@ -24,7 +25,6 @@ module:
   content_moderation: 0
   contextual: 0
   crop: 0
-  current_page_crumb: 0
   datetime: 0
   datetime_range: 0
   dbal: 0
@@ -40,7 +40,6 @@ module:
   entity_usage: 0
   field: 0
   field_group: 0
-  field_ui: 0
   file: 0
   filter: 0
   geolocation: 0
@@ -69,12 +68,12 @@ module:
   localgov_media: 0
   localgov_menu_link_group: 0
   localgov_page_components: 0
-  localgov_paragraphs: 0
   localgov_roles: 0
   localgov_topics: 0
   mailsystem: 0
   maxlength: 0
   media: 0
+  media_download: 0
   media_library: 0
   media_library_edit: 0
   menu_link_content: 0
@@ -89,24 +88,33 @@ module:
   page_cache: 0
   paragraphs_features: 0
   paragraphs_library: 0
+  password_policy_blacklist: 0
+  password_policy_character_types: 0
+  password_policy_history: 0
+  password_policy_length: 0
   path: 0
   path_alias: 0
+  pdf_generator: 0
+  quick_node_clone: 0
   quickedit: 0
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0
+  responsive_tables_filter: 0
   rh_node: 0
   rh_taxonomy: 0
+  robotstxt: 0
   role_delegation: 0
+  scheduler: 0
   search_api: 0
   search_api_solr: 0
   seckit: 0
+  session_limit: 0
   simple_sitemap: 0
   site_settings: 0
   sitewide_alert: 0
   sitewide_alert_block: 0
   svg_image_field: 0
-  syslog: 0
   system: 0
   taxonomy: 0
   telephone: 0
@@ -124,6 +132,7 @@ module:
   webform_ui: 0
   workflows: 0
   pathauto: 1
+  password_policy: 10
   views: 10
   paragraphs: 11
   paragraphs_ee: 15

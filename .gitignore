@@ -101,5 +101,5 @@ tmp/**/*
 **/dist
 
 # Ignore Storyboo static folder
-docroot/themes/custom/dhsc_theme/storybook-static
-docroot/themes/custom/dhsc_theme/build-storybook.log
+/docroot/themes/custom/dhsc_theme/storybook-static
+/docroot/themes/custom/dhsc_theme/build-storybook.log

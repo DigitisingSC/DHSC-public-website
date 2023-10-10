@@ -3,25 +3,44 @@
   'm-cta-banner--' ~ layout|clean_class,
   'py-4',
 ] %}
+
+{% set titleTag = header.0 ? 'h3' : 'h2' %}
+
 <div{{ attributes.addClass(classes) }}>
   {% if header %}
-  <h2 class="m-cta-banner__header text-lg leading-tight font-bold mb-4">
-    {{ header }}
-  </h2>
+    <h2 class="m-cta-banner__header mb-6">
+      {{ header }}
+    </h2>
   {% endif %}
-  <div class="m-cta-banner__container tablet:flex tablet:gap-4">
-    <div class="m-cta-banner__content tablet:w-6/12 tablet:flex tablet:flex-col tablet:justify-between">
+
+  <div class="m-cta-banner__container relative tablet:flex tablet:gap-6">
+    <div class="m-cta-banner__content tablet:w-6/12 tablet:flex tablet:flex-col">
       {% if title %}
-      <h2 class="m-cta-banner__title text-md mb-4">{{ title }}</h2>
+        <{{ titleTag }} class="m-cta-banner__title mb-3">
+          <a href="{{ link }}" class="m-cta-banner__link">
+            {{ title }}
+          </a>
+        </{{ titleTag }}>
       {% endif %}
       {% if description %}
-      <div class="m-cta-banner__description tablet:grow">{{ description }}</div>
+        <div class="m-cta-banner__description mb-3">{{ description }}</div>
+      {% endif %}
+      {% if secondary_title %}
+        <div class="m-cta-banner__secondary_title mb-3 text-coolgrey">{{ secondary_title }}</div>
       {% endif %}
     </div>
+
     {% if media %}
-    <div class="m-cta-banner__media tablet:w-6/12 mb-4 tablet:mb-0">
-      {{ media }}
-    </div>
+      <div class="m-cta-banner__media tablet:w-6/12 mb-4 tablet:mb-0">
+        {{ media }}
+      </div>
     {% endif %}
+
   </div>
+
+  {% if secondary_link_url %}
+    <div class="m-cta-banner__link mt-4">
+      <a href="{{ secondary_link_url }}" class="text-forest text-base">{{ secondary_link_text }}</a>
+    </div>
+  {% endif %}
 </div>

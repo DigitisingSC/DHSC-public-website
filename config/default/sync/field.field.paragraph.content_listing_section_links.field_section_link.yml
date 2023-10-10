@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_section_link
+    - node.type.content_page
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
@@ -22,6 +23,7 @@ settings:
   handler: 'default:node'
   handler_settings:
     target_bundles:
+      content_page: content_page
       localgov_guides_overview: localgov_guides_overview
       localgov_guides_page: localgov_guides_page
       landing_page: landing_page
@@ -29,5 +31,5 @@ settings:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: null
+    auto_create_bundle: localgov_guides_overview
 field_type: entity_reference

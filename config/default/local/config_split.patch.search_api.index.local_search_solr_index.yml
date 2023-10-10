@@ -1,0 +1,11 @@
+adding:
+  status: true
+  datasource_settings:
+    'entity:node':
+      bundles:
+        selected:
+          - recommendation
+          - skill
+          - supplier
+removing:
+  status: false

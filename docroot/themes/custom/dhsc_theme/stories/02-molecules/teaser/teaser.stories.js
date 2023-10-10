@@ -10,11 +10,13 @@ export default {
   title: "Design System/Molecules/Teaser",
 };
 
-const ListingTeaserTemplate = ({ attributes, variant, title, link, date }) =>
+const ListingTeaserTemplate = ({ attributes, variant, title, info, bundle, link, date }) =>
   teaserListingTwig({
     attributes,
     variant,
     title,
+    bundle,
+    info,
     link,
     date
   });
@@ -30,13 +32,13 @@ const SkillTeaserTemplate = ({ attributes, variant, title, subtitle, link, descr
     skillAttributes,
   });
 
-const SupplierTeaserTemplate = ({ attributes, variant, title, link, body, listPrice, image }) =>
+const SupplierTeaserTemplate = ({ attributes, variant, title, link, summary, listPrice, image }) =>
   teaserSupplierTwig({
     attributes,
     variant,
     title,
     link,
-    body,
+    summary,
     listPrice,
     image
   });
@@ -46,6 +48,18 @@ ListingTeaser.args = {
   attributes: new DrupalAttributes(),
   variant: 'listing',
   title: "Get help using technology at your organisation",
+  bundle: "Recommendation",
+  link: "https://www.digitalsocialcare.co.uk",
+  date: "12 May 2023"
+};
+
+export const EventTeaser = ListingTeaserTemplate.bind({});
+EventTeaser.args = {
+  attributes: new DrupalAttributes(),
+  variant: 'listing',
+  title: "Get help using technology at your organisation",
+  info: `<div>In-person</div>
+  <div><b>Location:</b> Canterbury</div>`,
   link: "https://www.digitalsocialcare.co.uk",
   date: "12 May 2023"
 };
@@ -72,7 +86,7 @@ SupplierTeaser.args = {
   variant: 'supplier',
   title: "Get help using technology at your organisation",
   link: "https://www.digitalsocialcare.co.uk",
-  body: "Body text",
+  summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat lobortis id viverra viverra ultrices. Dolor sit ultrices diam nunc, lorem morbi.",
   listPrice: "£150",
   image: imgTag
 };

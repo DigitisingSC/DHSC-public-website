@@ -5,14 +5,14 @@ dependencies:
   module:
     - node
 id: article_page
-label: 'Article page'
+label: 'News page'
 type: 'canonical_entities:node'
-pattern: 'articles/[node:title]'
+pattern: 'news/[node:title]'
 selection_criteria:
-  898b5925-8a4e-4820-b338-1aea967d81c9:
+  089737cf-9c8f-42c8-9f5e-82d082dbe703:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 898b5925-8a4e-4820-b338-1aea967d81c9
+    uuid: 089737cf-9c8f-42c8-9f5e-82d082dbe703
     context_mapping:
       node: node
     bundles:

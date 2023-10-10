@@ -7,15 +7,11 @@ dependencies:
     - field.storage.node.field_skill_level
     - field.storage.node.field_skill_method
     - field.storage.node.field_training_length
-    - search_api.server.acquia_search_server
   module:
-    - acquia_search
-    - search_api_solr
     - node
     - search_api
+    - search_api_solr
 third_party_settings:
-  acquia_search:
-    use_edismax: 0
   search_api_solr:
     finalize: false
     commit_before_finalize: false
@@ -146,4 +142,4 @@ options:
   cron_limit: 50
   index_directly: true
   track_changes_in_references: true
-server: acquia_search_server
+server: null

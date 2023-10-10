@@ -1,0 +1,24 @@
+uuid: b55a0ca8-1f1c-4cbc-8c42-6e1397d03634
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dhsc_theme
+id: pagetitle
+theme: dhsc_theme
+region: content_top
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/search\r\n/digital-skills/search"

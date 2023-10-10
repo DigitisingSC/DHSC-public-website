@@ -1,4 +1,4 @@
-uuid: d2319ff1-b865-4336-8f17-b7ccccb2026f
+uuid: f16fcf08-5a8c-4d26-8667-9e3ec6880874
 langcode: en
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
     - dhsc_theme
 id: sitewidealert
 theme: dhsc_theme
-region: content_top
-weight: -10
+region: primary_menu
+weight: 0
 provider: null
 plugin: sitewide_alert_block
 settings:

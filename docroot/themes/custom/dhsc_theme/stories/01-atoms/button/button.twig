@@ -15,7 +15,7 @@
     'bg-white hover:bg-white focus:bg-focus',
     'text-black',
     'rounded-3xl',
-    'w-auto tablet:w-32'
+    'w-auto'
   ] | sort | join(' ') | trim  %}
 {% endif %}
 
@@ -37,14 +37,27 @@
 {# Template #}
 {% if children %}
   {% if variant == 'search' %}
-    <div x-data="{ searchIsActive : false }">
+    {% set attributes = attributes.removeAttribute('id') %}
+    <div x-data="{ searchIsActive : false }" class="print:hidden">
       <{{ tag_name }} {{ attributes }}
         @click="$dispatch('togglesearch'); searchIsActive = ! searchIsActive; $dispatch('activedropdownmain', { active: false })"
-        @keyup.enter="$dispatch('togglesearch')"
         @closesearchtrigger.window="searchIsActive = false"
+        x-bind:aria-expanded="searchIsActive.toString()"
+        aria-controls="search_region"
       >
-        <div x-show="searchIsActive" class="flex items-center">{{ icon_close }}<span class="hidden tablet:inline-block">{{ 'Close'|t }}</span></div>
-        <div x-show="!searchIsActive" class="flex items-center">{{ icon_open }}<span class="hidden tablet:inline-block">{{ 'Search'|t }}</span></div>
+        <div x-show="searchIsActive" class="flex items-center">
+          {{ icon_close }}
+          <span class="hidden tablet:inline-block">
+            {{ 'Close'|t }}
+            <span class="sr-only">{{ ' search menu'|t }}</span>
+          </span>
+          </div>
+        <div x-show="!searchIsActive" class="flex items-center">
+          {{ icon_open }}
+          <span class="sr-only">{{ 'Open '|t }}</span>
+          <span class="hidden tablet:inline-block">{{ 'Search'|t }}</span>
+          <span class="sr-only">{{ ' menu'|t }}</span>
+        </div>
       </{{ tag_name }}>
     </div>
 

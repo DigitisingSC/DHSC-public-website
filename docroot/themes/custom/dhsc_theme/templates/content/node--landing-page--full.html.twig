@@ -85,17 +85,23 @@
   ]
 %}
 
-<article{{attributes.addClass(classes).removeAttribute('role')}}>
+<div{{attributes.addClass(classes).removeAttribute('role')}}>
   {{ title_prefix }}
   {{ title_suffix }}
 
-  {% include '@molecules/hero/hero.twig' with {
-    'image': content.field_hero_image,
-    'heading': node.label,
-    'text': content.field_formatted_description
-  } %}
+  {% if node.field_hero_image is not empty %}
+    {% include '@molecules/hero/hero.twig' with {
+      'image': content.field_hero_image,
+      'heading': node.label,
+      'text': content.field_formatted_description
+    } %}
+  {% else %}
+    <div class="t-content-page__title">
+      <h1>{{ node.label }}</h1>
+    </div>
+  {% endif %}
 
   <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
     {{ content|without('field_hero_image', 'field_formatted_description') }}
   </div>
-</article>
+</div>

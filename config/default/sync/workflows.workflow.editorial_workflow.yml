@@ -3,10 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.article
+    - node.type.casestudy
     - node.type.content_page
+    - node.type.event
     - node.type.landing_page
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
+    - node.type.recommendation
+    - node.type.skill
+    - node.type.subtopic_page
+    - node.type.supplier
   module:
     - content_moderation
 id: editorial_workflow
@@ -72,8 +79,15 @@ type_settings:
       weight: 3
   entity_types:
     node:
+      - article
+      - casestudy
       - content_page
+      - event
       - landing_page
       - localgov_guides_overview
       - localgov_guides_page
+      - recommendation
+      - skill
+      - subtopic_page
+      - supplier
   default_moderation_state: draft

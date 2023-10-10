@@ -9,12 +9,11 @@
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
     {% if title %}
-      <h3 class="text-base mb-2">{{ title }}</h3>
+      <h3 class="mb-2">{{ title }}</h3>
     {% endif %}
     <ul>
       {% for item in items %}
-        <li class="mb-2">
-
+        <li class="mb-3">
           {% if directory %}
             {% set socialIcon %}
               {% include '@atoms/svg/svg.twig' with {
@@ -22,11 +21,11 @@
                 'icon': item.icon,
               } %}
             {% endset %}
-            <a href="{{ item.url }}" class="flex items-center text-forest underline hover:no-underline">
+            <a href="{{ item.url }}" class="flex items-center text-forest">
               <span class="mr-2">{{ socialIcon }}</span>{{ item.title }}
             </a>
           {% else %}
-            <a href="{{ item.url }}" class="flex items-center text-forest underline hover:no-underline">
+            <a href="{{ item.url }}" class="flex items-center text-forest">
               <span class="mr-2">{{ item.icon }}</span>{{ item.title }}
             </a>
           {% endif %}

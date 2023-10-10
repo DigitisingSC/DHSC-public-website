@@ -1,0 +1,19 @@
+uuid: 9b3c8a8c-3a84-4878-9719-c0973df66bf0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_non_possible_answers
+    - node.type.supplier
+id: node.supplier.field_non_possible_answers
+field_name: field_non_possible_answers
+entity_type: node
+bundle: supplier
+label: 'Non matching answers'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

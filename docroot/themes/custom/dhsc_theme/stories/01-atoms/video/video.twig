@@ -16,13 +16,15 @@
     {% apply spaceless %}
       <button
         aria-label="{{ 'Play video'|t }}"
-        class="bg-no-repeat bg-cover bg-center rounded-lg"
+        class="bg-no-repeat bg-cover bg-center rounded-lg top-0 left-0 bottom-0 right-0 absolute"
         style="background-image: url({{ media_thumbnail }})"
         data-bg-legacy="{{ media_thumbnail_legacy }}"
       >
-        <i class="flex relative justify-center items-center mx-auto w-20 h-20 bg-white rounded-full" aria-hidden="true">
-          {{ icon }}
-        </i>
+        <div class="transition rounded-full bg-forest w-[3rem] h-[3rem] left-1/2 top-1/2 hover:bg-forest-80 absolute -translate-x-1/2 -translate-y-1/2">
+          <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <path d="M0 0L12 8L0 16V0Z" fill="white"/>
+          </svg>
+        </div>
       </button>
     {% endapply %}
   </div>

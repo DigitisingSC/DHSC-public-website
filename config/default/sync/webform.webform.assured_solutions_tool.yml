@@ -20,12 +20,12 @@ elements: |-
     '#title': Devices
     processed_text:
       '#type': processed_text
-      '#text': |
-        <h3>Do you need devices such as computers, tablets and phones?</h3>
-      '#format': basic_html
+      '#text': '<h1>Do you need your software supplier to provide you with devices such as computers, tablets and phones?</h1><p>If you already have and use these devices at your organisation, for any reason, select ‘no’</p>'
+      '#format': full_html
     device_option:
       '#type': radios
-      '#title': 'Device option'
+      '#title': 'Do you need your software supplier to provide you with devices such as computers, tablets and phones?'
+      '#title_display': invisible
       '#options':
         device_option_yes: 'Yes'
         device_option_no: 'No'
@@ -35,71 +35,190 @@ elements: |-
     '#title': 'Care services'
     processed_text_2:
       '#type': processed_text
-      '#text': |
-        <h3>What types of services do you provide?</h3>
-      '#format': basic_html
+      '#text': '<h1>What types of services do you provide?</h1><p>Select all that apply</p>'
+      '#format': full_html
     domiciliary_care_services:
       '#type': checkbox
       '#title': 'Domiciliary care services'
+      '#description': 'Including caring for people in their homes or giving live in care'
+      '#description_display': after
     extra_care_services:
       '#type': checkbox
       '#title': 'Extra care services'
+      '#description': 'Including supporting older people in assisted living accommodation'
+      '#description_display': after
     supported_living_care_services:
       '#type': checkbox
       '#title': 'Supported living care services'
+      '#description': 'Including supporting people to live independently in local authority housing'
+      '#description_display': after
     shared_lives_services:
       '#type': checkbox
       '#title': 'Shared lives services'
+      '#description': 'Including matching a carer to a recipient for a shared home or family life'
+      '#description_display': after
     care_home_services_including_nursing:
       '#type': checkbox
       '#title': 'Care home services, including nursing'
+      '#description': 'Including in nursing homes, convalescent homes, respite care and mental health crisis houses'
+      '#description_display': after
     care_home_services_not_including_nursing:
       '#type': checkbox
       '#title': 'Care home services, not including nursing'
+      '#description': 'Including in residential homes, rest homes, convalescent homes, respite care, mental health crisis houses and therapeutic communities'
+      '#description_display': after
     other_care_services:
       '#type': checkbox
       '#title': 'Other care services'
+      '#description': 'Including in unregulated settings'
+      '#description_display': after
   step_3:
     '#type': webform_wizard_page
     '#title': 'Additional features'
     processed_text_03:
       '#type': processed_text
-      '#text': |
-        <p>Which additional features do you need?</p>
-      '#format': basic_html
+      '#text': '<p>&lt;1&gt; What do you need your digital social care record solution to do?</p><p>All solutions will offer <a href="https://www.google.com">core features</a>, so these are additional features that only some solutions offer. If you’re not sure which features you need, get advice on <a href="https://www.google.com">working out what you need.</a></p>'
+      '#format': full_html
     markup:
       '#type': webform_markup
-      '#markup': 'Work offline'
+      '#markup': '<h4>Work offline</h4>'
     view_care_records_offline:
       '#type': checkbox
       '#title': 'View care records offline'
     automatically_update_changes_made_offline_when_back_online:
       '#type': checkbox
       '#title': 'Automatically update changes made offline when back online'
-    flag_if_a_record_edited_simultaneously_online_offline_doesn_t_ma:
+    flag_if_a_record_edited_simultaneously_online_offline:
       '#type': checkbox
       '#title': 'Flag if a record edited simultaneously online/offline doesn’t match'
     markup_01:
       '#type': webform_markup
-      '#markup': 'Save photos, videos or body maps to records'
+      '#markup': '<h4>Save photos, videos or body maps to records</h4>'
     capture_information_using_body_maps:
       '#type': checkbox
       '#title': 'Capture information using body maps'
+      '#description': 'For example, treatment details or signs of visible harm'
+      '#description_display': after
     add_videos_to_records:
       '#type': checkbox
       '#title': 'Add videos to records'
+      '#description': 'For example, to show someone&rsquo;s progress carrying out certain tasks'
+      '#description_display': after
     add_photos_to_records:
       '#type': checkbox
       '#title': 'Add photos to records'
+      '#description': 'For example, to capture important moments in someone&rsquo;s journey'
+      '#description_display': after
     markup_02:
       '#type': webform_markup
-      '#markup': 'Get records read out to you'
+      '#markup': '<h4>Get records read out to you</h4>'
     capture_voice_recordings_in_structured_formats:
       '#type': checkbox
       '#title': 'Capture voice recordings in structured formats'
+      '#description': 'For example, ICD11 or Snomed'
+      '#description_display': after
     get_records_read_out_to_you:
       '#type': checkbox
       '#title': 'Get records read out to you'
+      '#description': 'For example, if you&rsquo;re on the go'
+      '#description_display': after
+    markup_03:
+      '#type': webform_markup
+      '#markup': '<h4>Allow non-staff including family to see or contribute to records</h4>'
+    allow_care_recipients_to_contribute_to_their_own_care_plan:
+      '#type': checkbox
+      '#title': 'Allow care recipients to contribute to their own care plan'
+    allow_care_recipients_to_record_notes_for_staff_performing_tasks:
+      '#type': checkbox
+      '#title': 'Allow care recipients to record notes for staff performing tasks'
+      '#description': 'For example, their tea or coffee preference'
+      '#description_display': after
+    allow_third_parties_to_view_care_plans:
+      '#type': checkbox
+      '#title': 'Allow third parties to view care plans'
+      '#description': 'For example, family members'
+      '#description_display': after
+    allow_third_parties_to_contribute_to_care_plans:
+      '#type': checkbox
+      '#title': 'Allow third parties to contribute to care plans'
+      '#description': 'For example, family members'
+      '#description_display': after
+    markup_04:
+      '#type': webform_markup
+      '#markup': '<h4>Access and share data with the NHS in real time</h4>'
+    see_live_primary_care_records:
+      '#type': checkbox
+      '#title': 'See live primary care records'
+      '#description': 'For example, from GPs and pharmacies'
+      '#description_display': after
+    see_other_live_nhs_records:
+      '#type': checkbox
+      '#title': 'See other live NHS records'
+      '#description': 'For example, summary care records'
+      '#description_display': after
+    access_the_electronic_medications:
+      '#type': checkbox
+      '#title': 'Access the Electronic Medications Administration and Recording (EMAR) systems'
+      '#description': 'May require use of a third party solution'
+      '#description_display': after
+    share_records_for_emergency_hospital_admissions:
+      '#type': checkbox
+      '#title': 'Share records for emergency hospital admissions'
+      '#description': 'Transfers your data in a shareable format other systems can access'
+      '#description_display': after
+    receive_hospital_discharge_information:
+      '#type': checkbox
+      '#title': 'Receive hospital discharge information'
+      '#description': 'Captures the data in a shareable format your system can access'
+      '#description_display': after
+    markup_05:
+      '#type': webform_markup
+      '#markup': '<h4>Capture and display staff skills and training</h4>'
+    record_care_workers_skills_or_training:
+      '#type': checkbox
+      '#title': 'Record care workers’ skills or training'
+    record_care_workers_skills_or_training_against_set_categories:
+      '#type': checkbox
+      '#title': 'Record care workers’ skills or training against set categories'
+      '#description': 'This may make it easier to search for people with a specific qualification, for example'
+      '#description_display': after
+    markup_06:
+      '#type': webform_markup
+      '#markup': '<h4>Support in-system messaging or get alerts from third party solutions</h4>'
+    show_alerts_from_third_party_solutions:
+      '#type': checkbox
+      '#title': 'Show alerts from third party solutions'
+    allow_care_workers_to_send_each_other_notifications:
+      '#type': checkbox
+      '#title': 'Allow care workers to send each other notifications'
+    markup_07:
+      '#type': webform_markup
+      '#markup': '<h4>Create bespoke reports</h4>'
+    create_bespoke_reports_about_care_recipients:
+      '#type': checkbox
+      '#title': 'Create bespoke reports about care recipients'
+    create_bespoke_reports_about_your_organisation_or_service:
+      '#type': checkbox
+      '#title': 'Create bespoke reports about your organisation or service'
+    recipients_needs_against_staff_skills:
+      '#type': checkbox
+      '#title': 'Create reports comparing care recipients’ needs against staff skills'
+      '#description': 'These can help with recruiting and training staff'
+      '#description_display': after
+    create_reports_showing_time_allocated_to_providing_care:
+      '#type': checkbox
+      '#title': 'Create reports showing time allocated to providing care'
+      '#description': 'These can help with business planning'
+      '#description_display': after
+    markup_08:
+      '#type': webform_markup
+      '#markup': '<h4>Add to needs assessment template or measure progress against goals</h4>'
+    measure_progress_against_goals:
+      '#type': checkbox
+      '#title': 'Measure progress against goals'
+    add_to_needs_assessment_templates:
+      '#type': checkbox
+      '#title': 'Add to needs assessment templates'
   actions:
     '#type': webform_actions
     '#title': 'Submit button(s)'

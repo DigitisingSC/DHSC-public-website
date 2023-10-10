@@ -16,21 +16,51 @@
     view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
   ]
 %}
-<article{{ attributes.addClass(classes).removeAttribute('role') }}>
+
+{% set relatedBlock %}
+  {{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+{% set hasRelated = relatedBlock|striptags|trim != "" %}
+
+<div{{ attributes.addClass(classes).removeAttribute('role') }}>
   <div class="lgd-container padding-horizontal">
     {{ title_prefix }}
-      <h2{{ title_attributes.addClass('lgd-guides__title') }}>
+      <h1{{ title_attributes.addClass('lgd-guides__title mb-4') }}>
         {{ 'Overview'|t }}
-      </h2>
-      <h3 class="text-coolgrey">{{ label }}</h3>
-    {{ title_suffix }} 
+      </h1>
+      <span class="text-md text-coolgrey mb-4 tablet:mb-7">{{ label }}</span>
+    {{ title_suffix }}
 
     {{ drupal_block('localgov_guides_contents') }}
 
     {% if content %}
-      <div{{ content_attributes.addClass('lgd-guides__content', 'node__content') }}>
-        {{ content }}
+      <div class="t-guide__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
+          <div{{ content_attributes.addClass('lgd-guides__content', 'node__content', ) }}>
+            {{ content|without('field_date') }}
+          </div>
+        </div>
+        {% if hasRelated %}
+          <aside class="t-guide__related tablet:w-3/12">
+            {{ relatedBlock }}
+          </aside>
+        {% endif %}
       </div>
     {% endif %}
+
+    <did class="t-guide__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+      {% if content.field_date.0 %}
+        <div class="t-guide-overview__last-updated text-coolgrey">
+          {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
+        </div>
+      {% endif %}
+      <div class="t-guide__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+        {% include "@molecules/back-to-top/back-to-top.twig" %}
+      </div>
+    </div>
+
   </div>
-</article>
+</div>

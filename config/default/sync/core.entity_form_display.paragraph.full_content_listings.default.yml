@@ -1,0 +1,32 @@
+uuid: c0f757e8-439b-465e-9b5d-637ef164c77d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.full_content_listings.field_full_listing
+    - field.field.paragraph.full_content_listings.localgov_title
+    - paragraphs.paragraphs_type.full_content_listings
+  module:
+    - viewsreference
+id: paragraph.full_content_listings.default
+targetEntityType: paragraph
+bundle: full_content_listings
+mode: default
+content:
+  field_full_listing:
+    type: viewsreference_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  localgov_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

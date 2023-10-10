@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - linkit
+    - responsive_tables_filter
 name: 'Full HTML'
 format: full_html
 weight: 0
@@ -43,3 +44,11 @@ filters:
     weight: 0
     settings:
       title: true
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: true
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'

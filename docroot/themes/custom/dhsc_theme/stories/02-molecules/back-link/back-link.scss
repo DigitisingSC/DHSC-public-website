@@ -9,6 +9,6 @@
   }
 
   &__label {
-    @apply text-base underline hover:no-underline text-forest-100 ml-2;
+    @apply text-xs text-forest-100 ml-2 cursor-pointer;
   }
 }

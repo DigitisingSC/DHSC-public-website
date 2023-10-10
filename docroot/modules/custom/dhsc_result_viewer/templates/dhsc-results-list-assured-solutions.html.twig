@@ -3,6 +3,18 @@
 {% set icon %}
 {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
+    'icon': 'chevron-left',
+  } %}
+{% endset %}
+
+{% include '@molecules/back-link/back-link.twig' with {
+  label: 'Back',
+  icon: icon,
+} %}
+
+{% set icon %}
+{% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
     'icon': 'triangle',
   } %}
 {% endset %}
@@ -27,7 +39,7 @@
   'submission_url': submission_url,
   'result': result,
   'non_matching_count': non_matching_count,
-  'partial_matches': partial_matches,
   'no_matches': no_matches,
-  'email_form': email_form
+  'email_form': email_form,
+  'download_results_path': download_results_path
 } %}

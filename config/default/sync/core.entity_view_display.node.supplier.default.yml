@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.supplier.field_body_paragraphs
     - field.field.node.supplier.field_image
     - field.field.node.supplier.field_list_price
+    - field.field.node.supplier.field_non_possible_answers
+    - field.field.node.supplier.field_summary
     - node.type.supplier
   module:
     - entity_reference_revisions
@@ -43,6 +45,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -50,5 +59,6 @@ content:
     region: content
 hidden:
   field_answers_supplier: true
+  field_non_possible_answers: true
   langcode: true
   search_api_excerpt: true

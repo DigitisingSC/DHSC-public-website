@@ -54,7 +54,7 @@ const svgIconTemplate = (args) => svgIconTwig({
   icon: 'triangle',
 });
 
-const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url }) =>
+const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url, email_form }) =>
   toolAssessmentTwig({
     attributes,
     summary,
@@ -62,7 +62,8 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
     variant,
     no_result,
     result,
-    submission_url
+    submission_url,
+    email_form
   });
 
 const ToolSolutionsTemplate = ({
@@ -77,9 +78,9 @@ const ToolSolutionsTemplate = ({
   submission_url,
   result,
   non_matching_count,
-  partial_matches,
   no_matches,
-  email_form
+  email_form,
+  download_results_path
 }) =>
   toolSolutionsTwig({
     attributes,
@@ -93,9 +94,9 @@ const ToolSolutionsTemplate = ({
     submission_url,
     result,
     non_matching_count,
-    partial_matches,
     no_matches,
-    email_form
+    email_form,
+    download_results_path
   });
 
 export const toolAssessment = ToolAssessmentTemplate.bind({});
@@ -107,7 +108,8 @@ toolAssessment.args = {
   summary: 'summary',
   no_result: '',
   result: { toolResultTemplate },
-  submission_url: 'https://google.co.uk'
+  submission_url: 'https://google.co.uk',
+  email_form: emailFormTwig,
 }
 
 export const toolSolutions = ToolSolutionsTemplate.bind({});
@@ -125,7 +127,7 @@ toolSolutions.args = {
   submission_url: '#',
   result: { supplierTeaserTemplate1, supplierTeaserTemplate2, supplierTeaserTemplate3 },
   non_matching_count: '2',
-  partial_matches: toolSupplierNoMatchTemplate,
   no_matches: toolSupplierNoMatchTemplate,
-  email_form: emailFormTwig
+  email_form: emailFormTwig,
+  download_results_path: ''
 }

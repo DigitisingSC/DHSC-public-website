@@ -1,9 +1,0 @@
-uuid: a8adb48c-1128-4ae9-9d3d-237a5453c48e
-langcode: en
-status: true
-dependencies: {  }
-id: strictly_necessary_cookies
-label: 'Strictly necessary cookies - always active'
-description: "These cookies are essential to make our site work, so we don’t give you the option to turn them off. They help keep our site secure and enable you to move around our website and use its features, such as accessing secure areas.\r\n"
-checkbox_default_state: required
-weight: -9

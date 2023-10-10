@@ -72,5 +72,6 @@
     link: path('entity.node.canonical', {'node': node.id}),
     description: content.field_summary,
     date: content.field_date[0] ? content.field_date.0,
+    type: content.field_event_type|field_value,
     variant: node.getType
   } %}

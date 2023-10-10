@@ -6,7 +6,7 @@
 {% set classes = [
   'm-topic',
   'bg-forest-20 bg-opacity-50 hover:bg-opacity-100 hover:cursor',
-  'relative p-4 tablet:p-6 rounded-md mb-4 tablet:mb-0'
+  'relative p-4 tablet:p-6 rounded-md'
 ] | join(' ') | trim %}
 
 {% set attributes = attributes
@@ -27,7 +27,7 @@
       </h3>
     {% endif %}
     {% if description %}
-      <div class="grow leading-tight">{{ description }}</div>
+      <div class="grow text-black/75">{{ description }}</div>
     {% endif %}
     <p class="m-topic__icon flex justify-end pt-4 text-white">
       <span>{{ icon }}</span>

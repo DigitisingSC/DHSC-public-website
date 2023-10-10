@@ -1,0 +1,19 @@
+uuid: 7374d5e6-55f0-4965-96a0-09053432736f
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_referenced_pages
+field_name: field_referenced_pages
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 4
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

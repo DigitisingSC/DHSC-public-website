@@ -9,12 +9,12 @@ export default {
   title: "Design System/Molecules/Branding",
 };
 
-const BrandingHeaderTemplate = ({ attributes, variant, logo, site_name, site_slogan }) =>
+const BrandingHeaderTemplate = ({ attributes, variant, logo, alt, site_slogan }) =>
   brandingHeaderTwig({
     attributes,
     variant,
     logo,
-    site_name,
+    alt,
     site_slogan
   });
 
@@ -32,7 +32,7 @@ BrandingHeader.args = {
   attributes: new DrupalAttributes(),
   variant: 'header',
   logo: siteLogo,
-  site_name: 'Digitising Social Care',
+  alt: 'Digitising Health and Social Care - Home',
   site_slogan: 'Digitising Social Care'
 };
 export const BrandingFooter = BrandingFooterTemplate.bind({});

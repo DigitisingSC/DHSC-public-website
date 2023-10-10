@@ -1,0 +1,15 @@
+uuid: 7d38f4a0-7c2c-4e5b-84ab-2da688f51530
+langcode: en
+status: true
+dependencies: {  }
+name: dhsc_event_full_image
+label: 'DHSC Event full image (768x456)'
+effects:
+  5e2893b6-cc45-4215-a530-ffb98d5d5a44:
+    uuid: 5e2893b6-cc45-4215-a530-ffb98d5d5a44
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 456
+      anchor: center-center

@@ -3,11 +3,21 @@
   @apply py-4;
 
   details {
-    @apply py-4;
+    @apply py-4 text-base;
 
     summary {
-      @apply w-fit text-forest underline hover:no-underline;
+      @apply w-fit text-forest mb-2.5;
+      @apply underline hover:no-underline;
       @apply focus:bg-focus focus:text-black focus:underline focus:decoration-4 focus:underline-offset-4;
+
+      &::marker {
+        @apply mr-[15px];
+      }
+    }
+
+    .webform-element-description {
+      @apply py-3.5 pl-6;
+      @apply border-s-4 border-black-20;
     }
   }
 
@@ -15,12 +25,12 @@
     @apply pb-2;
   }
 
-  .form-item h2 {
-    @apply tablet:w-9/12 text-lg font-bold leading-tight;
+  .form-item h1 {
+    @apply tablet:w-9/12 text-md tablet:text-lg leading-tight tablet:leading-tight mb-4;
   }
 
-  .form-item h3 {
-    @apply tablet:w-9/12 text-lg tablet:text-2xl mb-4;
+  .form-item p {
+    @apply text-md;
   }
 
   .radios--wrapper {
@@ -45,8 +55,7 @@
     @apply text-white hover:text-white focus:text-black disabled:text-white;
   }
 
-  .webform-submission-information,
-  .webform-button--previous {
+  .webform-submission-information {
     @apply hidden;
   }
 
@@ -58,4 +67,47 @@
     }
   }
 
+  &--title-prefix {
+    @apply text-md text-coolgrey mb-1;
+  }
+
+  // Assured solution form amends
+  .form-item[data-drupal-selector="edit-device-option"] {
+    @apply mt-0 pt-0;
+    legend {
+      @apply sr-only;
+    }
+  }
+  .webform-submission-assured-solutions-tool-form {
+    h1 {
+      @apply tablet:text-2xl tablet:mb-7;
+    }
+    .js-form-type-checkbox {
+      @apply grid pb-3 last:pb-0;
+      grid-template-columns: 48px 1fr;
+      .form-checkbox {
+        grid-row: 1 / span 2;
+        margin-right: 8px;
+      }
+      label {
+        @apply block font-bold py-1 leading-[30px];
+      }
+      .description {
+        @apply leading-8 text-coolgrey text-base;
+      }
+    }
+    .js-form-type-processed-text {
+      @apply mb-7 text-black-80;
+    }
+    h4 {
+      @apply text-md mt-7 pb-2;
+    }
+    .webform-actions {
+      @apply mt-9;
+    }
+  }
+  // End - Assured solution specific CSS
+  .webform-actions.webform-step-back-button {
+    @apply mt-0 pt-0 mb-4;
+  }
 }

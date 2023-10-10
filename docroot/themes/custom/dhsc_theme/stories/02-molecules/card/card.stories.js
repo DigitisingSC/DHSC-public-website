@@ -22,13 +22,14 @@ const cardArticleTemplate = ({ image, link, heading, description, date, attribut
     attributes
   });
 
-const cardEventTemplate = ({ image, link, heading, description, date, attributes }) =>
+const cardEventTemplate = ({ image, link, heading, description, date, type, attributes }) =>
   cardEventTwig({
     image,
     link,
     heading,
     description,
     date,
+    type,
     attributes
   });
 
@@ -58,6 +59,7 @@ cardEvent.args = {
   heading: "Get help using technology at your organisation",
   description: "Description goes here",
   date: "Thursday 12 May 2023",
+  type: 'online',
   attributes: new DrupalAttributes()
 };
 

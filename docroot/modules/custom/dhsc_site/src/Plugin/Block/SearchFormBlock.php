@@ -35,7 +35,7 @@ class SearchFormBlock extends BlockBase {
     $site_settings = \Drupal::service('site_settings.loader');
     $quicksearch_links = $site_settings->loadByFieldset('search')['quick_search'];
     if (!empty($quicksearch_links)) {
-      if (is_array($quicksearch_links[0]) && $quicksearch_links[0]) {
+      if (count($quicksearch_links) !== count($quicksearch_links, COUNT_RECURSIVE)) {
         foreach ($quicksearch_links as $key => $quicksearch_link) {
           if (is_numeric($key)) {
             $links[] = [
@@ -45,7 +45,7 @@ class SearchFormBlock extends BlockBase {
           }
         }
       }
-      else {
+      elseif (isset($quicksearch_links['uri']) && isset($quicksearch_links['title'])) {
         $links[] = [
           'url'   => Url::fromUri($quicksearch_links['uri'])->toString(),
           'title' => $quicksearch_links['title'],

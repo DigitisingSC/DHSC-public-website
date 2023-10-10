@@ -1,0 +1,18 @@
+adding:
+  status: false
+  dependencies:
+    config:
+      - search_api.server.acquia_search_server
+  read_only: true
+  options:
+    overridden_by_acquia_search: 2
+  server: acquia_search_server
+removing:
+  status: true
+  read_only: false
+  datasource_settings:
+    'entity:node':
+      bundles:
+        selected:
+          - skill
+  server: null

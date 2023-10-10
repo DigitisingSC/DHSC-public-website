@@ -1,0 +1,35 @@
+uuid: 23934450-d1c8-4c56-a877-b1a4a250af70
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.skills_framework.field_framework_sections
+    - paragraphs.paragraphs_type.skills_framework
+  module:
+    - paragraphs
+id: paragraph.skills_framework.default
+targetEntityType: paragraph
+bundle: skills_framework
+mode: default
+content:
+  field_framework_sections:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

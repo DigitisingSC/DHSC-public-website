@@ -6,13 +6,10 @@
 {% if items %}
 <nav{{ attributes.addClass(classes) }}>
   <div class="m-menu__container w-full">
-    {% if title %}
-      <h3 class="text-base mb-2">{{ title }}</h3>
-    {% endif %}
-    <ul class="m-menu__links pb-4 tablet:flex tablet:gap-4 tablet:justify-end tablet:pb-0">
+    <ul class="m-menu__links tablet:pb-4 tablet:grid grid-cols-2 tablet:gap-3 tablet:justify-end">
       {% for item in items %}
-      <li class="m-menu__item mb-2">
-        <a href="{{ item.url }}" target="_blank" class="underline hover:no-underline">{{ item.title }}</a>
+      <li class="m-menu__item mb-2 tablet:mb-0">
+        <a href="{{ item.url }}" class="text-2xs tablet:text-xs">{{ item.title }}</a>
       </li>
       {% endfor %}
     </ul>

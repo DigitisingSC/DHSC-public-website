@@ -10,6 +10,11 @@
   For more info, see the html.html.twig file in the localgov_base directory.
 #}
 
+{% block favicons %}
+  {# Extend the LocalGov favicons block with empty content to prevent 404s #}
+  {# as the favicon is referenced through theme settings. #}
+{% endblock %}
+
 {% block extra_head_items %}
   <link rel="mask-icon" href="/{{ base_path ~ directory }}/assets/images/favicons/safari-pinned-tab.svg" color="#ffffff">
   <meta name="msapplication-TileColor" content="#ffffff">

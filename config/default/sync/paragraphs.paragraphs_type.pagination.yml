@@ -1,0 +1,10 @@
+uuid: 0bedc2fa-8083-483c-8e76-fb0e5e445dbe
+langcode: en
+status: true
+dependencies: {  }
+id: pagination
+label: Pagination
+icon_uuid: null
+icon_default: null
+description: 'Adds a custom navigation to go from one piece of content to the next or previous one.'
+behavior_plugins: {  }

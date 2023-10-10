@@ -1,0 +1,10 @@
+uuid: 57d94f6a-e8e1-4eb5-a658-9e58274a0d32
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.skills_framework
+label: 'Skills Framework'
+targetEntityType: paragraph
+cache: true

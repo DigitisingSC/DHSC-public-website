@@ -21,6 +21,6 @@ const Template = ({ image, url, heading, text }) =>
 export const Hero = Template.bind({});
 Hero.args = {
   image: imgTag,
-  heading: "Supporting your digital social care journey",
-  text: "<p>Provide better and safer care by using digital ways of working</p><p>Watch our <a href='#'>video</a> to find out more</p>",
+  heading: "Digitising social care",
+  text: "<p>Putting people at the heart of digital care</p><p>Watch our <a href='#'>video</a> to find out more</p>",
 };

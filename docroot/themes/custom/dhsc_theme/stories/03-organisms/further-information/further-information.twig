@@ -1,0 +1,18 @@
+{% set classes = [
+  'o-further-information mt-5 tablet:mt-20'
+] %}
+
+{% if items|length > 0 %}
+  <div{{attributes.addClass(classes)}}>
+    {% if title %}
+      <h2 class="o-further-information__title text-black">{{ title }}</h2>
+    {% endif %}
+
+    {% for key, item in items if key|first != '#' %}
+      <div class="o-further-information_links text-base font-bold mb-1 last:mb-0 text-forest">
+        {{ item }}
+      </div>
+    {% endfor %}
+
+  </div>
+{% endif %}

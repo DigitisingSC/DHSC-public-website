@@ -3,6 +3,7 @@
   $this: &;
 
   &--listing {
+    #{$this}__event-type,
     #{$this}__date {
       @apply text-2xs;
     }
@@ -19,6 +20,9 @@
     #{$this}__media {
       @screen tablet {
         @apply order-2;
+      }
+      img {
+        @apply w-full h-auto;
       }
     }
   }

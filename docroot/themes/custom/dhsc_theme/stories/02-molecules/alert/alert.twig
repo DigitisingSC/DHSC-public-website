@@ -2,8 +2,8 @@
   'm-alert',
 ]| join(' ') | trim %}
 
-<div{{ attributes.addClass(classes) }} role="alert">
-  <div class="m-alert__wrapper py-4">
+<div{{ attributes.addClass(classes) }} role="alert" x-show="alertOpen" x-data="{ alertOpen: true }">
+  <div class="m-alert__wrapper py-3">
     <div class="m-alert__container container mx-auto flex items-center justify-stretch">
       {% if text %}
         <div class="m-alert__content grow mr-2">
@@ -12,12 +12,11 @@
           </div>
         </div>
       {% endif %}
-      {% if is_dismissible -%}
+      {% if is_dismissible %}
         {# The dismiss (close) button must have the class js-dismiss-button in order to work. #}
-        <button class="close js-dismiss-button self-start" aria-label="{{ 'close'|t }}">
+        <button x-on:click="alertOpen = ! alertOpen" class="close js-dismiss-button self-start" aria-label="{{ 'close'|t }}">
           <span aria-hidden="true">×</span>
         </button>
       {%- endif %}
     </div>
   </div>
-</div>

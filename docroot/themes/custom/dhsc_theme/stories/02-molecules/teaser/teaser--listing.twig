@@ -1,22 +1,33 @@
 {% set classes = [
   'm-teaser',
-  'pb-2 mb-2',
+  'pb-7 mb-7',
   'border-b-2',
   'border-black-20',
   'm-teaser--' ~ variant,
 ] %}
 <div{{ attributes.addClass(classes) }}>
   {% if title %}
-    <div class="m-teaser__title mb-2">
-      <h3 class="text-base">
+    <div class="m-teaser__title tablet:flex tablet:flex-nowrap mb-2">
+      <h3 class="tablet:mr-2">
         {% if link %}
-          <a href="{{ link }}" class="text-forest-100 underline hover:no-underline">{{ title }}</a>
+          <a href="{{ link }}" class="text-forest-100">{{ title }}</a>
         {% else %}
           {{ title }}
         {% endif %}
       </h3>
+      {% if bundle %}
+        <div class="m-teaser__bundle ml-auto mr-0 mb-auto text-coolgrey">
+          {{ bundle }}
+        </div>
+      {% endif %}
     </div>
+    {% if info %}
+      <div class="m-info ml-auto mr-0 mb-auto text-[0.875rem] leading-normal text-coolgrey">
+        {{ info }}
+      </div>
+    {% endif %}
   {% endif %}
+
   {% if subtitle %}
     <div class="m-teaser__subtitle mb-1 -mt-1 ">
       <h4 class="text-xs leading-relaxed text-coolgrey"> {{ subtitle }}</h4>
@@ -24,16 +35,16 @@
   {% endif %}
   {% if description %}
     <div class="m-teaser__description mb-2 text-xs leading-relaxed">
-     {{ description }}
+     {{ description|raw }}
     </div>
   {% endif %}
   {% if date %}
-    <div class="m-teaser__date">
+    <div class="m-teaser__date text-coolgrey">
       {{ date }}
     </div>
   {% endif %}
   {% if skillAttributes %}
-    <div class="m-teaser__skill-attributes mb-4 text-coolgrey text-xs leading-relaxed">
+    <div class="m-teaser__skill-attributes text-coolgrey text-xs leading-relaxed">
       {% if skillAttributes.level %}
         <div class="m-teaser__skill--level md:inline-block">
           <span class="md:font-bold">{{ 'Skill level:'|t }}</span> {{ skillAttributes.level }}

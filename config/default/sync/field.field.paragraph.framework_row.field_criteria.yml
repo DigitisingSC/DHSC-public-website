@@ -1,0 +1,25 @@
+uuid: 39c3f942-015d-4d8a-93e1-5cd618c71f1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_criteria
+    - paragraphs.paragraphs_type.framework_row
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: paragraph.framework_row.field_criteria
+field_name: field_criteria
+entity_type: paragraph
+bundle: framework_row
+label: 'Knowledge criteria'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

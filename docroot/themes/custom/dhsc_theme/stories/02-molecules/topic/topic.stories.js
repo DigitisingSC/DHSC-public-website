@@ -3,13 +3,15 @@ import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import './topic.scss';
 import topicTwig from "./topic.twig";
 import { svgIcon } from '../../01-atoms/svg/svg.stories';
+import svgIconTwig from '../../01-atoms/svg/svg.twig';
 
 export default {
   title: "Design System/Molecules/Topic",
 };
 
-const svgIconTemplate = (args) => svgIcon({
-  ...svgIcon.args
+const svgIconTemplate = (args) => svgIconTwig({
+  ...svgIcon.args,
+  icon: 'card-arrow',
 });
 
 const Template = ({ link, heading, description, attributes, icon }) =>

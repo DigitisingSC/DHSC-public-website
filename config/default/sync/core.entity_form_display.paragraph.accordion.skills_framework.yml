@@ -1,0 +1,59 @@
+uuid: f16866de-5755-48b6-af7f-9a225bb2a81f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.skills_framework
+    - field.field.paragraph.accordion.field_accordion_items
+    - field.field.paragraph.accordion.field_framework_sections
+    - field.field.paragraph.accordion.field_header
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+id: paragraph.accordion.skills_framework
+targetEntityType: paragraph
+bundle: accordion
+mode: skills_framework
+content:
+  field_framework_sections:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: framework_section
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+  field_header:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_accordion_items: true
+  status: true

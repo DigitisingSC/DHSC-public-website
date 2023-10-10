@@ -1,13 +1,20 @@
-.m-alert {
-  &__wrapper {
-    @apply bg-yellow-20;
-    @apply w-[100vw];
-    margin-left: calc((-100vw + 100%) / 2);
-    margin-right: calc((-100vw + 100%) / 2);
-  }
-  &__content {
-    a {
-      @apply text-forest underline hover:no-underline;
+.alert {
+  @apply w-[100vw];
+  margin-left: calc((-100vw + 100%) / 2);
+  margin-right: calc((-100vw + 100%) / 2);
+  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.15), 0px 1px 0px 0px rgba(0, 0, 0, 0.15);
+  border: none;
+  background-color: unset;
+
+  .alert-dsc-info {
+    .m-alert__wrapper {
+      @apply bg-green-20;
+    }
+
+    .m-alert__content {
+      a {
+        @apply text-forest;
+      }
     }
   }
 }

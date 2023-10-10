@@ -6,7 +6,7 @@
       </div>
     {% endif %}
     {% if title %}
-      <h2 class="o-tool__title mb-2">{{ title }}</h2>
+      <h2 class="o-tool__title">{{ title }}</h2>
     {% endif %}
     {% if variant %}
       <div class="o-tool__variant prose mb-2">
@@ -30,8 +30,23 @@
         {% endif %}
       </div>
       {% if submission_url %}
-        <div class="o-tool__actions">
-          <a href="{{ submission_url }}" class="a-button a-button--primary">{{ 'Change my responses'|t }}</a>
+        <div class="o-tool__actions mb-20 print:hidden">
+          <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+        </div>
+      {% endif %}
+      {% if email_form %}
+        <div class="o-tool__email print:hidden" x-data="{ openEmailForm: false }">
+          <div class="o-tool__header mb-4 text-base">
+            <a href="#" x-on:click="window.print();" class="o-tool__email-link inline-block mb-5 tablet:mb-0 tablet:mr-5 a-button a-button--primary">
+              <span class="inline-block">{{ 'Print my recommendations'|t }}</span>
+            </a>
+            <a href="#" class="o-tool__email-link inline-block a-button a-button--secondary" @click.prevent="openEmailForm = ! openEmailForm">
+              <span class="inline-block">{{ 'Email my results to me'|t }}</span>
+            </a>
+          </div>
+          <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base" x-show="openEmailForm">
+            {{ email_form }}
+          </div>
         </div>
       {% endif %}
     {% endif %}

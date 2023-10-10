@@ -1,6 +1,6 @@
 uuid: f4b21750-217c-45c4-b92a-992df71950cc
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - localgov_guides
@@ -11,7 +11,7 @@ _core:
 id: dhsc_theme_localgov_guides_prev_next_block_scarfolk
 theme: dhsc_theme
 region: content_bottom
-weight: -6
+weight: -9
 provider: null
 plugin: localgov_guides_prev_next_block
 settings:

@@ -1,15 +1,16 @@
 {% set classes = [
   'm-footer-contact',
-  'tablet:flex tablet:items-center tablet:justify-end tablet:gap-4 mb-4'
+  'tablet:flex tablet:items-center tablet:justify-end tablet:gap-6',
+  'print:hidden'
 ] %}
 <div{{attributes.addClass(classes) }}>
   {% if link %}
-    <div class="m-footer-contact__link mb-4 tablet:mb-0">
+    <div class="m-footer-contact__link mb-2 tablet:mb-0 text-2xs tablet:text-xs">
       {{ link }}
     </div>
   {% endif %}
   {% if phone %}
-    <div class="m-footer-contact__phone mb-4 tablet:mb-0">
+    <div class="m-footer-contact__phone mb-2 tablet:mb-0 text-2xs tablet:text-xs">
       <span class="me-2">{{ 'Call our helpdesk:'|t }}</span><a href="tel:{{ phone }}">{{ phone }}</a>
     </div>
   {% endif %}

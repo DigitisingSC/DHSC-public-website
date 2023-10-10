@@ -13,6 +13,7 @@ use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
+use Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -155,9 +156,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#total_count' => $result['total_count'],
         '#submission_url' => $result['submission_url'],
         '#no_matches' => $result['no_matches'],
-        '#partial_matches' => $result['partial_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
+        '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString()
       ];
     } else {
       $element = [
@@ -183,17 +184,24 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
-    $results = $tempStore->get('result_data');
+    $results = $tempStore->get('assured_solutions_result_data');
 
     if (!empty($results)) {
 
-      $result = $this->buildEmail($email, $results);
+      $module = 'dhsc_result_viewer';
+      $key = 'email_result';
+      $to = $email;
+      $langcode = $this->languageManager->getDefaultLanguage()->getId();
+      $params['subject'] = t('Assured solutions: Email result');
+      $params['body'] = $this->buildResultMarkup($results);
 
-      if (!$result['result']) {
+      try {
+        $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
+        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+      } catch (Exception $e) {
         $message = t('There was a problem sending assured solutions result email to @email', array('@email' => $email));
         \Drupal::logger('Error in email sending')->error($message);
-      } else {
-        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+        \Drupal::logger('Error in email sending')->error($e);
       }
 
       $submission_url = Url::fromRoute(
@@ -213,25 +221,18 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
   }
 
   /**
-   * Construct results email.
+   * Construct results markup given a set of results.
    *
-   * @param string $email
    * @return array
    */
-  public function buildEmail($email, $results)
+  public static function buildResultMarkup($results, $pdf = FALSE)
   {
-    $module = 'dhsc_result_viewer';
-    $key = 'email_result';
-    $to = $email;
-    $langcode = $this->languageManager->getDefaultLanguage()->getId();
-    $params['subject'] = t('Assured solutions: Email result');
-
     $criteria = '';
     if ($results['search_criteria']) {
       foreach ($results['search_criteria'] as $item) {
-        $criteria .= Markup::create("<h4>{$item['section']}</h4><ul>");
+        $criteria .= "<h4>{$item['section']}</h4><ul>";
         foreach ($item['answers'] as $answer) {
-          $criteria .= Markup::create("<li>{$answer}</li>");
+          $criteria .= "<li>{$answer}</li>";
         }
         $criteria .= "</ul>";
       }
@@ -240,50 +241,72 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     $result_items = '';
     if ($results['matches']) {
       foreach ($results['matches'] as $node) {
-        $result_items .= Markup::create("<h4>
-      {$node->getTitle()}</h4>
-      {$node->get('field_body_paragraphs')->entity->get('localgov_text')->value}
-      <p>");
-        $result_items .= "</p>";
-      }
-    }
-
-    $partial_matches = '';
-    if ($results['partial_matches']) {
-      foreach ($results['partial_matches'] as $item) {
-        $partial_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p><ul>");
-        foreach ($item['answers'] as $answer) {
-          $partial_matches .= Markup::create("<p>{$answer['section']}</p>");
-          $partial_matches .= Markup::create("<li>{$answer['answer']}</li>");
+        if ($node->get('field_body_paragraphs')->entity->getType() === 'localgov_text') {
+          $summary = $node->get('field_body_paragraphs')->entity->get('localgov_text')->value;
+        } else {
+          $summary = '';
         }
-        $partial_matches .= "</ul>";
+        $result_items .= "<h4>
+      {$node->getTitle()}</h4>
+      {$summary}
+      <p>";
+        $result_items .= "</p>";
       }
     }
 
     $no_matches = '';
     if ($results['no_matches']) {
       foreach ($results['no_matches'] as $item) {
-        $no_matches .= Markup::create("<h4>{$item['title']}</h4><p>Criteria not met:</p<ul>");
-        foreach ($item['answers'] as $answer) {
-          $no_matches .= Markup::create("<p>{$answer['section']}</p>");
-          $no_matches .= Markup::create("<li>{$answer['answer']}</li>");
+        $no_matches .= "<h4>{$item['title']}</h4><strong>Criteria not met:</strong><ul>";
+        foreach ($item['answers'] as $key => $answers) {
+          $no_matches .= "<p>$key</p>";
+          foreach ($answers as $answer) {
+            $no_matches .= "<li>{$answer}</li>";
+          }
         }
         $no_matches .= "</ul>";
       }
     }
 
+    $non_matching_count = !empty($results['non_matching_count']) ?
+    $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
+    $non_matching_html = '';
 
-    $params['body'] = Markup::create("
-    <table class='results'><tr><td><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
-    <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
-    <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
-    <tr class='non-matches'><td><h3>
-    {$results['non_matching_count']} suppliers don't match your criteria</h3>
-    {$partial_matches}{$no_matches}</td>
-    </tr>
-    </table>");
-    $send = TRUE;
+    if ($pdf) {
 
-    return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+      if ($non_matching_count) {
+      $non_matching_html = Markup::create("<div class='non-matches'><h3>
+      {$non_matching_count}</h3>
+      {$no_matches}
+      </div>");
+      }
+
+      $params['body'] = Markup::create("
+      <div>
+      <h3>Showing {$results['count']} out of {$results['total_count']} results</h3>
+      <h3>Search criteria:</h3><div class='criteria'>{$criteria}</div>
+      {$result_items}
+      {$non_matching_html}
+      </div>");
+    }
+
+    if (!$pdf) {
+
+      if ($non_matching_count) {
+      $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
+      {$non_matching_count}</h3>
+      {$no_matches}</td>
+      </tr>");
+      }
+
+      $params['body'] = Markup::create("
+      <table class='results'><h3>Showing {$results['count']} out of {$results['total_count']} results</h3></td></tr>
+      <tr class='search-criteria'><td><h3>Search criteria:</h3>{$criteria}</td></tr>
+      <tr class='matches'><td><h3>Matching suppliers:</h3>{$result_items}</td></tr>
+      {$non_matching_html}
+      </table>");
+    }
+
+    return $params['body'];
   }
 }

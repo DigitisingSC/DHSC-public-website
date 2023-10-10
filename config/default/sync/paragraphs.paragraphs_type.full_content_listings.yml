@@ -1,0 +1,15 @@
+uuid: eee61d95-5eab-4c2f-a641-f925cf8280cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: full_content_listings
+label: 'Full content listings'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

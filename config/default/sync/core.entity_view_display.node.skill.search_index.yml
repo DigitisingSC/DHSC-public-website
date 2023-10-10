@@ -57,5 +57,8 @@ content:
 hidden:
   field_body_paragraphs: true
   field_metatags: true
+  field_skill_price: true
+  field_skills_for_care_endorsed: true
+  field_themes: true
   langcode: true
   search_api_excerpt: true

@@ -4,7 +4,6 @@ status: false
 dependencies:
   config:
     - search_api.index.acquia_search_index
-    - system.menu.main
   module:
     - better_exposed_filters
     - search_api
@@ -489,15 +488,6 @@ display:
       exposed_block: true
       display_extenders: {  }
       path: search
-      menu:
-        type: normal
-        title: Search
-        description: ''
-        weight: 0
-        expanded: false
-        menu_name: main
-        parent: ''
-        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

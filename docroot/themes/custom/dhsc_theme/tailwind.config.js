@@ -17,6 +17,8 @@ const careColours = {
   },
   forest: {
     DEFAULT: '#00594c',
+    300: '#002D26',
+    200: '#335751',
     100: '#00594c',
     80: '#337a70',
     60: '#669b94',
@@ -53,11 +55,15 @@ const careColours = {
   lightblue: {
     DEFAULT: '#34B6E4',
   },
+  linkhover: {
+    DEFAULT: '#002D26',
+  },
 }
 
 const careNeutrals = {
   black: {
     DEFAULT: '#101820',
+    100: '#101820',
     80: '#40464D',
     60: '#545454',
     40: '#9FA3A6',
@@ -65,7 +71,11 @@ const careNeutrals = {
   },
   coolgrey: {
     DEFAULT: '#616265',
+    40: '#DFE0E0',
     20: '#F8F8F8'
+  },
+  brandgrey: {
+    DEFAULT: '#CFD1D2'
   },
   white: {
     DEFAULT: '#FFFFFF',
@@ -92,16 +102,21 @@ module.exports = {
   safelist: [
     'border-green',
     'border-l-4',
+    'bg-black-60',
+    'h-[1px]',
     'pl-6',
     'ml-6',
+    'mr-3',
     'mb-8',
     'h3',
   ],
   theme: {
     extend: {
       screens: {
-        'tablet': '767px',
-        'desktop': '959px',
+        'mobile': '320px',
+        'tablet': '768px',
+        'desktop': '1024px',
+        'print': { 'raw': 'print' },
       },
       colors: {
         transparent: 'transparent',
@@ -111,6 +126,7 @@ module.exports = {
         ...systemColours
       },
       spacing: {
+        '0': 0,
         '1': rem(5, baseFontSize),
         '2': rem(10, baseFontSize),
         '3': rem(15, baseFontSize),
@@ -145,28 +161,105 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: [
+            {
+              color: theme('colors.black.100')
+            },
+            // Headings
+            {
+              h1 : {
+                fontSize: theme('fontSize.lg'),
+                lineHeight: '35px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.2xl'),
+                  lineHeight: '55px'
+                },
+              },
+              h2 : {
+                fontSize: theme('fontSize.md'),
+                lineHeight: '30px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.lg'),
+                  lineHeight: '40px'
+                },
+              },
+              h3 : {
+                fontSize: theme('fontSize.sm'),
+                lineHeight: '25px',
+                marginBottom: theme('spacing.4'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.md'),
+                  lineHeight: '30px'
+                },
+              },
+            },
+            // Paragraphs
+            {
+              p: {
+                fontSize: theme('fontSize.xs'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.base')
+                }
+              }
+            },
+            // Lists
+            {
+              li: {
+                fontSize: theme('fontSize.xs'),
+                '@screen tablet': {
+                  fontSize: theme('fontSize.base')
+                }
+              },
+              ul: {
+                '> li': {
+                  '&::marker': {
+                    color: theme('colors.black.100')
+                  },
+                },
+              },
+            },
             // Links.
             {
               a: {
                 '&:not(.a-button)': {
-                  textDecoration: 'underline',
-                  textUnderlineOffset: theme('spacing.1'),
-                  fontStyle: 'normal',
                   color: theme('colors.forest.100'),
                   transition: `all ${theme('transitionDuration.75')} ease-in-out`,
-                  '&:hover': {
-                    color: theme('colors.black.DEFAULT'),
-                    textDecoration: 'none',
-                  },
-                  '&:focus': {
-                    color: theme('colors.black.DEFAULT'),
-                    backgroundColor: theme('colors.focus.DEFAULT'),
-                    textDecoration: 'underline',
-                    textUnderlineOffset: theme('spacing.1'),
-                    textDecorationThickness: theme('spacing.1'),
-                  },
                 },
               },
+            },
+            // Tables
+            {
+              table: {
+                th:{
+                  fontSize: '1.1875rem',
+                  lineHeight: '1.75rem',
+                  verticalAlign: 'top',
+                  paddingTop: '0.9375rem',
+                  paddingBottom: '0.9375rem',
+                  borderBottomWidth: '0.125rem',
+                },
+                td: {
+                  fontSize: '1.1875rem',
+                  lineHeight: '1.625rem',
+                  paddingTop: '0.9375rem',
+                  paddingBottom: '0.9375rem',
+                  paddingLeft: '0.25rem',
+                  paddingRight: '0.25rem',
+                  borderBottomWidth: '1px',
+                  position: 'relative',
+                  '&:not(:last-child)::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-1px',
+                    display: 'block',
+                    right: '-4px',
+                    height: '1px',
+                    width: '8px',
+                    backgroundColor: 'rgb(255 255 255 / 1)',
+                  },
+                },
+              }
             },
           ],
         },
@@ -184,17 +277,17 @@ module.exports = {
       addComponents({
         '.container': {
           maxWidth: '100%',
-          paddingLeft: '.5rem',
-          paddingRight: '.5rem',
+          paddingLeft: '.938rem',
+          paddingRight: '.938rem',
           '@screen tablet': {
-            maxWidth: '960px',
-            paddingLeft: '1rem',
-            paddingRight: '1rem'
+            maxWidth: '768px',
+            paddingLeft: '1.875rem',
+            paddingRight: '1.875rem'
           },
           '@screen desktop': {
             maxWidth: '1024px',
-            paddingLeft: '1rem',
-            paddingRight: '1rem'
+            paddingLeft: '1.875rem',
+            paddingRight: '1.875rem'
           },
         }
       })

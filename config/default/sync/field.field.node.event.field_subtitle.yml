@@ -1,0 +1,21 @@
+uuid: 057395b1-75b2-4aac-92c4-c8b56c38cc08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtitle
+    - node.type.event
+id: node.event.field_subtitle
+field_name: field_subtitle
+entity_type: node
+bundle: event
+label: 'Organised by'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Digitising Social Care'
+default_value_callback: ''
+settings: {  }
+field_type: string

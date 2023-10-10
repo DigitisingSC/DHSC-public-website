@@ -10,9 +10,10 @@ stackable: false
 storage: folder
 folder: ../config/default/local
 module:
-  dblog: 0
   devel: 0
+  field_ui: 0
   stage_file_proxy: 0
+  dblog: 0
   views_ui: 0
 theme: {  }
 complete_list:
@@ -20,7 +21,6 @@ complete_list:
   - views.view.digital_skills_training_page
   - views.view.local_search
 partial_list:
-  - acquia_search.settings
   - autologout.settings
   - block.block.exposedformacquia_searchpage
   - block.block.exposedformdigital_skills_training_pageskills_search_page

@@ -3,8 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
     - system
+    - webform
   theme:
     - dhsc_theme
 _core:
@@ -21,15 +21,17 @@ settings:
   label_display: '0'
   provider: system
 visibility:
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    negate: false
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'
+  webform:
+    id: webform
+    negate: true
     context_mapping:
+      webform: '@webform.webform_route_context:webform'
+      webform_submission: '@webform.webform_submission_route_context:webform_submission'
       node: '@node.node_route_context:node'
-    bundles:
-      article: article
-      casestudy: casestudy
-      content_page: content_page
-      event: event
-      localgov_guides_overview: localgov_guides_overview
-      localgov_guides_page: localgov_guides_page
+    webforms:
+      assured_solutions_tool: assured_solutions_tool
+      self_assessment_tool: self_assessment_tool

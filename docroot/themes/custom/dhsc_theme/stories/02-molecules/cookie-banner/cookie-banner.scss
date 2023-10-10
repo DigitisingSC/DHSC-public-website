@@ -1,0 +1,11 @@
+#sliding-popup {
+  @apply fixed z-10 left-0 right-0;
+  box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+  p {
+    @apply mb-2;
+  }
+  a {
+    @apply text-forest hover:no-underline;
+  }
+}

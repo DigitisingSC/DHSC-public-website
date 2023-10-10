@@ -1,7 +1,7 @@
 .o-tool {
 
   &__icon svg {
-    @apply h-2 w-2;
+    @apply h-3 w-3;
 
   }
   &__email form {
@@ -14,4 +14,9 @@
     @apply sr-only;
   }
 
+  &--solutions {
+    .o-tool__email label {
+      @apply not-sr-only block mb-3;
+    }
+  }
 }

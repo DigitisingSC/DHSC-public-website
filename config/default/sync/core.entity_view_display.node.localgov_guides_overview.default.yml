@@ -4,15 +4,19 @@ status: true
 dependencies:
   config:
     - field.field.node.localgov_guides_overview.field_body_paragraphs
+    - field.field.node.localgov_guides_overview.field_date
     - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.field_metatags
+    - field.field.node.localgov_guides_overview.field_sidebar_related
     - field.field.node.localgov_guides_overview.field_summary
+    - field.field.node.localgov_guides_overview.field_topic_term
     - field.field.node.localgov_guides_overview.localgov_guides_description
     - field.field.node.localgov_guides_overview.localgov_guides_list_format
     - field.field.node.localgov_guides_overview.localgov_guides_pages
     - field.field.node.localgov_guides_overview.localgov_guides_section_title
     - node.type.localgov_guides_overview
   module:
+    - datetime
     - entity_reference_revisions
     - user
 _core:
@@ -36,6 +40,15 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_date:
+    type: datetime_custom
+    label: hidden
+    settings:
+      timezone_override: ''
+      date_format: 'd F Y'
+    third_party_settings: {  }
+    weight: 3
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -44,7 +57,9 @@ content:
 hidden:
   field_image: true
   field_metatags: true
+  field_sidebar_related: true
   field_summary: true
+  field_topic_term: true
   langcode: true
   localgov_guides_description: true
   localgov_guides_list_format: true

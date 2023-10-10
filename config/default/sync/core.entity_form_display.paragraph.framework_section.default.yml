@@ -1,0 +1,56 @@
+uuid: c3813d09-613d-47ea-89c8-1b757b8acd33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.framework_section.field_framework_rows
+    - field.field.paragraph.framework_section.localgov_title
+    - paragraphs.paragraphs_type.framework_section
+  module:
+    - paragraphs
+    - paragraphs_ee
+    - paragraphs_features
+id: paragraph.framework_section.default
+targetEntityType: paragraph
+bundle: framework_section
+mode: default
+content:
+  field_framework_rows:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: framework_row
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: false
+        show_drag_and_drop: true
+      paragraphs_ee:
+        paragraphs_ee:
+          dialog_off_canvas: false
+          dialog_style: tiles
+  localgov_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

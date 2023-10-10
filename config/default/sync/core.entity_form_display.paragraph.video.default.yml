@@ -40,4 +40,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_caption: true
   status: true

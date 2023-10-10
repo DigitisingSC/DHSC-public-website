@@ -18,10 +18,15 @@
   html {
     font-family: 'Frutiger', arial, system-ui, sans-serif;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: theme('fontWeight.bold');
+  }
   h1 {
     font-size: theme('fontSize.lg');
+    line-height: 1.1;
     @screen tablet {
       font-size: theme('fontSize.2xl');
+      line-height: 1.15;
     }
   }
   h2 {
@@ -32,8 +37,10 @@
   }
   h3 {
     font-size: theme('fontSize.sm');
+    line-height: 1.4;
     @screen tablet {
       font-size: theme('fontSize.md');
+      line-height: 1.25;
     }
   }
   h4 {
@@ -54,4 +61,33 @@
       font-size: theme('fontSize.sm');
     }
   }
+  a {
+    text-decoration-line: underline;
+    transition: all 75ms ease-in-out;
+
+    &:hover {
+      text-decoration-line: none;
+    }
+    &:focus {
+      outline: none;
+      color: theme('colors.black.100') !important;
+      background-color: theme('colors.focus.DEFAULT');
+      text-decoration-line: underline;
+      text-decoration-thickness: 4px;
+      text-underline-offset: 4px;
+    }
+  }
+  .t-content a {
+    color: theme('colors.forest.100');
+
+    &:hover {
+      color: theme('colors.forest.300');
+    }
+  }
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }

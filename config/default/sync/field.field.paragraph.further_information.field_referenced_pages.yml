@@ -1,0 +1,23 @@
+uuid: 56969327-e380-4f5d-8aa4-927801daaa5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_referenced_pages
+    - paragraphs.paragraphs_type.further_information
+  module:
+    - link
+id: paragraph.further_information.field_referenced_pages
+field_name: field_referenced_pages
+entity_type: paragraph
+bundle: further_information
+label: 'Referenced pages'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

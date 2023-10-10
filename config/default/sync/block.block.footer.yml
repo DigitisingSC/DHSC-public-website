@@ -10,14 +10,14 @@ dependencies:
     - dhsc_theme
 id: footer
 theme: dhsc_theme
-region: footer
+region: footer_top
 weight: -8
 provider: null
 plugin: 'system_menu_block:footer'
 settings:
   id: 'system_menu_block:footer'
-  label: Footer
-  label_display: '0'
+  label: 'Digitising Social Care'
+  label_display: visible
   provider: system
   level: 1
   depth: 0

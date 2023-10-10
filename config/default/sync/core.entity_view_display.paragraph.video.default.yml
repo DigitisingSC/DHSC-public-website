@@ -39,4 +39,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_caption: true
   search_api_excerpt: true

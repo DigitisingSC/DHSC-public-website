@@ -1,0 +1,29 @@
+uuid: 866a4eb3-3b54-44d3-8130-9fb70be7007b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_themes
+    - node.type.skill
+    - taxonomy.vocabulary.theme
+id: node.skill.field_themes
+field_name: field_themes
+entity_type: node
+bundle: skill
+label: Themes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      theme: theme
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

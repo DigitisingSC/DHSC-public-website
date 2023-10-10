@@ -3,15 +3,15 @@
   'sidebar_second',
 ] %}
 
-<div class="t-header">
+<div class="t-header flex flex-wrap flex-row">
 
   {{ header }}
+
+  {{ search }}
 
   {{ primary_menu }}
 
   {{ secondary_menu }}
-
-  {{ search }}
 
   {{ messages }}
 
@@ -23,7 +23,7 @@
 
 </div>
 
-<main class="t-content" id="main-content">
+<main class="t-content"{% if not remove_main_id %} id="main-content"{% endif %}>
 
   <div class="container mx-auto">
     {{ content_top }}
@@ -76,7 +76,7 @@
 
 </main>
 
-<footer class="t-footer border-t-2 border-green mt-8">
+<footer class="t-footer border-t-4 border-green mt-8">
   {{ footer_top }}
   {{ footer }}
   {{ footer_bottom }}

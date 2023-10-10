@@ -8,14 +8,20 @@ dependencies:
     - field.field.node.event.field_date
     - field.field.node.event.field_end_date
     - field.field.node.event.field_end_time
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_further_information
     - field.field.node.event.field_image
     - field.field.node.event.field_link
     - field.field.node.event.field_location
+    - field.field.node.event.field_location_link
+    - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
+    - field.field.node.event.field_subtitle
     - field.field.node.event.field_summary
     - node.type.event
   module:
     - datetime
+    - options
     - user
 id: node.event.card
 targetEntityType: node
@@ -30,6 +36,13 @@ content:
       format_type: human_readable
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_event_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_image:
     type: entity_reference_entity_view
@@ -57,8 +70,12 @@ hidden:
   field_body_paragraphs: true
   field_end_date: true
   field_end_time: true
+  field_further_information: true
   field_link: true
+  field_location_link: true
+  field_sidebar_related: true
   field_start_time: true
+  field_subtitle: true
   field_summary: true
   langcode: true
   search_api_excerpt: true

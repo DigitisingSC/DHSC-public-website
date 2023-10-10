@@ -1,20 +1,63 @@
+{% set classes = [
+  't-article-page'
+] %}
+
+{% set article_date = article_details.date|render %}
+
 {#
-  Template
+Template
 #}
-<article class="t-article-page">
+<article{{ attributes.addClass(classes) }}>
   {% if title %}
   <div class="t-article-page__title">
-    <h1>{{ title }}</h1>
+    <h1 class="mb-4">{{ title }}</h1>
   </div>
 	{% endif %}
-  {% if article_details %}
-    <div class="t-article-page__details">
-      {{ article_details }}
+  {% if article_details|render is not empty %}
+    <div class="t-article-page__details text-md text-coolgrey mb-4 tablet:mb-7">
+        <span itemprop="author">{{ article_details.author }}</span>,
+        <time itemprop="datePublished" datetime="{{ article_date|date("Y-m-d") }}">{{ article_date|date("d F Y") }}</time>
     </div>
   {% endif %}
-  {% if content %}
-    <div class="t-article-page__content">
-      {{ content }}
+
+  <div class="t-article__main{% if related %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
+    <div class="t-article__conten-wrapper{% if related %} tablet:w-9/12{% endif %}">
+
+      {% if featured_image|render is not empty %}
+        <div class="t-article-page__featured-image mb-5 tablet:mb-7">
+          {{ featured_image }}
+        </div>
+      {% endif %}
+      {% if summary %}
+        <div class="t-article-page__summary mb-5 tablet:mb-7">
+          {{ summary }}
+        </div>
+      {% endif %}
+
+      {% if content %}
+        <div class="t-article-page__content">
+          {{ content }}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+
+    {% if related %}
+      <aside class="t-article__related tablet:w-3/12">
+        {{ related }}
+      </aside>
+      {% endif %}
+  </div>
+
+  <div class="t-article__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+    {% if further_information %}
+      <section class="t-article__related w-full tablet:w-9/12">
+        {{ further_information }}
+      </section>
+    {% endif %}
+
+    <div class="t-article__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
+      {% include "@molecules/back-to-top/back-to-top.twig" %}
+    </div>
+  </div>
+
 </article>
