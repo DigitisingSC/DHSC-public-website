@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.card
     - core.entity_view_mode.node.teaser
     - node.type.article
+    - node.type.casestudy
     - node.type.event
     - node.type.supplier
   module:
@@ -333,7 +334,7 @@ display:
     display_plugin: block
     position: 3
     display_options:
-      title: 'Articles listing'
+      title: 'Success story listing'
       sorts: {  }
       filters:
         status:
@@ -361,7 +362,7 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            article: article
+            casestudy: casestudy
           group: 1
           exposed: false
           expose:
