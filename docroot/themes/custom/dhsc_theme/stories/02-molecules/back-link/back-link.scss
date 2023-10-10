@@ -18,7 +18,8 @@
 }
 
 .m-back-link-text {
+  @apply block mb-[3.75rem];
   &__label {
-    @apply block font-bold text-base mb-[3.75rem];
+    @apply font-bold text-base;
   }
 }
