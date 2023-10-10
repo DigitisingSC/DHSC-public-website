@@ -37,9 +37,9 @@
     {{ drupal_block('localgov_guides_contents') }}
 
     {% if content %}
-      <div class="t-guide__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
-        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
-          <div{{content_attributes.addClass('lgd-guides__content','node__content',)}}>
+      <div class="t-guide__main{% if hasRelated %} tablet:flex gap-[1.25rem] tablet:gap-[1.875rem]{% endif %}">
+        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-[39.563rem]{% endif %}">
+          <div{{ content_attributes.addClass('lgd-guides__content', 'node__content', ) }}>
             {{ content|without('field_date') }}
           </div>
           <div class="t-guide-overview__back-link">
