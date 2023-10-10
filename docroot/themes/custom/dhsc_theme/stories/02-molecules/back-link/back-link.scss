@@ -13,8 +13,12 @@
   }
 }
 
+.m-back-link-divider {
+  @apply block border-t-2 border-green mobile:mt-[3.125rem] tablet:mt-[5rem] mb-4;
+}
+
 .m-back-link-text {
   &__label {
-    @apply font-bold text-base;
+    @apply block font-bold text-base mb-[3.75rem];
   }
 }

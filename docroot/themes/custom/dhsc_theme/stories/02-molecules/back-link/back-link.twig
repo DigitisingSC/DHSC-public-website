@@ -32,7 +32,7 @@
 {% endif %}
 
 {% if variant == 'text' %}
-<div class="block border-t-2 border-green mb-4"></div>
+<div class="m-back-link-divider"></div>
   <a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ 'Back to: '|t }}{{ text|t }}">
     <span class="m-back-link-text__label">{{ 'Back to: '|t }}{{ text|t }}</span>
   </a>
