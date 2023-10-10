@@ -12,3 +12,9 @@
     @apply text-xs text-forest-100 ml-2 cursor-pointer;
   }
 }
+
+.m-back-link-text {
+  &__label {
+    @apply font-bold text-base;
+  }
+}

@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
@@ -45,7 +46,7 @@ function dhsc_theme_preprocess_node(&$variables) {
   // fetch the parent link from the active breadcrumb.
   $link_item = array_pop($breadcrumb['#links']);
 
-  $variables['link_text'] = $link_item->getText();
+  $variables['link_text'] = $link_item->getText()->getUntranslatedString();
   $variables['link_alias'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $node->id());
 
 }

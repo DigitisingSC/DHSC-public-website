@@ -4,14 +4,14 @@
 
 {# Classes #}
 {% set classes = [
-  variant == 'default' ? 'm-back-link-default' : variant == 'form' ? 'm-back-link-form' : 'm-back-link-page',
+  variant == 'default' ? 'm-back-link-default' : variant == 'form' ? 'm-back-link-form' : 'm-back-link-text',
 ] %}
 
 {# Set back link #}
 {% set link = link ? link : '#' %}
 
 {% if variant == 'default' %}
-<a{{attributes.addgetQuickSearchLinksClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ label|t }}">
+<a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ label|t }}">
     <span class="m-back-link-default__icon">{{ icon }}</span>
     <span class="m-back-link-default__label">{{ label|t }}</span>
   </a>
@@ -34,6 +34,6 @@
 {% if variant == 'text' %}
 <div class="block border-t-2 border-green mb-4"></div>
   <a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ 'Back to: '|t }}{{ text|t }}">
-    <span class="m-back-link-default__text">{{ 'Back to: '|t }}{{ text|t }}</span>
+    <span class="m-back-link-text__label">{{ 'Back to: '|t }}{{ text|t }}</span>
   </a>
 {% endif %}
