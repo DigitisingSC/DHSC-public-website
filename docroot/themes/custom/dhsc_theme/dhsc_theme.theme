@@ -30,11 +30,19 @@ function dhsc_theme_preprocess_block(&$variables) {
  * Implements hook_preprocess_HOOK().
  * Build contentback link based on breadcrumb value.
  */
-function dhsc_theme_preprocess_node(&$variables) {
+function dhsc_theme_preprocess_node(&$variables)
+{
 
   $node = $variables['elements']['#node'];
 
-  if (!in_array($node->getType(), ['localgov_guides_overview', 'supplier'])) {
+  if (!in_array(
+    $node->getType(),
+    [
+      'localgov_guides_overview',
+      'localgov_guides_page',
+      'supplier',
+    ]
+  )) {
     return;
   }
 
@@ -43,12 +51,16 @@ function dhsc_theme_preprocess_node(&$variables) {
   $routeMatch = new RouteMatch($routeName, $route);
   $breadcrumb = Drupal::service('dhsc_site.breadcrumb')->build($routeMatch)->toRenderable();
 
-  // fetch the parent link from the active breadcrumb.
-  $link_item = array_pop($breadcrumb['#links']);
-
-  $variables['link_text'] = $link_item->getText()->getUntranslatedString();
-  $variables['link_alias'] = \Drupal::service('path_alias.manager')->getAliasByPath('/node/'. $node->id());
-
+  // if the breadcrumb contains only one link this must be set to Home.
+  if (count($breadcrumb['#links']) == 1) {
+    $variables['link_text'] = $breadcrumb['#links'][0]->getText()->getUntranslatedString();
+    $variables['link_alias'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+  } else {
+    // fetch the parent link from the active breadcrumb.
+    $link_item = array_pop($breadcrumb['#links']);
+    $variables['link_text'] = $link_item->getText();
+    $variables['link_alias'] = $link_item->getUrl()->toString();
+  }
 }
 
 /**

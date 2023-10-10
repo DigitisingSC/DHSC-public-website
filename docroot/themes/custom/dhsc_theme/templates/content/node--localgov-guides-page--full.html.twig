@@ -43,6 +43,14 @@
           <div{{ content_attributes.addClass('lgd-guides__content', 'node__content') }}>
             {{ content|without('field_date') }}
           </div>
+          <div class="t-guide-overview__back-link">
+            {% include '@molecules/back-link/back-link.twig' with {
+              'attributes': attributes,
+              'text' : link_text,
+              'link' : link_alias,
+              'variant' : 'text',
+            } %}
+          </div>
         </div>
         {% if hasRelated %}
           <aside class="t-guide-overview__related tablet:w-3/12">
