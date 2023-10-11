@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.landing_page.field_body_paragraphs
+    - field.field.node.landing_page.field_display_exit_link
     - field.field.node.landing_page.field_formatted_description
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_image
@@ -62,6 +63,7 @@ content:
     weight: 1
     region: content
 hidden:
+  field_display_exit_link: true
   field_image: true
   field_summary: true
   langcode: true

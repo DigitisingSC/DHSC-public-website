@@ -1,7 +1,7 @@
 {% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
 
 {% set icon %}
-{% include '@atoms/svg/svg.twig' with {
+  {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
     'icon': 'chevron-left',
   } %}
@@ -14,9 +14,9 @@
 
 {% if result_variant %}
   {% set variant = {
-        '#type':   'processed_text',
-        '#text':    result_variant.value,
-        '#format': 'full_html',
+    '#type':   'processed_text',
+    '#text':    result_variant.value,
+    '#format': 'full_html',
   } %}
 {% endif %}
 

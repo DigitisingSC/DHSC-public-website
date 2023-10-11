@@ -40,8 +40,15 @@ function dhsc_theme_preprocess_node(&$variables)
     [
       'localgov_guides_overview',
       'localgov_guides_page',
+      'landing_page'
     ]
   )) {
+    return;
+  }
+
+  if ($node->getType() === 'landing_page'
+    && $node->hasField('field_display_exit_link')
+    && !$node->get('field_display_exit_link')->value) {
     return;
   }
 
