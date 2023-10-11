@@ -104,4 +104,14 @@
   <div{{content_attributes.addClass(content_type|clean_class~'__content','node__content')}}>
     {{ content|without('field_hero_image', 'field_formatted_description') }}
   </div>
+  {% if link_text and link_alias %}
+    <div class="t-content-page__back-link">
+      {% include '@molecules/back-link/back-link.twig' with {
+        'attributes': attributes,
+        'text' : link_text,
+        'link' : link_alias,
+        'variant' : 'text',
+      } %}
+    </div>
+  {% endif %}
 </div>

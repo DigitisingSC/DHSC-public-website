@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
@@ -23,6 +24,49 @@ function dhsc_theme_preprocess(&$variables, $hook) {
  */
 function dhsc_theme_preprocess_block(&$variables) {
   $variables['site_slogan'] = \Drupal::config('system.site')->get('slogan');
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ * Build contentback link based on breadcrumb value.
+ */
+function dhsc_theme_preprocess_node(&$variables)
+{
+
+  $node = $variables['elements']['#node'];
+
+  if (!in_array(
+    $node->getType(),
+    [
+      'localgov_guides_overview',
+      'localgov_guides_page',
+      'landing_page'
+    ]
+  )) {
+    return;
+  }
+
+  if ($node->getType() === 'landing_page'
+    && $node->hasField('field_display_exit_link')
+    && !$node->get('field_display_exit_link')->value) {
+    return;
+  }
+
+  $routeName = $node->toUrl()->getRouteName();
+  $route = \Drupal::service('router.route_provider')->getRouteByName($routeName);
+  $routeMatch = new RouteMatch($routeName, $route);
+  $breadcrumb = Drupal::service('dhsc_site.breadcrumb')->build($routeMatch)->toRenderable();
+
+  // if the breadcrumb contains only one link this must be set to Home.
+  if (count($breadcrumb['#links']) == 1) {
+    $variables['link_text'] = $breadcrumb['#links'][0]->getText()->getUntranslatedString();
+    $variables['link_alias'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+  } else {
+    // fetch the parent link from the active breadcrumb.
+    $link_item = array_pop($breadcrumb['#links']);
+    $variables['link_text'] = $link_item->getText();
+    $variables['link_alias'] = $link_item->getUrl()->toString();
+  }
 }
 
 /**

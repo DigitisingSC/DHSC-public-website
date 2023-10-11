@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.landing_page.field_body_paragraphs
+    - field.field.node.landing_page.field_display_exit_link
     - field.field.node.landing_page.field_formatted_description
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_image
@@ -30,6 +31,7 @@ content:
     region: content
 hidden:
   field_body_paragraphs: true
+  field_display_exit_link: true
   field_formatted_description: true
   field_hero_image: true
   field_image: true

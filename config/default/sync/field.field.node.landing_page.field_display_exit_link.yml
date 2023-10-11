@@ -1,0 +1,23 @@
+uuid: b65b53e7-1ccd-48ec-8b47-0a28a915e554
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_exit_link
+    - node.type.landing_page
+id: node.landing_page.field_display_exit_link
+field_name: field_display_exit_link
+entity_type: node
+bundle: landing_page
+label: 'Display exit link'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: '1'
+  off_label: '0'
+field_type: boolean
