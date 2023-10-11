@@ -27,6 +27,15 @@
   } %}
 {% endif %}
 
+{% set back_link %}
+{% include '@molecules/back-link/back-link.twig' with {
+    'attributes': attributes,
+    'text' : 'Home',
+    'link' : '/',
+    'variant' : 'text',
+  } %}
+{% endset %}
+
 {% include '@organisms/tool/tool--solutions.twig' with {
   'attributes': attributes,
   'summary': summary_text,
@@ -41,5 +50,6 @@
   'non_matching_count': non_matching_count,
   'no_matches': no_matches,
   'email_form': email_form,
+  'back_link': back_link,
   'download_results_path': download_results_path
 } %}

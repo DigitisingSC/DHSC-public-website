@@ -20,6 +20,15 @@
   } %}
 {% endif %}
 
+{% set back_link %}
+  {% include '@molecules/back-link/back-link.twig' with {
+    'attributes': attributes,
+    'text' : 'Home',
+    'link' : '/',
+    'variant' : 'text',
+  } %}
+{% endset %}
+
 {% include '@organisms/tool/tool--assessment.twig' with {
   'attributes': attributes,
   'summary': summary,
@@ -28,5 +37,6 @@
   'no_result': no_result,
   'result': result,
   'submission_url': submission_url,
-  'email_form': email_form
+  'email_form': email_form,
+  'back_link': back_link
 } %}

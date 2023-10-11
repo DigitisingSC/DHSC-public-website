@@ -40,7 +40,6 @@ function dhsc_theme_preprocess_node(&$variables)
     [
       'localgov_guides_overview',
       'localgov_guides_page',
-      'supplier',
     ]
   )) {
     return;

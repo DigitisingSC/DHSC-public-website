@@ -14,11 +14,10 @@
 }
 
 .m-back-link-divider {
-  @apply block border-t-2 border-green mobile:mt-[3.125rem] tablet:mt-[5rem] mb-4;
+  @apply block border-t-2 border-green mt-[2.5rem] mb-4;
 }
 
 .m-back-link-text {
-  @apply block mb-[3.75rem];
   &__label {
     @apply font-bold text-base;
   }
