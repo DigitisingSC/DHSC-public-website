@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default node template for a content page.
+ */
+#}
+
+{% set content_type = node.bundle %}
+
+{% set relatedBlock %}
+{{ drupal_block('related_information_block', {
+    label_display: false,
+    context_mapping: {node: '@node.node_route_context:node'},
+  }) }}
+{% endset %}
+
+{% set hasRelated = relatedBlock|striptags|trim != "" %}
+
+{%
+  set classes = [
+    content_type|clean_class,
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+
+{% if content %}
+  <div class="t-content-page__main{% if hasRelated %} tablet:flex gap-[1.25rem] tablet:gap-[1.875rem]{% endif %}">
+    <div class="t-content-page__content-wrapper{% if hasRelated %} tablet:w-[39.563rem]{% endif %}">
+        {% include '@templates/content-page/content-page.twig' with {
+        'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content'),
+        'title': label,
+        'intro': content.field_intro,
+        'intro_above_title': content.field_display_intro_above_title,
+        'content': content.field_body_paragraphs,
+        } %}
+    </div>
+    {% if hasRelated %}
+      <aside class="t-content-page__related tablet:w-3/12">
+        {{ relatedBlock }}
+      </aside>
+    {% endif %}
+  </div>
+{% endif %}
