@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_image
     - field.field.node.landing_page.field_intro
+    - field.field.node.landing_page.field_search_weight
     - field.field.node.landing_page.field_summary
     - node.type.landing_page
     - workflows.workflow.editorial_workflow
@@ -29,6 +30,7 @@ third_party_settings:
         - field_image
         - field_summary
         - field_display_exit_link
+        - field_search_weight
       label: Metadata
       region: content
       parent_name: ''
@@ -131,6 +133,13 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_search_weight:
+    type: number
+    weight: 16
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_summary:

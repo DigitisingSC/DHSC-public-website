@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.casestudy.field_further_information
     - field.field.node.casestudy.field_image
     - field.field.node.casestudy.field_intro
+    - field.field.node.casestudy.field_search_weight
     - field.field.node.casestudy.field_summary
     - node.type.casestudy
   module:
@@ -17,6 +18,11 @@ targetEntityType: node
 bundle: casestudy
 mode: teaser
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -27,6 +33,7 @@ hidden:
   field_further_information: true
   field_image: true
   field_intro: true
+  field_search_weight: true
   field_summary: true
   langcode: true
   search_api_excerpt: true

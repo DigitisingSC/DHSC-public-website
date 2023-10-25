@@ -1,0 +1,23 @@
+uuid: e08971c2-d38b-4462-ba44-986b3a7f8257
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_weight
+    - node.type.content_page
+id: node.content_page.field_search_weight
+field_name: field_search_weight
+entity_type: node
+bundle: content_page
+label: 'Search Weight'
+description: 'A lower value will show the content higher in search results '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

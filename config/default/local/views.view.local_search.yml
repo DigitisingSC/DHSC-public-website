@@ -359,6 +359,19 @@ display:
             label: ''
             field_identifier: ''
           exposed: false
+        field_search_weight:
+          id: field_search_weight
+          table: search_api_index_local_search_solr_index
+          field: field_search_weight
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       arguments: {  }
       filters:
         status:

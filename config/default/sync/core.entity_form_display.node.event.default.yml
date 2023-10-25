@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_link
     - field.field.node.event.field_location
     - field.field.node.event.field_location_link
+    - field.field.node.event.field_search_weight
     - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
     - field.field.node.event.field_subtitle
@@ -59,6 +60,7 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_search_weight
       label: Metadata
       region: content
       parent_name: ''
@@ -194,6 +196,13 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_search_weight:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_sidebar_related:
     type: paragraphs

@@ -1,0 +1,23 @@
+uuid: 4d075cd4-d4ff-4d8f-911c-a4b64516b1f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_weight
+    - node.type.localgov_guides_overview
+id: node.localgov_guides_overview.field_search_weight
+field_name: field_search_weight
+entity_type: node
+bundle: localgov_guides_overview
+label: 'Search Weight'
+description: 'A lower value will show the content higher in search results '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

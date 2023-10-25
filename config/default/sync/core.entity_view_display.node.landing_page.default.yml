@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_image
     - field.field.node.landing_page.field_intro
+    - field.field.node.landing_page.field_search_weight
     - field.field.node.landing_page.field_summary
     - node.type.landing_page
   module:
@@ -65,6 +66,7 @@ content:
 hidden:
   field_display_exit_link: true
   field_image: true
+  field_search_weight: true
   field_summary: true
   langcode: true
   search_api_excerpt: true
