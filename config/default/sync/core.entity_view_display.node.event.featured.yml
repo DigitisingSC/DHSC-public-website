@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.event.field_link
     - field.field.node.event.field_location
     - field.field.node.event.field_location_link
+    - field.field.node.event.field_search_weight
     - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
     - field.field.node.event.field_subtitle
@@ -27,6 +28,11 @@ targetEntityType: node
 bundle: event
 mode: featured
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_date:
     type: datetime_default
     label: hidden
@@ -61,6 +67,7 @@ hidden:
   field_link: true
   field_location: true
   field_location_link: true
+  field_search_weight: true
   field_sidebar_related: true
   field_start_time: true
   field_subtitle: true

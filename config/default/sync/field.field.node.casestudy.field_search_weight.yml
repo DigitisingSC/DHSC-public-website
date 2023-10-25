@@ -1,0 +1,23 @@
+uuid: 6627db11-ba44-4151-a705-7cc8ded4baec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_weight
+    - node.type.casestudy
+id: node.casestudy.field_search_weight
+field_name: field_search_weight
+entity_type: node
+bundle: casestudy
+label: 'Search Weight'
+description: 'A lower value will show the content higher in search results '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

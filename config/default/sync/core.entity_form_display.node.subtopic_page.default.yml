@@ -7,9 +7,11 @@ dependencies:
     - field.field.node.subtopic_page.field_image
     - field.field.node.subtopic_page.field_intro
     - field.field.node.subtopic_page.field_metatags
+    - field.field.node.subtopic_page.field_search_weight
     - field.field.node.subtopic_page.field_subtopics
     - field.field.node.subtopic_page.field_summary
     - node.type.subtopic_page
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - field_group
@@ -20,12 +22,14 @@ dependencies:
     - paragraphs_ee
     - paragraphs_features
     - path
+    - scheduler
 third_party_settings:
   field_group:
     group_metadata:
       children:
         - field_image
         - field_summary
+        - field_search_weight
       label: Metadata
       region: content
       parent_name: ''
@@ -102,6 +106,13 @@ content:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_search_weight:
+    type: number
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_subtopics:
     type: entity_reference_autocomplete
     weight: 2
@@ -154,6 +165,11 @@ content:
     third_party_settings: {  }
   scheduler_settings:
     weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
