@@ -1,0 +1,23 @@
+uuid: 194b2406-e680-4bae-8721-039f90600852
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_weight
+    - node.type.subtopic_page
+id: node.subtopic_page.field_search_weight
+field_name: field_search_weight
+entity_type: node
+bundle: subtopic_page
+label: 'Search Weight'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
     - node.type.article
@@ -20,6 +21,11 @@ targetEntityType: node
 bundle: article
 mode: card
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   field_date:
     type: datetime_default
     label: hidden
@@ -49,6 +55,7 @@ hidden:
   field_author: true
   field_body_paragraphs: true
   field_further_information: true
+  field_search_weight: true
   field_sidebar_related: true
   langcode: true
   links: true

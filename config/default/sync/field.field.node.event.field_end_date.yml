@@ -12,7 +12,7 @@ field_name: field_end_date
 entity_type: node
 bundle: event
 label: 'End date'
-description: ''
+description: 'Do not provide an end date if this event has a start and end time.'
 required: false
 translatable: false
 default_value: {  }

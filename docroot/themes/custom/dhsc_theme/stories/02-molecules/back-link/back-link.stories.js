@@ -14,11 +14,12 @@ const svgBackLinkTemplate = (args) => svgIconTwig({
   icon: 'chevron-left',
 });
 
-const Template = ({ attributes, label, icon, link, variant }) =>
+const Template = ({ attributes, label, icon, text, link, variant }) =>
   backLinkTwig({
    attributes,
    label,
    icon,
+   text,
    link,
    variant
   });
@@ -28,6 +29,22 @@ backLink.args = {
   attributes: new DrupalAttributes(),
   label: 'Back',
   icon: svgBackLinkTemplate,
-  link: '#',
   variant: 'default'
+};
+
+export const backLinkForm = Template.bind({});
+backLinkForm.args = {
+  attributes: new DrupalAttributes(),
+  label: 'Back',
+  icon: svgBackLinkTemplate,
+  link: '#',
+  variant: 'form'
+};
+
+export const backLinkWithText = Template.bind({});
+backLinkWithText.args = {
+  attributes: new DrupalAttributes(),
+  text: 'Get help with technology',
+  link: '/get-help-set-and-use-technology',
+  variant: 'text'
 };
