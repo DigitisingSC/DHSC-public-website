@@ -10,7 +10,7 @@ field_name: field_search_weight
 entity_type: node
 bundle: subtopic_page
 label: 'Search Weight'
-description: ''
+description: 'A higher value will display the content higher in search results '
 required: false
 translatable: true
 default_value: {  }
