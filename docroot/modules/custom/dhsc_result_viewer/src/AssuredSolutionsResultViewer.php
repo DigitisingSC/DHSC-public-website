@@ -302,9 +302,6 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
               }
             }
           }
-          // If we have matched all criteria for a supplier but have given additional
-          // answers which make this supplier a non-match, remove the supplier from the list of non-matches
-          // as the criteria for said supplier has already been met.
         }
       }
     }
