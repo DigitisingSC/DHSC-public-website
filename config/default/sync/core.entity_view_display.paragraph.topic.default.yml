@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.topic.field_description_html
+    - field.field.paragraph.topic.field_highlight
     - field.field.paragraph.topic.field_link
     - field.field.paragraph.topic.field_title
     - paragraphs.paragraphs_type.topic
@@ -21,6 +22,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_highlight:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_link:
     type: link

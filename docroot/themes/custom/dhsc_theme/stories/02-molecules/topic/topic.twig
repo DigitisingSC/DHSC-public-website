@@ -6,7 +6,8 @@
 {% set classes = [
   'm-topic',
   'bg-forest-20 bg-opacity-50 hover:bg-opacity-100 hover:cursor',
-  'relative p-4 tablet:p-6 rounded-md'
+  'relative p-4 tablet:p-6 rounded-md',
+  (highlight) ? 'm-topic--highlight' : null
 ] | join(' ') | trim %}
 
 {% set attributes = attributes
