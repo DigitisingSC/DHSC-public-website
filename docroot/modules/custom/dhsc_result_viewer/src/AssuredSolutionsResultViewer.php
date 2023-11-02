@@ -227,44 +227,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     if (!empty($results)) {
       $nodes = Node::loadMultiple($results);
       $no_matches = [];
-      $partial_matches = [];
       $matches = [];
       $nids = [];
 
       foreach ($nodes as $node) {
-        foreach ($node->get('field_answers_supplier')->getValue() as $value) {
-          // create array of all supplier node ids used for filtering non matching criteria.
-          $field_key = NULL;
-          $nids[] = $node->id();
-
-          // filter results where not all criteria is met.
-          if (!in_array($value['value'], $answers)) {
-            $node_title = $node->getTitle();
-            $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
-
-            $partial_matches[$node_title]['title'] = $node_title;
-            $partial_matches[$node_title]['node_url'] = $node_url;
-
-            // We don't have the element key for the first radio field
-            // so check against pre-defined values and set the field_key from the form.
-            if (in_array($value['value'], $this->device_option_keys)) {
-              $field_key = substr($value['value'], 0, strrpos($value['value'], '_'));
-            }
-
-            $partial_matches[$node_title]['answers'][] =
-              $this->getFormElementValue($field_key, $value['value'], $webform);
-          }
-        }
-
-        // filter nodes where all criteria is met.
-        if (
-          !isset($no_matches[$node->getTitle()]) &&
-          !array_key_exists($node->getTitle(), $partial_matches)
-        ) {
-          $matches[] = $node;
-        }
-
         $nids[] = $node->id();
+        $matches[] = $node;
       }
 
       // query for all supplier nodes where there is no match
@@ -352,9 +320,11 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getNonMatches($nids)
   {
     $query = \Drupal::entityQuery('node')
-      ->condition('type', 'supplier')
-      ->condition('status', 1)
-      ->condition('nid', $nids, 'IN');
+    ->condition('type', 'supplier')
+    ->condition('status', 1);
+    foreach ($nids as $nid) {
+      $query->condition('nid', $nid, 'NOT IN');
+    }
 
     $results = $query->execute();
     return $results;
