@@ -1,0 +1,14 @@
+.tool-supplier--nomatch {
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-right: 0.313rem;
+    }
+  }
+}
