@@ -230,10 +230,20 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $matches = [];
       $nids = [];
 
-      foreach ($nodes as $node) {
-        $nids[] = $node->id();
-        $matches[] = $node;
-      }
+      // check against non possible answers values on the supplier node to
+      // further refine matches
+      $matches = array_filter($nodes, function ($node) use ($answers) {
+        $fieldItems = $node->get('field_non_possible_answers')->getValue();
+        foreach ($fieldItems as $value) {
+          if (count(array_intersect($value, $answers)) > 0) {
+            return FALSE;
+          }
+        }
+        return TRUE;
+      });
+      $nids = array_map(function ($node) {
+        return $node->id();
+      }, $matches);
 
       // query for all supplier nodes where there is no match
       $nids = array_unique($nids);
@@ -303,16 +313,17 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       ->condition('status', 1);
     $or = $query->orConditionGroup();
     foreach ($answers as $key => $answer) {
-      $or->condition('field_answers_supplier.value', $answer);
+      $or->condition('field_answers_supplier.value', $answer, '=');
     }
     $query->condition($or);
 
     $results = $query->execute();
+
     return $results;
   }
 
   /**
-   * Returns all suplier nodes which do not match user search criteria.
+   * Returns all supplier nodes which do not match user search criteria.
    *
    * @param array $nids
    * @return array
