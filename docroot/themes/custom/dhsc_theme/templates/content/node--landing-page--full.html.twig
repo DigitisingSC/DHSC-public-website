@@ -108,7 +108,7 @@
     <div class="t-content-page__back-link">
       {% include '@molecules/back-link/back-link.twig' with {
         'attributes': attributes,
-        'text' : link_text,
+        'text' : link_text|render,
         'link' : link_alias,
         'variant' : 'text',
       } %}
