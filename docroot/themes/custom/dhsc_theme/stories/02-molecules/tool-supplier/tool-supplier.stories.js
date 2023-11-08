@@ -2,10 +2,19 @@ import React from 'react';
 import DrupalAttributes from '../../../.storybook/drupalAttributes';
 import toolSupplierMatchTwig from "./tool-supplier--match.twig";
 import toolSupplierNoMatchTwig from "./tool-supplier--nomatch.twig";
+import { svgIcon } from '../../01-atoms/svg/svg.stories';
+import svgIconTwig from '../../01-atoms/svg/svg.twig';
+
+import './tool-supplier.scss';
 
 export default {
   title: "Design System/Molecules/Tool Supplier",
 };
+
+const svgIconCloseTemplate = (args) => svgIconTwig({
+  ...svgIcon.args,
+  icon: 'close',
+});
 
 const toolSupplierMatchTemplate = ({ attributes, variant, title, url, content }) =>
   toolSupplierMatchTwig({
@@ -16,12 +25,13 @@ const toolSupplierMatchTemplate = ({ attributes, variant, title, url, content })
     content
   });
 
-const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, answers, preview_component }) =>
+const toolSupplierNoMatchTemplate = ({ attributes, variant, title, url, icon_close, answers, preview_component }) =>
   toolSupplierNoMatchTwig({
     attributes,
     variant,
     title,
     url,
+    icon_close,
     answers,
     preview_component
   });
@@ -41,6 +51,7 @@ toolSupplierNoMatch.args = {
   variant: 'nomatch',
   title: "Microsoft",
   url: "https://www.digitalsocialcare.co.uk",
+  icon_close: svgIconCloseTemplate,
   preview_component: true,
   answers: [
     {
