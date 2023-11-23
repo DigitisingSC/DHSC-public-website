@@ -13,9 +13,7 @@ deploy:
 
 disable-targets:
   tests:
-    security:
-      check:
-        updates: true
+    security-composer: true
 
 validate:
   twig:
