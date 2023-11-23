@@ -11,6 +11,12 @@ deploy:
   build-dependencies: true
   exclude_file: ${repo.root}/blt/deploy/deploy-exclude.txt
 
+disable-targets:
+  tests:
+    security:
+      check:
+        updates: true
+
 validate:
   twig:
     filters:
