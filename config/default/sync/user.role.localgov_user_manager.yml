@@ -10,6 +10,7 @@ dependencies:
   module:
     - content_moderation
     - eu_cookie_compliance
+    - file
     - filter
     - role_delegation
     - system
@@ -31,6 +32,7 @@ permissions:
   - 'assign localgov_editor role'
   - 'assign localgov_user_manager role'
   - 'assign super_editor role'
+  - 'delete own files'
   - 'display eu cookie compliance popup'
   - 'use editorial_workflow transition create_new_draft'
   - 'use editorial_workflow transition submit_for_approval'

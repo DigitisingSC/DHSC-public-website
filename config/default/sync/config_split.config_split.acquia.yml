@@ -7,6 +7,7 @@ label: Acquia
 description: ''
 weight: 0
 stackable: false
+no_patching: false
 storage: folder
 folder: ../config/default/acquia
 module:

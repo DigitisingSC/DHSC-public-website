@@ -60,14 +60,14 @@ image_style_mappings:
     multiplier: 1x
   -
     image_mapping_type: image_style
-    image_mapping: dhsc_listing_image_mobile_x2
-    breakpoint_id: dhsc_theme.small
-    multiplier: 2x
-  -
-    image_mapping_type: image_style
     image_mapping: dhsc_listing_image_mobile_x1
     breakpoint_id: dhsc_theme.xsmall
     multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: dhsc_listing_image_mobile_x2
+    breakpoint_id: dhsc_theme.small
+    multiplier: 2x
   -
     image_mapping_type: image_style
     image_mapping: dhsc_listing_image_mobile_x2

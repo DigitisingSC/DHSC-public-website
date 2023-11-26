@@ -35,6 +35,12 @@ settings:
       - code
       - insertTable
   plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - left
+        - center
+        - right
+        - justify
     ckeditor5_heading:
       enabled_headings:
         - heading2
@@ -42,14 +48,11 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_style:
-      styles:
-        -
-          label: 'Primary button'
-          element: '<a class="a-button a-button--primary">'
-        -
-          label: 'Secondary button'
-          element: '<a class="a-button a-button--secondary">'
+    ckeditor5_imageResize:
+      allow_resize: true
+    ckeditor5_list:
+      reversed: false
+      startIndex: true
     ckeditor5_sourceEditing:
       allowed_tags:
         - '<dl>'
@@ -65,17 +68,14 @@ settings:
         - '<ol type>'
         - '<img data-entity-type data-entity-uuid data-align data-caption>'
         - '<a hreflang target data-entity-type data-entity-uuid data-entity-substitution>'
-    ckeditor5_list:
-      reversed: false
-      startIndex: true
-    ckeditor5_alignment:
-      enabled_alignments:
-        - left
-        - center
-        - right
-        - justify
-    ckeditor5_imageResize:
-      allow_resize: true
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Primary button'
+          element: '<a class="a-button a-button--primary">'
+        -
+          label: 'Secondary button'
+          element: '<a class="a-button a-button--secondary">'
     linkit_extension:
       linkit_enabled: true
       linkit_profile: default

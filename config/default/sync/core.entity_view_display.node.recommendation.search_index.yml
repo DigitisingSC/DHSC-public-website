@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
+    - field.field.node.recommendation.field_answers_recommendation
     - field.field.node.recommendation.field_body_paragraphs
+    - field.field.node.recommendation.field_category
+    - field.field.node.recommendation.field_weight
     - node.type.recommendation
   module:
     - user
@@ -13,6 +16,11 @@ targetEntityType: node
 bundle: recommendation
 mode: search_index
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
