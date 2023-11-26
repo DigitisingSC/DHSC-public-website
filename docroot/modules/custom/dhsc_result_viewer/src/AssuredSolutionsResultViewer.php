@@ -309,6 +309,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getResultNodes($answers)
   {
     $query = \Drupal::entityQuery('node')
+      ->accessCheck(FALSE)
       ->condition('type', 'supplier')
       ->condition('status', 1);
     $or = $query->orConditionGroup();
@@ -331,6 +332,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getNonMatches($nids)
   {
     $query = \Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
     ->condition('type', 'supplier')
     ->condition('status', 1);
     foreach ($nids as $nid) {
@@ -402,6 +404,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
+          ->accessCheck(FALSE)
           ->condition('field_answers_supplier', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())
           ->execute();

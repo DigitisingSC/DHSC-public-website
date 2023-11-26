@@ -9,8 +9,10 @@
     {% if items is not empty %}
       <div class="o-card_collection__listing tablet:flex tablet:gap-6">
         {% if items is iterable %}
-          {% for key, item in items if key|first != '#' %}
-            {{ item }}
+          {% for key, item in items %}
+            {% if key|first != '#' %}
+              {{ item }}
+            {% endif %}
           {% endfor %}
         {% else %}
           {{ items }}

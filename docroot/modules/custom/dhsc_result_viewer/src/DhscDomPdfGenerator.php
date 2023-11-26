@@ -28,7 +28,7 @@ class DhscDomPdfGenerator extends DomPdfGenerator
     // Dompdf needs to be initialized with custom options if they are supplied.
     $this->dompdf = new Dompdf($this->options);
 
-    $css = file_get_contents(drupal_get_path('module', 'pdf_generator') . '/css/pdf.css');
+    $css = file_get_contents(\Drupal::service('extension.list.module')->getPath('pdf_generator') . '/css/pdf.css');
 
     // Add inline css from text.
     if (!empty($cssText)) {

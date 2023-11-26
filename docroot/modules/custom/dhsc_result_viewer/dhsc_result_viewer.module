@@ -159,7 +159,7 @@ function dhsc_result_viewer_preprocess_status_messages(&$variables) {
 /**
  * Implements hook_webform_submission_form_alter().
  */
-function dhsc_result_viewer_webform_submission_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
   if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool']) && ($current_page = $form_state->get('current_page')) !== '') {
     $form['current_step'] = [

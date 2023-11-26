@@ -10,8 +10,10 @@
       {% if items_left is not empty %}
         <div class="o-quick-links__column space-y-3 tablet:flex tablet:gap-6 flex-1 tablet:items-stretch tablet:flex-row tablet:flex-wrap tablet:space-y-0">
           {% if items_left is iterable %}
-            {% for key, item in items_left if key|first != '#' %}
-              {{ item }}
+            {% for key, item in items_left %}
+              {% if key|first != '#' %}
+                {{ item }}
+              {% endif %}
             {% endfor %}
           {% else %}
             {{ items }}
@@ -21,8 +23,10 @@
       {% if items_right is not empty %}
         <div class="o-quick-links__column grow tablet:flex tablet:gap-6 flex-1 space-y-3 tablet:items-stretch tablet:flex-row tablet:flex-wrap tablet:space-y-0">
           {% if items_right is iterable %}
-            {% for key, item in items_right if key|first != '#' %}
-              {{ item }}
+            {% for key, item in items_right %}
+              {% if key|first != '#' %}
+                {{ item }}
+              {% endif %}
             {% endfor %}
           {% else %}
             {{ items }}
