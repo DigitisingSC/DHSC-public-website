@@ -23,14 +23,14 @@
         "drupal/allowed_formats": "^2.0",
         "drupal/autologout": "^1.4",
         "drupal/better_exposed_filters": "^6.0",
-        "drupal/components": "^2.4",
+        "drupal/components": "^3.0@beta",
         "drupal/config_filter": "^2.4",
         "drupal/config_ignore": "^3.0@beta",
         "drupal/config_split": "^2.0@RC",
-        "drupal/core-composer-scaffold": "9.5.11",
-        "drupal/core-project-message": "9.5.11",
-        "drupal/core-recommended": "9.5.11",
-        "drupal/devel": "^4.2",
+        "drupal/core-composer-scaffold": "^10.1",
+        "drupal/core-project-message": "^10.1",
+        "drupal/core-recommended": "^10.1",
+        "drupal/devel": "^5.1",
         "drupal/devel_entity_updates": "^4.1",
         "drupal/diff": "^1.1",
         "drupal/editoria11y": "^2.0",
@@ -67,18 +67,20 @@
         "drupal/time_field": "^2.1",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.2",
+        "drupal/upgrade_status": "^4.0",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.1",
         "drush/drush": "^11.4",
-        "localgovdrupal/localgov": "^2.0",
+        "localgovdrupal/localgov": "^3.0@alpha",
         "localgovdrupal/localgov_search_solr": "^1.0@alpha"
     },
     "require-dev": {
         "brianium/paratest": "^6.0",
         "drupal/coder": "^8.3",
-        "drupal/config_inspector": "^1.3",
-        "drupal/core-dev": "^9.1",
+        "drupal/config_inspector": "^2.1",
+        "drupal/core-dev": "^10.1",
         "mglaman/phpstan-drupal": "^1.0",
+        "palantirnet/drupal-rector": "^0.18.2",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-deprecation-rules": "^1.0",
@@ -98,7 +100,8 @@
             "drupal/core-project-message": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "php-http/discovery": false,
-            "acquia/blt": true
+            "acquia/blt": true,
+            "phpstan/extension-installer": true
         }
     },
 
@@ -176,10 +179,7 @@
             "alexku/blt-github-actions": {
                 "Test": "patches/allowstandard-subscription-autodeployment.patch"
             },
-            "drupal/viewsreference": {
-                "3273497: undefined data on node save": "patches/views-reference-undefined-data-3273497.patch"
-            },
-             "drupal/autologout": {
+            "drupal/autologout": {
                 "3301642: notice on login when destination set": "patches/autologout-notice-login-destination-3301642.patch"
             },
             "drupal/field_group": {
