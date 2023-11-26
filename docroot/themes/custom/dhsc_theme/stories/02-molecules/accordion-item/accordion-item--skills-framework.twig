@@ -29,36 +29,38 @@
         <tbody>
           {% if items is iterable %}
             {% set items_iterable = TRUE %}
-            {% for key, item in items if key|first != '#' %}
+            {% for key, item in items %}
+              {% if key|first != '#' %}
 
-              {% set field_criteria = item['#paragraph'].field_criteria %}
-              {% set field_skills_and_knowledge = item['#paragraph'].field_skills_and_knowledge %}
-              {% set field_learning_resources = item['#paragraph'].field_learning_resources %}
+                {% set field_criteria = item['#paragraph'].field_criteria %}
+                {% set field_skills_and_knowledge = item['#paragraph'].field_skills_and_knowledge %}
+                {% set field_learning_resources = item['#paragraph'].field_learning_resources %}
 
-              {% set field_criteria_label = field_criteria.fielddefinition.label  %}
-              {% set field_skills_and_knowledge_label = field_skills_and_knowledge.fielddefinition.label %}
-              {% set field_learning_resources_label = field_learning_resources.fielddefinition.label %}
-              <tr>
-                <td data-label="{{ field_criteria_label }}">
-                  <div class="column-text">
-                    {{ field_criteria.value|raw}}
-                  </div>
-                </td>
-                <td data-label="{{ field_skills_and_knowledge_label }}">
-                  <div class="column-text">
-                    {{ field_skills_and_knowledge.value|raw }}
-                  </div>
-                </td>
-                <td data-label="{{ field_learning_resources_label }}">
-                  {% if field_learning_resources|length > 0 %}
+                {% set field_criteria_label = field_criteria.fielddefinition.label  %}
+                {% set field_skills_and_knowledge_label = field_skills_and_knowledge.fielddefinition.label %}
+                {% set field_learning_resources_label = field_learning_resources.fielddefinition.label %}
+                <tr>
+                  <td data-label="{{ field_criteria_label }}">
                     <div class="column-text">
-                      {% for learning_resource in field_learning_resources %}
-                          {{ link(learning_resource.title, learning_resource.uri) }}
-                      {% endfor %}
+                      {{ field_criteria.value|raw}}
                     </div>
-                  {% endif %}
-                </td>
-              </tr>
+                  </td>
+                  <td data-label="{{ field_skills_and_knowledge_label }}">
+                    <div class="column-text">
+                      {{ field_skills_and_knowledge.value|raw }}
+                    </div>
+                  </td>
+                  <td data-label="{{ field_learning_resources_label }}">
+                    {% if field_learning_resources|length > 0 %}
+                      <div class="column-text">
+                        {% for learning_resource in field_learning_resources %}
+                            {{ link(learning_resource.title, learning_resource.uri) }}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endif %}
             {% endfor %}
           {% else %}
             {{ items }}
