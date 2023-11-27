@@ -15,7 +15,6 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  ckeditor: 0
   ckeditor5: 0
   components: 0
   config: 0
@@ -95,8 +94,8 @@ module:
   path: 0
   path_alias: 0
   pdf_generator: 0
+  phpass: 0
   quick_node_clone: 0
-  quickedit: 0
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0

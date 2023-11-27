@@ -12,8 +12,10 @@
   {% if items %}
     <div class="o-dynamic-content-listing__items tablet:grid tablet:grid-cols-2 tablet:auto-rows-max tablet:gap-4">
       {% if items is iterable %}
-        {% for key, item in items if key|first != '#' %}
-          {{ item }}
+        {% for key, item in items %}
+          {% if key|first != '#' %}
+            {{ item }}
+          {% endif %}
         {% endfor %}
       {% else %}
         {{ items }}

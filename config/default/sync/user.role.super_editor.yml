@@ -30,6 +30,7 @@ dependencies:
     - content_moderation
     - editoria11y
     - entity_browser
+    - file
     - filter
     - media
     - node
@@ -132,6 +133,7 @@ permissions:
   - 'delete own content_page content'
   - 'delete own document media'
   - 'delete own event content'
+  - 'delete own files'
   - 'delete own hero media'
   - 'delete own image media'
   - 'delete own landing_page content'

@@ -9,8 +9,10 @@
     {% if items %}
       <div class="o-teaser-collection__items">
         {% if items is iterable %}
-          {% for key, item in items if key|first != '#' %}
-            {{ item }}
+          {% for key, item in items %}
+            {% if key|first != '#' %}
+              {{ item }}
+            {% endif %}
           {% endfor %}
         {% else %}
           {{ items }}

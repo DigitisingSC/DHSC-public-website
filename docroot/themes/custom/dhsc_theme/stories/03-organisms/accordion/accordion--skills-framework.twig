@@ -10,8 +10,10 @@
       <h2 class="text-black_heading">{{ header }}</h2>
     {% endif %}
     {% if items is iterable %}
-      {% for key, item in items if key|first != '#' %}
-        {{ item }}
+      {% for key, item in items %}
+        {% if key|first != '#' %}
+          {{ item }}
+        {% endif %}
       {% endfor %}
     {% else %}
       {{ items }}

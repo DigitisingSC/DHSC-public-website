@@ -2,6 +2,7 @@
 
 namespace Drupal\dhsc_result_viewer\Plugin\WebformHandler;
 
+use Drupal\Core\Url;
 use Drupal\webform\Plugin\WebformHandlerBase;
 use Drupal\webform\WebformSubmissionInterface;
 use Drupal\webform\Utility\WebformOptionsHelper;
@@ -73,7 +74,7 @@ class setFormMetdataHandler extends WebformHandlerBase
         'dhsc_result_viewer.result_summary_self_assessment' :
         'dhsc_result_viewer.result_summary_assured_solutions';
 
-      $path = \Drupal\Core\Url::fromRoute(
+      $path = Url::fromRoute(
         $route_name,
         ['token' => $submission_token]
       )->toString();

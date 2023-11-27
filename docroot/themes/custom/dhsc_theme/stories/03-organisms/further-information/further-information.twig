@@ -8,10 +8,12 @@
       <h2 class="o-further-information__title text-black">{{ title }}</h2>
     {% endif %}
 
-    {% for key, item in items if key|first != '#' %}
-      <div class="o-further-information_links text-base font-bold mb-1 last:mb-0 text-forest">
-        {{ item }}
-      </div>
+    {% for key, item in items %}
+      {% if key|first != '#' %}
+        <div class="o-further-information_links text-base font-bold mb-1 last:mb-0 text-forest">
+          {{ item }}
+        </div>
+      {% endif %}
     {% endfor %}
 
   </div>

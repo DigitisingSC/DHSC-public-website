@@ -12,8 +12,10 @@
   {% if items %}
     <div class="o-featured-items__items mb-4">
       {% if items is iterable %}
-        {% for key, item in items if key|first != '#' %}
-          {{ item }}
+        {% for key, item in items %}
+          {% if key|first != '#' %}
+            {{ item }}
+          {% endif %}
         {% endfor %}
       {% else %}
         {{ items }}

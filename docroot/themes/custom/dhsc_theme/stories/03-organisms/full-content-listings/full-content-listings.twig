@@ -9,8 +9,10 @@
   {% if content %}
     <div class="o-full-content-listings__listings">
       {% if content is iterable %}
-        {% for key, item in content if key|first != '#' %}
-          {{ item }}
+        {% for key, item in items %}
+          {% if key|first != '#' %}
+            {{ item }}
+          {% endif %}
         {% endfor %}
       {% else %}
         {{ content }}

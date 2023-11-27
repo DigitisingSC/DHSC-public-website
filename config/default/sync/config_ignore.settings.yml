@@ -1,7 +1,8 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
+mode: simple
 ignored_config_entities:
+  - dhsc_result_viewer.result_summary_settings
+  - eu_cookie_compliance.settings
   - system.site
   - 'webform.webform.*'
-  - eu_cookie_compliance.settings
-  - dhsc_result_viewer.result_summary_settings

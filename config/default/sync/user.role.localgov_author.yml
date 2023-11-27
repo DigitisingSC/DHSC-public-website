@@ -28,6 +28,7 @@ dependencies:
     - editoria11y
     - entity_browser
     - eu_cookie_compliance
+    - file
     - filter
     - media
     - node
@@ -62,9 +63,6 @@ permissions:
   - 'create landing_page content'
   - 'create localgov_guides_overview content'
   - 'create localgov_guides_page content'
-  - 'create localgov_services_landing content'
-  - 'create localgov_services_page content'
-  - 'create localgov_services_sublanding content'
   - 'create media'
   - 'create paragraph library item'
   - 'create recommendation content'
@@ -80,14 +78,12 @@ permissions:
   - 'delete own content_page content'
   - 'delete own document media'
   - 'delete own event content'
+  - 'delete own files'
   - 'delete own hero media'
   - 'delete own image media'
   - 'delete own landing_page content'
   - 'delete own localgov_guides_overview content'
   - 'delete own localgov_guides_page content'
-  - 'delete own localgov_services_landing content'
-  - 'delete own localgov_services_page content'
-  - 'delete own localgov_services_sublanding content'
   - 'delete own recommendation content'
   - 'delete own remote_video media'
   - 'delete own skill content'
@@ -110,9 +106,6 @@ permissions:
   - 'edit own landing_page content'
   - 'edit own localgov_guides_overview content'
   - 'edit own localgov_guides_page content'
-  - 'edit own localgov_services_landing content'
-  - 'edit own localgov_services_page content'
-  - 'edit own localgov_services_sublanding content'
   - 'edit own recommendation content'
   - 'edit own remote_video media'
   - 'edit own skill content'
@@ -129,9 +122,6 @@ permissions:
   - 'revert landing_page revisions'
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
-  - 'revert localgov_services_landing revisions'
-  - 'revert localgov_services_page revisions'
-  - 'revert localgov_services_sublanding revisions'
   - 'revert recommendation revisions'
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
@@ -153,9 +143,6 @@ permissions:
   - 'view landing_page revisions'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
-  - 'view localgov_services_landing revisions'
-  - 'view localgov_services_page revisions'
-  - 'view localgov_services_sublanding revisions'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view recommendation revisions'
