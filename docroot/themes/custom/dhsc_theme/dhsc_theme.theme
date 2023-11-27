@@ -205,6 +205,15 @@ function dhsc_theme_preprocess_field(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_html().
+ */
+function dhsc_theme_preprocess_html(&$variables) {
+  if (!empty($_ENV['AH_SITE_ENVIRONMENT']) && $_ENV['AH_SITE_ENVIRONMENT'] === 'prod') {
+    $variables['site_env'] = $_ENV['AH_SITE_ENVIRONMENT'];
+  }
+}
+
+/**
  * Implements hook_preprocess_HOOK() for media_oembed_iframe.
  */
 function dhsc_theme_preprocess_media_oembed_iframe(&$variables) {
