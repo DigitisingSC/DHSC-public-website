@@ -318,6 +318,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
     $query->condition($or);
 
+    $query->sort('title', 'ASC');
+
     $results = $query->execute();
 
     return $results;
@@ -338,6 +340,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     foreach ($nids as $nid) {
       $query->condition('nid', $nid, 'NOT IN');
     }
+
+    $query->sort('title', 'ASC');
 
     $results = $query->execute();
     return $results;
