@@ -41,6 +41,7 @@ class SiteWideAlert extends BlockBase
       '#title' => $this->t('Alert text'),
       '#default_value' => $this->configuration['alert_text']['value'],
       '#format' => $this->configuration['alert_text']['format'] ?? 'basic_html',
+      '#required' => TRUE,
     ];
 
     return $form;
