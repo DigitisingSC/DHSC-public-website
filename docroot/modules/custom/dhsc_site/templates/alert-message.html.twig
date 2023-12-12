@@ -1,0 +1,9 @@
+{% set classes = [
+  'alert',
+] %}
+
+{% include '@molecules/alert/alert.twig' with {
+  attributes: attributes.addClass(classes),
+  text: alert_text,
+  is_dismissible: false
+} %}

@@ -8,7 +8,6 @@ dependencies:
     - eu_cookie_compliance
     - filter
     - media
-    - sitewide_alert
     - system
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
@@ -21,4 +20,3 @@ permissions:
   - 'display eu cookie compliance popup'
   - 'use text format restricted_html'
   - 'view media'
-  - 'view published sitewide alert entities'
