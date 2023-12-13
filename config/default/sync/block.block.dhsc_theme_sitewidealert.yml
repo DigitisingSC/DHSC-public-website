@@ -1,0 +1,26 @@
+uuid: d6180985-f0ac-4e34-9ef9-f1b7a9208c8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_site
+  theme:
+    - dhsc_theme
+id: dhsc_theme_sitewidealert
+theme: dhsc_theme
+region: primary_menu
+weight: 0
+provider: null
+plugin: sitewide_alert
+settings:
+  id: sitewide_alert
+  label: 'Sitewide alert'
+  label_display: '0'
+  provider: dhsc_site
+  alert_message:
+    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhBMdkW-HVLmUQXN7xZre4f0gBRjlO43B4FkvbRtd0Kj_STw/viewform">your feedback</a> will help us improve it.</p>'
+    format: basic_html
+  alert_text:
+    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhBMdkW-HVLmUQXN7xZre4f0gBRjlO43B4FkvbRtd0Kj_STw/viewform">your feedback</a> will help us improve it.</p>'
+    format: basic_html
+visibility: {  }
