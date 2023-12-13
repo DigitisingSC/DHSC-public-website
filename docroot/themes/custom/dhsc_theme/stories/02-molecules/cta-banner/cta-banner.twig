@@ -37,4 +37,10 @@
     {% endif %}
 
   </div>
+
+  {% if secondary_link_url %}
+    <div class="m-cta-banner__link mt-4">
+      <a href="{{ secondary_link_url }}" class="text-forest text-base">{{ secondary_link_text }}</a>
+    </div>
+  {% endif %}
 </div>

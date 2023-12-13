@@ -162,6 +162,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
 
     if ($nids) {
       $weighted_nids = $this->nodeStorage->getQuery()
+        ->accessCheck(FALSE)
         ->condition('nid', $nids, 'IN')
         ->sort('field_weight', 'ASC')
         ->execute();
@@ -191,6 +192,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
+          ->accessCheck(FALSE)
           ->condition('status', 1)
           ->condition('field_answers_recommendation', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())

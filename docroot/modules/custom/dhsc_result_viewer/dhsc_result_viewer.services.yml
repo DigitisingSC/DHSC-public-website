@@ -12,4 +12,4 @@ services:
       - { name: breadcrumb_builder, priority: 1008}
   dhsc_result_viewer.dompdf_generator:
     class: \Drupal\dhsc_result_viewer\DhscDomPdfGenerator
-    arguments: ['@renderer', '@request_stack', '@module_handler']
+    arguments: ['@renderer', '@request_stack', '@module_handler','@extension.list.module', '@file_system']

@@ -21,7 +21,7 @@
     }
   }
 
-  &:last-child {
+  &--highlight {
     @apply bg-[#fbeecc];
 
     &:hover {

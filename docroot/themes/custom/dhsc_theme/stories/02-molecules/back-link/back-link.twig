@@ -4,14 +4,14 @@
 
 {# Classes #}
 {% set classes = [
-  variant == 'default' ? 'm-back-link-default' : 'm-back-link-form',
+  variant == 'default' ? 'm-back-link-default' : variant == 'form' ? 'm-back-link-form' : 'm-back-link-text',
 ] %}
 
 {# Set back link #}
 {% set link = link ? link : '#' %}
 
 {% if variant == 'default' %}
-  <a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ label|t }}">
+<a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ label|t }}">
     <span class="m-back-link-default__icon">{{ icon }}</span>
     <span class="m-back-link-default__label">{{ label|t }}</span>
   </a>
@@ -20,6 +20,20 @@
 {% if variant == 'form' %}
   <a class="{{ classes|sort|join('')|trim }}">
     <span class="m-back-link-form__icon">{{ icon }}</span>
-    <input class="m-back-link-form__label" value="Back" {{ attributes }}/>
+    <input
+      class="m-back-link-form__label"
+      value="Back"
+      formnovalidate="formnovalidate"
+      data-drupal-selector="edit-actions-01-wizard-prev"
+      type="submit"
+      id="edit-actions-01-wizard-prev"
+      name="op">
+  </a>
+{% endif %}
+
+{% if variant == 'text' %}
+<div class="m-back-link-divider"></div>
+  <a{{attributes.addClass(classes|sort|join('')|trim)}} href="{{ link }}" title="{{ 'Back to: '|t }}{{ text|t }}">
+    <span class="m-back-link-text__label">{{ 'Back to: '|t }}{{ text|t }}</span>
   </a>
 {% endif %}

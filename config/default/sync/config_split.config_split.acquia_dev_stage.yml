@@ -7,6 +7,7 @@ label: 'Acquia dev & stage'
 description: ''
 weight: 0
 stackable: false
+no_patching: false
 storage: folder
 folder: ../config/default/acquia_dev_stage
 module:

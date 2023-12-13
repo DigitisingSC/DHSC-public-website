@@ -8,9 +8,11 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
     - node.type.article
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - datetime
@@ -27,6 +29,7 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_search_weight
       label: Metadata
       region: content
       parent_name: ''
@@ -142,6 +145,13 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_search_weight:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_sidebar_related:
     type: paragraphs

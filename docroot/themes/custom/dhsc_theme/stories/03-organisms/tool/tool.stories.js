@@ -21,6 +21,8 @@ import toolSearchCriteriaTwig from '../../02-molecules/tool-search-criteria/tool
 import { svgIcon } from '../../01-atoms/svg/svg.stories';
 import svgIconTwig from '../../01-atoms/svg/svg.twig';
 
+import backLinkTwig from '../../02-molecules/back-link/back-link.twig';
+
 export default {
   title: "Design System/Organisms/Tools",
 };
@@ -54,7 +56,14 @@ const svgIconTemplate = (args) => svgIconTwig({
   icon: 'triangle',
 });
 
-const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url, email_form }) =>
+const backLinkTemplate = (args) => backLinkTwig({
+  attributes: new DrupalAttributes(),
+  text: 'Home',
+  link: '/',
+  variant: 'text'
+});
+
+const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result, result, submission_url, email_form, back_link }) =>
   toolAssessmentTwig({
     attributes,
     summary,
@@ -63,7 +72,8 @@ const ToolAssessmentTemplate = ({ attributes, title, variant, summary, no_result
     no_result,
     result,
     submission_url,
-    email_form
+    email_form,
+    back_link
   });
 
 const ToolSolutionsTemplate = ({
@@ -80,6 +90,7 @@ const ToolSolutionsTemplate = ({
   non_matching_count,
   no_matches,
   email_form,
+  back_link,
   download_results_path
 }) =>
   toolSolutionsTwig({
@@ -96,6 +107,7 @@ const ToolSolutionsTemplate = ({
     non_matching_count,
     no_matches,
     email_form,
+    back_link,
     download_results_path
   });
 
@@ -110,6 +122,7 @@ toolAssessment.args = {
   result: { toolResultTemplate },
   submission_url: 'https://google.co.uk',
   email_form: emailFormTwig,
+  back_link: backLinkTemplate,
 }
 
 export const toolSolutions = ToolSolutionsTemplate.bind({});
@@ -129,5 +142,6 @@ toolSolutions.args = {
   non_matching_count: '2',
   no_matches: toolSupplierNoMatchTemplate,
   email_form: emailFormTwig,
+  back_link: backLinkTemplate,
   download_results_path: ''
 }

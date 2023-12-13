@@ -18,29 +18,37 @@
 %}
 
 {% set relatedBlock %}
-  {{ drupal_block('related_information_block', {
+{{ drupal_block('related_information_block', {
     label_display: false,
     context_mapping: {node: '@node.node_route_context:node'},
   }) }}
 {% endset %}
 {% set hasRelated = relatedBlock|striptags|trim != "" %}
 
-<div{{ attributes.addClass(classes).removeAttribute('role') }}>
+<div{{attributes.addClass(classes).removeAttribute('role')}}>
   <div class="lgd-container padding-horizontal">
     {{ title_prefix }}
-      <h1{{ title_attributes.addClass('lgd-guides__title mb-4') }}>
-        {{ 'Overview'|t }}
-      </h1>
-      <span class="text-md text-coolgrey mb-4 tablet:mb-7">{{ label }}</span>
+    <h1{{title_attributes.addClass('lgd-guides__titlemb-4')}}>
+      {{ 'Overview'|t }}
+    </h1>
+    <span class="text-md text-coolgrey mb-4 tablet:mb-7">{{ label }}</span>
     {{ title_suffix }}
 
     {{ drupal_block('localgov_guides_contents') }}
 
     {% if content %}
-      <div class="t-guide__main{% if hasRelated %} tablet:flex tablet:gap-4 desktop:gap-8{% endif %}">
-        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-9/12{% endif %}">
+      <div class="t-guide__main{% if hasRelated %} tablet:flex gap-[1.25rem] tablet:gap-[1.875rem]{% endif %}">
+        <div class="t-guide__content-wrapper{% if hasRelated %} tablet:w-[39.563rem]{% endif %}">
           <div{{ content_attributes.addClass('lgd-guides__content', 'node__content', ) }}>
             {{ content|without('field_date') }}
+          </div>
+          <div class="t-guide-overview__back-link">
+            {% include '@molecules/back-link/back-link.twig' with {
+              'attributes': attributes,
+              'text' : link_text|render,
+              'link' : link_alias,
+              'variant' : 'text',
+            } %}
           </div>
         </div>
         {% if hasRelated %}
@@ -50,17 +58,16 @@
         {% endif %}
       </div>
     {% endif %}
-
-    <did class="t-guide__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
+    <div class="t-guide__bottom-components tablet:flex tablet:flex-wrap tablet:flex-row">
       {% if content.field_date.0 %}
         <div class="t-guide-overview__last-updated text-coolgrey">
-          {{ 'Page last updated'|t }}: {{ content.field_date[0]['#markup'] }}
+          {{ 'Page last updated'|t }}:
+          {{ content.field_date[0]['#markup'] }}
         </div>
       {% endif %}
       <div class="t-guide__back-to-top w-full text-right tablet:w-3/12 ml-auto mt-auto">
         {% include "@molecules/back-to-top/back-to-top.twig" %}
       </div>
     </div>
-
   </div>
 </div>

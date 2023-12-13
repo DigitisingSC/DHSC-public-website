@@ -30,6 +30,7 @@ dependencies:
     - content_moderation
     - editoria11y
     - entity_browser
+    - file
     - filter
     - media
     - node
@@ -37,11 +38,9 @@ dependencies:
     - paragraphs_library
     - path
     - quick_node_clone
-    - role_delegation
     - scheduler
     - simple_sitemap
     - site_settings
-    - sitewide_alert
     - system
     - taxonomy
     - toolbar
@@ -63,13 +62,9 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'add site setting entities'
-  - 'add sitewide alert entities'
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'
-  - 'assign localgov_author role'
-  - 'assign localgov_contributor role'
-  - 'assign localgov_editor role'
   - 'clone article content'
   - 'clone casestudy content'
   - 'clone content_page content'
@@ -136,6 +131,7 @@ permissions:
   - 'delete own content_page content'
   - 'delete own document media'
   - 'delete own event content'
+  - 'delete own files'
   - 'delete own hero media'
   - 'delete own image media'
   - 'delete own landing_page content'
@@ -149,7 +145,6 @@ permissions:
   - 'delete own svg media'
   - 'delete recommendation revisions'
   - 'delete site setting entities'
-  - 'delete sitewide alert entities'
   - 'delete skill revisions'
   - 'delete subtopic_page revisions'
   - 'delete supplier revisions'
@@ -193,7 +188,6 @@ permissions:
   - 'edit own svg media'
   - 'edit paragraph library item'
   - 'edit site setting entities'
-  - 'edit sitewide alert entities'
   - 'edit terms in category'
   - 'edit terms in localgov_topic'
   - 'edit terms in skill_level'
@@ -202,7 +196,6 @@ permissions:
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
-  - 'revert all sitewide alert revisions'
   - 'revert article revisions'
   - 'revert casestudy revisions'
   - 'revert content_page revisions'
@@ -223,7 +216,6 @@ permissions:
   - 'use editorial_workflow transition unpublish'
   - 'use text format full_html'
   - 'view all revisions'
-  - 'view all sitewide alert revisions'
   - 'view any unpublished content'
   - 'view article revisions'
   - 'view casestudy revisions'

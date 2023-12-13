@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index 1575c51..25b7faa 100644
+index 4031da4..7e2f675 100644
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -152,6 +152,21 @@ AddEncoding gzip svgz
+@@ -145,6 +145,21 @@ AddEncoding gzip svgz
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
 

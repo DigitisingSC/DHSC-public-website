@@ -180,7 +180,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
 
     // Extract unique submission token value from URL.
     if ($submission_token = \Drupal::request()->query->get('token')) {
-      $submission_url = Url::fromUserInput($webform->url(), ['query' => ['token' => $submission_token]])->toString();
+      $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])->toString();
+      $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])->toString();
     }
 
     foreach ($data as $key => $answer) {
@@ -230,10 +231,20 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $matches = [];
       $nids = [];
 
-      foreach ($nodes as $node) {
-        $nids[] = $node->id();
-        $matches[] = $node;
-      }
+      // check against non possible answers values on the supplier node to
+      // further refine matches
+      $matches = array_filter($nodes, function ($node) use ($answers) {
+        $fieldItems = $node->get('field_non_possible_answers')->getValue();
+        foreach ($fieldItems as $value) {
+          if (count(array_intersect($value, $answers)) > 0) {
+            return FALSE;
+          }
+        }
+        return TRUE;
+      });
+      $nids = array_map(function ($node) {
+        return $node->id();
+      }, $matches);
 
       // query for all supplier nodes where there is no match
       $nids = array_unique($nids);
@@ -299,20 +310,24 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getResultNodes($answers)
   {
     $query = \Drupal::entityQuery('node')
+      ->accessCheck(FALSE)
       ->condition('type', 'supplier')
       ->condition('status', 1);
     $or = $query->orConditionGroup();
     foreach ($answers as $key => $answer) {
-      $or->condition('field_answers_supplier.value', $answer);
+      $or->condition('field_answers_supplier.value', $answer, '=');
     }
     $query->condition($or);
 
+    $query->sort('title', 'ASC');
+
     $results = $query->execute();
+
     return $results;
   }
 
   /**
-   * Returns all suplier nodes which do not match user search criteria.
+   * Returns all supplier nodes which do not match user search criteria.
    *
    * @param array $nids
    * @return array
@@ -320,11 +335,15 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   public function getNonMatches($nids)
   {
     $query = \Drupal::entityQuery('node')
-      ->condition('type', 'supplier')
-      ->condition('status', 1);
+    ->accessCheck(FALSE)
+    ->condition('type', 'supplier')
+    ->condition('status', 1);
     foreach ($nids as $nid) {
       $query->condition('nid', $nid, 'NOT IN');
     }
+
+    $query->sort('title', 'ASC');
+
     $results = $query->execute();
     return $results;
   }
@@ -390,6 +409,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $machine_name = $term->get('field_answer_machine_name')->getString();
       if (isset($data[$machine_name])) {
         $result = $this->nodeStorage->getQuery()
+          ->accessCheck(FALSE)
           ->condition('field_answers_supplier', $data[$machine_name])
           ->condition('field_category.target_id', $term->id())
           ->execute();

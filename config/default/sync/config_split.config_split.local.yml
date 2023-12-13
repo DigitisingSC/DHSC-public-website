@@ -7,6 +7,7 @@ label: Local
 description: 'Local development config.'
 weight: 0
 stackable: false
+no_patching: false
 storage: folder
 folder: ../config/default/local
 module:

@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.landing_page.field_body_paragraphs
+    - field.field.node.landing_page.field_display_exit_link
     - field.field.node.landing_page.field_formatted_description
     - field.field.node.landing_page.field_hero_image
     - field.field.node.landing_page.field_image
     - field.field.node.landing_page.field_intro
+    - field.field.node.landing_page.field_search_weight
     - field.field.node.landing_page.field_summary
     - node.type.landing_page
     - workflows.workflow.editorial_workflow
@@ -27,6 +29,8 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_display_exit_link
+        - field_search_weight
       label: Metadata
       region: content
       parent_name: ''
@@ -94,6 +98,13 @@ content:
         add_in_between_link_count: 2
         delete_confirmation: false
         show_drag_and_drop: true
+  field_display_exit_link:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_formatted_description:
     type: text_textarea
     weight: 13
@@ -122,6 +133,13 @@ content:
     region: content
     settings:
       rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_search_weight:
+    type: number
+    weight: 16
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_summary:

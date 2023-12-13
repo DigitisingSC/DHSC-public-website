@@ -18,6 +18,11 @@ targetEntityType: node
 bundle: supplier
 mode: teaser
 content:
+  content_moderation_control:
+    weight: -20
+    settings: {  }
+    third_party_settings: {  }
+    region: content
   field_image:
     type: entity_reference_entity_view
     label: hidden

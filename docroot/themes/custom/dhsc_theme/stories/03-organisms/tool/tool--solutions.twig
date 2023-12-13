@@ -72,7 +72,7 @@
         </div>
         {% endif %}
         {% if result %}
-          <a class="block mb-10 a-button a-button--primary" href="{{ download_results_path }}">{{ 'Download my results'|t }}</a>
+          <a class="block mt-10 mb-10 a-button a-button--primary" href="{{ download_results_path }}">{{ 'Download my results'|t }}</a>
         {% endif %}
         {% if email_form %}
         <div class="o-tool__email" x-data="{ openEmailForm: false }">
@@ -94,4 +94,5 @@
       </div>
     {% endif %}
   </div>
+{{ back_link }}
 </div>

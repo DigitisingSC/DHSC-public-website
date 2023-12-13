@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
     - node.type.article
@@ -19,6 +20,11 @@ targetEntityType: node
 bundle: article
 mode: search_index
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
@@ -30,6 +36,7 @@ hidden:
   field_date: true
   field_further_information: true
   field_image: true
+  field_search_weight: true
   field_sidebar_related: true
   field_summary: true
   langcode: true

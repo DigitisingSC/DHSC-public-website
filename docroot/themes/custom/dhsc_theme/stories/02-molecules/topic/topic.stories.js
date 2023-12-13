@@ -14,11 +14,12 @@ const svgIconTemplate = (args) => svgIconTwig({
   icon: 'card-arrow',
 });
 
-const Template = ({ link, heading, description, attributes, icon }) =>
+const Template = ({ link, heading, description, highlight, attributes, icon }) =>
   topicTwig({
     link,
     heading,
     description,
+    highlight,
     attributes,
     icon
   });
@@ -29,6 +30,7 @@ Topic.args = {
   link: "https://www.digitalsocialcare.co.uk/",
   heading: "Get help using technology at your organisation",
   description: "Learn how to get connected, use secure email, use mobile devices and get digital social care records",
+  highlight: 1,
   attributes: new DrupalAttributes(),
   icon: svgIconTemplate,
 };

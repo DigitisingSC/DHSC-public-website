@@ -9,6 +9,11 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function dhsc_site_theme() {
   return [
+    'alert_message' => [
+      'variables' => [
+        'alert_text' => [],
+      ],
+    ],
     'social_media_links' => [
       'variables' => [
         'social_links' => [],

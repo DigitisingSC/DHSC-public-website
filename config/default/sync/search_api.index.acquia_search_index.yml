@@ -6,11 +6,16 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
+    - field.storage.node.field_search_weight
+    - search_api.server.acquia_search_server
   module:
+    - acquia_search
+    - search_api_solr
     - node
     - search_api
-    - search_api_solr
 third_party_settings:
+  acquia_search:
+    use_edismax: 0
   search_api_solr:
     finalize: false
     commit_before_finalize: false
@@ -71,6 +76,14 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_body_paragraphs
+  field_search_weight:
+    label: 'Search Weight'
+    datasource_id: 'entity:node'
+    property_path: field_search_weight
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_search_weight
   localgov_guides_description:
     label: 'Guide description'
     datasource_id: 'entity:node'
@@ -95,7 +108,7 @@ field_settings:
     type_locked: true
     hidden: true
   status:
-    label: status
+    label: Published
     datasource_id: 'entity:node'
     property_path: status
     type: boolean
@@ -109,7 +122,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: 'solr_text_custom:edge'
-    boost: !!float 5
+    boost: 5.0
     dependencies:
       module:
         - node
@@ -136,7 +149,9 @@ datasource_settings:
     bundles:
       default: true
       selected:
+        - recommendation
         - skill
+        - supplier
     languages:
       default: true
       selected: {  }
@@ -175,4 +190,4 @@ options:
   cron_limit: 50
   index_directly: true
   track_changes_in_references: true
-server: null
+server: acquia_search_server

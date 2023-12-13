@@ -1,7 +1,7 @@
 {% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
 
 {% set icon %}
-{% include '@atoms/svg/svg.twig' with {
+  {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
     'icon': 'chevron-left',
   } %}
@@ -13,7 +13,7 @@
 } %}
 
 {% set icon %}
-{% include '@atoms/svg/svg.twig' with {
+  {% include '@atoms/svg/svg.twig' with {
     'sprite': spriteSrc,
     'icon': 'triangle',
   } %}
@@ -26,6 +26,15 @@
     '#format': 'full_html',
   } %}
 {% endif %}
+
+{% set back_link %}
+  {% include '@molecules/back-link/back-link.twig' with {
+    'attributes': attributes,
+    'text' : 'Home',
+    'link' : '/',
+    'variant' : 'text',
+  } %}
+{% endset %}
 
 {% include '@organisms/tool/tool--solutions.twig' with {
   'attributes': attributes,
@@ -41,5 +50,6 @@
   'non_matching_count': non_matching_count,
   'no_matches': no_matches,
   'email_form': email_form,
+  'back_link': back_link,
   'download_results_path': download_results_path
 } %}

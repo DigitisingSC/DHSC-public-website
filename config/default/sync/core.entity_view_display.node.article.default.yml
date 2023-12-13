@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
     - image.style.dhsc_event_full_image
@@ -22,13 +23,18 @@ targetEntityType: node
 bundle: article
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
   field_author:
     type: string
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_body_paragraphs:
     type: entity_reference_revisions_entity_view
@@ -37,7 +43,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: content
   field_date:
     type: datetime_plain
@@ -45,7 +51,7 @@ content:
     settings:
       timezone_override: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
   field_further_information:
     type: entity_reference_revisions_entity_view
@@ -54,7 +60,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: content
   field_image:
     type: media_thumbnail
@@ -65,7 +71,7 @@ content:
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_sidebar_related:
     type: entity_reference_revisions_entity_view
@@ -74,14 +80,15 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
+  field_search_weight: true
   field_summary: true
   langcode: true
   search_api_excerpt: true

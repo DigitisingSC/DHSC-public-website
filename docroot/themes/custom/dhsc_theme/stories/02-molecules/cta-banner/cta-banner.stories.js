@@ -27,6 +27,8 @@ const Template = ({
   description,
   secondary_title,
   media,
+  secondary_link_url,
+  secondary_link_text,
   }) =>
   ctaBanner({
     attributes,
@@ -37,6 +39,8 @@ const Template = ({
     description,
     secondary_title,
     media,
+    secondary_link_url,
+    secondary_link_text,
   });
 
 export const CTABanner = Template.bind({});
@@ -49,4 +53,6 @@ CTABanner.args = {
   description: "Nam pretium turpis et arcu. Aenean imperdiet. Maecenas malesuada. Etiam vitae tortor. Aenean imperdiet. Nam ipsum risus, rutrum vitae, vestibulum eu, molestie vel, lacus. Mauris sollicitudin fermentum libero. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. - Description",
   secondary_title: "Secondary title",
   media: imgTag,
+  secondary_link_url:"#",
+  secondary_link_text: "See all",
 };
