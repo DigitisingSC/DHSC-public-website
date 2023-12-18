@@ -1,0 +1,12 @@
+diff --git a/composer.json b/composer.json
+index f5e5d70..db2b546 100644
+--- a/composer.json
++++ b/composer.json
+@@ -17,6 +17,6 @@
+     "source": "http://cgit.drupalcode.org/pdf_generator"
+   },
+   "require": {
+-    "dompdf/dompdf": "^2.0"
++    "dompdf/dompdf": ">=2.0.4"
+   }
+ }
