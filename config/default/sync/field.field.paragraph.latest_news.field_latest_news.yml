@@ -1,0 +1,30 @@
+uuid: efc82a8c-a6b2-4877-9cf6-3fdf89683598
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_latest_news
+    - paragraphs.paragraphs_type.latest_news
+  module:
+    - viewsreference
+id: paragraph.latest_news.field_latest_news
+field_name: field_latest_news
+entity_type: paragraph
+bundle: latest_news
+label: 'Latest News'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    latest_news: latest_news
+  enabled_settings: {  }
+field_type: viewsreference

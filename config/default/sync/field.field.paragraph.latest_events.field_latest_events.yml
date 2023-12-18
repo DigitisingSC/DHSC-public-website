@@ -1,0 +1,30 @@
+uuid: f78a1fab-b32f-457f-a5c0-7a35af517ea1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_latest_events
+    - paragraphs.paragraphs_type.latest_events
+  module:
+    - viewsreference
+id: paragraph.latest_events.field_latest_events
+field_name: field_latest_events
+entity_type: paragraph
+bundle: latest_events
+label: 'Latest Events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:view'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+  plugin_types:
+    block: block
+  preselect_views:
+    latest_events: latest_events
+  enabled_settings: {  }
+field_type: viewsreference
