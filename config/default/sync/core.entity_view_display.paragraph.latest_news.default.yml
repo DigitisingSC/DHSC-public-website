@@ -1,0 +1,25 @@
+uuid: c72e0863-1363-4ad0-b23f-48425283a3c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.latest_news.field_latest_news
+    - paragraphs.paragraphs_type.latest_news
+  module:
+    - viewsreference
+id: paragraph.latest_news.default
+targetEntityType: paragraph
+bundle: latest_news
+mode: default
+content:
+  field_latest_news:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

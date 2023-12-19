@@ -1,0 +1,25 @@
+uuid: 788c3a52-8c8e-4148-af6c-783859d1285d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.latest_events.field_latest_events
+    - paragraphs.paragraphs_type.latest_events
+  module:
+    - viewsreference
+id: paragraph.latest_events.default
+targetEntityType: paragraph
+bundle: latest_events
+mode: default
+content:
+  field_latest_events:
+    type: viewsreference_formatter
+    label: hidden
+    settings:
+      plugin_types:
+        - block
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

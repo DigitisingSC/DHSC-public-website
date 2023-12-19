@@ -13,6 +13,8 @@ dependencies:
     - paragraphs.paragraphs_type.featured_items
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.full_content_listings
+    - paragraphs.paragraphs_type.latest_events
+    - paragraphs.paragraphs_type.latest_news
     - paragraphs.paragraphs_type.localgov_image
     - paragraphs.paragraphs_type.localgov_text
     - paragraphs.paragraphs_type.newsletter_signup
@@ -51,11 +53,16 @@ settings:
       featured_items: featured_items
       quick_links: quick_links
       full_content_listings: full_content_listings
+      latest_news: latest_news
+      latest_events: latest_events
     negate: 0
     target_bundles_drag_drop:
       accordion:
         weight: 23
         enabled: true
+      accordion_digital_skills:
+        weight: 34
+        enabled: false
       accordion_item:
         weight: 24
         enabled: false
@@ -89,14 +96,23 @@ settings:
       framework_row:
         weight: 35
         enabled: false
-      framework_table:
-        weight: 36
+      framework_section:
+        weight: 46
         enabled: false
       from_library:
         weight: -16
         enabled: true
       full_content_listings:
         weight: 37
+        enabled: true
+      further_information:
+        weight: 49
+        enabled: false
+      latest_events:
+        weight: 51
+        enabled: true
+      latest_news:
+        weight: 50
         enabled: true
       link_description:
         weight: 34
@@ -113,12 +129,21 @@ settings:
       newsletter_signup:
         weight: 26
         enabled: true
+      pagination:
+        weight: 56
+        enabled: false
       quick_link:
         weight: 33
         enabled: false
       quick_links:
         weight: 34
         enabled: true
+      related_information:
+        weight: 59
+        enabled: false
+      skills_framework:
+        weight: 60
+        enabled: false
       topic:
         weight: 31
         enabled: false
