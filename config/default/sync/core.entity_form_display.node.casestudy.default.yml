@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.casestudy.field_further_information
     - field.field.node.casestudy.field_image
     - field.field.node.casestudy.field_intro
+    - field.field.node.casestudy.field_search_keywords
     - field.field.node.casestudy.field_search_weight
     - field.field.node.casestudy.field_summary
     - node.type.casestudy
@@ -26,6 +27,7 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_search_keywords
         - field_search_weight
       label: Metadata
       region: content
@@ -121,9 +123,17 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_search_weight:
     type: number
-    weight: 14
+    weight: 15
     region: content
     settings:
       placeholder: ''
