@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_keywords
     - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
@@ -29,6 +30,7 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_search_keywords
         - field_search_weight
       label: Metadata
       region: content
@@ -146,9 +148,17 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_search_weight:
     type: number
-    weight: 5
+    weight: 6
     region: content
     settings:
       placeholder: ''

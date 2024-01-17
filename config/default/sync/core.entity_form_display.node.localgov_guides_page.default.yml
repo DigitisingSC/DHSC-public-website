@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.localgov_guides_page.field_date
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
+    - field.field.node.localgov_guides_page.field_search_keywords
     - field.field.node.localgov_guides_page.field_search_weight
     - field.field.node.localgov_guides_page.field_sidebar_related
     - field.field.node.localgov_guides_page.field_summary
@@ -50,6 +51,7 @@ third_party_settings:
       children:
         - field_image
         - field_summary
+        - field_search_keywords
         - field_search_weight
       label: Metadata
       region: content
@@ -125,9 +127,17 @@ content:
       sidebar: true
       use_details: true
     third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_search_weight:
     type: number
-    weight: 5
+    weight: 6
     region: content
     settings:
       placeholder: ''

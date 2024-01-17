@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
+    - field.storage.node.field_search_keywords
     - field.storage.node.field_search_weight
     - search_api.server.acquia_search_server
   module:
@@ -76,6 +77,15 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_body_paragraphs
+  field_search_keywords:
+    label: 'Search Keywords'
+    datasource_id: 'entity:node'
+    property_path: field_search_keywords
+    type: text
+    boost: 21.0
+    dependencies:
+      config:
+        - field.storage.node.field_search_keywords
   field_search_weight:
     label: 'Search Weight'
     datasource_id: 'entity:node'
@@ -162,6 +172,7 @@ processor_settings:
   content_access:
     weights:
       preprocess_query: -30
+  custom_value: {  }
   entity_status: {  }
   entity_type: {  }
   html_filter:

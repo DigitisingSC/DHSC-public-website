@@ -1,0 +1,19 @@
+uuid: 25bb218e-e688-40f7-b4f0-c5512e5b4b08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.localgov_guides_overview
+id: node.localgov_guides_overview.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: localgov_guides_overview
+label: 'Search Keywords'
+description: 'A comma separated list of relevant search keywords to boost the content in search results <em>e.g. keyword1, keyword2<em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

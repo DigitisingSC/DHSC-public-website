@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.localgov_guides_page.field_date
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
+    - field.field.node.localgov_guides_page.field_search_keywords
     - field.field.node.localgov_guides_page.field_search_weight
     - field.field.node.localgov_guides_page.field_sidebar_related
     - field.field.node.localgov_guides_page.field_summary
@@ -56,6 +57,7 @@ content:
 hidden:
   field_image: true
   field_metatags: true
+  field_search_keywords: true
   field_search_weight: true
   field_sidebar_related: true
   field_summary: true
