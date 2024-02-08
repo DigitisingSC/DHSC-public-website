@@ -143,7 +143,8 @@ class ResultSummarySelfAssessmentController extends ControllerBase
 
     // Extract unique submission token value from URL.
     if ($submission_token = \Drupal::request()->query->get('token')) {
-      $submission_url = Url::fromUserInput($webform->url(), ['query' => ['token' => $submission_token]])->toString();
+      $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])->toString();
+      $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])->toString();
     }
 
     if ($result = $this->getResults($submission)) {

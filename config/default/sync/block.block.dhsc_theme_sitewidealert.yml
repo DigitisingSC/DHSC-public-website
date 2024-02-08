@@ -18,9 +18,9 @@ settings:
   label_display: '0'
   provider: dhsc_site
   alert_message:
-    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhBMdkW-HVLmUQXN7xZre4f0gBRjlO43B4FkvbRtd0Kj_STw/viewform">your feedback</a> will help us improve it.</p>'
+    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNP2hPFyKqJXtOw_IDl5KQhaTrZ30BM2JVata6ocfaxi9a1Q/viewform">your feedback</a> will help us improve it.</p>'
     format: basic_html
   alert_text:
-    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhBMdkW-HVLmUQXN7xZre4f0gBRjlO43B4FkvbRtd0Kj_STw/viewform">your feedback</a> will help us improve it.</p>'
+    value: '<p><strong>Beta:</strong> This is a new service, <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNP2hPFyKqJXtOw_IDl5KQhaTrZ30BM2JVata6ocfaxi9a1Q/viewform">your feedback</a> will help us improve it.</p>'
     format: basic_html
 visibility: {  }

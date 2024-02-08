@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.casestudy.field_further_information
     - field.field.node.casestudy.field_image
     - field.field.node.casestudy.field_intro
+    - field.field.node.casestudy.field_search_keywords
     - field.field.node.casestudy.field_search_weight
     - field.field.node.casestudy.field_summary
     - node.type.casestudy
@@ -48,6 +49,7 @@ hidden:
   field_body_paragraphs: true
   field_further_information: true
   field_intro: true
+  field_search_keywords: true
   field_search_weight: true
   langcode: true
   search_api_excerpt: true

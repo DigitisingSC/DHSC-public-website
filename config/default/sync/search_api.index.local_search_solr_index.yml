@@ -6,11 +6,13 @@ dependencies:
     - field.storage.node.field_body_paragraphs
     - field.storage.node.localgov_guides_description
     - field.storage.node.localgov_guides_section_title
+    - field.storage.node.field_search_keywords
+    - field.storage.node.field_search_weight
     - search_api.server.local_ddev_solr_server
   module:
+    - search_api_solr
     - node
     - search_api
-    - search_api_solr
 third_party_settings:
   search_api_solr:
     finalize: false
@@ -70,6 +72,23 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_body_paragraphs
+  field_search_keywords:
+    label: 'Search Keywords'
+    datasource_id: 'entity:node'
+    property_path: field_search_keywords
+    type: text
+    boost: 21.0
+    dependencies:
+      config:
+        - field.storage.node.field_search_keywords
+  field_search_weight:
+    label: 'Search Weight'
+    datasource_id: 'entity:node'
+    property_path: field_search_weight
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_search_weight
   localgov_guides_description:
     label: 'Guide description'
     datasource_id: 'entity:node'
@@ -122,7 +141,10 @@ datasource_settings:
   'entity:node':
     bundles:
       default: true
-      selected: {  }
+      selected:
+        - recommendation
+        - skill
+        - supplier
     languages:
       default: true
       selected: {  }
@@ -130,6 +152,7 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
   entity_type: {  }
   language_with_fallback: {  }
   rendered_item: {  }

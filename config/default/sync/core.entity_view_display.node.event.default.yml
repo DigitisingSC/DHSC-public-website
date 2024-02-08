@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.event.field_link
     - field.field.node.event.field_location
     - field.field.node.event.field_location_link
+    - field.field.node.event.field_search_keywords
     - field.field.node.event.field_search_weight
     - field.field.node.event.field_sidebar_related
     - field.field.node.event.field_start_time
@@ -156,6 +157,7 @@ content:
     region: content
 hidden:
   field_event_type: true
+  field_search_keywords: true
   field_search_weight: true
   field_summary: true
   langcode: true

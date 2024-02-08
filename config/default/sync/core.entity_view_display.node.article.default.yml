@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.article.field_date
     - field.field.node.article.field_further_information
     - field.field.node.article.field_image
+    - field.field.node.article.field_search_keywords
     - field.field.node.article.field_search_weight
     - field.field.node.article.field_sidebar_related
     - field.field.node.article.field_summary
@@ -72,6 +73,14 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_search_keywords:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_sidebar_related:
     type: entity_reference_revisions_entity_view

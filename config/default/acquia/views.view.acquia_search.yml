@@ -287,6 +287,19 @@ display:
             label: ''
             field_identifier: search_api_relevance
           exposed: false
+        field_search_keywords:
+          id: field_search_keywords
+          table: search_api_index_local_search_solr_index
+          field: field_search_keywords
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_search_weight:
           id: field_search_weight
           table: search_api_index_acquia_search_index

@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.localgov_guides_overview.field_date
     - field.field.node.localgov_guides_overview.field_image
     - field.field.node.localgov_guides_overview.field_metatags
+    - field.field.node.localgov_guides_overview.field_search_keywords
     - field.field.node.localgov_guides_overview.field_search_weight
     - field.field.node.localgov_guides_overview.field_sidebar_related
     - field.field.node.localgov_guides_overview.field_summary
@@ -49,6 +50,14 @@ content:
       date_format: 'd F Y'
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_search_keywords:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
     region: content
   links:
     settings: {  }

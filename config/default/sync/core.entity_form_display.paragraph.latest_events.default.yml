@@ -1,0 +1,23 @@
+uuid: b78f3378-e116-48d3-b02f-815c9998a3b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.latest_events.field_latest_events
+    - paragraphs.paragraphs_type.latest_events
+  module:
+    - viewsreference
+id: paragraph.latest_events.default
+targetEntityType: paragraph
+bundle: latest_events
+mode: default
+content:
+  field_latest_events:
+    type: viewsreference_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

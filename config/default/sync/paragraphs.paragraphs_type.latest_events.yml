@@ -1,0 +1,10 @@
+uuid: c63eb4b3-4416-431e-a538-1ebb69e589dd
+langcode: en
+status: true
+dependencies: {  }
+id: latest_events
+label: 'Latest Events'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

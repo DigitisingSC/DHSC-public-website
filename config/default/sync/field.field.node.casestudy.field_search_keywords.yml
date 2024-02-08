@@ -1,0 +1,19 @@
+uuid: 9005cb41-fe5c-41ca-a977-6a1b333d29ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.casestudy
+id: node.casestudy.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: casestudy
+label: 'Search Keywords'
+description: 'A comma separated list of relevant search keywords to boost the content in search results <em>e.g. keyword1, keyword2<em>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

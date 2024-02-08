@@ -184,6 +184,9 @@
             },
             "drupal/field_group": {
                 "Issue #2787179 - Ensure visibility of invalid fields": "https://www.drupal.org/files/issues/2021-12-10/2787179-highlight-html5-validation-77.patch"
+            },
+            "drupal/pdf_generator": {
+                "Issue #3409512 - Patch security vulnerability": "patches/3409512-dompdf-vunerability.patch"
             }
         }
     }
