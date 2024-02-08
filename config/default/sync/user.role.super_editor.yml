@@ -45,6 +45,7 @@ dependencies:
     - taxonomy
     - toolbar
     - webform
+    - workbench_email
 id: super_editor
 label: 'Super Editor'
 weight: 6
@@ -65,6 +66,7 @@ permissions:
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'
+  - 'administer workbench_email templates'
   - 'clone article content'
   - 'clone casestudy content'
   - 'clone content_page content'
