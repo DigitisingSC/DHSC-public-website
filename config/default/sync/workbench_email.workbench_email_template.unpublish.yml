@@ -1,0 +1,29 @@
+uuid: cf6079e3-ef81-4960-8272-8ab07a8a843d
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.localgov_editor
+    - user.role.super_editor
+    - workflows.workflow.editorial_workflow
+id: unpublish
+label: Unpublish
+format: plain_text
+subject: 'The content item [node:title] has been unpublished'
+recipient_types:
+  role:
+    id: role
+    provider: workbench_email
+    status: true
+    settings:
+      roles:
+        localgov_editor: localgov_editor
+        super_editor: super_editor
+bundles: {  }
+body:
+  value: 'This content item is now unpublished. View it here: [node:url]'
+  format: plain_text
+replyTo: ''
+transitions:
+  editorial_workflow:
+    unpublish: unpublish
