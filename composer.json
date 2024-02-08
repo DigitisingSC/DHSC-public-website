@@ -70,6 +70,7 @@
         "drupal/upgrade_status": "^4.0",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.1",
+        "drupal/workbench_email": "^3.0",
         "drush/drush": "^11.4",
         "localgovdrupal/localgov": "^3.0@alpha",
         "localgovdrupal/localgov_search_solr": "^1.0@alpha"
