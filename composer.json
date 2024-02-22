@@ -68,7 +68,6 @@
         "drupal/time_field": "^2.1",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.2",
-        "drupal/upgrade_status": "^4.0",
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.1",
         "drupal/workbench_email": "^3.0",
@@ -83,6 +82,7 @@
         "drupal/core-dev": "^10.1",
         "mglaman/phpstan-drupal": "^1.0",
         "palantirnet/drupal-rector": "^0.18.2",
+        "phpcompatibility/php-compatibility": "*",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-deprecation-rules": "^1.0",
@@ -115,7 +115,7 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "sniffer:php8": [
-            "phpcs -p ./docroot/modules/contrib ./docroot/modules/custom ./docroot/themes/custom --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.1  --extensions=php,module,install,inc --report-full=./drupal9-php8-compatibility.txt"
+            "phpcs -p ./docroot/modules/contrib ./docroot/modules/custom ./docroot/themes/custom --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.2  --extensions=php,module,install,inc --report-full=./drupal9-php8-compatibility.txt"
         ],
         "post-drupal-scaffold-cmd": [
           "patch -p1 < patches/htaccess_changes.patch"
