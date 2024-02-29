@@ -1,0 +1,13 @@
+uuid: dbd5e2a9-8a4d-4644-99d9-b294151ea46b
+langcode: en
+status: true
+dependencies:
+  module:
+    - moderated_content_bulk_publish
+_core:
+  default_config_hash: jSGchmlWDxigBTVsT4jFzKa3g3vQZhdJnWcyZilkVEU
+id: media_publish_latest
+label: 'Publish latest revision'
+type: media
+plugin: publish_latest_revision_action
+configuration: {  }

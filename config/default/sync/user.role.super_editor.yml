@@ -33,6 +33,7 @@ dependencies:
     - file
     - filter
     - media
+    - moderated_content_bulk_publish
     - node
     - paragraphs
     - paragraphs_library
@@ -197,6 +198,11 @@ permissions:
   - 'edit terms in theme'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
+  - 'moderated content bulk archive'
+  - 'moderated content bulk pin content'
+  - 'moderated content bulk publish'
+  - 'moderated content bulk unpin content'
+  - 'moderated content bulk unpublish'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert casestudy revisions'
