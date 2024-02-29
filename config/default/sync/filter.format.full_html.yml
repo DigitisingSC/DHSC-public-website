@@ -9,6 +9,12 @@ name: 'Full HTML'
 format: full_html
 weight: 0
 filters:
+  filter_autop:
+    id: filter_autop
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -18,18 +24,20 @@ filters:
       allowed_html: '<a class="a-button a-button--primary a-button--secondary">'
       filter_html_help: true
       filter_html_nofollow: false
-  filter_autop:
-    id: filter_autop
-    provider: filter
-    status: true
-    weight: 0
-    settings: {  }
   filter_htmlcorrector:
     id: filter_htmlcorrector
     provider: filter
     status: true
     weight: 10
     settings: {  }
+  filter_responsive_tables_filter:
+    id: filter_responsive_tables_filter
+    provider: responsive_tables_filter
+    status: true
+    weight: 0
+    settings:
+      tablesaw_type: stack
+      tablesaw_persist: '1'
   filter_url:
     id: filter_url
     provider: filter
@@ -44,11 +52,3 @@ filters:
     weight: 0
     settings:
       title: true
-  filter_responsive_tables_filter:
-    id: filter_responsive_tables_filter
-    provider: responsive_tables_filter
-    status: true
-    weight: 0
-    settings:
-      tablesaw_type: stack
-      tablesaw_persist: '1'
