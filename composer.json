@@ -73,7 +73,7 @@
         "drupal/viewsreference": "^2.0@beta",
         "drupal/webform": "^6.1",
         "drupal/workbench_email": "^3.0",
-        "drush/drush": "^12.0",
+        "drush/drush": "^12.5",
         "localgovdrupal/localgov": "^3.0@alpha",
         "localgovdrupal/localgov_search_solr": "^1.0@alpha",
         "phenx/php-svg-lib": "^0.5.2"
