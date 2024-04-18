@@ -1,11 +1,11 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index 4031da4..7e2f675 100644
+index d158782..db194e9 100644
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -145,6 +145,21 @@ AddEncoding gzip svgz
+@@ -145,6 +145,32 @@ AddEncoding gzip svgz
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-
+ 
 +  # exclude Acquia domains
 +  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]
 +  # exclude Acquia Cloud IDE preview sites
@@ -17,9 +17,20 @@ index 4031da4..7e2f675 100644
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
 +  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 +  # redirect to beta domain
++  RewriteCond %{HTTP_HOST} ^www.digitalsocialcare.co.uk$ [NC,OR]
++  RewriteCond %{HTTP_HOST} ^digitalsocialcare.co.uk$ [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^www.digitisingsocialcare.co.uk$ [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^digitisingsocialcare.co.uk$ [NC]
 +  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [R=301,L]
++  # redirect to api-data subdomain
++  RewriteCond %{HTTP_HOST} ^api-data.digitalsocialcare.co.uk$ [NC]
++  RewriteRule ^(.*)$ https://api-data.digitisingsocialcare.co.uk/$1 [R=301,L]
++  # redirect to data subdomain
++  RewriteCond %{HTTP_HOST} ^data.digitalsocialcare.co.uk$ [NC]
++  RewriteRule ^(.*)$ https://data.digitisingsocialcare.co.uk/$1 [R=301,L]
++  # redirect to develop subdomain
++  RewriteCond %{HTTP_HOST} ^develop.digitalsocialcare.co.uk$ [NC]
++  RewriteRule ^(.*)$ https://develop.digitisingsocialcare.co.uk/$1 [R=301,L]
 +
    # Rules to correctly serve gzip compressed CSS and JS files.
    # Requires both mod_rewrite and mod_headers to be enabled.
