@@ -10,14 +10,16 @@ index 4031da4..7e2f675 100644
 +  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]
 +  # exclude Acquia Cloud IDE preview sites
 +  RewriteCond %{HTTP_HOST} !\.web\.ahdev\.cloud [NC]
-+  # Redirect www requests to beta subdomain
-+  RewriteCond %{HTTP_HOST} ^digitalsocialcare\.co\.uk [NC,OR]
-+  RewriteCond %{HTTP_HOST} ^www\.digitalsocialcare\.co\.uk [NC]
-+  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [L,R=301]
-+  # Preserve subdomains if initially requested
-+  RewriteCond %{HTTP_HOST} !^beta\.digitisingsocialcare\.co\.uk [NC,OR]
-+  RewriteCond %{HTTP_HOST} ^([^.]+)\.digitalsocialcare\.co\.uk [NC]
-+  RewriteRule ^(.*)$ https://%1.digitisingsocialcare.co.uk/$1 [L,R=301]
++  # ensure non www.
++  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
++  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
++  # ensure https
++  RewriteCond %{HTTP:X-Forwarded-Proto} !https
++  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
++  # redirect to beta domain
++  RewriteCond %{HTTP_HOST} ^www.digitisingsocialcare.co.uk$ [NC,OR]
++  RewriteCond %{HTTP_HOST} ^digitisingsocialcare.co.uk$ [NC]
++  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [R=301,L]
 +
    # Rules to correctly serve gzip compressed CSS and JS files.
    # Requires both mod_rewrite and mod_headers to be enabled.
