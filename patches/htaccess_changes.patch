@@ -1,7 +1,7 @@
-diff --git a/.htaccess b/.htaccess
+diff --git a/docroot/.htaccess b/docroot/.htaccess
 index 3ee72e1..fe4f3e0 100644
---- a/.htaccess
-+++ b/.htaccess
+--- a/docroot/.htaccess
++++ b/docroot/.htaccess
 @@ -149,16 +149,14 @@ AddEncoding gzip svgz
    RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]
    # exclude Acquia Cloud IDE preview sites
@@ -24,7 +24,7 @@ index 3ee72e1..fe4f3e0 100644
 +  RewriteCond %{HTTP_HOST} !^beta\.digitisingsocialcare\.co\.uk [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^([^.]+)\.digitalsocialcare\.co\.uk [NC]
 +  RewriteRule ^(.*)$ https://%1.digitisingsocialcare.co.uk/$1 [L,R=301]
- 
+
    # Rules to correctly serve gzip compressed CSS and JS files.
    # Requires both mod_rewrite and mod_headers to be enabled.
 @@ -199,4 +197,3 @@ AddEncoding gzip svgz
