@@ -1,0 +1,20 @@
+diff --git a/docroot/.htaccess b/docroot/.htaccess
+index 4031da4..07cfba4 100644
+--- a/docroot/.htaccess
++++ b/docroot/.htaccess
+@@ -122,6 +122,15 @@ AddEncoding gzip svgz
+   # Rewrite install.php during installation to see if mod_rewrite is working
+   RewriteRule ^core/install\.php core/install.php?rewrite=ok [QSA,L]
+ 
++  # Redirect www requests to beta subdomain
++  RewriteCond %{HTTP_HOST} ^digitalsocialcare\.co\.uk [NC,OR]
++  RewriteCond %{HTTP_HOST} ^www\.digitalsocialcare\.co\.uk [NC]
++  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [L,R=301]
++  # Preserve subdomains if initially requested
++  RewriteCond %{HTTP_HOST} !^beta\.digitisingsocialcare\.co\.uk [NC,OR]
++  RewriteCond %{HTTP_HOST} ^([^.]+)\.digitalsocialcare\.co\.uk [NC]
++  RewriteRule ^(.*)$ https://%1.digitisingsocialcare.co.uk/$1 [L,R=301]
++
+   # Pass all requests not referring directly to files in the filesystem to
+   # index.php.
+   RewriteCond %{REQUEST_FILENAME} !-f
