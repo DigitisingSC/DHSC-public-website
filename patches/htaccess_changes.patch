@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index 4031da4..30a282c 100644
+index 4031da4..aad9497 100644
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -113,6 +113,19 @@ AddEncoding gzip svgz
+@@ -113,6 +113,24 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -10,12 +10,17 @@ index 4031da4..30a282c 100644
 +  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]
 +  # exclude Acquia Cloud IDE preview sites
 +  RewriteCond %{HTTP_HOST} !\.web\.ahdev\.cloud [NC]
++
 +  # Redirect www requests to beta subdomain
 +  RewriteCond %{HTTP_HOST} ^digitalsocialcare\.co\.uk [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^www\.digitalsocialcare\.co\.uk [NC]
 +  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [L,R=301]
++
++  RewriteCond %{HTTP_HOST} ^digitisingsocialcare\.co\.uk [NC,OR]
++  RewriteCond %{HTTP_HOST} ^www\.digitisingsocialcare\.co\.uk [NC]
++  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [L,R=301]
++
 +  # Preserve subdomains if initially requested
-+  RewriteCond %{HTTP_HOST} !^beta\.digitisingsocialcare\.co\.uk [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^([^.]+)\.digitalsocialcare\.co\.uk [NC]
 +  RewriteRule ^(.*)$ https://%1.digitisingsocialcare.co.uk/$1 [L,R=301]
 +
