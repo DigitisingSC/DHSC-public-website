@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: xu0yG13sSQJcXrOJJqsn44W_hUWAIFHVlphrzxT2ycU
+page_title: Sitemap
+message:
+  value: ''
+  format: plain_text
+plugins:
+  'menu:main':
+    enabled: true
+    weight: -45
+    settings:
+      title: 'Main navigation'
+      show_disabled: false
+    id: 'menu:main'
+    provider: sitemap
+  frontpage:
+    enabled: false
+include_css: false
