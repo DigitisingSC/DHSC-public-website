@@ -15,4 +15,12 @@ plugins:
     provider: sitemap
   frontpage:
     enabled: false
+  'menu:footer':
+    enabled: true
+    weight: 0
+    settings:
+      title: 'Footer navigation'
+      show_disabled: false
+    id: 'menu:footer'
+    provider: sitemap
 include_css: false
