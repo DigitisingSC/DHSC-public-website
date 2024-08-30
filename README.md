@@ -68,7 +68,7 @@ Change directory into the DHSC-public-website directory and run ddev start.
 
 cd DHSC-public-website
 
-make start
+make up
 
 ```
 
