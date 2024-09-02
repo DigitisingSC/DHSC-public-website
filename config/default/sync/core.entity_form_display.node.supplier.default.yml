@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.supplier.field_non_possible_answers
     - field.field.node.supplier.field_summary
     - node.type.supplier
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - field_group
@@ -118,7 +119,7 @@ content:
       placeholder: ''
     third_party_settings:
       maxlength:
-        maxlength_js: 255
+        maxlength_js: 160
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
   langcode:
