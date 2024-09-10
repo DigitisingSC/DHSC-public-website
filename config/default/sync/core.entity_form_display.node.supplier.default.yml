@@ -119,7 +119,7 @@ content:
       placeholder: ''
     third_party_settings:
       maxlength:
-        maxlength_js: 160
+        maxlength_js: 255
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
   langcode:
