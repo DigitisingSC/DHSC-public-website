@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.supplier.field_non_possible_answers
     - field.field.node.supplier.field_summary
     - node.type.supplier
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - field_group
