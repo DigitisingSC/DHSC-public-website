@@ -62,6 +62,7 @@
         "drupal/session_limit": "^2.0@beta",
         "drupal/shield": "^1.7",
         "drupal/site_settings": "^1.20",
+        "drupal/sitemap": "^2.0",
         "drupal/sitewide_alert": "^2.1",
         "drupal/stage_file_proxy": "^2.1",
         "drupal/svg_image_field": "^2.2",
