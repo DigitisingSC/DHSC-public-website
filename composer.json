@@ -107,10 +107,15 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "php-http/discovery": false,
             "acquia/blt": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
+        },
+        "audit": {
+            "ignore": {
+                "GHSA-mg8j-w93w-xjgc": "Drupal core has been upgraded to the latest patch version that fixes this issue."
+            }
         }
     },
-
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
