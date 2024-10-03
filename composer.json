@@ -107,7 +107,8 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "php-http/discovery": false,
             "acquia/blt": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
         }
     },
 
@@ -182,6 +183,10 @@
             ]
         },
         "patches": {
+            "drupal/core": {
+                "#3457781 - Full path disclosure from errors on maintenance pages (CVE-2024-45440)": "https://git.drupalcode.org/project/drupal/-/merge_requests/9621.patch",
+                "#3478417 - Error handler crashes with Undefined constant 'DRUPAL_TEST_IN_CHILD_SITE'": "https://git.drupalcode.org/project/drupal/-/commit/4e0ce97be71e81c7d5b92a142fdabfbec04bc0ee.patch"
+            },
             "alexku/blt-github-actions": {
                 "Test": "patches/allowstandard-subscription-autodeployment.patch"
             },
