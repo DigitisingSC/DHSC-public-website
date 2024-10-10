@@ -130,7 +130,7 @@ jobs:
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
-      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main') }}
+      if: ${{ env.SSH_DEPLOYMENT_KEY && github.event_name == 'push' && (!startsWith(github.ref, 'refs/heads/feature/') || !startsWith(github.ref, 'refs/heads/bugfix/')) }}
 
     - name: Deploy tag
       run: bash $SCRIPT_DIR/deploy_tag.sh
