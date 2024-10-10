@@ -19253,7 +19253,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "10.3.6",
+            "version": "10.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
@@ -19303,7 +19303,7 @@
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-dev/tree/10.3.6"
+                "source": "https://github.com/drupal/core-dev/tree/10.2.9"
             },
             "time": "2024-07-04T10:19:29+00:00"
         },
