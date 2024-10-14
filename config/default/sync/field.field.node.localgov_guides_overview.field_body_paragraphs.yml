@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_body_paragraphs
     - node.type.localgov_guides_overview
+    - paragraphs.paragraphs_type.accordion
     - paragraphs.paragraphs_type.alert
     - paragraphs.paragraphs_type.card_collection
     - paragraphs.paragraphs_type.cta_banner
@@ -35,8 +36,18 @@ settings:
       card_collection: card_collection
       cta_banner: cta_banner
       from_library: from_library
+      accordion: accordion
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 34
+        enabled: true
+      accordion_digital_skills:
+        weight: 35
+        enabled: false
+      accordion_item:
+        weight: 36
+        enabled: false
       alert:
         weight: -28
         enabled: true
@@ -61,9 +72,33 @@ settings:
       dynamic_content_listing:
         weight: -21
         enabled: false
+      featured_items:
+        weight: 45
+        enabled: false
+      framework_row:
+        weight: 46
+        enabled: false
+      framework_section:
+        weight: 47
+        enabled: false
       from_library:
         weight: -20
         enabled: true
+      full_content_listings:
+        weight: 49
+        enabled: false
+      further_information:
+        weight: 50
+        enabled: false
+      latest_events:
+        weight: 51
+        enabled: false
+      latest_news:
+        weight: 52
+        enabled: false
+      link_description:
+        weight: 53
+        enabled: false
       localgov_image:
         weight: -30
         enabled: true
@@ -76,8 +111,29 @@ settings:
       newsletter_signup:
         weight: -18
         enabled: false
+      pagination:
+        weight: 58
+        enabled: false
+      quick_link:
+        weight: 59
+        enabled: false
+      quick_links:
+        weight: 60
+        enabled: false
+      related_information:
+        weight: 61
+        enabled: false
+      skills_framework:
+        weight: 62
+        enabled: false
+      topic:
+        weight: 63
+        enabled: false
       topic_list_builder:
         weight: -17
+        enabled: false
+      topics:
+        weight: 65
         enabled: false
       video:
         weight: -29
