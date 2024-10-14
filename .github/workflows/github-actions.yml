@@ -130,7 +130,7 @@ jobs:
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
-      if: ${{ env.SSH_DEPLOYMENT_KEY && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !(startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/bugfix/')) }}
+      if: ${{ env.SSH_DEPLOYMENT_KEY && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !(startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/bugfix/') || contains(github.ref, 'refs/tags')) }}
 
     - name: Deploy tag
       run: bash $SCRIPT_DIR/deploy_tag.sh
