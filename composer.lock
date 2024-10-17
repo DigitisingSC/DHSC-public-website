@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bff4f08a2f26ccee66a36838b373598",
+    "content-hash": "ed67eee438cb4ff4a4a81609449ea987",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3682,16 +3682,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "d57f82577f99e57a819cc8be304c00a06ad349fe"
+                "reference": "cc654a9fd9d7b149b9c554a9114610681a22c343"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/d57f82577f99e57a819cc8be304c00a06ad349fe",
-                "reference": "d57f82577f99e57a819cc8be304c00a06ad349fe",
+                "url": "https://api.github.com/repos/drupal/core/zipball/cc654a9fd9d7b149b9c554a9114610681a22c343",
+                "reference": "cc654a9fd9d7b149b9c554a9114610681a22c343",
                 "shasum": ""
             },
             "require": {
@@ -3839,13 +3839,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/10.2.9"
+                "source": "https://github.com/drupal/core/tree/10.2.10"
             },
-            "time": "2024-10-08T11:27:57+00:00"
+            "time": "2024-10-16T00:22:27+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3889,13 +3889,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.2.9"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.2.10"
             },
             "time": "2024-04-09T07:27:23+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -3936,16 +3936,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "4629116a19425c5c16a9ad01e03f9bc86c360400"
+                "reference": "92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/4629116a19425c5c16a9ad01e03f9bc86c360400",
-                "reference": "4629116a19425c5c16a9ad01e03f9bc86c360400",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b",
+                "reference": "92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b",
                 "shasum": ""
             },
             "require": {
@@ -3954,7 +3954,7 @@
                 "doctrine/annotations": "~1.14.3",
                 "doctrine/deprecations": "~1.1.2",
                 "doctrine/lexer": "~2.1.0",
-                "drupal/core": "10.2.9",
+                "drupal/core": "10.2.10",
                 "egulias/email-validator": "~4.0.2",
                 "guzzlehttp/guzzle": "~7.8.1",
                 "guzzlehttp/promises": "~2.0.2",
@@ -4015,9 +4015,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/10.2.9"
+                "source": "https://github.com/drupal/core-recommended/tree/10.2.10"
             },
-            "time": "2024-10-08T11:27:57+00:00"
+            "time": "2024-10-16T00:22:27+00:00"
         },
         {
             "name": "drupal/crop",
@@ -21011,16 +21011,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.32.0",
+            "version": "1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "6ca22b154efdd9e3c68c56f5d94670920a1c19a4"
+                "reference": "82a311fd3690fb2bf7b64d5c98f912b3dd746140"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6ca22b154efdd9e3c68c56f5d94670920a1c19a4",
-                "reference": "6ca22b154efdd9e3c68c56f5d94670920a1c19a4",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/82a311fd3690fb2bf7b64d5c98f912b3dd746140",
+                "reference": "82a311fd3690fb2bf7b64d5c98f912b3dd746140",
                 "shasum": ""
             },
             "require": {
@@ -21052,9 +21052,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.32.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.33.0"
             },
-            "time": "2024-09-26T07:23:32+00:00"
+            "time": "2024-10-13T11:25:22+00:00"
         },
         {
             "name": "phpstan/phpstan",
