@@ -128,8 +128,11 @@
         ],
         "post-drupal-scaffold-cmd": [
           "patch -p1 < patches/htaccess_changes.patch"
+        ],
+        "drupal-core-security-updates": [
+            "composer update 'drupal/core-*' --with-all-dependencies --with=drupal/core-recommended:~10.2.0 --with=drupal/core-composer-scaffold:~10.2.0 --with=drupal/core-project-message:~10.2.0 --with=drupal/core-dev:~10.2.0"
         ]
-      },
+    },
     "extra": {
         "enable-patching": true,
         "drupal-scaffold": {
