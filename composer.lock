@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5841a81df14bb5386620d8954182a73",
+    "content-hash": "5bff4f08a2f26ccee66a36838b373598",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3682,16 +3682,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "d57f82577f99e57a819cc8be304c00a06ad349fe"
+                "reference": "cc654a9fd9d7b149b9c554a9114610681a22c343"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/d57f82577f99e57a819cc8be304c00a06ad349fe",
-                "reference": "d57f82577f99e57a819cc8be304c00a06ad349fe",
+                "url": "https://api.github.com/repos/drupal/core/zipball/cc654a9fd9d7b149b9c554a9114610681a22c343",
+                "reference": "cc654a9fd9d7b149b9c554a9114610681a22c343",
                 "shasum": ""
             },
             "require": {
@@ -3839,13 +3839,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/10.2.9"
+                "source": "https://github.com/drupal/core/tree/10.2.10"
             },
-            "time": "2024-10-08T11:27:57+00:00"
+            "time": "2024-10-16T00:22:27+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3889,13 +3889,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.2.9"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/10.2.10"
             },
             "time": "2024-04-09T07:27:23+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -3936,16 +3936,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "4629116a19425c5c16a9ad01e03f9bc86c360400"
+                "reference": "92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/4629116a19425c5c16a9ad01e03f9bc86c360400",
-                "reference": "4629116a19425c5c16a9ad01e03f9bc86c360400",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b",
+                "reference": "92d4eda171aba18bd1d6b2a3837f16d3f3e3e95b",
                 "shasum": ""
             },
             "require": {
@@ -3954,7 +3954,7 @@
                 "doctrine/annotations": "~1.14.3",
                 "doctrine/deprecations": "~1.1.2",
                 "doctrine/lexer": "~2.1.0",
-                "drupal/core": "10.2.9",
+                "drupal/core": "10.2.10",
                 "egulias/email-validator": "~4.0.2",
                 "guzzlehttp/guzzle": "~7.8.1",
                 "guzzlehttp/promises": "~2.0.2",
@@ -4015,9 +4015,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/10.2.9"
+                "source": "https://github.com/drupal/core-recommended/tree/10.2.10"
             },
-            "time": "2024-10-08T11:27:57+00:00"
+            "time": "2024-10-16T00:22:27+00:00"
         },
         {
             "name": "drupal/crop",
@@ -9334,29 +9334,32 @@
         },
         {
             "name": "drupal/sitemap",
-            "version": "2.0.0-beta6",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/sitemap.git",
-                "reference": "8.x-2.0-beta6"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-2.0-beta6.zip",
-                "reference": "8.x-2.0-beta6",
-                "shasum": "c1fe3392031552c443fb6078dd358fa0ee62077d"
+                "url": "https://ftp.drupal.org/files/projects/sitemap-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "1e1db0da34ff07318cd2179b392d6495da49a0f4"
             },
             "require": {
-                "drupal/core": "^9.1 || ^10"
+                "drupal/core": "^10.2 || ^11"
+            },
+            "require-dev": {
+                "drupal/book": "*"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.0-beta6",
-                    "datestamp": "1709502115",
+                    "version": "8.x-2.0",
+                    "datestamp": "1724850275",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -9388,14 +9391,17 @@
                 {
                     "name": "Nafes",
                     "homepage": "https://www.drupal.org/user/2489926"
+                },
+                {
+                    "name": "ridefree",
+                    "homepage": "https://www.drupal.org/user/49148"
                 }
             ],
             "description": "Display a sitemap.",
             "homepage": "http://drupal.org/project/sitemap",
             "support": {
                 "source": "http://cgit.drupalcode.org/sitemap",
-                "issues": "http://drupal.org/project/issues/sitemap",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
+                "issues": "http://drupal.org/project/issues/sitemap"
             }
         },
         {
@@ -11262,16 +11268,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.3",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8"
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
-                "reference": "6ea8dd08867a2a42619d65c3deb2c0fcbf81c8f8",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
                 "shasum": ""
             },
             "require": {
@@ -11325,7 +11331,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.3"
+                "source": "https://github.com/guzzle/promises/tree/2.0.4"
             },
             "funding": [
                 {
@@ -11341,7 +11347,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T10:29:17+00:00"
+            "time": "2024-10-17T10:06:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -18194,6 +18200,76 @@
             "time": "2023-12-09T11:30:50+00:00"
         },
         {
+            "name": "behat/mink-selenium2-driver",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/minkphp/MinkSelenium2Driver.git",
+                "reference": "4ca4083f305de7dff4434ac402dc4e3f39c0866a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/minkphp/MinkSelenium2Driver/zipball/4ca4083f305de7dff4434ac402dc4e3f39c0866a",
+                "reference": "4ca4083f305de7dff4434ac402dc4e3f39c0866a",
+                "shasum": ""
+            },
+            "require": {
+                "behat/mink": "^1.11@dev",
+                "ext-json": "*",
+                "instaclick/php-webdriver": "^1.4.14",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mink/driver-testsuite": "dev-master",
+                "phpstan/phpstan": "^1.10",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpunit/phpunit": "^8.5.22 || ^9.5.11",
+                "symfony/error-handler": "^4.4 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "type": "mink-driver",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Behat\\Mink\\Driver\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pete Otaqui",
+                    "email": "pete@otaqui.com",
+                    "homepage": "https://github.com/pete-otaqui"
+                },
+                {
+                    "name": "Konstantin Kudryashov",
+                    "email": "ever.zet@gmail.com",
+                    "homepage": "http://everzet.com"
+                }
+            ],
+            "description": "Selenium2 (WebDriver) driver for Mink framework",
+            "homepage": "https://mink.behat.org/",
+            "keywords": [
+                "ajax",
+                "browser",
+                "javascript",
+                "selenium",
+                "testing",
+                "webdriver"
+            ],
+            "support": {
+                "issues": "https://github.com/minkphp/MinkSelenium2Driver/issues",
+                "source": "https://github.com/minkphp/MinkSelenium2Driver/tree/v1.7.0"
+            },
+            "time": "2023-12-09T11:58:45+00:00"
+        },
+        {
             "name": "brianium/paratest",
             "version": "v6.11.1",
             "source": {
@@ -19253,7 +19329,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "10.2.9",
+            "version": "10.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
@@ -19303,7 +19379,7 @@
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-dev/tree/10.2.9"
+                "source": "https://github.com/drupal/core-dev/tree/10.2.10"
             },
             "time": "2024-07-04T10:19:29+00:00"
         },
@@ -19411,6 +19487,69 @@
                 "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.25.5"
             },
             "time": "2024-09-18T22:04:15+00:00"
+        },
+        {
+            "name": "instaclick/php-webdriver",
+            "version": "1.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/instaclick/php-webdriver.git",
+                "reference": "3b2a2ddc4e0a690cc691d7e5952964cc4b9538b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/instaclick/php-webdriver/zipball/3b2a2ddc4e0a690cc691d7e5952964cc4b9538b1",
+                "reference": "3b2a2ddc4e0a690cc691d7e5952964cc4b9538b1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5 || ^9.5",
+                "satooshi/php-coveralls": "^1.0 || ^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "WebDriver": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Justin Bishop",
+                    "email": "jubishop@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anthon Pang",
+                    "email": "apang@softwaredevelopment.ca",
+                    "role": "Fork Maintainer"
+                }
+            ],
+            "description": "PHP WebDriver for Selenium 2",
+            "homepage": "http://instaclick.com/",
+            "keywords": [
+                "browser",
+                "selenium",
+                "webdriver",
+                "webtest"
+            ],
+            "support": {
+                "issues": "https://github.com/instaclick/php-webdriver/issues",
+                "source": "https://github.com/instaclick/php-webdriver/tree/1.4.19"
+            },
+            "time": "2024-03-19T01:58:53+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -19535,126 +19674,6 @@
                 "source": "https://github.com/jsonrainbow/json-schema/tree/5.3.0"
             },
             "time": "2024-07-06T21:00:26+00:00"
-        },
-        {
-            "name": "lullabot/mink-selenium2-driver",
-            "version": "v1.7.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Lullabot/MinkSelenium2Driver.git",
-                "reference": "145fe8ed1fb611be7409b70d609f71b0285f4724"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Lullabot/MinkSelenium2Driver/zipball/145fe8ed1fb611be7409b70d609f71b0285f4724",
-                "reference": "145fe8ed1fb611be7409b70d609f71b0285f4724",
-                "shasum": ""
-            },
-            "require": {
-                "behat/mink": "^1.11@dev",
-                "ext-json": "*",
-                "lullabot/php-webdriver": "^2.0.6",
-                "php": ">=8.1"
-            },
-            "replace": {
-                "behat/mink-selenium2-driver": "1.7.0"
-            },
-            "require-dev": {
-                "mink/driver-testsuite": "dev-master",
-                "phpstan/phpstan": "^1.10",
-                "phpstan/phpstan-phpunit": "^1.3",
-                "phpunit/phpunit": "^8.5.22 || ^9.5.11",
-                "symfony/error-handler": "^4.4 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "type": "mink-driver",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Behat\\Mink\\Driver\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Pete Otaqui",
-                    "email": "pete@otaqui.com",
-                    "homepage": "https://github.com/pete-otaqui"
-                },
-                {
-                    "name": "Konstantin Kudryashov",
-                    "email": "ever.zet@gmail.com",
-                    "homepage": "http://everzet.com"
-                }
-            ],
-            "description": "Selenium2 (WebDriver) driver for Mink framework",
-            "homepage": "https://mink.behat.org/",
-            "keywords": [
-                "ajax",
-                "browser",
-                "javascript",
-                "selenium",
-                "testing",
-                "webdriver"
-            ],
-            "support": {
-                "source": "https://github.com/Lullabot/MinkSelenium2Driver/tree/v1.7.4"
-            },
-            "time": "2024-08-08T07:40:04+00:00"
-        },
-        {
-            "name": "lullabot/php-webdriver",
-            "version": "v2.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Lullabot/php-webdriver.git",
-                "reference": "8c28db7151b8a73bd98861fe19972ac3f40184d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Lullabot/php-webdriver/zipball/8c28db7151b8a73bd98861fe19972ac3f40184d2",
-                "reference": "8c28db7151b8a73bd98861fe19972ac3f40184d2",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=8.0.0"
-            },
-            "replace": {
-                "instaclick/php-webdriver": "1.4.16"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5 || ^9.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "WebDriver": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "PHP WebDriver for Selenium 2",
-            "homepage": "https://www.lullabot.com/",
-            "keywords": [
-                "browser",
-                "selenium",
-                "webdriver",
-                "webtest"
-            ],
-            "support": {
-                "issues": "https://github.com/Lullabot/php-webdriver/issues",
-                "source": "https://github.com/Lullabot/php-webdriver/tree/v2.0.6"
-            },
-            "time": "2024-08-05T13:00:46+00:00"
         },
         {
             "name": "mglaman/phpstan-drupal",
@@ -19992,16 +20011,16 @@
         },
         {
             "name": "open-telemetry/api",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/api.git",
-                "reference": "62f2abc4c6d4ef6ea897256520052f9c29a0241f"
+                "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/62f2abc4c6d4ef6ea897256520052f9c29a0241f",
-                "reference": "62f2abc4c6d4ef6ea897256520052f9c29a0241f",
+                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/542064815d38a6df55af7957cd6f1d7d967c99c6",
+                "reference": "542064815d38a6df55af7957cd6f1d7d967c99c6",
                 "shasum": ""
             },
             "require": {
@@ -20017,6 +20036,11 @@
             "extra": {
                 "branch-alias": {
                     "dev-main": "1.1.x-dev"
+                },
+                "spi": {
+                    "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\HookManagerInterface": [
+                        "OpenTelemetry\\API\\Instrumentation\\AutoInstrumentation\\ExtensionHookManager"
+                    ]
                 }
             },
             "autoload": {
@@ -20053,7 +20077,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2024-09-24T23:58:09+00:00"
+            "time": "2024-10-15T22:42:37+00:00"
         },
         {
             "name": "open-telemetry/context",
@@ -20243,16 +20267,16 @@
         },
         {
             "name": "open-telemetry/sdk",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opentelemetry-php/sdk.git",
-                "reference": "be2bb8de6db9eeb11d964b3b1949f6e0f6b08e9b"
+                "reference": "126319e6b3996c609fded69f1e3e9dc1582c64af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/be2bb8de6db9eeb11d964b3b1949f6e0f6b08e9b",
-                "reference": "be2bb8de6db9eeb11d964b3b1949f6e0f6b08e9b",
+                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/126319e6b3996c609fded69f1e3e9dc1582c64af",
+                "reference": "126319e6b3996c609fded69f1e3e9dc1582c64af",
                 "shasum": ""
             },
             "require": {
@@ -20329,7 +20353,7 @@
                 "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
                 "source": "https://github.com/open-telemetry/opentelemetry-php"
             },
-            "time": "2024-09-25T11:54:21+00:00"
+            "time": "2024-10-15T22:42:37+00:00"
         },
         {
             "name": "open-telemetry/sem-conv",
@@ -20992,16 +21016,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.32.0",
+            "version": "1.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "6ca22b154efdd9e3c68c56f5d94670920a1c19a4"
+                "reference": "82a311fd3690fb2bf7b64d5c98f912b3dd746140"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6ca22b154efdd9e3c68c56f5d94670920a1c19a4",
-                "reference": "6ca22b154efdd9e3c68c56f5d94670920a1c19a4",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/82a311fd3690fb2bf7b64d5c98f912b3dd746140",
+                "reference": "82a311fd3690fb2bf7b64d5c98f912b3dd746140",
                 "shasum": ""
             },
             "require": {
@@ -21033,9 +21057,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.32.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.33.0"
             },
-            "time": "2024-09-26T07:23:32+00:00"
+            "time": "2024-10-13T11:25:22+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -23820,7 +23844,6 @@
         "drupal/paragraphs_features": 10,
         "drupal/rabbit_hole": 10,
         "drupal/session_limit": 10,
-        "drupal/sitemap": 10,
         "drupal/tfa": 15,
         "drupal/viewsreference": 10,
         "localgovdrupal/localgov": 15,
