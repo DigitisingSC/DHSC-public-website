@@ -3,27 +3,37 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.content_listing_section_links.field_section_child_links
+    - field.field.paragraph.content_listing_section_links.field_section_child_link
     - field.field.paragraph.content_listing_section_links.field_section_link
     - paragraphs.paragraphs_type.content_listing_section_links
+  module:
+    - link
 id: paragraph.content_listing_section_links.default
 targetEntityType: paragraph
 bundle: content_listing_section_links
 mode: default
 content:
-  field_section_child_links:
-    type: entity_reference_label
+  field_section_child_link:
+    type: link
     label: hidden
     settings:
-      link: true
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
     weight: 1
     region: content
   field_section_link:
-    type: entity_reference_label
+    type: link
     label: hidden
     settings:
-      link: true
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
     weight: 0
     region: content

@@ -1,17 +1,17 @@
-uuid: df441057-53e3-47ee-bb8a-4ae197244a3d
+uuid: fd4c86d0-6393-4d63-9d54-be6f4c31d140
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_section_link
+    - field.storage.paragraph.field_section_child_link
     - paragraphs.paragraphs_type.content_listing_section_links
   module:
     - link
-id: paragraph.content_listing_section_links.field_section_link
-field_name: field_section_link
+id: paragraph.content_listing_section_links.field_section_child_link
+field_name: field_section_child_link
 entity_type: paragraph
 bundle: content_listing_section_links
-label: 'Section link'
+label: 'Section child link'
 description: ''
 required: false
 translatable: false
