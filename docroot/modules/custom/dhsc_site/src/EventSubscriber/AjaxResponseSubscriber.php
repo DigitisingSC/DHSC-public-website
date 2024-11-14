@@ -3,7 +3,9 @@
 namespace Drupal\dhsc_site\EventSubscriber;
 
 use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\views\Ajax\ViewAjaxResponse;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
@@ -13,8 +15,9 @@ use Symfony\Component\HttpKernel\KernelEvents;
  * Response subscriber to handle AJAX responses.
  */
 class AjaxResponseSubscriber implements EventSubscriberInterface {
+  use StringTranslationTrait;
 
-    /**
+  /**
    * The Renderer service.
    *
    * @var \Drupal\Core\Render\RendererInterface
@@ -22,13 +25,23 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
   protected $renderer;
 
   /**
-   * CustomEventSubscriber constructor.
+   * The Entity Type Manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Constructs a new AjaxResponseSubscriber instance.
    *
    * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The Renderer service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The Entity Type Manager service.
    */
-  public function __construct(RendererInterface $renderer) {
+  public function __construct(RendererInterface $renderer, EntityTypeManagerInterface $entityTypeManager) {
     $this->renderer = $renderer;
+    $this->entityTypeManager = $entityTypeManager;
   }
 
   /**
@@ -40,13 +53,13 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
   public function onRespond(ResponseEvent $event) {
     $response = $event->getResponse();
 
-    // Only alter views ajax responses
+    // Only alter views ajax responses.
     if (!($response instanceof ViewAjaxResponse)) {
       return;
     }
 
     $view = $response->getView();
-    // Only alter commands if view is ours
+    // Only alter commands if view is ours.
     if (!in_array($view->storage->id(), ['digital_skills_training_page', 'digital_skills_training_search'])) {
       return;
     }
@@ -58,7 +71,7 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
 
     $html_output = $this->renderer->renderPlain($args);
 
-    // Add new replace response to AJAX
+    // Add new replace response to AJAX.
     $response->addCommand(new ReplaceCommand('.view-digital-skills-training-page__pills .m-active-filter__wrapper', $html_output));
     $event->setResponse($response);
   }
@@ -72,27 +85,30 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
   }
 
   /**
-   * Build skills active filter links for the pills
+   * Build skills active filter links for the pills.
    *
-   *  @var array $exposedFormInput
-   *  @return array
+   * @param array $exposedFormInput
+   *   The exposed form input array.
+   *
+   * @return array
+   *   An array of active filter labels.
    */
-  private function buildPillLinks($exposedFormInput) {
-    $term_storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  private function buildPillLinks(array $exposedFormInput) {
+    $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
     $activeFilters = $activeFilterLabels = [];
 
-    // Loop through active filters
+    // Loop through active filters.
     foreach ($exposedFormInput as $key => $values) {
-      // Simple text filter
+      // Simple text filter.
       if ($key == 'skills_for_care_endorsed') {
         foreach ($values as $value) {
           $activeFilterLabels[] = [
-            'title' => t('Skills for Care endorsed: ') . ucfirst($value),
+            'title' => $this->t('Skills for Care endorsed: @value', ['@value' => ucfirst($value)]),
             'target' => $value,
           ];
         }
       }
-      // Simple text filter
+      // Simple text filter.
       elseif ($key == 'price') {
         foreach ($values as $value) {
           $activeFilterLabels[] = [
@@ -101,17 +117,16 @@ class AjaxResponseSubscriber implements EventSubscriberInterface {
           ];
         }
       }
-      // Taxonomy term filters
+      // Taxonomy term filters.
       elseif (!empty($values)) {
         $activeFilters = array_merge($activeFilters, $values);
       }
     }
 
-    // Load active filter taxonomy terms
+    // Load active filter taxonomy terms.
     $selectedTerms = $term_storage->loadMultiple($activeFilters);
 
-    // Assign tax terms to links pairs
-    /** @var \Drupal\Core\Entity\EntityInterface $term */
+    // Assign tax terms to links pairs.
     foreach ($selectedTerms as $term) {
       $activeFilterLabels[] = [
         'title' => $term->label(),
