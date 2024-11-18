@@ -1,11 +1,11 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index 4031da4..7e2f675 100644
+index 4031da4..70dee04 100644
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -145,6 +145,21 @@ AddEncoding gzip svgz
+@@ -145,6 +145,24 @@ AddEncoding gzip svgz
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
-
+ 
 +  # exclude Acquia domains
 +  RewriteCond %{HTTP_HOST} !\.acquia-sites\.com [NC]
 +  # exclude Acquia Cloud IDE preview sites
@@ -20,6 +20,9 @@ index 4031da4..7e2f675 100644
 +  RewriteCond %{HTTP_HOST} ^www.digitisingsocialcare.co.uk$ [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^digitisingsocialcare.co.uk$ [NC]
 +  RewriteRule ^(.*)$ https://beta.digitisingsocialcare.co.uk/$1 [R=301,L]
++  # Redirect from data.digitalsocialcare.co.uk to data.digitisingsocialcare.co.uk.
++  RewriteCond %{HTTP_HOST} ^data\.digitalsocialcare\.co\.uk$ [NC]
++  RewriteRule ^(.*)$ https://data.digitisingsocialcare.co.uk/$1 [L,R=301]
 +
    # Rules to correctly serve gzip compressed CSS and JS files.
    # Requires both mod_rewrite and mod_headers to be enabled.
