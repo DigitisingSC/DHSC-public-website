@@ -99,10 +99,10 @@ function dhsc_theme_preprocess_paragraph__content_listing_section(&$variables) {
   $section_links_paragraph = $entity->field_section_links->referencedEntities();
   foreach ($section_links_paragraph as $section_links) {
     // Get main section link.
-    $section_link = _generate_link_array($section_links->get('field_section_link')[0]);
+    $section_link = _generate_link_array($section_links->get('field_parent_link')[0]);
 
     // Process child links.
-    $child_links = $section_links->get('field_section_child_link');
+    $child_links = $section_links->get('field_children_links');
     $child_links_array = [];
     if ($child_links) {
       foreach ($child_links as $child_link) {
