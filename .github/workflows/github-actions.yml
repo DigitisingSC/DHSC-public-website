@@ -118,6 +118,7 @@ jobs:
 
     - name: Test app
       run: bash $SCRIPT_DIR/test_app.sh
+      if: ${{ !(startsWith(github.ref, 'refs/heads/hotfix/') || contains(github.ref, 'refs/tags')) }}
 
     # For deployment steps below to work, the repositroy must have
     # deployment/ssh private key added as a secret with name: BLT_SSH_DEPLOYMENT_KEY
