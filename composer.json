@@ -11,11 +11,15 @@
         }
     ],
     "require": {
+        "composer/installers": "^1.10",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core-composer-scaffold": "^10.3",
+        "drupal/core-recommended": "^10.3",
+        "localgovdrupal/localgov": "^3.0",
+        "localgovdrupal/localgov_search_solr": "^1.1",
         "acquia/blt": "13.7.4",
         "acquia/memcache-settings": "^1.2",
         "alexku/blt-github-actions": "dev-master",
-        "composer/installers": "^1.10",
-        "cweagans/composer-patches": "^1.6.5",
         "drupal/acquia_connector": "^4.0",
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
@@ -27,9 +31,7 @@
         "drupal/config_filter": "^2.6",
         "drupal/config_ignore": "^3.2",
         "drupal/config_split": "^2.0@RC",
-        "drupal/core-composer-scaffold": "^10.2",
         "drupal/core-project-message": "^10.2",
-        "drupal/core-recommended": "^10.2",
         "drupal/devel": "^5.1",
         "drupal/devel_entity_updates": "^4.1",
         "drupal/diff": "^1.1",
@@ -75,22 +77,22 @@
         "drupal/webform": "^6.1",
         "drupal/workbench_email": "^3.0",
         "drush/drush": "^12.5",
-        "localgovdrupal/localgov": "^3.0@alpha",
-        "localgovdrupal/localgov_search_solr": "^1.0@alpha",
         "phenx/php-svg-lib": "^0.5.2"
     },
     "require-dev": {
         "brianium/paratest": "^6.0",
         "drupal/coder": "^8.3",
-        "drupal/config_inspector": "^2.1",
-        "drupal/core-dev": "^10.2",
+        "drupal/core-dev": "^10.3",
         "mglaman/phpstan-drupal": "^1.0",
-        "palantirnet/drupal-rector": "^0.18.2",
-        "phpcompatibility/php-compatibility": "*",
         "phpspec/prophecy-phpunit": "^2",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "squizlabs/php_codesniffer": "^3.6"
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "spaze/phpstan-disallowed-calls": "^3.4",
+        "squizlabs/php_codesniffer": "^3.6",
+        "drupal/config_inspector": "^2.1",
+        "palantirnet/drupal-rector": "^0.18.2",
+        "phpcompatibility/php-compatibility": "*"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -188,6 +190,18 @@
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
+        },
+        "patches-ignore": {
+          "localgovdrupal/localgov": {
+            "drupal/core": {
+              "Content moderation and Workspaces https://www.drupal.org/project/drupal/issues/3179199#comment-15711680" : "https://www.drupal.org/files/issues/2024-08-11/3179199-3132022-content-moderation-workspaces-query.patch"
+            }
+          },
+          "localgovdrupal/localgov_services": {
+            "drupal/core": {
+              "node_access filters out accessible nodes when node is left joined (1349080)" : "https://git.drupalcode.org/project/drupal/-/commit/c271adb.diff"
+            }
+          }
         },
         "patches": {
             "alexku/blt-github-actions": {

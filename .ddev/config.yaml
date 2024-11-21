@@ -1,5 +1,5 @@
 name: DHSC-public-website
-type: drupal9
+type: drupal10
 docroot: docroot
 php_version: "8.2"
 webserver_type: nginx-fpm

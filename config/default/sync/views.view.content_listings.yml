@@ -80,6 +80,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 9
           total_pages: null
           id: 0
@@ -175,16 +176,13 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: grid
+        type: grid_responsive
         options:
           uses_fields: false
           columns: 3
-          automatic_width: true
+          cell_min_width: 100
+          grid_gutter: 10
           alignment: horizontal
-          row_class_custom: ''
-          row_class_default: true
-          col_class_custom: ''
-          col_class_default: true
       row:
         type: 'entity:node'
         options:
