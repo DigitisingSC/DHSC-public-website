@@ -35,7 +35,7 @@
         'attributes': attributes.addClass(classes).removeAttribute('role').addClass(content_type|clean_class~'__content','node__content'),
         'title': label,
         'intro': content.field_intro,
-        'intro_above_title': content.field_display_intro_above_title,
+        'intro_above_title': content.field_display_intro_above_title[0]['#markup']|render,
         'content': content.field_body_paragraphs,
         } %}
     </div>
