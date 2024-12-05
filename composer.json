@@ -65,7 +65,7 @@
         "drupal/site_settings": "^2.0@RC",
         "drupal/sitemap": "^2.0",
         "drupal/sitewide_alert": "^2.1",
-        "drupal/stage_file_proxy": "^2.1",
+        "drupal/stage_file_proxy": "^3.1",
         "drupal/svg_image_field": "^2.2",
         "drupal/tfa": "^2.0@alpha",
         "drupal/themable_forms": "^1.0",
