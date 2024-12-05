@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6113c9d627f648ec38f6b153b2f42be1",
+    "content-hash": "fb5f1f8b26baacf7a14d25e12e3c1513",
     "packages": [
         {
             "name": "acquia/blt",
@@ -8381,20 +8381,20 @@
         },
         {
             "name": "drupal/quick_node_clone",
-            "version": "1.18.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/quick_node_clone.git",
-                "reference": "8.x-1.18"
+                "reference": "8.x-1.19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/quick_node_clone-8.x-1.18.zip",
-                "reference": "8.x-1.18",
-                "shasum": "ab17077eccb24e5c651fedc5056a50051882a13d"
+                "url": "https://ftp.drupal.org/files/projects/quick_node_clone-8.x-1.19.zip",
+                "reference": "8.x-1.19",
+                "shasum": "b9a632bdca772f800a179aa7fbefc7f97aa50f80"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10"
+                "drupal/core": "^10 || ^11"
             },
             "require-dev": {
                 "drupal/group": "^1 || ^2 || ^3",
@@ -8403,8 +8403,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.18",
-                    "datestamp": "1707833857",
+                    "version": "8.x-1.19",
+                    "datestamp": "1730993373",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8425,6 +8425,10 @@
                     "name": "Neslee Canil Pinto",
                     "homepage": "https://www.drupal.org/u/neslee-canil-pinto",
                     "role": "Maintainer"
+                },
+                {
+                    "name": "neslee canil pinto",
+                    "homepage": "https://www.drupal.org/user/3580850"
                 }
             ],
             "description": "Quickly clone a node with regular fields.",
