@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0192e3cb30bf94f0a3d50e50c9340744",
+    "content-hash": "8f5fb950cdb5d88235fef9bf842d6116",
     "packages": [
         {
             "name": "acquia/blt",
@@ -3149,17 +3149,17 @@
         },
         {
             "name": "drupal/autologout",
-            "version": "1.5.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/autologout.git",
-                "reference": "8.x-1.5"
+                "reference": "2.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/autologout-8.x-1.5.zip",
-                "reference": "8.x-1.5",
-                "shasum": "1beb693f56eb119624dd270ee789db00eb1ce288"
+                "url": "https://ftp.drupal.org/files/projects/autologout-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "61407ffa8b857b1e5d22d03ededac94b5119bd60"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10 || ^11",
@@ -3168,8 +3168,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.5",
-                    "datestamp": "1716413630",
+                    "version": "2.0.1",
+                    "datestamp": "1732235105",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
