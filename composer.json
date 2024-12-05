@@ -62,7 +62,7 @@
         "drupal/seckit": "^2.0",
         "drupal/session_limit": "^2.0@beta",
         "drupal/shield": "^1.7",
-        "drupal/site_settings": "^1.20",
+        "drupal/site_settings": "^2.0@RC",
         "drupal/sitemap": "^2.0",
         "drupal/sitewide_alert": "^2.1",
         "drupal/stage_file_proxy": "^2.1",
@@ -231,9 +231,6 @@
             },
             "drupal/pdf_generator": {
                 "Issue #3409512 - Patch security vulnerability": "patches/3409512-dompdf-vunerability.patch"
-            },
-            "drupal/site_settings": {
-                "Issue #3357022 Routing error with Drupal 10.2": "https://git.drupalcode.org/project/site_settings/-/merge_requests/7.patch"
             }
         }
     }

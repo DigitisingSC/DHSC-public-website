@@ -76,8 +76,8 @@ function dhsc_theme_preprocess_node(&$variables)
 function dhsc_theme_preprocess_region(&$variables) {
 
   if ($variables['region'] == 'footer') {
-    $site_settings = \Drupal::service('site_settings.loader');
-    $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_secondary_logo'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $footer_logo_setting = $site_settings->loadByGroup('footer')['footer_secondary_logo'];
     if (!empty($footer_logo_setting)) {
       $media = Media::load($footer_logo_setting);
       $file_id = $media->getSource()->getSourceFieldValue($media);
