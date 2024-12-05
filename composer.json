@@ -20,7 +20,7 @@
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
         "drupal/advagg": "^6.0@alpha",
-        "drupal/allowed_formats": "^2.0",
+        "drupal/allowed_formats": "^3.0",
         "drupal/autologout": "^1.4",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/components": "^3.0@beta",
