@@ -19,6 +19,7 @@
         "drupal/acquia_connector": "^4.0",
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
+        "drupal/admin_toolbar": "^3.5",
         "drupal/advagg": "^6.0@alpha",
         "drupal/allowed_formats": "^3.0",
         "drupal/autologout": "^1.4",
