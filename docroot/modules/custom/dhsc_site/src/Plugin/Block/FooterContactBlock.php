@@ -21,8 +21,8 @@ class FooterContactBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {
-    $site_settings = \Drupal::service('site_settings.loader');
-    $contacts = $site_settings->loadByFieldset('footer')['footer_contacts'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $contacts = $site_settings->loadByGroup('footer')['footer_contacts'];
     if (!empty($contacts)) {
       $link = $contacts['field_settings_link'];
       $link = Link::fromTextAndUrl($link['title'], Url::fromUri($link['uri']));

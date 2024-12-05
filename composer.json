@@ -20,7 +20,7 @@
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
         "drupal/advagg": "^6.0@alpha",
-        "drupal/allowed_formats": "^2.0",
+        "drupal/allowed_formats": "^3.0",
         "drupal/autologout": "^1.4",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/components": "^3.0@beta",
@@ -62,10 +62,10 @@
         "drupal/seckit": "^2.0",
         "drupal/session_limit": "^2.0@beta",
         "drupal/shield": "^1.7",
-        "drupal/site_settings": "^1.20",
+        "drupal/site_settings": "^2.0@RC",
         "drupal/sitemap": "^2.0",
         "drupal/sitewide_alert": "^2.1",
-        "drupal/stage_file_proxy": "^2.1",
+        "drupal/stage_file_proxy": "^3.1",
         "drupal/svg_image_field": "^2.2",
         "drupal/tfa": "^2.0@alpha",
         "drupal/themable_forms": "^1.0",
@@ -231,9 +231,6 @@
             },
             "drupal/pdf_generator": {
                 "Issue #3409512 - Patch security vulnerability": "patches/3409512-dompdf-vunerability.patch"
-            },
-            "drupal/site_settings": {
-                "Issue #3357022 Routing error with Drupal 10.2": "https://git.drupalcode.org/project/site_settings/-/merge_requests/7.patch"
             }
         }
     }
