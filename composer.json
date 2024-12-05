@@ -80,7 +80,7 @@
         "drupal/twig_tweak": "^3.2",
         "drupal/views_bulk_operations": "^4.3",
         "drupal/viewsreference": "^2.0@beta",
-        "drupal/webform": "^6.1",
+        "drupal/webform": "^6.2",
         "drupal/workbench_email": "^3.0",
         "drush/drush": "^12.5",
         "localgovdrupal/localgov": "^3.0",
