@@ -1,23 +1,4 @@
 adding:
   status: true
-  dependencies:
-    config:
-      - field.storage.node.field_search_weight
-  field_settings:
-    field_search_weight:
-      label: 'Search Weight'
-      datasource_id: 'entity:node'
-      property_path: field_search_weight
-      type: integer
-      dependencies:
-        config:
-          - field.storage.node.field_search_weight
-  datasource_settings:
-    'entity:node':
-      bundles:
-        selected:
-          - recommendation
-          - skill
-          - supplier
 removing:
   status: false
