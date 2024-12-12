@@ -5,8 +5,6 @@ dependencies:
   config:
     - field.field.paragraph.content_listing_section_links.field_children_links
     - field.field.paragraph.content_listing_section_links.field_parent_link
-    - field.field.paragraph.content_listing_section_links.field_section_child_links
-    - field.field.paragraph.content_listing_section_links.field_section_link
     - paragraphs.paragraphs_type.content_listing_section_links
   module:
     - link
@@ -30,26 +28,6 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
-  field_section_child_links:
-    type: entity_reference_autocomplete
-    weight: 1
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_section_link:
-    type: entity_reference_autocomplete
-    weight: 0
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
