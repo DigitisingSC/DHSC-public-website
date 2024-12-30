@@ -6,7 +6,12 @@ dependencies:
     - field.storage.paragraph.localgov_caption
     - paragraphs.paragraphs_type.localgov_image
   module:
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 _core:
   default_config_hash: oUXJQogDoQ9ycKr4J5X0RVGPyCTLdMvBCRaj888fHbw
 id: paragraph.localgov_image.localgov_caption
@@ -19,5 +24,6 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

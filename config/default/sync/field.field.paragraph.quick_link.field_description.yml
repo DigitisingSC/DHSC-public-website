@@ -6,8 +6,12 @@ dependencies:
     - field.storage.paragraph.field_description
     - paragraphs.paragraphs_type.quick_link
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.quick_link.field_description
 field_name: field_description
 entity_type: paragraph
