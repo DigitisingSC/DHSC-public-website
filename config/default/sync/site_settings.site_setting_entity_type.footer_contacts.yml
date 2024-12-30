@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: footer_contacts
 label: 'Footer contacts'
-group: null
+fieldset: null
 multiple: false

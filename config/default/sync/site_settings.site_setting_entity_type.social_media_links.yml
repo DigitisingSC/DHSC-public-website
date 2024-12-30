@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: social_media_links
 label: 'Social media links'
-group: null
+fieldset: null
 multiple: false

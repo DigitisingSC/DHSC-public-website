@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: footer_title
 label: 'Footer title'
-group: null
+fieldset: null
 multiple: false
