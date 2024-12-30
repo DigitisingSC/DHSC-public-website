@@ -110,4 +110,48 @@
   .webform-actions.webform-step-back-button {
     @apply mt-0 pt-0 mb-4;
   }
+
+  // Start - What Good Looks Like specific CSS
+  .webform-submission-wgll-tool-form,
+  .webform-submission-wgll-tool-advanced-form {
+    @screen md {
+      @apply w-3/4;
+    }
+    .js-form-type-processed-text {
+      span {
+        @apply text-coolgrey text-md;
+      }
+      h1 {
+        @apply mb-7 w-full;
+      }
+      p {
+        @apply text-base mb-[12px];
+      }
+      ul {
+        @apply ms-4 text-base list-disc;
+      }
+      li {
+        @apply mb-[12px];
+      }
+    }
+    .radios--wrapper legend {
+      @apply hidden;
+    }
+    .js-form-type-radio {
+      @apply grid;
+      grid-template-columns: 48px 1fr;
+      label {
+        @apply pt-1.5 pb-2;
+
+      }
+      .form-radio {
+        grid-row: 1 / span 2;
+        @apply mr-[8px] pb-3;
+      }
+      .description {
+        @apply leading-8 text-coolgrey text-base;
+      }
+    }
+  }
+  // End - Assured solution specific CSS
 }
