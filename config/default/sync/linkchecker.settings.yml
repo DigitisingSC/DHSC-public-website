@@ -1,0 +1,46 @@
+_core:
+  default_config_hash: FzFKuqOuk667AkDorrqvXkc_-M4D-Ac1XeGGusxS1JU
+scan_blocks: null
+check_links_types: 0
+default_url_scheme: 'https://'
+base_path: ''
+search_published_contents_only: false
+extract:
+  from_a: true
+  from_audio: false
+  from_embed: false
+  from_iframe: true
+  from_img: true
+  from_object: false
+  from_video: true
+  filter_blacklist:
+    filter_htmlcorrector: filter_htmlcorrector
+    filter_caption: filter_caption
+    filter_html: filter_html
+    filter_align: filter_align
+    filter_autop: filter_autop
+    editor_file_reference: '0'
+    filter_image_lazy_load: '0'
+    filter_html_image_secure: '0'
+    filter_url: '0'
+    filter_html_escape: '0'
+    linkit: '0'
+    media_embed: '0'
+    filter_responsive_tables_filter: '0'
+check:
+  connections_max: 8
+  connections_max_per_domain: 2
+  disable_link_check_for_urls: |-
+    example.com
+    example.net
+    example.org
+  library: core
+  interval: 86400
+  useragent: 'Drupal (+https://drupal.org/)'
+error:
+  action_status_code_301: 0
+  action_status_code_404: 0
+  ignore_response_codes: "200\r\n206\r\n302\r\n304\r\n401\r\n403"
+  impersonate_account: dhsc
+logging:
+  level: 6
