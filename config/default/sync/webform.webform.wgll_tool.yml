@@ -499,7 +499,7 @@ elements: |-
       '#required': true
   step_18:
     '#type': webform_wizard_page
-    '#title': 'Step 8'
+    '#title': 'Step 18'
     actions_17:
       '#type': webform_actions
       '#title': 'Back button'
