@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: footer_copyright
 label: 'Footer copyright'
-fieldset: Footer
+group: null
 multiple: false
