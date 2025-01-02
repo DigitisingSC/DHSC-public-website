@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Skill level'
 vid: skill_level
-description: ''
+description: null
 weight: 0
+new_revision: false

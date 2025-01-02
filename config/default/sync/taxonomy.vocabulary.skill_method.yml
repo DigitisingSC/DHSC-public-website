@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: Method
 vid: skill_method
-description: ''
+description: null
 weight: 0
+new_revision: false
