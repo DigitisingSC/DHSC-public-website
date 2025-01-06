@@ -5,6 +5,9 @@ services:
   dhsc_assured_solutions_result_viewer.service:
     class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+  dhsc_wgll_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\WGLLResultViewer
+    arguments: [ '@entity_type.manager', '@config.factory', '@tempstore.private' ]
   dhsc_result_viewer.breadcrumb:
     class: Drupal\dhsc_result_viewer\Breadcrumb\SelfAssessmentBreadcrumbBuilder
     arguments: ['@string_translation']

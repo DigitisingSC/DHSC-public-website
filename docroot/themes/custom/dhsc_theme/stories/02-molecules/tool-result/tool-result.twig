@@ -10,7 +10,11 @@
   </div>
   {% if answer %}
     <div class="m-tool-result__answer mb-4">
-      <p>{{ 'Your response:'|t }} <strong>{{ answer }}</strong></p>
+      {% if variant %}
+        <p>{{ answer }}</p>
+      {% else %}
+        <p>{{ 'Your response:'|t }} <strong>{{ answer }}</strong></p>
+      {% endif %}
     </div>
   {% endif %}
   <div class="m-tool-result__content pl-4 border-s-2 border-green">{{ content }}</div>

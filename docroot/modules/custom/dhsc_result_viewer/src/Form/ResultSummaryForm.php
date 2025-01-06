@@ -54,6 +54,13 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#group' => 'dhsc',
     ];
 
+    $form['wgll_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('What good looks like'),
+      '#collapsible' => TRUE,
+      '#group' => 'dhsc',
+    ];
+
     $form['self_assessment_settings']['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Results listing title'),
@@ -112,6 +119,28 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['wgll_settings']['wgll_landing_page'] = [
+      '#type' => 'linkit',
+      '#title' => $this->t('Tool start page'),
+      '#description' => $this->t('Start typing to see a list of results.'),
+      '#required' => TRUE,
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
+      '#default_value' => $config->get('wgll_landing_page'),
+    ];
+
+    $wgll_result_summary = $config->get('wgll_result_summary');
+    $form['wgll_settings']['wgll_result_summary'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Results listing text'),
+      '#default_value' => $wgll_result_summary['value'],
+      '#format' => 'full_html',
+      '#allowed_formats' => ['full_html'],
+      '#required' => TRUE,
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -125,6 +154,8 @@ class ResultSummaryForm  extends ConfigFormBase {
       ->set('sa_landing_page', $form_state->getValue('sa_landing_page'))
       ->set('as_result_summary', $form_state->getValue('as_result_summary'))
       ->set('as_landing_page', $form_state->getValue('as_landing_page'))
+      ->set('wgll_result_summary', $form_state->getValue('wgll_result_summary'))
+      ->set('wgll_landing_page', $form_state->getValue('wgll_landing_page'))
       ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 
