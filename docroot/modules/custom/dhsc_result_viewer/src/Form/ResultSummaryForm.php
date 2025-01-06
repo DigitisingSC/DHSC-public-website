@@ -141,6 +141,18 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['wgll_settings']['wgll_advanced_landing_page'] = [
+      '#type' => 'linkit',
+      '#title' => $this->t('Advanced tool start page'),
+      '#description' => $this->t('Start typing to see a list of results.'),
+      '#required' => TRUE,
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
+      '#default_value' => $config->get('wgll_landing_page'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -156,6 +168,7 @@ class ResultSummaryForm  extends ConfigFormBase {
       ->set('as_landing_page', $form_state->getValue('as_landing_page'))
       ->set('wgll_result_summary', $form_state->getValue('wgll_result_summary'))
       ->set('wgll_landing_page', $form_state->getValue('wgll_landing_page'))
+      ->set('wgll_advanced_landing_page', $form_state->getValue('wgll_advanced_landing_page'))
       ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 
