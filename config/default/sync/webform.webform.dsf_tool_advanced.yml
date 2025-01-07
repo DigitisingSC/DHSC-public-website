@@ -49,17 +49,17 @@ elements: |-
       '#wizard_next__label': Continue
     processed_text_02:
       '#type': processed_text
-      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can lead the set-up, implemenation and maintainence of technology in my organisation or setting</h1><p>For example, I understand and can lead the steps needed to implement new technology - from ensuring the right connectivity is in place ahead of set-up, and supporting colleagues with using the new system and adapting to new ways of working, to developing new policies and procedures. I ensure that we have access to ongoing technical support to maintain digital technologies.</p>'
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can lead the set-up, implementation and maintenance of technology in my organisation or setting</h1><p>For example, I understand and can lead the steps needed to implement new technology - from ensuring the right connectivity is in place ahead of set-up, and supporting colleagues with using the new system and adapting to new ways of working, to developing new policies and procedures. I ensure that we have access to ongoing technical support to maintain digital technologies.</p>'
       '#format': full_html
     sgf_02_options:
       '#type': radios
-      '#title': 'I can lead the set-up, implemenation and maintainence of technology in my organisation or setting'
+      '#title': 'I can lead the set-up, implementation and maintenance of technology in my organisation or setting'
       '#title_display': invisible
       '#options':
-        sgf_02_unsure: 'I am unsure how to support the set-up, implementation and maintainance of technology in my organisaiton or setting'
-        sgf_02_with_help: 'I have some idea how to support the set-up, implementation and maintainance of technology in my organisation or setting, but would need support and advice to do this confidently'
-        sgf_02_confident: 'I am able to support the set-up, implementation and maintainenance of technology in my organisation or setting'
-        sgf_02_advanced: 'I am very confident and able to support the set-up, implementation and maintainance of technology in my organisation or setting'
+        sgf_02_unsure: 'I am unsure how to support the set-up, implementation and maintenance of technology in my organisation or setting'
+        sgf_02_with_help: 'I have some idea how to support the set-up, implementation and maintenance of technology in my organisation or setting, but would need support and advice to do this confidently'
+        sgf_02_confident: 'I am able to support the set-up, implementation and maintenance of technology in my organisation or setting'
+        sgf_02_advanced: 'I am very confident and able to support the set-up, implementation and maintenance of technology in my organisation or setting'
       '#required': true
   step_3:
     '#type': webform_wizard_page
@@ -104,17 +104,17 @@ elements: |-
       '#wizard_next__label': Continue
     processed_text_04:
       '#type': processed_text
-      '#text': '<p><span>Communicating through technology</span></p><h1 id="main-content">I can lead and model good practice in digital communications in my organsiation or setting</h1><p>For example, I develop or contribute to the development of procedures around safe and appropriate digital communication within my organisation, and model and promote  appropriate use of communication technology in the workplace.</p>'
+      '#text': '<p><span>Communicating through technology</span></p><h1 id="main-content">I can lead and model good practice in digital communications in my organisation or setting</h1><p>For example, I develop or contribute to the development of procedures around safe and appropriate digital communication within my organisation, and model and promote  appropriate use of communication technology in the workplace.</p>'
       '#format': full_html
     sgf_04_options:
       '#type': radios
-      '#title': 'I can lead and model good practice in digital communications in my organsiation or setting'
+      '#title': 'I can lead and model good practice in digital communications in my organisation or setting'
       '#title_display': invisible
       '#options':
         sgf_04_unsure: 'I am unsure how to lead and model good practice in digital communication in my organisation or setting'
         sgf_04_with_help: 'I have some idea how to model good practice in digital communications in my organisation or setting, but would need support and advice to do this confidently'
         sgf_04_confident: 'I can model good practice in digital communications in my organisation or setting'
-        sgf_04_advanced: 'I am very confident in how to lead and model good practice in digital commuincations in my organisation or setting'
+        sgf_04_advanced: 'I am very confident in how to lead and model good practice in digital communications in my organisation or setting'
       '#required': true
   step_5:
     '#type': webform_wizard_page
@@ -163,7 +163,7 @@ elements: |-
       '#wizard_next__label': Continue
     processed_text_06:
       '#type': processed_text
-      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I know how to put in place arrangements to ensure the cyber security of my organisation's IT systems and digital devices</h1><p>For example, I am aware the Data Security and Protection Toolkit (DSPT) identifies cyber security arrangements that care provider organisations should have in place such as antivirus software, multi-factor authentication and software updates. I can complete the Toolkit and, if necessary, work with IT specialists to ensure that appropriate cyber security arranagements are in place to protect my organisation's IT systems and digital devices.</p>"
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I know how to put in place arrangements to ensure the cyber security of my organisation's IT systems and digital devices</h1><p>For example, I am aware the Data Security and Protection Toolkit (DSPT) identifies cyber security arrangements that care provider organisations should have in place such as antivirus software, multi-factor authentication and software updates. I can complete the Toolkit and, if necessary, work with IT specialists to ensure that appropriate cyber security arrangements are in place to protect my organisation's IT systems and digital devices.</p>"
       '#format': full_html
     sgf_06_options:
       '#type': radios
@@ -319,10 +319,10 @@ elements: |-
       '#title': 'I can build a positive digital learning environment and provide opportunities for staff to build digital confidence and develop their digital skills'
       '#title_display': invisible
       '#options':
-        sgf_11_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunites for staff to develop their digital confidence and skills'
+        sgf_11_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills'
         sgf_11_with_help: 'I have an idea how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills, but I would need support to implement this confidently'
-        sgf_11_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital cofdience and skills'
-        sgf_11_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confdience and skills and could advise others how to do this'
+        sgf_11_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills'
+        sgf_11_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills and could advise others how to do this'
       '#required': true
   step_12:
     '#type': webform_wizard_page
@@ -348,10 +348,10 @@ elements: |-
       '#title': 'I can accurately record information on digital systems'
       '#title_display': invisible
       '#options':
-        sgf_12_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunites for staff to develop their digital confidence and skills'
+        sgf_12_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills'
         sgf_12_with_help: 'I have an idea how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills, but I would need support to implement this confidently'
-        sgf_12_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital cofdience and skills'
-        sgf_12_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confdience and skills and could advise others how to do this'
+        sgf_12_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills'
+        sgf_12_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills and could advise others how to do this'
       '#required': true
   actions:
     '#type': webform_actions
