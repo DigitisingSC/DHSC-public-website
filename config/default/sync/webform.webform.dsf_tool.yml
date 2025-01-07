@@ -59,7 +59,7 @@ elements: |-
         sfa_02_unsure: 'I am unsure -- I am unsure about how to support individuals to use technology to improve their health and wellbeing'
         sfa_02_with_help: 'I can do this with help -- I can support individuals to use technology to improve their health and wellbeing, with help or advice from others'
         sfa_02_confident: 'I can do this without help -- I know how to support individuals to use technology to improve their health and wellbeing'
-        sfa_02_advanced: 'I can do this and help others to do it too -- I am very confident in supporting individuals to use technology to improve their health and wellbeing and could suport my colleagues on how to do so'
+        sfa_02_advanced: 'I can do this and help others to do it too -- I am very confident in supporting individuals to use technology to improve their health and wellbeing and could support my colleagues on how to do so'
       '#required': true
   step_3:
     '#type': webform_wizard_page
@@ -104,7 +104,7 @@ elements: |-
       '#wizard_next__label': Continue
     processed_text_04:
       '#type': processed_text
-      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can use accessibility tools on digital devices and help others to use these tools</h1><p>For example, I am aware of and can use a range of tools to adapt devices to make them more accesible and easier to use, such as:</p><ul><li>making text larger</li><li>voice recognition</li><li>text readers</li><li>magnifiers</li><li>simplified keyboards</li><li>pointing devices</li><li>screen settings</li></ul>'
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can use accessibility tools on digital devices and help others to use these tools</h1><p>For example, I am aware of and can use a range of tools to adapt devices to make them more accessible and easier to use, such as:</p><ul><li>making text larger</li><li>voice recognition</li><li>text readers</li><li>magnifiers</li><li>simplified keyboards</li><li>pointing devices</li><li>screen settings</li></ul>'
       '#format': full_html
     sfa_04_options:
       '#type': radios
@@ -202,7 +202,7 @@ elements: |-
         sfa_07_unsure: 'I am unsure -- I am unsure about the purposes of different communication technologies and how to use them appropriately'
         sfa_07_with_help: 'I can do this with help -- I am aware of purposes of different communication technologies and and can use them appropriately if I get help'
         sfa_07_confident: 'I can do this without help -- I am aware of the range of different communication technologies and can use them appropriately'
-        sfa_07_advanced: 'I can do this and help others to do it too -- I have a very good awareness of the range of dfferent communication technologies and their purposes. I can help colleagues to understand and use appropriate communication technologies safely'
+        sfa_07_advanced: 'I can do this and help others to do it too -- I have a very good awareness of the range of different communication technologies and their purposes. I can help colleagues to understand and use appropriate communication technologies safely'
       '#options__properties': ''
       '#required': true
   step_8:
@@ -405,7 +405,7 @@ elements: |-
       '#options':
         sfa_14_unsure: 'I am unsure -- I am unsure about the range of cyber security threats and how to take precautions to avoid them'
         sfa_14_with_help: 'I can do this with help -- I have some understanding of the range of cyber security threats and with help from colleagues could take precautions to avoid them'
-        sfa_14_confident: 'I can do this without help -- I am aware of the range of cyber security threats and am confdent that I can take precautions to avoid them'
+        sfa_14_confident: 'I can do this without help -- I am aware of the range of cyber security threats and am confident that I can take precautions to avoid them'
         sfa_14_advanced: 'I can do this and help others to do it too -- I have a very good awareness of the range of cyber security threats and take precautions to avoid them, and would be confident in advising colleagues'
       '#required': true
   step_15:
@@ -464,7 +464,7 @@ elements: |-
       '#options':
         sfa_16_unsure: "I am unsure -- I am not familiar with considering the pros and cons of the use of technology for someone's care or exploring this with individuals or their advocates"
         sfa_16_with_help: 'I can do this with help -- I am aware of the importance of considering the pros and cons of the use of technology, and with advice from colleagues, I can support individuals to make an informed choice about its use'
-        sfa_16_confident: 'I can do this without help -- I am aware of the importance of considering the pros and cons of the use of technology, and I support prople to make an informed choice about its use'
+        sfa_16_confident: 'I can do this without help -- I am aware of the importance of considering the pros and cons of the use of technology, and I support people to make an informed choice about its use'
         sfa_16_advanced: 'I can do this and help others to do it too -- I am very aware of the importance of considering the pros and cons of the use of technology  and supporting individuals to make an informed choice about its use, and I would feel confident to support colleagues to do this in their work'
       '#required': true
   step_17:
@@ -544,11 +544,11 @@ elements: |-
       '#wizard_next__label': Continue
     processed_text_19:
       '#type': processed_text
-      '#text': '<p><span>Digital learning, development and wellbeing</span></p><h1 id="main-content">I participate in and benefit from digital learning opportinites and share opportunities with others</h1><p>For example, I can:</p><ul><li>log in and complete e-learning courses</li><li>use technology to keep a record of my learning needs and activities or continued professional development (CPD)</li><li>help colleagues and the people I care for to access digital learning courses and resources</li></ul>'
+      '#text': '<p><span>Digital learning, development and wellbeing</span></p><h1 id="main-content">I participate in and benefit from digital learning opportunities and share opportunities with others</h1><p>For example, I can:</p><ul><li>log in and complete e-learning courses</li><li>use technology to keep a record of my learning needs and activities or continued professional development (CPD)</li><li>help colleagues and the people I care for to access digital learning courses and resources</li></ul>'
       '#format': full_html
     sfa_19_options:
       '#type': radios
-      '#title': 'I participate in and benefit from digital learning opportinites and share opportunities with others'
+      '#title': 'I participate in and benefit from digital learning opportunities and share opportunities with others'
       '#title_display': invisible
       '#options':
         sfa_19_unsure: 'I am unsure -- I am unsure how to access digital learning activities'
