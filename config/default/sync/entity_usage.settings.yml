@@ -1,7 +1,11 @@
 _core:
   default_config_hash: AXUBMTvVtpcNp0jKjDaWjSHqMy6HjuUf7j4yVbXgazI
 local_task_enabled_entity_types:
+  - entity_browser
   - media
+  - media_type
+  - node
+  - node_type
   - paragraphs_library_item
 track_enabled_source_entity_types:
   - block_content
