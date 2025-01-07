@@ -54,6 +54,13 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#group' => 'dhsc',
     ];
 
+    $form['dsf_settings'] = [
+      '#type' => 'details',
+      '#title' => $this->t('Skills self assessment'),
+      '#collapsible' => TRUE,
+      '#group' => 'dhsc',
+    ];
+
     $form['self_assessment_settings']['title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Results listing title'),
@@ -112,6 +119,40 @@ class ResultSummaryForm  extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['dsf_settings']['dsf_landing_page'] = [
+      '#type' => 'linkit',
+      '#title' => $this->t('Tool start page'),
+      '#description' => $this->t('Start typing to see a list of results.'),
+      '#required' => TRUE,
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
+      '#default_value' => $config->get('dsf_landing_page'),
+    ];
+
+    $dsf_result_summary = $config->get('dsf_result_summary');
+    $form['dsf_settings']['dsf_result_summary'] = [
+      '#type' => 'text_format',
+      '#title' => $this->t('Results listing text'),
+      '#default_value' => $dsf_result_summary['value'],
+      '#format' => 'full_html',
+      '#allowed_formats' => ['full_html'],
+      '#required' => TRUE,
+    ];
+
+    $form['dsf_settings']['dsf_advanced_landing_page'] = [
+      '#type' => 'linkit',
+      '#title' => $this->t('Advanced tool start page'),
+      '#description' => $this->t('Start typing to see a list of results.'),
+      '#required' => TRUE,
+      '#autocomplete_route_name' => 'linkit.autocomplete',
+      '#autocomplete_route_parameters' => [
+        'linkit_profile_id' => 'default',
+      ],
+      '#default_value' => $config->get('dsf_landing_page'),
+    ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -125,6 +166,9 @@ class ResultSummaryForm  extends ConfigFormBase {
       ->set('sa_landing_page', $form_state->getValue('sa_landing_page'))
       ->set('as_result_summary', $form_state->getValue('as_result_summary'))
       ->set('as_landing_page', $form_state->getValue('as_landing_page'))
+      ->set('dsf_result_summary', $form_state->getValue('dsf_result_summary'))
+      ->set('dsf_landing_page', $form_state->getValue('dsf_landing_page'))
+      ->set('dsf_advanced_landing_page', $form_state->getValue('dsf_advanced_landing_page'))
       ->set('results_variant_text', $form_state->getValue('results_variant_text'))
       ->save();
 

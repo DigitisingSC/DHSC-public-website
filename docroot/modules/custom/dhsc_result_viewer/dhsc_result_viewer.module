@@ -40,6 +40,28 @@ function dhsc_result_viewer_theme()
         'email_form' => NULL,
       ],
     ],
+    'dhsc_results_list_dsf' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'result_variant' => NULL,
+        'submission_url' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+      ],
+    ],
+    'dhsc_results_list_dsf_advanced' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'result_variant' => NULL,
+        'submission_url' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+      ],
+    ],
     'search_criteria' => [
       'variables' => [
         'section' => NULL,
@@ -77,10 +99,30 @@ function dhsc_result_viewer_theme()
         'content' => NULL,
       ],
     ],
+    'result_item_dsf' => [
+      'variables' => [
+        'title' => NULL,
+        'answer' => NULL,
+        'content' => NULL,
+      ],
+    ],
+    'result_item_dsf_advanced' => [
+      'variables' => [
+        'title' => NULL,
+        'answer' => NULL,
+        'content' => NULL,
+      ],
+    ],
     'self_assessment_tool__step_1' => [
       'variables' => [],
     ],
     'assured_solutions_tool__step_1' => [
+      'variables' => [],
+    ],
+    'dsf_tool__step_1' => [
+      'variables' => [],
+    ],
+    'dsf_tool_advanced__step_1' => [
       'variables' => [],
     ],
     'mimemail_message__dhsc_result_viewer' => [
@@ -108,6 +150,8 @@ function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $
   $form_ids = [
     'webform_submission_assured_solutions_tool_edit_form',
     'webform_submission_self_assessment_tool_edit_form',
+    'webform_submission_dsf_tool_edit_form',
+    'webform_submission_dsf_tool_advanced_edit_form',
   ];
 
   if (
@@ -161,7 +205,7 @@ function dhsc_result_viewer_preprocess_status_messages(&$variables) {
  */
 function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInterface $form_state, $form_id)
 {
-  if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool']) && ($current_page = $form_state->get('current_page')) !== '') {
+  if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool', 'dsf_tool', 'dsf_tool_advanced']) && ($current_page = $form_state->get('current_page')) !== '') {
     $form['current_step'] = [
       '#type' => 'value',
       '#value' =>  $current_page,
@@ -174,7 +218,7 @@ function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInter
  */
 function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook)
 {
-  if (in_array($variables['form']['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool'])) {
+  if (in_array($variables['form']['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool', 'dsf_tool', 'dsf_tool_advanced'])) {
     $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
   }
 }
@@ -203,4 +247,34 @@ function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variable
 
   // Pass url from config for back behaviour.
   $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+}
+
+/**
+ * Implements hook_theme_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables)
+{
+  // Get tool landing page uri from config.
+  $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
+  $landing_page_uri = $config->get('dsf_landing_page');
+
+  // Pass url from config for back behaviour.
+  if($landing_page_uri) {
+    $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+  }
+}
+
+/**
+ * Implements hook_theme_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables)
+{
+  // Get tool landing page uri from config.
+  $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
+  $landing_page_uri = $config->get('dsf_advanced_landing_page');
+
+  // Pass url from config for back behaviour.
+  if($landing_page_uri) {
+    $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+  }
 }

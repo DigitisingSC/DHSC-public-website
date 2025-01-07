@@ -5,6 +5,18 @@ services:
   dhsc_assured_solutions_result_viewer.service:
     class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+<<<<<<< Updated upstream
+  dhsc_dsf_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\dsfResultViewer
+    arguments: [ '@entity_type.manager', '@config.factory', '@tempstore.private' ]
+=======
+<<<<<<< Updated upstream
+=======
+  dhsc_dsf_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\DSFResultViewer
+    arguments: [ '@entity_type.manager', '@config.factory', '@tempstore.private' ]
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   dhsc_result_viewer.breadcrumb:
     class: Drupal\dhsc_result_viewer\Breadcrumb\SelfAssessmentBreadcrumbBuilder
     arguments: ['@string_translation']
