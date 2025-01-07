@@ -111,9 +111,9 @@
     @apply mt-0 pt-0 mb-4;
   }
 
-  // Start - What Good Looks Like specific CSS
-  .webform-submission-wgll-tool-form,
-  .webform-submission-wgll-tool-advanced-form {
+  // Start - DSF specific CSS
+  .webform-submission-dsf-tool-form,
+  .webform-submission-dsf-tool-advanced-form {
     @screen md {
       @apply w-3/4;
     }
