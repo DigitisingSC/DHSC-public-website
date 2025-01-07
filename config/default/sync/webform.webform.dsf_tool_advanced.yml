@@ -11,7 +11,7 @@ uid: 1
 template: false
 archive: false
 id: dsf_tool_advanced
-title: 'Skills self assessment (advanced)'
+title: 'Digital Skills Framework (advanced)'
 description: ''
 categories: {  }
 elements: |-
@@ -477,7 +477,7 @@ settings:
   draft_pending_single_message: ''
   draft_pending_multiple_message: ''
   confirmation_type: url
-  confirmation_url: '/dhsc-results-what-good-looks-like-advanced?token=[webform_submission:token]'
+  confirmation_url: '/dhsc-results-list-dsf-advanced?token=[webform_submission:token]'
   confirmation_title: ''
   confirmation_message: '<p><a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a></p>'
   confirmation_attributes: {  }
