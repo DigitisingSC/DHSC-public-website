@@ -16,8 +16,9 @@ interface DSFInterface {
    *   Webform values.
    *
    * @return mixed
+   *   Returns result summary values.
    */
-  public function getResultsSummary($data);
+  public function getResultsSummary(array $data);
 
   /**
    * Get sorts result ids.
