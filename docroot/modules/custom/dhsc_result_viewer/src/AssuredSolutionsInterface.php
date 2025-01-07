@@ -18,8 +18,9 @@ interface AssuredSolutionsInterface {
    *   Webform entity.
    *
    * @return mixed
+   *   Returns result summary values.
    */
-  public function getResultsSummary($data, $webform);
+  public function getResultsSummary(array $data, $webform);
 
   /**
    * Get webform submission id.
@@ -46,10 +47,10 @@ interface AssuredSolutionsInterface {
    * @return array
    *   Return result node ids.
    */
-  public function getResultNodes($answers);
+  public function getResultNodes(array $answers);
 
   /**
-   * Returns all suplier nodes which do not match user search criteria.
+   * Returns all supplier nodes which do not match user search criteria.
    *
    * @param array $nids
    *   Result node nids.
@@ -57,6 +58,6 @@ interface AssuredSolutionsInterface {
    * @return array
    *   Return non matching nids.
    */
-  public function getNonMatches($nids);
+  public function getNonMatches(array $nids);
 
 }
