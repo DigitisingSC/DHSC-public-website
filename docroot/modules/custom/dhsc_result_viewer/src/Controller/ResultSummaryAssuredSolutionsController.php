@@ -5,15 +5,15 @@ namespace Drupal\dhsc_result_viewer\Controller;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
-use Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -69,9 +69,23 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   /**
    * TempStore.
    *
-   * @var \Drupal\Core\TempStore\PrivateTempStore
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStore;
+
+  /**
+   * The form builder service.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
+   * The logger factory service.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
+   */
+  protected $loggerFactory;
 
   /**
    * ResultSummaryAssuredSolutionsController constructor.
@@ -81,11 +95,19 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
    * @param \Drupal\dhsc_assured_solutiions_result_viewer\AssuredSolutionsInterface $result_viewer
-   *   ResultViewer service.
+   *   The ResultViewer service.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager service.
-   * @param \Drupal\Core\Language\MailManagerInterface $mail_manager
+   * @param \Drupal\Core\Mail\MailManagerInterface $mail_manager
    *   The mail manager service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
+   *   The TempStore factory service.
+   * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
+   *   The form builder service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
+   *   The logger factory service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -94,7 +116,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
     MessengerInterface $messenger,
-    PrivateTempStoreFactory $temp_store
+    PrivateTempStoreFactory $temp_store,
+    FormBuilderInterface $form_builder,
+    LoggerChannelFactoryInterface $logger_factory,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
@@ -103,6 +127,8 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     $this->mailManager = $mail_manager;
     $this->messenger = $messenger;
     $this->tempStore = $temp_store;
+    $this->formBuilder = $form_builder;
+    $this->loggerFactory = $logger_factory;
   }
 
   /**
@@ -116,7 +142,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
       $container->get('language_manager'),
       $container->get('plugin.manager.mail'),
       $container->get('messenger'),
-      $container->get('tempstore.private')
+      $container->get('tempstore.private'),
+      $container->get('form_builder'),
+      $container->get('logger.factory')
     );
   }
 
@@ -153,7 +181,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
         '#submission_url' => $result['submission_url'],
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
-        '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+        '#email_form' => !empty($result['total_count']) ? $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
         '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString(),
       ];
     }
@@ -173,33 +201,35 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
    * Email submission results.
    *
    * @param string $email
+   *   The email address.
+   * @param string $token
+   *   The token.
    *
-   * @return void
+   * @return \Symfony\Component\HttpFoundation\RedirectResponse
+   *   The response.
    */
-  public function sendResultEmail($email, $token) {
-
-    $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
+  public function sendResultEmail(string $email, string $token) {
+    $tempStore = $this->tempStore->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
     $results = $tempStore->get('assured_solutions_result_data');
 
     if (!empty($results)) {
-
       $module = 'dhsc_result_viewer';
       $key = 'email_result';
       $to = $email;
       $langcode = $this->languageManager->getDefaultLanguage()->getId();
-      $params['subject'] = t('Assured solutions: Email result');
+      $params['subject'] = $this->t('Assured solutions: Email result');
       $params['body'] = $this->buildResultMarkup($results);
 
       try {
         $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
-        \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+        $this->loggerFactory->get('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
       }
-      catch (Exception $e) {
-        $message = t('There was a problem sending assured solutions result email to @email', ['@email' => $email]);
-        \Drupal::logger('Error in email sending')->error($message);
-        \Drupal::logger('Error in email sending')->error($e);
+      catch (\Exception $e) {
+        $message = $this->t('There was a problem sending assured solutions result email to @email', ['@email' => $email]);
+        $this->loggerFactory->get('Error in email sending')->error($message);
+        $this->loggerFactory->get('Error in email sending')->error($e->getMessage());
       }
 
       $submission_url = Url::fromRoute(
@@ -211,17 +241,18 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
         new RedirectResponse($submission_url) :
         new RedirectResponse('/');
 
-      $this->messenger->addStatus(t('Email sent'));
+      $this->messenger->addStatus($this->t('Email sent'));
 
       return $response;
     }
-    $this->messenger->addError(t('Unable to send email'));
+    $this->messenger->addError($this->t('Unable to send email'));
   }
 
   /**
    * Construct results markup given a set of results.
    *
    * @return array
+   *   Results markup array.
    */
   public static function buildResultMarkup($results, $pdf = FALSE) {
     $criteria = '';
