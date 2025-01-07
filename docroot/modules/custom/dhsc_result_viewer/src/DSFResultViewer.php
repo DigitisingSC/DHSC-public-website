@@ -8,11 +8,11 @@ use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\taxonomy\TermInterface;
 
 /**
- * Class WGLLResultViewer.
+ * Class DSFResultViewer.
  *
- * @package Drupal\dhsc_wgll_result_viewer
+ * @package Drupal\dhsc_dsf_result_viewer
  */
-class WGLLResultViewer implements WGLLInterface {
+class DSFResultViewer implements DSFInterface {
 
   /**
    * Entity type manager.
@@ -105,7 +105,7 @@ class WGLLResultViewer implements WGLLInterface {
 
     foreach ($nodes as $node) {
       $values[] = [
-        '#theme' => 'result_item_wgll',
+        '#theme' => 'result_item_dsf',
         '#title' => $node->getTitle(),
         '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_skill_answer')->value, 3)[2])),
         '#content' => [

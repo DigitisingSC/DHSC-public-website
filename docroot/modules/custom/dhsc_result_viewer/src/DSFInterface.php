@@ -3,11 +3,11 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface WGLLInterface.
+ * Interface DSFInterface.
  *
  * @package Drupal\dhsc_result_viewer
  */
-interface WGLLInterface {
+interface DSFInterface {
 
   /**
    * Get summary.

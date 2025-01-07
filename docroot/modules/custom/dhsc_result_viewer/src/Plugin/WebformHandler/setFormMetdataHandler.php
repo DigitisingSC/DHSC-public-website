@@ -39,7 +39,7 @@ class setFormMetdataHandler extends WebformHandlerBase {
     $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
     $submitted_values = [];
 
-    if ($webform->id() === 'self_assessment_tool' || $webform->id() === 'wgll_tool' || $webform->id() === 'wgll_tool_advanced') {
+    if ($webform->id() === 'self_assessment_tool' || $webform->id() === 'dsf_tool' || $webform->id() === 'dsf_tool_advanced') {
       // Retrieve option values for submitted data.
       foreach ($data as $key => &$item) {
         $element = $webform->getElement($key);
@@ -77,9 +77,9 @@ class setFormMetdataHandler extends WebformHandlerBase {
           $route_name = 'dhsc_result_viewer.result_summary_assured_solutions';
           break;
 
-        case 'wgll_tool':
-        case 'wgll_tool_advanced':
-          $route_name = 'dhsc_result_viewer.result_summary_wgll';
+        case 'dsf_tool':
+        case 'dsf_tool_advanced':
+          $route_name = 'dhsc_result_viewer.result_summary_dsf';
           break;
 
         default:
