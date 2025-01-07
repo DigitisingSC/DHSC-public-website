@@ -69,7 +69,9 @@ class DSFResultViewer implements DSFInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
+   *   The private temp store factory.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -138,8 +140,6 @@ class DSFResultViewer implements DSFInterface {
    *
    * @param array $data
    *   Webform values.
-   * @param bool $top_tips
-   *   Check if top tip.
    *
    * @return array
    *   Return result ids.
@@ -161,6 +161,8 @@ class DSFResultViewer implements DSFInterface {
   /**
    * Get id of result node.
    *
+   * @param \Drupal\taxonomy\TermInterface $term
+   *   Term entity.
    * @param array $data
    *   Webform values.
    *
@@ -222,8 +224,7 @@ class DSFResultViewer implements DSFInterface {
    *   Return webform url.
    */
   protected function getWebFormUrl() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if ($webform) {
@@ -239,18 +240,17 @@ class DSFResultViewer implements DSFInterface {
    *   Return webform confirmation page path.
    */
   protected function getConfirmationPagePath() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if (!$webform) {
-        return;
+        return NULL;
       }
 
       $config_name = $webform->getConfigDependencyName();
       $config = $this->configFactory->get($config_name);
       if (!$config) {
-        return;
+        return NULL;
       }
       $raw_data = $config->getRawData();
 
