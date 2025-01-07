@@ -10,17 +10,18 @@ use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
+use Drupal\dhsc_result_viewer\DSFInterface;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
-use Drupal\dhsc_result_viewer\WGLLInterface;
+use Drupal\dhsc_result_viewer\DSFLInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Class ResultSummaryController for What Good Looks Like tool.
+ * Class ResultSummaryController for DSF forms.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class ResultSummaryWGLLController extends ControllerBase {
+class ResultSummaryDSFController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -39,7 +40,7 @@ class ResultSummaryWGLLController extends ControllerBase {
   /**
    * ResultViewer service.
    *
-   * @var \Drupal\dhsc_wgll_result_viewer\WGLLInterface
+   * @var \Drupal\dhsc_dsf_result_viewer\DSFInterface
    */
   protected $resultViewer;
 
@@ -71,13 +72,13 @@ class ResultSummaryWGLLController extends ControllerBase {
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
-   * @param \Drupal\dhsc_wgll_result_viewer\WGLLInterface $result_viewer
+   * @param \Drupal\dhsc_dsf_result_viewer\DSFInterface $result_viewer
    *   ResultViewer service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    WGLLInterface $result_viewer,
+    DSFInterface $result_viewer,
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
     MessengerInterface $messenger,
@@ -97,7 +98,7 @@ class ResultSummaryWGLLController extends ControllerBase {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
-      $container->get('dhsc_wgll_result_viewer.service'),
+      $container->get('dhsc_dsf_result_viewer.service'),
       $container->get('language_manager'),
       $container->get('plugin.manager.mail'),
       $container->get('messenger'),
@@ -140,7 +141,7 @@ class ResultSummaryWGLLController extends ControllerBase {
       $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
       // Save result data in tempstore for email result behaviour.
-      $tempStore->set('wgll_result_data', $results);
+      $tempStore->set('dsf_result_data', $result);
 
       $categories = [];
       $found = FALSE;
@@ -163,10 +164,10 @@ class ResultSummaryWGLLController extends ControllerBase {
         }
       }
       $element = [
-        '#theme' => 'dhsc_results_list_wgll',
+        '#theme' => 'dhsc_results_list_dsf',
         '#result_variant' => NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('wgll_result_summary') ? $config->get('wgll_result_summary') : NULL,
+        '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
         '#result' => $categories,
         '#submission_url' => $submission_url ?? NULL,
         '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
@@ -174,7 +175,7 @@ class ResultSummaryWGLLController extends ControllerBase {
     }
     else {
       $element = [
-        '#theme' => 'dhsc_results_list_wgll',
+        '#theme' => 'dhsc_results_list_dsf',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#no_result' => $this->t('No result'),
@@ -195,7 +196,7 @@ class ResultSummaryWGLLController extends ControllerBase {
     $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
-    $results = $tempStore->get('wgll_result_data');
+    $results = $tempStore->get('dsf_result_data');
 
     if (!empty($results)) {
 
@@ -210,7 +211,7 @@ class ResultSummaryWGLLController extends ControllerBase {
       }
 
       $submission_url = Url::fromRoute(
-        'dhsc_result_viewer.result_summary_wgll',
+        'dhsc_result_viewer.result_summary_dsf',
         ['token' => $token]
       )->toString();
 

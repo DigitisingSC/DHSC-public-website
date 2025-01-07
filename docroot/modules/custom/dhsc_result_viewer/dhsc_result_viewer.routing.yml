@@ -26,20 +26,20 @@ dhsc_result_viewer.result_summary_self_assessment:
   options:
     no_cache: 'TRUE'
 
-dhsc_result_viewer.result_summary_wgll:
-  path: '/dhsc-results-list-wgll'
+dhsc_result_viewer.result_summary_dsf:
+  path: '/dhsc-results-list-dsf'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryWGLLController::build'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryDSFController::build'
     _title: 'Result Summary'
   requirements:
     _permission: 'access content'
   options:
     no_cache: 'TRUE'
 
-dhsc_result_viewer.result_summary_wgll_advanced:
-  path: '/dhsc-results-list-wgll-advanced'
+dhsc_result_viewer.result_summary_dsf_advanced:
+  path: '/dhsc-results-list-dsf-advanced'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryWGLLController::build'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryDSFController::build'
     _title: 'Result Summary'
   requirements:
     _permission: 'access content'
@@ -76,20 +76,20 @@ dhsc_result_viewer.result_summary_self_assessment_email:
   options:
     no_cache: 'TRUE'
 
-dhsc_result_viewer.result_summary_wgll_email:
-  path: '/dhsc-results-list-wgll-email/{email}/{token}'
+dhsc_result_viewer.result_summary_dsf_email:
+  path: '/dhsc-results-list-dsf-email/{email}/{token}'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryWGLLController::sendResultEmail'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryDSFController::sendResultEmail'
     _title: 'Result Summary Email'
   requirements:
     _permission: 'access content'
   options:
     no_cache: 'TRUE'
 
-dhsc_result_viewer.result_summary_wgll_advanced_email:
-  path: '/dhsc-results-list-wgll-advanced-email/{email}/{token}'
+dhsc_result_viewer.result_summary_dsf_advanced_email:
+  path: '/dhsc-results-list-dsf-advanced-email/{email}/{token}'
   defaults:
-    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryWGLLController::sendResultEmail'
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ResultSummaryDSFController::sendResultEmail'
     _title: 'Result Summary Email'
   requirements:
     _permission: 'access content'

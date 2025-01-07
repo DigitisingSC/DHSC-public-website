@@ -8,11 +8,11 @@ use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\taxonomy\TermInterface;
 
 /**
- * Create the result viewer for What Good Looks Like tool.
+ * Create the result viewer for DSF tool.
  *
- * @package Drupal\dhsc_wgll_result_viewer
+ * @package Drupal\dhsc_dsf_result_viewer
  */
-class WGLLResultViewer implements WGLLInterface {
+class DSFResultViewer implements DSFInterface {
 
   /**
    * Entity type manager.
@@ -108,7 +108,7 @@ class WGLLResultViewer implements WGLLInterface {
     foreach ($nodes as $node) {
       $theme = $node->get('field_themes')->referencedEntities()[0]->get('name')->value;
       $values[] = [
-        '#theme' => 'result_item_wgll',
+        '#theme' => 'result_item_dsf',
         '#title' => $node->getTitle(),
         '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_skill_answer')->value, 3)[2])),
         '#category' => $theme,

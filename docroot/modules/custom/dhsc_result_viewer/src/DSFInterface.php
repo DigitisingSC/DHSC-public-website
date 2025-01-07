@@ -3,11 +3,11 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface for What Good Looks Like tool.
+ * Interface for DSF tool.
  *
  * @package Drupal\dhsc_result_viewer
  */
-interface WGLLInterface {
+interface DSFInterface {
 
   /**
    * Get summary.
