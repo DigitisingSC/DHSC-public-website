@@ -1,0 +1,772 @@
+uuid: 5b8546ce-96f1-4292-8004-42a6120ef83f
+langcode: en
+status: open
+dependencies:
+  module:
+    - dhsc_result_viewer
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: dsf_tool
+title: 'Skills self assessment (basic)'
+description: ''
+categories: {  }
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Step 1'
+    processed_text_01:
+      '#type': processed_text
+      '#text': "<p><span>Using technology to support person-centred care</span></p><h1>I understand how technology can support person centred care</h1><p>For example:</p><ul><li>I know there are different types of technology that can help people who draw on care and understand the benefits of these technologies</li><li>I understand that using technology should always start with considering people's needs</li><li>Where relevant, I can include and review digital technology within a person's care plan</li></ul>"
+      '#format': full_html
+    sfa_01_options:
+      '#type': radios
+      '#title': 'I understand how technology can support person centred care'
+      '#title_display': invisible
+      '#options':
+        sfa_01_unsure: 'I am unsure -- I am unsure about the different types of technology that could support person centred care'
+        sfa_01_with_help: 'I can do this with help -- I am aware of the different types of technology that could support person centred care, and can do this if I get advice and support from others'
+        sfa_01_confident: 'I can do this without help -- I understand the range of ways that technology can support person centred care and am confident to use technology in this way'
+        sfa_01_advanced: 'I can do this and help others to do it too -- I have a very good understanding of the range of ways that technology can support person centred care. I can help my colleagues understand the benefits of technology for person-centred care and can support a culture of good practice in using technology in this way'
+      '#required': true
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Step 2'
+    actions_01:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_02:
+      '#type': processed_text
+      '#text': '<p><span>Using technology to support person-centred care</span></p><h1 id="main-content">I can support individuals to use technology to improve their health and wellbeing</h1><p>For example:</p><ul><li>I know how to introduce the potential for using technology in a care situation and can work with people to help them identify, choose and use digital technology that works for them, in line with their wishes and preferences</li><li>I know that technologies could improve an individual''s quality of life, for example making them feel safer at home if they use a fall alarm</li></ul>'
+      '#format': full_html
+    sfa_02_options:
+      '#type': radios
+      '#title': 'I can support individuals to use technology to improve their health and wellbeing'
+      '#title_display': invisible
+      '#options':
+        sfa_02_unsure: 'I am unsure -- I am unsure about how to support individuals to use technology to improve their health and wellbeing'
+        sfa_02_with_help: 'I can do this with help -- I can support individuals to use technology to improve their health and wellbeing, with help or advice from others'
+        sfa_02_confident: 'I can do this without help -- I know how to support individuals to use technology to improve their health and wellbeing'
+        sfa_02_advanced: 'I can do this and help others to do it too -- I am very confident in supporting individuals to use technology to improve their health and wellbeing and could support my colleagues on how to do so'
+      '#required': true
+  step_3:
+    '#type': webform_wizard_page
+    '#title': 'Step 3'
+    actions_02:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_03:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can use digital devices as needed for my day to day work</h1><p>For example, I know how to carry out basic tasks on digital devices (as needed for my role) such as:</p><ul><li>use wifi to connect to the internet</li><li>turn on a device and log in</li><li>use a mouse, keyboard and/or touch screen</li><li>open software or Apps</li></ul>'
+      '#format': full_html
+    sfa_03_options:
+      '#type': radios
+      '#title': 'I can use digital devices as needed for my day to day work'
+      '#title_display': invisible
+      '#options':
+        sfa_03_unsure: 'I am unsure -- I am unsure how to use digital devices needed in my day to day work'
+        sfa_03_with_help: 'I can do this with help -- I can use digital devices needed in my day to day work with help from others'
+        sfa_03_confident: 'I can do this without help -- I am confident in using digital devices needed in my day to day work'
+        sfa_03_advanced: 'I can do this and help others to do it too -- I am very confident in using digital devices needed in my day to day work, and I am able to support others to do this too'
+      '#required': true
+  step_4:
+    '#type': webform_wizard_page
+    '#title': 'Step 4'
+    actions_03:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_04:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can use accessibility tools on digital devices and help others to use these tools</h1><p>For example, I am aware of and can use a range of tools to adapt devices to make them more accessible and easier to use, such as:</p><ul><li>making text larger</li><li>voice recognition</li><li>text readers</li><li>magnifiers</li><li>simplified keyboards</li><li>pointing devices</li><li>screen settings</li></ul>'
+      '#format': full_html
+    sfa_04_options:
+      '#type': radios
+      '#title': 'I can use accessibility tools on digital devices and help others to use these tools'
+      '#title_display': invisible
+      '#options':
+        sfa_04_unsure: 'I am unsure -- I am unsure how to use accessibility tools on digital devices'
+        sfa_04_with_help: 'I can do this with help -- I can use accessibility tools on digital devices with help from others'
+        sfa_04_confident: 'I can do this without help -- I can confidently use the accessibility tools on digital devices and help others to use these tools'
+        sfa_04_advanced: 'I can do this and help others to do it too -- I am very confident in using the accessibility tools on digital devices and helping others to use these tools'
+      '#required': true
+  step_5:
+    '#type': webform_wizard_page
+    '#title': 'Step 5'
+    actions_04:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_05:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can use digital care technology in my day to day work</h1><p>For example:</p><ul><li>I understand that there are different types of technology that support quality and safety of care such as assistive technology, alarms, sensors or sensory technologies digital social care records, eMAR, e-rostering or other systems that support how care services are delivered</li><li>I can use the digital care technologies required for my role. This may involve, for instance, accessing and updating information about people I support using a digital social care record, or supporting clients to use their communication aids such as an iPad.</li></ul>'
+      '#format': full_html
+    sfa_05_options:
+      '#type': radios
+      '#title': 'I can use digital care technology in my day to day work'
+      '#title_display': invisible
+      '#options':
+        sfa_05_unsure: 'I am unsure -- I am unsure how to use the digital care technology I need to use in my day to day work'
+        sfa_05_with_help: 'I can do this with help -- I am able to use the digital care technology I need in my day to day work when I have help from others'
+        sfa_05_confident: 'I can do this without help -- I am confident in using the digital care technology I need in my day to day work'
+        sfa_05_advanced: 'I can do this and help others to do it too -- I am very confident in using digital care technology and model it in my own day to day work, and I can help colleagues to understand how digital technology can be used in their work'
+      '#required': true
+      '#options__properties': ''
+  step_6:
+    '#type': webform_wizard_page
+    '#title': 'Step 6'
+    actions_05:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_06:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I know where to get help to solve basic problems when using technology</h1><p>For example, I know what to do if I experience a technical problem when using technology, such as:</p><ul><li>using the help function of Apps or software</li><li>using the internet, chat facilities, online tutorials, advice forums or technical helplines available</li><li>following my organisation''s policies and procedures, including on where I should get help with problems</li></ul>'
+      '#format': full_html
+    sfa_06_options:
+      '#type': radios
+      '#title': 'I know where to get help to solve basic problems when using technology'
+      '#title_display': invisible
+      '#options':
+        sfa_06_unsure: 'I am unsure -- I am unsure what to do if there are basic problems when I am using technology'
+        sfa_06_with_help: 'I can do this with help -- I have some idea what to do if there are basic problems when I am using technology, but I would want to check what to do first'
+        sfa_06_confident: 'I can do this without help -- I am confident I know where to get help to solve basic problems when I am using technology'
+        sfa_06_advanced: 'I can do this and help others to do it too -- I am very confident in solving basic problems when using technology and know where to get help, and I can support colleagues to get help to solve problems with technology'
+      '#required': true
+  step_7:
+    '#type': webform_wizard_page
+    '#title': 'Step 7'
+    actions_06:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_07:
+      '#type': processed_text
+      '#text': "<p><span>Communicating through technology</span></p><h1 id=\"main-content\">I understand that different methods of digital communication have different purposes and use technology appropriately, following my organisation's policies</h1><p>For example:</p><ul><li>I know when it is appropriate to use email to contact an individual's family member, or when a phone or video call would be more appropriate</li><li>I adapt the digital communication method I use depending on the individual's preference</li><li>I ensure my digital communications (emails, video calls, WhatsApp messages, messages through a specialised care app or digital social care record) with clients, family members, other professionals and organisations are respectful and sensitive</li><li>I am aware of and follow my organisations' social media and data security policies, such as what information is or is not appropriate to communicate with colleagues on platforms like WhatsApp or Facebook</li></ul>"
+      '#format': full_html
+    sfa_07_options:
+      '#type': radios
+      '#title': "I understand that different methods of digital communication have different purposes and use technology appropriately, following my organisation's policies"
+      '#title_display': invisible
+      '#options':
+        sfa_07_unsure: 'I am unsure -- I am unsure about the purposes of different communication technologies and how to use them appropriately'
+        sfa_07_with_help: 'I can do this with help -- I am aware of purposes of different communication technologies and and can use them appropriately if I get help'
+        sfa_07_confident: 'I can do this without help -- I am aware of the range of different communication technologies and can use them appropriately'
+        sfa_07_advanced: 'I can do this and help others to do it too -- I have a very good awareness of the range of different communication technologies and their purposes. I can help colleagues to understand and use appropriate communication technologies safely'
+      '#options__properties': ''
+      '#required': true
+  step_8:
+    '#type': webform_wizard_page
+    '#title': 'Step 8'
+    actions_07:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_08:
+      '#type': processed_text
+      '#text': '<p><span>Communicating through technology</span></p><h1 id="main-content">I am able to collaborate with and learn from others through digital platforms and forums</h1><p>For example:</p><ul><li>I am able to add to a shared document about client care (such as on Sharepoint, Google Drive, Dropbox), so that I can collaborate with other colleagues</li><li>I know how to find and use online forums and social media groups for professionals in social care to share experiences, advice and news (such as a local authority Knowledge Hub, or local care association forum)</li></ul>'
+      '#format': full_html
+    sfa_08_options:
+      '#type': radios
+      '#title': 'I am able to collaborate with and learn from others through digital platforms and forums'
+      '#title_display': invisible
+      '#options':
+        sfa_08_unsure: 'I am unsure -- I am unsure how to use digital platforms and forums to collaborate with and learn from others'
+        sfa_08_with_help: 'I can do this with help -- I have some idea how to use digital platforms and forums to collaborate with and learn from others, but I would need support or advice to do this confidently'
+        sfa_08_confident: 'I can do this without help -- I am able to confidently use digital platforms and forums to collaborate with and learn from others'
+        sfa_08_advanced: 'I can do this and help others to do it too -- I am very confident in using digital platforms and forums to collaborate with and learn from others, and I am able to support others to do this too'
+      '#options__properties': ''
+      '#required': true
+  step_9:
+    '#type': webform_wizard_page
+    '#title': 'Step 9'
+    actions_08:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_09:
+      '#type': processed_text
+      '#text': '<p><span>Communicating through technology</span></p><h1 id="main-content">I can support others to use digital communication tools to stay connected to their family, friends and their community</h1><p>For example, when needed I can help the people I support:</p><ul><li>set up and have a video call with family members or friends</li><li>safely set up a social media profile in order to connect with family and friends online</li><li>join local community online groups, such as a neighbourhood WhatsApp group</li><li>ensure they are receiving emails/messages from a club/group they attend</li></ul>'
+      '#format': full_html
+    sfa_09_options:
+      '#type': radios
+      '#title': 'I can support others to use digital communication tools to stay connected to their family, friends and their community'
+      '#title_display': invisible
+      '#options':
+        sfa_09_unsure: 'I am unsure -- I am unsure how to support others to use digital communication tools to stay connected to their family, friends and community'
+        sfa_09_with_help: 'I can do this with help -- I have some idea about how to support others to use digital communication tools to stay connected to their family, friends and community, but I would need guidance and support to do so confidently'
+        sfa_09_confident: 'I can do this without help -- I am able to support people to use digital communication tools to stay connected to their family, friends and community'
+        sfa_09_advanced: 'I can do this and help others to do it too -- I am very confident in supporting others to use digital communication tools to stay connected to their family, friends and community, and can advise colleagues on how to do this well'
+      '#options__properties': ''
+      '#required': true
+  step_10:
+    '#type': webform_wizard_page
+    '#title': 'Step 10'
+    actions_09:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_10:
+      '#type': processed_text
+      '#text': '<p><span>Using and managing data</span></p><h1 id="main-content">I understand that individuals have a right to know how their data is used and I can support them to access their digital social care records</h1><p>For example:</p><ul><li>I know what personal data is and that under data protection law people have rights about their personal data</li><li>I know when and how to tell the people I care for what my organisation is doing with their personal data</li><li>I can support people to access their digital social care records in a way they can understand, and know what to do if they want to put right any mistakes in their record</li></ul>'
+      '#format': full_html
+    sfa_10_options:
+      '#type': radios
+      '#title': 'I understand that individuals have a right to know how their data is used and I can support them to access their digital social care records'
+      '#title_display': invisible
+      '#options':
+        sfa_10_unsure: "I am unsure -- I am unsure about individuals' rights and how to support individuals to access their digital social care records"
+        sfa_10_with_help: "I can do this with help -- I have some idea about individuals' rights and I know where to go for help in order to support an individual to access their digital social care records"
+        sfa_10_confident: "I can do this without help -- I understand individuals' rights and can support them to access their digital social care records and ask for any mistakes to be put right"
+        sfa_10_advanced: "I can do this and help others to do it too -- I am very confident in my understanding  of individuals' rights about their personal data, can support colleagues to help people to access their digital social care records, and would be confident to assure people who use my service that information about them is treated confidentially, and in a way that complies with data protection legislation"
+      '#options__properties': ''
+      '#required': true
+  step_11:
+    '#type': webform_wizard_page
+    '#title': 'Step 11'
+    actions_10:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_11:
+      '#type': processed_text
+      '#text': "<p><span>Using and managing data</span></p><h1>I know how to keep confidential information about an individual's care and support safe</h1><p>For example:</p><ul><li>I understand that information about an individual’s care and support must be treated as confidential and only shared with people who need to know it</li><li>I know that sharing information with the right people can be just as important as not disclosing it to the wrong person</li><li>I know what confidential information I should share with who and how I can safely transfer information digitally</li></ul>"
+      '#format': full_html
+    sfa_11_options:
+      '#type': radios
+      '#title': "I know how to keep confidential information about an individual's care and support safe"
+      '#title_display': invisible
+      '#options':
+        sfa_11_unsure: "I am unsure -- I am unsure how to keep individual's confidential digital information safe"
+        sfa_11_with_help: "I can do this with help -- I have an idea of how to keep confidential information about an individual's care and support safe, but I would need help to be sure"
+        sfa_11_confident: "I can do this without help -- I know how to keep confidential information about an individual's care and support safe"
+        sfa_11_advanced: "I can do this and help others to do it too -- I have a very good knowledge about how to keep confidential information about an individual's care and support safe and can support colleagues to understand the importance of good data management"
+      '#required': true
+  step_12:
+    '#type': webform_wizard_page
+    '#title': 'Step 12'
+    actions_11:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_12:
+      '#type': processed_text
+      '#text': '<p><span>Using and managing data</span></p><h1 id="main-content">I can accurately record information on digital systems</h1><p>For example:</p><ul><li>I make sure that the digital social care records I make are accurate, up to date and clearly written</li><li>I am clear what are facts, my opinions or information from others</li><li>I record information at the time events occur or as soon afterwards as possible</li></ul>'
+      '#format': full_html
+    sfa_12_options:
+      '#type': radios
+      '#title': 'I can accurately record information on digital systems'
+      '#title_display': invisible
+      '#options':
+        sfa_12_unsure: 'I am unsure -- I am unsure how to accurately record information on digital systems'
+        sfa_12_with_help: 'I can do this with help -- With help I can accurately record information on digital systems'
+        sfa_12_confident: 'I can do this without help -- I know how to accurately record information on digital systems'
+        sfa_12_advanced: 'I can do this and help others to do it too -- I am very confident in recording information on digital systems and could advise colleagues on how to do so'
+      '#required': true
+  step_13:
+    '#type': webform_wizard_page
+    '#title': 'Step 13'
+    actions_12:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_13:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I understand why cyber security is important in social care and understand my personal responsibility for supporting my organisation to be cyber secure</h1><p>For example:</p><ul><li> I am aware that care providers can be the victim of a cyber attack and that the impact of an attack can be significant and costly</li><li>I always follow my organisation's data and cyber security procedures</li><li>I know who I should speak to in my organisation if I am concerned there may have been a data breach or risk to data security</li></ul>"
+      '#format': full_html
+    sfa_13_options:
+      '#type': radios
+      '#title': 'I understand why cyber security is important in social care and understand my personal responsibility for supporting my organisation to be cyber secure'
+      '#title_display': invisible
+      '#options':
+        sfa_13_unsure: 'I am unsure -- I am unsure why cyber security is important in social care and am unsure of my responsibilities'
+        sfa_13_with_help: 'I can do this with help -- I have some understanding of why cyber security is important in social care and am aware of my responsibilities'
+        sfa_13_confident: 'I can do this without help -- I have a good understanding of why cyber security is important in social care and am confident that I understand my responsibilities'
+        sfa_13_advanced: 'I can do this and help others to do it too -- I have a very good understanding of why cyber security is important in social care and could support colleagues to understand their responsibilities towards data and cyber security'
+      '#required': true
+  step_14:
+    '#type': webform_wizard_page
+    '#title': 'Step 14'
+    actions_13:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_14:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I am aware of the range of cyber security threats that exist and know how to take precautions to avoid them</h1><p>For example:</p><ul><li>I am aware of how common fraud or scams are and know what to look out for in messages, emails and on websites</li><li>I know who to report it to if I did become a victim of a scam</li><li>I follow basic good practice such as using strong passwords, locking digital devices when not in use, and keeping all digital devices up to date by allowing regular software updates</li></ul>"
+      '#format': full_html
+    sfa_14_options:
+      '#type': radios
+      '#title': 'I understand why cyber security is important in social care and understand my personal responsibility for supporting my organisation to be cyber secure'
+      '#title_display': invisible
+      '#options':
+        sfa_14_unsure: 'I am unsure -- I am unsure about the range of cyber security threats and how to take precautions to avoid them'
+        sfa_14_with_help: 'I can do this with help -- I have some understanding of the range of cyber security threats and with help from colleagues could take precautions to avoid them'
+        sfa_14_confident: 'I can do this without help -- I am aware of the range of cyber security threats and am confident that I can take precautions to avoid them'
+        sfa_14_advanced: 'I can do this and help others to do it too -- I have a very good awareness of the range of cyber security threats and take precautions to avoid them, and would be confident in advising colleagues'
+      '#required': true
+  step_15:
+    '#type': webform_wizard_page
+    '#title': 'Step 15'
+    actions_14:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_15:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I can use the internet to safely access information online</h1><p>For example:</p><ul><li>I can use the internet to access websites and search engines such as Google if needed for my day to day work</li><li>I realise that not all information on the internet is accurate, up-to-date or trustworthy, therefore, I search for information on trusted websites such as Skills for Care or the NHS</li><li>I follow my organisation's policies on the use of email and the internet, if we have them</li></ul>"
+      '#format': full_html
+    sfa_15_options:
+      '#type': radios
+      '#title': 'I can use the internet to safely access information online'
+      '#title_display': invisible
+      '#options':
+        sfa_15_unsure: 'I am unsure -- I am unsure how to safely access the internet'
+        sfa_15_with_help: 'I can do this with help -- I have an idea of how to access the internet safely and can do so with help from colleagues'
+        sfa_15_confident: 'I can do this without help -- I am confident that I can safely access the internet and identify trustworthy sources of information'
+        sfa_15_advanced: 'I can do this and help others to do it too -- I am very confident that I can safely access the internet and I could advise colleagues on how to identify trustworthy sources of information'
+      '#required': true
+      '#options__properties': ''
+  step_16:
+    '#type': webform_wizard_page
+    '#title': 'Step 16'
+    actions_15:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_16:
+      '#type': processed_text
+      '#text': '<p><span>Ethical use of technology</span></p><h1 id="main-content">I understand the pros and cons of technology in care and can support individuals to make an informed choice about its use</h1><p>For example, I understand:</p><ul><li>that taking photos or videos of the people I support can be used to share news with their friends/families or to promote our service on social media, but that this could also impact their privacy</li><li>this needs to be carefully explained and the individual, where possible, or their advocates, should be involved in decisions about whether photos or videos are taken of them</li></ul>'
+      '#format': full_html
+    sfa_16_options:
+      '#type': radios
+      '#title': 'I understand the pros and cons of technology in care and can support individuals to make an informed choice about its use'
+      '#title_display': invisible
+      '#options':
+        sfa_16_unsure: "I am unsure -- I am not familiar with considering the pros and cons of the use of technology for someone's care or exploring this with individuals or their advocates"
+        sfa_16_with_help: 'I can do this with help -- I am aware of the importance of considering the pros and cons of the use of technology, and with advice from colleagues, I can support individuals to make an informed choice about its use'
+        sfa_16_confident: 'I can do this without help -- I am aware of the importance of considering the pros and cons of the use of technology, and I support people to make an informed choice about its use'
+        sfa_16_advanced: 'I can do this and help others to do it too -- I am very aware of the importance of considering the pros and cons of the use of technology  and supporting individuals to make an informed choice about its use, and I would feel confident to support colleagues to do this in their work'
+      '#required': true
+  step_17:
+    '#type': webform_wizard_page
+    '#title': 'Step 17'
+    actions_16:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_17:
+      '#type': processed_text
+      '#text': '<p><span>Ethical use of technology</span></p><h1 id="main-content">I know what to do if I am concerned that someone''s wellbeing or their rights are being negatively impacted by technology</h1><p>For example:</p><ul><li>if a vulnerable individual I was working with shared that they were sending money to strangers on the internet, or were being bullied on social media, I would know the right person to report this to</li><li>I know what my organisation''s policy is about safeguarding people from online harm</li></ul>'
+      '#format': full_html
+    sfa_17_options:
+      '#type': radios
+      '#title': "I know what to do if I am concerned that someone's wellbeing or their rights are being negatively impacted by technology"
+      '#title_display': invisible
+      '#options':
+        sfa_17_unsure: "I am unsure -- I am not sure what to do if I am concerned that someone's wellbeing or their rights are being harmed by use of technology"
+        sfa_17_with_help: "I can do this with help -- I have an idea of what to do if I am concerned that someone's wellbeing or their rights are being negatively impacted by technology, but I would need help from others before acting"
+        sfa_17_confident: "I can do this without help -- I know what to do if I am concerned that someone's wellbeing or their rights are being negatively impacted by technology"
+        sfa_17_advanced: "I can do this and help others to do it too -- I know what to do if I am concerned that someone's wellbeing or their rights are being negatively impacted by technology and would be confident in advising colleagues"
+      '#options__properties': ''
+      '#required': true
+  step_18:
+    '#type': webform_wizard_page
+    '#title': 'Step 18'
+    actions_17:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_18:
+      '#type': processed_text
+      '#text': '<p><span>Digital learning, development and wellbeing</span></p><h1 id="main-content">I know where to find digital training and resources that can help me in my learning, wellbeing and self-development in my role</h1><p>For example, I know:</p><ul><li>where to access e-learning modules that my organisation has asked me to complete</li><li>how to find digital resources to help me manage my wellbeing at work or develop in my role, such as the Care Certificate resources</li></ul>'
+      '#format': full_html
+    sfa_18_options:
+      '#type': radios
+      '#title': 'I know where to find digital training and resources that can help me in my learning, wellbeing and self-development in my role'
+      '#title_display': invisible
+      '#options':
+        sfa_18_unsure: 'I am unsure -- I am unsure where to find digital training and resources that can help me in my learning, wellbeing and self-development in my role'
+        sfa_18_with_help: 'I can do this with help -- I know where to find some digital training  and resources, but I would need support or advice to be confident in finding the most relevant training or resources to help in my learning, wellbeing and self-development'
+        sfa_18_confident: 'I can do this without help -- I am confident that I can find relevant digital training and resources that can help me in my learning, wellbeing and self-development in my role'
+        sfa_18_advanced: 'I can do this and help others to do it too -- I am very confident in finding digital training and resources for myself and can help colleagues to locate  digital resources and training that would be relevant for their learning, self-development and wellbeing'
+      '#options__properties': ''
+      '#required': true
+  step_19:
+    '#type': webform_wizard_page
+    '#title': 'Step 19'
+    actions_18:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_19:
+      '#type': processed_text
+      '#text': '<p><span>Digital learning, development and wellbeing</span></p><h1 id="main-content">I participate in and benefit from digital learning opportunities and share opportunities with others</h1><p>For example, I can:</p><ul><li>log in and complete e-learning courses</li><li>use technology to keep a record of my learning needs and activities or continued professional development (CPD)</li><li>help colleagues and the people I care for to access digital learning courses and resources</li></ul>'
+      '#format': full_html
+    sfa_19_options:
+      '#type': radios
+      '#title': 'I participate in and benefit from digital learning opportunities and share opportunities with others'
+      '#title_display': invisible
+      '#options':
+        sfa_19_unsure: 'I am unsure -- I am unsure how to access digital learning activities'
+        sfa_19_with_help: 'I can do this with help -- I am aware of my learning and development needs and I can access digital learning activities with help from others.'
+        sfa_19_confident: 'I can do this without help -- I regularly use technology to review and record my learning needs, and I can access digital learning activities to help meet those needs'
+        sfa_19_advanced: 'I can do this and help others to do it too -- I have a very good awareness of my learning and development needs, which I regularly review, and I can confidently access digital learning activities and help colleagues or the people I care for to access digital learning opportunities'
+      '#options__properties': ''
+      '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Continue
+    '#submit__attributes':
+      class:
+        - a-button
+        - a-button--primary
+    '#wizard_prev_hide': true
+    '#wizard_prev__label': Previous
+    '#wizard_next__label': Continue
+    '#wizard_next__attributes':
+      class:
+        - a-button
+        - a-button--primary
+css: |-
+  .webform-submission-information {display: none}
+  .webform-button--previous{display: none}
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes:
+    class:
+      - m-webform__submission-form--hide-breadcrumbs
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: Continue
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: url
+  confirmation_url: '/dhsc-results-what-good-looks-like?token=[webform_submission:token]'
+  confirmation_title: ''
+  confirmation_message: '<p><a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a></p>'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: true
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  sets_form_metadata_in_tempstore:
+    id: dhsc_set_submission_id_handler
+    handler_id: sets_form_metadata_in_tempstore
+    label: 'Sets form metadata in tempstore'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
+variants: {  }
