@@ -8,22 +8,19 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class ResultEmailForm.
  */
-class ResultEmailForm extends FormBase
-{
+class ResultEmailForm extends FormBase {
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId()
-  {
+  public function getFormId() {
     return 'dhsc_result_email_form';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state)
-  {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $form['email'] = [
       '#type' => 'email',
       '#title' => $this->t('Input email address'),
@@ -40,7 +37,7 @@ class ResultEmailForm extends FormBase
       '#attributes' => [
         'role' => 'button',
         'aria-label' => $this->t('Send email'),
-        'class' => ['a-button', 'a-button--secondary']
+        'class' => ['a-button', 'a-button--secondary'],
       ],
     ];
     return $form;
@@ -49,11 +46,10 @@ class ResultEmailForm extends FormBase
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state)
-  {
+  public function submitForm(array &$form, FormStateInterface $form_state) {
     $email = $form_state->getValue('email', '');
     $token = \Drupal::request()->query->get('token');
-    $result_summary_type = explode('.' , \Drupal::routeMatch()->getRouteName())[1];
+    $result_summary_type = explode('.', \Drupal::routeMatch()->getRouteName())[1];
 
     $form_state->setRedirect("dhsc_result_viewer." . $result_summary_type . "_email", [
       'email' => $email,
@@ -62,4 +58,5 @@ class ResultEmailForm extends FormBase
 
     return;
   }
+
 }

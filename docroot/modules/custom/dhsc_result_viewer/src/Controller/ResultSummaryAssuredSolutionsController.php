@@ -22,8 +22,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class ResultSummaryAssuredSolutionsController extends ControllerBase
-{
+class ResultSummaryAssuredSolutionsController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -109,8 +108,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container)
-  {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
@@ -128,8 +126,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
    * @return mixed
    *   Resurn submission results.
    */
-  public function getResults()
-  {
+  public function getResults() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->resultViewer->getSubmission()) {
       return $this->resultViewer->getResultsSummary($submission->getData(), $submission->getWebform());
@@ -142,8 +139,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
    * @return array
    *   Return render array.
    */
-  public function build()
-  {
+  public function build() {
     $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
 
     if ($result = $this->getResults()) {
@@ -158,9 +154,10 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
         '#email_form' => !empty($result['total_count']) ? \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
-        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString()
+        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString(),
       ];
-    } else {
+    }
+    else {
       $element = [
         '#theme' => 'dhsc_results_list_assured_solutions',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
@@ -176,10 +173,10 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
    * Email submission results.
    *
    * @param string $email
+   *
    * @return void
    */
-  public function sendResultEmail($email, $token)
-  {
+  public function sendResultEmail($email, $token) {
 
     $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
@@ -198,8 +195,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       try {
         $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
         \Drupal::logger('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
-      } catch (Exception $e) {
-        $message = t('There was a problem sending assured solutions result email to @email', array('@email' => $email));
+      }
+      catch (Exception $e) {
+        $message = t('There was a problem sending assured solutions result email to @email', ['@email' => $email]);
         \Drupal::logger('Error in email sending')->error($message);
         \Drupal::logger('Error in email sending')->error($e);
       }
@@ -225,8 +223,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
    *
    * @return array
    */
-  public static function buildResultMarkup($results, $pdf = FALSE)
-  {
+  public static function buildResultMarkup($results, $pdf = FALSE) {
     $criteria = '';
     if ($results['search_criteria']) {
       foreach ($results['search_criteria'] as $item) {
@@ -243,7 +240,8 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
       foreach ($results['matches'] as $node) {
         if ($node->get('field_body_paragraphs')->entity->getType() === 'localgov_text') {
           $summary = $node->get('field_body_paragraphs')->entity->get('localgov_text')->value;
-        } else {
+        }
+        else {
           $summary = '';
         }
         $result_items .= "<h4>
@@ -275,7 +273,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     if ($pdf) {
 
       if ($non_matching_count) {
-      $non_matching_html = Markup::create("<div class='non-matches'><h3>
+        $non_matching_html = Markup::create("<div class='non-matches'><h3>
       {$non_matching_count}</h3>
       {$no_matches}
       </div>");
@@ -293,7 +291,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
     if (!$pdf) {
 
       if ($non_matching_count) {
-      $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
+        $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
       {$non_matching_count}</h3>
       {$no_matches}</td>
       </tr>");
@@ -309,4 +307,5 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase
 
     return $params['body'];
   }
+
 }

@@ -35,11 +35,10 @@ interface SelfAssessmentInterface {
    */
   public function getSubmissionId();
 
-
   /**
    * Get webform question completion.
    *
-   * @return boolean
+   * @return bool
    *   Return yes_to_all_questions.
    */
   public function questionsAllYes();

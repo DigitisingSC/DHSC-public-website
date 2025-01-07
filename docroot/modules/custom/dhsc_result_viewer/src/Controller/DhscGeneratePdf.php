@@ -6,18 +6,15 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Render\Markup;
 use Drupal\Core\Render\Renderer;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\dhsc_result_viewer\DhscDomPdfGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\dhsc_result_viewer\Controller\ResultSummaryAssuredSolutionsController;
 
 /**
  * Class DhscGeneratePdf.
  */
-class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterface
-{
+class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterface {
 
   /**
    * The entity type manager.
@@ -53,7 +50,6 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    * @var \Drupal\Core\TempStore\PrivateTempStore
    */
   protected $tempStore;
-
 
   /**
    * GeneratePdf constructor.
@@ -120,9 +116,9 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    */
   protected function getSubmissionResult() {
     // Get saved result data from tempstore.
-    // $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
+    // $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');.
     $result_data = $this->tempStore->get('dhsc_result_viewer')->get('assured_solutions_result_data');
-    $data = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data, $pdf=TRUE);
+    $data = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data, $pdf = TRUE);
 
     return $data;
 
@@ -143,4 +139,5 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
       '#content' => $results,
     ];
   }
+
 }

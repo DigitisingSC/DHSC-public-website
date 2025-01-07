@@ -39,8 +39,10 @@ interface AssuredSolutionsInterface {
 
   /**
    * Returns webform result nodes which contain at least one answer.
+   *
    * @param array $answers
    *   User supplied answers.
+   *
    * @return array
    *   Return result node ids.
    */
@@ -48,8 +50,10 @@ interface AssuredSolutionsInterface {
 
   /**
    * Returns all suplier nodes which do not match user search criteria.
+   *
    * @param array $nids
    *   Result node nids.
+   *
    * @return array
    *   Return non matching nids.
    */

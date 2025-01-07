@@ -12,8 +12,7 @@ use Drupal\taxonomy\TermInterface;
  *
  * @package Drupal\dhsc_self_assessment_result_viewer
  */
-class SelfAssessmentResultViewer implements SelfAssessmentInterface
-{
+class SelfAssessmentResultViewer implements SelfAssessmentInterface {
 
   /**
    * Entity type manager.
@@ -89,16 +88,14 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * {@inheritdoc}
    */
-  public function getCategories()
-  {
+  public function getCategories() {
     return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data)
-  {
+  public function getResultsSummary($data) {
     $nids = $this->getResultIds($data);
     if (!$nids) {
       return;
@@ -125,8 +122,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * {@inheritdoc}
    */
-  public function getSortsResultIds()
-  {
+  public function getSortsResultIds() {
     if ($data = $this->getSubmissionData()) {
       $nids = $this->getResultIds($data);
       if (!$nids) {
@@ -148,12 +144,11 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data)
-  {
+  protected function getResultIds(array $data) {
     $categories = $this->getCategories();
     $nids = [];
 
-    /** @var TermInterface $category */
+    /** @var \Drupal\taxonomy\TermInterface $category */
     foreach ($categories as $category) {
       if ($nid = $this->getResultId($category, $data)) {
         $nids[] = $nid;
@@ -174,7 +169,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * Get id of result node.
    *
-   * @param TermInterface $term
+   * @param \Drupal\taxonomy\TermInterface $term
    *   Category term.
    * @param array $data
    *   Webform values.
@@ -182,8 +177,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return array|int|void
    *   Return result ids.
    */
-  protected function getResultId(TermInterface $term, array $data)
-  {
+  protected function getResultId(TermInterface $term, array $data) {
     if ($term->bundle() != 'category') {
       return;
     }
@@ -208,32 +202,28 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * {@inheritdoc}
    */
-  public function getSubmissionId()
-  {
+  public function getSubmissionId() {
     return $this->tempStore->get('sid');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllYes()
-  {
+  public function questionsAllYes() {
     return $this->tempStore->get('yes_to_all_questions');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllReset()
-  {
+  public function questionsAllReset() {
     return $this->tempStore->set('yes_to_all_questions', NULL);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSubmission()
-  {
+  public function getSubmission() {
     $sid = $this->getSubmissionId();
     if ($sid) {
       $submission = $this->entityTypeManager->getStorage('webform_submission')->load($sid);
@@ -241,15 +231,13 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
     }
   }
 
-
   /**
    * Get webform submission data.
    *
    * @return array
    *   Return webform submission data.
    */
-  protected function getSubmissionData()
-  {
+  protected function getSubmissionData() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       return $submission->getData();
@@ -262,8 +250,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
    */
-  protected function getWebFormUrl()
-  {
+  protected function getWebFormUrl() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -280,8 +267,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return mixed|void
    *   Return webform confirmation page path.
    */
-  protected function getConfirmationPagePath()
-  {
+  protected function getConfirmationPagePath() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -300,4 +286,5 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
       return $raw_data['settings']['page_confirm_path'];
     }
   }
+
 }

@@ -20,8 +20,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
-class ResultSummarySelfAssessmentController extends ControllerBase
-{
+class ResultSummarySelfAssessmentController extends ControllerBase {
 
   /**
    * Entity Type Manager.
@@ -65,7 +64,6 @@ class ResultSummarySelfAssessmentController extends ControllerBase
    */
   protected $messenger;
 
-
   /**
    * ResultSummaryController constructor.
    *
@@ -95,8 +93,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container)
-  {
+  public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
       $container->get('config.factory'),
@@ -113,8 +110,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase
    * @return mixed
    *   Resurn submission results.
    */
-  public function getResults($submission)
-  {
+  public function getResults($submission) {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission) {
       return $this->resultViewer->getResultsSummary($submission->getData());
@@ -127,14 +123,13 @@ class ResultSummarySelfAssessmentController extends ControllerBase
    * @return array
    *   Return render array.
    */
-  public function build()
-  {
+  public function build() {
     $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
 
     // Get the value from tempstore if we need to display a result variant.
     $result_variant = $this->resultViewer->questionsAllYes();
 
-    // Reset the value if question choices are edited
+    // Reset the value if question choices are edited.
     // @todo may need to do this on another action
     $this->resultViewer->questionsAllReset();
 
@@ -163,7 +158,8 @@ class ResultSummarySelfAssessmentController extends ControllerBase
         '#submission_url' => isset($submission_url) ? $submission_url : NULL,
         '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
       ];
-    } else {
+    }
+    else {
       $element = [
         '#theme' => 'dhsc_results_list_self_assessment',
         '#title' => $config->get('title') ? $config->get('title') : NULL,
@@ -179,10 +175,10 @@ class ResultSummarySelfAssessmentController extends ControllerBase
    * Email submission results.
    *
    * @param string $email
+   *
    * @return void
    */
-  public function sendResultEmail($email, $token)
-  {
+  public function sendResultEmail($email, $token) {
     $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
@@ -193,9 +189,10 @@ class ResultSummarySelfAssessmentController extends ControllerBase
       $result = $this->buildEmail($email, $results);
 
       if (!$result['result']) {
-        $message = t('There was a problem sending self assessment result email to @email', array('@email' => $email));
+        $message = t('There was a problem sending self assessment result email to @email', ['@email' => $email]);
         \Drupal::logger('Error in email sending')->error($message);
-      } else {
+      }
+      else {
         \Drupal::logger('dhsc_result_viewer')->notice('self assessment result email sent to ' . $email);
       }
 
@@ -219,10 +216,10 @@ class ResultSummarySelfAssessmentController extends ControllerBase
    * Construct results email.
    *
    * @param string $email
+   *
    * @return array
    */
-  public function buildEmail($email, $results)
-  {
+  public function buildEmail($email, $results) {
     $module = 'dhsc_result_viewer';
     $key = 'email_result';
     $to = $email;
@@ -249,4 +246,5 @@ class ResultSummarySelfAssessmentController extends ControllerBase
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
   }
+
 }

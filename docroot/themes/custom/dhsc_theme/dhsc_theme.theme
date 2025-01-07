@@ -14,7 +14,7 @@ use Drupal\node\Entity\Node;
 
 /**
  * Implements hook_preprocess().
- * Adds base path as a variable for Twig templates
+ * Adds base path as a variable for Twig templates.
  */
 function dhsc_theme_preprocess(&$variables, $hook) {
   $variables['base_path'] = base_path();
@@ -31,8 +31,7 @@ function dhsc_theme_preprocess_block(&$variables) {
  * Implements hook_preprocess_HOOK().
  * Build contentback link based on breadcrumb value.
  */
-function dhsc_theme_preprocess_node(&$variables)
-{
+function dhsc_theme_preprocess_node(&$variables) {
 
   $node = $variables['elements']['#node'];
 
@@ -41,7 +40,7 @@ function dhsc_theme_preprocess_node(&$variables)
     [
       'localgov_guides_overview',
       'localgov_guides_page',
-      'landing_page'
+      'landing_page',
     ]
   )) {
     return;
@@ -58,12 +57,13 @@ function dhsc_theme_preprocess_node(&$variables)
   $routeMatch = new RouteMatch($routeName, $route);
   $breadcrumb = Drupal::service('dhsc_site.breadcrumb')->build($routeMatch)->toRenderable();
 
-  // if the breadcrumb contains only one link this must be set to Home.
+  // If the breadcrumb contains only one link this must be set to Home.
   if (count($breadcrumb['#links']) == 1) {
     $variables['link_text'] = $breadcrumb['#links'][0]->getText()->getUntranslatedString();
     $variables['link_alias'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
-  } else {
-    // fetch the parent link from the active breadcrumb.
+  }
+  else {
+    // Fetch the parent link from the active breadcrumb.
     $link_item = array_pop($breadcrumb['#links']);
     $variables['link_text'] = $link_item->getText();
     $variables['link_alias'] = $link_item->getUrl()->toString();
@@ -87,7 +87,6 @@ function dhsc_theme_preprocess_region(&$variables) {
     $variables['logo'] = $file_path ?? '';
   }
 }
-
 
 /**
  * Implements hook_preprocess_paragraph__HOOK()
@@ -145,13 +144,13 @@ function dhsc_theme_preprocess_paragraph__pagination(&$variables) {
   if (!empty($previous->uri) && !empty($previous->title)) {
     $links['previous'] = [
       'href' => Url::fromUri($previous->uri)->toString(),
-      'text' => $previous->title
+      'text' => $previous->title,
     ];
   }
   if (!empty($next->uri) && !empty($next->title)) {
     $links['next'] = [
       'href' => Url::fromUri($next->uri)->toString(),
-      'text' => $next->title
+      'text' => $next->title,
     ];
   }
 
@@ -177,10 +176,12 @@ function dhsc_theme_preprocess_paragraph__video(&$variables) {
       $parsedUrl = UrlHelper::parse($url);
       if (isset($parsedUrl['query']) && isset($parsedUrl['query']['v'])) {
         $embed_code = $parsedUrl['query']['v'];
-      } else {
+      }
+      else {
         $embed_code = substr($url, strpos($url, '?v=') + strlen('?v='));
       }
-    } else {
+    }
+    else {
       $embed_code = trim(parse_url($url, PHP_URL_PATH), '/');
     }
 
@@ -220,36 +221,42 @@ function dhsc_theme_preprocess_media_oembed_iframe(&$variables) {
   }
 }
 
-function dhsc_theme_theme_suggestions_details_alter (array &$suggestions, array $variables) {
+/**
+ *
+ */
+function dhsc_theme_theme_suggestions_details_alter(array &$suggestions, array $variables) {
   if ($variables['element'] && isset($variables['element']['#form_id'])) {
     $suggestions[] = 'details__' . str_replace('-', '_', $variables['element']['#form_id']);
   }
 }
 
+/**
+ *
+ */
 function dhsc_theme_theme_suggestions_form_alter(array &$suggestions, array $variables) {
   if ($variables['element']['#form_id'] === 'dhsc_result_email_form') {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
   }
   $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']);
 
-  // search form
+  // Search form.
   if (in_array($variables['element']['#id'], ['views-exposed-form-local-search-dhsc-search-page', 'views-exposed-form-acquia-search-dhsc-search-page'])) {
     $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#form_id']) . '__search';
   }
 }
 
 /**
-* Implements hook_theme_suggestions_HOOK_alter().
-*
-* Add views template suggestions.
-*
-* @inheritdoc
-*/
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Add views template suggestions.
+ *
+ * @inheritdoc
+ */
 function dhsc_theme_theme_suggestions_views_view_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'views_view__' . $variables['view']->getDisplay()->display['id'];
   $suggestions[] = 'views_view__' . $variables['view']->id();
 
- return $suggestions;
+  return $suggestions;
 }
 
 /**
@@ -269,10 +276,9 @@ function dhsc_theme_theme_suggestions_input_alter(&$suggestions, array $variable
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  *
- * Add template suggestions for result viewer status messages
+ * Add template suggestions for result viewer status messages.
  */
-function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables)
-{
+function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions, array $variables) {
   $suggestions[] = 'status_messages__dhsc_result_viewer';
 }
 
@@ -287,7 +293,8 @@ function _generate_link_array($link_field_item) {
         'title' => $link_field_item->title ?? 'Link',
         'href' => Url::fromUri($link_field_item->uri)->toString(),
       ];
-    } else {
+    }
+    else {
       $url = Url::fromUri($link_field_item->uri)->toString();
       $path = \Drupal::service('path_alias.manager')->getPathByAlias($url);
       if (preg_match('/node\/(\d+)/', $path, $matches)) {

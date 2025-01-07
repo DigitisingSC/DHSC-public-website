@@ -9,7 +9,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 
 /**
  * Provides block with related information
- * when node has the related information field with values
+ * when node has the related information field with values.
  *
  * @Block(
  *   id = "related_information_block",

@@ -8,7 +8,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class ResultSummaryForm.
  */
-class ResultSummaryForm  extends ConfigFormBase {
+class ResultSummaryForm extends ConfigFormBase {
 
   /**
    * Config settings.
@@ -38,7 +38,6 @@ class ResultSummaryForm  extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config(static::SETTINGS);
-
 
     $form['self_assessment_settings'] = [
       '#type' => 'details',
