@@ -8,7 +8,7 @@ use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\taxonomy\TermInterface;
 
 /**
- * Class WGLLResultViewer.
+ * Create the result viewer for What Good Looks Like tool.
  *
  * @package Drupal\dhsc_wgll_result_viewer
  */
@@ -69,7 +69,9 @@ class WGLLResultViewer implements WGLLInterface {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
+   *   The temporary storage factory.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -86,7 +88,7 @@ class WGLLResultViewer implements WGLLInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * Get taxonomy terms for type Skill reference.
    */
   public function getSkillReferences() {
     return $this->taxonomyStorage->loadTree('skill_reference', 0, NULL, TRUE);
@@ -104,10 +106,12 @@ class WGLLResultViewer implements WGLLInterface {
     $nodes = $this->nodeStorage->loadMultiple($nids);
 
     foreach ($nodes as $node) {
+      $theme = $node->get('field_themes')->referencedEntities()[0]->get('name')->value;
       $values[] = [
         '#theme' => 'result_item_wgll',
         '#title' => $node->getTitle(),
         '#answer' => ucfirst(str_replace('_', ' ', explode('_', $node->get('field_skill_answer')->value, 3)[2])),
+        '#category' => $theme,
         '#content' => [
           '#type' => 'processed_text',
           '#text' => $node->get('field_body_paragraphs')->entity->localgov_text->value,
@@ -163,6 +167,8 @@ class WGLLResultViewer implements WGLLInterface {
    *
    * @param array $data
    *   Webform values.
+   * @param \Drupal\taxonomy\TermInterface $term
+   *   Taxonomy term.
    *
    * @return array|int|void
    *   Return result ids.
@@ -186,6 +192,8 @@ class WGLLResultViewer implements WGLLInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * Return webform submission id.
    */
   public function getSubmissionId() {
     return $this->tempStore->get('sid');
@@ -193,6 +201,8 @@ class WGLLResultViewer implements WGLLInterface {
 
   /**
    * {@inheritdoc}
+   *
+   * Return webform submission.
    */
   public function getSubmission() {
     $sid = $this->getSubmissionId();

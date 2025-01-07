@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.report_response.field_body_paragraphs
     - field.field.node.report_response.field_skill_answer
     - field.field.node.report_response.field_skill_reference
+    - field.field.node.report_response.field_themes
     - node.type.report_response
     - workflows.workflow.editorial_workflow
   module:
@@ -68,6 +69,16 @@ content:
     region: content
     settings:
       match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_themes:
+    type: entity_reference_autocomplete_tags
+    weight: 15
+    region: content
+    settings:
+      match_operator: STARTS_WITH
       match_limit: 10
       size: 60
       placeholder: ''

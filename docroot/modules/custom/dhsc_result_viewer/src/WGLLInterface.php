@@ -3,7 +3,7 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface WGLLInterface.
+ * Interface for What Good Looks Like tool.
  *
  * @package Drupal\dhsc_result_viewer
  */
@@ -16,6 +16,7 @@ interface WGLLInterface {
    *   Webform values.
    *
    * @return mixed
+   *   Return summary.
    */
   public function getResultsSummary($data);
 

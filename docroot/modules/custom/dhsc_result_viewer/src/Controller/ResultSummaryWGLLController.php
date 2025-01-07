@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * Class ResultSummaryWGLLController.
+ * Class ResultSummaryController for What Good Looks Like tool.
  *
  * @package Drupal\dhsc_result_viewer\Controller
  */
@@ -108,7 +108,7 @@ class ResultSummaryWGLLController extends ControllerBase {
    * Get submission results.
    *
    * @return mixed
-   *   Resurn submission results.
+   *   Return submission results.
    */
   public function getResults($submission) {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
@@ -135,19 +135,39 @@ class ResultSummaryWGLLController extends ControllerBase {
       $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])->toString();
     }
 
-    if ($result = $this->getResults($submission)) {
+    if ($results = $this->getResults($submission)) {
 
       $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
 
       // Save result data in tempstore for email result behaviour.
-      $tempStore->set('wgll_result_data', $result);
+      $tempStore->set('wgll_result_data', $results);
 
+      $categories = [];
+      $found = FALSE;
+      foreach ($results as $result) {
+        $category = $result['#category'];
+        if (empty($categories)) {
+          $categories[] = [$category];
+          $categories[0][] = $result;
+        }
+        else {
+          foreach ($categories as $key => $item) {
+            if (in_array($category, $item)) {
+              $categories[$key][] = $result;
+              $found = TRUE;
+            }
+          }
+          if (!$found) {
+            $categories[] = [$category, $result];
+          }
+        }
+      }
       $element = [
         '#theme' => 'dhsc_results_list_wgll',
         '#result_variant' => NULL,
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('wgll_result_summary') ? $config->get('wgll_result_summary') : NULL,
-        '#result' => $result,
+        '#result' => $categories,
         '#submission_url' => $submission_url ?? NULL,
         '#email_form' => \Drupal::formBuilder()->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
       ];
