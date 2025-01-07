@@ -60,14 +60,9 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
     }
     $html = htmlspecialchars_decode(htmlentities($html, ENT_NOQUOTES, 'ISO-8859-1'), ENT_NOQUOTES);
 
-    // $html = str_replace('src="' . $base_url . '/', 'src="/', $html);
-    //    $html = str_replace('href="/', 'href="' . $base_url . '/', $html);.
     $html = str_replace('src="/', 'src="' . $base_url . '/', $html);
     $html = str_replace('&nbsp;', ' ', $html);
 
-    // Echo $base_url;
-    //    echo $html;
-    //    exit();
     $this->dompdf->setOptions($this->options);
     $this->dompdf->loadHtml($html);
     $this->dompdf->setPaper($pageSize, $disposition);
