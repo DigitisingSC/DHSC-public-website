@@ -3,19 +3,18 @@
 namespace Drupal\dhsc_result_viewer;
 
 use Dompdf\Dompdf;
-use Drupal\Core\Render\Markup;
 use Drupal\pdf_generator\DomPdfGenerator;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Defines helpers methods to help in managing config which used in SCity.
  */
-class DhscDomPdfGenerator extends DomPdfGenerator
-{
+class DhscDomPdfGenerator extends DomPdfGenerator {
+
   /**
    * @inheritDoc
    */
-  public function getResponse($title, array $content, $preview = FALSE, array $options = [], $pageSize = 'A4', $showPagination = 0, $paginationX = 0, $paginationY = 0, $disposition = 'portrait', $cssText = NULL, $cssPath = NULL, $forceDownload = TRUE){
+  public function getResponse($title, array $content, $preview = FALSE, array $options = [], $pageSize = 'A4', $showPagination = 0, $paginationX = 0, $paginationY = 0, $disposition = 'portrait', $cssText = NULL, $cssPath = NULL, $forceDownload = TRUE) {
     $request = $this->requestStack->getCurrentRequest();
     $base_url = $request->getSchemeAndHttpHost();
 
@@ -55,17 +54,18 @@ class DhscDomPdfGenerator extends DomPdfGenerator
 
     if (function_exists('utf8_decode')) {
       $html = utf8_decode($html);
-    } elseif (function_exists('mb_convert_encoding')) {
+    }
+    elseif (function_exists('mb_convert_encoding')) {
       $html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
     }
     $html = htmlspecialchars_decode(htmlentities($html, ENT_NOQUOTES, 'ISO-8859-1'), ENT_NOQUOTES);
 
-    //    $html = str_replace('src="' . $base_url . '/', 'src="/', $html);
-    //    $html = str_replace('href="/', 'href="' . $base_url . '/', $html);
+    // $html = str_replace('src="' . $base_url . '/', 'src="/', $html);
+    //    $html = str_replace('href="/', 'href="' . $base_url . '/', $html);.
     $html = str_replace('src="/', 'src="' . $base_url . '/', $html);
     $html = str_replace('&nbsp;', ' ', $html);
 
-    //    echo $base_url;
+    // Echo $base_url;
     //    echo $html;
     //    exit();
     $this->dompdf->setOptions($this->options);
@@ -81,4 +81,5 @@ class DhscDomPdfGenerator extends DomPdfGenerator
     $response->headers->set('Content-Disposition', "attachment; filename={$title}.pdf");
     return $response;
   }
+
 }
