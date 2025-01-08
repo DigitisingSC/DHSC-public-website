@@ -3,54 +3,13 @@
 namespace Drupal\dhsc_result_viewer;
 
 use Dompdf\Dompdf;
-use Drupal\Core\Extension\ModuleHandlerInterface;
-use Drupal\Core\Render\RendererInterface;
 use Drupal\pdf_generator\DomPdfGenerator;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Defines helpers methods to help in managing config which used in SCity.
  */
 class DhscDomPdfGenerator extends DomPdfGenerator {
-
-  /**
-   * The request stack.
-   *
-   * @var \Symfony\Component\HttpFoundation\RequestStack
-   */
-  protected $requestStack;
-
-  /**
-   * The renderer service.
-   *
-   * @var \Drupal\Core\Render\RendererInterface
-   */
-  protected $renderer;
-
-  /**
-   * The module handler.
-   *
-   * @var \Drupal\Core\Extension\ModuleHandlerInterface
-   */
-  protected $moduleHandler;
-
-  /**
-   * Constructs a DhscDomPdfGenerator object.
-   *
-   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
-   *   The request stack.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer service.
-   * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
-   *   The module handler.
-   */
-  public function __construct(RequestStack $request_stack, RendererInterface $renderer, ModuleHandlerInterface $module_handler) {
-    $this->requestStack = $request_stack;
-    $this->renderer = $renderer;
-    $this->moduleHandler = $module_handler;
-    parent::__construct($request_stack, $renderer, $module_handler);
-  }
 
   /**
    * {@inheritdoc}
@@ -68,7 +27,7 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
     // Dompdf needs to be initialized with custom options if they are supplied.
     $this->dompdf = new Dompdf($this->options);
 
-    $css = file_get_contents($this->moduleHandler->getPath('pdf_generator') . '/css/pdf.css');
+    $css = file_get_contents($this->moduleHandler->getModule('pdf_generator')->getPath() . '/css/pdf.css');
 
     // Add inline css from text.
     if (!empty($cssText)) {
