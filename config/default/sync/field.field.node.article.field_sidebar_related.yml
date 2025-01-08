@@ -14,7 +14,7 @@ entity_type: node
 bundle: article
 label: 'Related information'
 description: 'Displayed in the <b>sidebar</b>'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -75,6 +75,12 @@ settings:
         enabled: false
       further_information:
         weight: 48
+        enabled: false
+      latest_events:
+        weight: 51
+        enabled: false
+      latest_news:
+        weight: 52
         enabled: false
       link_description:
         weight: 47
