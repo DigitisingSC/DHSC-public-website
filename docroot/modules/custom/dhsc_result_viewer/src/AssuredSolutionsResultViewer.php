@@ -4,11 +4,13 @@ namespace Drupal\dhsc_result_viewer;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Entity\Query\QueryFactoryInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
-use Drupal\node\Entity\Node;
+use Drupal\path_alias\AliasManagerInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\webform\Utility\WebformOptionsHelper;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class AssuredSolutionsResultViewer.
@@ -27,28 +29,28 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
   /**
    * Node storage.
    *
-   * @var \Drupal\Node\NodeStorageInterface
+   * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   protected $nodeStorage;
 
   /**
-   * View builder.
+   * View builder for nodes.
    *
-   * @var \Drupal\Taxonomy\TermStorageInterface
+   * @var \Drupal\Core\Entity\EntityViewBuilderInterface
    */
   protected $viewBuilder;
 
   /**
-   * View builder.
+   * View builder for paragraphs.
    *
-   * @var \Drupal\Taxonomy\TermStorageInterface
+   * @var \Drupal\Core\Entity\EntityViewBuilderInterface
    */
   protected $paragraphViewBuilder;
 
   /**
    * Taxonomy storage.
    *
-   * @var \Drupal\Taxonomy\TermStorageInterface
+   * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   protected $taxonomyStorage;
 
@@ -67,24 +69,59 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
   protected $tempStore;
 
   /**
+   * The alias manager.
+   *
+   * @var \Drupal\path_alias\AliasManagerInterface
+   */
+  protected $aliasManager;
+
+  /**
+   * The entity query service.
+   *
+   * @var \Drupal\Core\Entity\Query\QueryFactoryInterface
+   */
+  protected $entityQuery;
+
+  /**
+   * The request stack.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
    * Device option webform keys.
    *
    * @var array
    */
-  protected $device_option_keys;
+  protected $deviceOptionKeys;
 
   /**
-   * ResultViewer constructor.
+   * AssuredSolutionsResultViewer constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
+   *   The temp store factory.
+   * @param \Drupal\path_alias\AliasManagerInterface $alias_manager
+   *   The alias manager.
+   * @param \Drupal\Core\Entity\Query\QueryFactoryInterface $entity_query
+   *   The entity query factory.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The request stack.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    PrivateTempStoreFactory $temp_store_factory
+    PrivateTempStoreFactory $temp_store_factory,
+    AliasManagerInterface $alias_manager,
+    QueryFactoryInterface $entity_query,
+    RequestStack $request_stack,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->nodeStorage = $entity_type_manager->getStorage('node');
@@ -93,14 +130,21 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
     $this->taxonomyStorage = $entity_type_manager->getStorage('taxonomy_term');
     $this->configFactory = $config_factory;
     $this->tempStore = $temp_store_factory->get('dhsc_result_viewer');
-    $this->device_option_keys = ['device_option_yes', 'device_option_no', 'device_option_not_sure'];
+    $this->aliasManager = $alias_manager;
+    $this->entityQuery = $entity_query;
+    $this->requestStack = $request_stack;
+    $this->deviceOptionKeys = [
+      'device_option_yes',
+      'device_option_no',
+      'device_option_not_sure',
+    ];
   }
 
   /**
    * {@inheritdoc}
    */
   public function getCategories() {
-    return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
+    return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);
   }
 
   /**
@@ -110,7 +154,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
     $results = $this->getResultIds($data, $webform);
 
     if (!$results) {
-      return;
+      return NULL;
     }
 
     foreach ($results as $key => $result) {
@@ -118,8 +162,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
         foreach ($result as $key => $search_criteria) {
           $values['search_criteria'][] = [
             '#theme' => 'search_criteria',
-            '#section' => isset($search_criteria['section']) ? $search_criteria['section'] : NULL,
-            '#answers' => isset($search_criteria['answers']) ? $search_criteria['answers'] : NULL,
+            '#section' => $search_criteria['section'] ?? NULL,
+            '#answers' => $search_criteria['answers'] ?? NULL,
           ];
         }
       }
@@ -135,47 +179,36 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
         foreach ($result as $key => $no_match) {
           $values['no_matches'][] = [
             '#theme' => 'no_match',
-            '#title' => isset($no_match['title']) ? $no_match['title'] : NULL,
-            '#url' => isset($no_match['node_url']) ? $no_match['node_url'] : NULL,
-            '#answers' => isset($no_match['answers']) ? $no_match['answers'] : NULL,
+            '#title' => $no_match['title'] ?? NULL,
+            '#url' => $no_match['node_url'] ?? NULL,
+            '#answers' => $no_match['answers'] ?? NULL,
           ];
         }
       }
     }
 
     $values = [
-      'submission_url' => isset($results['submission_url']) ? $results['submission_url'] : NULL,
+      'submission_url' => $results['submission_url'] ?? NULL,
       'search_criteria' => !empty($values['search_criteria']) ? $values['search_criteria'] : NULL,
       'result_items' => !empty($values['result_items']) ? $values['result_items'] : NULL,
       'no_matches' => !empty($values['no_matches']) ? $values['no_matches'] : NULL,
-      'count' => isset($results['count']) ? $results['count'] : NULL,
-      'non_matching_count' => isset($results['non_matching_count']) ? $results['non_matching_count'] : NULL,
-      'total_count' => isset($results['total_count']) ? $results['total_count'] : NULL,
+      'count' => $results['count'] ?? NULL,
+      'non_matching_count' => $results['non_matching_count'] ?? NULL,
+      'total_count' => $results['total_count'] ?? NULL,
     ];
 
     return $values;
   }
 
   /**
-   * Get ids of all result nodes.
-   *
-   * @param array $data
-   *   Webform values.
-   * @param object $webform
-   *   Webform entity.
-   * @param bool $top_tips
-   *   Check if top tip.
-   *
-   * @return array
-   *   Return result ids.
+   * {@inheritdoc}
    */
   protected function getResultIds(array $data, $webform) {
     $answers = [];
     $search_criteria = [];
-    $field_key = NULL;
 
     // Extract unique submission token value from URL.
-    if ($submission_token = \Drupal::request()->query->get('token')) {
+    if ($submission_token = $this->requestStack->getCurrentRequest()->query->get('token')) {
       $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])->toString();
       $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])->toString();
     }
@@ -223,10 +256,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
     }
 
     if (!empty($results)) {
-      $nodes = Node::loadMultiple($results);
+      /** @var \Drupal\node\NodeStorageInterface $node_storage */
+      $node_storage = $this->entityTypeManager->getStorage('node');
+      /** @var \Drupal\node\Entity\Node[] $nodes */
+      $nodes = $node_storage->loadMultiple($results);
+
       $no_matches = [];
-      $matches = [];
-      $nids = [];
 
       // Check against non possible answers values on the supplier node to
       // further refine matches.
@@ -249,7 +284,10 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
       $results = $this->getNonMatches($nids);
 
       if (!empty($results)) {
-        $no_result_nodes = Node::loadMultiple($results);
+        /** @var \Drupal\node\NodeStorageInterface $node_storage */
+        $node_storage = $this->entityTypeManager->getStorage('node');
+        /** @var \Drupal\node\Entity\Node[] $nodes */
+        $no_result_nodes = $node_storage->loadMultiple($results);
 
         foreach ($no_result_nodes as $node) {
 
@@ -258,7 +296,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
           }
 
           $node_title = $node->getTitle();
-          $node_url = \Drupal::service('path_alias.manager')->getAliasByPath('/node/' . $node->id());
+          $node_url = $this->aliasManager->getAliasByPath('/node/' . $node->id());
 
           foreach ($node->get('field_non_possible_answers')->getValue() as $value) {
             foreach ($answers as $answer) {
@@ -269,11 +307,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
 
                 $field_key = NULL;
                 // We don't have the element key for the first radio field
-                // so check against pre-defined values and set the field_key from the form.
-                if (in_array($value['value'], $this->device_option_keys)) {
+                // so check against pre-defined values and set the field_key
+                // from the form.
+                if (in_array($value['value'], $this->deviceOptionKeys)) {
                   $field_key = substr($answer, 0, strrpos($answer, '_'));
                 }
-                $answer_value = $this->getFormElementValue($field_key, $answer, $webform);
+                $answer_value = $this->getFormElementValue($answer, $webform, $field_key);
                 $no_matches[$node_title]['answers'][$answer_value['section']][] = $answer_value['answer'];
               }
             }
@@ -289,7 +328,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
       'count' => !empty($matches) ? count($matches) : [],
       'total_count' => !empty($matches) ? count($matches) + count($no_matches) : [],
       'no_matches' => !empty($no_matches) ? $no_matches : [],
-      'submission_url' => isset($submission_url) ? $submission_url : [],
+      'submission_url' => $submission_url ?? [],
     ];
 
     // Save result data in tempstore for email result behaviour.
@@ -300,18 +339,19 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
 
   /**
    * Returns all result nodes which contain at least one answer.
-   *
-   * @param array $answers
-   *
-   * @return array
    */
   public function getResultNodes($answers) {
-    $query = \Drupal::entityQuery('node')
+    // Fetch the entity type definition for 'node'.
+    $entity_type = $this->entityTypeManager->getDefinition('node');
+
+    // Create the query using the entity type definition.
+    $query = $this->entityQuery->get($entity_type, 'AND')
       ->accessCheck(FALSE)
       ->condition('type', 'supplier')
       ->condition('status', 1);
+
     $or = $query->orConditionGroup();
-    foreach ($answers as $key => $answer) {
+    foreach ($answers as $answer) {
       $or->condition('field_answers_supplier.value', $answer, '=');
     }
     $query->condition($or);
@@ -327,11 +367,14 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    * Returns all supplier nodes which do not match user search criteria.
    *
    * @param array $nids
+   *   Node ID array.
    *
    * @return array
+   *   Results array.
    */
-  public function getNonMatches($nids) {
-    $query = \Drupal::entityQuery('node')
+  public function getNonMatches(array $nids) {
+    $entity_type = $this->entityTypeManager->getDefinition('node');
+    $query = $this->entityQuery->get($entity_type, 'AND')
       ->accessCheck(FALSE)
       ->condition('type', 'supplier')
       ->condition('status', 1);
@@ -349,15 +392,20 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    * Returns the webform field answer value for checkbox and radio elements.
    *
    * @param string $value
+   *   Value string.
    * @param object $webform
+   *   Webform object.
+   * @param string|null $field_key
+   *   Field key.
    *
-   * @return void
+   * @return array|void
+   *   Array containing section and answer if available.
    */
-  public function getFormElementValue(string $field_key = NULL, $value, $webform) {
+  public function getFormElementValue($value, $webform, $field_key = NULL) {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
 
     if ($element === NULL) {
-      return;
+      return NULL;
     }
 
     $section = $webform->getElement($element['#webform_parent_key'])['#title'];
@@ -394,12 +442,12 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    * @param array $data
    *   Webform values.
    *
-   * @return array|int|void
+   * @return int|void
    *   Return result ids.
    */
   protected function getResultId(TermInterface $term, array $data) {
     if ($term->bundle() != 'category') {
-      return;
+      return NULL;
     }
 
     if (!$term->get('field_answer_machine_name')->isEmpty()) {
@@ -461,6 +509,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    *
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
+   *
+   * @throws \Drupal\Core\Entity\EntityMalformedException
    */
   protected function getWebFormUrl() {
     if ($this->getSubmission()) {
@@ -483,13 +533,13 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if (!$webform) {
-        return;
+        return NULL;
       }
 
       $config_name = $webform->getConfigDependencyName();
       $config = $this->configFactory->get($config_name);
       if (!$config) {
-        return;
+        return NULL;
       }
       $raw_data = $config->getRawData();
 
