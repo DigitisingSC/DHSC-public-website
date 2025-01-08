@@ -15,8 +15,7 @@ use Drupal\webform\Utility\WebformOptionsHelper;
  *
  * @package Drupal\dhsc_assured_solutions_result_viewer
  */
-class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
-{
+class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
 
   /**
    * Entity type manager.
@@ -100,16 +99,14 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   /**
    * {@inheritdoc}
    */
-  public function getCategories()
-  {
+  public function getCategories() {
     return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data, $webform)
-  {
+  public function getResultsSummary($data, $webform) {
     $results = $this->getResultIds($data, $webform);
 
     if (!$results) {
@@ -172,8 +169,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data, $webform)
-  {
+  protected function getResultIds(array $data, $webform) {
     $answers = [];
     $search_criteria = [];
     $field_key = NULL;
@@ -185,7 +181,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
 
     foreach ($data as $key => $answer) {
-      // check we have an answer value in both checkboxes and radio form fields.
+      // Check we have an answer value in both checkboxes and radio form fields.
       if ($answer === '0' || empty($answer)) {
         continue;
       }
@@ -210,7 +206,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
           $value = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
           if (count($value) > 1) {
             $item = $value;
-          } elseif (count($value) === 1) {
+          }
+          elseif (count($value) === 1) {
             $item = reset($value);
           }
           $section = $webform->getElement($element['#webform_parent_key'])['#title'];
@@ -231,8 +228,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $matches = [];
       $nids = [];
 
-      // check against non possible answers values on the supplier node to
-      // further refine matches
+      // Check against non possible answers values on the supplier node to
+      // further refine matches.
       $matches = array_filter($nodes, function ($node) use ($answers) {
         $fieldItems = $node->get('field_non_possible_answers')->getValue();
         foreach ($fieldItems as $value) {
@@ -246,7 +243,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
         return $node->id();
       }, $matches);
 
-      // query for all supplier nodes where there is no match
+      // Query for all supplier nodes where there is no match.
       $nids = array_unique($nids);
 
       $results = $this->getNonMatches($nids);
@@ -305,10 +302,10 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * Returns all result nodes which contain at least one answer.
    *
    * @param array $answers
+   *
    * @return array
    */
-  public function getResultNodes($answers)
-  {
+  public function getResultNodes($answers) {
     $query = \Drupal::entityQuery('node')
       ->accessCheck(FALSE)
       ->condition('type', 'supplier')
@@ -330,14 +327,14 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * Returns all supplier nodes which do not match user search criteria.
    *
    * @param array $nids
+   *
    * @return array
    */
-  public function getNonMatches($nids)
-  {
+  public function getNonMatches($nids) {
     $query = \Drupal::entityQuery('node')
-    ->accessCheck(FALSE)
-    ->condition('type', 'supplier')
-    ->condition('status', 1);
+      ->accessCheck(FALSE)
+      ->condition('type', 'supplier')
+      ->condition('status', 1);
     foreach ($nids as $nid) {
       $query->condition('nid', $nid, 'NOT IN');
     }
@@ -353,10 +350,10 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    *
    * @param string $value
    * @param object $webform
+   *
    * @return void
    */
-  public function getFormElementValue(string $field_key = NULL, $value, $webform)
-  {
+  public function getFormElementValue(string $field_key = NULL, $value, $webform) {
     $element = $field_key ? $webform->getElement($field_key) : $webform->getElement($value);
 
     if ($element === NULL) {
@@ -378,7 +375,8 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       $value = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
       if (count($value) > 1) {
         $item = $value;
-      } elseif (count($value) === 1) {
+      }
+      elseif (count($value) === 1) {
         $item = reset($value);
       }
       return [
@@ -391,7 +389,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   /**
    * Get id of result node.
    *
-   * @param TermInterface $term
+   * @param \Drupal\taxonomy\TermInterface $term
    *   Category term.
    * @param array $data
    *   Webform values.
@@ -399,8 +397,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @return array|int|void
    *   Return result ids.
    */
-  protected function getResultId(TermInterface $term, array $data)
-  {
+  protected function getResultId(TermInterface $term, array $data) {
     if ($term->bundle() != 'category') {
       return;
     }
@@ -424,24 +421,21 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
   /**
    * {@inheritdoc}
    */
-  public function getSubmissionId()
-  {
+  public function getSubmissionId() {
     return $this->tempStore->get('sid');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllReset()
-  {
+  public function questionsAllReset() {
     return $this->tempStore->set('yes_to_all_questions', NULL);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSubmission()
-  {
+  public function getSubmission() {
     $sid = $this->getSubmissionId();
     if ($sid) {
       $submission = $this->entityTypeManager->getStorage('webform_submission')->load($sid);
@@ -449,15 +443,13 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
     }
   }
 
-
   /**
    * Get webform submission data.
    *
    * @return array
    *   Return webform submission data.
    */
-  protected function getSubmissionData()
-  {
+  protected function getSubmissionData() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       return $submission->getData();
@@ -470,8 +462,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
    */
-  protected function getWebFormUrl()
-  {
+  protected function getWebFormUrl() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -488,8 +479,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
    * @return mixed|void
    *   Return webform confirmation page path.
    */
-  protected function getConfirmationPagePath()
-  {
+  protected function getConfirmationPagePath() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
@@ -508,4 +498,5 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface
       return $raw_data['settings']['page_confirm_path'];
     }
   }
+
 }
