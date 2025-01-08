@@ -10,6 +10,7 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
