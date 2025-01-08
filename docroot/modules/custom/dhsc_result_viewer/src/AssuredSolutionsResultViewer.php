@@ -463,8 +463,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    *   Return webform url.
    */
   protected function getWebFormUrl() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if ($webform) {
@@ -480,8 +479,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    *   Return webform confirmation page path.
    */
   protected function getConfirmationPagePath() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if (!$webform) {
