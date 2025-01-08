@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Provides custom overrides for the Digital Health and Social Care website.
  */
 
 use Drupal\Core\Entity\EntityInterface;
@@ -107,11 +108,7 @@ function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity) 
 }
 
 /**
- * Implements hook_form_alter().
- *
- * @param [type] $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param [type] $form_id
+ * Implements hook_form_FORM_ID_alter().
  */
 function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $displayId = $form_state->get('view')->getDisplay()->display['id'];

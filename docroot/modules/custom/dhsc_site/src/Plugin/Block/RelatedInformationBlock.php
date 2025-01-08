@@ -8,6 +8,8 @@ use Drupal\node\Entity\Node;
 use Drupal\paragraphs\Entity\Paragraph;
 
 /**
+ * Related information block.
+ *
  * Provides block with related information
  * when node has the related information field with values.
  *
