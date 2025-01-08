@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
  * )
  */
-class setFormMetdataHandler extends WebformHandlerBase {
+class SetFormMetdataHandler extends WebformHandlerBase {
 
   /**
    * {@inheritdoc}
@@ -54,13 +54,15 @@ class setFormMetdataHandler extends WebformHandlerBase {
           $submitted_values[] = $item;
         }
       }
-      // If all answers are 'Yes' set tempstore var to show result page variation.
+      // If all answers are 'Yes' set tempstore var to show result page
+      // variation.
       if (!empty($submitted_values) && array_unique($submitted_values) === ['Yes']) {
         $tempstore->set('yes_to_all_questions', TRUE);
       }
     }
 
-    // Set submission id tempstore var to load submission data prior to showing results.
+    // Set submission id tempstore var to load submission data prior to showing
+    // results.
     if ($sid = $webform_submission->id()) {
       $tempstore->set('sid', $sid);
     }
