@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Contains deployment-related logic.
  */
 
 /**
