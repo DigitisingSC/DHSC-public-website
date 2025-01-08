@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: node
 bundle: subtopic_page
 label: 'Featured Image'
-description: ''
+description: "Image guidelines.\r\nImages must be sized to 644px width and 440px height"
 required: false
 translatable: true
 default_value: {  }
