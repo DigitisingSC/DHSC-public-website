@@ -7,7 +7,7 @@ use Drupal\localgov_guides\Plugin\Block\GuidesContentsBlock;
 use Drupal\node\Entity\Node;
 
 /**
- * Provides a 'Custom Target Block' block.
+ * Provides a 'DHSC Content Guide Block' block.
  *
  * @Block(
  *   id = "dhsc_content_guide_block",
@@ -15,26 +15,6 @@ use Drupal\node\Entity\Node;
  *   category = @Translation("DHSC")
  * )
  */
-//class DhscContentGuideBlock extends GuidesContentsBlock {
-//  /**
-//   * {@inheritdoc}
-//   */
-//  public function build() {
-//    $build = parent::build();
-//    $build[0]['#theme'] = 'dhsc_content_guide_block';
-//    $links = $build[0]['#links'];
-//    foreach ($links as $link) {
-//      $linked_url = $link->getUrl();
-//      $linked_node = Node::load($linked_url->getRouteParameters()['node']);
-//      if (!$linked_node->isPublished()) {
-//        $linked_url->setOption('attributes', ['class' => 'unpublished']);
-//      }
-//    }
-//
-//    return $build;
-//  }
-//}
-
 class DhscContentGuideBlock extends GuidesAbstractBaseBlock {
 
   /**
