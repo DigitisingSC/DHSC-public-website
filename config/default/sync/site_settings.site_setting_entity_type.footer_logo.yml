@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: footer_logo
 label: 'Footer logo'
-fieldset: Footer
+group: null
 multiple: false
