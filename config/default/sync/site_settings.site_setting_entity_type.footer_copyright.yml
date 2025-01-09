@@ -1,8 +1,10 @@
 uuid: bdcb8f62-3ec6-411f-81b1-17ea27a1f1f8
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.footer
 id: footer_copyright
 label: 'Footer copyright'
-group: null
+group: footer
 multiple: false
