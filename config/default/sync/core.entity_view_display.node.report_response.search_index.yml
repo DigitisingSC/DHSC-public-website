@@ -1,9 +1,9 @@
-uuid: f7f5387a-ca68-435c-af36-6e02fda293ab
+uuid: d520c666-3cee-4c22-8891-9a19fc9a20a9
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.search_index
     - field.field.node.report_response.field_body_paragraphs
     - field.field.node.report_response.field_skill_answer
     - field.field.node.report_response.field_skill_reference
@@ -11,10 +11,10 @@ dependencies:
     - node.type.report_response
   module:
     - user
-id: node.report_response.teaser
+id: node.report_response.search_index
 targetEntityType: node
 bundle: report_response
-mode: teaser
+mode: search_index
 content:
   content_moderation_control:
     settings: {  }

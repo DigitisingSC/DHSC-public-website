@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.report_response.field_body_paragraphs
     - field.field.node.report_response.field_skill_answer
     - field.field.node.report_response.field_skill_reference
+    - field.field.node.report_response.field_themes
     - node.type.report_response
   module:
     - entity_reference_revisions
@@ -36,6 +37,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_themes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
