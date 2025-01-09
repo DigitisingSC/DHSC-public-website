@@ -19,4 +19,13 @@
       @apply not-sr-only block mb-3;
     }
   }
+
+  &--sorted {
+    .o-tool__result {
+      @apply mb-7 border-b border-black-20;
+    }
+    .m-tool-result {
+      @apply border-b-transparent pb-0;
+    }
+  }
 }

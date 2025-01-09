@@ -3,7 +3,7 @@
 namespace Drupal\dhsc_result_viewer;
 
 /**
- * Interface DSFInterface.
+ * Interface for DSF tool.
  *
  * @package Drupal\dhsc_result_viewer
  */
@@ -16,7 +16,7 @@ interface DSFInterface {
    *   Webform values.
    *
    * @return mixed
-   *   Returns result summary values.
+   *   Return summary.
    */
   public function getResultsSummary(array $data);
 
