@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: node
 bundle: content_page
 label: 'Featured Image'
-description: "Image guidelines.\r\nImages must be sized to 322px width and 275px height"
+description: ''
 required: false
 translatable: true
 default_value: {  }
