@@ -1,8 +1,10 @@
 uuid: 8b5a915c-701d-4f0d-9dd1-871df9782a2f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.search
 id: quick_search
 label: 'Quick search'
-group: null
+group: search
 multiple: false
