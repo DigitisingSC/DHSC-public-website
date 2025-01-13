@@ -1,22 +1,19 @@
-uuid: 81b6f4da-8487-47b6-9422-3efa8f569d91
+uuid: null
 langcode: en
 status: true
 dependencies:
   config:
-    - image.style.thumbnail
+    - core.entity_view_mode.site_setting_entity.teaser
   module:
-    - image
-    - media
+    - site_settings
     - user
-_core:
-  default_config_hash: diywn6VdMoQOlDA-xslKdKrDko3SsTKfaK3WBG45UAg
-id: media
-label: Media
+id: site_settings
+label: 'Site settings'
 module: views
-description: 'Find and manage media.'
+description: 'A list of all site settings.'
 tag: ''
-base_table: media_field_data
-base_field: mid
+base_table: site_setting_entity_field_data
+base_field: id
 display:
   default:
     id: default
@@ -24,18 +21,19 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Media
+      title: List
       fields:
-        media_bulk_form:
-          id: media_bulk_form
-          table: media
-          field: media_bulk_form
+        id:
+          id: id
+          table: site_setting_entity_field_data
+          field: id
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
-          plugin_id: bulk_form
-          label: ''
+          entity_type: site_setting_entity
+          entity_field: id
+          plugin_id: field
+          label: ID
           exclude: false
           alter:
             alter_text: false
@@ -63,110 +61,6 @@ display:
             strip_tags: false
             trim: false
             preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          action_title: Action
-          include_exclude: exclude
-          selected_actions: {  }
-        thumbnail__target_id:
-          id: thumbnail__target_id
-          table: media_field_data
-          field: thumbnail__target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: thumbnail
-          plugin_id: field
-          label: Thumbnail
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
-          settings:
-            image_link: ''
-            image_style: thumbnail
-            image_loading:
-              attribute: lazy
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        name:
-          id: name
-          table: media_field_data
-          field: name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: media
-          plugin_id: field
-          label: 'Media name'
-          exclude: false
-          alter:
-            alter_text: false
-            make_link: false
-            absolute: false
-            word_boundary: false
-            ellipsis: false
-            strip_tags: false
-            trim: false
             html: false
           element_type: ''
           element_class: ''
@@ -181,9 +75,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: string
+          type: number_integer
           settings:
-            link_to_entity: true
+            thousand_separator: ''
+            prefix_suffix: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -194,82 +89,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        bundle:
-          id: bundle
-          table: media_field_data
-          field: bundle
+        group:
+          id: group
+          table: site_setting_entity_field_data
+          field: group
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
-          entity_field: bundle
+          entity_type: site_setting_entity
+          entity_field: group
           plugin_id: field
-          label: Type
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: false
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        uid:
-          id: uid
-          table: media_field_data
-          field: uid
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: uid
-          plugin_id: field
-          label: Author
+          label: Group
           exclude: false
           alter:
             alter_text: false
@@ -324,17 +154,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        status:
-          id: status
-          table: media_field_data
-          field: status
+        type:
+          id: type
+          table: site_setting_entity_field_data
+          field: type
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
-          entity_field: status
+          entity_type: site_setting_entity
+          entity_field: type
           plugin_id: field
-          label: Status
+          label: Type
           exclude: false
           alter:
             alter_text: false
@@ -375,13 +205,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: boolean
+          click_sort_column: target_id
+          type: entity_reference_label
           settings:
-            format: custom
-            format_custom_false: Unpublished
-            format_custom_true: Published
-          group_column: value
+            link: true
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -391,17 +219,17 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        changed:
-          id: changed
-          table: media_field_data
-          field: changed
+        description:
+          id: description
+          table: site_setting_entity_field_data
+          field: description
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
-          entity_field: changed
+          entity_type: site_setting_entity
+          entity_field: description
           plugin_id: field
-          label: Updated
+          label: Description
           exclude: false
           alter:
             alter_text: false
@@ -434,7 +262,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -443,20 +271,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: timestamp
+          type: string
           settings:
-            date_format: short
-            custom_date_format: ''
-            timezone: ''
-            tooltip:
-              date_format: ''
-              custom_date_format: ''
-            time_diff:
-              enabled: false
-              future_format: '@interval hence'
-              past_format: '@interval ago'
-              granularity: 2
-              refresh: 60
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -467,14 +284,65 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        rendered_entity:
+          id: rendered_entity
+          table: site_setting_entity
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: site_setting_entity
+          plugin_id: rendered_entity
+          label: Value
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: teaser
         operations:
           id: operations
-          table: media
+          table: site_setting_entity
           field: operations
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
+          entity_type: site_setting_entity
           plugin_id: entity_operations
           label: Operations
           exclude: false
@@ -517,18 +385,17 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          destination: true
+          destination: false
       pager:
         type: full
         options:
           offset: 0
-          pagination_heading_level: h4
           items_per_page: 50
           total_pages: null
           id: 0
           tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
+            next: ››
+            previous: ‹‹
             first: '« First'
             last: 'Last »'
           expose:
@@ -543,7 +410,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Filter
+          submit_button: Apply
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
@@ -553,244 +420,77 @@ display:
       access:
         type: perm
         options:
-          perm: 'access media overview'
+          perm: 'access site settings overview'
       cache:
         type: tag
         options: {  }
-      empty:
-        area_text_custom:
-          id: area_text_custom
-          table: views
-          field: area_text_custom
+      empty: {  }
+      sorts:
+        group:
+          id: group
+          table: site_setting_entity_field_data
+          field: group
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text_custom
-          empty: true
-          content: 'No media available.'
-          tokenize: false
-      sorts:
+          entity_type: site_setting_entity
+          entity_field: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
         created:
           id: created
-          table: media_field_data
+          table: site_setting_entity_field_data
           field: created
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
+          entity_type: site_setting_entity
           entity_field: created
           plugin_id: date
           order: DESC
           expose:
             label: ''
-            field_identifier: created
+            field_identifier: ''
           exposed: false
           granularity: second
       arguments: {  }
       filters:
-        name:
-          id: name
-          table: media_field_data
-          field: name
+        group:
+          id: group
+          table: site_setting_entity_field_data
+          field: group
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: media
-          entity_field: name
+          entity_type: site_setting_entity
+          entity_field: group
           plugin_id: string
           operator: contains
           value: ''
           group: 1
           exposed: true
           expose:
-            operator_id: name_op
-            label: 'Media name'
+            operator_id: group_op
+            label: Group
             description: ''
             use_operator: false
-            operator: name_op
+            operator: group_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: name
+            identifier: group
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
               anonymous: '0'
+              content_editor: '0'
               administrator: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        bundle:
-          id: bundle
-          table: media_field_data
-          field: bundle
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: bundle
-          plugin_id: bundle
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: bundle_op
-            label: Type
-            description: ''
-            use_operator: false
-            operator: bundle_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: type
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        status:
-          id: status
-          table: media_field_data
-          field: status
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: status
-          plugin_id: boolean
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'True'
-            description: null
-            use_operator: false
-            operator: status_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: status
-            required: true
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: true
-          group_info:
-            label: 'Published status'
-            description: ''
-            identifier: status
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items:
-              1:
-                title: Published
-                operator: '='
-                value: '1'
-              2:
-                title: Unpublished
-                operator: '='
-                value: '0'
-        status_extra:
-          id: status_extra
-          table: media_field_data
-          field: status_extra
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          plugin_id: media_status
-          operator: '='
-          value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        langcode:
-          id: langcode
-          table: media_field_data
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: media
-          entity_field: langcode
-          plugin_id: language
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: langcode_op
-            label: Language
-            description: ''
-            use_operator: false
-            operator: langcode_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: langcode
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            reduce: false
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -810,50 +510,26 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            name: name
-            bundle: bundle
-            changed: changed
-            uid: uid
-            status: status
-            thumbnail__target_id: thumbnail__target_id
-          default: changed
+            group: group
+            description: description
+            rendered_entity: rendered_entity
+          default: group
           info:
-            name:
+            group:
               sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            bundle:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            changed:
-              sortable: true
-              default_sort_order: desc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            uid:
+            description:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            status:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            thumbnail__target_id:
+            rendered_entity:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -863,11 +539,16 @@ display:
           override: true
           sticky: false
           summary: ''
-          empty_table: true
+          empty_table: false
           caption: ''
           description: ''
       row:
         type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       query:
         type: views_query
         options:
@@ -877,44 +558,24 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
-      header: {  }
+      header:
+        not_yet_created_site_setting_entities:
+          id: not_yet_created_site_setting_entities
+          table: views
+          field: not_yet_created_site_setting_entities
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: not_yet_created_site_settings
+          empty: true
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user
-        - user.permissions
-      tags: {  }
-  media_page_list:
-    id: media_page_list
-    display_title: Media
-    display_plugin: page
-    position: 1
-    display_options:
-      display_description: ''
-      display_extenders: {  }
-      path: admin/content/media
-      menu:
-        type: tab
-        title: Media
-        description: ''
-        weight: 0
-        expanded: false
-        menu_name: main
-        parent: ''
-        context: '0'
-    cache_metadata:
-      max-age: 0
-      contexts:
-        - 'languages:language_content'
-        - 'languages:language_interface'
-        - url
-        - url.query_args
-        - user
         - user.permissions
       tags: {  }

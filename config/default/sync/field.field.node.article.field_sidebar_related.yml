@@ -76,6 +76,12 @@ settings:
       further_information:
         weight: 48
         enabled: false
+      latest_events:
+        weight: 51
+        enabled: false
+      latest_news:
+        weight: 52
+        enabled: false
       link_description:
         weight: 47
         enabled: false
