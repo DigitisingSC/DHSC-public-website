@@ -1,0 +1,43 @@
+{#
+/**
+* @file
+* Default theme implementation for the guides_contents_block block.
+*/
+#}
+
+{% if not localgov_base_remove_css %}
+  {{ attach_library('localgov_base/guide-nav') }}
+{% endif %}
+
+{% if links %}
+
+  {% if format == 'ordered' %}
+    {% set list_type = 'ol' %}
+  {% else %}
+    {% set list_type = 'ul' %}
+  {% endif %}
+  <nav class="lgd-guide-nav mt-10 mb-14" aria-label="{{ 'Guide'|t }}">
+    <{{ list_type }} class="lgd-guide-nav__list">
+    {% for link in links %}
+      {% if link.url.options.attributes.class.0 == 'lgd-guide-nav__list-item--active' %}
+        <li class="lgd-guide-nav__list-item {{ link.url.options.attributes.class.0 }} {{ link.url.options.attributes.class.1 }} leading-6 text-base font-bold mb-5 flex items-center" aria-current="page">
+          <span class="block w-4 h-[1px] mr-3 bg-black-60"></span>
+          {{ link.text }}
+          {% if link.url.options.attributes.class.1 == 'lgd-guide-nav__list-item--unpublished' %}
+          &nbsp;<sup>(Unpublished)</sup>
+          {% endif %}
+        </li>
+      {% else %}
+        <li class="lgd-guide-nav__list-item leading-6 text-base mb-5 flex items-center">
+          <span class="block w-4 h-[1px] mr-3 bg-black-60"></span>
+          <a href="{{ link.url }}" class="{{ link.url.options.attributes.class.1 }} flex items-center w-auto">{{ link.text }}</a>
+          {% if link.url.options.attributes.class.1 == 'lgd-guide-nav__list-item--unpublished' %}
+          &nbsp;<sup>(Unpublished)</sup>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+    </{{ list_type }}>
+  </nav>
+
+{% endif %}
