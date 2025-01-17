@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: quick_search
 label: 'Quick search'
-group: null
+fieldset: null
 multiple: false

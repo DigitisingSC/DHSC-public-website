@@ -6,8 +6,12 @@ dependencies:
     - field.storage.paragraph.localgov_text
     - paragraphs.paragraphs_type.accordion_item
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.accordion_item.localgov_text
 field_name: localgov_text
 entity_type: paragraph

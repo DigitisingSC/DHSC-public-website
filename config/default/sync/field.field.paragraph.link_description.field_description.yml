@@ -4,10 +4,16 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_description
+    - filter.format.plain_text
+    - filter.format.restricted_html
     - paragraphs.paragraphs_type.link_description
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.link_description.field_description
 field_name: field_description
 entity_type: paragraph

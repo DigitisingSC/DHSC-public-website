@@ -6,8 +6,12 @@ dependencies:
     - field.storage.paragraph.field_text
     - paragraphs.paragraphs_type.alert
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.alert.field_text
 field_name: field_text
 entity_type: paragraph

@@ -6,8 +6,12 @@ dependencies:
     - field.storage.paragraph.field_skills_and_knowledge
     - paragraphs.paragraphs_type.framework_row
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.framework_row.field_skills_and_knowledge
 field_name: field_skills_and_knowledge
 entity_type: paragraph
