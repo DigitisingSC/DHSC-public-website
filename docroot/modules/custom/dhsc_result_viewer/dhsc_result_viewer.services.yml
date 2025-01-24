@@ -7,9 +7,9 @@ services:
     class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private', '@path_alias.manager', '@entity.query.sql', '@request_stack']
 
-  dhsc_dsf_result_viewer.service:
-    class: Drupal\dhsc_result_viewer\DSFResultViewer
-    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+  dhsc_themed_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\ThemedResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private', '@logger.factory', '@request_stack', '@messenger', '@language_manager', '@plugin.manager.mail', '@string_translation']
 
   dhsc_result_viewer.breadcrumb:
     class: Drupal\dhsc_result_viewer\Breadcrumb\SelfAssessmentBreadcrumbBuilder
