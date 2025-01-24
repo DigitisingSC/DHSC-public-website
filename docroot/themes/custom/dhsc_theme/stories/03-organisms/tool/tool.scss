@@ -28,4 +28,20 @@
       @apply border-b-transparent pb-0;
     }
   }
+
+  &--themed-summary {
+
+    .o-tool__email label {
+      @apply not-sr-only block mb-3;
+    }
+
+    p:first-child {
+      @apply mt-0;
+    }
+
+    p:last-child {
+      @apply mb-0;
+    }
+  }
+
 }
