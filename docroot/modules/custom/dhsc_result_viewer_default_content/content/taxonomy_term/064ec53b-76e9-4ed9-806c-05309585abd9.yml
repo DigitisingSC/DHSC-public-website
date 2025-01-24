@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 064ec53b-76e9-4ed9-806c-05309585abd9
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SFA) Ethical use of technology'
+  weight:
+    -
+      value: 5
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b95317ca-6644-478e-b12b-a228b5d67ef7
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457415
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="//beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">here</a>.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: f658a323-eec2-43c3-a4f6-574aedd69959
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457415
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">here</a>.&nbsp;</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 42be6ca9-0f90-44b5-8c20-a85e18357256
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457415
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 41dd8781-36ab-4cc1-904b-d47bc6cf5636
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457415
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored very high confidence in this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Ethical use of technology'

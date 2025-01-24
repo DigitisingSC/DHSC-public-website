@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 32e2d5fd-1c1a-4a23-9346-0ef9f4005bee
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SFA) Communicating through technology'
+  weight:
+    -
+      value: 2
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 019e8f8a-3606-417e-8b55-051d28e27b74
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457374
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="//beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through-technology">here</a>.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: db5e94e4-0848-4fac-9a84-fd8781e9138e
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457374
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking </span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through-technology"><span>here</span></a><span>.</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 88800d04-95de-45e1-8906-7bd53942def2
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457374
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 6e09df83-8228-4c6a-bac6-1403ea417ef9
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457374
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored very high confidence in this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Communicating through technology'
