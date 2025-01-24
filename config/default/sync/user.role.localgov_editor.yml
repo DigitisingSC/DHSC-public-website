@@ -30,6 +30,7 @@ dependencies:
     - taxonomy.vocabulary.skill_level
     - taxonomy.vocabulary.skill_method
     - taxonomy.vocabulary.theme
+    - taxonomy.vocabulary.toolkit_theme
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -211,6 +212,7 @@ permissions:
   - 'edit terms in skill_level'
   - 'edit terms in skill_method'
   - 'edit terms in theme'
+  - 'edit terms in toolkit_theme'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
@@ -256,6 +258,7 @@ permissions:
   - 'view skill revisions'
   - 'view subtopic_page revisions'
   - 'view supplier revisions'
+  - 'view term revisions in toolkit_theme'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
   - 'view unpublished site setting entities'
