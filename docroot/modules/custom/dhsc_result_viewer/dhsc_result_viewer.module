@@ -39,23 +39,13 @@ function dhsc_result_viewer_theme() {
         'email_form' => NULL,
       ],
     ],
-    'dhsc_results_list_dsf' => [
+    'dhsc_themed_results_list' => [
       'variables' => [
         'title' => NULL,
         'summary' => NULL,
         'result_variant' => NULL,
         'submission_url' => NULL,
-        'result' => NULL,
-        'no_result' => NULL,
-        'email_form' => NULL,
-      ],
-    ],
-    'dhsc_results_list_dsf_advanced' => [
-      'variables' => [
-        'title' => NULL,
-        'summary' => NULL,
-        'result_variant' => NULL,
-        'submission_url' => NULL,
+        'responses' => NULL,
         'result' => NULL,
         'no_result' => NULL,
         'email_form' => NULL,
@@ -98,39 +88,44 @@ function dhsc_result_viewer_theme() {
         'content' => NULL,
       ],
     ],
-    'result_item_dsf' => [
-      'variables' => [
-        'title' => NULL,
-        'answer' => NULL,
-        'content' => NULL,
-      ],
-    ],
-    'result_item_dsf_advanced' => [
-      'variables' => [
-        'title' => NULL,
-        'answer' => NULL,
-        'content' => NULL,
-      ],
-    ],
     'self_assessment_tool__step_1' => [
       'variables' => [],
     ],
     'assured_solutions_tool__step_1' => [
       'variables' => [],
     ],
-    'dsf_tool__step_1' => [
-      'variables' => [],
-    ],
-    'dsf_tool_advanced__step_1' => [
-      'variables' => [],
-    ],
     'mimemail_message__dhsc_result_viewer' => [
+      'render element' => 'elements',
+      'base hook' => 'mimemail_message',
+    ],
+    'mimemail_message__dhsc_result_viewer__theme' => [
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
     ],
     'dhsc_results_pdf_content' => [
       'variables' => [
         'content' => [],
+      ],
+    ],
+    'dhsc_themed_results_pdf_content' => [
+      'variables' => [
+        'results' => [],
+      ],
+    ],
+    'toolkit_theme_selector' => [
+      'variables' => [
+        'theme_name' => NULL,
+      ],
+      'template' => 'toolkit-theme-selector',
+    ],
+    'dhsc_tool__themed_results_summary' => [
+      'variables' => [
+        'title' => NULL,
+        'result_summary' => [],
+        'submission_url' => NULL,
+        'download_results_path' => NULL,
+        'email_form' => [],
+        'manager_email_form' => [],
       ],
     ],
   ];
@@ -176,7 +171,8 @@ function dhsc_result_viewer_mail($key, &$message, $params) {
  * Implements hook_preprocess_HOOK().
  */
 function dhsc_result_viewer_preprocess_mimemail_message(array &$variables) {
-  $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+  $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])
+    ->toString();
 }
 
 /**
@@ -187,7 +183,6 @@ function dhsc_result_viewer_preprocess_status_messages(array &$variables) {
   if (isset($variables['message_list']['status'])) {
     $status_messages = $variables['message_list']['status'];
     foreach ($status_messages as $key => $message) {
-
       // Remove status message if updating submission.
       if (strpos((string) $message, 'Submission updated') !== FALSE) {
         unset($variables['message_list']['status'][$key]);
@@ -207,7 +202,6 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
     'dsf_tool',
     'dsf_tool_advanced',
   ]) && ($current_page = $form_state->get('current_page')) !== '') {
-
     // Add a hidden form element to track the current step.
     $form['current_step'] = [
       '#type' => 'value',
@@ -226,7 +220,8 @@ function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(arra
     'dsf_tool',
     'dsf_tool_advanced',
   ])) {
-    $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
+    $suggestions[] = 'webform_submission_form' . '__dhsc_tool__step';
+    $suggestions[] = 'webform_submission_form' . '__dhsc_tool__' . $variables['form']['current_step']['#value'];
   }
 }
 
@@ -279,5 +274,17 @@ function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables) {
   // Pass url from config for back behaviour.
   if ($landing_page_uri) {
     $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for mimemail_message templates.
+ */
+function dhsc_result_viewer_theme_suggestions_mimemail_message_alter(array &$suggestions, array $variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Add a suggestion based on a specific route.
+  if ($route_name == 'dhsc_result_viewer.themed_result_summary') {
+    $suggestions[] = 'mimemail_message__dhsc_result_viewer__themed';
   }
 }
