@@ -1,18 +1,17 @@
 <?php
 
-use \Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-
 /**
  * @file
  * Module to create result pages.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
 /**
  * Implements hook_theme().
  */
-function dhsc_result_viewer_theme()
-{
+function dhsc_result_viewer_theme() {
   return [
     'dhsc_results_list_assured_solutions' => [
       'variables' => [
@@ -83,7 +82,7 @@ function dhsc_result_viewer_theme()
         'title' => NULL,
         'url' => NULL,
         'answers' => [
-          'answer' => NULL
+          'answer' => NULL,
         ],
       ],
     ],
@@ -139,13 +138,8 @@ function dhsc_result_viewer_theme()
 
 /**
  * Implements hook_form_alter().
- *
- * @param [type] $form
- * @param FormStateInterface $form_state
- * @param [type] $form_id
  */
-function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
-{
+function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
   // Re-write submit label when re-submitting answers.
   $form_ids = [
     'webform_submission_assured_solutions_tool_edit_form',
@@ -160,38 +154,40 @@ function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $
   ) {
     $form['actions']['submit']['#value'] = t('Continue');
   }
-
 }
 
 /**
  * Implements hook_mail().
  */
-function dhsc_result_viewer_mail($key, &$message, $params)
-{
+function dhsc_result_viewer_mail($key, &$message, $params) {
   $message['from'] = $params['headers']['From'] ?? NULL;
-  // Strip newline characters from email subjects.
-  $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
-  $message['body'] = $params['body'];
 
+  // Strip newline characters from email subjects.
+  $message['subject'] = isset($params['subject'])
+    ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject'])
+    : NULL;
+
+  // Assign email body and optional parameters.
+  $message['body'] = $params['body'];
   $message['params'] = isset($params['params']) ?? $params['params'];
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_mimemail_message(&$variables) {
+function dhsc_result_viewer_preprocess_mimemail_message(array &$variables) {
   $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
 }
 
 /**
  * Implements hook_preprocess_HOOK().
- *
- * @param $variables
  */
-function dhsc_result_viewer_preprocess_status_messages(&$variables) {
+function dhsc_result_viewer_preprocess_status_messages(array &$variables) {
+  // Check for status messages in the message list.
   if (isset($variables['message_list']['status'])) {
     $status_messages = $variables['message_list']['status'];
     foreach ($status_messages as $key => $message) {
+
       // Remove status message if updating submission.
       if (strpos((string) $message, 'Submission updated') !== FALSE) {
         unset($variables['message_list']['status'][$key]);
@@ -203,12 +199,19 @@ function dhsc_result_viewer_preprocess_status_messages(&$variables) {
 /**
  * Implements hook_webform_submission_form_alter().
  */
-function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInterface $form_state, $form_id)
-{
-  if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool', 'dsf_tool', 'dsf_tool_advanced']) && ($current_page = $form_state->get('current_page')) !== '') {
+function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  // Target specific webforms.
+  if (in_array($form['#webform_id'], [
+    'self_assessment_tool',
+    'assured_solutions_tool',
+    'dsf_tool',
+    'dsf_tool_advanced',
+  ]) && ($current_page = $form_state->get('current_page')) !== '') {
+
+    // Add a hidden form element to track the current step.
     $form['current_step'] = [
       '#type' => 'value',
-      '#value' =>  $current_page,
+      '#value' => $current_page,
     ];
   }
 }
@@ -216,9 +219,13 @@ function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInter
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook)
-{
-  if (in_array($variables['form']['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool', 'dsf_tool', 'dsf_tool_advanced'])) {
+function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook) {
+  if (in_array($variables['form']['#webform_id'], [
+    'self_assessment_tool',
+    'assured_solutions_tool',
+    'dsf_tool',
+    'dsf_tool_advanced',
+  ])) {
     $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
   }
 }
@@ -226,8 +233,7 @@ function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(arra
 /**
  * Implements hook_theme_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
-{
+function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('sa_landing_page');
@@ -239,8 +245,7 @@ function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
 /**
  * Implements hook_theme_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables)
-{
+function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('as_landing_page');
@@ -252,14 +257,13 @@ function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variable
 /**
  * Implements hook_theme_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables)
-{
+function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('dsf_landing_page');
 
   // Pass url from config for back behaviour.
-  if($landing_page_uri) {
+  if ($landing_page_uri) {
     $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
   }
 }
@@ -267,14 +271,13 @@ function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables)
 /**
  * Implements hook_theme_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables)
-{
+function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('dsf_advanced_landing_page');
 
   // Pass url from config for back behaviour.
-  if($landing_page_uri) {
+  if ($landing_page_uri) {
     $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
   }
 }

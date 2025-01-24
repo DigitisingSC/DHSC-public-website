@@ -18,7 +18,7 @@ interface DSFInterface {
    * @return mixed
    *   Return summary.
    */
-  public function getResultsSummary($data);
+  public function getResultsSummary(array $data);
 
   /**
    * Get sorts result ids.

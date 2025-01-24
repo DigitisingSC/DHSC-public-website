@@ -88,6 +88,8 @@ class DSFResultViewer implements DSFInterface {
   }
 
   /**
+   * {@inheritdoc}
+   *
    * Get taxonomy terms for type Skill reference.
    */
   public function getSkillReferences() {
@@ -142,8 +144,6 @@ class DSFResultViewer implements DSFInterface {
    *
    * @param array $data
    *   Webform values.
-   * @param bool $top_tips
-   *   Check if top tip.
    *
    * @return array
    *   Return result ids.
@@ -165,10 +165,10 @@ class DSFResultViewer implements DSFInterface {
   /**
    * Get id of result node.
    *
-   * @param array $data
-   *   Webform values.
    * @param \Drupal\taxonomy\TermInterface $term
    *   Taxonomy term.
+   * @param array $data
+   *   Webform values.
    *
    * @return array|int|void
    *   Return result ids.
@@ -232,8 +232,7 @@ class DSFResultViewer implements DSFInterface {
    *   Return webform url.
    */
   protected function getWebFormUrl() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if ($webform) {
@@ -249,18 +248,17 @@ class DSFResultViewer implements DSFInterface {
    *   Return webform confirmation page path.
    */
   protected function getConfirmationPagePath() {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if (!$webform) {
-        return;
+        return NULL;
       }
 
       $config_name = $webform->getConfigDependencyName();
       $config = $this->configFactory->get($config_name);
       if (!$config) {
-        return;
+        return NULL;
       }
       $raw_data = $config->getRawData();
 

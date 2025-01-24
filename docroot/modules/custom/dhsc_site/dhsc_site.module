@@ -1,10 +1,15 @@
 <?php
 
+/**
+ * @file
+ * Provides custom overrides for the Digital Health and Social Care website.
+ */
+
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Form\FormStateInterface;
 
-/*
+/**
  * Implements hook_theme().
  */
 function dhsc_site_theme() {
@@ -31,28 +36,28 @@ function dhsc_site_theme() {
     ],
     'footer_branding' => [
       'variables' => [
-        'logo' => null,
-        'variant' => null,
-        'site_slogan' => null,
-        'site_name' => null
+        'logo' => NULL,
+        'variant' => NULL,
+        'site_slogan' => NULL,
+        'site_name' => NULL,
       ],
     ],
     'site_copyright' => [
       'variables' => [
-        'text' => null,
+        'text' => NULL,
       ],
     ],
     'footer_contact' => [
       'variables' => [
-        'link' => null,
-        'phone' => null,
+        'link' => NULL,
+        'phone' => NULL,
       ],
     ],
     'related_information' => [
       'variables' => [
-        'title' => null,
+        'title' => NULL,
         'items' => [],
-        'read_more_link' => null,
+        'read_more_link' => NULL,
       ],
     ],
     'skills_active_filters' => [
@@ -80,7 +85,7 @@ function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) 
     || isset($node)
     && $node->getType() === 'skill'
     && $entity->getType() === 'accordion'
-    || $entity->getType() === 'framework_section'){
+    || $entity->getType() === 'framework_section') {
     $form_mode = 'skills_framework';
   }
 }
@@ -88,8 +93,7 @@ function dhsc_site_entity_form_mode_alter(&$form_mode, EntityInterface $entity) 
 /**
  * Implements hook_entity_view_mode_alter().
  */
-function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
-{
+function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity) {
   if (!$entity instanceof ParagraphInterface) {
     return;
   }
@@ -103,12 +107,8 @@ function dhsc_site_entity_view_mode_alter(&$view_mode, EntityInterface $entity)
   }
 }
 
- /**
- * Implements hook_form_alter().
- *
- * @param [type] $form
- * @param FormStateInterface $form_state
- * @param [type] $form_id
+/**
+ * Implements hook_form_FORM_ID_alter().
  */
 function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $displayId = $form_state->get('view')->getDisplay()->display['id'];
@@ -117,7 +117,7 @@ function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $for
     $form['search']['#attributes']['x-model'] = 'searchInputValue';
     $form['search']['#attributes']['class'][] = 'o-search-page-search-form__submit-button';
 
-    // Reset search input button
+    // Reset search input button.
     $form['search']['#children']['reset'] = [
       '#type' => 'inline_template',
       '#template' => '<button type="button" x-show="searchInputValue !== \'\'" @click="searchInputValue = \'\'" class="o-search-page-search-form__reset-button button">'
@@ -126,7 +126,6 @@ function dhsc_site_form_views_exposed_form_alter(&$form, FormStateInterface $for
     ];
   }
 }
-
 
 /**
  * Implements hook_ENTITY_TYPE_update().

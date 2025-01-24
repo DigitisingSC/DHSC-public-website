@@ -47,4 +47,5 @@ class FeaturedLinksBlock extends BlockBase {
     }
     return $links;
   }
+
 }
