@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: a8546c0f-51b2-4d54-9775-5046d77c63c4
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SFA) Digital learning, development and wellbeing'
+  weight:
+    -
+      value: 6
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 24f98eda-1605-4a52-9779-95ef8c2c9679
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457422
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development-and-wellbeing">here</a>.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 5cc7ef2a-979d-4eb2-9a92-358529dc42b0
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457422
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development-and-wellbeing">here</a>.&nbsp;</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 4cfd454e-e66b-432a-a9f4-b335d2fd82c2
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457422
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 8548e515-14c7-47b8-8083-3d74306ff638
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457422
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored very high confidence in this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Digital learning, development and wellbeing'

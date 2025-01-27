@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 1dedfa29-82b9-4fae-8d08-7e27b4b7fc44
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SGF) Technical skills for using technology'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 09bcac2b-67a1-4813-a6f9-fbdbd3994763
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635524
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using-technology"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 2350777b-6410-43cd-9a7f-47625ea069e2
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635524
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using-technology"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b4196ef5-3276-47e5-abfe-06fc3ee60fa4
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635524
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 3f9c4757-7f27-436a-b757-d305cf3fa92e
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635524
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored very high confidence in this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Technical skills for using technology'

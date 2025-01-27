@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: ffed0cd1-2ce5-4059-9d7c-b5c643177018
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SGF) Ethical use of technology'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 0d137aa8-b412-4275-8361-3a94cfda2e62
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635717
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 87865eee-a773-4022-b797-88ac800da6d1
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635717
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 47db5fb6-72b0-4011-8ede-bec7fcc17a96
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635717
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 377b6953-8e72-4cb0-b646-e463dbd649f9
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635717
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored very high confidence in this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Ethical use of technology'

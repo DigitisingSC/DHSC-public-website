@@ -1,0 +1,23 @@
+name: 'DHSC Result Viewer Default Content'
+type: module
+description: 'Default content required for DHSC Themed Summary Tools.'
+package: DHSC
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:default_content
+default_content:
+  taxonomy_term:
+    - 46527870-8ddd-4e3b-897f-a37c23ddc1c0
+    - 07765216-5bb3-4300-950f-147943ab0252
+    - 32e2d5fd-1c1a-4a23-9346-0ef9f4005bee
+    - 9d5973d7-034e-40c9-86ca-9bad37e80b22
+    - c46be5ae-1a1f-4ed1-8fcb-6a148c523148
+    - 064ec53b-76e9-4ed9-806c-05309585abd9
+    - a8546c0f-51b2-4d54-9775-5046d77c63c4
+    - 2b8e074f-0de2-48bc-82ad-3094b9bf61ef
+    - 1dedfa29-82b9-4fae-8d08-7e27b4b7fc44
+    - 258502fb-fad5-4619-aaef-9a3c7dcff08d
+    - cb058a47-a9a8-4ab9-8e3d-d4f50ca9ed8c
+    - fc2f08fa-36d8-4678-9207-8712f56bf9e0
+    - ffed0cd1-2ce5-4059-9d7c-b5c643177018
+    - 9e7f06df-59be-4127-9bd2-afeb39360379

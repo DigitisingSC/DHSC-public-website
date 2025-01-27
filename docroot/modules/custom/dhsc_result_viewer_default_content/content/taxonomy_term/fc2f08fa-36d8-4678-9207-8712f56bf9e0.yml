@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: fc2f08fa-36d8-4678-9207-8712f56bf9e0
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SGF) Being safe and secure online'
+  weight:
+    -
+      value: 0
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: a2dc072e-fa86-403d-a23c-a6ea1eb8c600
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635674
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-person-centred-care"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: c4f7983c-cbf4-46c4-bbb4-8c93b161cbda
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635674
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-person-centred-care"><u>here</u></a><span>.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: de38f5a0-75c6-478c-a1fb-85fe4aa8da30
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635674
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 3ed4a1af-4279-4ac4-aae7-7c765e8726a6
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635674
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored very high confidence in this area of knowledge and skills.&nbsp;</span></p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Being safe and secure online'

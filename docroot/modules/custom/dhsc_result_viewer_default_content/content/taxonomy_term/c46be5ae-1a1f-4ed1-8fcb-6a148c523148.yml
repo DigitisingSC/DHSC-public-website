@@ -1,0 +1,140 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: c46be5ae-1a1f-4ed1-8fcb-6a148c523148
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SFA) Being safe and secure online'
+  weight:
+    -
+      value: 4
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: b94c85b2-ac49-4899-b00f-0fcbb6cb258c
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457408
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">here</a>.&nbsp;</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 663e7c64-5e79-42a1-8b6f-223f47337b04
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457408
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">here</a>.&nbsp;<br>&nbsp;</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 8181d5c6-e457-4dfc-8d6b-3c299152e03f
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457408
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 55d42003-9269-4bf7-bbf6-0cff0ca47f39
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737457408
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You scored very high confidence in this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Being safe and secure online'
