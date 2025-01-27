@@ -1,8 +1,8 @@
 diff --git a/docroot/.htaccess b/docroot/.htaccess
-index 4031da4..474dfa8 100644
+index 4031da4..4d4c078 100644
 --- a/docroot/.htaccess
 +++ b/docroot/.htaccess
-@@ -60,6 +60,10 @@ AddEncoding gzip svgz
+@@ -60,6 +60,14 @@ AddEncoding gzip svgz
  <IfModule mod_rewrite.c>
    RewriteEngine on
  
@@ -10,10 +10,14 @@ index 4031da4..474dfa8 100644
 +  RewriteCond %{HTTP_HOST} ^data\.digitalsocialcare\.co\.uk$ [NC]
 +  RewriteRule ^(.*)$ https://data.digitisingsocialcare.co.uk/$1 [L,R=301]
 +
++  # Redirect from digitalsocialcare.co.uk to digitisingsocialcare.co.uk
++  RewriteCond %{HTTP_HOST} ^digitalsocialcare\.co\.uk$ [NC]
++  RewriteRule ^(.*)$ https://digitisingsocialcare.co.uk/$1 [L,R=301]
++
    # Set "protossl" to "s" if we were accessed via https://.  This is used later
    # if you enable "www." stripping or enforcement, in order to ensure that
    # you don't bounce between http and https.
-@@ -145,6 +149,21 @@ AddEncoding gzip svgz
+@@ -145,6 +153,21 @@ AddEncoding gzip svgz
    # Specifically, disallow autoload.php from being served directly.
    RewriteRule "^(.+/.*|autoload)\.php($|/)" - [F]
  
