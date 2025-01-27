@@ -14,7 +14,7 @@ use Drupal\Core\Render\Markup;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
-use Drupal\dhsc_result_viewer\SelfAssessmentInterface;
+use Drupal\dhsc_result_viewer\SelfAssessmentResultViewer;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -43,7 +43,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
   /**
    * ResultViewer service.
    *
-   * @var \Drupal\dhsc_self_assessment_result_viewer\SelfAssessmentInterface
+   * @var \Drupal\dhsc_result_viewer\SelfAssessmentResultViewer
    */
   protected $resultViewer;
 
@@ -103,7 +103,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
-   * @param \Drupal\dhsc_self_assessment_result_viewer\SelfAssessmentInterface $result_viewer
+   * @param \Drupal\dhsc_result_viewer\SelfAssessmentResultViewer $result_viewer
    *   ResultViewer service.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager service.
@@ -123,7 +123,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    SelfAssessmentInterface $result_viewer,
+    SelfAssessmentResultViewer $result_viewer,
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
     MessengerInterface $messenger,
@@ -180,6 +180,8 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
    *
    * @return array
    *   Return render array.
+   *
+   * @throws \Drupal\Core\TempStore\TempStoreException
    */
   public function build() {
     $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);

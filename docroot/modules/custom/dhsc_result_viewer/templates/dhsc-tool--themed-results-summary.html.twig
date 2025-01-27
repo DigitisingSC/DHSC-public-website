@@ -1,0 +1,70 @@
+<article class="o-tool o-tool--themed-summary">
+
+  <h1 class="mb-5">{{ title }}</h1>
+
+  {{ result_summary }}
+
+  {% if submission_url %}
+    <div class="o-tool__actions mb-20 print:hidden">
+      <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+    </div>
+  {% endif %}
+
+  {% if result_summary %}
+    <div x-data class="mb-7 pb-7">
+      <a class="a-button a-button--primary tablet:mb-0 tablet:mr-5" href="{{ download_results_path }}">
+        <span class="inline-block">{{ 'Download my results'|t }}</span>
+      </a>
+      <a href="#" x-on:click="window.print();" class="o-tool__email-link inline-block mb-5 tablet:mb-0 tablet:mr-5 a-button a-button--primary">
+        <span class="inline-block">{{ 'Print my recommendations'|t }}</span>
+      </a>
+    </div>
+  {% endif %}
+
+  {% if email_form %}
+    {% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+    {% set icon %}
+      {% include '@atoms/svg/svg.twig' with {
+        'sprite': spriteSrc,
+        'icon': 'triangle',
+      } %}
+    {% endset %}
+
+    <div class="o-tool__email mb-7 pb-7" x-data="{ openEmailForm: false }">
+      <div class="o-tool__header mb-4 text-base">
+        <a href="#"
+           class="o-tool__email-link focus:bg-focus inline-block border-b-2 border-black hover:border-transparent no-underline focus:no-underline"
+           @click.prevent="openEmailForm = ! openEmailForm">
+          <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+          <span class="inline-block">{{ 'Email my results to me'|t }}</span>
+        </a>
+      </div>
+      <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base" x-show="openEmailForm">
+        {{ email_form }}
+      </div>
+    </div>
+
+    <div class="o-tool__email mb-7 pb-7" x-data="{ openEmailForm: false }">
+      <div class="o-tool__header mb-4 text-base">
+        <a href="#"
+           class="o-tool__email-link focus:bg-focus inline-block border-b-2 border-black hover:border-transparent no-underline focus:no-underline"
+           @click.prevent="openEmailForm = ! openEmailForm">
+          <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+          <span class="inline-block">{{ 'Share my results with my manager'|t }}</span>
+        </a>
+      </div>
+      <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base" x-show="openEmailForm">
+        {{ manager_email_form }}
+      </div>
+    </div>
+
+    {% include '@molecules/back-link/back-link.twig' with {
+      'attributes': attributes,
+      'text' : 'Home',
+      'link' : '/',
+      'variant' : 'text',
+    } %}
+
+  {% endif %}
+
+</article>

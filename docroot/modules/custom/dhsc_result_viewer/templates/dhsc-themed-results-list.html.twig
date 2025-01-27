@@ -21,18 +21,11 @@
   } %}
 {% endset %}
 
-{% if summary %}
-  {% set summary_text = {
-    '#type':   'processed_text',
-    '#text':    summary.value,
-    '#format': 'full_html',
-  } %}
-{% endif %}
-
-{% include '@organisms/tool/tool--sorted.twig' with {
+{% include '@organisms/tool/tool--themed-summary.twig' with {
   'attributes': attributes,
-  'summary': summary_text,
+  'summary': responses,
   'title': title,
+  'variant': variant,
   'no_result': no_result,
   'result': result,
   'submission_url': submission_url,
