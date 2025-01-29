@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - user.role.localgov_editor
     - user.role.super_editor
     - workflows.workflow.editorial_workflow
 id: draft
@@ -17,7 +16,6 @@ recipient_types:
     status: true
     settings:
       roles:
-        localgov_editor: localgov_editor
         super_editor: super_editor
 bundles: {  }
 body:
