@@ -1,0 +1,39 @@
+{% set table_rows = [] %}
+
+{% for result in results %}
+  {# Theme title row #}
+  {% set table_rows = table_rows|merge([
+    '<tr><td colspan="2"><h3>' ~ result['#title']|e ~ '</h3></td></tr>'
+  ]) %}
+
+  {# Responses rows #}
+  {% if result['#responses'] is not empty %}
+    {% for response in result['#responses'] %}
+      {% set table_rows = table_rows|merge([
+        '<tr><td><strong>' ~ response.processed_text_2['#text']|striptags|e ~ '</strong></td><td>' ~ response.response_text|e ~ '</td></tr>'
+      ]) %}
+    {% endfor %}
+  {% endif %}
+
+  {# Summary result text #}
+  {% if result['#result']['content'][0]['#text'] is defined %}
+    {% set table_rows = table_rows|merge([
+      '<tr><td><br></td></tr>',
+      '<tr><td colspan="2" style="border-left: #29a189 solid 2px; padding-left: 20px">' ~ result['#result']['content'][0]|e ~ '</td></tr>',
+      '<tr><td><br></td></tr>'
+    ]) %}
+  {% endif %}
+{% endfor %}
+
+{# Handle case where no results exist #}
+{% if table_rows is empty %}
+  {% set table_rows = [
+    '<tr><td colspan="2" style="border-left: #29a189 solid 2px; padding-left: 20px">{{ "No results available"|t }}</td></tr>'
+  ] %}
+{% endif %}
+
+<table class="results" border="0" cellpadding="10" cellspacing="10" width="100%">
+  <tbody>
+  {{ table_rows|join("\n")|raw }}
+  </tbody>
+</table>

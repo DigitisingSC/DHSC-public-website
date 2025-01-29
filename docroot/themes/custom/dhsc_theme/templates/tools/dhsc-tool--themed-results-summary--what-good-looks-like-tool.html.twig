@@ -1,0 +1,92 @@
+{#
+Custom Twig template for displaying webform results as themed summary reports.
+See custom/dhsc_result_viewer for more details.
+
+Variables available:
+- title: The title of the tool or webform.
+- summary: Summary of the responses (if applicable).
+- responses: Array of response objects, each containing:
+    - processed_text_x: Render array containing processed webform text.
+    - response_text: The exact text of the option chosen by the user.
+- result: The final result or output of the webform.
+- no_result: Message to display if there is no result.
+- submission_url: URL to resubmit or access submission data.
+- email_form: (Boolean) Indicates if an email form is available.
+- attributes: General HTML attributes.
+- user: The currently logged-in user object.
+- site_settings: Site-wide settings available in the theme.
+- spriteSrc: Path to the SVG sprite for icons.
+- back_link: A link object containing label, icon, and URL.
+#}
+
+<article class="o-tool o-tool--themed-summary">
+
+  <span class="text-md text-coolgrey">{{ 'What good looks like'|t }}</span>
+  <h1 class="mb-5">{{ title }}</h1>
+
+  {{ result_summary }}
+
+  {% if submission_url %}
+    <div class="o-tool__actions mb-20 print:hidden">
+      <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
+    </div>
+  {% endif %}
+
+  {% if result_summary %}
+    <div x-data class="mb-7 pb-7">
+      <a class="a-button a-button--primary tablet:mb-0 tablet:mr-5" href="{{ download_results_path }}">
+        <span class="inline-block">{{ 'Download my results'|t }}</span>
+      </a>
+      <a href="#" x-on:click="window.print();" class="o-tool__email-link inline-block mb-5 tablet:mb-0 tablet:mr-5 a-button a-button--primary">
+        <span class="inline-block">{{ 'Print my recommendations'|t }}</span>
+      </a>
+    </div>
+  {% endif %}
+
+  {% if email_form %}
+    {% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+    {% set icon %}
+      {% include '@atoms/svg/svg.twig' with {
+        'sprite': spriteSrc,
+        'icon': 'triangle',
+      } %}
+    {% endset %}
+
+    <div class="o-tool__email mb-7 pb-7" x-data="{ openEmailForm: false }">
+      <div class="o-tool__header mb-4 text-base">
+        <a href="#"
+           class="o-tool__email-link focus:bg-focus inline-block border-b-2 border-black hover:border-transparent no-underline focus:no-underline"
+           @click.prevent="openEmailForm = ! openEmailForm">
+          <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+          <span class="inline-block">{{ 'Email my results to me'|t }}</span>
+        </a>
+      </div>
+      <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base" x-show="openEmailForm">
+        {{ email_form }}
+      </div>
+    </div>
+
+    <div class="o-tool__email mb-7 pb-7" x-data="{ openEmailForm: false }">
+      <div class="o-tool__header mb-4 text-base">
+        <a href="#"
+           class="o-tool__email-link focus:bg-focus inline-block border-b-2 border-black hover:border-transparent no-underline focus:no-underline"
+           @click.prevent="openEmailForm = ! openEmailForm">
+          <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+          <span class="inline-block">{{ 'Share my results with my manager'|t }}</span>
+        </a>
+      </div>
+      <div class="o-tool__email-content border-s-2 border-black-20 pl-4 text-base" x-show="openEmailForm">
+        {{ manager_email_form }}
+      </div>
+    </div>
+
+    {% include '@molecules/back-link/back-link.twig' with {
+      'attributes': attributes,
+      'text' : 'Home',
+      'link' : '/',
+      'variant' : 'text',
+    } %}
+
+  {% endif %}
+
+</article>
