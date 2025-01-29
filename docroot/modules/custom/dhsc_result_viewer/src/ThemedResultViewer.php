@@ -9,7 +9,9 @@ use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
@@ -116,6 +118,13 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
   protected $stringTranslation;
 
   /**
+   * The renderer service.
+   *
+   * @var \Drupal\Core\Render\RendererInterface
+   */
+  protected $renderer;
+
+  /**
    * ThemeResultViewer constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -136,6 +145,8 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
    *   The mail manager service.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $string_translation
    *   The translation service.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The renderer service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -147,6 +158,7 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
     TranslationInterface $string_translation,
+    RendererInterface $renderer,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
@@ -157,6 +169,7 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
     $this->languageManager = $language_manager;
     $this->mailManager = $mail_manager;
     $this->stringTranslation = $string_translation;
+    $this->renderer = $renderer;
   }
 
   /**
@@ -169,46 +182,45 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
     // Load the assigned themes from third-party settings.
     $step_themes = $webform->getThirdPartySetting('dhsc_result_viewer', 'toolkit_theme', []);
 
-    // Define response value to label mapping.
-    $response_labels = [
-      0 => "Not applicable to my role",
-      1 => "I am unsure",
-      2 => "I can do this with help",
-      3 => "I can do this without help",
-      4 => "I can do this and help others to do it too",
-    ];
+    // Obtain the score lookup data for the webform elements.
+    $response_scores = $webform->getThirdPartySetting('dhsc_result_viewer', 'options_scores', []);
 
+    $question_number = 1;
     // Iterate through each step in elementsDecoded.
     foreach ($elementsDecoded as $step_key => $step_element) {
-      // Ensure this is a step and has an assigned theme.
-      if (strpos($step_key, 'step_') === 0 && isset($step_themes[$step_key])) {
-        $theme_tid = $step_themes[$step_key];
+      // Ensure this is a toolkit_theme_selector wizard element and has
+      // an assigned theme set via third party settings.
+      if ($step_element['#type'] === 'toolkit_theme_selector' && isset($step_themes[$step_key])) {
+        $theme_uuid = $step_themes[$step_key];
 
         // Process each child element under the step.
-        foreach ($step_element as $child_key => $child_element) {
+        $children_keys = Element::children($step_element, TRUE);
+
+        $element_count = 1;
+        foreach ($children_keys as $child_key) {
           // Process selected options and extract the question number.
-          if (preg_match('/_(\d+)_options/', $child_key, $matches)) {
-            $question_number = (int) $matches[1];
-            $response_score = $responses[$child_key] ?? 0;
+          if ($step_element[$child_key]['#type'] === 'toolkit_theme_radios') {
+            if (isset($responses[$child_key])) {
+              $response_key = $responses[$child_key];
 
-            // Map response score to descriptive text.
-            $response_text = $response_labels[$response_score] ?? "Unknown response";
+              // Map response score to descriptive text.
+              $response_text = $step_element[$child_key]['#options'][$response_key];
 
-            // Store response data.
-            $grouped_by_theme[$theme_tid][$question_number]['score'] = $response_score;
-            $grouped_by_theme[$theme_tid][$question_number]['response_text'] = $response_text;
+              // Store response data.
+              $grouped_by_theme[$theme_uuid][$question_number]['score'] = $response_scores[$child_key][$response_key];
+
+              $before_dash = strpos($response_text, ' -- ') !== FALSE ? strstr($response_text, ' -- ', TRUE) : $response_text;
+              $grouped_by_theme[$theme_uuid][$question_number]['response_text'] = $before_dash;
+            }
           }
 
-          // Process question text by targeting the corresponding key.
-          if (strpos($child_key, 'question_') !== FALSE) {
-            $question_text = strip_tags($child_element['#text']);
-            $question_number = (int) filter_var($child_key, FILTER_SANITIZE_NUMBER_INT);
-
-            // Store question text.
-            $grouped_by_theme[$theme_tid][$question_number]['question_text'] = $question_text;
+          if ($step_element[$child_key]['#type'] === 'processed_text') {
+            $grouped_by_theme[$theme_uuid][$question_number]['processed_text_' . $element_count] = $step_element[$child_key];
+            $element_count++;
           }
         }
       }
+      $question_number++;
     }
 
     return $grouped_by_theme;
@@ -217,16 +229,18 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getResultSummaryContent($theme_tid): array {
+  public function getResultSummaryContent($theme_uuid): array {
     $summaries_by_quartile = [];
 
     // Load the taxonomy term.
     /** @var \Drupal\taxonomy\Entity\Term $theme_term */
     $theme_term = $this->entityTypeManager->getStorage('taxonomy_term')
-      ->load($theme_tid);
+      ->loadByProperties(['uuid' => $theme_uuid]);
 
-    if ($theme_term && !$theme_term->get('field_result_summary_ref')
-      ->isEmpty()) {
+    // Assign the first (and only) element.
+    $theme_term = reset($theme_term);
+
+    if ($theme_term && !$theme_term->get('field_result_summary_ref')->isEmpty()) {
       $summaries = [];
 
       /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $paragraph_ref */
@@ -270,7 +284,7 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
     $theme_scores = [];
 
     // Iterate through each theme group.
-    foreach ($grouped_by_theme as $tid => $data) {
+    foreach ($grouped_by_theme as $uuid => $data) {
       $total_score = 0;
 
       // Initialise a counter for the answered questions, as some
@@ -279,10 +293,10 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
 
       // Loop through each question under the theme.
       foreach ($data as $item) {
-        // We check the score is within the range 1 to 4 here, if the score
-        // is 0, we know the question was marked as not relevant, so we won't
-        // increment the total score or counter.
-        if ($item['score'] >= 1 && $item['score'] <= 4) {
+        // We check the score is within an admissible range (e.g. if the score
+        // is -1, we know the question was marked as not relevant, so we won't
+        // increment the total score or counter).
+        if (isset($item['score']) && $item['score'] >= 0) {
           // Directly sum the score from the response data.
           $total_score += $item['score'];
 
@@ -292,44 +306,12 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
       }
 
       // Store the total score for the theme.
-      $theme_scores[$tid]['score'] = $total_score / $answer_count;
+      if ($answer_count > 0) {
+        $theme_scores[$uuid]['score'] = $total_score / $answer_count;
+      }
     }
 
     return $theme_scores;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getResultsScores($data): array {
-    // Define the response-to-score mapping.
-    $score_map = [
-      'ignore' => 0,
-      'unsure' => 1,
-      'with_help' => 2,
-      'confident' => 3,
-      'advanced' => 4,
-    ];
-
-    $scores = [];
-
-    // Loop through each response and assign the corresponding score.
-    foreach ($data as $question => $answer) {
-      // Extract the response type dynamically by checking the valid keys.
-      foreach (array_keys($score_map) as $key) {
-        if (str_contains($answer, $key)) {
-          $scores[$question] = $score_map[$key];
-          break;
-        }
-      }
-
-      // If no valid response is found, assign a default score of 0.
-      if (!isset($scores[$question])) {
-        $scores[$question] = 0;
-      }
-    }
-
-    return $scores;
   }
 
   /**
@@ -382,13 +364,14 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
     $tempStore = $this->tempStore->get('dhsc_result_viewer');
 
     // Get saved result data from tempstore.
-    $results = $tempStore->get('dsf_result_data');
-    $webform_title = $tempStore->get('dsf_webform_title');
+    $results = $tempStore->get('themed_summary_result_data');
+    $webform_title = $tempStore->get('themed_summary_webform_title');
+    $webform_id = $tempStore->get('themed_summary_webform_id');
 
     if (!empty($results)) {
       // Construct email using the results array and send to the email address
       // specified.
-      $result = $this->buildEmail($email, $results, $webform_title);
+      $result = $this->buildEmail($email, $results, $webform_title, $webform_id);
 
       if (!$result['result']) {
         // Provide a message indicating there was an issue.
@@ -414,61 +397,34 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
    *   Results array.
    * @param string $webform_title
    *   Title of the webform.
+   * @param string $webform_id
+   *   The webform_id.
    *
    * @return array
    *   Array containing all details of the message.
    */
-  public function buildEmail($email, array $results, string $webform_title) {
+  public function buildEmail($email, array $results, string $webform_title, string $webform_id) {
     $module = 'dhsc_result_viewer';
     $key = 'email_result';
     $to = $email;
     $langcode = $this->languageManager->getDefaultLanguage()->getId();
-    $params['subject'] = $this->t('Here are your results for @webform_title', ['@webform_title' => $webform_title]);
 
-    $rows = [];
-    if (!empty($results)) {
-      foreach ($results as $result) {
-        // Start a new row with the theme title.
-        $row_content = "<tr><td colspan='2'><h3>{$result['#title']}</h3></td></tr>";
+    $params['subject'] = $this->t('Here are your results for @webform_title', [
+      '@webform_title' => $webform_title,
+    ]);
 
-        if (!empty($result['#responses'])) {
-          foreach ($result['#responses'] as $response) {
-            // Add each question and response as a new row.
-            $row_content .= "<tr>
-            <td><strong>{$response['question']}</strong></td>
-            <td>{$response['response']}</td>
-          </tr>";
-          }
-        }
+    // Build mail body render array.
+    $render_array = [
+      '#theme' => 'dhsc_themed_results_email_content',
+      '#results' => $results,
+      '#webform_id' => $webform_id,
+    ];
 
-        // Add the summary result text if available.
-        if (isset($result['#result']['content'][0]['#text'])) {
-          $row_content .= "<tr>
-          <td colspan='2' style='border-left: #29a189 solid 2px; padding-left: 20px'>{$result['#result']['content'][0]['#text']}</td>
-        </tr>";
-          $row_content .= "<tr><td><br></td></tr>";
-        }
+    // Render the output.
+    $rendered_body = $this->renderer->render($render_array);
 
-        $rows[] = $row_content;
-      }
-    }
-    else {
-      // Handle case where no results exist.
-      $rows[] = "<tr>
-          <td colspan='2' style='border-left: #29a189 solid 2px; padding-left: 20px'>{$this->t('No results available')}</td>
-          </tr>";
-    }
-
-    // Combine all rows into a single string.
-    $table_rows = implode("\n", $rows);
-
-    // Construct the full email body.
-    $params['body'] = Markup::create("
-    <table class='results' border='0' cellpadding='10' cellspacing='10' width='100%'>
-      <tbody>
-        {$table_rows}
-      </tbody>
-    </table>");
+    // Add the rendered HTML to email parameters.
+    $params['body'] = Markup::create($rendered_body);
 
     return $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
   }
