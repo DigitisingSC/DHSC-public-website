@@ -39,7 +39,7 @@ class SetFormMetdataHandler extends WebformHandlerBase {
     $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
     $submitted_values = [];
 
-    if ($webform->id() === 'self_assessment_tool' || $webform->id() === 'dsf_tool' || $webform->id() === 'dsf_tool_advanced') {
+    if ($webform->id() === 'self_assessment_tool') {
       // Retrieve option values for submitted data.
       foreach ($data as $key => &$item) {
         $element = $webform->getElement($key);
@@ -67,7 +67,7 @@ class SetFormMetdataHandler extends WebformHandlerBase {
       $tempstore->set('sid', $sid);
     }
 
-    if ($update == TRUE) {
+    if ($update == TRUE && ($webform->id() === 'self_assessment_tool' || $webform->id() === 'assured_solutions_tools')) {
       $submission_token = \Drupal::request()->query->get('token');
 
       switch ($webform->id()) {
@@ -77,11 +77,6 @@ class SetFormMetdataHandler extends WebformHandlerBase {
 
         case 'assured_solutions_tools':
           $route_name = 'dhsc_result_viewer.result_summary_assured_solutions';
-          break;
-
-        case 'dsf_tool':
-        case 'dsf_tool_advanced':
-          $route_name = 'dhsc_result_viewer.result_summary_dsf';
           break;
 
         default:
