@@ -13,7 +13,7 @@ default:
       value: '(SFA) Communicating through technology'
   weight:
     -
-      value: 2
+      value: 16
   parent:
     -
       target_id: 0

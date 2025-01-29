@@ -13,7 +13,7 @@ default:
       value: '(SGF) Communicating through technology'
   weight:
     -
-      value: 0
+      value: 2
   parent:
     -
       target_id: 0

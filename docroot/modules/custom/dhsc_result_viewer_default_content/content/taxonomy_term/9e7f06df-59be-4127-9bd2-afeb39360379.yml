@@ -13,7 +13,7 @@ default:
       value: '(SGF) Digital learning, development and wellbeing'
   weight:
     -
-      value: 0
+      value: 3
   parent:
     -
       target_id: 0

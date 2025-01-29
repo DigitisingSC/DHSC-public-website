@@ -13,7 +13,7 @@ default:
       value: '(SFA) Technical skills for using technology'
   weight:
     -
-      value: 1
+      value: 15
   parent:
     -
       target_id: 0
