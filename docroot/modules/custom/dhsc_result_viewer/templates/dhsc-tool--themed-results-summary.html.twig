@@ -1,3 +1,24 @@
+{#
+Custom Twig template for displaying webform results as themed summary reports.
+See custom/dhsc_result_viewer for more details.
+
+Variables available:
+- title: The title of the tool or webform.
+- summary: Summary of the responses (if applicable).
+- responses: Array of response objects, each containing:
+    - processed_text_x: Render array containing processed webform text.
+    - response_text: The exact text of the option chosen by the user.
+- result: The final result or output of the webform.
+- no_result: Message to display if there is no result.
+- submission_url: URL to resubmit or access submission data.
+- email_form: (Boolean) Indicates if an email form is available.
+- attributes: General HTML attributes.
+- user: The currently logged-in user object.
+- site_settings: Site-wide settings available in the theme.
+- spriteSrc: Path to the SVG sprite for icons.
+- back_link: A link object containing label, icon, and URL.
+#}
+
 <article class="o-tool o-tool--themed-summary">
 
   <h1 class="mb-5">{{ title }}</h1>
