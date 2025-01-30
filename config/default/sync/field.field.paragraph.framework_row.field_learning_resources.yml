@@ -7,6 +7,11 @@ dependencies:
     - paragraphs.paragraphs_type.framework_row
   module:
     - link
+    - linkchecker
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: link_link_extractor
 id: paragraph.framework_row.field_learning_resources
 field_name: field_learning_resources
 entity_type: paragraph

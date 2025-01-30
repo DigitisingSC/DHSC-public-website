@@ -120,7 +120,7 @@ jobs:
       run: bash $SCRIPT_DIR/test_app.sh
       if: ${{ !(startsWith(github.ref, 'refs/heads/hotfix/') || contains(github.ref, 'refs/tags')) }}
 
-    # For deployment steps below to work, the repositroy must have
+    # For deployment steps below to work, the repository must have
     # deployment/ssh private key added as a secret with name: BLT_SSH_DEPLOYMENT_KEY
 
     - name: Prepare deployment key
@@ -131,7 +131,7 @@ jobs:
 
     - name: Deploy branch
       run: bash $SCRIPT_DIR/deploy_branch.sh
-      if: ${{ env.SSH_DEPLOYMENT_KEY && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !(startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/bugfix/') || contains(github.ref, 'refs/tags')) }}
+      if: ${{ env.SSH_DEPLOYMENT_KEY && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !(startsWith(github.ref, 'refs/heads/feature/') || startsWith(github.ref, 'refs/heads/bugfix/') || startsWith(github.ref, 'refs/head/project')) || contains(github.ref, 'refs/tags') }}
 
     - name: Deploy tag
       run: bash $SCRIPT_DIR/deploy_tag.sh

@@ -4,10 +4,17 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.localgov_text
+    - filter.format.basic_html
+    - filter.format.plain_text
+    - filter.format.restricted_html
     - paragraphs.paragraphs_type.cta_banner
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: paragraph.cta_banner.localgov_text
 field_name: localgov_text
 entity_type: paragraph

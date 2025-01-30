@@ -7,6 +7,11 @@ dependencies:
     - paragraphs.paragraphs_type.link_description
   module:
     - link
+    - linkchecker
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: link_link_extractor
 id: paragraph.link_description.field_featured_link
 field_name: field_featured_link
 entity_type: paragraph

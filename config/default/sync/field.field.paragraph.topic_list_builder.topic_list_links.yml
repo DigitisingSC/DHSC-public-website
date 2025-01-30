@@ -7,6 +7,11 @@ dependencies:
     - paragraphs.paragraphs_type.topic_list_builder
   module:
     - link
+    - linkchecker
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: link_link_extractor
 _core:
   default_config_hash: IBdxHdTHqIMjBH9eUM9SJw1smb6LOJRifS5CSgkQLmg
 id: paragraph.topic_list_builder.topic_list_links
@@ -20,6 +25,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 17
   title: 1
+  link_type: 17
 field_type: link
