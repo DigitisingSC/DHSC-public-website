@@ -2,10 +2,12 @@
 
 namespace Drupal\dhsc_result_viewer\Plugin\WebformElement;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'Toolkit Theme Selector' Webform element.
@@ -20,12 +22,50 @@ use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
 class ThemeSelector extends WebformWizardPage {
 
   /**
+   * The Entity Type Manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    // The base class uses dependency injection so call parent::create() to
+    // ensure any base services are loaded.
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+
+    // Inject the Entity Type Manager service manually.
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+
+    return $instance;
+  }
+
+  /**
+   * Load a taxonomy term by UUID.
+   *
+   * @param string $uuid
+   *   The UUID of the taxonomy term.
+   *
+   * @return \Drupal\taxonomy\Entity\Term|null
+   *   The taxonomy term or NULL if not found.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  protected function loadTermByUuid($uuid) {
+    // Load term by UUID, and return the first (and only) result if the term
+    // exists.
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $uuid]);
+    return reset($terms) ?: NULL;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return [
-      'toolkit_theme' => NULL,
-    ] + parent::getDefaultProperties();
+    return parent::defineDefaultProperties();
   }
 
   /**
@@ -35,14 +75,14 @@ class ThemeSelector extends WebformWizardPage {
     $form = parent::buildConfigurationForm($form, $form_state);
 
     // Get the current selection from form state or saved value.
-    $selected_tid = $form_state->getValue('toolkit_theme') ?? $this->getCurrentTheme($form, $form_state);
+    $selected_term_uuid = $form_state->getValue('toolkit_theme') ?? $this->getCurrentTheme($form, $form_state);
 
     // Add the theme selector dropdown.
     $form['toolkit_theme'] = [
       '#type' => 'select',
       '#title' => $this->t('Select Toolkit Theme'),
       '#options' => $this->getToolkitThemeOptions(),
-      '#default_value' => $selected_tid,
+      '#default_value' => $selected_term_uuid,
       '#empty_option' => $this->t('- Select a Theme -'),
       '#required' => TRUE,
       '#ajax' => [
@@ -59,8 +99,8 @@ class ThemeSelector extends WebformWizardPage {
     ];
 
     // Add the edit link if a theme is selected.
-    if ($selected_tid) {
-      $term = Term::load($selected_tid);
+    if ($selected_term_uuid) {
+      $term = $this->loadTermByUuid($selected_term_uuid);
 
       if ($term) {
         $form['theme_edit_link_wrapper']['theme_edit_link'] = [
@@ -84,18 +124,26 @@ class ThemeSelector extends WebformWizardPage {
    * AJAX callback to update the theme edit link when a new theme is selected.
    */
   public static function updateThemeEditLink(array &$form, FormStateInterface $form_state) {
-    // Get the selected taxonomy term ID from the dropdown.
-    $selected_tid = $form_state->getValue('toolkit_theme');
+    // Get the selected taxonomy term UUID from the dropdown.
+    $selected_term_uuid = $form_state->getValue('toolkit_theme');
 
-    // Initialise the wrapper.
+    // Initialize the wrapper.
     $edit_link = [
       '#type' => 'container',
       '#attributes' => ['id' => 'theme-edit-link-wrapper'],
     ];
 
     // If a theme is selected, generate the edit link.
-    if ($selected_tid) {
-      $term = Term::load($selected_tid);
+    if ($selected_term_uuid) {
+
+      // Manually load the Entity Type Manager since we can't use $this (static
+      // method).
+      $entity_type_manager = \Drupal::entityTypeManager();
+
+      // Load term by UUID.
+      $terms = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $selected_term_uuid]);
+      $term = reset($terms);
+
       if ($term) {
         $edit_link['theme_edit_link'] = [
           '#type' => 'link',
@@ -115,14 +163,14 @@ class ThemeSelector extends WebformWizardPage {
   }
 
   /**
-   * Saves the selected taxonomy term (TID) into the Webform's configuration.
+   * Saves the selected taxonomy term (UUID) into the Webform's configuration.
    */
   public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
     parent::submitConfigurationForm($form, $form_state);
 
-    // Get the selected TID.
+    // Get the selected UUID.
     $decorated_form_state = $form_state->getCompleteFormState();
-    $theme_tid = $decorated_form_state->getValue('toolkit_theme');
+    $theme_uuid = $decorated_form_state->getValue('toolkit_theme');
 
     // Get the Webform ID.
     $webform_id = $form_state->getBuildInfo()['args'][0]->id();
@@ -130,12 +178,12 @@ class ThemeSelector extends WebformWizardPage {
     // Get the element key to uniquely identify this instance.
     $element_key = $form_state->getBuildInfo()['args'][1];
 
-    if ($theme_tid) {
+    if ($theme_uuid) {
       // Load existing theme selections or create a new array.
       $theme_settings = $this->webform->getThirdPartySetting('dhsc_result_viewer', 'toolkit_theme', []);
 
-      // Save the TID against the unique element key.
-      $theme_settings[$element_key] = $theme_tid;
+      // Save the UUID against the unique element key.
+      $theme_settings[$element_key] = $theme_uuid;
 
       // Store the updated settings.
       $this->webform->setThirdPartySetting('dhsc_result_viewer', 'toolkit_theme', $theme_settings);
@@ -145,8 +193,8 @@ class ThemeSelector extends WebformWizardPage {
 
       // Debug log.
       \Drupal::logger('dhsc_result_viewer')
-        ->notice('Saved Toolkit Theme TID @tid for element @key in Webform @webform', [
-          '@tid' => $theme_tid,
+        ->notice('Saved Toolkit Theme UUID @uuid for element @key in Webform @webform', [
+          '@uuid' => $theme_uuid,
           '@key' => $element_key,
           '@webform' => $webform_id,
         ]);
@@ -169,8 +217,8 @@ class ThemeSelector extends WebformWizardPage {
 
     // Check if this element has a stored theme.
     if (isset($theme_settings[$element_key])) {
-      $theme_tid = $theme_settings[$element_key];
-      $term = Term::load($theme_tid);
+      $theme_uuid = $theme_settings[$element_key];
+      $term = $this->loadTermByUuid($theme_uuid);
 
       if ($term) {
 
@@ -199,11 +247,8 @@ class ThemeSelector extends WebformWizardPage {
 
     $options = [];
 
-    // Use the entity type manager service.
-    $entity_type_manager = \Drupal::entityTypeManager();
-
     // Check if the vocabulary exists.
-    $vocabulary = $entity_type_manager
+    $vocabulary = $this->entityTypeManager
       ->getStorage('taxonomy_vocabulary')
       ->load('toolkit_theme');
 
@@ -213,7 +258,7 @@ class ThemeSelector extends WebformWizardPage {
     }
 
     // Load taxonomy terms.
-    $terms = $entity_type_manager
+    $terms = $this->entityTypeManager
       ->getStorage('taxonomy_term')
       ->loadTree('toolkit_theme');
 
@@ -221,7 +266,7 @@ class ThemeSelector extends WebformWizardPage {
       $term = Term::load($term_data->tid);
       if ($term) {
         // Use getName() for multilingual support.
-        $options[$term->id()] = $term->getName();
+        $options[$term->uuid()] = $term->getName();
       }
     }
 
