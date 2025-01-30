@@ -52,12 +52,14 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
     }
     $html = '<style>' . str_ireplace("BASE_URL", $base_url, $css) . '</style>' . $this->renderer->render($build);
 
-    if (function_exists('utf8_decode')) {
-      $html = utf8_decode($html);
-    }
-    elseif (function_exists('mb_convert_encoding')) {
+    if (function_exists('mb_convert_encoding')) {
       $html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
     }
+    elseif (function_exists('utf8_decode')) {
+      // The @ silences the deprecation warning here.
+      $html = @utf8_decode($html);
+    }
+
     $html = htmlspecialchars_decode(htmlentities($html, ENT_NOQUOTES, 'ISO-8859-1'), ENT_NOQUOTES);
 
     $html = str_replace('src="/', 'src="' . $base_url . '/', $html);

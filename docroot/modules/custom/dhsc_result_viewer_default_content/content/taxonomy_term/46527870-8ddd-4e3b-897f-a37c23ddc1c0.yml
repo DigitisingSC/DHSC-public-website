@@ -4,6 +4,8 @@ _meta:
   uuid: 46527870-8ddd-4e3b-897f-a37c23ddc1c0
   bundle: toolkit_theme
   default_langcode: en
+  depends:
+    a8546c0f-51b2-4d54-9775-5046d77c63c4: taxonomy_term
 default:
   status:
     -
@@ -16,7 +18,7 @@ default:
       value: 0
   parent:
     -
-      target_id: 0
+      entity: a8546c0f-51b2-4d54-9775-5046d77c63c4
   revision_translation_affected:
     -
       value: true

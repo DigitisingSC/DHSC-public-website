@@ -2,6 +2,7 @@
 
 namespace Drupal\dhsc_result_viewer\Controller;
 
+use Drupal\Component\Transliteration\TransliterationInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -16,6 +17,7 @@ use Drupal\dhsc_result_viewer\DhscDomPdfGenerator;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
 use Drupal\dhsc_result_viewer\ThemedResultViewer;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -120,6 +122,13 @@ class ThemedResultSummaryController extends ControllerBase {
   protected $routeMatch;
 
   /**
+   * The transliteration service.
+   *
+   * @var \Drupal\Component\Transliteration\TransliterationInterface
+   */
+  protected $transliteration;
+
+  /**
    * ResultSummaryController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
@@ -144,6 +153,8 @@ class ThemedResultSummaryController extends ControllerBase {
    *   The extension path resolver service.
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match service.
+   * @param \Drupal\Component\Transliteration\TransliterationInterface $transliteration
+   *   The transliteration service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -157,6 +168,7 @@ class ThemedResultSummaryController extends ControllerBase {
     DhscDomPdfGenerator $dompdf_generator,
     ExtensionPathResolver $extension_path_resolver,
     RouteMatchInterface $route_match,
+    TransliterationInterface $transliteration,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
@@ -169,6 +181,7 @@ class ThemedResultSummaryController extends ControllerBase {
     $this->dompdfGenerator = $dompdf_generator;
     $this->extensionPathResolver = $extension_path_resolver;
     $this->routeMatch = $route_match;
+    $this->transliteration = $transliteration;
   }
 
   /**
@@ -186,14 +199,15 @@ class ThemedResultSummaryController extends ControllerBase {
       $container->get('request_stack'),
       $container->get('dhsc_result_viewer.dompdf_generator'),
       $container->get('extension.path.resolver'),
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('transliteration')
     );
   }
 
   /**
    * Build summary result page.
    *
-   * @return array
+   * @return array|RedirectResponse
    *   Return render array.
    *
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
@@ -213,74 +227,80 @@ class ThemedResultSummaryController extends ControllerBase {
     $submission = $this->resultViewer->getSubmissionByToken($submission_token, $webform_id);
 
     // Load the webform entity.
-    $webform = $submission->getWebform();
+    if ($submission) {
+      $webform = $submission->getWebform();
 
-    // Construct the submission URL.
-    if ($submission_token) {
-      $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])
-        ->toString();
-      $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
-        ->toString();
-    }
-
-    $data = $submission->getData();
-
-    if (!empty($data)) {
-      // Provide a score against each response.
-      $scores = $this->resultViewer->getResultsScores($data);
-
-      // Sort all responses by associated theme.
-      $sorted_results = $this->resultViewer->sortQuestionsByTheme($webform, $scores);
-
-      // Retrieve result summaries.
-      $summaries_by_quartile = [];
-      foreach ($sorted_results as $tid => $result) {
-        $summaries_by_quartile[$tid] = $this->resultViewer->getResultSummaryContent($tid);
+      // Construct the submission URL.
+      if ($submission_token) {
+        $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])
+          ->toString();
+        $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
+          ->toString();
       }
 
-      // Provide an overall score for each theme; normalised to fall between 1
-      // and 4.
-      $scores_by_theme = $this->resultViewer->getThemeScores($webform, $sorted_results);
+      $data = $submission->getData();
 
-      // Process results content based on derived theme data.
-      foreach ($scores_by_theme as $tid => $theme_score) {
-        // Reset response array.
-        $responses = [];
+      if (!empty($data)) {
+        // Sort all responses by associated theme.
+        $sorted_results = $this->resultViewer->sortQuestionsByTheme($webform, $data);
 
-        foreach ($sorted_results[$tid] as $item) {
-          $responses[] = [
-            'question' => $item['question_text'],
-            'response' => $item['response_text'],
-          ];
+        // Retrieve result summaries.
+        $summaries_by_quartile = [];
+        foreach ($sorted_results as $uuid => $result) {
+          $summaries_by_quartile[$uuid] = $this->resultViewer->getResultSummaryContent($uuid);
         }
 
-        // Normalise the score into quartile levels.
-        $quartile = match(TRUE) {
-        $theme_score['score'] >= 1 && $theme_score['score'] < 1.75 => 'QA',
-          $theme_score['score'] >= 1.75 && $theme_score['score'] < 2.5 => 'QB',
-          $theme_score['score'] >= 2.5 && $theme_score['score'] < 3.25 => 'QC',
-          $theme_score['score'] >= 3.25 && $theme_score['score'] <= 4 => 'QD',
-          default => NULL,
-        };
+        // Provide an overall score for each theme; normalised to fall between 1
+        // and 4.
+        $scores_by_theme = $this->resultViewer->getThemeScores($webform, $sorted_results);
+
+        // Process results content based on derived theme data.
+        foreach ($scores_by_theme as $uuid => $theme_score) {
+          // Reset response array.
+          $responses = [];
+
+          foreach ($sorted_results[$uuid] as $item) {
+            // Assign all processed text elements, score and response data for
+            // potential display by theme templates.
+            $responses[] = $item;
+          }
+
+          // @todo Work out theme score range based on max and min possible values.
+          // A generic scoring solution was implemented to avoid needing to
+          // assign a score to standard radio options based on weight or order.
+          // The new radio button element allows scoring from a larger range,
+          // but the logic determining which quartile of content (toolkit_theme
+          // taxonomy term content) to display does not yet account for this.
+          // While not needed for this project, a future enhancement could
+          // refine this logic for better adaptability.
+          $quartile = match (TRUE) {
+
+            // Normalise the score into quartile levels.
+            $theme_score['score'] >= 1 && $theme_score['score'] < 1.75 => 'QA',
+            $theme_score['score'] >= 1.75 && $theme_score['score'] < 2.5 => 'QB',
+            $theme_score['score'] >= 2.5 && $theme_score['score'] < 3.25 => 'QC',
+            $theme_score['score'] >= 3.25 && $theme_score['score'] <= 4 => 'QD',
+            default => NULL,
+          };
 
           // Handle unexpected values gracefully.
           $result = NULL;
 
           switch ($quartile) {
             case 'QA':
-              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$tid]['QA']);
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QA']);
               break;
 
             case 'QB':
-              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$tid]['QB']);
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QB']);
               break;
 
             case 'QC':
-              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$tid]['QC']);
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QC']);
               break;
 
             case 'QD':
-              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$tid]['QD']);
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QD']);
               break;
 
             default:
@@ -290,7 +310,11 @@ class ThemedResultSummaryController extends ControllerBase {
 
           // Get theme taxonomy term title from field.
           $theme = $this->entityTypeManager->getStorage('taxonomy_term')
-            ->load($tid);
+            ->loadByProperties(['uuid' => $uuid]);
+
+          // Assign the first (and only) element.
+          $theme = reset($theme);
+
           $theme_name = $theme ? $theme->get('field_theme_title')->value : 'Unassigned Theme';
 
           $elements[] = [
@@ -299,39 +323,56 @@ class ThemedResultSummaryController extends ControllerBase {
             '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
             '#responses' => $responses,
             '#result' => $result,
+            '#webform_id' => $webform_id,
           ];
+        }
+
+        $tempStore = $this->tempStore->get('dhsc_result_viewer');
+
+        // Save result data in temp store for email result behaviour.
+        if (isset($elements)) {
+          $tempStore->set('themed_summary_result_data', $elements);
+          $tempStore->set('themed_summary_webform_title', $webform->label());
+          $tempStore->set('themed_summary_webform_id', $webform->id());
+        }
+
+        $download_results_url = Url::fromRoute('dhsc_result_viewer.generate_theme_summary_pdf')
+          ->toString();
+      }
+      else {
+        $elements[] = [
+          '#theme' => 'dhsc_themed_results_list',
+          '#title' => $config->get('title') ? $config->get('title') : NULL,
+          '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+          '#no_result' => $this->t('No result'),
+        ];
       }
 
-      $tempStore = $this->tempStore->get('dhsc_result_viewer');
-
-      // Save result data in temp store for email result behaviour.
-      $tempStore->set('dsf_result_data', $elements);
-      $tempStore->set('dsf_webform_title', $webform->label());
-
-      $download_results_url = Url::fromRoute('dhsc_result_viewer.generate_dsf_pdf')
-        ->toString();
+      if (isset($elements)) {
+        $render_array = [
+          '#theme' => 'dhsc_tool__themed_results_summary',
+          '#type' => 'container',
+          '#title' => $this->t('Your answers'),
+          '#result_summary' => $elements,
+          '#submission_url' => $submission_url ?? NULL,
+          '#download_results_path' => $download_results_url,
+          '#email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultEmailForm'),
+          '#manager_email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultManagerEmailForm'),
+          '#webform_id' => $webform_id,
+        ];
+        return $render_array;
+      }
+      else {
+        $this->messenger->addMessage($this->t('No results available.'));
+        return new RedirectResponse(Url::fromRoute('<front>')->toString());
+      }
     }
     else {
-      $elements[] = [
-        '#theme' => 'dhsc_themed_results_list',
-        '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
-        '#no_result' => $this->t('No result'),
-      ];
+      $this->messenger->addMessage($this->t('No results available.'));
+
+      // If no submission is found, redirect to the front page.
+      return new RedirectResponse(Url::fromRoute('<front>')->toString());
     }
-
-    $render_array = [
-      '#theme' => 'dhsc_tool__themed_results_summary',
-      '#type' => 'container',
-      '#title' => $this->t('Your answers'),
-      '#result_summary' => $elements,
-      '#submission_url' => $submission_url ?? NULL,
-      '#download_results_path' => $download_results_url,
-      '#email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultEmailForm'),
-      '#manager_email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultManagerEmailForm'),
-    ];
-
-    return $render_array;
   }
 
   /**
@@ -343,7 +384,11 @@ class ThemedResultSummaryController extends ControllerBase {
   public function generateDownload() {
     // Retrieve the results from temporary storage.
     $results = $this->tempStore->get('dhsc_result_viewer')
-      ->get('dsf_result_data');
+      ->get('themed_summary_result_data');
+    $webform_title = $this->tempStore->get('dhsc_result_viewer')
+      ->get('themed_summary_webform_title');
+    $webform_id = $this->tempStore->get('dhsc_result_viewer')
+      ->get('themed_summary_webform_id');
 
     // Check if results are available.
     if (empty($results)) {
@@ -357,13 +402,16 @@ class ThemedResultSummaryController extends ControllerBase {
     $content = [
       '#theme' => 'dhsc_themed_results_pdf_content',
       '#results' => $results,
+      '#webform_id' => $webform_id,
     ];
 
     // Get the path to the stylesheet.
     $stylesheet = $this->extensionPathResolver->getPath('module', 'dhsc_result_viewer') . '/css/style.css';
 
     // Generate the PDF.
-    $filename = 'dsf-self-assessment-results';
+    $filename = $webform_title . '-results-' . date('d-M-Y');
+    $filename = $this->transliteration->transliterate($filename);
+    $filename = preg_replace('/[^a-z0-9_]+/', '_', strtolower($filename));
     $response = $this->dompdfGenerator->getResponse($filename, $content, FALSE, [], 'A4', 0, 0, 0, 'portrait', NULL, $stylesheet);
 
     if (!$response) {

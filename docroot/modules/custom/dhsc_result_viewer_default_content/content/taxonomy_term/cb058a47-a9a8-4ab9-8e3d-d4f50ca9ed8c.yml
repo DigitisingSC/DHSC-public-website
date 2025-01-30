@@ -13,7 +13,7 @@ default:
       value: '(SGF) Using and managing data'
   weight:
     -
-      value: 0
+      value: 6
   parent:
     -
       target_id: 0

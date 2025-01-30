@@ -1,3 +1,4 @@
+h1,
 h2,
 h3 {
   font-family: arial, helvetica, sans-serif;
@@ -11,12 +12,19 @@ p {
   font-family: arial, helvetica, sans-serif;
 }
 
+.report-title {
+  margin-left: 10px;
+}
+
 .results ul li {
   padding: 5px 0px;
 }
 
 .branding {
   background-color: #29a189;
+  color: white;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 1.125rem;
 }
 
 .branding td:first-child {
@@ -48,6 +56,7 @@ a {
 }
 
 .results-summary {
-  border-left: #29a189 solid 2px;
+  margin: 40px 0;
+  border-left: #29a189 solid 3px;
   padding-left: 20px;
 }

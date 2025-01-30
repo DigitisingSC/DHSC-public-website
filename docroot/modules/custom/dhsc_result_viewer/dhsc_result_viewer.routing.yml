@@ -74,8 +74,8 @@ dhsc_result_viewer.generate_pdf:
   requirements:
     _permission: 'access content'
 
-dhsc_result_viewer.generate_dsf_pdf:
-  path: '/dhsc-results-pdf-dsf'
+dhsc_result_viewer.generate_theme_summary_pdf:
+  path: '/dhsc-results-pdf-theme_summary'
   defaults:
     _controller: '\Drupal\dhsc_result_viewer\Controller\ThemedResultSummaryController::generateDownload'
     _title: 'Generate results pdf'

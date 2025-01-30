@@ -39,13 +39,13 @@ interface ThemedResultViewerInterface {
   /**
    * Get content for result summary.
    *
-   * @param int $theme_tid
+   * @param int $theme_uuid
    *   The taxonomy term ID.
    *
    * @return array
    *   An associative array of quartiles and their summary texts.
    */
-  public function getResultSummaryContent(int $theme_tid): array;
+  public function getResultSummaryContent(int $theme_uuid): array;
 
   /**
    * Builds a render array for the summaries by quartile.
@@ -71,16 +71,5 @@ interface ThemedResultViewerInterface {
    *   Total scores for each theme.
    */
   public function getThemeScores(Webform $webform, array $grouped_by_theme): array;
-
-  /**
-   * Calculates scores based on user responses.
-   *
-   * @param array $data
-   *   The submission data.
-   *
-   * @return array
-   *   The mapped scores for each question.
-   */
-  public function getResultsScores(array $data): array;
 
 }

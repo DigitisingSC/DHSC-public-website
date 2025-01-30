@@ -13,7 +13,7 @@ default:
       value: '(SFA) Using and managing data'
   weight:
     -
-      value: 3
+      value: 17
   parent:
     -
       target_id: 0

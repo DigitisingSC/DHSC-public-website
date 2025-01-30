@@ -13,7 +13,7 @@ default:
       value: '(SFA) Ethical use of technology'
   weight:
     -
-      value: 5
+      value: 19
   parent:
     -
       target_id: 0

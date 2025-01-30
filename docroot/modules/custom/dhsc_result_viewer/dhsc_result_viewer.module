@@ -49,6 +49,7 @@ function dhsc_result_viewer_theme() {
         'result' => NULL,
         'no_result' => NULL,
         'email_form' => NULL,
+        'webform_id' => NULL,
       ],
     ],
     'search_criteria' => [
@@ -98,10 +99,6 @@ function dhsc_result_viewer_theme() {
       'render element' => 'elements',
       'base hook' => 'mimemail_message',
     ],
-    'mimemail_message__dhsc_result_viewer__theme' => [
-      'render element' => 'elements',
-      'base hook' => 'mimemail_message',
-    ],
     'dhsc_results_pdf_content' => [
       'variables' => [
         'content' => [],
@@ -110,6 +107,13 @@ function dhsc_result_viewer_theme() {
     'dhsc_themed_results_pdf_content' => [
       'variables' => [
         'results' => [],
+        'webform_id' => [],
+      ],
+    ],
+    'dhsc_themed_results_email_content' => [
+      'variables' => [
+        'results' => [],
+        'webform_id' => [],
       ],
     ],
     'toolkit_theme_selector' => [
@@ -126,6 +130,7 @@ function dhsc_result_viewer_theme() {
         'download_results_path' => NULL,
         'email_form' => [],
         'manager_email_form' => [],
+        'webform_id' => [],
       ],
     ],
   ];
@@ -141,6 +146,7 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     'webform_submission_self_assessment_tool_edit_form',
     'webform_submission_dsf_tool_edit_form',
     'webform_submission_dsf_tool_advanced_edit_form',
+    'webform_submission_what_good_looks_like_tool_form',
   ];
 
   if (
@@ -201,6 +207,7 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
     'assured_solutions_tool',
     'dsf_tool',
     'dsf_tool_advanced',
+    'what_good_looks_like_tool',
   ]) && ($current_page = $form_state->get('current_page')) !== '') {
     // Add a hidden form element to track the current step.
     $form['current_step'] = [
@@ -219,6 +226,7 @@ function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(arra
     'assured_solutions_tool',
     'dsf_tool',
     'dsf_tool_advanced',
+    'what_good_looks_like_tool',
   ])) {
     $suggestions[] = 'webform_submission_form' . '__dhsc_tool__step';
     $suggestions[] = 'webform_submission_form' . '__dhsc_tool__' . $variables['form']['current_step']['#value'];
@@ -226,7 +234,43 @@ function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(arra
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_theme_suggestions_HOOK_alter() for dhsc_tool__themed_results_summary.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_tool__themed_results_summary_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_tool__themed_results_summary__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_results_pdf_content.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_pdf_content_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_results_pdf_content__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_results_list.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_list_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_results_list__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
  */
 function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
@@ -238,7 +282,7 @@ function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK().
  */
 function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
@@ -250,7 +294,7 @@ function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variable
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK().
  */
 function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
@@ -264,7 +308,7 @@ function dhsc_result_viewer_preprocess_dsf_tool__step_1(&$variables) {
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK().
  */
 function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables) {
   // Get tool landing page uri from config.
@@ -281,10 +325,32 @@ function dhsc_result_viewer_preprocess_dsf_tool_advanced__step_1(&$variables) {
  * Implements hook_theme_suggestions_HOOK_alter() for mimemail_message templates.
  */
 function dhsc_result_viewer_theme_suggestions_mimemail_message_alter(array &$suggestions, array $variables) {
-  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
 
-  // Add a suggestion based on a specific route.
-  if ($route_name == 'dhsc_result_viewer.themed_result_summary') {
-    $suggestions[] = 'mimemail_message__dhsc_result_viewer__themed';
+  // Attempt to retrieve the webform_id from the route parameters.
+  $webform_id = $route_match->getParameter('webform_id');
+
+  // Ensure the webform_id is valid.
+  if (!empty($webform_id) && is_string($webform_id)) {
+    // Normalize webform ID format.
+    $webform_id = str_replace('-', '_', $webform_id);
+
+    // Add a suggestion based on a specific route.
+    if ($route_name == 'dhsc_result_viewer.themed_result_summary') {
+      $suggestions[] = 'mimemail_message__dhsc_result_viewer__' . $webform_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_results_email_content templates.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_email_content_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_results_email_content__' . $webform_id;
   }
 }

@@ -13,7 +13,7 @@ default:
       value: '(SGF) Being safe and secure online'
   weight:
     -
-      value: 0
+      value: 1
   parent:
     -
       target_id: 0
