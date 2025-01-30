@@ -2,10 +2,12 @@
 
 namespace Drupal\dhsc_result_viewer\Plugin\WebformElement;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a 'Toolkit Theme Selector' Webform element.
@@ -20,12 +22,50 @@ use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
 class ThemeSelector extends WebformWizardPage {
 
   /**
+   * The Entity Type Manager service.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    // The base class uses dependency injection so call parent::create() to
+    // ensure any base services are loaded.
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+
+    // Inject the Entity Type Manager service manually.
+    $instance->entityTypeManager = $container->get('entity_type.manager');
+
+    return $instance;
+  }
+
+  /**
+   * Load a taxonomy term by UUID.
+   *
+   * @param string $uuid
+   *   The UUID of the taxonomy term.
+   *
+   * @return \Drupal\taxonomy\Entity\Term|null
+   *   The taxonomy term or NULL if not found.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  protected function loadTermByUuid($uuid) {
+    // Load term by UUID, and return the first (and only) result if the term
+    // exists.
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $uuid]);
+    return reset($terms) ?: NULL;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getDefaultProperties() {
-    return [
-      'toolkit_theme' => NULL,
-    ] + parent::getDefaultProperties();
+    return parent::defineDefaultProperties();
   }
 
   /**
@@ -60,7 +100,7 @@ class ThemeSelector extends WebformWizardPage {
 
     // Add the edit link if a theme is selected.
     if ($selected_term_uuid) {
-      $term = Term::load($selected_term_uuid);
+      $term = $this->loadTermByUuid($selected_term_uuid);
 
       if ($term) {
         $form['theme_edit_link_wrapper']['theme_edit_link'] = [
@@ -84,10 +124,10 @@ class ThemeSelector extends WebformWizardPage {
    * AJAX callback to update the theme edit link when a new theme is selected.
    */
   public static function updateThemeEditLink(array &$form, FormStateInterface $form_state) {
-    // Get the selected taxonomy term ID from the dropdown.
+    // Get the selected taxonomy term UUID from the dropdown.
     $selected_term_uuid = $form_state->getValue('toolkit_theme');
 
-    // Initialise the wrapper.
+    // Initialize the wrapper.
     $edit_link = [
       '#type' => 'container',
       '#attributes' => ['id' => 'theme-edit-link-wrapper'],
@@ -95,7 +135,15 @@ class ThemeSelector extends WebformWizardPage {
 
     // If a theme is selected, generate the edit link.
     if ($selected_term_uuid) {
-      $term = Term::load($selected_term_uuid);
+
+      // Manually load the Entity Type Manager since we can't use $this (static
+      // method).
+      $entity_type_manager = \Drupal::entityTypeManager();
+
+      // Load term by UUID.
+      $terms = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $selected_term_uuid]);
+      $term = reset($terms);
+
       if ($term) {
         $edit_link['theme_edit_link'] = [
           '#type' => 'link',
@@ -170,7 +218,7 @@ class ThemeSelector extends WebformWizardPage {
     // Check if this element has a stored theme.
     if (isset($theme_settings[$element_key])) {
       $theme_uuid = $theme_settings[$element_key];
-      $term = Term::load($theme_uuid);
+      $term = $this->loadTermByUuid($theme_uuid);
 
       if ($term) {
 
@@ -199,11 +247,8 @@ class ThemeSelector extends WebformWizardPage {
 
     $options = [];
 
-    // Use the entity type manager service.
-    $entity_type_manager = \Drupal::entityTypeManager();
-
     // Check if the vocabulary exists.
-    $vocabulary = $entity_type_manager
+    $vocabulary = $this->entityTypeManager
       ->getStorage('taxonomy_vocabulary')
       ->load('toolkit_theme');
 
@@ -213,7 +258,7 @@ class ThemeSelector extends WebformWizardPage {
     }
 
     // Load taxonomy terms.
-    $terms = $entity_type_manager
+    $terms = $this->entityTypeManager
       ->getStorage('taxonomy_term')
       ->loadTree('toolkit_theme');
 
