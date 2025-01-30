@@ -265,58 +265,66 @@ class ThemedResultSummaryController extends ControllerBase {
             $responses[] = $item;
           }
 
-          // @todo work out theme score range based on max and min possible.
-          // Normalise the score into quartile levels.
-          $quartile = match(TRUE) {
-          $theme_score['score'] >= 1 && $theme_score['score'] < 1.75 => 'QA',
+          // @todo Work out theme score range based on max and min possible values.
+          // A generic scoring solution was implemented to avoid needing to
+          // assign a score to standard radio options based on weight or order.
+          // The new radio button element allows scoring from a larger range,
+          // but the logic determining which quartile of content (toolkit_theme
+          // taxonomy term content) to display does not yet account for this.
+          // While not needed for this project, a future enhancement could
+          // refine this logic for better adaptability.
+          $quartile = match (TRUE) {
+
+            // Normalise the score into quartile levels.
+            $theme_score['score'] >= 1 && $theme_score['score'] < 1.75 => 'QA',
             $theme_score['score'] >= 1.75 && $theme_score['score'] < 2.5 => 'QB',
             $theme_score['score'] >= 2.5 && $theme_score['score'] < 3.25 => 'QC',
             $theme_score['score'] >= 3.25 && $theme_score['score'] <= 4 => 'QD',
             default => NULL,
           };
 
-            // Handle unexpected values gracefully.
-            $result = NULL;
+          // Handle unexpected values gracefully.
+          $result = NULL;
 
-            switch ($quartile) {
-              case 'QA':
-                $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QA']);
-                break;
+          switch ($quartile) {
+            case 'QA':
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QA']);
+              break;
 
-              case 'QB':
-                $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QB']);
-                break;
+            case 'QB':
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QB']);
+              break;
 
-              case 'QC':
-                $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QC']);
-                break;
+            case 'QC':
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QC']);
+              break;
 
-              case 'QD':
-                $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QD']);
-                break;
+            case 'QD':
+              $result = $this->resultViewer->buildQuartileSummariesRenderArray($summaries_by_quartile[$uuid]['QD']);
+              break;
 
-              default:
-                $result = NULL;
-                break;
-            }
+            default:
+              $result = NULL;
+              break;
+          }
 
-            // Get theme taxonomy term title from field.
-            $theme = $this->entityTypeManager->getStorage('taxonomy_term')
-              ->loadByProperties(['uuid' => $uuid]);
+          // Get theme taxonomy term title from field.
+          $theme = $this->entityTypeManager->getStorage('taxonomy_term')
+            ->loadByProperties(['uuid' => $uuid]);
 
-            // Assign the first (and only) element.
-            $theme = reset($theme);
+          // Assign the first (and only) element.
+          $theme = reset($theme);
 
-            $theme_name = $theme ? $theme->get('field_theme_title')->value : 'Unassigned Theme';
+          $theme_name = $theme ? $theme->get('field_theme_title')->value : 'Unassigned Theme';
 
-            $elements[] = [
-              '#theme' => 'dhsc_themed_results_list',
-              '#title' => $theme_name,
-              '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
-              '#responses' => $responses,
-              '#result' => $result,
-              '#webform_id' => $webform_id,
-            ];
+          $elements[] = [
+            '#theme' => 'dhsc_themed_results_list',
+            '#title' => $theme_name,
+            '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
+            '#responses' => $responses,
+            '#result' => $result,
+            '#webform_id' => $webform_id,
+          ];
         }
 
         $tempStore = $this->tempStore->get('dhsc_result_viewer');
@@ -355,11 +363,9 @@ class ThemedResultSummaryController extends ControllerBase {
         return $render_array;
       }
       else {
-
         $this->messenger->addMessage($this->t('No results available.'));
         return new RedirectResponse(Url::fromRoute('<front>')->toString());
       }
-
     }
     else {
       $this->messenger->addMessage($this->t('No results available.'));
@@ -377,9 +383,12 @@ class ThemedResultSummaryController extends ControllerBase {
    */
   public function generateDownload() {
     // Retrieve the results from temporary storage.
-    $results = $this->tempStore->get('dhsc_result_viewer')->get('themed_summary_result_data');
-    $webform_title = $this->tempStore->get('dhsc_result_viewer')->get('themed_summary_webform_title');
-    $webform_id = $this->tempStore->get('dhsc_result_viewer')->get('themed_summary_webform_id');
+    $results = $this->tempStore->get('dhsc_result_viewer')
+      ->get('themed_summary_result_data');
+    $webform_title = $this->tempStore->get('dhsc_result_viewer')
+      ->get('themed_summary_webform_title');
+    $webform_id = $this->tempStore->get('dhsc_result_viewer')
+      ->get('themed_summary_webform_id');
 
     // Check if results are available.
     if (empty($results)) {
