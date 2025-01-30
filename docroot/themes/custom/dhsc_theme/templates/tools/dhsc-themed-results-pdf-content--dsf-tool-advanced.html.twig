@@ -11,7 +11,7 @@
 
   <h1>{{ 'Result summary'|t }}</h1>
 
-  {% for result in results %}dhsc-themed-results-email-content.html.twigdhsc-themed-results-email-content.html.twig
+  {% for result in results %}
     <article class="mt-6 mb-8">
       <h2 class="mb-5">{{ result['#title'] }}</h2>
       {% for response in result['#responses'] %}
