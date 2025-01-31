@@ -11,7 +11,7 @@ export default {
 
 const svgIconTwitterTemplate = (args) => svgIconTwig({
   ...svgIcon.args,
-  icon: 'twitter',
+  icon: 'x',
 });
 
 const svgIconFacebookTemplate = (args) => svgIconTwig({
