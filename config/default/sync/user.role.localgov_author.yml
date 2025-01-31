@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -126,7 +128,6 @@ permissions:
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
   - 'revert supplier revisions'
-  - 'schedule publishing of nodes'
   - 'update media'
   - 'use editorial_workflow transition create_new_draft'
   - 'use editorial_workflow transition publish'
@@ -135,12 +136,14 @@ permissions:
   - 'use text format full_html'
   - 'use text format restricted_html'
   - 'view all revisions'
+  - 'view any unpublished content'
   - 'view article revisions'
   - 'view casestudy revisions'
   - 'view content_page revisions'
   - 'view editoria11y checker'
   - 'view event revisions'
   - 'view landing_page revisions'
+  - 'view latest version'
   - 'view localgov_guides_overview revisions'
   - 'view localgov_guides_page revisions'
   - 'view own unpublished content'
