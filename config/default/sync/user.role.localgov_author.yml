@@ -34,7 +34,6 @@ dependencies:
     - node
     - paragraphs
     - paragraphs_library
-    - path
     - scheduler
     - system
     - toolbar
@@ -71,7 +70,6 @@ permissions:
   - 'create subtopic_page content'
   - 'create supplier content'
   - 'create svg media'
-  - 'create url aliases'
   - 'delete media'
   - 'delete own article content'
   - 'delete own casestudy content'
