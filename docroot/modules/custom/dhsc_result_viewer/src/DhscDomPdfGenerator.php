@@ -3,6 +3,7 @@
 namespace Drupal\dhsc_result_viewer;
 
 use Dompdf\Dompdf;
+use Drupal\Core\Render\Markup;
 use Drupal\pdf_generator\DomPdfGenerator;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -42,7 +43,7 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
 
     $build = [
       '#theme' => 'pdf_generator_print',
-      '#css' => '',
+      '#css' => $css,
       '#content' => $content,
       '#title' => $title,
     ];
@@ -50,17 +51,10 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
     if ($preview) {
       return $build;
     }
-    $html = '<style>' . str_ireplace("BASE_URL", $base_url, $css) . '</style>' . $this->renderer->render($build);
 
-    if (function_exists('mb_convert_encoding')) {
-      $html = mb_convert_encoding($html, 'ISO-8859-1', 'UTF-8');
-    }
-    elseif (function_exists('utf8_decode')) {
-      // The @ silences the deprecation warning here.
-      $html = @utf8_decode($html);
-    }
+    $html = $this->renderer->renderRoot($build);
 
-    $html = htmlspecialchars_decode(htmlentities($html, ENT_NOQUOTES, 'ISO-8859-1'), ENT_NOQUOTES);
+    $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
 
     $html = str_replace('src="/', 'src="' . $base_url . '/', $html);
     $html = str_replace('&nbsp;', ' ', $html);
@@ -69,13 +63,16 @@ class DhscDomPdfGenerator extends DomPdfGenerator {
     $this->dompdf->loadHtml($html);
     $this->dompdf->setPaper($pageSize, $disposition);
     $this->dompdf->render();
+
     $response = new Response();
     $response->setContent($this->dompdf->output());
     $response->headers->set('Content-Type', 'application/pdf');
+
     if (is_array($title)) {
       $title = $this->renderer->render($title);
     }
     $response->headers->set('Content-Disposition', "attachment; filename={$title}.pdf");
+
     return $response;
   }
 
