@@ -1,0 +1,74 @@
+@media print {
+  header {
+    position: fixed;
+    top: 0;
+  }
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: arial, helvetica, sans-serif;
+}
+
+.results h3,
+h4,
+li,
+strong,
+p {
+  font-family: arial, helvetica, sans-serif;
+}
+
+.report-title {
+  margin-left: 10px;
+}
+
+.results ul li {
+  padding: 5px 0px;
+}
+
+.branding {
+  background-color: #29a189;
+  color: white;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 1.125rem;
+}
+
+.branding td:first-child {
+  width: 70%;
+}
+
+.branding td:nth-child(2) {
+  color: white;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 1.125rem;
+}
+
+.criteria {
+  page-break-after: always;
+}
+
+.logo {
+  height: 3.75rem;
+}
+
+img {
+  height: 2.1rem;
+  width: 7.125rem;
+  padding: 0.75rem;
+}
+
+a {
+  color: #29a189;
+}
+
+.results-summary {
+  margin: 40px 0;
+  border-left: #29a189 solid 3px;
+  padding-left: 20px;
+  page-break-after: always;
+}
