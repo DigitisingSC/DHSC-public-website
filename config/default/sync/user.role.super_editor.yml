@@ -34,6 +34,7 @@ dependencies:
     - entity_browser
     - file
     - filter
+    - linkchecker
     - media
     - moderated_content_bulk_publish
     - node
@@ -56,8 +57,10 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access broken links report'
   - 'access content overview'
   - 'access media overview'
+  - 'access own broken links report'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
   - 'access site reports'
@@ -68,6 +71,7 @@ permissions:
   - 'access webform overview'
   - 'add site setting entities'
   - 'administer editoria11y checker'
+  - 'administer linkchecker'
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'

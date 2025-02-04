@@ -35,6 +35,7 @@ dependencies:
     - eu_cookie_compliance
     - file
     - filter
+    - linkchecker
     - media
     - node
     - paragraphs
@@ -59,8 +60,10 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access broken links report'
   - 'access content overview'
   - 'access media overview'
+  - 'access own broken links report'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
   - 'access site settings overview'
