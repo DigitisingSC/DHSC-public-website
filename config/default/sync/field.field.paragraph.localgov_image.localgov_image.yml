@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.localgov_image
+    - media.type.image
     - paragraphs.paragraphs_type.localgov_image
 _core:
   default_config_hash: UVDO6kVGFKg6NB1v4KmiyR8MpfeqlQNbjGal4OpIbEY
@@ -12,7 +13,7 @@ field_name: localgov_image
 entity_type: paragraph
 bundle: localgov_image
 label: Image
-description: ''
+description: "Image sizes (px width x height):<br>\r\nFeatured Image: 467 x 340<br>\r\nGuide overview: 467 x 340<br>\r\nGuide page: 467 x 340<br>\r\nNews: 467 x 340<br>\r\nLanding page: 467 x 340<br>\r\nCase study: 467 x 340<br>\r\nContent page: 322 x 275<br>\r\nSubtopic page: 467 x 340<br>\r\nSupplier: 467 x 340<br>\r\nEvent: 467 x 340<br>"
 required: false
 translatable: true
 default_value: {  }
@@ -24,6 +25,7 @@ settings:
       image: image
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference
