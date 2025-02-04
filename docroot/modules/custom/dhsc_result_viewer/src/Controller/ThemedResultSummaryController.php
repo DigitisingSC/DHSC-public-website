@@ -406,7 +406,7 @@ class ThemedResultSummaryController extends ControllerBase {
     ];
 
     // Get the path to the stylesheet.
-    $stylesheet = $this->extensionPathResolver->getPath('module', 'dhsc_result_viewer') . '/css/style.css';
+    $stylesheet = $this->extensionPathResolver->getPath('module', 'dhsc_result_viewer') . '/css/pdf.css';
 
     // Generate the PDF.
     $filename = $webform_title . '-results-' . date('d-M-Y');
