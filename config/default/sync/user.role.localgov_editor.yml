@@ -43,7 +43,6 @@ dependencies:
     - path
     - quick_node_clone
     - scheduler
-    - simple_sitemap
     - site_settings
     - system
     - taxonomy
@@ -73,8 +72,6 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'add site setting entities'
-  - 'administer menu'
-  - 'administer sitemap settings'
   - 'administer webform element access'
   - 'clone article content'
   - 'clone casestudy content'
