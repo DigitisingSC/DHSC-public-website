@@ -10,7 +10,8 @@
   {% if result['#responses'] is not empty %}
     {% for response in result['#responses'] %}
       {% set table_rows = table_rows|merge([
-        '<tr><td><strong>' ~ response.processed_text_2['#text']|striptags|e ~ '</strong></td><td>' ~ response.response_text|e ~ '</td></tr>'
+        '<tr><td>' ~ response.processed_text_2['#text']|striptags ~ '</td></tr>',
+        '<tr><td>' ~ 'Your response'|t ~ ': <strong>' ~ response.response_text ~ '</strong></td></tr>',
       ]) %}
     {% endfor %}
   {% endif %}
