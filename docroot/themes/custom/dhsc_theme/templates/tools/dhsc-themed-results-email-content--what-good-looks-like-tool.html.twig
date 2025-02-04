@@ -10,8 +10,10 @@
   {% if result['#responses'] is not empty %}
     {% for response in result['#responses'] %}
       {% set table_rows = table_rows|merge([
-        '<tr><td colspan="2"><strong>' ~ response.processed_text_2['#text']|striptags|e ~ '</strong></td></tr>',
-        '<tr><td width="60%">' ~ response.processed_text_3['#text']|striptags|e ~ '</td><td align="center">' ~ response.response_text|e ~ '</td></tr>'
+        '<tr><td><strong>' ~ response.processed_text_2['#text']|striptags|e ~ '</strong></td></tr>',
+        '<tr><td>' ~ response.processed_text_3['#text']|striptags|e ~ '</td></tr>',
+        '<tr><td><strong>' ~ 'You rated your organisation'|t ~ '</strong></td></tr>',
+        '<tr><td>' ~ response.response_text|e ~ '</td></tr>'
       ]) %}
     {% endfor %}
   {% endif %}
@@ -20,7 +22,7 @@
   {% if result['#result']['content'][0]['#text'] is defined %}
     {% set table_rows = table_rows|merge([
       '<tr><td><br></td></tr>',
-      '<tr><td colspan="2" style="border-left: #29a189 solid 2px; padding-left: 20px">' ~ result['#result']['content'][0]|e ~ '</td></tr>',
+      '<tr><td style="border-left: #29a189 solid 2px; padding-left: 20px">' ~ result['#result']['content'][0]|e ~ '</td></tr>',
       '<tr><td><br></td></tr>'
     ]) %}
   {% endif %}
