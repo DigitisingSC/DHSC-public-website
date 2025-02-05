@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -62,6 +64,7 @@ permissions:
   - 'access any webform configuration'
   - 'access broken links report'
   - 'access content overview'
+  - 'access files overview'
   - 'access media overview'
   - 'access own broken links report'
   - 'access page_components entity browser pages'
