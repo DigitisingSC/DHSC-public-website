@@ -59,6 +59,7 @@ permissions:
   - 'access any webform configuration'
   - 'access broken links report'
   - 'access content overview'
+  - 'access files overview'
   - 'access media overview'
   - 'access own broken links report'
   - 'access page_components entity browser pages'
