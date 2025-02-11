@@ -11,7 +11,7 @@ field_name: field_image
 entity_type: node
 bundle: event
 label: 'Featured Image'
-description: ''
+description: "Image sizes (px width x height):<br>\r\nFeatured Image: 467 x 340<br>"
 required: false
 translatable: true
 default_value: {  }
