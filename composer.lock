@@ -9650,17 +9650,17 @@
         },
         {
             "name": "drupal/site_settings",
-            "version": "2.0.0-rc5",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/site_settings.git",
-                "reference": "2.0.0-rc5"
+                "reference": "2.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/site_settings-2.0.0-rc5.zip",
-                "reference": "2.0.0-rc5",
-                "shasum": "f0e2de40a44c5b9ac82afeeabeb39e0a72915671"
+                "url": "https://ftp.drupal.org/files/projects/site_settings-2.0.1.zip",
+                "reference": "2.0.1",
+                "shasum": "312033c1379920268d121d7034d7269733f2da02"
             },
             "require": {
                 "drupal/core": "^10 || ^11"
@@ -9671,11 +9671,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.0.0-rc5",
-                    "datestamp": "1722329453",
+                    "version": "2.0.1",
+                    "datestamp": "1736526350",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -24384,7 +24384,6 @@
         "drupal/paragraphs_features": 10,
         "drupal/rabbit_hole": 10,
         "drupal/session_limit": 10,
-        "drupal/site_settings": 5,
         "drupal/tfa": 15,
         "drupal/viewsreference": 10
     },

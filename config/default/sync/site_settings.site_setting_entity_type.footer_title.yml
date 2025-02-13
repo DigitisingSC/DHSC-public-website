@@ -1,8 +1,10 @@
 uuid: 4a08e00b-0ec0-4c52-9673-cc490edbf190
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.footer
 id: footer_title
 label: 'Footer title'
-group: null
+group: footer
 multiple: false

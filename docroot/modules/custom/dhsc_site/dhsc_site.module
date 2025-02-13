@@ -14,6 +14,13 @@ use Drupal\Core\Form\FormStateInterface;
  */
 function dhsc_site_theme() {
   return [
+    'dhsc_content_guide_block' => [
+      'variables' => [
+        'links' => [],
+        'format' => [],
+        'additional' => '',
+      ],
+    ],
     'alert_message' => [
       'variables' => [
         'alert_text' => [],
