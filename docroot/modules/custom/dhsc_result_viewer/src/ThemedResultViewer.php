@@ -402,6 +402,8 @@ class ThemedResultViewer implements ThemedResultViewerInterface {
    *
    * @return array
    *   Array containing all details of the message.
+   *
+   * @throws \Exception
    */
   public function buildEmail($email, array $results, string $webform_title, string $webform_id) {
     $module = 'dhsc_result_viewer';
