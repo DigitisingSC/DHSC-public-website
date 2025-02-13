@@ -137,14 +137,6 @@ function dhsc_result_viewer_theme() {
         'webform_id' => [],
       ],
     ],
-    'dhsc_back_button' => [
-      'render element' => 'element',
-      'template' => 'dhsc-back-button',
-    ],
-    'dhsc_save_edit' => [
-      'render element' => 'element',
-      'template' => 'dhsc-save-edit',
-    ],
   ];
 }
 
@@ -199,11 +191,9 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     $form['save_edit'] = [
       '#type' => 'submit',
       '#value' => t('Save edit'),
-      // Allows navigation without validation.
       '#limit_validation_errors' => [],
       '#submit' => ['dhsc_result_viewer_save_edit_submit'],
       '#attributes' => ['class' => ['button', 'a-button', 'a-button--primary'], 'data-twig-suggestion' => 'save-and-edit'],
-      // Ensure it appears before Submit.
       '#theme_wrapper' => 'form_element',
       '#weight' => 10,
     ];
@@ -230,7 +220,8 @@ function dhsc_result_viewer_back_button_submit(&$form, FormStateInterface $form_
   if ($current_step !== null && $current_step > 0) {
     $previous_step = array_keys($all_pages)[$current_step - 1];
   } else {
-    $previous_step = $current_page; // If no valid previous step, stay on the same page.
+    // If no valid previous step, stay on the same page.
+    $previous_step = $current_page;
   }
 
   // Save draft before navigating back.
