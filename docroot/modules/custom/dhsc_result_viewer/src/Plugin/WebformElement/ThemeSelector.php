@@ -2,11 +2,11 @@
 
 namespace Drupal\dhsc_result_viewer\Plugin\WebformElement;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
+use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -229,6 +229,44 @@ class ThemeSelector extends WebformWizardPage {
           '#weight' => -10,
         ];
       }
+    }
+
+    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
+    $submission = $element['#webform_submission'];
+
+    if ($submission instanceof WebformSubmissionInterface) {
+      $submission->set('in_draft', TRUE);
+      $submission->save();
+      \Drupal::logger('dhsc_result_viewer')
+        ->notice('Auto-saved draft for Webform submission ID @id.', ['@id' => $submission->id()]);
+    }
+
+    // Add back button.
+    $element['back'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Back'),
+      '#limit_validation_errors' => [],
+      '#submit' => ['dhsc_result_viewer_back_button_submit'],
+      '#attributes' => ['class' => ['button', 'button--primary'], 'data-twig-suggestion' => 'previous'],
+      '#theme_wrapper' => ['form_element'],
+      '#weight' => -10,
+    ];
+
+    parent::showPage($element);
+
+  }
+
+  /**
+   * Saves the webform submission as a draft.
+   */
+  protected function saveDraft(FormStateInterface $form_state) {
+    $submission = $form_state->getFormObject()->getEntity();
+    if ($submission instanceof WebformSubmissionInterface) {
+      $submission->set('in_draft', TRUE);
+      $submission->save();
+
+      \Drupal::logger('dhsc_result_viewer')
+        ->notice('Auto-saved draft for Webform submission ID @id.', ['@id' => $submission->id()]);
     }
   }
 
