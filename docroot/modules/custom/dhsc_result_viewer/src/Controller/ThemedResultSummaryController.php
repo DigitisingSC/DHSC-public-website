@@ -254,6 +254,7 @@ class ThemedResultSummaryController extends ControllerBase {
         // and 4.
         $scores_by_theme = $this->resultViewer->getThemeScores($webform, $sorted_results);
 
+        $step_number = 1;
         // Process results content based on derived theme data.
         foreach ($scores_by_theme as $uuid => $theme_score) {
           // Reset response array.
@@ -274,7 +275,6 @@ class ThemedResultSummaryController extends ControllerBase {
           // While not needed for this project, a future enhancement could
           // refine this logic for better adaptability.
           $quartile = match (TRUE) {
-
             // Normalise the score into quartile levels.
             $theme_score['score'] >= 1 && $theme_score['score'] < 1.75 => 'QA',
             $theme_score['score'] >= 1.75 && $theme_score['score'] < 2.5 => 'QB',
@@ -317,10 +317,25 @@ class ThemedResultSummaryController extends ControllerBase {
 
           $theme_name = $theme ? $theme->get('field_theme_title')->value : 'Unassigned Theme';
 
+          // Construct submission URL which is used to re-edit responses post
+          // submission.
+          $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])
+            ->toString();
+          $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
+            ->toString();
+
+          // Assign step number to each response.
+          // This is needed to build the edit response link.
+          foreach ($responses as $key => $response) {
+            $responses[$key]['step_number'] = $step_number;
+            $step_number++;
+          }
+
           $elements[] = [
             '#theme' => 'dhsc_themed_results_list',
             '#title' => $theme_name,
             '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
+            '#submission_url' => $submission_url,
             '#responses' => $responses,
             '#result' => $result,
             '#webform_id' => $webform_id,
