@@ -25,12 +25,6 @@ Variables available:
 
   {{ result_summary }}
 
-  {% if submission_url %}
-    <div class="o-tool__actions mb-20 print:hidden">
-      <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
-    </div>
-  {% endif %}
-
   {% if result_summary %}
     <div x-data class="mb-7 pb-7">
       <a class="a-button a-button--primary tablet:mb-0 tablet:mr-5" href="{{ download_results_path }}">
