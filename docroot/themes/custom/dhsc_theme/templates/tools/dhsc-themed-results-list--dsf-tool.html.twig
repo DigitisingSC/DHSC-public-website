@@ -49,9 +49,16 @@ Variables available:
       <div class="o-tool__summary text-sm tablet:text-md mb-2">
         {% for response in responses %}
 
-          <h3 class="font-bold text-md mb-4 leading-[30px]">{{ response.processed_text_2['#text']|striptags }}</h3>
+          <h3 id="{{ 'response-' ~ response.step_number }}" class="font-bold text-md mb-4 leading-[30px]">{{ response.processed_text_2['#text']|striptags }}</h3>
 
           <p class="font-normal text-sm mb-4">Your response: <span class="font-bold">{{ response.response_text }}</span></p>
+
+          {% if submission_url %}
+            <p class="font-normal text-sm mb-20 print:hidden">
+              <a href="{{ submission_url ~ '&edit-page=' ~ response.step_number }}">{{ 'Change my response'|t }}</a>
+            </p>
+          {% endif %}
+
         {% endfor %}
       </div>
     {% endif %}
