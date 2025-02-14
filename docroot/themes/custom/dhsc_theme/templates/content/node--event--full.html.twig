@@ -22,7 +22,7 @@
       'end_date': not content.field_end_date.isEmpty() ? content.field_end_date[0],
       'start_time': not content.field_start_time.isEmpty() ? content.field_start_time[0],
       'end_time': not content.field_end_time.isEmpty() ? content.field_end_time[0],
-      'expired': content.field_date.0['#text']|date('U') < 'now'|date('U'),
+      'expired': expired,
       'location': {
         'place': content.field_location,
         'link': content.field_location_link.0 ? content.field_location_link[0]['#url_title'] : null,

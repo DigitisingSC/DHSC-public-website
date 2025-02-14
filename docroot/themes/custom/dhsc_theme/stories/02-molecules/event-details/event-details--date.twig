@@ -29,7 +29,7 @@
             <div class="m-event-details__location">
               <h3 class="mb-2">{{ 'Location'|t }}</h3>
               {% if location.link %}
-                <a href="{{ location.link }} texb-base" class="text-forest" target="_blank">{{ location.place }}</a>
+                <a href="{{ location.link }}" class="text-base text-forest" target="_blank">{{ location.place }}</a>
               {% else %}
                 {{ location.place }}
               {% endif %}

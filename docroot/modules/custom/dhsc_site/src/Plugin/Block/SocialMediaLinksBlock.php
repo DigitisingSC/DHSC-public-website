@@ -64,7 +64,7 @@ class SocialMediaLinksBlock extends BlockBase {
     $host = $parsed_url['host'];
     switch ($host) {
       case str_contains($host, 'x'):
-        $icon_name = 'twitter';
+        $icon_name = 'x';
         break;
 
       case str_contains($host, 'facebook'):
