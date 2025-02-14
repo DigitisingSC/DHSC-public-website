@@ -71,3 +71,12 @@ a {
   border-left: #29a189 solid 3px;
   padding-left: 20px;
 }
+
+hr {
+  height: 1px;
+  color: #616265;
+  background: #616265;
+  font-size: 0;
+  border: 0;
+  margin: 50px 0;
+}
