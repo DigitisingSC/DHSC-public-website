@@ -14,6 +14,9 @@
   {% for result in results %}
     <article class="mt-6 mb-8">
       <h2 class="mb-5">{{ result['#title'] }}</h2>
+      <div class="results-summary">
+        {{ result['#result'].content }}
+      </div>
       {% for response in result['#responses'] %}
         <div class="o-tool__summary text-sm tablet:text-md mb-2">
 
@@ -23,10 +26,8 @@
 
         </div>
       {% endfor %}
-      <div class="results-summary">
-        {{ result['#result'].content }}
-      </div>
     </article>
+    <hr />
   {% endfor %}
 
 </div>
