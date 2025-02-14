@@ -9,6 +9,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
@@ -144,9 +145,8 @@ function dhsc_result_viewer_theme() {
  * Implements hook_ENTITY_TYPE_prepare_form().
  */
 function dhsc_result_viewer_webform_submission_prepare_form(\Drupal\webform\WebformSubmissionInterface $webform_submission, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
-
   $current_request = \Drupal::request();
-  $requested_step = (int) $current_request->query->get('edit-page') ?? NULL ;
+  $requested_step = (int) $current_request->query->get('edit-page') ?? NULL;
 
   // The list of all wizard pages.
   $all_pages = array_keys($webform_submission->getWebform()->getPages());
@@ -157,15 +157,12 @@ function dhsc_result_viewer_webform_submission_prepare_form(\Drupal\webform\Webf
       $form_state->set('current_page', $all_pages[$requested_step ? $requested_step - 1 : 0]);
     }
   }
-
 }
-
 
 /**
  * Implements hook_form_alter().
  */
 function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
-
   // Re-write submit label when re-submitting answers.
   $form_ids = [
     'webform_submission_assured_solutions_tool_edit_form',
@@ -183,17 +180,20 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
   }
 
   $current_request = \Drupal::request();
-  $requested_step = (int) $current_request->query->get('edit-page');
+  $requested_step = (int) $current_request->query->get('edit-page') ?? NULL;
 
   // Ensure the requested step is valid before setting it.
   if ($requested_step > 0) {
     // Add save edit button.
     $form['save_edit'] = [
       '#type' => 'submit',
-      '#value' => t('Save edit'),
+      '#value' => t('Continue'),
       '#limit_validation_errors' => [],
       '#submit' => ['dhsc_result_viewer_save_edit_submit'],
-      '#attributes' => ['class' => ['button', 'a-button', 'a-button--primary'], 'data-twig-suggestion' => 'save-and-edit'],
+      '#attributes' => [
+        'class' => ['button', 'a-button', 'a-button--primary'],
+        'data-twig-suggestion' => 'save-and-edit',
+      ],
       '#theme_wrapper' => 'form_element',
       '#weight' => 10,
     ];
@@ -206,45 +206,103 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
  * Submit handler for the Back button.
  */
 function dhsc_result_viewer_back_button_submit(&$form, FormStateInterface $form_state) {
-  $current_page = $form_state->get('current_page'); // The key of the current page
-  $all_pages = $form_state->get('pages'); // The list of all wizard pages
-
-  // Ensure $all_pages exists before using array_keys().
-  if (is_array($all_pages)) {
-    $current_step = array_search($current_page, array_keys($all_pages), true);
-  } else {
-    $current_step = null;
-  }
-
-  // Determine the previous step.
-  if ($current_step !== null && $current_step > 0) {
-    $previous_step = array_keys($all_pages)[$current_step - 1];
-  } else {
-    // If no valid previous step, stay on the same page.
-    $previous_step = $current_page;
-  }
-
-  // Save draft before navigating back.
+  $webform_id = $form['#webform_id'];
   $submission = $form_state->getFormObject()->getEntity();
-  if ($submission instanceof WebformSubmissionInterface) {
-    $submission->set('in_draft', TRUE);
-    $submission->save();
+  $token = $submission->get('token')->getValue()[0]['value'] ?? '';
+  $requested_step = getRequestedStep();
+
+  if ($requested_step && $requested_step > 0) {
+    // Re-edit mode.
+    // Redirect to previous response step.
+    performRedirect(getSummaryUrl($webform_id, $token, $requested_step));
   }
+  else {
+    // Wizard navigation treatment.
+    // Go to the previous step or landing page.
+    $previous_step = getPreviousStep($form_state);
 
-  // Move the wizard back.
-  $form_state->set('current_page', $previous_step);
-  $form_state->setRebuild();
+    if ($previous_step === NULL) {
+      // Redirect back to the landing page associated with tool.
+      $landing_page_url = getLandingPageUrl($webform_id);
+      performRedirect($landing_page_url);
+    }
 
-  // Always return an AJAX response.
+    // Save draft before navigating back.
+    if ($submission instanceof WebformSubmissionInterface) {
+      $submission->set('in_draft', TRUE);
+      $submission->save();
+    }
+
+    // Move the wizard back.
+    $form_state->set('current_page', $previous_step);
+    $form_state->setRebuild();
+
+    return rebuildWebformAjax($form, $form_state);
+  }
+}
+
+/**
+ * Get the requested step from the current request.
+ */
+function getRequestedStep() {
+  return \Drupal::request()->query->get('edit-page');
+}
+
+/**
+ * Generate the summary URL for re-edit mode.
+ */
+function getSummaryUrl(string $webform_id, $token, int $requested_step): string {
+
+  return Url::fromRoute(
+    'dhsc_result_viewer.themed_result_summary',
+    ['webform_id' => $webform_id, 'token' => $token],
+    ['absolute' => TRUE, 'fragment' => 'response-' . $requested_step]
+  )->toString();
+}
+
+/**
+ * Get the previous step in the wizard.
+ */
+function getPreviousStep(FormStateInterface $form_state): ?string {
+  // Get the current step by obtaining the array key.
+  $current_page = $form_state->get('current_page');
+  $all_pages = $form_state->get('pages');
+
+  // Increment by one to provide the current step number
+  $current_step = array_search($current_page, array_keys($all_pages), TRUE) + 1;
+  $previous_step = $current_step - 1;
+
+  return ($current_step > 1) ? array_keys($all_pages)[$previous_step - 1] : NULL;
+}
+
+/**
+ * Get the landing page URL or fallback to front page.
+ */
+function getLandingPageUrl(string $webform_id): string {
+  $landing_page_path = getLandingPagePath($webform_id);
+
+  return $landing_page_path
+    ? Url::fromUserInput($landing_page_path, ['absolute' => TRUE])->toString()
+    : Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+}
+
+/**
+ * Perform a redirect response and exit.
+ */
+function performRedirect(string $url): void {
+  $response = new RedirectResponse($url);
+  $response->send();
+  exit();
+}
+
+/**
+ * Rebuild the webform via AJAX.
+ */
+function rebuildWebformAjax(array &$form, FormStateInterface $form_state): AjaxResponse {
   $response = new AjaxResponse();
-
-  // Rebuild the form.
   $form = \Drupal::formBuilder()->rebuildForm($form_state->getBuildInfo()['form_id'], $form_state);
-
-  // Ensure the correct wrapper ID for Webform wizard replacement.
   $wrapper_id = $form['#id'] ?? 'webform-ajax-wrapper';
 
-  // Replace only the Webform wizard section.
   $response->addCommand(new ReplaceCommand("#{$wrapper_id}", \Drupal::service('renderer')->render($form)));
 
   return $response;
@@ -254,7 +312,6 @@ function dhsc_result_viewer_back_button_submit(&$form, FormStateInterface $form_
  * Submit handler for the Back button.
  */
 function dhsc_result_viewer_save_edit_submit(&$form, FormStateInterface $form_state) {
-
   // Save draft before navigating back.
   $submission = $form_state->getFormObject()->getEntity();
   if ($submission instanceof WebformSubmissionInterface) {
@@ -272,8 +329,10 @@ function dhsc_result_viewer_save_edit_submit(&$form, FormStateInterface $form_st
     $redirect_url = Url::fromRoute(
       'dhsc_result_viewer.themed_result_summary',
       ['webform_id' => $webform_id, 'token' => $token[0]['value']],
-      ['absolute' => TRUE,
-      'fragment' => 'response-' . $current_step],
+      [
+        'absolute' => TRUE,
+        'fragment' => 'response-' . $current_step,
+      ],
     )->toString();
 
     // Set redirect.
@@ -325,14 +384,14 @@ function dhsc_result_viewer_preprocess_status_messages(array &$variables) {
  * Implements hook_webform_submission_form_alter().
  */
 function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
-  // Target specific webforms.
+  // Target specific web forms.
   if (in_array($form['#webform_id'], [
-    'self_assessment_tool',
-    'assured_solutions_tool',
-    'dsf_tool',
-    'dsf_tool_advanced',
-    'what_good_looks_like_tool',
-  ]) && ($current_page = $form_state->get('current_page') !== '')) {
+      'self_assessment_tool',
+      'assured_solutions_tool',
+      'dsf_tool',
+      'dsf_tool_advanced',
+      'what_good_looks_like_tool',
+    ]) && ($current_page = $form_state->get('current_page') !== '')) {
     // Add a hidden form element to track the current step.
     $form['current_step'] = [
       '#type' => 'value',
@@ -369,7 +428,8 @@ function dhsc_result_viewer_theme_suggestions_input_alter(&$suggestions, array $
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for dhsc_tool__themed_results_summary.
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_tool__themed_results_summary.
  */
 function dhsc_result_viewer_theme_suggestions_dhsc_tool__themed_results_summary_alter(array &$suggestions, array $variables) {
   if (!empty($variables['webform_id'])) {
@@ -381,7 +441,8 @@ function dhsc_result_viewer_theme_suggestions_dhsc_tool__themed_results_summary_
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_results_pdf_content.
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_themed_results_pdf_content.
  */
 function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_pdf_content_alter(array &$suggestions, array $variables) {
   if (!empty($variables['webform_id'])) {
@@ -429,7 +490,8 @@ function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variable
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for mimemail_message templates.
+ * Implements hook_theme_suggestions_HOOK_alter() for mimemail_message
+ * templates.
  */
 function dhsc_result_viewer_theme_suggestions_mimemail_message_alter(array &$suggestions, array $variables) {
   $route_match = \Drupal::routeMatch();
@@ -451,7 +513,8 @@ function dhsc_result_viewer_theme_suggestions_mimemail_message_alter(array &$sug
 }
 
 /**
- * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_results_email_content templates.
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_themed_results_email_content templates.
  */
 function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_email_content_alter(array &$suggestions, array $variables) {
   if (!empty($variables['webform_id'])) {
@@ -460,4 +523,28 @@ function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_email_content_
     // Add a theme suggestion using the webform ID as a suffix.
     $suggestions[] = 'dhsc_themed_results_email_content__' . $webform_id;
   }
+}
+
+/**
+ * Retrieves the landing page path from a Webform.
+ *
+ * @param string $webform_id
+ *   The Webform machine name.
+ *
+ * @return string|null
+ *   The stored landing page path or NULL if not set.
+ */
+function getLandingPagePath(string $webform_id): ?string {
+  $webform = Webform::load($webform_id);
+  if ($webform) {
+    foreach ($webform->getHandlers() as $handler) {
+      if ($handler->getPluginId() === 'landing_page_path_handler') {
+        // Get config associated with handler.
+        $config = $handler->getConfiguration();
+
+        return $config['settings']['landing_page_path'] ?? NULL;
+      }
+    }
+  }
+  return NULL;
 }
