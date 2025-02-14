@@ -30,6 +30,7 @@ module:
   dhsc_result_viewer: 0
   dhsc_site: 0
   diff: 0
+  dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
   editoria11y: 0
@@ -60,6 +61,7 @@ module:
   language: 0
   link: 0
   link_attributes: 0
+  linkchecker: 0
   linkit: 0
   localgov_admin_theme_improvements: 0
   localgov_core: 0

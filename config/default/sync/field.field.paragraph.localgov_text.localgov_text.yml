@@ -4,10 +4,16 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.localgov_text
+    - filter.format.basic_html
+    - filter.format.full_html
     - paragraphs.paragraphs_type.localgov_text
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 _core:
   default_config_hash: coOUNwEHi31kSbDURy8GVhyFNMMgBVCAT0CkJt1iLzI
 id: paragraph.localgov_text.localgov_text

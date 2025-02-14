@@ -4,10 +4,15 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_formatted_description
+    - filter.format.basic_html
     - node.type.landing_page
   module:
-    - allowed_formats
+    - linkchecker
     - text
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: html_link_extractor
 id: node.landing_page.field_formatted_description
 field_name: field_formatted_description
 entity_type: node

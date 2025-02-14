@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.full_html
     - media.type.document
     - media.type.hero
@@ -32,6 +34,7 @@ dependencies:
     - entity_browser
     - file
     - filter
+    - linkchecker
     - media
     - moderated_content_bulk_publish
     - node
@@ -54,16 +57,22 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access broken links report'
   - 'access content overview'
+  - 'access files overview'
   - 'access media overview'
+  - 'access own broken links report'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
+  - 'access site reports'
   - 'access site settings overview'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access webform help'
   - 'access webform overview'
   - 'add site setting entities'
+  - 'administer editoria11y checker'
+  - 'administer linkchecker'
   - 'administer menu'
   - 'administer sitemap settings'
   - 'administer webform element access'
@@ -196,6 +205,7 @@ permissions:
   - 'edit terms in skill_level'
   - 'edit terms in skill_method'
   - 'edit terms in theme'
+  - 'manage editoria11y results'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'moderated content bulk archive'

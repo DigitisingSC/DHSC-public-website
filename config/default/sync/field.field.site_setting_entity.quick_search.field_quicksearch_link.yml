@@ -7,6 +7,11 @@ dependencies:
     - site_settings.site_setting_entity_type.quick_search
   module:
     - link
+    - linkchecker
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: link_link_extractor
 id: site_setting_entity.quick_search.field_quicksearch_link
 field_name: field_quicksearch_link
 entity_type: site_setting_entity

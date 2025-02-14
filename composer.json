@@ -38,6 +38,7 @@
         "drupal/field_formatter_class": "^1.6",
         "drupal/geo_entity": "^1.0",
         "drupal/google_analytics": "^4.0",
+        "drupal/linkchecker": "^2.0",
         "drupal/linkit": "^6.0",
         "drupal/mailsystem": "^4.4",
         "drupal/maxlength": "^2.1",

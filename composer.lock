@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba47e2ddb4b924adee4c58bf08f603a3",
+    "content-hash": "3dd24c1c0377f3878eac3a20a9fe195c",
     "packages": [
         {
             "name": "acquia/blt",
@@ -7064,6 +7064,76 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/link_attributes",
                 "issues": "https://www.drupal.org/project/issues/link_attributes"
+            }
+        },
+        {
+            "name": "drupal/linkchecker",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/linkchecker.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/linkchecker-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "94b59525d4d4824f2eed9ab97cfbf4cd1d3bd757"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0",
+                "drupal/dynamic_entity_reference": "^1.16 || ^2.0 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "drupal/redirect": "^1.8"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1721719433",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10 || ^11"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/u/hass"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/243795/committers"
+                },
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
+                },
+                {
+                    "name": "quadrexdev",
+                    "homepage": "https://www.drupal.org/user/3683807"
+                },
+                {
+                    "name": "vladimiraus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                }
+            ],
+            "description": "Periodically checks for broken links in node types, blocks and fields and reports the results.",
+            "homepage": "https://www.drupal.org/project/linkchecker",
+            "support": {
+                "source": "https://git.drupal.org/project/linkchecker.git",
+                "issues": "https://www.drupal.org/project/issues/linkchecker"
             }
         },
         {

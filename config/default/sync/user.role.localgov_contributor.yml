@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -34,7 +36,6 @@ dependencies:
     - node
     - paragraphs
     - paragraphs_library
-    - path
     - system
     - toolbar
   enforced:
@@ -48,6 +49,7 @@ weight: 4
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access files overview'
   - 'access media overview'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
@@ -70,7 +72,6 @@ permissions:
   - 'create subtopic_page content'
   - 'create supplier content'
   - 'create svg media'
-  - 'create url aliases'
   - 'delete media'
   - 'delete own article content'
   - 'delete own casestudy content'

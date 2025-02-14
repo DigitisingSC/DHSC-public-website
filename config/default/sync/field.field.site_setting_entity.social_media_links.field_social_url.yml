@@ -7,6 +7,11 @@ dependencies:
     - site_settings.site_setting_entity_type.social_media_links
   module:
     - link
+    - linkchecker
+third_party_settings:
+  linkchecker:
+    scan: true
+    extractor: link_link_extractor
 id: site_setting_entity.social_media_links.field_social_url
 field_name: field_social_url
 entity_type: site_setting_entity

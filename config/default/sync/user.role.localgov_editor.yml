@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -35,6 +37,7 @@ dependencies:
     - eu_cookie_compliance
     - file
     - filter
+    - linkchecker
     - media
     - node
     - paragraphs
@@ -42,7 +45,6 @@ dependencies:
     - path
     - quick_node_clone
     - scheduler
-    - simple_sitemap
     - site_settings
     - system
     - taxonomy
@@ -60,8 +62,11 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access any webform configuration'
+  - 'access broken links report'
   - 'access content overview'
+  - 'access files overview'
   - 'access media overview'
+  - 'access own broken links report'
   - 'access page_components entity browser pages'
   - 'access paragraphs_library_items entity browser pages'
   - 'access site settings overview'
@@ -70,8 +75,6 @@ permissions:
   - 'access webform help'
   - 'access webform overview'
   - 'add site setting entities'
-  - 'administer menu'
-  - 'administer sitemap settings'
   - 'administer webform element access'
   - 'clone article content'
   - 'clone casestudy content'
