@@ -30,6 +30,7 @@ module:
   dhsc_result_viewer: 0
   dhsc_site: 0
   diff: 0
+  dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
   editoria11y: 0
@@ -60,6 +61,7 @@ module:
   language: 0
   link: 0
   link_attributes: 0
+  linkchecker: 0
   linkit: 0
   localgov_admin_theme_improvements: 0
   localgov_core: 0
@@ -73,12 +75,15 @@ module:
   maxlength: 0
   media: 0
   media_download: 0
+  media_entity_usage: 0
   media_library: 0
   media_library_edit: 0
   menu_link_content: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
+  meu_node: 0
+  meu_paragraphs: 0
   mimemail: 0
   moderated_content_bulk_publish: 0
   mysql: 0
@@ -101,6 +106,7 @@ module:
   redirect: 0
   responsive_image: 0
   responsive_tables_filter: 0
+  rh_media: 0
   rh_node: 0
   rh_taxonomy: 0
   robotstxt: 0

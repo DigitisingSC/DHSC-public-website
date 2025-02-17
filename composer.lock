@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90730bd7c59fd16f6e571a6b889ef542",
+    "content-hash": "da9db76644332015e2507ed921868487",
     "packages": [
         {
             "name": "acquia/blt",
@@ -7067,6 +7067,76 @@
             }
         },
         {
+            "name": "drupal/linkchecker",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/linkchecker.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/linkchecker-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "94b59525d4d4824f2eed9ab97cfbf4cd1d3bd757"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0",
+                "drupal/dynamic_entity_reference": "^1.16 || ^2.0 || ^3.0 || ^4.0"
+            },
+            "require-dev": {
+                "drupal/redirect": "^1.8"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1721719433",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10 || ^11"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/u/hass"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/243795/committers"
+                },
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
+                },
+                {
+                    "name": "quadrexdev",
+                    "homepage": "https://www.drupal.org/user/3683807"
+                },
+                {
+                    "name": "vladimiraus",
+                    "homepage": "https://www.drupal.org/user/673120"
+                }
+            ],
+            "description": "Periodically checks for broken links in node types, blocks and fields and reports the results.",
+            "homepage": "https://www.drupal.org/project/linkchecker",
+            "support": {
+                "source": "https://git.drupal.org/project/linkchecker.git",
+                "issues": "https://www.drupal.org/project/issues/linkchecker"
+            }
+        },
+        {
             "name": "drupal/linkit",
             "version": "6.1.6",
             "source": {
@@ -7404,6 +7474,58 @@
             "homepage": "https://www.drupal.org/project/media_download",
             "support": {
                 "source": "https://git.drupalcode.org/project/media_download"
+            }
+        },
+        {
+            "name": "drupal/media_entity_usage",
+            "version": "9.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_entity_usage.git",
+                "reference": "9.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_usage-9.1.0.zip",
+                "reference": "9.1.0",
+                "shasum": "ab503d82bb086f747f73453c943b5a1a5f20d42d"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "require-dev": {
+                "drupal/media": "*",
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "9.1.0",
+                    "datestamp": "1693989331",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bletch",
+                    "homepage": "https://www.drupal.org/user/276684"
+                },
+                {
+                    "name": "fwrdeu",
+                    "homepage": "https://www.drupal.org/user/3533117"
+                }
+            ],
+            "description": "Provide information about entities that references media (please use submodules)",
+            "homepage": "https://www.drupal.org/project/media_entity_usage",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_entity_usage"
             }
         },
         {
