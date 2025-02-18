@@ -37,12 +37,17 @@ class FeaturedLinksBlock extends BlockBase {
     $featured_links = $site_settings->loadByFieldset('menu')['featured_links'];
     if (!empty($featured_links)) {
       foreach ($featured_links as $featured_link) {
-        $paragraph = Paragraph::load($featured_link['target_id']);
-        $links[] = [
-          'url'   => Url::fromUri($paragraph->field_featured_link->uri)->toString(),
-          'title' => $paragraph->field_featured_link->title,
-          'description' => $paragraph->field_description->value,
-        ];
+        $paragraph_id = $featured_link['target_id'] ?? NULL;
+
+        if ($paragraph_id) {
+          $paragraph = Paragraph::load($paragraph_id);
+          $links[] = [
+            'url' => Url::fromUri($paragraph->field_featured_link->uri)
+              ->toString(),
+            'title' => $paragraph->field_featured_link->title,
+            'description' => $paragraph->field_description->value,
+          ];
+        }
       }
     }
     return $links;
