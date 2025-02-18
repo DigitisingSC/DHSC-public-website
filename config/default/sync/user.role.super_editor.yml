@@ -32,6 +32,7 @@ dependencies:
     - content_moderation
     - editoria11y
     - entity_browser
+    - entity_usage
     - file
     - filter
     - linkchecker
@@ -59,6 +60,7 @@ permissions:
   - 'access any webform configuration'
   - 'access broken links report'
   - 'access content overview'
+  - 'access entity usage statistics'
   - 'access files overview'
   - 'access media overview'
   - 'access own broken links report'
