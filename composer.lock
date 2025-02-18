@@ -7477,6 +7477,58 @@
             }
         },
         {
+            "name": "drupal/media_entity_usage",
+            "version": "9.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_entity_usage.git",
+                "reference": "9.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_entity_usage-9.1.0.zip",
+                "reference": "9.1.0",
+                "shasum": "ab503d82bb086f747f73453c943b5a1a5f20d42d"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "require-dev": {
+                "drupal/media": "*",
+                "drupal/paragraphs": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "9.1.0",
+                    "datestamp": "1693989331",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bletch",
+                    "homepage": "https://www.drupal.org/user/276684"
+                },
+                {
+                    "name": "fwrdeu",
+                    "homepage": "https://www.drupal.org/user/3533117"
+                }
+            ],
+            "description": "Provide information about entities that references media (please use submodules)",
+            "homepage": "https://www.drupal.org/project/media_entity_usage",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_entity_usage"
+            }
+        },
+        {
             "name": "drupal/media_library_edit",
             "version": "3.0.4",
             "source": {
