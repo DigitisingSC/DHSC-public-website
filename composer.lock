@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da9db76644332015e2507ed921868487",
+    "content-hash": "5749ea8a90ec2f695cd228a671da9281",
     "packages": [
         {
             "name": "acquia/blt",
@@ -4186,21 +4186,21 @@
         },
         {
             "name": "drupal/date_recur",
-            "version": "3.8.1",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/date_recur.git",
-                "reference": "3.8.1"
+                "reference": "3.6.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/date_recur-3.8.1.zip",
-                "reference": "3.8.1",
-                "shasum": "3c25c23d589f1b7a3bbe833cfdf698a9fb7d01bb"
+                "url": "https://ftp.drupal.org/files/projects/date_recur-3.6.1.zip",
+                "reference": "3.6.1",
+                "shasum": "e29338403beb5c002b0dbf0246fc7bb6e8094800"
             },
             "require": {
-                "drupal/core": "^10.3 || ^11",
-                "php": ">=8.3",
+                "drupal/core": "^10.2",
+                "php": ">=8.1",
                 "rlanvin/php-rrule": "^2"
             },
             "conflict": {
@@ -4210,7 +4210,7 @@
             "require-dev": {
                 "composer/installers": "^2",
                 "dealerdirect/phpcodesniffer-composer-installer": "^1",
-                "drupal/core-dev": "^10.3 || ^11",
+                "drupal/core-dev": "^10.1",
                 "drupal/token": "^1.5",
                 "micheh/phpcs-gitlab": "^1.1",
                 "mockery/mockery": "^1.5",
@@ -4228,8 +4228,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.8.1",
-                    "datestamp": "1737608454",
+                    "version": "3.6.1",
+                    "datestamp": "1730751118",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4272,36 +4272,28 @@
         },
         {
             "name": "drupal/date_recur_modular",
-            "version": "3.2.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/date_recur_modular.git",
-                "reference": "3.2.1"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/date_recur_modular-3.2.1.zip",
-                "reference": "3.2.1",
-                "shasum": "92b6773e6900c570d1ea7e930d61f53f0520e03f"
+                "url": "https://ftp.drupal.org/files/projects/date_recur_modular-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "6fd4e4fc47faa7c0a36893bf2a45a1994bba476b"
             },
             "require": {
-                "drupal/core": ">=10.3",
-                "drupal/date_recur": "^3.8",
-                "php": ">=8.3"
-            },
-            "require-dev": {
-                "drupal/token": "^1.5",
-                "phpstan/phpstan": "^1.11",
-                "phpstan/phpstan-deprecation-rules": "*",
-                "phpstan/phpstan-phpunit": "^1.4",
-                "phpstan/phpstan-strict-rules": "^1@stable",
-                "previousnext/coding-standard": "^1"
+                "drupal/core": ">=9.5",
+                "drupal/date_recur": "^3.2",
+                "php": ">=8.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.2.1",
-                    "datestamp": "1730873673",
+                    "version": "3.1.0",
+                    "datestamp": "1687499482",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8996,22 +8988,22 @@
         },
         {
             "name": "drupal/scheduled_transitions",
-            "version": "2.7.0",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/scheduled_transitions.git",
-                "reference": "2.7.0"
+                "reference": "2.6.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/scheduled_transitions-2.7.0.zip",
-                "reference": "2.7.0",
-                "shasum": "5cef6625b8f6778c59e02fde40b0c320c0fdaf9f"
+                "url": "https://ftp.drupal.org/files/projects/scheduled_transitions-2.6.0.zip",
+                "reference": "2.6.0",
+                "shasum": "d2abda4f53479437ed9558a65d5b9e4b5a384f84"
             },
             "require": {
-                "drupal/core": "^10.3 || ^11",
+                "drupal/core": "^10.2",
                 "drupal/dynamic_entity_reference": "^3.0 || ^4.0",
-                "php": ">=8.3"
+                "php": ">=8.2"
             },
             "require-dev": {
                 "composer/installers": "2.x-dev",
@@ -9034,8 +9026,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.7.0",
-                    "datestamp": "1730723757",
+                    "version": "2.6.0",
+                    "datestamp": "1730723724",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
