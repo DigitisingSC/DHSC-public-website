@@ -225,9 +225,6 @@
             "alexku/blt-github-actions": {
                 "Test": "patches/allowstandard-subscription-autodeployment.patch"
             },
-            "drupal/autologout": {
-                "3301642: notice on login when destination set": "patches/autologout-notice-login-destination-3301642.patch"
-            },
             "drupal/field_group": {
                 "Issue #2787179 - Ensure visibility of invalid fields": "https://www.drupal.org/files/issues/2021-12-10/2787179-highlight-html5-validation-77.patch"
             },
