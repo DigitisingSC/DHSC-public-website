@@ -19,25 +19,29 @@
         "drupal/acquia_connector": "^4.0",
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
+        "drupal/admin_toolbar": "^3.5",
         "drupal/advagg": "^6.0@alpha",
-        "drupal/allowed_formats": "^2.0",
-        "drupal/autologout": "^1.4",
+        "drupal/allowed_formats": "^3.0",
+        "drupal/autologout": "^2.0",
         "drupal/better_exposed_filters": "^6.0",
         "drupal/components": "^3.0@beta",
         "drupal/config_filter": "^2.6",
         "drupal/config_ignore": "^3.2",
         "drupal/config_split": "^2.0",
         "drupal/core-composer-scaffold": "^10.3",
-        "drupal/core-project-message": "^10.2",
+        "drupal/core-project-message": "^10.3",
         "drupal/core-recommended": "^10.3",
         "drupal/devel": "^5.1",
         "drupal/devel_entity_updates": "^4.1",
         "drupal/diff": "^1.1",
         "drupal/editoria11y": "^2.1",
+        "drupal/entity_browser": "^2.12",
+        "drupal/entity_usage": "^2.0@beta",
         "drupal/eu_cookie_compliance": "^1.24",
         "drupal/field_formatter_class": "^1.6",
         "drupal/geo_entity": "^1.0",
         "drupal/google_analytics": "^4.0",
+        "drupal/jquery_ui_datepicker": "^2.1",
         "drupal/linkit": "^6.0",
         "drupal/mailsystem": "^4.4",
         "drupal/maxlength": "^2.1",
@@ -52,28 +56,31 @@
         "drupal/paragraphs_usage": "^1.0",
         "drupal/password_policy": "^4.0",
         "drupal/pdf_generator": "^2.0",
-        "drupal/quick_node_clone": "^1.17",
+        "drupal/quick_node_clone": "^1.19",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.8",
         "drupal/responsive_tables_filter": "^1.18",
         "drupal/robotstxt": "^1.5",
         "drupal/scheduler": "^1.5",
+        "drupal/search_api": "^1.37",
         "drupal/search_api_solr": "^4.3",
         "drupal/seckit": "^2.0",
         "drupal/session_limit": "^2.0@beta",
         "drupal/shield": "^1.7",
-        "drupal/site_settings": "^1.20",
+        "drupal/simple_sitemap": "^4.2",
+        "drupal/site_settings": "^2.0@RC",
         "drupal/sitemap": "^2.0",
         "drupal/sitewide_alert": "^2.1",
-        "drupal/stage_file_proxy": "^2.1",
+        "drupal/stage_file_proxy": "^3.1",
         "drupal/svg_image_field": "^2.2",
         "drupal/tfa": "^2.0@alpha",
         "drupal/themable_forms": "^1.0",
         "drupal/time_field": "^2.1",
         "drupal/twig_field_value": "^2.0",
         "drupal/twig_tweak": "^3.2",
+        "drupal/views_bulk_operations": "^4.3",
         "drupal/viewsreference": "^2.0@beta",
-        "drupal/webform": "^6.1",
+        "drupal/webform": "^6.2",
         "drupal/workbench_email": "^3.0",
         "drush/drush": "^12.5",
         "localgovdrupal/localgov": "^3.0",
@@ -130,10 +137,10 @@
             "phpcs -p ./docroot/modules/contrib ./docroot/modules/custom ./docroot/themes/custom --standard=vendor/phpcompatibility/php-compatibility/PHPCompatibility --runtime-set testVersion 8.2  --extensions=php,module,install,inc --report-full=./drupal9-php8-compatibility.txt"
         ],
         "post-drupal-scaffold-cmd": [
-          "patch -p1 < patches/htaccess_changes.patch"
+            "patch -p1 < patches/htaccess_changes.patch"
         ],
         "drupal-core-security-updates": [
-            "composer update 'drupal/core-*' --with-all-dependencies --with=drupal/core-recommended:~10.2.0 --with=drupal/core-composer-scaffold:~10.2.0 --with=drupal/core-project-message:~10.2.0 --with=drupal/core-dev:~10.2.0"
+            "composer update 'drupal/core-*' --with-all-dependencies --with=drupal/core-recommended:~10.3.0 --with=drupal/core-composer-scaffold:~10.3.0 --with=drupal/core-project-message:~10.3.0 --with=drupal/core-dev:~10.3.0"
         ]
     },
     "extra": {
@@ -170,14 +177,30 @@
             }
         },
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"]
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "docroot/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
         },
         "drupal-core-project-message": {
             "post-create-project-cmd-message": [
@@ -186,39 +209,32 @@
                 "<bg=blue;fg=white>                                                                  </>",
                 "",
                 "<bg=yellow;fg=black>Next steps</>:",
-
                 "  * Install the site: https://www.drupal.org/docs/8/install",
                 "  * Remove the plugin that prints this message:",
                 "      composer remove drupal/core-project-message"
             ]
         },
         "patches-ignore": {
-          "localgovdrupal/localgov": {
-            "drupal/core": {
-              "Content moderation and Workspaces https://www.drupal.org/project/drupal/issues/3179199#comment-15711680" : "https://www.drupal.org/files/issues/2024-08-11/3179199-3132022-content-moderation-workspaces-query.patch"
+            "localgovdrupal/localgov": {
+                "drupal/core": {
+                    "Content moderation and Workspaces https://www.drupal.org/project/drupal/issues/3179199#comment-15711680": "https://www.drupal.org/files/issues/2024-08-11/3179199-3132022-content-moderation-workspaces-query.patch"
+                }
+            },
+            "localgovdrupal/localgov_services": {
+                "drupal/core": {
+                    "node_access filters out accessible nodes when node is left joined (1349080)": "https://git.drupalcode.org/project/drupal/-/commit/c271adb.diff"
+                }
             }
-          },
-          "localgovdrupal/localgov_services": {
-            "drupal/core": {
-              "node_access filters out accessible nodes when node is left joined (1349080)" : "https://git.drupalcode.org/project/drupal/-/commit/c271adb.diff"
-            }
-          }
         },
         "patches": {
             "alexku/blt-github-actions": {
                 "Test": "patches/allowstandard-subscription-autodeployment.patch"
-            },
-            "drupal/autologout": {
-                "3301642: notice on login when destination set": "patches/autologout-notice-login-destination-3301642.patch"
             },
             "drupal/field_group": {
                 "Issue #2787179 - Ensure visibility of invalid fields": "https://www.drupal.org/files/issues/2021-12-10/2787179-highlight-html5-validation-77.patch"
             },
             "drupal/pdf_generator": {
                 "Issue #3409512 - Patch security vulnerability": "patches/3409512-dompdf-vunerability.patch"
-            },
-            "drupal/site_settings":{
-                "Issue #3357022 Routing error with Drupal 10.2": "https://git.drupalcode.org/project/site_settings/-/merge_requests/7.patch"
             }
         }
     }

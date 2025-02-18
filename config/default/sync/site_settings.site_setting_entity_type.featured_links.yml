@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: featured_links
 label: 'Featured links'
-fieldset: Menu
+group: null
 multiple: false

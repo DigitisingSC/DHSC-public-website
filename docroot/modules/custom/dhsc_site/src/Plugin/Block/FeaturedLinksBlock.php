@@ -33,8 +33,8 @@ class FeaturedLinksBlock extends BlockBase {
    */
   private function getFeaturedLinks():array {
     $links = [];
-    $site_settings = \Drupal::service('site_settings.loader');
-    $featured_links = $site_settings->loadByFieldset('menu')['featured_links'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $featured_links = $site_settings->loadByGroup('menu')['featured_links'];
     if (!empty($featured_links)) {
       foreach ($featured_links as $featured_link) {
         $paragraph = Paragraph::load($featured_link['target_id']);

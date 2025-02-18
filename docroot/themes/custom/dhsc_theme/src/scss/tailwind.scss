@@ -1,4 +1,4 @@
-@import "_fonts.scss";
+@use "_fonts.scss";
 @config "../../tailwind.config.js";
 @tailwind base;
 @tailwind components;

@@ -3,7 +3,8 @@
   @apply inline-flex items-center;
   @apply text-xs no-underline cursor-pointer;
   @apply p-2 tablet:pl-3 tablet:pr-3 tablet:py-2;
-  @apply focus:outline-none focus:ring focus:ring-yellow;text-decoration-line: none;
+  @apply focus:outline-none focus:ring focus:ring-yellow;
+  text-decoration-line: none;
   &--primary {
     @apply border-black border-b-4 rounded-md;
     @apply bg-forest hover:bg-black-80 focus:bg-focus;
@@ -22,6 +23,5 @@
     svg {
       @apply w-[20px] h-[20px] tablet:mr-1;
     }
-
   }
 }
