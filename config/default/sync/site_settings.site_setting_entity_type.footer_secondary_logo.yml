@@ -1,8 +1,10 @@
 uuid: 9df4a32b-2b65-4dd1-b448-d3c3d5319cd9
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.footer
 id: footer_secondary_logo
 label: 'Footer secondary logo'
-fieldset: Footer
+group: footer
 multiple: false

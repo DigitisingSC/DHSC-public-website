@@ -1,8 +1,10 @@
 uuid: 6d7abec4-71af-47e9-90e6-9921e68daa1f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.menu
 id: featured_links
 label: 'Featured links'
-fieldset: Menu
+group: menu
 multiple: false

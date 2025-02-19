@@ -1,17 +1,16 @@
-uuid: 479ead0a-1dd5-4975-95bc-f124871c3d21
+uuid: 40e0b377-f338-4eef-a785-a84872d1949c
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - link
     - paragraphs
-id: paragraph.field_section_link
-field_name: field_section_link
+id: paragraph.field_parent_link
+field_name: field_parent_link
 entity_type: paragraph
-type: entity_reference
-settings:
-  target_type: node
-module: core
+type: link
+settings: {  }
+module: link
 locked: false
 cardinality: 1
 translatable: true

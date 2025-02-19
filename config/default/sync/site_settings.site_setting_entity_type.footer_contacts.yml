@@ -1,8 +1,10 @@
 uuid: 09522140-a6f6-4b59-9af6-6dfe96555450
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - site_settings.site_setting_group_entity_type.footer
 id: footer_contacts
 label: 'Footer contacts'
-fieldset: Footer
+group: footer
 multiple: false

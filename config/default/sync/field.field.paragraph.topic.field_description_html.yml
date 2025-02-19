@@ -8,11 +8,6 @@ dependencies:
   module:
     - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
-      - full_html
 id: paragraph.topic.field_description_html
 field_name: field_description_html
 entity_type: paragraph
@@ -23,5 +18,8 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
 field_type: text_long

@@ -33,23 +33,27 @@ class FeaturedLinksBlock extends BlockBase {
    */
   private function getFeaturedLinks():array {
     $links = [];
-    $site_settings = \Drupal::service('site_settings.loader');
-    $featured_links = $site_settings->loadByFieldset('menu')['featured_links'];
-    if (!empty($featured_links)) {
-      foreach ($featured_links as $featured_link) {
-        $paragraph_id = $featured_link['target_id'] ?? NULL;
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $featured_links = $site_settings->loadByGroup('menu')['featured_links'];
 
-        if ($paragraph_id) {
-          $paragraph = Paragraph::load($paragraph_id);
-          $links[] = [
-            'url' => Url::fromUri($paragraph->field_featured_link->uri)
-              ->toString(),
-            'title' => $paragraph->field_featured_link->title,
-            'description' => $paragraph->field_description->value,
-          ];
-        }
+    if (isset($featured_links['target_id'])) {
+      $featured_links = [$featured_links];
+    }
+
+    foreach ($featured_links as $featured_link) {
+      $paragraph_id = $featured_link['target_id'] ?? NULL;
+
+      if ($paragraph_id) {
+        $paragraph = Paragraph::load($paragraph_id);
+        $links[] = [
+          'url' => Url::fromUri($paragraph->field_featured_link->uri)
+            ->toString(),
+          'title' => $paragraph->field_featured_link->title,
+          'description' => $paragraph->field_description->value,
+        ];
       }
     }
+
     return $links;
   }
 }
