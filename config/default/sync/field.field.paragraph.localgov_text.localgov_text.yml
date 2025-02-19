@@ -8,11 +8,6 @@ dependencies:
   module:
     - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
-      - full_html
 _core:
   default_config_hash: coOUNwEHi31kSbDURy8GVhyFNMMgBVCAT0CkJt1iLzI
 id: paragraph.localgov_text.localgov_text
@@ -25,5 +20,8 @@ required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
+    - full_html
 field_type: text_long

@@ -8,11 +8,6 @@ dependencies:
   module:
     - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - restricted_html
-      - plain_text
 id: paragraph.link_description.field_description
 field_name: field_description
 entity_type: paragraph
@@ -23,5 +18,8 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - restricted_html
+    - plain_text
 field_type: text_long

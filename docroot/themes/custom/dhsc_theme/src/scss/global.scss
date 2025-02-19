@@ -1,0 +1,19 @@
+// Sitemap override
+.sitemap {
+  @apply prose;
+}
+
+// One time login page submit button override
+.user-pass-reset input[type='submit'] {
+  @apply mt-4;
+  @apply inline-flex items-center;
+  @apply text-xs no-underline cursor-pointer;
+  @apply p-2 tablet:pl-3 tablet:pr-3 tablet:py-2;
+  @apply focus:outline-none focus:ring focus:ring-yellow;
+  @apply border-black border-b-4 rounded-md;
+  @apply bg-forest hover:bg-black-80 focus:bg-focus;
+  @apply text-white hover:text-white focus:text-black disabled:text-white;
+  @apply focus:bg-forest-20 focus:ring-forest-200 focus:text-black;
+  @apply active:bg-focus;
+  text-decoration-line: none;
+}

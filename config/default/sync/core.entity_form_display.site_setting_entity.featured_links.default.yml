@@ -12,6 +12,14 @@ targetEntityType: site_setting_entity
 bundle: featured_links
 mode: default
 content:
+  description:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_featured_links:
     type: paragraphs
     weight: 11
@@ -35,6 +43,16 @@ content:
     weight: -4
     region: content
     settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  group:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }

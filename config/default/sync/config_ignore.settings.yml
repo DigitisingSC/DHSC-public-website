@@ -2,6 +2,7 @@ _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
 mode: simple
 ignored_config_entities:
+  - 'block.block.dhsc_theme_sitewidealert:region'
   - dhsc_result_viewer.result_summary_settings
   - eu_cookie_compliance.settings
   - system.site

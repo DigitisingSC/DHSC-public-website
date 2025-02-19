@@ -31,8 +31,8 @@ class SocialMediaLinksBlock extends BlockBase {
    */
   private function getSocialLinks():array {
     $links = [];
-    $site_settings = \Drupal::service('site_settings.loader');
-    $social_links = $site_settings->loadByFieldset('global')['social_media_links'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $social_links = $site_settings->loadByGroup('global')['social_media_links'];
 
     if (!empty($social_links)) {
       if (is_array($social_links[0])) {

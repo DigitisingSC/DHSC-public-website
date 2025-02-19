@@ -1,4 +1,10 @@
 _core:
   default_config_hash: d-bH3--ktq6mwN7d37KW59P77RS2YPh2ybgA7kAwfTU
 template_key: site_settings
+loader_plugin: flattened
 disable_auto_loading: false
+hide_description: false
+hide_advanced: false
+hide_group: false
+simple_summary: false
+show_groups_in_menu: false

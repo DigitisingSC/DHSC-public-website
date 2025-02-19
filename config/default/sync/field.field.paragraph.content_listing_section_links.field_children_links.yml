@@ -1,0 +1,23 @@
+uuid: 07c109a8-768f-4630-8c8f-5c641c129099
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_children_links
+    - paragraphs.paragraphs_type.content_listing_section_links
+  module:
+    - link
+id: paragraph.content_listing_section_links.field_children_links
+field_name: field_children_links
+entity_type: paragraph
+bundle: content_listing_section_links
+label: 'Children links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

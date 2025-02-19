@@ -8,12 +8,6 @@ dependencies:
   module:
     - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
-      - restricted_html
-      - plain_text
 id: paragraph.cta_banner.localgov_text
 field_name: localgov_text
 entity_type: paragraph
@@ -24,5 +18,9 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats:
+    - basic_html
+    - restricted_html
+    - plain_text
 field_type: text_long

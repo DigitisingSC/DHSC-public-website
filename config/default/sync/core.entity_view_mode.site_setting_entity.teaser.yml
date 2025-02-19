@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - site_setting_entity
+id: site_setting_entity.teaser
+label: Teaser
+targetEntityType: site_setting_entity
+cache: true
