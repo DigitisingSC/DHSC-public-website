@@ -32,8 +32,8 @@ class SearchFormBlock extends BlockBase {
    */
   private function getQuickSearchLinks():array {
     $links = [];
-    $site_settings = \Drupal::service('site_settings.loader');
-    $quicksearch_links = $site_settings->loadByFieldset('search')['quick_search'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $quicksearch_links = $site_settings->loadByGroup('search')['quick_search'];
     if (!empty($quicksearch_links)) {
       if (count($quicksearch_links) !== count($quicksearch_links, COUNT_RECURSIVE)) {
         foreach ($quicksearch_links as $key => $quicksearch_link) {

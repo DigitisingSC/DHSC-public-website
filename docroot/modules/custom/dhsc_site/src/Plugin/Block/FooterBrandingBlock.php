@@ -23,8 +23,8 @@ class FooterBrandingBlock extends BlockBase {
    */
   public function build() {
 
-    $site_settings = \Drupal::service('site_settings.loader');
-    $footer_logo_setting = $site_settings->loadByFieldset('footer')['footer_logo'];
+    $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
+    $footer_logo_setting = $site_settings->loadByGroup('footer')['footer_logo'];
 
     if (!empty($footer_logo_setting)) {
       $media = Media::load($footer_logo_setting);
