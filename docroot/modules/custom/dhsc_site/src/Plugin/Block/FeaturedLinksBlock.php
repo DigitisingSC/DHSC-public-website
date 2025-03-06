@@ -36,6 +36,7 @@ class FeaturedLinksBlock extends BlockBase {
     $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
     $featured_links = $site_settings->loadByGroup('menu')['featured_links'];
 
+
     if (isset($featured_links['target_id'])) {
       $featured_links = [$featured_links];
     }
