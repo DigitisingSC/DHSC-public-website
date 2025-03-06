@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -36,6 +38,7 @@ dependencies:
     - file
     - filter
     - media
+    - moderated_content_bulk_publish
     - node
     - paragraphs
     - paragraphs_library
@@ -204,6 +207,9 @@ permissions:
   - 'edit terms in theme'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
+  - 'moderated content bulk archive'
+  - 'moderated content bulk publish'
+  - 'moderated content bulk unpublish'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert casestudy revisions'
