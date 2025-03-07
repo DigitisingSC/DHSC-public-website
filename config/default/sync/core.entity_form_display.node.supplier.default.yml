@@ -19,7 +19,6 @@ dependencies:
     - paragraphs_ee
     - paragraphs_features
     - path
-    - scheduler
 third_party_settings:
   field_group:
     group_metadata:
@@ -149,8 +148,8 @@ content:
       display_label: true
     third_party_settings: {  }
   publish_on:
-    type: datetime_timestamp_no_default
-    weight: 14
+    type: datetime_timestamp
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -192,8 +191,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
   unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 15
+    type: datetime_timestamp
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -202,4 +201,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  publish_state: true
+  unpublish_state: true
