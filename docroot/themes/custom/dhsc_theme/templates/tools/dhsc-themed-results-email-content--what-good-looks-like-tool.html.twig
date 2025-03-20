@@ -14,21 +14,6 @@
     ]) %}
   {% endif %}
 
-  {# Responses rows #}
-  {% if result['#responses'] is not empty %}
-    {% for response in result['#responses'] %}
-      {% set table_rows = table_rows|merge([
-        '<tr><td><strong>' ~ response.processed_text_2['#text']|striptags|e ~ '</strong></td></tr>',
-        '<tr><td>' ~ response.processed_text_3['#text']|striptags|e ~ '</td></tr>',
-        '<tr><td><strong>' ~ 'You rated your organisation'|t ~ '</strong></td></tr>',
-        '<tr><td>' ~ response.response_text|e ~ '</td></tr>',
-        '<tr><td><br></td></tr>',
-      ]) %}
-    {% endfor %}
-  {% endif %}
-  {% set table_rows = table_rows|merge([
-    '<tr><td><br></td></tr>'
-  ]) %}
 {% endfor %}
 
 {# Handle case where no results exist #}
