@@ -6,7 +6,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Plugin\WebformElement\WebformWizardPage;
-use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -15,8 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * @WebformElement(
  *   id = "toolkit_theme_selector",
  *   label = @Translation("Toolkit theme wizard page"),
- *   description = @Translation("Wizard page with an associated a toolkit theme taxonomy term."),
- *   category = @Translation("Custom"),
+ *   description = @Translation("Wizard page with an associated a toolkit theme
+ *   taxonomy term."), category = @Translation("Custom"),
  * )
  */
 class ThemeSelector extends WebformWizardPage {
@@ -57,7 +56,8 @@ class ThemeSelector extends WebformWizardPage {
   protected function loadTermByUuid($uuid) {
     // Load term by UUID, and return the first (and only) result if the term
     // exists.
-    $terms = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $uuid]);
+    $terms = $this->entityTypeManager->getStorage('taxonomy_term')
+      ->loadByProperties(['uuid' => $uuid]);
     return reset($terms) ?: NULL;
   }
 
@@ -135,13 +135,13 @@ class ThemeSelector extends WebformWizardPage {
 
     // If a theme is selected, generate the edit link.
     if ($selected_term_uuid) {
-
       // Manually load the Entity Type Manager since we can't use $this (static
       // method).
       $entity_type_manager = \Drupal::entityTypeManager();
 
       // Load term by UUID.
-      $terms = $entity_type_manager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $selected_term_uuid]);
+      $terms = $entity_type_manager->getStorage('taxonomy_term')
+        ->loadByProperties(['uuid' => $selected_term_uuid]);
       $term = reset($terms);
 
       if ($term) {
@@ -205,7 +205,6 @@ class ThemeSelector extends WebformWizardPage {
    * {@inheritdoc}
    */
   public function showPage(array &$element) {
-
     // Get the element key to load the correct theme.
     $element_key = $element['#webform_key'];
 
@@ -221,7 +220,6 @@ class ThemeSelector extends WebformWizardPage {
       $term = $this->loadTermByUuid($theme_uuid);
 
       if ($term) {
-
         // Return the theme markup in the form build.
         $element['tool_theme'] = [
           '#theme' => 'toolkit_theme_selector',
@@ -231,43 +229,35 @@ class ThemeSelector extends WebformWizardPage {
       }
     }
 
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    $submission = $element['#webform_submission'];
-
-    if ($submission instanceof WebformSubmissionInterface) {
-      $submission->set('in_draft', TRUE);
-      $submission->save();
-      \Drupal::logger('dhsc_result_viewer')
-        ->notice('Auto-saved draft for Webform submission ID @id.', ['@id' => $submission->id()]);
-    }
-
     // Add back button.
     $element['back'] = [
       '#type' => 'submit',
       '#value' => $this->t('Back'),
       '#limit_validation_errors' => [],
       '#submit' => ['dhsc_result_viewer_back_button_submit'],
-      '#attributes' => ['class' => ['button', 'button--primary'], 'data-twig-suggestion' => 'previous'],
+      '#attributes' => [
+        'class' => ['button', 'button--primary'],
+        'data-twig-suggestion' => 'previous',
+      ],
       '#theme_wrapper' => ['form_element'],
       '#weight' => -10,
     ];
 
+    // Get current page and total pages.
+    $all_pages = $webform->get('elementsWizardPages');
+    $current_page = array_search($element_key, array_keys($all_pages), TRUE) + 1;
+    $total_steps = count($all_pages);
+
+    // Add the step indicator at the top.
+    $element['step_indicator'] = [
+      '#type' => 'markup',
+      '#markup' => '<span class="question-progress">Question ' . $current_page . ' of ' . $total_steps . '</span>',
+      '#prefix' => '<div class="question-progress-container">',
+      '#suffix' => '</div>',
+      '#weight' => 0,
+    ];
+
     parent::showPage($element);
-
-  }
-
-  /**
-   * Saves the webform submission as a draft.
-   */
-  protected function saveDraft(FormStateInterface $form_state) {
-    $submission = $form_state->getFormObject()->getEntity();
-    if ($submission instanceof WebformSubmissionInterface) {
-      $submission->set('in_draft', TRUE);
-      $submission->save();
-
-      \Drupal::logger('dhsc_result_viewer')
-        ->notice('Auto-saved draft for Webform submission ID @id.', ['@id' => $submission->id()]);
-    }
   }
 
   /**
@@ -291,7 +281,8 @@ class ThemeSelector extends WebformWizardPage {
       ->load('toolkit_theme');
 
     if (!$vocabulary) {
-      \Drupal::logger('dhsc_result_viewer')->warning('The "toolkit_theme" vocabulary does not exist.');
+      \Drupal::logger('dhsc_result_viewer')
+        ->warning('The "toolkit_theme" vocabulary does not exist.');
       return $options;
     }
 
@@ -318,7 +309,6 @@ class ThemeSelector extends WebformWizardPage {
    * Get the default theme selection for the element.
    */
   protected function getCurrentTheme($form, FormStateInterface $form_state) {
-
     // Get the element key to load the correct theme.
     $element_key = $form_state->getBuildInfo()['args'][1];
 
