@@ -214,7 +214,7 @@ class ThemedResultSummaryController extends ControllerBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\TempStore\TempStoreException
    */
-  public function build($webform_id) {
+  public function buildResponseSummary($webform_id) {
     // Convert hyphens to underscores.
     $webform_id = str_replace('-', '_', $webform_id);
 
@@ -255,6 +255,146 @@ class ThemedResultSummaryController extends ControllerBase {
         $scores_by_theme = $this->resultViewer->getThemeScores($webform, $sorted_results);
 
         $step_number = 1;
+        // Process results content based on derived theme data.
+        foreach ($scores_by_theme as $uuid => $theme_score) {
+          // Reset response array.
+          $responses = [];
+
+          foreach ($sorted_results[$uuid] as $item) {
+            // Assign all processed text elements, score and response data for
+            // potential display by theme templates.
+            $responses[] = $item;
+          }
+
+          // Get theme taxonomy term title from field.
+          $theme = $this->entityTypeManager->getStorage('taxonomy_term')
+            ->loadByProperties(['uuid' => $uuid]);
+
+          // Assign the first (and only) element.
+          $theme = reset($theme);
+
+          $theme_name = $theme ? $theme->get('field_theme_title')->value : 'Unassigned Theme';
+
+          // Construct submission URL which is used to re-edit responses post
+          // submission.
+          $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])
+            ->toString();
+          $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
+            ->toString();
+
+          // Assign step number to each response.
+          // This is needed to build the edit response link.
+          foreach ($responses as $key => $response) {
+            $responses[$key]['step_number'] = $step_number;
+            $step_number++;
+          }
+
+          $elements[] = [
+            '#theme' => 'dhsc_themed_response_list',
+            '#title' => $theme_name,
+            '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
+            '#submission_url' => $submission_url,
+            '#responses' => $responses,
+            '#webform_id' => $webform_id,
+          ];
+        }
+
+        $tempStore = $this->tempStore->get('dhsc_result_viewer');
+
+        // Save result data in temp store for email result behaviour.
+        if (isset($elements)) {
+          $tempStore->set('themed_summary_result_data', $elements);
+          $tempStore->set('themed_summary_webform_title', $webform->label());
+          $tempStore->set('themed_summary_webform_id', $webform->id());
+        }
+      }
+      else {
+        $elements[] = [
+          '#theme' => 'dhsc_themed_response_list',
+          '#title' => $config->get('title') ? $config->get('title') : NULL,
+          '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+          '#no_result' => $this->t('No result'),
+        ];
+      }
+
+      $previous_page_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $submission_token . '&page=' . $step_number - 1;
+
+      if (isset($elements)) {
+        $render_array = [
+          '#theme' => 'dhsc_tool__themed_response_summary',
+          '#type' => 'container',
+          '#title' => $this->t('Check your answers'),
+          '#result_summary' => $elements,
+          '#submission_url' => $submission_url ?? NULL,
+          '#webform_id' => $webform_id,
+          '#token' => $submission_token,
+          '#previous_page_url' => $previous_page_url,
+        ];
+        return $render_array;
+      }
+      else {
+        $this->messenger->addMessage($this->t('No results available.'));
+        return new RedirectResponse(Url::fromRoute('<front>')->toString());
+      }
+    }
+    else {
+      $this->messenger->addMessage($this->t('No results available.'));
+
+      // If no submission is found, redirect to the front page.
+      return new RedirectResponse(Url::fromRoute('<front>')->toString());
+    }
+  }
+
+  /**
+   * Build summary result page.
+   *
+   * @return array|RedirectResponse
+   *   Return render array.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws \Drupal\Core\TempStore\TempStoreException
+   */
+  public function buildRecommendationSummary($webform_id) {
+    // Convert hyphens to underscores.
+    $webform_id = str_replace('-', '_', $webform_id);
+
+    $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
+
+    // Extract unique submission token value from URL.
+    $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
+
+    // Load the webform_submission entity.
+    $submission = $this->resultViewer->getSubmissionByToken($submission_token, $webform_id);
+
+    // Load the webform entity.
+    if ($submission) {
+      $webform = $submission->getWebform();
+
+      // Construct the submission URL.
+      if ($submission_token) {
+        $webform_url = Url::fromRoute('entity.webform.canonical', ['webform' => $webform->id()])
+          ->toString();
+        $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
+          ->toString();
+      }
+
+      $data = $submission->getData();
+
+      if (!empty($data)) {
+        // Sort all responses by associated theme.
+        $sorted_results = $this->resultViewer->sortQuestionsByTheme($webform, $data);
+
+        // Retrieve result summaries.
+        $summaries_by_quartile = [];
+        foreach ($sorted_results as $uuid => $result) {
+          $summaries_by_quartile[$uuid] = $this->resultViewer->getResultSummaryContent($uuid);
+        }
+
+        // Provide an overall score for each theme; normalised to fall between 1
+        // and 4.
+        $scores_by_theme = $this->resultViewer->getThemeScores($webform, $sorted_results);
+
         // Process results content based on derived theme data.
         foreach ($scores_by_theme as $uuid => $theme_score) {
           // Reset response array.
@@ -309,8 +449,7 @@ class ThemedResultSummaryController extends ControllerBase {
           }
 
           // Get theme taxonomy term title from field.
-          $theme = $this->entityTypeManager->getStorage('taxonomy_term')
-            ->loadByProperties(['uuid' => $uuid]);
+          $theme = $this->entityTypeManager->getStorage('taxonomy_term')->loadByProperties(['uuid' => $uuid]);
 
           // Assign the first (and only) element.
           $theme = reset($theme);
@@ -324,19 +463,11 @@ class ThemedResultSummaryController extends ControllerBase {
           $submission_url = Url::fromUserInput($webform_url, ['query' => ['token' => $submission_token]])
             ->toString();
 
-          // Assign step number to each response.
-          // This is needed to build the edit response link.
-          foreach ($responses as $key => $response) {
-            $responses[$key]['step_number'] = $step_number;
-            $step_number++;
-          }
-
           $elements[] = [
-            '#theme' => 'dhsc_themed_results_list',
+            '#theme' => 'dhsc_themed_recommendation_item',
             '#title' => $theme_name,
             '#summary' => $config->get('dsf_result_summary') ? $config->get('dsf_result_summary') : NULL,
             '#submission_url' => $submission_url,
-            '#responses' => $responses,
             '#result' => $result,
             '#webform_id' => $webform_id,
           ];
@@ -356,7 +487,7 @@ class ThemedResultSummaryController extends ControllerBase {
       }
       else {
         $elements[] = [
-          '#theme' => 'dhsc_themed_results_list',
+          '#theme' => 'dhsc_themed_recommendation_item',
           '#title' => $config->get('title') ? $config->get('title') : NULL,
           '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
           '#no_result' => $this->t('No result'),
@@ -365,15 +496,16 @@ class ThemedResultSummaryController extends ControllerBase {
 
       if (isset($elements)) {
         $render_array = [
-          '#theme' => 'dhsc_tool__themed_results_summary',
+          '#theme' => 'dhsc_tool__themed_recommendation_summary',
           '#type' => 'container',
-          '#title' => $this->t('Your answers'),
+          '#title' => $this->t('Your results'),
           '#result_summary' => $elements,
           '#submission_url' => $submission_url ?? NULL,
           '#download_results_path' => $download_results_url,
           '#email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultEmailForm'),
           '#manager_email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ThemedResultManagerEmailForm'),
           '#webform_id' => $webform_id,
+          '#token' => $submission_token,
         ];
         return $render_array;
       }

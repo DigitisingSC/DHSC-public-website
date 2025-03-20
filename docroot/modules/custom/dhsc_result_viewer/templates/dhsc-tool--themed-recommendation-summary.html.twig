@@ -19,25 +19,37 @@ Variables available:
 - back_link: A link object containing label, icon, and URL.
 #}
 
+{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
+
+{% set icon %}
+  {% include '@atoms/svg/svg.twig' with {
+    'sprite': spriteSrc,
+    'icon': 'chevron-left',
+  } %}
+{% endset %}
+
+{% include '@molecules/back-link/back-link.twig' with {
+  label: 'Back',
+  icon: icon,
+  link: path('dhsc_result_viewer.themed_response_summary', {'webform_id': webform_id}) ~ '?token=' ~ token,
+  variant: 'default'
+} %}
+
+{{ back_link }}
+
 <article class="o-tool o-tool--themed-summary">
 
-  <h1 class="mb-5">{{ title }}</h1>
+  <h1 class="mb-7">{{ title }}</h1>
 
   {{ result_summary }}
 
-  {% if submission_url %}
-    <div class="o-tool__actions mb-20 print:hidden">
-      <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
-    </div>
-  {% endif %}
-
   {% if result_summary %}
-    <div x-data class="mb-7 pb-7">
+    <div x-data class="mb-7 pb-7 mt-7">
       <a class="a-button a-button--primary tablet:mb-0 tablet:mr-5" href="{{ download_results_path }}">
         <span class="inline-block">{{ 'Download my results'|t }}</span>
       </a>
       <a href="#" x-on:click="window.print();" class="o-tool__email-link inline-block mb-5 tablet:mb-0 tablet:mr-5 a-button a-button--primary">
-        <span class="inline-block">{{ 'Print my recommendations'|t }}</span>
+        <span class="inline-block">{{ 'Print my results'|t }}</span>
       </a>
     </div>
   {% endif %}

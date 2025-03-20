@@ -42,37 +42,19 @@ Variables available:
   } %}
 {% endset %}
 
-<div class="pt-6 pb-7 mb-7 tablet:w-9/12 border-t-2 border-black-10 ">
-  <header class="o-tool__header pb-4">
-    <h2 class="o-tool__title mb-7 text-lg leading-8">{{ title }}</h2>
-    {% if no_result %}
-      <div class="o-tool__no-result mb-2">
-        <h3>{{ no_result }}</h3>
-      </div>
-    {% else %}
-      <div class="o-tool__result pl-6 border-s-2 border-green">
-        {{ result }}
-      </div>
-    {% endif %}
-  </header>
-  <div class="o-tool__content prose">
-    {% if responses %}
-      <div class="o-tool__summary text-sm tablet:text-md mb-2">
-        {% for response in responses %}
-
-          <h3 id="{{ 'response-' ~ response.step_number }}" class="font-bold text-md mb-4 leading-[30px]">{{ response.processed_text_2['#text']|striptags }}</h3>
-
-          <p class="font-normal text-sm mb-4">Your response: <span class="font-bold">{{ response.response_text }}</span></p>
-
-          {% if submission_url %}
-            <p class="font-normal text-sm mb-2 print:hidden">
-              <a href="{{ submission_url ~ '&edit-page=' ~ response.step_number }}">{{ 'Change my response'|t }}</a>
-            </p>
-          {% endif %}
-
-        {% endfor %}
-      </div>
-    {% endif %}
+<article class="o-tool__content">
+  <div class="prose pt-6 pb-7 mb-7 tablet:w-9/12 border-t-2 border-black-10 ">
+    <div class="o-tool__header pb-4">
+      <h2 class="o-tool__title mb-0 mt-0  text-lg leading-8">{{ title }}</h2>
+      {% if no_result %}
+        <div class="o-tool__no-result mt-7 mb-2">
+          <h3>{{ no_result }}</h3>
+        </div>
+      {% else %}
+        <div class="o-tool__result mt-7 pl-6 border-s-2 border-green">
+          {{ result }}
+        </div>
+      {% endif %}
+    </div>
   </div>
-</div>
-
+</article>

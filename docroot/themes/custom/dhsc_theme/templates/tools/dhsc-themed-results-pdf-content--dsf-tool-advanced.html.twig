@@ -17,15 +17,6 @@
       <div class="results-summary">
         {{ result['#result'].content }}
       </div>
-      {% for response in result['#responses'] %}
-        <div class="o-tool__summary text-sm tablet:text-md mb-2">
-
-          <h3 class="font-bold text-md mb-4 leading-[30px]">{{ response.processed_text_2['#text']|striptags }}</h3>
-
-          <p class="font-normal text-sm mb-4">Your response: <span class="font-bold">{{ response.response_text }}</span></p>
-
-        </div>
-      {% endfor %}
     </article>
     <hr />
   {% endfor %}
