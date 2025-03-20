@@ -1,4 +1,5 @@
 services:
+
   dhsc_self_assessment_result_viewer.service:
     class: Drupal\dhsc_result_viewer\SelfAssessmentResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
@@ -20,3 +21,13 @@ services:
   dhsc_result_viewer.dompdf_generator:
     class: \Drupal\dhsc_result_viewer\DhscDomPdfGenerator
     arguments: ['@renderer', '@request_stack', '@module_handler', '@extension.list.module', '@file_system']
+
+  dhsc_result_viewer.route_subscriber:
+    class: Drupal\dhsc_result_viewer\Routing\RouteSubscriber
+    arguments: ['@tempstore.private']
+    tags:
+      - { name: event_subscriber }
+
+  dhsc_result_viewer.webform_tool_service:
+    class: Drupal\dhsc_result_viewer\Service\WebformToolService
+    arguments: ['@tempstore.private', '@current_user', '@messenger', '@logger.factory', '@request_stack', '@form_builder', '@renderer', '@string_translation']
