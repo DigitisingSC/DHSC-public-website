@@ -10,7 +10,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\WebformSubmissionInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\webform\Entity\WebformSubmission;
 use Drupal\dhsc_result_viewer\Constants\WebformToolConstants;
 
@@ -243,22 +242,6 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     }
   }
 }
-
-///**
-// * AJAX callback to auto-save submission data.
-// *
-// * @throws \Drupal\Core\Entity\EntityStorageException
-// */
-//function dhsc_result_viewer_save_submission_progress(array &$form, FormStateInterface $form_state) {
-//  $submission_id = $form_state->getValue('submission_id');
-//  if ($submission_id) {
-//    $data = $form_state->getValues();
-//    $submission = WebformSubmission::load($submission_id);
-//    $submission->setData($data);
-//    $submission->save();
-//  }
-//  return $form;
-//}
 
 /**
  * Submit handler for the Back button.
