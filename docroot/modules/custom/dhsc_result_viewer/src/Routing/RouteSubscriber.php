@@ -60,12 +60,10 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
   public function checkForRedirection(RequestEvent $event): void {
     $request = $event->getRequest();
 
-    $webform = $request->attributes->get('webform');
-    if (!$webform) {
+    $webform_id = $request->attributes->get('webform');
+    if (!$webform_id) {
       return;
     }
-
-    $webform_id = $webform->id();
 
     if (in_array($webform_id, WebformToolConstants::WEBFORM_TOOLS_THEMED, TRUE)) {
       $route_name = $request->attributes->get('_route');
