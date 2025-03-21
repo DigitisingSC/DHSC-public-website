@@ -17,3 +17,12 @@
   @apply active:bg-focus;
   text-decoration-line: none;
 }
+
+// We need to ensure that two treatments for the back button component behave the same way for the DHSC tools (via
+// dhsc_results_viewer. We achieve that using this class.
+.no-focus-bg {
+  &:focus {
+    @apply bg-transparent;
+    text-decoration-line: none;
+  }
+}
