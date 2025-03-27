@@ -16,7 +16,7 @@
         "alexku/blt-github-actions": "dev-master",
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.6",
-        "drupal/acquia_connector": "^4.0",
+        "drupal/acquia_connector": "^4.1",
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
         "drupal/admin_toolbar": "^3.5",

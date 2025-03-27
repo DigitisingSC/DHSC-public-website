@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8443ea29ba01cb4f83712119bb0684d3",
+    "content-hash": "2ad9aaa495dbd07e44463ccc03f2b4aa",
     "packages": [
         {
             "name": "acquia/blt",
@@ -2626,17 +2626,17 @@
         },
         {
             "name": "drupal/acquia_connector",
-            "version": "4.0.9",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/acquia_connector.git",
-                "reference": "4.0.9"
+                "reference": "4.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/acquia_connector-4.0.9.zip",
-                "reference": "4.0.9",
-                "shasum": "4b215c4f4a5259807d9b0c6e96001e87b13c01a9"
+                "url": "https://ftp.drupal.org/files/projects/acquia_connector-4.1.0.zip",
+                "reference": "4.1.0",
+                "shasum": "9850906100943eae5f18cf90df57536adefc21f6"
             },
             "require": {
                 "drupal/core": "^9.5 || ^10 || ^11",
@@ -2648,8 +2648,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.9",
-                    "datestamp": "1726071850",
+                    "version": "4.1.0",
+                    "datestamp": "1734321322",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2690,7 +2690,7 @@
                     "homepage": "https://www.drupal.org/user/822402"
                 },
                 {
-                    "name": "Mark Trapp",
+                    "name": "mark trapp",
                     "homepage": "https://www.drupal.org/user/212019"
                 },
                 {
