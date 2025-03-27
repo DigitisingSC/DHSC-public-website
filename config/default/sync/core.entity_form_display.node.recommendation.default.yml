@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.recommendation.field_category
     - field.field.node.recommendation.field_weight
     - node.type.recommendation
+    - workflows.workflow.editorial_workflow
   module:
     - content_moderation
     - paragraphs
@@ -104,6 +105,11 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 9
@@ -141,4 +147,8 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

@@ -27,6 +27,7 @@ dependencies:
     - paragraphs_features
     - path
     - scheduler
+    - scheduler_content_moderation_integration
 third_party_settings:
   field_group:
     group_guide_page_details:
@@ -230,12 +231,18 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_state:
+    type: scheduler_moderation
+    weight: 53
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 20
+    weight: 50
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -278,7 +285,13 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 54
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  unpublish_state:
+    type: scheduler_moderation
+    weight: 55
     region: content
     settings: {  }
     third_party_settings: {  }

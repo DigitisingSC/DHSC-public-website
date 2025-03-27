@@ -1,3 +1,4 @@
+uuid: null
 langcode: en
 status: true
 dependencies:
@@ -5,5 +6,6 @@ dependencies:
     - site_setting_entity
 id: site_setting_entity.teaser
 label: Teaser
+description: ''
 targetEntityType: site_setting_entity
 cache: true
