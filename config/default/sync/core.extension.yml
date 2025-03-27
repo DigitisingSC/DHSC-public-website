@@ -30,6 +30,7 @@ module:
   dhsc_result_viewer: 0
   dhsc_site: 0
   diff: 0
+  disable_html5_validation: 0
   dynamic_page_cache: 0
   editor: 0
   editoria11y: 0

@@ -16,7 +16,7 @@
         "alexku/blt-github-actions": "dev-master",
         "composer/installers": "^1.10",
         "cweagans/composer-patches": "^1.6",
-        "drupal/acquia_connector": "^4.0",
+        "drupal/acquia_connector": "^4.1",
         "drupal/acquia_purge": "^1.4",
         "drupal/acquia_search": "^3.1",
         "drupal/admin_toolbar": "^3.5",
@@ -47,7 +47,6 @@
         "drupal/maxlength": "^2.1",
         "drupal/media_download": "^1.2",
         "drupal/memcache": "^2.5",
-        "drupal/metatag": "^1.22",
         "drupal/mimemail": "^1.0@alpha",
         "drupal/moderated_content_bulk_publish": "^2.0",
         "drupal/office_hours": "^1.11",
@@ -142,6 +141,9 @@
         ],
         "drupal-core-security-updates": [
             "composer update 'drupal/core-*' --with-all-dependencies --with=drupal/core-recommended:~10.3.0 --with=drupal/core-composer-scaffold:~10.3.0 --with=drupal/core-project-message:~10.3.0 --with=drupal/core-dev:~10.3.0"
+        ],
+        "localgov-update": [
+            "composer update localgovdrupal/localgov -W"
         ]
     },
     "extra": {

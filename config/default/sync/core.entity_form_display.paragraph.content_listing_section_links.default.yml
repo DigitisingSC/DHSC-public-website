@@ -31,4 +31,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_section_child_links: true
+  field_section_link: true
   status: true
