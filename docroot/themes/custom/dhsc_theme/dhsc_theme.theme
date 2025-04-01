@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
@@ -33,12 +34,23 @@ function dhsc_theme_preprocess_block(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  *
- * Builds content back link based on breadcrumb value.
+ * Builds contentback link based on breadcrumb value.
+ * @throws Exception
  */
 function dhsc_theme_preprocess_node(&$variables) {
   $node = $variables['elements']['#node'];
 
-  if (!in_array(
+  // Calculates the expiry date of an Event.
+  if ($node->getType() === 'event') {
+    $end_date = !$node->get('field_date')->isEmpty() ? new DateTime($node->get('field_date')->value) : 0;
+    $start_time = !$node->get('field_start_time')->isEmpty() ? $node->get('field_start_time')->value : 0;
+    $end_date_time = (int) $end_date->format('U') + $start_time;
+    $now_date_time = new DateTime('now');
+    $now_date_time = $now_date_time->format('U');
+    $variables['expired'] = $now_date_time > $end_date_time;
+  }
+
+  if (in_array(
     $node->getType(),
     [
       'localgov_guides_overview',
@@ -46,30 +58,29 @@ function dhsc_theme_preprocess_node(&$variables) {
       'landing_page',
     ]
   )) {
-    return;
-  }
 
-  if ($node->getType() === 'landing_page'
-    && $node->hasField('field_display_exit_link')
-    && !$node->get('field_display_exit_link')->value) {
-    return;
-  }
+    if ($node->getType() === 'landing_page'
+      && $node->hasField('field_display_exit_link')
+      && !$node->get('field_display_exit_link')->value) {
+      return;
+    }
 
-  $routeName = $node->toUrl()->getRouteName();
-  $route = \Drupal::service('router.route_provider')->getRouteByName($routeName);
-  $routeMatch = new RouteMatch($routeName, $route);
-  $breadcrumb = Drupal::service('dhsc_site.breadcrumb')->build($routeMatch)->toRenderable();
+    $routeName = $node->toUrl()->getRouteName();
+    $route = \Drupal::service('router.route_provider')->getRouteByName($routeName);
+    $routeMatch = new RouteMatch($routeName, $route);
+    $breadcrumb = Drupal::service('dhsc_site.breadcrumb')->build($routeMatch)->toRenderable();
 
-  // If the breadcrumb contains only one link this must be set to Home.
-  if (count($breadcrumb['#links']) == 1) {
-    $variables['link_text'] = $breadcrumb['#links'][0]->getText()->getUntranslatedString();
-    $variables['link_alias'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
-  }
-  else {
-    // Fetch the parent link from the active breadcrumb.
-    $link_item = array_pop($breadcrumb['#links']);
-    $variables['link_text'] = $link_item->getText();
-    $variables['link_alias'] = $link_item->getUrl()->toString();
+    // if the breadcrumb contains only one link this must be set to Home.
+    if (count($breadcrumb['#links']) == 1) {
+      $variables['link_text'] = $breadcrumb['#links'][0]->getText()->getUntranslatedString();
+      $variables['link_alias'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+    }
+    else {
+      // fetch the parent link from the active breadcrumb.
+      $link_item = array_pop($breadcrumb['#links']);
+      $variables['link_text'] = $link_item->getText();
+      $variables['link_alias'] = $link_item->getUrl()->toString();
+    }
   }
 }
 
@@ -79,6 +90,7 @@ function dhsc_theme_preprocess_node(&$variables) {
  * Adds logo variables for the footer region.
  */
 function dhsc_theme_preprocess_region(&$variables) {
+
   if ($variables['region'] == 'footer') {
     $site_settings = \Drupal::service('plugin.manager.site_settings_loader')->getActiveLoaderPlugin();
     $footer_logo_setting = $site_settings->loadByGroup('footer')['footer_secondary_logo'];
@@ -296,7 +308,7 @@ function dhsc_theme_theme_suggestions_status_messages_alter(array &$suggestions,
  */
 function _generate_link_array($link_field_item) {
 
-  if ($link_field_item->uri) {
+  if (!empty($link_field_item->uri)) {
     if (UrlHelper::isExternal($link_field_item->uri)) {
       return [
         'title' => $link_field_item->title ?? 'Link',

@@ -40,6 +40,7 @@ dependencies:
     - file
     - filter
     - media
+    - moderated_content_bulk_publish
     - node
     - paragraphs
     - paragraphs_library
@@ -215,6 +216,9 @@ permissions:
   - 'edit terms in toolkit_theme'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
+  - 'moderated content bulk archive'
+  - 'moderated content bulk publish'
+  - 'moderated content bulk unpublish'
   - 'revert all revisions'
   - 'revert article revisions'
   - 'revert casestudy revisions'
