@@ -159,3 +159,12 @@ function dhsc_site_clear_router_builder_cache() {
   \Drupal::logger('dhsc_site')
     ->notice('A change to a site settings entity triggered a cache rebuild');
 }
+
+/**
+ * Implements hook_page_attachments().
+ */
+function dhsc_site_page_attachments(array &$attachments) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $attachments['#attached']['library'][] = 'dhsc_site/admin-styles';
+  }
+}
