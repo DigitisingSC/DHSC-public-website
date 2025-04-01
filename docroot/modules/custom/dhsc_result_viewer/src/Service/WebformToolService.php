@@ -4,21 +4,21 @@ namespace Drupal\dhsc_result_viewer\Service;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
-use Drupal\Core\Form\FormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
-use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
+use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\dhsc_result_viewer\Constants\WebformToolConstants;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Provides a service for managing Webform result submissions.
@@ -28,9 +28,11 @@ class WebformToolService {
   use StringTranslationTrait;
 
   /**
-   * The private temp store factory.
+   * The session interface.
+   *
+   * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
    */
-  protected PrivateTempStoreFactory $tempStoreFactory;
+  protected SessionInterface $session;
 
   /**
    * The current user.
@@ -71,9 +73,26 @@ class WebformToolService {
 
   /**
    * Constructs the WebformToolService.
+   *
+   * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
+   *   The session service.
+   * @param \Drupal\Core\Session\AccountProxyInterface $current_user
+   *   The current user service.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
+   *   The logger factory.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The request stack.
+   * @param \Drupal\Core\Form\FormBuilderInterface $formBuilder
+   *   The form builder service.
+   * @param \Drupal\Core\Render\RendererInterface $renderer
+   *   The renderer service.
+   * @param \Drupal\Core\StringTranslation\TranslationInterface $stringTranslation
+   *   The translation service.
    */
   public function __construct(
-    PrivateTempStoreFactory $temp_store_factory,
+    SessionInterface $session,
     AccountProxyInterface $current_user,
     MessengerInterface $messenger,
     LoggerChannelFactoryInterface $loggerFactory,
@@ -82,7 +101,7 @@ class WebformToolService {
     RendererInterface $renderer,
     TranslationInterface $stringTranslation,
   ) {
-    $this->tempStoreFactory = $temp_store_factory;
+    $this->session = $session;
     $this->currentUser = $current_user;
     $this->messenger = $messenger;
     $this->loggerFactory = $loggerFactory;
@@ -102,8 +121,7 @@ class WebformToolService {
    *   The SID
    */
   public function getSubmissionId(string $webform_id): ?int {
-    $submission_id = $this->tempStoreFactory->get('dhsc_result_viewer')
-      ->get('last_submission_' . $webform_id);
+    $submission_id = $this->session->get('last_submission_' . $webform_id);
     $this->logMessage('Retrieved submission ID', $submission_id, $webform_id);
     return $submission_id;
   }
@@ -119,8 +137,7 @@ class WebformToolService {
    * @throws \Drupal\Core\TempStore\TempStoreException
    */
   public function setSubmissionId(string $webform_id, int $submission_id): void {
-    $this->tempStoreFactory->get('dhsc_result_viewer')
-      ->set('last_submission_' . $webform_id, $submission_id);
+    $this->session->set('last_submission_' . $webform_id, $submission_id);
     $this->logMessage('Saved submission ID', $submission_id, $webform_id);
   }
 
@@ -134,8 +151,7 @@ class WebformToolService {
    *   The step value.
    */
   public function getStepValue(string $webform_id): ?int {
-    $step_value = $this->tempStoreFactory->get('dhsc_result_viewer')
-      ->get('last_step_' . $webform_id);
+    $step_value = $this->session->get('last_step_' . $webform_id);
     $this->logMessage('Retrieved step value', $step_value, $webform_id);
     return $step_value;
   }
@@ -151,8 +167,7 @@ class WebformToolService {
    * @throws \Drupal\Core\TempStore\TempStoreException
    */
   public function setStepValue(string $webform_id, int $current_step): void {
-    $this->tempStoreFactory->get('dhsc_result_viewer')
-      ->set('last_step_' . $webform_id, $current_step);
+    $this->session->set('last_step_' . $webform_id, $current_step);
     $this->logMessage('Saved step value', $current_step, $webform_id);
   }
 
@@ -228,7 +243,18 @@ class WebformToolService {
   /**
    * Get the landing page URL or fallback to front page.
    */
-  public function getLandingPageUrl(): string {
+  public function getLandingPageUrl(string $webform_id): ?string {
+    $webform = Webform::load($webform_id);
+    if ($webform) {
+      foreach ($webform->getHandlers() as $handler) {
+        if ($handler->getPluginId() === 'landing_page_path_handler') {
+          // Get config associated with handler.
+          $config = $handler->getConfiguration();
+
+          return $config['settings']['landing_page_path'] ?? NULL;
+        }
+      }
+    }
     return Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
   }
 
@@ -353,11 +379,9 @@ class WebformToolService {
    *   The webform ID.
    */
   public function clearSubmissionData(string $webform_id): void {
-    $tempstore = $this->tempStoreFactory->get('dhsc_result_viewer');
-    $tempstore->delete('last_submission_' . $webform_id);
-    $tempstore->delete('last_step_' . $webform_id);
-
-    $this->logMessage('Cleared tempstore data', 'N/A', $webform_id);
+    $this->session->remove('last_submission_' . $webform_id);
+    $this->session->remove('last_step_' . $webform_id);
+    $this->logMessage('Cleared session data', 'N/A', $webform_id);
   }
 
 }
