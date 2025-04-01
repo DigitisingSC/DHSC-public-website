@@ -574,30 +574,6 @@ function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_email_content_
 }
 
 /**
- * Retrieves the landing page path from a Webform.
- *
- * @param string $webform_id
- *   The Webform machine name.
- *
- * @return string|null
- *   The stored landing page path or NULL if not set.
- */
-function getLandingPagePath(string $webform_id): ?string {
-  $webform = Webform::load($webform_id);
-  if ($webform) {
-    foreach ($webform->getHandlers() as $handler) {
-      if ($handler->getPluginId() === 'landing_page_path_handler') {
-        // Get config associated with handler.
-        $config = $handler->getConfiguration();
-
-        return $config['settings']['landing_page_path'] ?? NULL;
-      }
-    }
-  }
-  return NULL;
-}
-
-/**
  * Implements hook_entity_presave().
  */
 function dhsc_result_viewer_entity_presave(EntityInterface $entity) {
