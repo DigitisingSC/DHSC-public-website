@@ -1,0 +1,73 @@
+name: Security Updates Check
+
+on:
+  schedule:
+    # Run at 3am UTC every day
+    - cron: '0 3 * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  security-check:
+    name: Check for security updates
+    runs-on: ubuntu-latest
+    container:
+      image: devwithlando/php:8.2-apache-4
+
+    env:
+      CI: GITHUB_ACTIONS
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+      - name: Configure secure directory
+        run: git config --global --add safe.directory "*"
+
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Caching based on github-actions.yml
+      - name: Determine Composer cache directory
+        shell: bash
+        run: "echo \"COMPOSER_CACHE_DIR=$(composer config cache-dir)\" >> $GITHUB_ENV"
+
+      - name: Cache dependencies installed with Composer
+        uses: actions/cache@v4
+        with:
+          path: |
+            "${{ env.COMPOSER_CACHE_DIR }}"
+            $GITHUB_WORKSPACE/vendor
+            $GITHUB_WORKSPACE/docroot/core
+            $GITHUB_WORKSPACE/docroot/libraries
+            $GITHUB_WORKSPACE/docroot/modules/contrib
+            $GITHUB_WORKSPACE/docroot/themes/contrib
+            $GITHUB_WORKSPACE/docroot/profiles/contrib
+          key: os-${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+
+      - name: Composer install
+        run: |
+          composer validate
+          composer self-update
+          composer install --optimize-autoloader --no-interaction --prefer-dist --ignore-platform-reqs
+
+      - name: Install jq
+        run: apt-get update && apt-get install -y jq
+
+      - name: Set up Git user
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Run security updates check
+        run: |
+          chmod +x ./scripts/custom/security-updates.sh
+          ./scripts/custom/security-updates.sh
+        env:
+          # GitHub specific environment variables to replace Bitbucket ones
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPO_NAME: ${{ github.event.repository.name }}

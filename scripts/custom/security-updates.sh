@@ -16,8 +16,6 @@ BRANCH="feature/security-updates-$(date +%m-%Y)"
 
 # ---- 1. Check if PR branch already exists ----
 
-BRANCH_EXISTS=$(git ls-remote --heads origin "$BRANCH")
-
 git fetch origin --prune
 
 # Check if the branch exists remotely
@@ -35,11 +33,12 @@ if git ls-remote --exit-code --heads origin "$BRANCH"; then
   fi
 
   # Ensure local branch matches remote (avoiding divergence issues)
-  git reset --hard "$BRANCH"
+  git reset --hard origin/"$BRANCH"
 else
   echo "Branch $BRANCH does not exist. Creating a new one."
   git checkout -b "$BRANCH"
 fi
+
 # ---- 2. Update Drupal core ----
 
 # Detect if drupal/core-recommended is installed
@@ -100,29 +99,35 @@ if ! git diff --quiet; then
   git commit -m "Security updates for Drupal core and contrib modules"
   git push origin "$BRANCH"
 
-  # ---- 5. Create a pull request on Bitbucket ----
+  # ---- 5. Create a pull request on GitHub ----
 
-  EXISTING_PR=$(curl -s -u "$BITBUCKET_USER:$BITBUCKET_APP_PASSWORD" \
-    "https://api.bitbucket.org/2.0/repositories/$BITBUCKET_WORKSPACE/$BITBUCKET_REPO_SLUG/pullrequests?state=OPEN" | jq -r --arg BRANCH "$BRANCH" '.values[] | select(.source.branch.name == $BRANCH) | .links.html.href')
+  # Parse GitHub repository details
+  REPO_OWNER=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f1)
+  REPO_NAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+
+  # Check if PR already exists
+  PR_QUERY=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+    "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls?head=${REPO_OWNER}:${BRANCH}&state=open")
+
+  EXISTING_PR=$(echo "$PR_QUERY" | jq -r '.[0].html_url // ""')
 
   if [[ -n "$EXISTING_PR" && "$EXISTING_PR" != "null" ]]; then
     PR_STATUS="Pull request already exists: $EXISTING_PR. Branch updated."
     PR_URL="$EXISTING_PR"
-
   else
-    # Create a new pull request if none exists
-    PR_RESPONSE=$(curl -s -X POST -u "$BITBUCKET_USER:$BITBUCKET_APP_PASSWORD" \
-      -H "Content-Type: application/json" \
-      "https://api.bitbucket.org/2.0/repositories/$BITBUCKET_WORKSPACE/$BITBUCKET_REPO_SLUG/pullrequests" \
+    # Create a new pull request
+    PR_RESPONSE=$(curl -s -X POST -H "Authorization: token $GITHUB_TOKEN" \
+      -H "Accept: application/vnd.github.v3+json" \
+      "https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls" \
       -d "{
-            \"title\": \"Security updates for Drupal - $(date +%m-%Y)\",
-            \"source\": { \"branch\": { \"name\": \"$BRANCH\" } },
-            \"destination\": { \"branch\": { \"name\": \"main\" } },
-            \"close_source_branch\": true
-          }")
+          \"title\": \"Security updates for Drupal - $(date +%m-%Y)\",
+          \"head\": \"${BRANCH}\",
+          \"base\": \"main\",
+          \"body\": \"Automated security updates for Drupal core and/or contrib modules\"
+        }")
 
+    PR_URL=$(echo "$PR_RESPONSE" | jq -r '.html_url')
     PR_STATUS="Pull request created: $PR_URL"
-    PR_URL=$(echo "$PR_RESPONSE" | jq -r '.links.html.href')
   fi
 
   echo "$PR_STATUS"
@@ -134,7 +139,7 @@ if ! git diff --quiet; then
       \"blocks\": [
         {
           \"type\": \"section\",
-          \"text\": { \"type\": \"mrkdwn\", \"text\": \"*Project*: $BITBUCKET_REPO_FULL_NAME\" }
+          \"text\": { \"type\": \"mrkdwn\", \"text\": \"*Project*: ${GITHUB_REPOSITORY}\" }
         },
         {
           \"type\": \"section\",
