@@ -1,7 +1,26 @@
 uuid: bb024cb1-d665-479f-85bf-f2aa446fe34d
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - crop
+    - scheduler
+third_party_settings:
+  crop:
+    image_field: _none
+  scheduler:
+    expand_fieldset: when_required
+    fields_display_mode: vertical_tab
+    publish_enable: false
+    publish_past_date: error
+    publish_past_date_created: false
+    publish_required: false
+    publish_revision: false
+    publish_touch: false
+    show_message_after_update: true
+    unpublish_enable: false
+    unpublish_required: false
+    unpublish_revision: false
 _core:
   default_config_hash: _D9q3XSnP6ik9we9UuoTvZsQKPuYNp_G9PfwVtWzgnQ
 id: document
@@ -13,4 +32,6 @@ new_revision: true
 source_configuration:
   source_field: field_media_document
 field_map:
-  name: name
+  name: field_plain_language_name
+  mimetype: field_mime_types
+  filesize: field_file_size
