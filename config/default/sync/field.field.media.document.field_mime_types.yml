@@ -1,0 +1,19 @@
+uuid: 8c0e52a0-9fb3-4f96-996b-5a5bd3b15b26
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_mime_types
+    - media.type.document
+id: media.document.field_mime_types
+field_name: field_mime_types
+entity_type: media
+bundle: document
+label: 'Mime types'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

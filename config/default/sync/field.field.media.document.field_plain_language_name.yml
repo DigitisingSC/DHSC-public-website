@@ -1,0 +1,19 @@
+uuid: df000987-0002-4c0f-b1ad-3a4f736477b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_plain_language_name
+    - media.type.document
+id: media.document.field_plain_language_name
+field_name: field_plain_language_name
+entity_type: media
+bundle: document
+label: 'Plain language name'
+description: 'Add a simple name describing the content of this document. This will be displayed when the document is embedded using the content editor.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

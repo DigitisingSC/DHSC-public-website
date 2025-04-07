@@ -1,0 +1,11 @@
+uuid: d8c5be87-db60-478d-a5f7-ad4a47d61e3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.document_link_with_type_filesize
+label: 'Document Link (with type / filesize)'
+description: ''
+targetEntityType: media
+cache: true
