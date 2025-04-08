@@ -1,10 +1,9 @@
 <?php
 
 /**
-* Migrates Section links.
-*/
+ * Migrates Section links.
+ */
 function dhsc_site_deploy_0001_migrate_section_links() {
-
   $paragraphs = \Drupal::entityTypeManager()
     ->getStorage('paragraph')
     ->loadByProperties(['type' => 'content_listing_section_links']);
@@ -14,30 +13,38 @@ function dhsc_site_deploy_0001_migrate_section_links() {
       $paragraph->hasField('field_section_link')
       && !empty($paragraph->get('field_section_link')->referencedEntities())
     ) {
-      $old_link = $paragraph->get('field_section_link')->referencedEntities()[0];
-      $paragraph->set('field_parent_link', [
-        'uri' => $old_link->toUrl('canonical', ['absolute' => TRUE])->toString(),
-        'title' => $old_link->getTitle(),
-      ]);
+      $entities = $paragraph->get('field_section_link')->referencedEntities();
+      if ($old_link = reset($entities)) {
+        $url = $old_link->toUrl('canonical');
+        $url->setAbsolute();
+        $paragraph->set('field_parent_link', [
+          'uri' => 'internal:/' . $url->getInternalPath(),
+          'title' => $old_link->getTitle(),
+        ]);
+        $paragraph->save();
+      }
     }
 
     if (
       $paragraph->hasField('field_section_child_links')
       && !empty($paragraph->get('field_section_child_links')->referencedEntities())
     ) {
+      $links = [];
       $old_links = $paragraph->get('field_section_child_links')->referencedEntities();
       foreach ($old_links as $old_link) {
+        $url = $old_link->toUrl('canonical');
+        $url->setAbsolute();
         $links[] = [
-          'uri' => $old_link->toUrl('canonical', ['absolute' => TRUE])->toString(),
+          'uri' => 'internal:/' . $url->getInternalPath(),
           'title' => $old_link->getTitle(),
         ];
       }
       $paragraph->set('field_children_links', $links);
       $paragraph->save();
-      $links = [];
     }
   }
 }
+
 
 /**
  * Deletes old Section links.
