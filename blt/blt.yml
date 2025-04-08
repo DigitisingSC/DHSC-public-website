@@ -42,6 +42,4 @@ command-hooks:
 
 disable-targets:
   tests:
-    security:
-      check:
-        updates: true
+    security-updates: true
