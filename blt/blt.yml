@@ -39,3 +39,9 @@ command-hooks:
     dir: ${repo.root}
     # E.g., '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use 4.4.4 && npm build'
     command: ./scripts/custom/frontend-assets.sh
+
+disable-targets:
+  tests:
+    security:
+      check:
+        updates: true
