@@ -412,16 +412,19 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
  */
 function dhsc_result_viewer_store_draft_submission(array &$form, FormStateInterface $form_state) {
   $webform_id = $form['#webform_id'];
-  $tempstore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
-  $submission_id = $tempstore->get('last_submission_' . $webform_id);
+
+  /** @var \Drupal\dhsc_result_viewer\Service\WebformToolService $webform_tool_service */
+  $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool');
+
+  $submission_id = $webform_tool_service->getSubmissionId($webform_id);
 
   if ($submission_id && ($submission = WebformSubmission::load($submission_id))) {
-    // Retrieve form data.
+    // Retrieve form data from the current step.
     $data = $form_state->getValues();
 
-    // Update the submission data.
+    // Update the submission data and keep it as a draft.
     $submission->setData($data);
-    $submission->set('in_draft', TRUE); // Keep it as a draft.
+    $submission->set('in_draft', TRUE);
     $submission->save();
 
     if (WebformToolConstants::DEBUG_MODE) {
@@ -431,9 +434,8 @@ function dhsc_result_viewer_store_draft_submission(array &$form, FormStateInterf
   if (!$submission_id) {
     if (WebformToolConstants::DEBUG_MODE) {
       \Drupal::logger('dhsc_result_viewer')
-        ->warning('No submission ID found in tempstore for webform @webform_id.', ['@webform_id' => $webform_id]);
+        ->warning('No submission ID found in session for webform @webform_id.', ['@webform_id' => $webform_id]);
     }
-    return;
   }
 }
 
