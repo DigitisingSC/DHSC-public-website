@@ -248,13 +248,18 @@ class ThemeSelector extends WebformWizardPage {
     $current_page = array_search($element_key, array_keys($all_pages), TRUE) + 1;
     $total_steps = count($all_pages);
 
+    // Calculate values for progress bar.
+    $max = '100';
+    $current = (string) round(($current_page / $total_steps) * 100);
+    $percentage = $current . '%';
+
     // Add the step indicator at the top.
     $element['step_indicator'] = [
       '#type' => 'markup',
-      '#markup' => '<span class="question-progress">Question ' . $current_page . ' of ' . $total_steps . '</span>',
-      '#prefix' => '<div class="question-progress-container">',
+      '#markup' => '<div class="m-progress-bar--text">Question ' . $current_page . ' of ' . $total_steps . '</div><progress class="m-progress-bar--indicator" max="' . $max . '" value="' . $current . '">' . $percentage . '</progress>',
+      '#prefix' => '<div class="m-progress-bar">',
       '#suffix' => '</div>',
-      '#weight' => 0,
+      '#weight' => -5,
     ];
 
     parent::showPage($element);
