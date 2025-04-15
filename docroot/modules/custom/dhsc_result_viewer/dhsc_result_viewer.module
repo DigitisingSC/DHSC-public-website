@@ -375,7 +375,8 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
 
   // Target specific web forms.
   if (dhsc_result_viewer_get_webform_tool_service()->isToolSubmissionForm($form_id)) {
-    if ($current_page = $form_state->get('current_page') !== '') {
+    $current_page = $form_state->get('current_page');
+    if ($current_page && $current_page !== '') {
       // Add a hidden form element to track the current step.
       $form['current_step'] = [
         '#type' => 'value',
@@ -414,8 +415,9 @@ function dhsc_result_viewer_store_draft_submission(array &$form, FormStateInterf
   $webform_id = $form['#webform_id'];
 
   /** @var \Drupal\dhsc_result_viewer\Service\WebformToolService $webform_tool_service */
-  $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool');
+  $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
 
+  // Get session ID.
   $submission_id = $webform_tool_service->getSubmissionId($webform_id);
 
   if ($submission_id && ($submission = WebformSubmission::load($submission_id))) {
