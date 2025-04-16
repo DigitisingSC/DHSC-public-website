@@ -86,13 +86,15 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
       // Get session ID.
       $submission_id = $webform_tool_service->getSubmissionId($webform_id);
 
-      if ($submission_id && ($submission = WebformSubmission::load($submission_id))) {
-        $token = $submission->getToken();
+      if ($submission_id && $submission = WebformSubmission::load($submission_id)) {
+        if ($submission->isDraft()) {
+          $token = $submission->getToken();
 
-        // Build the redirect URL.
-        $redirect_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $token;
-        $response = new RedirectResponse($redirect_url);
-        $event->setResponse($response);
+          // Build the redirect URL.
+          $redirect_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $token;
+          $response = new RedirectResponse($redirect_url);
+          $event->setResponse($response);
+        }
       }
     }
   }
