@@ -586,7 +586,7 @@ function dhsc_result_viewer_entity_presave(EntityInterface $entity) {
     $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
     $webform_id = $entity->getWebform()->id();
     if ($webform_tool_service->isThemedTool($webform_id)) {
-      // Check if the submission was a draft but is now finalized.
+      // Check if the submission was a draft but is now finalised.
       if ($entity->isDraft() === FALSE) {
         // Get the WebformToolService.
         $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
