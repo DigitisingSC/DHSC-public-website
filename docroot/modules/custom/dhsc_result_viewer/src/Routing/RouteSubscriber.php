@@ -60,10 +60,12 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
   public function checkForRedirection(RequestEvent $event): void {
     $request = $event->getRequest();
 
-    $webform_id = $request->attributes->get('webform');
-    if (!$webform_id) {
+    $webform = $request->attributes->get('webform');
+    if (!$webform) {
       return;
     }
+
+    $webform_id = $webform->get('id');
 
     if (in_array($webform_id, WebformToolConstants::WEBFORM_TOOLS_THEMED, TRUE)) {
       $route_name = $request->attributes->get('_route');
@@ -78,9 +80,11 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
         return;
       }
 
-      // Retrieve the last submission and step from private tempstore.
-      $tempstore = $this->tempStoreFactory->get('dhsc_result_viewer');
-      $submission_id = $tempstore->get('last_submission_' . $webform_id);
+      /** @var \Drupal\dhsc_result_viewer\Service\WebformToolService $webform_tool_service */
+      $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
+
+      // Get session ID.
+      $submission_id = $webform_tool_service->getSubmissionId($webform_id);
 
       if ($submission_id && ($submission = WebformSubmission::load($submission_id))) {
         $token = $submission->getToken();
