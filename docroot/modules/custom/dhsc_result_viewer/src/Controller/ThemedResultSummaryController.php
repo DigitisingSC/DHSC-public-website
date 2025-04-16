@@ -223,6 +223,13 @@ class ThemedResultSummaryController extends ControllerBase {
     // Extract unique submission token value from URL.
     $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
 
+    if (!$submission_token) {
+      $this->messenger->addMessage($this->t('No results available.'));
+
+      // If no submission token is found, redirect to the front page.
+      return new RedirectResponse(Url::fromRoute('<front>')->toString());
+    }
+
     // Load the webform_submission entity.
     $submission = $this->resultViewer->getSubmissionByToken($submission_token, $webform_id);
 
