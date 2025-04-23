@@ -34,7 +34,7 @@ function dhsc_theme_preprocess_block(&$variables) {
 /**
  * Implements hook_preprocess_HOOK().
  *
- * Builds contentback link based on breadcrumb value.
+ * Build contentback link based on breadcrumb value.
  * @throws Exception
  */
 function dhsc_theme_preprocess_node(&$variables) {
