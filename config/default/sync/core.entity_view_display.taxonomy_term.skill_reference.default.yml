@@ -1,0 +1,32 @@
+uuid: 0d0d89b6-bfd0-4b65-b799-4735b82776ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.skill_reference.field_answer_machine_name
+    - taxonomy.vocabulary.skill_reference
+  module:
+    - text
+id: taxonomy_term.skill_reference.default
+targetEntityType: taxonomy_term
+bundle: skill_reference
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_answer_machine_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

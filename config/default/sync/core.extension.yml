@@ -27,7 +27,9 @@ module:
   datetime: 0
   datetime_range: 0
   dbal: 0
+  default_content: 0
   dhsc_result_viewer: 0
+  dhsc_result_viewer_default_content: 0
   dhsc_site: 0
   diff: 0
   disable_html5_validation: 0

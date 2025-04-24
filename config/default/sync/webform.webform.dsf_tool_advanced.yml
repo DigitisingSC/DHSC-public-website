@@ -1,0 +1,568 @@
+uuid: dae39e2c-47f6-4042-83d7-11c4437502c1
+langcode: en
+status: open
+dependencies:
+  module:
+    - dhsc_result_viewer
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: dsf_tool_advanced
+title: 'Digital Skills Framework (advanced)'
+description: ''
+categories: {  }
+elements: |-
+  step_1:
+    '#type': webform_wizard_page
+    '#title': 'Step 1'
+    processed_text_01:
+      '#type': processed_text
+      '#text': '<p><span>Using technology to support person-centred care</span></p><h1>I can lead strategic decisions on the use of technology in my organisation or setting</h1><p>For example, I understand how to choose the right technology for my service and shape decisions on the use of technology. I can:</p><ul><li>evaluate if and how different technologies may benefit my service</li><li>evaluate if different systems (such as email and digital social care records) allow information to be shared securely</li><li>make the case for purchasing and introducing new technology in my organisation</li><li>work with others to develop a ‘digital plan’ for implementing technology and managing change</li></ul>'
+      '#format': full_html
+    sgf_01_options:
+      '#type': radios
+      '#title': 'I can lead strategic decisions on the use of technology in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_01_unsure: 'I am unsure how to lead strategic decisions on the use of technology in my organisation or setting'
+        sgf_01_with_help: 'I have some idea how to lead strategic decisions on the use of technology in my organisation  or setting, but would need support and advice to do this confidently'
+        sgf_01_confident: 'I am able to lead strategic decisions on the use of technology in my organisation  or setting'
+        sgf_01_advanced: 'I am very confident and able to lead strategic decisions on the use of technology in my organisation  or setting'
+      '#required': true
+  step_2:
+    '#type': webform_wizard_page
+    '#title': 'Step 2'
+    actions_01:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_02:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can lead the set-up, implementation and maintenance of technology in my organisation or setting</h1><p>For example, I understand and can lead the steps needed to implement new technology - from ensuring the right connectivity is in place ahead of set-up, and supporting colleagues with using the new system and adapting to new ways of working, to developing new policies and procedures. I ensure that we have access to ongoing technical support to maintain digital technologies.</p>'
+      '#format': full_html
+    sgf_02_options:
+      '#type': radios
+      '#title': 'I can lead the set-up, implementation and maintenance of technology in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_02_unsure: 'I am unsure how to support the set-up, implementation and maintenance of technology in my organisation or setting'
+        sgf_02_with_help: 'I have some idea how to support the set-up, implementation and maintenance of technology in my organisation or setting, but would need support and advice to do this confidently'
+        sgf_02_confident: 'I am able to support the set-up, implementation and maintenance of technology in my organisation or setting'
+        sgf_02_advanced: 'I am very confident and able to support the set-up, implementation and maintenance of technology in my organisation or setting'
+      '#required': true
+  step_3:
+    '#type': webform_wizard_page
+    '#title': 'Step 3'
+    actions_02:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_03:
+      '#type': processed_text
+      '#text': '<p><span>Technical skills for using technology</span></p><h1 id="main-content">I can stay up to date with how technology can be used to improve my organisation or setting</h1><p>For example, I am proactive in keeping up to date with new digital technologies available on the market, explore how they can be used in my service and champion their benefits to others in my organisation.</p>'
+      '#format': full_html
+    sgf_03_options:
+      '#type': radios
+      '#title': 'I can stay up to date with how technology can be used to improve my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_03_unsure: 'I am unsure how to stay up to date with how technology can be used in my organisation or setting'
+        sgf_03_with_help: 'I have some idea how to stay up to date with how technology can be used in my organisation or setting, but would need support and advice to do this confidently'
+        sgf_03_confident: 'I can stay up to date with technology and understand how it can by used in my organisation or setting'
+        sgf_03_advanced: 'I am very confident and able to stay up to date with technology and how it can by used to improve my organisation or setting'
+      '#required': true
+  step_4:
+    '#type': webform_wizard_page
+    '#title': 'Step 4'
+    actions_03:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_04:
+      '#type': processed_text
+      '#text': '<p><span>Communicating through technology</span></p><h1 id="main-content">I can lead and model good practice in digital communications in my organisation or setting</h1><p>For example, I develop or contribute to the development of procedures around safe and appropriate digital communication within my organisation, and model and promote  appropriate use of communication technology in the workplace.</p>'
+      '#format': full_html
+    sgf_04_options:
+      '#type': radios
+      '#title': 'I can lead and model good practice in digital communications in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_04_unsure: 'I am unsure how to lead and model good practice in digital communication in my organisation or setting'
+        sgf_04_with_help: 'I have some idea how to model good practice in digital communications in my organisation or setting, but would need support and advice to do this confidently'
+        sgf_04_confident: 'I can model good practice in digital communications in my organisation or setting'
+        sgf_04_advanced: 'I am very confident in how to lead and model good practice in digital communications in my organisation or setting'
+      '#required': true
+  step_5:
+    '#type': webform_wizard_page
+    '#title': 'Step 5'
+    actions_04:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_05:
+      '#type': processed_text
+      '#text': '<p><span>Using and managing data</span></p><h1 id="main-content">I know how to analyse and present data about my service and use data to improve service quality</h1><p>For example, I am aware of the range of care technologies that support the management of quality and governance data within the social care sector. I have the skills to analyse and present data about my service. I can return information to regulators or commissioners and can identify trends and support continuous improvement in my service.</p>'
+      '#format': full_html
+    sgf_05_options:
+      '#type': radios
+      '#title': 'I know how to analyse and present data about my service and use data to improve service quality'
+      '#title_display': invisible
+      '#options':
+        sgf_05_unsure: 'I am unsure how to analyse and present data about my service and use data to improve service quality'
+        sgf_05_with_help: 'I have some idea about how to analyse and present data about my service, and use data to improve service quality, but I would need advice or support to do this confidently'
+        sgf_05_confident: 'I know how to analyse and present data about my service, and I can use data to improve service quality'
+        sgf_05_advanced: 'I am very confident in how to analyse and present data about my service and can use data to improve service quality. I can support other colleagues to do this'
+      '#required': true
+      '#options__properties': ''
+  step_6:
+    '#type': webform_wizard_page
+    '#title': 'Step 6'
+    actions_05:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_06:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I know how to put in place arrangements to ensure the cyber security of my organisation's IT systems and digital devices</h1><p>For example, I am aware the Data Security and Protection Toolkit (DSPT) identifies cyber security arrangements that care provider organisations should have in place such as antivirus software, multi-factor authentication and software updates. I can complete the Toolkit and, if necessary, work with IT specialists to ensure that appropriate cyber security arrangements are in place to protect my organisation's IT systems and digital devices.</p>"
+      '#format': full_html
+    sgf_06_options:
+      '#type': radios
+      '#title': "I know how to put in place arrangements to ensure the cyber security of my organisation's IT systems and digital devices"
+      '#title_display': invisible
+      '#options':
+        sgf_06_unsure: 'I am unfamiliar with the DSPT and unsure how to put cyber security arrangements in place'
+        sgf_06_with_help: 'I am familiar with the DSPT and, with support and advice, can put cyber security arrangements in place'
+        sgf_06_confident: 'I am very familiar with the DSPT and can put cyber security arrangements in place'
+        sgf_06_advanced: 'I am very confident and familiar with the DSPT. I can put cyber security arrangements in place and can provide guidance on this to colleagues'
+      '#required': true
+  step_7:
+    '#type': webform_wizard_page
+    '#title': 'Step 7'
+    actions_06:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_07:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I know how to respond to cyber security incidents, including how to report data breaches to relevant bodies</h1><p>For example, I understand the importance of recording and learning from all cyber security incidents and data breaches. I know how to respond if a data breach happens and know when and how to report a notifiable data breach to the Information Commissioner's Office. </p>"
+      '#format': full_html
+    sgf_07_options:
+      '#type': radios
+      '#title': 'I know how to respond to cyber security incidents, including how to report data breaches to relevant bodies'
+      '#title_display': invisible
+      '#options':
+        sgf_07_unsure: 'I am unsure how to respond to cyber security incidents and report data breaches'
+        sgf_07_with_help: 'I have some idea how to respond to cyber security incidents and report data breaches, but would need support and advice to do this confidently'
+        sgf_07_confident: 'I am able to respond to cyber security incidents and report data breaches'
+        sgf_07_advanced: 'I am very confident and able to respond to cyber security incidents and report data breaches and could advise colleagues about this'
+      '#options__properties': ''
+      '#required': true
+  step_8:
+    '#type': webform_wizard_page
+    '#title': 'Step 8'
+    actions_07:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_08:
+      '#type': processed_text
+      '#text': "<p><span>Being safe and secure online</span></p><h1 id='main-content'>I know how to reduce the risk and impact of a cyber security incident in my organisation or setting</h1><p>For example, I can identify data that is critical to the running of my organisation and, if necessary, work with IT specialists to ensure that data back-ups are taken. We have a business continuity plan in place that covers data and cyber security issues and I ensure that the plan is tested and our back-ups work. I ensure that all of our staff are trained in data security and protection.</p>"
+      '#format': full_html
+    sgf_08_options:
+      '#type': radios
+      '#title': 'I know how to reduce the risk and impact of a cyber security incident in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_08_unsure: 'I am unsure how to reduce the risk and impact of a cyber security incident in my organisation or setting'
+        sgf_08_with_help: 'I have some idea how to reduce the risk and impact of a cyber security incident in my organisation or setting, but would need support and advice to do this confidently'
+        sgf_08_confident: 'I am able to reduce the risk and impact of a cyber security incident in my organisation or setting'
+        sgf_08_advanced: 'I am very confident and able to reduce the risk and impact of a cyber security incident in my organisation or setting and could advise colleagues about this'
+      '#options__properties': ''
+      '#required': true
+  step_9:
+    '#type': webform_wizard_page
+    '#title': 'Step 9'
+    actions_08:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_09:
+      '#type': processed_text
+      '#text': '<p><span>Ethical use of technology</span></p><h1 id="main-content">I inspire and drive a culture of the ethical use of technology in my organisation or setting</h1><p>For example, I demonstrate or describe conversations that could be had with individuals to help them understand how technology could impact their care, and what their rights and choices are. I lead and guide staff on decision-making about technology, and encourage them to discuss technology options with people who draw on care in an accessible way that they will understand. I am confident to lead discussions with staff about the ethical considerations around emerging technologies e.g. AI-enabled predictive risk analytics.</p>'
+      '#format': full_html
+    sgf_09_options:
+      '#type': radios
+      '#title': 'I inspire and drive a culture of the ethical use of technology in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_09_unsure: 'I am unsure how to inspire and drive a culture of ethical use of technology in my organisation or setting'
+        sgf_09_with_help: 'I have some idea of how to inspire and drive a culture of ethical use of technology in my organisation or setting, but would require advice or support to be confident in this'
+        sgf_09_confident: 'I know how to inspire and drive a culture of the ethical use of technology in my organisation or setting'
+        sgf_09_advanced: 'I am very confident in how to inspire and drive a culture of the ethical use of technology in my organisation or setting, and champion this'
+      '#options__properties': ''
+      '#required': true
+  step_10:
+    '#type': webform_wizard_page
+    '#title': 'Step 10'
+    actions_09:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_10:
+      '#type': processed_text
+      '#text': "<p><span>Ethical use of technology</span></p><h1 id='main-content'>I know how to ensure that digital ways of working promote a rights-based approach in my organisation or setting</h1><p>For example, I can weigh up the positives and drawbacks of technologies used in care, and can implement working practices that balance advantages of technology with individual's rights, such as being open and clear with individuals and their families about how technology is used. I can conduct impact assessments before introducing new technologies in my service, and ensure there is a process for staff, people who draw on care and families to share concerns about the use of technology</p>"
+      '#format': full_html
+    sgf_10_options:
+      '#type': radios
+      '#title': 'I know how to ensure that digital ways of working promote a rights-based approach in my organisation or setting'
+      '#title_display': invisible
+      '#options':
+        sgf_10_unsure: 'I am unsure how I should ensure digital ways of working promote a rights-based approach in my organisation or setting'
+        sgf_10_with_help: 'I am familiar with how I should ensure digital ways of working promote a rights-based approach in my organisation or setting, but would need advice to put this in place'
+        sgf_10_confident: 'I know how to ensure digital ways of working promote a rights-based approach in my organisation or setting'
+        sgf_10_advanced: 'I am very confident in how to ensure digital ways of working promote a rights-based approach in my organisation or setting'
+      '#options__properties': ''
+      '#required': true
+  step_11:
+    '#type': webform_wizard_page
+    '#title': 'Step 11'
+    actions_10:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_11:
+      '#type': processed_text
+      '#text': "<p><span>Digital learning, development and wellbeing</span></p><h1>I can build a positive digital learning environment and provide opportunities for staff to build digital confidence and develop their digital skills</h1><p>For example, I can develop a plan for digital skills improvement across my organisation, and encourage and support staff, including those less confident in using technology, to access learning that will be helpful and accessible for them. I ensure digital skills assessment is part of the induction process for staff in my organisation and encourage managers and their staff to reflect on digital skills development during 1:1s and appraisals. I look for peer-to-peer learning opportunities for my organisation, such as learning from other organisation's digital working best practice.</p>"
+      '#format': full_html
+    sgf_11_options:
+      '#type': radios
+      '#title': 'I can build a positive digital learning environment and provide opportunities for staff to build digital confidence and develop their digital skills'
+      '#title_display': invisible
+      '#options':
+        sgf_11_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills'
+        sgf_11_with_help: 'I have an idea how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills, but I would need support to implement this confidently'
+        sgf_11_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills'
+        sgf_11_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills and could advise others how to do this'
+      '#required': true
+  step_12:
+    '#type': webform_wizard_page
+    '#title': 'Step 12'
+    actions_11:
+      '#type': webform_actions
+      '#title': 'Back button'
+      '#attributes':
+        class:
+          - webform-step-back-button
+      '#submit_hide': true
+      '#submit__label': Continue
+      '#update_hide': true
+      '#wizard_prev__label': Back
+      '#wizard_next_hide': true
+      '#wizard_next__label': Continue
+    processed_text_12:
+      '#type': processed_text
+      '#text': '<p><span>Using and managing data</span></p><h1 id="main-content">I can accurately record information on digital systems</h1><p>For example:</p><ul><li>I make sure that the digital social care records I make are accurate, up to date and clearly written</li><li>I am clear what are facts, my opinions or information from others</li><li>I record information at the time events occur or as soon afterwards as possible</li></ul>'
+      '#format': full_html
+    sgf_12_options:
+      '#type': radios
+      '#title': 'I can accurately record information on digital systems'
+      '#title_display': invisible
+      '#options':
+        sgf_12_unsure: 'I am unsure how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills'
+        sgf_12_with_help: 'I have an idea how to build a positive digital learning environment and provide opportunities for staff to develop their digital confidence and skills, but I would need support to implement this confidently'
+        sgf_12_confident: 'I know how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills'
+        sgf_12_advanced: 'I am very confident in how to build a positive digital learning environment and provide opportunities for staff to build digital confidence and skills and could advise others how to do this'
+      '#required': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': Continue
+    '#submit__attributes':
+      class:
+        - a-button
+        - a-button--primary
+    '#wizard_prev_hide': true
+    '#wizard_prev__label': Previous
+    '#wizard_next__label': Continue
+    '#wizard_next__attributes':
+      class:
+        - a-button
+        - a-button--primary
+css: |-
+  .webform-submission-information {display: none}
+  .webform-button--previous{display: none}
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes:
+    class:
+      - m-webform__submission-form--hide-breadcrumbs
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: false
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: Continue
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: url
+  confirmation_url: '/dhsc-results-list-dsf-advanced?token=[webform_submission:token]'
+  confirmation_title: ''
+  confirmation_message: '<p><a href="https://dhsc-public-website.ddev.site/safer-pregnancy-results-list">See Results</a></p>'
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: true
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  sets_form_metadata_in_tempstore:
+    id: dhsc_set_submission_id_handler
+    handler_id: sets_form_metadata_in_tempstore
+    label: 'Sets form metadata in tempstore'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings: {  }
+variants: {  }
