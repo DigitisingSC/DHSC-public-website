@@ -13,13 +13,24 @@ default:
       value: '(SFA) Using and managing data'
   weight:
     -
-      value: 17
+      value: 16
   parent:
     -
       target_id: 0
   revision_translation_affected:
     -
       value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '(SFA) Using and managing data | Digitising Social Care'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://dhsc-public-website-2.ddev.site:33001/taxonomy/term/171'
   path:
     -
       alias: ''
@@ -58,7 +69,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">here</a>.&nbsp;<br>&nbsp;</p>'
+              value: '<p>You responded overall that you were not feeling confident in this area of knowledge and skills.&nbsp;</p><p>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.<br>&nbsp;<br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-%20person-centred-care"><span>Information and support for using technology in person centred care</span></a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using-%20technology"><span>Information and support for technical skills in using technology</span></a></p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through-%20technology"><span>Information and support for communicating through technology</span></a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online"><span>Information and support for being safe and secure online</span></a><br>&nbsp;</p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology"><span>Information and support on the ethical use of technology in care</span></a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development-%20and-wellbeing"><span>&nbsp;Information and support for digital learning, development and wellbeing</span></a>&nbsp;<br>&nbsp;</p>'
               format: basic_html
     -
       entity:
@@ -83,7 +94,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking <a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">here</a>.&nbsp;</p>'
+              value: '<p>You scored overall that you had mixed to low confidence around this area of knowledge and skills.&nbsp;</p><p>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.<br>&nbsp;<br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-%20person-centred-care"><span>Information and support for using technology in person centred care</span></a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using-%20technology"><span>Information and support for technical skills in using technology</span></a></p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through-%20technology"><span>Information and support for communicating through technology</span></a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online"><span>Information and support for being safe and secure online</span></a><br>&nbsp;</p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology"><span>Information and support on the ethical use of technology in care</span></a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development-%20and-wellbeing"><span>&nbsp;Information and support for digital learning, development and wellbeing</span></a></p>'
               format: basic_html
     -
       entity:
@@ -108,7 +119,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.</p><p>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.</p><p>Click here to take our ‘go further’ self-assessment.</p>'
+              value: '<p>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</p><p>You may wish to take our ‘go further’ digital skills self-assessment, including championing and leading digital technology in care by visiting the below.&nbsp;</p><p><a href="https://devshield:devshield@digitalsocialcarestg.prod.acquia-sites.com/form/dsf-tool-%20advanced"><span>‘Go Further’ digital skills self-assessment</span></a></p>'
               format: basic_html
     -
       entity:
@@ -133,8 +144,8 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p><span>You scored very high confidence in this area of knowledge and skills.</span></p><p><span>You may wish to take our ‘go further’ digital skills self-assessment reviewing more advanced digital knowledge and skills, including championing and leading digital technology in care.&nbsp;</span></p><p><span>Click here to take our ‘go further’ self-assessment.</span><br>&nbsp;</p>'
+              value: '<p><span>You scored very high confidence in this area of knowledge and skills.</span></p><p>You may wish to take our ‘go further’ digital skills self-assessment, including championing and leading digital technology in care by visiting the below.&nbsp;</p><p><a href="https://devshield:devshield@digitalsocialcarestg.prod.acquia-sites.com/form/dsf-tool-%20advanced"><span>‘Go Further’ digital skills self-assessment</span></a><br>&nbsp;</p>'
               format: basic_html
   field_theme_title:
     -
-      value: 'Using and managing data'
+      value: 'Theme 4: Using and managing data'

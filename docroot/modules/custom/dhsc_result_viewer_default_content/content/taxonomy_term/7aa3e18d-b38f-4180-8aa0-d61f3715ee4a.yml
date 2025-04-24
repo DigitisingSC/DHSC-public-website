@@ -13,13 +13,24 @@ default:
       value: '(WGLL) Ensure smart foundations'
   weight:
     -
-      value: 9
+      value: 8
   parent:
     -
       target_id: 0
   revision_translation_affected:
     -
       value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '(WGLL) Ensure smart foundations | Digitising Social Care'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://dhsc-public-website-2.ddev.site:33001/taxonomy/term/221'
   path:
     -
       alias: ''
@@ -58,7 +69,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘Not started’.</span></p><p dir="ltr"><span>You can find practical resources and next steps here&nbsp; (link to URL)</span></p>'
+              value: '<p>You responded overall that you had ''Not started'' work in this area.</p><p>You can find practical guidance and resources to support you with this area of digital good practice by visiting the below.<br>&nbsp;</p><p><a href="https://digitalsocialcarestg.prod.acquia-sites.com/well-led-resources"><span>Information and support for the ‘well led’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/ensure-smart-foundations-resources"><span>Information and support for the ‘ensure smart foundations’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/support-workforce-resources"><span>Information and support for the ‘support workforce’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/empower-people-resources"><span>Information and support for the ‘empower people’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/improve-care-resources"><span>Information and support for the ‘improve care’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/healthy-populations-resources"><span>Information and support for the ‘healthy populations’ success measure</span></a></p>'
               format: basic_html
     -
       entity:
@@ -83,7 +94,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘In progress’, and you have stated that you are actively working in this area.</span></p><p dir="ltr"><span>You can find practical resources and next steps to help you here (link to URL)</span></p>'
+              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘In progress’, and you have stated that you are actively working in this area.</span></p><p>You can find practical guidance and resources to support you with this area of digital good practice by visiting the below.<br>&nbsp;</p><p><a href="https://digitalsocialcarestg.prod.acquia-sites.com/well-led-resources"><span>Information and support for the ‘well led’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/ensure-smart-foundations-resources"><span>Information and support for the ‘ensure smart foundations’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/support-workforce-resources"><span>Information and support for the ‘support workforce’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/empower-people-resources"><span>Information and support for the ‘empower people’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/improve-care-resources"><span>Information and support for the ‘improve care’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/healthy-populations-resources"><span>Information and support for the ‘healthy populations’ success measure</span></a></p>'
               format: basic_html
     -
       entity:
@@ -108,7 +119,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘Well established’.</span></p><p dir="ltr"><span>You can find practical resources and next steps to continue your journey here (link to URL)</span></p>'
+              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘Well established’.</span></p><p dir="ltr"><span>You can find practical resources and next steps to continue your journey </span><a href="/ensure-smart-foundations-resources"><span>here.</span></a></p>'
               format: basic_html
     -
       entity:
@@ -137,4 +148,4 @@ default:
               format: basic_html
   field_theme_title:
     -
-      value: 'Ensure smart foundations'
+      value: 'Success measure 2: Ensure smart foundations'

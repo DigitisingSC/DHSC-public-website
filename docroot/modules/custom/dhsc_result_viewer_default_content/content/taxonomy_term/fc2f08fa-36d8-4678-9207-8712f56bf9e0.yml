@@ -13,13 +13,24 @@ default:
       value: '(SGF) Being safe and secure online'
   weight:
     -
-      value: 1
+      value: 0
   parent:
     -
       target_id: 0
   revision_translation_affected:
     -
       value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '(SGF) Being safe and secure online | Digitising Social Care'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://dhsc-public-website-2.ddev.site:33001/taxonomy/term/196'
   path:
     -
       alias: ''
@@ -58,7 +69,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>You scored overall that you were not feeling confident in this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-person-centred-care"><u>here</u></a><span>.&nbsp;</span></p>'
+              value: '<p>You responded overall that you were not feeling confident in this area of knowledge and skills.<br>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.</p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support- person-centred-care">Information and support for using technology in person centred care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using- technology">Information and support for technical skills in using technology</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through- technology">Information and support for communicating through technology</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">Information and support for using and managing data in adult social care</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">Information and support for being safe and secure online</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">Information and support on the ethical use of technology in care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development- and-wellbeing">Information and support for digital learning, development and wellbeing</a></p>'
               format: basic_html
     -
       entity:
@@ -83,7 +94,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills. You can find practical guidance and resources to support you under this skills theme by clicking&nbsp;</span><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support-person-centred-care"><u>here</u></a><span>.&nbsp;</span></p>'
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills.&nbsp;</span><br>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.</p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support- person-centred-care">Information and support for using technology in person centred care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using- technology">Information and support for technical skills in using technology</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through- technology">Information and support for communicating through technology</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">Information and support for using and managing data in adult social care</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">Information and support for being safe and secure online</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">Information and support on the ethical use of technology in care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development- and-wellbeing">Information and support for digital learning, development and wellbeing</a><br>&nbsp;</p>'
               format: basic_html
     -
       entity:
@@ -108,7 +119,7 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span></p>'
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span><br>&nbsp;</p><p dir="ltr">&nbsp;</p>'
               format: basic_html
     -
       entity:
@@ -133,8 +144,8 @@ default:
               value: true
           field_result_summary:
             -
-              value: '<p dir="ltr"><span>You scored very high confidence in this area of knowledge and skills.&nbsp;</span></p>'
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span><br>&nbsp;</p><p dir="ltr">&nbsp;</p>'
               format: basic_html
   field_theme_title:
     -
-      value: 'Being safe and secure online'
+      value: 'Theme 5: Being safe and secure online'
