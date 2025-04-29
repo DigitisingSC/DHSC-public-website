@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.full_html
     - media.type.document
     - media.type.hero
@@ -17,6 +19,7 @@ dependencies:
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.recommendation
+    - node.type.report_response
     - node.type.skill
     - node.type.subtopic_page
     - node.type.supplier
@@ -25,6 +28,7 @@ dependencies:
     - taxonomy.vocabulary.skill_level
     - taxonomy.vocabulary.skill_method
     - taxonomy.vocabulary.theme
+    - taxonomy.vocabulary.toolkit_theme
     - workflows.workflow.editorial_workflow
   module:
     - content_moderation
@@ -93,6 +97,7 @@ permissions:
   - 'create paragraph library item'
   - 'create recommendation content'
   - 'create remote_video media'
+  - 'create report_response content'
   - 'create skill content'
   - 'create subtopic_page content'
   - 'create supplier content'
@@ -117,6 +122,7 @@ permissions:
   - 'delete any media'
   - 'delete any recommendation content'
   - 'delete any remote_video media'
+  - 'delete any report_response content'
   - 'delete any skill content'
   - 'delete any subtopic_page content'
   - 'delete any supplier content'
@@ -142,11 +148,13 @@ permissions:
   - 'delete own localgov_guides_page content'
   - 'delete own recommendation content'
   - 'delete own remote_video media'
+  - 'delete own report_response content'
   - 'delete own skill content'
   - 'delete own subtopic_page content'
   - 'delete own supplier content'
   - 'delete own svg media'
   - 'delete recommendation revisions'
+  - 'delete report_response revisions'
   - 'delete site setting entities'
   - 'delete skill revisions'
   - 'delete subtopic_page revisions'
@@ -168,6 +176,7 @@ permissions:
   - 'edit any localgov_guides_page content'
   - 'edit any recommendation content'
   - 'edit any remote_video media'
+  - 'edit any report_response content'
   - 'edit any skill content'
   - 'edit any subtopic_page content'
   - 'edit any supplier content'
@@ -185,6 +194,7 @@ permissions:
   - 'edit own localgov_guides_page content'
   - 'edit own recommendation content'
   - 'edit own remote_video media'
+  - 'edit own report_response content'
   - 'edit own skill content'
   - 'edit own subtopic_page content'
   - 'edit own supplier content'
@@ -196,6 +206,7 @@ permissions:
   - 'edit terms in skill_level'
   - 'edit terms in skill_method'
   - 'edit terms in theme'
+  - 'edit terms in toolkit_theme'
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'moderated content bulk archive'
@@ -212,6 +223,7 @@ permissions:
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
   - 'revert recommendation revisions'
+  - 'revert report_response revisions'
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
   - 'revert supplier revisions'
@@ -238,10 +250,12 @@ permissions:
   - 'view own unpublished media'
   - 'view published site setting entities'
   - 'view recommendation revisions'
+  - 'view report_response revisions'
   - 'view scheduled content'
   - 'view skill revisions'
   - 'view subtopic_page revisions'
   - 'view supplier revisions'
+  - 'view term revisions in toolkit_theme'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
   - 'view unpublished site setting entities'

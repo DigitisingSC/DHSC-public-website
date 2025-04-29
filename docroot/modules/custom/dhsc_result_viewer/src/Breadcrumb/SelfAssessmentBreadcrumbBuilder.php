@@ -2,14 +2,17 @@
 
 namespace Drupal\dhsc_result_viewer\Breadcrumb;
 
-use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
-use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Breadcrumb\BreadcrumbBuilderInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\webform\Entity\Webform;
 
+/**
+ * Class SelfAssessmentBreadcrumbBuilder.
+ */
 class SelfAssessmentBreadcrumbBuilder implements BreadcrumbBuilderInterface {
 
   use StringTranslationTrait;

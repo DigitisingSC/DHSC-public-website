@@ -24,7 +24,27 @@ dhsc_result_viewer.result_summary_self_assessment:
   requirements:
     _permission: 'access content'
   options:
-    no_cache: 'TRUE'
+    no_cache: TRUE
+
+dhsc_result_viewer.themed_response_summary:
+  path: '/dhsc-response-list/{webform_id}'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ThemedResultSummaryController::buildResponseSummary'
+    _title: 'Result Summary'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
+
+dhsc_result_viewer.themed_recommendation_summary:
+  path: '/dhsc-results-list/{webform_id}'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ThemedResultSummaryController::buildRecommendationSummary'
+    _title: 'Result Summary'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: TRUE
 
 dhsc_result_viewer.result_summary_assured_solutions:
   path: '/dhsc-results-list-assured-solutions'
@@ -33,8 +53,7 @@ dhsc_result_viewer.result_summary_assured_solutions:
     _title: 'Result Summary'
   requirements:
     _permission: 'access content'
-  options:
-    no_cache: 'TRUE'
+    no_cache: TRUE
 
 dhsc_result_viewer.result_summary_assured_solutions_email:
   path: '/dhsc-results-list-assured-solutions-email/{email}/{token}'
@@ -44,7 +63,7 @@ dhsc_result_viewer.result_summary_assured_solutions_email:
   requirements:
     _permission: 'access content'
   options:
-    no_cache: 'TRUE'
+    no_cache: TRUE
 
 dhsc_result_viewer.result_summary_self_assessment_email:
   path: '/dhsc-results-list-self-assessment-email/{email}/{token}'
@@ -54,12 +73,20 @@ dhsc_result_viewer.result_summary_self_assessment_email:
   requirements:
     _permission: 'access content'
   options:
-    no_cache: 'TRUE'
+    no_cache: TRUE
 
 dhsc_result_viewer.generate_pdf:
   path: '/dhsc-assured-solutions-results-pdf'
   defaults:
     _controller: '\Drupal\dhsc_result_viewer\Controller\DhscGeneratePdf::generate'
     _title: 'Generate assured solutions results pdf'
+  requirements:
+    _permission: 'access content'
+
+dhsc_result_viewer.generate_theme_summary_pdf:
+  path: '/dhsc-results-pdf-theme_summary'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\ThemedResultSummaryController::generateDownload'
+    _title: 'Generate results pdf'
   requirements:
     _permission: 'access content'
