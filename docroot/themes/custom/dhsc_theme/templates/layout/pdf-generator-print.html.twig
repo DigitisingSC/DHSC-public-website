@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ language.language_code|default('en') }}">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    {{ css|raw }}
+   </style>
+   <title>{{ title }}</title>
+</head>
+<body class="pdf">
+	{{ content|raw }}
+</body>
+</html>

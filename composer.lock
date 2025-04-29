@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f3a8bd62c55633c2d12b6f8165177d0",
+    "content-hash": "c30cb3563f0b9cc42e18f4b3ec1b949f",
     "packages": [
         {
             "name": "acquia/blt",
@@ -24839,6 +24839,7 @@
         "alexku/blt-github-actions": 20,
         "drupal/advagg": 15,
         "drupal/components": 10,
+        "drupal/default_content": 15,
         "drupal/entity_usage": 10,
         "drupal/mimemail": 15,
         "drupal/paragraphs_ee": 15,
