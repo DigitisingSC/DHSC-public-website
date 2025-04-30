@@ -1,0 +1,24 @@
+<div id="pdf-print-wrapper">
+  <table class="branding">
+    <tr>
+      <td><img src="/themes/custom/dhsc_theme/assets/images/logo.jpg"></td>
+      <td>{{ 'Digitising Social Care'|t }}</td>
+    </tr>
+    <tr>
+      <td colspan="2"><p class="report-title">{{ 'What Good Looks Like'|t  }}</p></td>
+    </tr>
+  </table>
+
+  <h1>{{ 'Result summary'|t }}</h1>
+
+  {% for result in results %}
+    <article class="mt-6 mb-8">
+      <h2 class="mb-5">{{ result['#title'] }}</h2>
+      <div class="results-summary">
+        {{ result['#result'].content }}
+      </div>
+    </article>
+    <hr />
+  {% endfor %}
+
+</div>

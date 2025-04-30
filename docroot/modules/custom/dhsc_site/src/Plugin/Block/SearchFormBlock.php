@@ -54,4 +54,5 @@ class SearchFormBlock extends BlockBase {
     }
     return $links;
   }
+
 }

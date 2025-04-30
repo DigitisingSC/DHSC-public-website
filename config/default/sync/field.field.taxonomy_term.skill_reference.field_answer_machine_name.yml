@@ -1,0 +1,19 @@
+uuid: b3cb2ea5-683c-453d-a8b6-8b4d7ba713c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_answer_machine_name
+    - taxonomy.vocabulary.skill_reference
+id: taxonomy_term.skill_reference.field_answer_machine_name
+field_name: field_answer_machine_name
+entity_type: taxonomy_term
+bundle: skill_reference
+label: 'Answer machine name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,14 @@
+uuid: 9850a9af-66fb-4e5c-893f-c2dde36e2a2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.skill_reference
+id: taxonomy_vocabulary_skill_reference
+entity_type_id: taxonomy_vocabulary
+entity_id: skill_reference
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

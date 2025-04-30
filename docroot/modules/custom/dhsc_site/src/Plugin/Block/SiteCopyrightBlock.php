@@ -28,4 +28,5 @@ class SiteCopyrightBlock extends BlockBase {
       '#text' => $copyright,
     ];
   }
+
 }

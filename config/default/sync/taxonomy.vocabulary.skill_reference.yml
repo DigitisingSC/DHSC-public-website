@@ -1,0 +1,9 @@
+uuid: 9ebb5f8e-55d5-46f9-9bb6-92062218b8d0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Skill reference'
+vid: skill_reference
+description: null
+weight: 0
+new_revision: false
