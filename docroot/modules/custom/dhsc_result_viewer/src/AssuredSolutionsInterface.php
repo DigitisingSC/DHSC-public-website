@@ -2,6 +2,8 @@
 
 namespace Drupal\dhsc_result_viewer;
 
+use Drupal\webform\WebformSubmissionInterface;
+
 /**
  * Interface AssuredSolutionsInterface.
  *
@@ -25,18 +27,15 @@ interface AssuredSolutionsInterface {
   /**
    * Get webform submission id.
    *
-   * @return string
-   *   Return sid.
-   */
-  public function getSubmissionId();
-
-  /**
-   * Get webform submission.
+   * @param string $token
+   *   Token string.
+   * @param string $webform_id
+   *   Webform ID.
    *
-   * @return mixed
-   *   Return webform submission entity.
+   * @return \Drupal\webform\WebformSubmissionInterface|null
+   *   Return submission or NULL.
    */
-  public function getSubmission();
+  public function getSubmissionByToken(string $token, string $webform_id): WebformSubmissionInterface|null;
 
   /**
    * Returns webform result nodes which contain at least one answer.
@@ -47,7 +46,7 @@ interface AssuredSolutionsInterface {
    * @return array
    *   Return result node ids.
    */
-  public function getResultNodes(array $answers);
+  public function getResultNodesWithMatches(array $answers);
 
   /**
    * Returns all supplier nodes which do not match user search criteria.
