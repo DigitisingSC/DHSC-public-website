@@ -3,6 +3,7 @@
 namespace Drupal\dhsc_result_viewer\Routing;
 
 use Drupal\dhsc_result_viewer\Service\WebformToolService;
+use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
@@ -104,7 +105,7 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
         $submission = WebformSubmission::load($submission_id);
       }
 
-      if ($submission->isDraft()) {
+      if ($submission instanceof WebformSubmissionInterface && $submission->isDraft()) {
         $token = $submission->getToken();
 
         // Build the redirect URL.
