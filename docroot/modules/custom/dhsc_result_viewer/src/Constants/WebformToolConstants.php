@@ -34,6 +34,13 @@ class WebformToolConstants {
     self::ASSURED_SOLUTIONS_TOOL,
   ];
 
+  public const WEBFORM_AUTOSAVE = [
+    self::ASSURED_SOLUTIONS_TOOL,
+    self::DSF_TOOL,
+    self::DSF_TOOL_ADVANCED,
+    self::WHAT_GOOD_LOOKS_LIKE_TOOL,
+  ];
+
   public const WEBFORM_TOOLS_THEMED = [
     self::DSF_TOOL,
     self::DSF_TOOL_ADVANCED,
