@@ -166,7 +166,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   /**
    * Build summary result page.
    *
-   * @return array
+   * @return array|RedirectResponse
    *   Return render array.
    */
   public function build() {
@@ -177,35 +177,50 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     // Extract unique submission token value from URL.
     $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
 
+    if (!$submission_token) {
+      $this->messenger->addMessage($this->t('No results available.'));
+
+      // If no submission token is found, redirect to the front page.
+      return new RedirectResponse(Url::fromRoute('<front>')->toString());
+    }
+
     // Load the webform_submission entity.
     $submission = $this->resultViewer->getSubmissionByToken($submission_token, $webform_id);
 
-    if ($result = $this->resultViewer->getResultsSummary($submission->getData(), $submission->getWebform())) {
-      $element = [
-        '#theme' => 'dhsc_results_list_assured_solutions',
-        '#summary' => $config->get('as_result_summary') ? $config->get('as_result_summary') : NULL,
-        '#search_criteria' => $result['search_criteria'],
-        '#count' => $result['count'],
-        '#non_matching_count' => $result['non_matching_count'],
-        '#total_count' => $result['total_count'],
-        '#submission_url' => $result['submission_url'],
-        '#no_matches' => $result['no_matches'],
-        '#result' => $result['result_items'],
-        '#email_form' => !empty($result['total_count']) ? $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
-        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')
-          ->toString(),
-      ];
+    if ($submission instanceof WebformSubmissionInterface) {
+      if ($result = $this->resultViewer->getResultsSummary($submission->getData(), $submission->getWebform())) {
+        $element = [
+          '#theme' => 'dhsc_results_list_assured_solutions',
+          '#summary' => $config->get('as_result_summary') ? $config->get('as_result_summary') : NULL,
+          '#search_criteria' => $result['search_criteria'],
+          '#count' => $result['count'],
+          '#non_matching_count' => $result['non_matching_count'],
+          '#total_count' => $result['total_count'],
+          '#submission_url' => $result['submission_url'],
+          '#no_matches' => $result['no_matches'],
+          '#result' => $result['result_items'],
+          '#email_form' => !empty($result['total_count']) ? $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
+          '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')
+            ->toString(),
+        ];
+      }
+      else {
+        $element = [
+          '#theme' => 'dhsc_results_list_assured_solutions',
+          '#title' => $config->get('title') ? $config->get('title') : NULL,
+          '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
+          '#no_result' => $this->t('No result'),
+        ];
+      }
+
+      return $element;
     }
     else {
-      $element = [
-        '#theme' => 'dhsc_results_list_assured_solutions',
-        '#title' => $config->get('title') ? $config->get('title') : NULL,
-        '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
-        '#no_result' => $this->t('No result'),
-      ];
-    }
+      $this->messenger->addMessage($this->t('No results available.'));
 
-    return $element;
+      // If no submission token is found, redirect to the front page.
+      return new RedirectResponse(Url::fromRoute('<front>')->toString());
+    }
   }
 
   /**
