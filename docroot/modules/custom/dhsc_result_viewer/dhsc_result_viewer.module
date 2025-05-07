@@ -74,6 +74,7 @@ function dhsc_result_viewer_theme() {
       'variables' => [
         'section' => NULL,
         'answers' => NULL,
+        'edit_link' => NULL,
       ],
     ],
     'partial_match' => [
@@ -171,7 +172,7 @@ function dhsc_result_viewer_theme() {
 function dhsc_result_viewer_webform_submission_prepare_form(\Drupal\webform\WebformSubmissionInterface $webform_submission, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
   $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
   $webform_id = $webform_submission->getWebform()->id();
-  if ($webform_tool_service->isThemedTool($webform_id)) {
+  if ($webform_tool_service->isAutosaveTool($webform_id)) {
     // We need to ensure that users can go back to edit questions from the
     // response summary page. This is carried out via an 'edit-page' query
     // parameter.
@@ -180,17 +181,18 @@ function dhsc_result_viewer_webform_submission_prepare_form(\Drupal\webform\Webf
     // The list of all wizard pages.
     $all_pages = array_keys($webform_submission->getWebform()->getPages());
 
-    $requested_step = (int) ($current_request->query->get('edit-page') ?? $current_request->query->get('page'));
+    $requested_step = ($current_request->query->get('edit-page') ?? $current_request->query->get('page'));
 
     if (!$requested_step) {
-      $requested_step = dhsc_result_viewer_get_webform_tool_service()->getStepValue($webform_id);
+      $requested_step = $webform_tool_service->getStepValue($webform_id);
     }
 
-    // If a page has been specified via a URL parameter or via tempstore we will
-    // use this to set the current page.
+    // If a page has been specified via a URL parameter or via session data we
+    // will use this to set the current page.
     if ($requested_step) {
       // Ensure the requested step is valid before setting it.
-      if (is_array($all_pages) && isset($all_pages[$requested_step])) {
+      $requested_step = (int) $requested_step;
+      if (is_array($all_pages) && isset($all_pages[$requested_step - 1])) {
         if ($form_state->get('current_page') !== $all_pages[$requested_step ? $requested_step - 1 : 0]) {
           $form_state->set('current_page', $all_pages[$requested_step ? $requested_step - 1 : 0]);
         }
@@ -209,14 +211,26 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     if ((string) $form['actions']['submit']['#value'] === 'Save') {
       $form['actions']['submit']['#value'] = t('Continue');
     }
+  }
+
+  // This functionality is only required by tools that save their progress
+  // after each step has been submitted.
+  if ($webform_tool_service->isAutosaveToolSubmissionForm($form_id)) {
+    $webform_id = $form['#webform_id'];
 
     // Auto-save progress on wizard step navigation.
     if (isset($form['actions']['wizard_next'])) {
       array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
     }
-  }
 
-  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
+    // Store last completed step.
+    $last_step = $webform_tool_service->getStepValue($webform_id) ?? 1;
+    $current_step = getCurrentStep($form_state);
+
+    if ($current_step > $last_step) {
+      $webform_tool_service->setStepValue($webform_id, $current_step);
+    }
+
     // If the form is in 'edit mode' and the user is going back to edit the form
     // make sure a 'save edit' button is available.
     $current_request = \Drupal::request();
@@ -224,6 +238,10 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
 
     // Ensure the requested step is valid before setting it.
     if ($requested_step > 0) {
+
+      $submission_id = $webform_tool_service->getSubmissionId($webform_id);
+      $webform_tool_service->setSubmissionId( $webform_id, $submission_id);
+
       // Add save edit button.
       $form['save_edit'] = [
         '#type' => 'submit',
@@ -287,7 +305,7 @@ function dhsc_result_viewer_back_button_submit(&$form, FormStateInterface $form_
 }
 
 /**
- * Submit handler for the Back button.
+ * Submit handler for the Save edit button.
  */
 function dhsc_result_viewer_save_edit_submit(&$form, FormStateInterface $form_state) {
   // Save draft before navigating back.
@@ -296,23 +314,17 @@ function dhsc_result_viewer_save_edit_submit(&$form, FormStateInterface $form_st
     $submission->set('in_draft', FALSE);
     $submission->save();
 
-    $token = $submission->get('token')->getValue();
+    $token = $submission->get('token')->getValue()[0]['value'] ?? '';
 
-    $current_step = getCurrentStep($form_state);
+    $webform_id = $form['#webform_id'];
 
     // Generate the redirect URL with webform ID and token.
-    $webform_id = $submission->getWebform()->id();
-    $redirect_url = Url::fromRoute(
-      'dhsc_result_viewer.themed_response_summary',
-      ['webform_id' => $webform_id, 'token' => $token[0]['value']],
-      [
-        'absolute' => TRUE,
-        'fragment' => 'response-' . $current_step,
-      ],
-    )->toString();
+    $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+    $requested_step = $webform_tool_service->getRequestedStep();
 
-    // Set redirect.
-    $form_state->setRedirectUrl(Url::fromUri($redirect_url));
+    // The URL varies depending on which tool is in use.
+    $summary_url = $webform_tool_service->getSummaryUrl($webform_id, $token, $requested_step);
+    $webform_tool_service->performRedirect($summary_url);
   }
 }
 
@@ -374,7 +386,7 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
   $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
 
   // Target specific web forms.
-  if (dhsc_result_viewer_get_webform_tool_service()->isToolSubmissionForm($form_id)) {
+  if ($webform_tool_service->isToolSubmissionForm($form_id)) {
     $current_page = $form_state->get('current_page');
     if ($current_page && $current_page !== '') {
       // Add a hidden form element to track the current step.
@@ -382,28 +394,6 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
         '#type' => 'value',
         '#value' => $current_page,
       ];
-    }
-  }
-  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
-    $webform_id = $form['#webform_id'];
-    $submission_id = $webform_tool_service->getSubmissionId($webform_id);
-
-    // Auto-save progress on wizard step navigation.
-    if (isset($form['actions']['wizard_next'])) {
-      array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
-    }
-
-    if (!$submission_id) {
-      // Create a draft submission.
-      $webform_tool_service->createDraftSubmission($webform_id);
-    }
-
-    // Store last completed step
-    $last_step = $webform_tool_service->getStepValue($webform_id) ?? 1;
-    $current_step = getCurrentStep($form_state);
-
-    if ($current_step > $last_step) {
-      $webform_tool_service->setStepValue($webform_id, $current_step);
     }
   }
 }
@@ -585,7 +575,7 @@ function dhsc_result_viewer_entity_presave(EntityInterface $entity) {
   if ($entity instanceof WebformSubmissionInterface) {
     $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
     $webform_id = $entity->getWebform()->id();
-    if ($webform_tool_service->isThemedTool($webform_id)) {
+    if ($webform_tool_service->isAutosaveTool($webform_id)) {
       // Check if the submission was a draft but is now finalised.
       if ($entity->isDraft() === FALSE) {
         // Get the WebformToolService.
@@ -610,4 +600,13 @@ function dhsc_result_viewer_get_webform_tool_service() {
     $service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
   }
   return $service;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form elements.
+ */
+function dhsc_result_viewer_theme_suggestions_checkboxes_alter(array &$suggestions, array $variables) {
+  if (isset($variables['element']['#webform_element']['#type']) && $variables['element']['#webform_element']['#type'] === 'checkbox_count') {
+    $suggestions[] = 'webform_element__checkbox_count';
+  }
 }
