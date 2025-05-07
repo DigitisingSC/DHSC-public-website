@@ -12,7 +12,7 @@ function supplierCounts() {
     updateSelected() {
       const selected = {};
       document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
-        selected[el.name] = TRUE;
+        selected[el.name] = true;
       });
       this.selected = selected;
     },
