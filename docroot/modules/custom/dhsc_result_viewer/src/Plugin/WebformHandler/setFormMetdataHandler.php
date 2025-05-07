@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  *   submission = \Drupal\webform\Plugin\WebformHandlerInterface::SUBMISSION_REQUIRED,
  * )
  */
-class SetFormMetdataHandler extends WebformHandlerBase {
+class setFormMetdataHandler extends WebformHandlerBase {
 
   /**
    * {@inheritdoc}
@@ -67,21 +67,10 @@ class SetFormMetdataHandler extends WebformHandlerBase {
       $tempstore->set('sid', $sid);
     }
 
-    if ($update == TRUE && ($webform->id() === 'self_assessment_tool' || $webform->id() === 'assured_solutions_tools')) {
+    if ($update == TRUE && ($webform->id() === 'self_assessment_tool')) {
       $submission_token = \Drupal::request()->query->get('token');
 
-      switch ($webform->id()) {
-        case 'self_assessment_tool':
-          $route_name = 'dhsc_result_viewer.result_summary_self_assessment';
-          break;
-
-        case 'assured_solutions_tools':
-          $route_name = 'dhsc_result_viewer.result_summary_assured_solutions';
-          break;
-
-        default:
-          $route_name = '';
-      }
+      $route_name = 'dhsc_result_viewer.result_summary_self_assessment';
 
       $path = Url::fromRoute(
         $route_name,
