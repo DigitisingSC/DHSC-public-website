@@ -10,7 +10,7 @@ class WebformToolConstants {
   /**
    * Debug flag to control logging and on-screen messages.
    */
-  public const DEBUG_MODE = TRUE;
+  public const DEBUG_MODE = FALSE;
 
   /**
    * Constants defining webform_id values for tools that this module extends.
