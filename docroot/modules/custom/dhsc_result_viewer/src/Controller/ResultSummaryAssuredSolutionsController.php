@@ -11,12 +11,13 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Mail\MailManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Render\Markup;
-use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\AssuredSolutionsInterface;
 use Drupal\dhsc_result_viewer\Form\ResultSummaryForm;
+use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Class ResultSummaryAssuredSolutionsController.
@@ -42,7 +43,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   /**
    * ResultViewer service.
    *
-   * @var \Drupal\dhsc_assured_solutions_result_viewer\AssuredSolutionsInterface
+   * @var \Drupal\dhsc_result_viewer\AssuredSolutionsInterface
    */
   protected $resultViewer;
 
@@ -68,13 +69,6 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   protected $messenger;
 
   /**
-   * TempStore.
-   *
-   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
-   */
-  protected $tempStore;
-
-  /**
    * The form builder service.
    *
    * @var \Drupal\Core\Form\FormBuilderInterface
@@ -89,13 +83,20 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   protected $loggerFactory;
 
   /**
+   * The request stack service.
+   *
+   * @var \Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
    * ResultSummaryAssuredSolutionsController constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The configuration factory.
-   * @param \Drupal\dhsc_assured_solutiions_result_viewer\AssuredSolutionsInterface $result_viewer
+   * @param \Drupal\dhsc_result_viewer\AssuredSolutionsInterface $result_viewer
    *   The ResultViewer service.
    * @param \Drupal\Core\Language\LanguageManagerInterface $language_manager
    *   The language manager service.
@@ -103,12 +104,12 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
    *   The mail manager service.
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The messenger service.
-   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
-   *   The TempStore factory service.
    * @param \Drupal\Core\Form\FormBuilderInterface $form_builder
    *   The form builder service.
    * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
    *   The logger factory service.
+   * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
+   *   The request stack service.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
@@ -117,9 +118,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     LanguageManagerInterface $language_manager,
     MailManagerInterface $mail_manager,
     MessengerInterface $messenger,
-    PrivateTempStoreFactory $temp_store,
     FormBuilderInterface $form_builder,
     LoggerChannelFactoryInterface $logger_factory,
+    RequestStack $request_stack,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->configFactory = $config_factory;
@@ -127,9 +128,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     $this->languageManager = $language_manager;
     $this->mailManager = $mail_manager;
     $this->messenger = $messenger;
-    $this->tempStore = $temp_store;
     $this->formBuilder = $form_builder;
     $this->loggerFactory = $logger_factory;
+    $this->requestStack = $request_stack;
   }
 
   /**
@@ -143,9 +144,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
       $container->get('language_manager'),
       $container->get('plugin.manager.mail'),
       $container->get('messenger'),
-      $container->get('tempstore.private'),
       $container->get('form_builder'),
-      $container->get('logger.factory')
+      $container->get('logger.factory'),
+      $container->get('request_stack'),
     );
   }
 
@@ -153,7 +154,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
    * Get submission results.
    *
    * @return mixed
-   *   Resurn submission results.
+   *   Return submission results.
    */
   public function getResults() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
@@ -171,7 +172,15 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
   public function build() {
     $config = $this->configFactory->get(ResultSummaryForm::SETTINGS);
 
-    if ($result = $this->getResults()) {
+    $webform_id = 'assured_solutions_tool';
+
+    // Extract unique submission token value from URL.
+    $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
+
+    // Load the webform_submission entity.
+    $submission = $this->resultViewer->getSubmissionByToken($submission_token, $webform_id);
+
+    if ($result = $this->resultViewer->getResultsSummary($submission->getData(), $submission->getWebform())) {
       $element = [
         '#theme' => 'dhsc_results_list_assured_solutions',
         '#summary' => $config->get('as_result_summary') ? $config->get('as_result_summary') : NULL,
@@ -183,7 +192,8 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
         '#no_matches' => $result['no_matches'],
         '#result' => $result['result_items'],
         '#email_form' => !empty($result['total_count']) ? $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm') : FALSE,
-        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')->toString(),
+        '#download_results_path' => Url::fromRoute('dhsc_result_viewer.generate_pdf')
+          ->toString(),
       ];
     }
     else {
@@ -210,10 +220,7 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
    *   The response.
    */
   public function sendResultEmail(string $email, string $token) {
-    $tempStore = $this->tempStore->get('dhsc_result_viewer');
-
-    // Get saved result data from tempstore.
-    $results = $tempStore->get('assured_solutions_result_data');
+    $results = $this->resultViewer->getResultsSummaryFromSession();
 
     if (!empty($results)) {
       $module = 'dhsc_result_viewer';
@@ -225,12 +232,14 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
 
       try {
         $this->mailManager->mail($module, $key, $to, $langcode, $params, NULL, TRUE);
-        $this->loggerFactory->get('dhsc_result_viewer')->notice('assured solutions result email sent to ' . $email);
+        $this->loggerFactory->get('dhsc_result_viewer')
+          ->notice('assured solutions result email sent to ' . $email);
       }
       catch (\Exception $e) {
         $message = $this->t('There was a problem sending assured solutions result email to @email', ['@email' => $email]);
         $this->loggerFactory->get('Error in email sending')->error($message);
-        $this->loggerFactory->get('Error in email sending')->error($e->getMessage());
+        $this->loggerFactory->get('Error in email sending')
+          ->error($e->getMessage());
       }
 
       $submission_url = Url::fromRoute(
@@ -247,6 +256,9 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
       return $response;
     }
     $this->messenger->addError($this->t('Unable to send email'));
+
+    // Return to front page.
+    return new RedirectResponse(Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString());
   }
 
   /**
@@ -298,12 +310,10 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
       }
     }
 
-    $non_matching_count = !empty($results['non_matching_count']) ?
-    $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
+    $non_matching_count = !empty($results['non_matching_count']) ? $results['non_matching_count'] . " suppliers don't match your criteria" : FALSE;
     $non_matching_html = '';
 
     if ($pdf) {
-
       if ($non_matching_count) {
         $non_matching_html = Markup::create("<div class='non-matches'><h3>
       {$non_matching_count}</h3>
@@ -321,7 +331,6 @@ class ResultSummaryAssuredSolutionsController extends ControllerBase {
     }
 
     if (!$pdf) {
-
       if ($non_matching_count) {
         $non_matching_html = Markup::create("<tr class='non-matches'><td><h3>
       {$non_matching_count}</h3>
