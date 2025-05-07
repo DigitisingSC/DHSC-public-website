@@ -1,7 +1,9 @@
 <?php
 
-use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
+/**
+ * @file
+ * Contains install related logic.
+ */
 
 /**
  * Implements hook_update_N().

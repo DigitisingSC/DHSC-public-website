@@ -1,0 +1,151 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 2b800c04-0ff7-4f89-9caa-01bda798479b
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(WGLL) Support workforce'
+  weight:
+    -
+      value: 10
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '(WGLL) Support workforce | Digitising Social Care'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://dhsc-public-website-2.ddev.site:33001/taxonomy/term/151'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 26d7e14f-58c5-41e8-9fac-c214b3111a69
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737917647
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘Not started’.</span></p><p>You can find practical guidance and resources to support you with this area of digital good practice by visiting the below.<br>&nbsp;</p><p><a href="https://digitalsocialcarestg.prod.acquia-sites.com/well-led-resources"><span>Information and support for the ‘well led’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/ensure-smart-foundations-resources"><span>Information and support for the ‘ensure smart foundations’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/support-workforce-resources"><span>Information and support for the ‘support workforce’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/empower-people-resources"><span>Information and support for the ‘empower people’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/improve-care-resources"><span>Information and support for the ‘improve care’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/healthy-populations-resources"><span>Information and support for the ‘healthy populations’ success measure</span></a></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 333f74c0-0c19-4a1d-85b2-1baa16276c5e
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737917647
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘In progress’, and you have stated that you are actively working in this area.</span></p><p>You can find practical guidance and resources to support you with this area of digital good practice by visiting the below.<br>&nbsp;</p><p><a href="https://digitalsocialcarestg.prod.acquia-sites.com/well-led-resources"><span>Information and support for the ‘well led’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/ensure-smart-foundations-resources"><span>Information and support for the ‘ensure smart foundations’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/support-workforce-resources"><span>Information and support for the ‘support workforce’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/empower-people-resources"><span>Information and support for the ‘empower people’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/improve-care-resources"><span>Information and support for the ‘improve care’ success measure</span></a><br><a href="https://digitalsocialcarestg.prod.acquia-sites.com/healthy-populations-resources"><span>Information and support for the ‘healthy populations’ success measure</span></a></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: dbe75514-21eb-412c-988a-7f2de300debf
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737917647
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>Your overall rating for your organisation is ‘Well established’.</span></p><p dir="ltr"><span>You can find practical resources and next steps to continue your journey </span><a href="/support-workforce-resources"><span>here</span></a><span>.</span></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: f6a051ae-afb8-4e7a-ab89-7b018ee44f05
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737917647
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p><span>You stated that you have reached the highest level and are advanced in this area.</span></p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Success measure 4: Support workforce'

@@ -47,6 +47,9 @@ export-db:
 coding-standards:
 	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcs --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
 
+coding-standards-fix:
+	docker run --rm -v `pwd`:/work skilldlabs/docker-phpcs-drupal phpcbf --standard=Drupal,DrupalPractice docroot/themes/custom/ docroot/modules/custom/ --ignore="*/node_modules/*, themes/custom/dhsc_theme/stories, themes/custom/dhsc_theme/.storybook"
+
 fe-watch:
 	npm run watch --prefix ${THEME_DIR}
 
