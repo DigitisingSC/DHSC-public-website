@@ -8,6 +8,8 @@ dependencies:
     - field.field.node.supplier.field_image
     - field.field.node.supplier.field_list_price
     - field.field.node.supplier.field_non_possible_answers
+    - field.field.node.supplier.field_solution_excluded
+    - field.field.node.supplier.field_solution_included
     - field.field.node.supplier.field_summary
     - node.type.supplier
   module:
@@ -49,6 +51,22 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_solution_excluded:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_solution_included:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_summary:
     type: basic_string

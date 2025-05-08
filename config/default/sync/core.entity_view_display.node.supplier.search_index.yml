@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.supplier.field_image
     - field.field.node.supplier.field_list_price
     - field.field.node.supplier.field_non_possible_answers
+    - field.field.node.supplier.field_solution_excluded
+    - field.field.node.supplier.field_solution_included
     - field.field.node.supplier.field_summary
     - node.type.supplier
   module:
@@ -34,6 +36,8 @@ hidden:
   field_image: true
   field_list_price: true
   field_non_possible_answers: true
+  field_solution_excluded: true
+  field_solution_included: true
   field_summary: true
   langcode: true
   links: true

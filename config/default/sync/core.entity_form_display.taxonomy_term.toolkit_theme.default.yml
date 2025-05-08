@@ -94,5 +94,9 @@ hidden:
   description: true
   langcode: true
   path: true
+  publish_on: true
+  publish_state: true
   simple_sitemap: true
   status: true
+  unpublish_on: true
+  unpublish_state: true
