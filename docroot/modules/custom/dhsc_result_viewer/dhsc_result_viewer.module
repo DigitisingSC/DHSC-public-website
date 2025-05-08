@@ -1,18 +1,22 @@
 <?php
 
-use \Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-
 /**
  * @file
  * Module to create result pages.
  */
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\webform\Entity\Webform;
+use Drupal\webform\WebformSubmissionInterface;
+use Drupal\webform\Entity\WebformSubmission;
+use Drupal\dhsc_result_viewer\Constants\WebformToolConstants;
+
 /**
  * Implements hook_theme().
  */
-function dhsc_result_viewer_theme()
-{
+function dhsc_result_viewer_theme() {
   return [
     'dhsc_results_list_assured_solutions' => [
       'variables' => [
@@ -40,6 +44,32 @@ function dhsc_result_viewer_theme()
         'email_form' => NULL,
       ],
     ],
+    'dhsc_themed_response_list' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'result_variant' => NULL,
+        'submission_url' => NULL,
+        'responses' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+        'webform_id' => NULL,
+      ],
+    ],
+    'dhsc_themed_recommendation_item' => [
+      'variables' => [
+        'title' => NULL,
+        'summary' => NULL,
+        'result_variant' => NULL,
+        'submission_url' => NULL,
+        'responses' => NULL,
+        'result' => NULL,
+        'no_result' => NULL,
+        'email_form' => NULL,
+        'webform_id' => NULL,
+      ],
+    ],
     'search_criteria' => [
       'variables' => [
         'section' => NULL,
@@ -61,7 +91,7 @@ function dhsc_result_viewer_theme()
         'title' => NULL,
         'url' => NULL,
         'answers' => [
-          'answer' => NULL
+          'answer' => NULL,
         ],
       ],
     ],
@@ -92,59 +122,240 @@ function dhsc_result_viewer_theme()
         'content' => [],
       ],
     ],
+    'dhsc_themed_results_pdf_content' => [
+      'variables' => [
+        'results' => [],
+        'webform_id' => [],
+      ],
+    ],
+    'dhsc_themed_results_email_content' => [
+      'variables' => [
+        'results' => [],
+        'webform_id' => [],
+      ],
+    ],
+    'toolkit_theme_selector' => [
+      'variables' => [
+        'theme_name' => NULL,
+      ],
+      'template' => 'toolkit-theme-selector',
+    ],
+    'dhsc_tool__themed_response_summary' => [
+      'variables' => [
+        'title' => NULL,
+        'result_summary' => [],
+        'submission_url' => NULL,
+        'webform_id' => NULL,
+        'token' => NULL,
+        'previous_page_url' => NULL,
+      ],
+    ],
+    'dhsc_tool__themed_recommendation_summary' => [
+      'variables' => [
+        'title' => NULL,
+        'result_summary' => [],
+        'submission_url' => NULL,
+        'download_results_path' => NULL,
+        'email_form' => [],
+        'manager_email_form' => [],
+        'webform_id' => NULL,
+        'token' => NULL,
+      ],
+    ],
   ];
 }
 
 /**
- * Implements hook_form_alter().
- *
- * @param [type] $form
- * @param FormStateInterface $form_state
- * @param [type] $form_id
+ * Implements hook_ENTITY_TYPE_prepare_form().
  */
-function dhsc_result_viewer_form_alter(&$form, FormStateInterface $form_state, $form_id)
-{
-  // Re-write submit label when re-submitting answers.
-  $form_ids = [
-    'webform_submission_assured_solutions_tool_edit_form',
-    'webform_submission_self_assessment_tool_edit_form',
-  ];
+function dhsc_result_viewer_webform_submission_prepare_form(\Drupal\webform\WebformSubmissionInterface $webform_submission, $operation, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+  $webform_id = $webform_submission->getWebform()->id();
+  if ($webform_tool_service->isThemedTool($webform_id)) {
+    // We need to ensure that users can go back to edit questions from the
+    // response summary page. This is carried out via an 'edit-page' query
+    // parameter.
+    $current_request = \Drupal::request();
 
-  if (
-    in_array($form_id, $form_ids) &&
-    (string) $form['actions']['submit']['#value'] === 'Save'
-  ) {
-    $form['actions']['submit']['#value'] = t('Continue');
+    // The list of all wizard pages.
+    $all_pages = array_keys($webform_submission->getWebform()->getPages());
+
+    $requested_step = (int) ($current_request->query->get('edit-page') ?? $current_request->query->get('page'));
+
+    if (!$requested_step) {
+      $requested_step = dhsc_result_viewer_get_webform_tool_service()->getStepValue($webform_id);
+    }
+
+    // If a page has been specified via a URL parameter or via tempstore we will
+    // use this to set the current page.
+    if ($requested_step) {
+      // Ensure the requested step is valid before setting it.
+      if (is_array($all_pages) && isset($all_pages[$requested_step])) {
+        if ($form_state->get('current_page') !== $all_pages[$requested_step ? $requested_step - 1 : 0]) {
+          $form_state->set('current_page', $all_pages[$requested_step ? $requested_step - 1 : 0]);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+  if ($webform_tool_service->isToolSubmissionForm($form_id)) {
+    // Re-write submit label when re-submitting answers.
+    if ((string) $form['actions']['submit']['#value'] === 'Save') {
+      $form['actions']['submit']['#value'] = t('Continue');
+    }
+
+    // Auto-save progress on wizard step navigation.
+    if (isset($form['actions']['wizard_next'])) {
+      array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
+    }
   }
 
+  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
+    // If the form is in 'edit mode' and the user is going back to edit the form
+    // make sure a 'save edit' button is available.
+    $current_request = \Drupal::request();
+    $requested_step = (int) $current_request->query->get('edit-page') ?? NULL;
+
+    // Ensure the requested step is valid before setting it.
+    if ($requested_step > 0) {
+      // Add save edit button.
+      $form['save_edit'] = [
+        '#type' => 'submit',
+        '#value' => t('Continue'),
+        '#limit_validation_errors' => [],
+        '#submit' => ['dhsc_result_viewer_save_edit_submit'],
+        '#attributes' => [
+          'class' => ['button', 'a-button', 'a-button--primary'],
+          'data-twig-suggestion' => 'save-and-edit',
+        ],
+        '#theme_wrapper' => 'form_element',
+        '#weight' => 10,
+      ];
+      $form['actions']['submit']['#access'] = FALSE;
+      $form['actions']['wizard_next']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Submit handler for the Back button.
+ */
+function dhsc_result_viewer_back_button_submit(&$form, FormStateInterface $form_state) {
+  $webform_id = $form['#webform_id'];
+  $submission = $form_state->getFormObject()->getEntity();
+  $token = $submission->get('token')->getValue()[0]['value'] ?? '';
+
+  $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+  $requested_step = $webform_tool_service->getRequestedStep();
+
+  if ($requested_step && $requested_step > 0) {
+    // Re-edit mode.
+    // Redirect to previous response step.
+    $summary_url = $webform_tool_service->getSummaryUrl($webform_id, $token, $requested_step);
+    $webform_tool_service->performRedirect($summary_url);
+    // .. ends with redirect.
+  }
+  else {
+    // Wizard navigation treatment.
+    // Go to the previous step or landing page.
+    $previous_step = $webform_tool_service->getPreviousStep($form_state);
+
+    if ($previous_step === NULL) {
+      // Redirect back to the landing page associated with tool.
+      $landing_page_url = $webform_tool_service->getLandingPageUrl($webform_id);
+      $webform_tool_service->performRedirect($landing_page_url);
+    }
+
+    // Save draft before navigating back.
+    if ($submission instanceof WebformSubmissionInterface) {
+      $submission->set('in_draft', TRUE);
+      $submission->save();
+    }
+
+    // Move the wizard back.
+    $form_state->set('current_page', $previous_step);
+    $form_state->setRebuild();
+
+    return $webform_tool_service->rebuildWebformAjax($form, $form_state);
+  }
+}
+
+/**
+ * Submit handler for the Back button.
+ */
+function dhsc_result_viewer_save_edit_submit(&$form, FormStateInterface $form_state) {
+  // Save draft before navigating back.
+  $submission = $form_state->getFormObject()->getEntity();
+  if ($submission instanceof WebformSubmissionInterface) {
+    $submission->set('in_draft', FALSE);
+    $submission->save();
+
+    $token = $submission->get('token')->getValue();
+
+    $current_step = getCurrentStep($form_state);
+
+    // Generate the redirect URL with webform ID and token.
+    $webform_id = $submission->getWebform()->id();
+    $redirect_url = Url::fromRoute(
+      'dhsc_result_viewer.themed_response_summary',
+      ['webform_id' => $webform_id, 'token' => $token[0]['value']],
+      [
+        'absolute' => TRUE,
+        'fragment' => 'response-' . $current_step,
+      ],
+    )->toString();
+
+    // Set redirect.
+    $form_state->setRedirectUrl(Url::fromUri($redirect_url));
+  }
+}
+
+/**
+ * Get current step
+ */
+function getCurrentStep(FormStateInterface $form_state): ?int {
+  $current_page = $form_state->get('current_page');
+  $submission = $form_state->getFormObject()->getEntity();
+  $all_pages = array_keys($submission->getWebform()->getPages());
+
+  return array_search($current_page, $all_pages) + 1;
 }
 
 /**
  * Implements hook_mail().
  */
-function dhsc_result_viewer_mail($key, &$message, $params)
-{
+function dhsc_result_viewer_mail($key, &$message, $params) {
   $message['from'] = $params['headers']['From'] ?? NULL;
-  // Strip newline characters from email subjects.
-  $message['subject'] = isset($params['subject']) ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject']) : NULL;
-  $message['body'] = $params['body'];
 
+  // Strip newline characters from email subjects.
+  $message['subject'] = isset($params['subject'])
+    ? str_replace(["\r\n", "\r", "\n"], ' ', $params['subject'])
+    : NULL;
+
+  // Assign email body and optional parameters.
+  $message['body'] = $params['body'];
   $message['params'] = isset($params['params']) ?? $params['params'];
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_mimemail_message(&$variables) {
-  $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])->toString();
+function dhsc_result_viewer_preprocess_mimemail_message(array &$variables) {
+  $variables['base_url'] = Url::fromRoute('<front>', [], ['absolute' => TRUE])
+    ->toString();
 }
 
 /**
  * Implements hook_preprocess_HOOK().
- *
- * @param $variables
  */
-function dhsc_result_viewer_preprocess_status_messages(&$variables) {
+function dhsc_result_viewer_preprocess_status_messages(array &$variables) {
+  // Check for status messages in the message list.
   if (isset($variables['message_list']['status'])) {
     $status_messages = $variables['message_list']['status'];
     foreach ($status_messages as $key => $message) {
@@ -159,31 +370,157 @@ function dhsc_result_viewer_preprocess_status_messages(&$variables) {
 /**
  * Implements hook_webform_submission_form_alter().
  */
-function dhsc_result_viewer_webform_submission_form_alter(&$form, FormStateInterface $form_state, $form_id)
-{
-  if (in_array($form['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool']) && ($current_page = $form_state->get('current_page')) !== '') {
-    $form['current_step'] = [
-      '#type' => 'value',
-      '#value' =>  $current_page,
-    ];
+function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStateInterface $form_state, string $form_id) {
+  $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+
+  // Target specific web forms.
+  if (dhsc_result_viewer_get_webform_tool_service()->isToolSubmissionForm($form_id)) {
+    $current_page = $form_state->get('current_page');
+    if ($current_page && $current_page !== '') {
+      // Add a hidden form element to track the current step.
+      $form['current_step'] = [
+        '#type' => 'value',
+        '#value' => $current_page,
+      ];
+    }
+  }
+  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
+    $webform_id = $form['#webform_id'];
+    $submission_id = $webform_tool_service->getSubmissionId($webform_id);
+
+    // Auto-save progress on wizard step navigation.
+    if (isset($form['actions']['wizard_next'])) {
+      array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
+    }
+
+    if (!$submission_id) {
+      // Create a draft submission.
+      $webform_tool_service->createDraftSubmission($webform_id);
+    }
+
+    // Store last completed step
+    $last_step = $webform_tool_service->getStepValue($webform_id) ?? 1;
+    $current_step = getCurrentStep($form_state);
+
+    if ($current_step > $last_step) {
+      $webform_tool_service->setStepValue($webform_id, $current_step);
+    }
+  }
+}
+
+/**
+ * Custom submit handler to store form data against the draft submission.
+ */
+function dhsc_result_viewer_store_draft_submission(array &$form, FormStateInterface $form_state) {
+  $webform_id = $form['#webform_id'];
+
+  /** @var \Drupal\dhsc_result_viewer\Service\WebformToolService $webform_tool_service */
+  $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
+
+  // Get session ID.
+  $submission_id = $webform_tool_service->getSubmissionId($webform_id);
+
+  if ($submission_id && ($submission = WebformSubmission::load($submission_id))) {
+    // Retrieve form data from the current step.
+    $data = $form_state->getValues();
+
+    // Update the submission data and keep it as a draft.
+    $submission->setData($data);
+    $submission->set('in_draft', TRUE);
+    $submission->save();
+
+    if (WebformToolConstants::DEBUG_MODE) {
+      \Drupal::messenger()->addMessage('Draft saved before proceeding.');
+    }
+  }
+  if (!$submission_id) {
+    if (WebformToolConstants::DEBUG_MODE) {
+      \Drupal::logger('dhsc_result_viewer')
+        ->warning('No submission ID found in session for webform @webform_id.', ['@webform_id' => $webform_id]);
+    }
   }
 }
 
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
-function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook)
-{
-  if (in_array($variables['form']['#webform_id'], ['self_assessment_tool', 'assured_solutions_tool'])) {
-    $suggestions[] = $variables['form']['#webform_id'] . '__' . $variables['form']['current_step']['#value'];
+function dhsc_result_viewer_theme_suggestions_webform_submission_form_alter(array &$suggestions, array $variables, $hook) {
+  $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+  if ($webform_tool_service->isIndividualToolSubmissionForm($hook)) {
+    $suggestions[] = 'webform_submission_form' . '__dhsc_tool__step';
+    $suggestions[] = 'webform_submission_form' . '__dhsc_tool__' . $variables['form']['current_step']['#value'];
+  }
+  else {
+    $suggestions[] = 'webform_submission_form' . '__dhsc_tool__step';
   }
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_theme_suggestions_HOOK_alter().
  */
-function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
-{
+function dhsc_result_viewer_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestion_suffix = str_replace(['-'], '_', $element['#attributes']['data-twig-suggestion']);
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $suggestion_suffix;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_tool__themed_results_summary.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_tool__themed_results_summary_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_tool__themed_results_summary__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_themed_results_pdf_content.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_pdf_content_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_results_pdf_content__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for dhsc_themed_response_list.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_response_list_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_response_list__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_themed_recommendation_item.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_recommendation_item_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_recommendation_item__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('sa_landing_page');
@@ -193,14 +530,84 @@ function dhsc_result_viewer_preprocess_self_assessment_tool__step_1(&$variables)
 }
 
 /**
- * Implements hook_theme_preprocess_HOOK().
+ * Implements hook_preprocess_HOOK().
  */
-function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables)
-{
+function dhsc_result_viewer_preprocess_assured_solutions_tool__step_1(&$variables) {
   // Get tool landing page uri from config.
   $config = \Drupal::config('dhsc_result_viewer.result_summary_settings');
   $landing_page_uri = $config->get('as_landing_page');
 
   // Pass url from config for back behaviour.
   $variables['link'] = Url::fromUserInput($landing_page_uri, ['absolute' => TRUE]);
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for mimemail_message
+ * templates.
+ */
+function dhsc_result_viewer_theme_suggestions_mimemail_message_alter(array &$suggestions, array $variables) {
+  $route_match = \Drupal::routeMatch();
+  $route_name = $route_match->getRouteName();
+
+  // Attempt to retrieve the webform_id from the route parameters.
+  $webform_id = $route_match->getParameter('webform_id');
+
+  // Ensure the webform_id is valid.
+  if (!empty($webform_id) && is_string($webform_id)) {
+    // Normalize webform ID format.
+    $webform_id = str_replace('-', '_', $webform_id);
+
+    // Add a suggestion based on a specific route.
+    if ($route_name == 'dhsc_result_viewer.themed_result_summary') {
+      $suggestions[] = 'mimemail_message__dhsc_result_viewer__' . $webform_id;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for
+ * dhsc_themed_results_email_content templates.
+ */
+function dhsc_result_viewer_theme_suggestions_dhsc_themed_results_email_content_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['webform_id'])) {
+    $webform_id = $variables['webform_id'];
+
+    // Add a theme suggestion using the webform ID as a suffix.
+    $suggestions[] = 'dhsc_themed_results_email_content__' . $webform_id;
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function dhsc_result_viewer_entity_presave(EntityInterface $entity) {
+  // Ensure this is a webform submission entity.
+  if ($entity instanceof WebformSubmissionInterface) {
+    $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+    $webform_id = $entity->getWebform()->id();
+    if ($webform_tool_service->isThemedTool($webform_id)) {
+      // Check if the submission was a draft but is now finalised.
+      if ($entity->isDraft() === FALSE) {
+        // Get the WebformToolService.
+        $webform_tool_service = dhsc_result_viewer_get_webform_tool_service();
+
+        // Clear tempstore values since the form has been fully submitted.
+        $webform_tool_service->clearSubmissionData($webform_id);
+      }
+    }
+  }
+}
+
+/**
+ * Provides a reusable way to fetch the WebformToolService.
+ *
+ * @return \Drupal\dhsc_result_viewer\Service\WebformToolService
+ *   The WebformToolService instance.
+ */
+function dhsc_result_viewer_get_webform_tool_service() {
+  static $service;
+  if (!$service) {
+    $service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
+  }
+  return $service;
 }

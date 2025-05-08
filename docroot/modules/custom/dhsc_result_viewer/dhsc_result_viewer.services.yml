@@ -1,15 +1,33 @@
 services:
+
   dhsc_self_assessment_result_viewer.service:
     class: Drupal\dhsc_result_viewer\SelfAssessmentResultViewer
     arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+
   dhsc_assured_solutions_result_viewer.service:
     class: Drupal\dhsc_result_viewer\AssuredSolutionsResultViewer
-    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private']
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private', '@path_alias.manager', '@entity.query.sql', '@request_stack']
+
+  dhsc_themed_result_viewer.service:
+    class: Drupal\dhsc_result_viewer\ThemedResultViewer
+    arguments: ['@entity_type.manager', '@config.factory', '@tempstore.private', '@logger.factory', '@request_stack', '@messenger', '@language_manager', '@plugin.manager.mail', '@string_translation', '@renderer']
+
   dhsc_result_viewer.breadcrumb:
     class: Drupal\dhsc_result_viewer\Breadcrumb\SelfAssessmentBreadcrumbBuilder
     arguments: ['@string_translation']
     tags:
-      - { name: breadcrumb_builder, priority: 1008}
+      - { name: breadcrumb_builder, priority: 1008 }
+
   dhsc_result_viewer.dompdf_generator:
     class: \Drupal\dhsc_result_viewer\DhscDomPdfGenerator
-    arguments: ['@renderer', '@request_stack', '@module_handler','@extension.list.module', '@file_system']
+    arguments: ['@renderer', '@request_stack', '@module_handler', '@extension.list.module', '@file_system']
+
+  dhsc_result_viewer.route_subscriber:
+    class: Drupal\dhsc_result_viewer\Routing\RouteSubscriber
+    arguments: ['@tempstore.private']
+    tags:
+      - { name: event_subscriber }
+
+  dhsc_result_viewer.webform_tool_service:
+    class: Drupal\dhsc_result_viewer\Service\WebformToolService
+    arguments: ['@session', '@current_user', '@messenger', '@logger.factory', '@request_stack', '@form_builder', '@renderer', '@string_translation']

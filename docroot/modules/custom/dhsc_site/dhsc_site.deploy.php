@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Contains deployment-related logic.
+ */
+
+/**
  * Migrates Section links.
  */
 function dhsc_site_deploy_0001_migrate_section_links() {
@@ -49,8 +54,7 @@ function dhsc_site_deploy_0001_migrate_section_links() {
 /**
  * Deletes old Section links.
  */
-function dhsc_site_deploy_0002_remove_old_section_links_fields()
-{
+function dhsc_site_deploy_0002_remove_old_section_links_fields() {
   $paragraph_type = 'content_listing_section_links';
   $fields_to_remove = [
     'field_section_link',
