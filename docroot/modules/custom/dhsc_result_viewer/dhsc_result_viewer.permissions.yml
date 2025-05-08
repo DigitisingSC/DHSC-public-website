@@ -1,7 +1,11 @@
-'editor access':
+editor access:
   title: 'Editor level permission'
   description: 'Gives editor level permission to the users.'
 
-'access to people':
+access to people:
   title: 'Access to people page'
   description: 'Gives for users access to people page.'
+
+access supplier counts:
+  title: 'Access supplier counts'
+  description: 'Allow access to the SupplierCountController getCounts method.'

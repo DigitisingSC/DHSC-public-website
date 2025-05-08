@@ -22,7 +22,7 @@
                class="o-tool__search-criteria-link inline-block focus:bg-focus border-b-2 border-black hover:border-transparent no-underline focus:no-underline mb-2"
                @click.prevent="openToolCriteria = ! openToolCriteria"
             >
-              <span class="o-tool__icon inline-block -rotate-90" :class="{ 'rotate-0': openToolCriteria }">{{ icon }}</span>
+              <span class="o-tool__icon inline-block -rotate-0" :class="{ 'rotate-180': openToolCriteria }">{{ icon }}</span>
               <span class="inline-block text-black">View or change search criteria:</span>
             </a>
           </div>
@@ -30,12 +30,6 @@
                x-show="openToolCriteria">
             <h3>{{ 'Search criteria'|t }}</h3>
             {{ search_criteria }}
-
-            {% if submission_url %}
-            <div class="o-tool__actions pb-3">
-                <a href="{{ submission_url }}">{{ 'Change my responses'|t }}</a>
-            </div>
-          {% endif %}
           </div>
         </div>
         {% if result %}
@@ -58,7 +52,7 @@
                class="o-tool__unmatched-link focus:bg-focus inline-block border-b-2 border-black hover:border-transparent no-underline focus:no-underline"
                @click.prevent="openUnmatchedResults = ! openUnmatchedResults"
             >
-              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openEmailForm }">{{ icon }}</span>
+              <span class="o-tool__icon inline-block" :class="{ 'rotate-180': openUnmatchedResults }">{{ icon }}</span>
               <span class="inline-block">{{ non_matching_count > 1 ? 'Show suppliers not matching your criteria'|t  : 'Show supplier not matching your criteria'|t }}</span>
             </a>
           </div>

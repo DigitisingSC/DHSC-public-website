@@ -90,3 +90,11 @@ dhsc_result_viewer.generate_theme_summary_pdf:
     _title: 'Generate results pdf'
   requirements:
     _permission: 'access content'
+
+dhsc_result_viewer.assured_solutions_supplier_counts:
+  path: '/dhsc/supplier-counts'
+  defaults:
+    _controller: '\Drupal\dhsc_result_viewer\Controller\SupplierCountController::getCounts'
+  requirements:
+    _permission: 'access supplier counts'
+  methods: [POST]

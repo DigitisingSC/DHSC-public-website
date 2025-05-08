@@ -2,10 +2,12 @@
 
 namespace Drupal\dhsc_result_viewer\Routing;
 
+use Drupal\dhsc_result_viewer\Service\WebformToolService;
+use Drupal\webform\WebformSubmissionInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Routing\RouteSubscriberBase;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -18,20 +20,33 @@ use Drupal\dhsc_result_viewer\Constants\WebformToolConstants;
 class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInterface {
 
   /**
-   * The private temp store factory.
+   * The request stack service.
    *
-   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
+   * @var \Symfony\Component\HttpFoundation\RequestStack
    */
-  protected PrivateTempStoreFactory $tempStoreFactory;
+  private RequestStack $requestStack;
 
   /**
-   * Constructs a new RouteSubscriber.
+   * The custom webform tool service.
    *
-   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
-   *   The private temp store factory.
+   * @var \Drupal\dhsc_result_viewer\Service\WebformToolService
    */
-  public function __construct(PrivateTempStoreFactory $temp_store_factory) {
-    $this->tempStoreFactory = $temp_store_factory;
+  private WebformToolService $webformToolService;
+
+  /**
+   * Constructs a new RouteSubscriber object.
+   *
+   * @param \Symfony\Component\HttpFoundation\RequestStack $requestStack
+   *   The request stack service.
+   * @param \Drupal\dhsc_result_viewer\Service\WebformToolService $webformToolService
+   *   The custom webform tool service.
+   */
+  public function __construct(
+    RequestStack $requestStack,
+    WebformToolService $webformToolService,
+  ) {
+    $this->requestStack = $requestStack;
+    $this->webformToolService = $webformToolService;
   }
 
   /**
@@ -67,7 +82,7 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
 
     $webform_id = $webform->get('id');
 
-    if (in_array($webform_id, WebformToolConstants::WEBFORM_TOOLS_THEMED, TRUE)) {
+    if (in_array($webform_id, WebformToolConstants::WEBFORM_AUTOSAVE, TRUE)) {
       $route_name = $request->attributes->get('_route');
 
       // Only apply redirection for the webform page.
@@ -76,25 +91,27 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
       }
 
       // Prevent redirect loop by checking if the token is already present.
-      if ($request->query->has('token')) {
+      if ($this->requestStack->getCurrentRequest()->query->get('token')) {
         return;
       }
 
-      /** @var \Drupal\dhsc_result_viewer\Service\WebformToolService $webform_tool_service */
-      $webform_tool_service = \Drupal::service('dhsc_result_viewer.webform_tool_service');
-
       // Get session ID.
-      $submission_id = $webform_tool_service->getSubmissionId($webform_id);
+      $submission_id = $this->webformToolService->getSubmissionId($webform_id);
 
-      if ($submission_id && $submission = WebformSubmission::load($submission_id)) {
-        if ($submission->isDraft()) {
-          $token = $submission->getToken();
+      if (!$submission_id) {
+        $submission = $this->webformToolService->createDraftSubmission($webform_id);
+      }
+      else {
+        $submission = WebformSubmission::load($submission_id);
+      }
 
-          // Build the redirect URL.
-          $redirect_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $token;
-          $response = new RedirectResponse($redirect_url);
-          $event->setResponse($response);
-        }
+      if ($submission instanceof WebformSubmissionInterface && $submission->isDraft()) {
+        $token = $submission->getToken();
+
+        // Build the redirect URL.
+        $redirect_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $token;
+        $response = new RedirectResponse($redirect_url);
+        $event->setResponse($response);
       }
     }
   }
