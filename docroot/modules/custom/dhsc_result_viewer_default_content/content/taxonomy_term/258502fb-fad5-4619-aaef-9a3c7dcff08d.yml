@@ -1,0 +1,151 @@
+_meta:
+  version: '1.0'
+  entity_type: taxonomy_term
+  uuid: 258502fb-fad5-4619-aaef-9a3c7dcff08d
+  bundle: toolkit_theme
+  default_langcode: en
+default:
+  status:
+    -
+      value: true
+  name:
+    -
+      value: '(SGF) Communicating through technology'
+  weight:
+    -
+      value: 1
+  parent:
+    -
+      target_id: 0
+  revision_translation_affected:
+    -
+      value: true
+  metatag:
+    -
+      tag: meta
+      attributes:
+        name: title
+        content: '(SGF) Communicating through technology | Digitising Social Care'
+    -
+      tag: link
+      attributes:
+        rel: canonical
+        href: 'https://dhsc-public-website-2.ddev.site:33001/taxonomy/term/136'
+  path:
+    -
+      alias: ''
+      langcode: en
+      pathauto: 1
+  rh_action:
+    -
+      value: bundle_default
+  rh_redirect_response:
+    -
+      value: 301
+  rh_redirect_fallback_action:
+    -
+      value: bundle_default
+  field_result_summary_ref:
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: f2e8394b-c1b9-4b9d-ad62-8df2d29c54d2
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635582
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p>You responded overall that you were not feeling confident in this area of knowledge and skills.<br>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.</p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support- person-centred-care">Information and support for using technology in person centred care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using- technology">Information and support for technical skills in using technology</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through- technology">Information and support for communicating through technology</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">Information and support for using and managing data in adult social care</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">Information and support for being safe and secure online</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">Information and support on the ethical use of technology in care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development- and-wellbeing">Information and support for digital learning, development and wellbeing</a></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: aeac2e5c-2103-4985-8740-e96f4e5ff022
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635582
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p><span>You scored overall that you had mixed to low confidence around this area of knowledge and skills.&nbsp;</span><br>You can find practical guidance and resources to support you with this area of knowledge and skills by visiting the below.</p><p><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-1-using-technology-support- person-centred-care">Information and support for using technology in person centred care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-2-technical-skills-using- technology">Information and support for technical skills in using technology</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-3-communicating-through- technology">Information and support for communicating through technology</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-4-using-and-managing-data">Information and support for using and managing data in adult social care</a></p><p><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-5-being-safe-and-secure-online">Information and support for being safe and secure online</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-6-ethical-use-technology">Information and support on the ethical use of technology in care</a><br><br><a href="https://beta.digitisingsocialcare.co.uk/digital-skills/theme-7-digital-learning-development- and-wellbeing">Information and support for digital learning, development and wellbeing</a></p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: 297c17a2-9725-4bcd-be10-cd95d386dd5b
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635582
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span><br>&nbsp;</p><p dir="ltr">&nbsp;</p>'
+              format: basic_html
+    -
+      entity:
+        _meta:
+          version: '1.0'
+          entity_type: paragraph
+          uuid: d734244f-ba9a-47c5-a17f-927c21f032b1
+          bundle: results_summary_content
+          default_langcode: en
+        default:
+          status:
+            -
+              value: true
+          created:
+            -
+              value: 1737635582
+          behavior_settings:
+            -
+              value: {  }
+          revision_translation_affected:
+            -
+              value: true
+          field_result_summary:
+            -
+              value: '<p dir="ltr"><span>You scored overall that you had mixed to high confidence around this area of knowledge and skills.&nbsp;</span><br>&nbsp;</p><p dir="ltr">&nbsp;</p>'
+              format: basic_html
+  field_theme_title:
+    -
+      value: 'Theme 3: Communicating through technology'

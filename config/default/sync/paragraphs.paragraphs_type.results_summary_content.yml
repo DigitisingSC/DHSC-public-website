@@ -1,0 +1,10 @@
+uuid: d3177eac-f017-43f0-a20f-ccca5878c72e
+langcode: en
+status: true
+dependencies: {  }
+id: results_summary_content
+label: 'Results summary content'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

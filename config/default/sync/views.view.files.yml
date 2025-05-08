@@ -772,14 +772,16 @@ display:
           required: false
       display_description: ''
       display_extenders: {  }
-      path: admin/content/files
+      path: admin/content/media/files
       menu:
-        type: tab
+        type: none
         title: Files
         description: ''
         weight: 0
+        expanded: true
         menu_name: admin
-        context: ''
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -1137,7 +1139,7 @@ display:
       group_by: false
       display_description: ''
       display_extenders: {  }
-      path: admin/content/files/usage/%
+      path: admin/content/media/files/usage/%
     cache_metadata:
       max-age: -1
       contexts:

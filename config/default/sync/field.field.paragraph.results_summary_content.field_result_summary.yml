@@ -1,0 +1,24 @@
+uuid: d0ebea6b-43e9-4fc7-94bb-30731f22fd94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_result_summary
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.results_summary_content
+  module:
+    - text
+id: paragraph.results_summary_content.field_result_summary
+field_name: field_result_summary
+entity_type: paragraph
+bundle: results_summary_content
+label: 'Result summary'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

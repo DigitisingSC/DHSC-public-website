@@ -1,0 +1,11 @@
+uuid: 6b52475f-2901-49f2-a97d-32b705685735
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.skill_reference
+id: taxonomy_term.skill_reference
+target_entity_type_id: taxonomy_term
+target_bundle: skill_reference
+default_langcode: site_default
+language_alterable: false

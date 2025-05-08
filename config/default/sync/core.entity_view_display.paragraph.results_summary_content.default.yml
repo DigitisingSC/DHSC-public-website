@@ -1,0 +1,23 @@
+uuid: 14c2fd0a-de69-4f86-926f-f361996697a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.results_summary_content.field_result_summary
+    - paragraphs.paragraphs_type.results_summary_content
+  module:
+    - text
+id: paragraph.results_summary_content.default
+targetEntityType: paragraph
+bundle: results_summary_content
+mode: default
+content:
+  field_result_summary:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

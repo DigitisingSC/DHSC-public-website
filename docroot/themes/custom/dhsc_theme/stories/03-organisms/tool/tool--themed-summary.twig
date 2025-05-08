@@ -1,0 +1,24 @@
+<div class="pt-6 pb-7 mb-7 tablet:w-9/12 border-t-2 border-black-10 ">
+  <header class="o-tool__header pb-4">
+    <h2 class="o-tool__title mb-4 text-lg leading-8">{{ title }}</h2>
+    {% if summary %}
+      <div class="o-tool__summary text-sm tablet:text-md mb-2">
+        {% for item in summary %}
+          <h3 class="font-bold text-md mb-4 leading-[30px]">{{ item['question'] }}</h3>
+          <p class="font-normal text-sm mb-4">Your response: <span class="font-bold">{{ item['response'] }}</span></p>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+  <div class="o-tool__content prose">
+    {% if no_result %}
+      <div class="o-tool__no-result mb-2">
+        <h3>{{ no_result }}</h3>
+      </div>
+    {% else %}
+      <div class="o-tool__result pl-6 border-s-2 border-green">
+        {{ result }}
+      </div>
+    {% endif %}
+  </div>
+</div>

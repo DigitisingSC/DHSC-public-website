@@ -125,6 +125,20 @@ toolAssessment.args = {
   back_link: backLinkTemplate,
 }
 
+export const toolSorted = ToolAssessmentTemplate.bind({});
+
+toolAssessment.args = {
+  attributes: new DrupalAttributes(),
+  title: 'Sorted',
+  variant: '',
+  summary: 'summary',
+  no_result: '',
+  result: { toolResultTemplate },
+  submission_url: 'https://google.co.uk',
+  email_form: emailFormTwig,
+  back_link: backLinkTemplate,
+}
+
 export const toolSolutions = ToolSolutionsTemplate.bind({});
 
 toolSolutions.args = {
