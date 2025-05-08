@@ -1,0 +1,10 @@
+supplier_counts:
+  version: 1.x
+  js:
+    js/supplier_count.js: { weight: -10 }
+  css:
+    theme:
+      css/supplier_count.css: {}
+  dependencies:
+    - core/drupal
+    - core/jquery

@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.restricted_html
   module:
+    - dhsc_result_viewer
     - eu_cookie_compliance
     - filter
     - media
@@ -19,6 +20,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'access sitemap'
+  - 'access supplier counts'
   - 'display eu cookie compliance popup'
   - 'use text format restricted_html'
   - 'view media'

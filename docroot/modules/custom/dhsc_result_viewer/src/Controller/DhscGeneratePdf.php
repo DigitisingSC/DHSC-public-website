@@ -6,18 +6,18 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManager;
-use Drupal\Core\Render\Markup;
+use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\Render\Renderer;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\dhsc_result_viewer\DhscDomPdfGenerator;
+use Drupal\dhsc_result_viewer\Service\WebformToolService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\dhsc_result_viewer\Controller\ResultSummaryAssuredSolutionsController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Class DhscGeneratePdf.
  */
-class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterface
-{
+class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterface {
 
   /**
    * The entity type manager.
@@ -50,10 +50,23 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
   /**
    * TempStore.
    *
-   * @var \Drupal\Core\TempStore\PrivateTempStore
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStore;
 
+  /**
+   * The extension path resolver service.
+   *
+   * @var \Drupal\Core\Extension\ExtensionPathResolver
+   */
+  protected $extensionPathResolver;
+
+  /**
+   * Symfony session.
+   *
+   * @var \Symfony\Component\HttpFoundation\Session\SessionInterface
+   */
+  protected $session;
 
   /**
    * GeneratePdf constructor.
@@ -64,21 +77,31 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    *   The renderer service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   The configuration factory service.
-   * @param \Drupal\tsp_result_viewer\ResultViewerInterface $result_viewer
-   * @param \Drupal\tsp_result_viewer\TspDomPdfGenerator $dompdf_generator
+   * @param \Drupal\dhsc_result_viewer\DhscDomPdfGenerator $dompdf_generator
+   *   The DOMPDF generator service for creating PDF documents.
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store
+   *   The TempStore factory service.
+   * @param \Drupal\Core\Extension\ExtensionPathResolver $extension_path_resolver
+   *   The extension path resolver service.
+   * @param \Symfony\Component\HttpFoundation\Session\SessionInterface $session
+   *   Symfony session.
    */
   public function __construct(
     EntityTypeManager $entityTypeManager,
     Renderer $renderer,
     ConfigFactoryInterface $configFactory,
     DhscDomPdfGenerator $dompdf_generator,
-    PrivateTempStoreFactory $temp_store
+    PrivateTempStoreFactory $temp_store,
+    ExtensionPathResolver $extension_path_resolver,
+    SessionInterface $session,
   ) {
     $this->entityTypeManager = $entityTypeManager;
     $this->renderer = $renderer;
     $this->configFactory = $configFactory;
     $this->dompdfGenerator = $dompdf_generator;
     $this->tempStore = $temp_store;
+    $this->extensionPathResolver = $extension_path_resolver;
+    $this->session = $session;
   }
 
   /**
@@ -90,7 +113,9 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
       $container->get('renderer'),
       $container->get('config.factory'),
       $container->get('dhsc_result_viewer.dompdf_generator'),
-      $container->get('tempstore.private')
+      $container->get('tempstore.private'),
+      $container->get('extension.path.resolver'),
+      $container->get('session'),
     );
   }
 
@@ -104,10 +129,9 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    */
   public function generate() {
     $content = $this->getContent();
-    $pdf_generator = $this->dompdfGenerator;
-    $stylesheet = \Drupal::service('extension.path.resolver')->getPath('module', 'dhsc_result_viewer') . '/css/style.css';
+    $stylesheet = $this->extensionPathResolver->getPath('module', 'dhsc_result_viewer') . '/css/style.css';
     $filename = 'dhsc-assured-solutions-results';
-    $response = $pdf_generator->getResponse($filename, $content, FALSE, [], 'A4', 0, 0, 0, 'portrait', NULL, $stylesheet);
+    $response = $this->dompdfGenerator->getResponse($filename, $content, FALSE, [], 'A4', 0, 0, 0, 'portrait', NULL, $stylesheet);
 
     return $response;
   }
@@ -120,12 +144,10 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    */
   protected function getSubmissionResult() {
     // Get saved result data from tempstore.
-    // $tempStore = \Drupal::service('tempstore.private')->get('dhsc_result_viewer');
-    $result_data = $this->tempStore->get('dhsc_result_viewer')->get('assured_solutions_result_data');
-    $data = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data, $pdf=TRUE);
+    $result_data = $this->session->get('assured_solutions_result_data');
+    $data = ResultSummaryAssuredSolutionsController::buildResultMarkup($result_data, TRUE);
 
     return $data;
-
   }
 
   /**
@@ -135,7 +157,6 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
    *   Render array.
    */
   protected function getContent() {
-
     $results = $this->getSubmissionResult();
 
     return [
@@ -143,4 +164,5 @@ class DhscGeneratePdf extends ControllerBase implements ContainerInjectionInterf
       '#content' => $results,
     ];
   }
+
 }

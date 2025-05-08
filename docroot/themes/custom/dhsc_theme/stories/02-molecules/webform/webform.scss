@@ -78,36 +78,167 @@
       @apply sr-only;
     }
   }
+
   .webform-submission-assured-solutions-tool-form {
     h1 {
       @apply tablet:text-2xl tablet:mb-7;
     }
+
     .js-form-type-checkbox {
       @apply grid pb-3 last:pb-0;
       grid-template-columns: 48px 1fr;
+
       .form-checkbox {
         grid-row: 1 / span 2;
         margin-right: 8px;
       }
+
       label {
         @apply block font-bold py-1 leading-[30px];
       }
+
       .description {
         @apply leading-8 text-coolgrey text-base;
       }
     }
+
     .js-form-type-processed-text {
       @apply mb-7 text-black-80;
     }
+
     h4 {
       @apply text-md mt-7 pb-2;
     }
+
     .webform-actions {
       @apply mt-9;
     }
   }
+
   // End - Assured solution specific CSS
   .webform-actions.webform-step-back-button {
     @apply mt-0 pt-0 mb-4;
   }
+
+  // Start - DSF specific CSS
+  .webform-submission-dsf-tool-form,
+  .webform-submission-dsf-tool-advanced-form {
+    @screen md {
+      @apply w-3/4;
+    }
+
+    .tool-step {
+      span {
+        @apply text-coolgrey text-md;
+      }
+
+      h1 {
+        @apply mb-7 w-full;
+      }
+
+      p {
+        @apply text-base mb-[12px];
+      }
+
+      ul {
+        @apply ms-4 text-base list-disc;
+      }
+
+      li {
+        @apply mb-[12px];
+      }
+    }
+
+    .radios--wrapper legend {
+      @apply hidden;
+    }
+
+    .js-form-type-radio {
+      @apply grid;
+      grid-template-columns: 48px 1fr;
+
+      label {
+        @apply pt-1.5 pb-2;
+      }
+
+      .form-radio {
+        grid-row: 1 / span 2;
+        @apply mr-[8px] pb-3;
+      }
+
+      .description {
+        @apply leading-8 text-coolgrey text-base;
+      }
+    }
+
+  }
+
+  // End - DSF specific CSS
+
+  // Start - WGLL specific CSS
+  .webform-submission-what-good-looks-like-tool-form {
+    @screen md {
+      @apply w-3/4;
+    }
+
+    .tool-step {
+      span {
+        @apply text-coolgrey text-md;
+      }
+
+      h1 {
+        @apply mt-0 mb-7 w-full;
+      }
+
+      h2 {
+        @apply mt-7 leading-[40px];
+      }
+
+      h3 {
+        @apply mt-7 mb-3;
+      }
+
+      p {
+        @apply text-base mb-[12px];
+      }
+
+      ul {
+        @apply ms-4 text-base list-disc;
+      }
+
+      li {
+        @apply mb-[12px];
+      }
+    }
+
+    .radios--wrapper {
+      @apply mt-3;
+      @apply pt-0;
+      legend {
+        @apply hidden;
+      }
+    }
+
+    .js-form-type-radio {
+      @apply grid;
+      grid-template-columns: 48px 1fr;
+
+      label {
+        @apply pt-1.5 pb-2;
+      }
+
+      .form-radio {
+        grid-row: 1 / span 2;
+        @apply mr-[8px] pb-3;
+      }
+
+      .description {
+        @apply leading-8 text-coolgrey text-base;
+      }
+    }
+
+  }
+
+  // End - WGLL specific CSS
 }
+

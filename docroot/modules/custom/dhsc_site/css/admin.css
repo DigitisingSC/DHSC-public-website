@@ -1,0 +1,7 @@
+.paragraphs-features__add-in-between__row {
+  display: flex;
+}
+
+.paragraphs-features__add-in-between__row td {
+  flex-grow: 1;
+}

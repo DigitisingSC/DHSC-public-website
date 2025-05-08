@@ -1,0 +1,21 @@
+uuid: dc6b6297-e7fe-4f71-a1a7-fad518a35d61
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.field_plain_language_name
+field_name: field_plain_language_name
+entity_type: media
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

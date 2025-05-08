@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.page_components
+    - entity_browser.browser.paragraphs_library_items
     - filter.format.basic_html
     - filter.format.full_html
     - filter.format.restricted_html
@@ -19,6 +21,7 @@ dependencies:
     - node.type.localgov_guides_overview
     - node.type.localgov_guides_page
     - node.type.recommendation
+    - node.type.report_response
     - node.type.skill
     - node.type.subtopic_page
     - node.type.supplier
@@ -67,6 +70,7 @@ permissions:
   - 'create paragraph library item'
   - 'create recommendation content'
   - 'create remote_video media'
+  - 'create report_response content'
   - 'create skill content'
   - 'create subtopic_page content'
   - 'create supplier content'
@@ -86,6 +90,7 @@ permissions:
   - 'delete own localgov_guides_page content'
   - 'delete own recommendation content'
   - 'delete own remote_video media'
+  - 'delete own report_response content'
   - 'delete own skill content'
   - 'delete own subtopic_page content'
   - 'delete own supplier content'
@@ -108,6 +113,7 @@ permissions:
   - 'edit own localgov_guides_page content'
   - 'edit own recommendation content'
   - 'edit own remote_video media'
+  - 'edit own report_response content'
   - 'edit own skill content'
   - 'edit own subtopic_page content'
   - 'edit own supplier content'
@@ -123,6 +129,7 @@ permissions:
   - 'revert localgov_guides_overview revisions'
   - 'revert localgov_guides_page revisions'
   - 'revert recommendation revisions'
+  - 'revert report_response revisions'
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
   - 'revert supplier revisions'
@@ -146,6 +153,7 @@ permissions:
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view recommendation revisions'
+  - 'view report_response revisions'
   - 'view scheduled content'
   - 'view skill revisions'
   - 'view subtopic_page revisions'

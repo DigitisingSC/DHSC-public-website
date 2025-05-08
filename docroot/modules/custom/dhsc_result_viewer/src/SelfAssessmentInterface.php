@@ -16,8 +16,9 @@ interface SelfAssessmentInterface {
    *   Webform values.
    *
    * @return mixed
+   *   Returns result summary values.
    */
-  public function getResultsSummary($data);
+  public function getResultsSummary(array $data);
 
   /**
    * Get sorts result ids.
@@ -35,11 +36,10 @@ interface SelfAssessmentInterface {
    */
   public function getSubmissionId();
 
-
   /**
    * Get webform question completion.
    *
-   * @return boolean
+   * @return bool
    *   Return yes_to_all_questions.
    */
   public function questionsAllYes();
