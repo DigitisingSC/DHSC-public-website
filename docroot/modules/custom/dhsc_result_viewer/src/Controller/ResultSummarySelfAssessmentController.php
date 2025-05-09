@@ -217,6 +217,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
         '#result' => $result,
         '#submission_url' => $submission_url ?? NULL,
         '#email_form' => $this->formBuilder->getForm('Drupal\dhsc_result_viewer\Form\ResultEmailForm'),
+        '#cache' => ['max-age' => 0],
       ];
     }
     else {
@@ -225,6 +226,7 @@ class ResultSummarySelfAssessmentController extends ControllerBase {
         '#title' => $config->get('title') ? $config->get('title') : NULL,
         '#summary' => $config->get('summary') ? $config->get('summary') : NULL,
         '#no_result' => $this->t('No result'),
+        '#cache' => ['max-age' => 0],
       ];
     }
 
