@@ -217,7 +217,7 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    * Processes webform submission data to find matching and non-matching nodes.
    *
    * Takes webform data, normalises answers, queries for potential 'supplier'
-   * nodes, filters them based on 'field_non_possible_answers', identifies
+   * nodes, filters them based on 'field_solution_excluded', identifies
    * non-matching nodes (and the reasons if available), formats the results,
    * stores them in the session, and returns the structured data.
    *
@@ -350,8 +350,9 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
         foreach ($non_matching_nodes as $node) {
 
           // Only explain exclusion if the node has non-empty
-          // 'field_non_possible_answers'.
-          if (empty($node->get('field_non_possible_answers')->getValue())) {
+          // 'field_solution_excluded'.
+          $excluded_items = $node->get('field_solution_excluded')->referencedEntities();
+          if (empty($excluded_items)) {
             continue;
           }
 
@@ -361,17 +362,22 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
 
           // Find which user answers conflicted with this node's
           // non-possible answers.
-          foreach ($node->get('field_non_possible_answers')->getValue() as $value) {
+          foreach ($excluded_items as $term) {
+            if (!$term->hasField('field_solution_key')) {
+              continue;
+            }
+            $excluded_key = $term->get('field_solution_key')->value;
+
             foreach ($answers as $answer) {
               // Check if the non-possible key matches the user's answer value.
-              if ($value['value'] === $answer) {
+              if ($excluded_key === $answer) {
                 $no_matches[$nid]['title'] = $node_title;
                 $no_matches[$nid]['node_url'] = $node_url;
 
                 $field_key = NULL;
                 // Special check for specific radio keys
                 // (e.g., 'device_option_yes').
-                if (in_array($value['value'], $this->deviceOptionKeys)) {
+                if (in_array($answer, $this->deviceOptionKeys)) {
                   $field_key = substr($answer, 0, strrpos($answer, '_'));
                 }
                 // Get human-readable section/answer text for the conflicting
@@ -435,11 +441,23 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
       ->condition('type', 'supplier')
       ->condition('status', 1);
 
-    $group = $match ? $query->orConditionGroup() : $query->andConditionGroup();
-    foreach ($answers as $answer) {
-      $group->condition('field_answers_supplier.value', $answer, $match ? '=' : '<>');
+    // Map answer keys to term IDs.
+    $term_ids = [];
+    $terms = $this->taxonomyStorage->loadByProperties(['vid' => 'solution_types']);
+    foreach ($terms as $term) {
+      if ($term->hasField('field_solution_key')) {
+        $key = $term->get('field_solution_key')->value;
+        if (in_array($key, $answers, TRUE)) {
+          $term_ids[] = $term->id();
+        }
+      }
     }
-    $query->condition($group);
+
+    if (!empty($term_ids)) {
+      $group = $match ? $query->orConditionGroup() : $query->andConditionGroup();
+      $group->condition('field_solution_included.target_id', $term_ids, $match ? 'IN' : 'NOT IN');
+      $query->condition($group);
+    }
 
     $query->sort('title', 'ASC');
 
@@ -474,12 +492,13 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
     // Only keep nodes where none of the user's answers are listed in the
     // node's exclusion field.
     $matches = array_filter($result_nodes, function ($result_node) use ($answers) {
-      $fieldItems = $result_node->get('field_non_possible_answers')->getValue();
-      foreach ($fieldItems as $fieldItem) {
-        // Check if $fieldItem['value'] exists in the $answers values.
-        if (in_array($fieldItem['value'], array_values($answers))) {
-          // Exclude node if conflict found.
-          return FALSE;
+      $terms = $result_node->get('field_solution_excluded')->referencedEntities();
+      foreach ($terms as $term) {
+        if ($term->hasField('field_solution_key')) {
+          $excluded_key = $term->get('field_solution_key')->value;
+          if (in_array($excluded_key, array_values($answers), TRUE)) {
+            return FALSE;
+          }
         }
       }
       // Keep node if no conflicts found.
@@ -576,24 +595,39 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
    *   Return result ids.
    */
   protected function getResultId(TermInterface $term, array $data) {
-    if ($term->bundle() != 'category') {
+    if ($term->bundle() !== 'category') {
       return NULL;
     }
 
     if (!$term->get('field_answer_machine_name')->isEmpty()) {
       $machine_name = $term->get('field_answer_machine_name')->getString();
-      if (isset($data[$machine_name])) {
-        $result = $this->nodeStorage->getQuery()
-          ->accessCheck(FALSE)
-          ->condition('field_answers_supplier', $data[$machine_name])
-          ->condition('field_category.target_id', $term->id())
-          ->execute();
-      }
 
-      if (isset($result)) {
-        return reset($result);
+      if (isset($data[$machine_name])) {
+        $key = $data[$machine_name];
+
+        // Lookup term ID using solution key.
+        $terms = $this->taxonomyStorage->loadByProperties([
+          'vid' => 'solution_types',
+          'field_solution_key' => $key,
+        ]);
+
+        if (!empty($terms)) {
+          $term_ids = array_keys($terms);
+
+          $result = $this->nodeStorage->getQuery()
+            ->accessCheck(FALSE)
+            ->condition('field_solution_included.target_id', $term_ids, 'IN')
+            ->condition('field_category.target_id', $term->id())
+            ->execute();
+
+          if (!empty($result)) {
+            return reset($result);
+          }
+        }
       }
     }
+
+    return NULL;
   }
 
   /**

@@ -70,10 +70,10 @@ class SupplierCountController extends ControllerBase {
 
     $current_answers = [];
 
-    // If a previous submission exists and belongs to the current user.
+    // If a previous submission exists.
     if ($submission_id) {
       $submission = WebformSubmission::load($submission_id);
-      if ($submission && $submission->getOwnerId() === $this->currentUser()->id()) {
+      if ($submission) {
         $data = $submission->getData();
         $current_answers = array_keys(array_filter(
           $data,
@@ -111,9 +111,12 @@ class SupplierCountController extends ControllerBase {
     // Initialise all answer counts to 0 for all possible supplier answers.
     $all_possible_answers = [];
     foreach ($supplier_nodes as $node) {
-      $answers = array_column($node->get('field_answers_supplier')->getValue(), 'value');
-      foreach ($answers as $answer) {
-        $all_possible_answers[$answer] = 0;
+      $terms = $node->get('field_solution_included')->referencedEntities();
+      foreach ($terms as $term) {
+        if ($term->hasField('field_solution_key')) {
+          $key = $term->get('field_solution_key')->value;
+          $all_possible_answers[$key] = 0;
+        }
       }
     }
 
@@ -122,17 +125,27 @@ class SupplierCountController extends ControllerBase {
 
     // Count answers only from suppliers not excluded by current answers.
     foreach ($supplier_nodes as $node) {
-      $answers = array_column($node->get('field_answers_supplier')->getValue(), 'value');
-      $excluded = array_column($node->get('field_non_possible_answers')->getValue(), 'value');
+      $included_terms = $node->get('field_solution_included')->referencedEntities();
+      $excluded_terms = $node->get('field_solution_excluded')->referencedEntities();
 
-      if (!empty($current_answers) && array_intersect($excluded, $current_answers)) {
+      $included_keys = array_filter(array_map(
+        fn($t) => $t->get('field_solution_key')->value ?? NULL,
+        $included_terms
+      ));
+
+      $excluded_keys = array_filter(array_map(
+        fn($t) => $t->get('field_solution_key')->value ?? NULL,
+        $excluded_terms
+      ));
+
+      if (!empty($current_answers) && array_intersect($excluded_keys, $current_answers)) {
         continue;
       }
 
       $included_supplier_count++;
 
-      foreach ($answers as $answer) {
-        $answer_counts[$answer]++;
+      foreach ($included_keys as $key) {
+        $answer_counts[$key]++;
       }
     }
 
