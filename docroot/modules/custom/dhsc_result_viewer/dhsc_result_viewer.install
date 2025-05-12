@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * @file
+ * Contains install related logic.
+ */
+
+/**
+ * Create taxonomy terms for the solution_types vocabulary.
+ */
+function dhsc_result_viewer_update_9001() {
+
+  // List of terms with keys and human-readable labels.
+  $terms = [
+    ['key' => 'device_option_yes', 'label' => 'Device need =>  Yes'],
+    ['key' => 'device_option_no', 'label' => 'Device need =>  No'],
+    ['key' => 'device_option_not_sure', 'label' => 'Device need =>  Not sure'],
+    ['key' => 'domiciliary_care_services', 'label' => 'Domiciliary care services'],
+    ['key' => 'extra_care_services', 'label' => 'Extra care services'],
+    ['key' => 'supported_living_care_services', 'label' => 'Supported living care services'],
+    ['key' => 'shared_lives_services', 'label' => 'Shared lives services'],
+    ['key' => 'care_home_services_including_nursing', 'label' => 'Care home services, including nursing'],
+    ['key' => 'care_home_services_not_including_nursing', 'label' => 'Care home services, not including nursing'],
+    ['key' => 'other_care_services', 'label' => 'Other care services'],
+    ['key' => 'view_care_records_offline', 'label' => 'View care records offline'],
+    ['key' => 'automatically_update_changes_made_offline_when_back_online', 'label' => 'Automatically update changes made offline when back online'],
+    ['key' => 'flag_if_a_record_edited_simultaneously_online_offline', 'label' => 'Flag if a record edited simultaneously online/offline doesn’t match'],
+    ['key' => 'capture_information_using_body_maps', 'label' => 'Capture information using body maps'],
+    ['key' => 'add_videos_to_records', 'label' => 'Add videos to records'],
+    ['key' => 'add_photos_to_records', 'label' => 'Add photos to records'],
+    ['key' => 'capture_voice_recordings_in_structured_formats', 'label' => 'Capture voice recordings in structured formats'],
+    ['key' => 'get_records_read_out_to_you', 'label' => 'Get records read out to you'],
+    ['key' => 'allow_care_recipients_to_contribute_to_their_own_care_plan', 'label' => 'Allow care recipients to contribute to their own care plan'],
+    ['key' => 'allow_care_recipients_to_record_notes_for_staff_performing_tasks', 'label' => 'Allow care recipients to record notes for staff performing tasks'],
+    ['key' => 'allow_third_parties_to_view_care_plans', 'label' => 'Allow third parties to view care plans'],
+    ['key' => 'allow_third_parties_to_contribute_to_care_plans', 'label' => 'Allow third parties to contribute to care plans'],
+    ['key' => 'see_live_primary_care_records', 'label' => 'See live primary care records'],
+    ['key' => 'see_other_live_nhs_records', 'label' => 'See other live NHS records'],
+    ['key' => 'access_the_electronic_medications', 'label' => 'Access the Electronic Medications Administration and Recording (EMAR) systems'],
+    ['key' => 'share_records_for_emergency_hospital_admissions', 'label' => 'Share records for emergency hospital admissions'],
+    ['key' => 'receive_hospital_discharge_information', 'label' => 'Receive hospital discharge information'],
+    ['key' => 'record_care_workers_skills_or_training', 'label' => 'Record care workers’ skills or training'],
+    ['key' => 'record_care_workers_skills_or_training_against_set_categories', 'label' => 'Record care workers’ skills or training against set categories'],
+    ['key' => 'show_alerts_from_third_party_solutions', 'label' => 'Show alerts from third party solutions'],
+    ['key' => 'allow_care_workers_to_send_each_other_notifications', 'label' => 'Allow care workers to send each other notifications'],
+    ['key' => 'create_bespoke_reports_about_care_recipients', 'label' => 'Create bespoke reports about care recipients'],
+    ['key' => 'create_bespoke_reports_about_your_organisation_or_service', 'label' => 'Create bespoke reports about your organisation or service'],
+    ['key' => 'recipients_needs_against_staff_skills', 'label' => 'Create reports comparing care recipients’ needs against staff skills'],
+    ['key' => 'create_reports_showing_time_allocated_to_providing_care', 'label' => 'Create reports showing time allocated to providing care'],
+    ['key' => 'measure_progress_against_goals', 'label' => 'Measure progress against goals'],
+    ['key' => 'add_to_needs_assessment_templates', 'label' => 'Add to needs assessment templates'],
+  ];
+
+  foreach ($terms as $term_data) {
+    $existing = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadByProperties([
+        'vid' => 'solution_types',
+        'field_solution_key' => $term_data['key'],
+      ]);
+
+    if (!empty($existing)) {
+      continue;
+    }
+
+    $term = \Drupal\taxonomy\Entity\Term::create([
+      'vid' => 'solution_types',
+      'name' => $term_data['label'],
+      'field_solution_key' => $term_data['key'],
+    ]);
+    $term->save();
+  }
+}
+
+/**
+ * Map existing supplier text field values to taxonomy terms.
+ */
+function dhsc_result_viewer_update_9002() {
+  $vid = 'solution_types';
+
+  $term_map = [];
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadByProperties(['vid' => $vid]);
+  foreach ($terms as $term) {
+    $key = $term->get('field_solution_key')->value;
+    if ($key) {
+      $term_map[$key] = $term->id();
+    }
+  }
+
+  $nids = \Drupal::entityQuery('node')
+    ->accessCheck(TRUE)
+    ->condition('type', 'supplier')
+    ->execute();
+
+  $nodes = \Drupal\node\Entity\Node::loadMultiple($nids);
+
+  foreach ($nodes as $node) {
+    $included_ids = [];
+    $excluded_ids = [];
+
+    if ($node->hasField('field_answers_supplier') && !$node->get('field_answers_supplier')
+        ->isEmpty()) {
+      foreach ($node->get('field_answers_supplier')->getValue() as $item) {
+        $key = $item['value'];
+        if (isset($term_map[$key])) {
+          $included_ids[] = ['target_id' => $term_map[$key]];
+        }
+      }
+    }
+
+    if ($node->hasField('field_non_possible_answers') && !$node->get('field_non_possible_answers')
+        ->isEmpty()) {
+      foreach ($node->get('field_non_possible_answers')->getValue() as $item) {
+        $key = $item['value'];
+        if (isset($term_map[$key])) {
+          $excluded_ids[] = ['target_id' => $term_map[$key]];
+        }
+      }
+    }
+
+    if (!empty($included_ids)) {
+      $node->set('field_solution_included', $included_ids);
+    }
+
+    if (!empty($excluded_ids)) {
+      $node->set('field_solution_excluded', $excluded_ids);
+    }
+
+    if (!empty($included_ids) || !empty($excluded_ids)) {
+      $node->save();
+    }
+  }
+}
