@@ -6,7 +6,6 @@ dependencies:
     - filter.format.basic_html
     - filter.format.restricted_html
     - filter.format.webform_default
-    - taxonomy.vocabulary.solution_types
   module:
     - dhsc_result_viewer
     - eu_cookie_compliance
@@ -16,7 +15,6 @@ dependencies:
     - media
     - sitemap
     - system
-    - taxonomy
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
@@ -34,4 +32,3 @@ permissions:
   - 'use text format restricted_html'
   - 'use text format webform_default'
   - 'view media'
-  - 'view term revisions in solution_types'

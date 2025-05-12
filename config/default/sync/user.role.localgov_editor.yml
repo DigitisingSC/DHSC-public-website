@@ -268,6 +268,7 @@ permissions:
   - 'view skill revisions'
   - 'view subtopic_page revisions'
   - 'view supplier revisions'
+  - 'view term revisions in solution_types'
   - 'view term revisions in toolkit_theme'
   - 'view the administration theme'
   - 'view unpublished paragraphs'

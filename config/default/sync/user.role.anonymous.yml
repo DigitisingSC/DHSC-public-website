@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - filter.format.restricted_html
-    - taxonomy.vocabulary.solution_types
   module:
     - dhsc_result_viewer
     - eu_cookie_compliance
@@ -12,7 +11,6 @@ dependencies:
     - media
     - sitemap
     - system
-    - taxonomy
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
@@ -26,4 +24,3 @@ permissions:
   - 'display eu cookie compliance popup'
   - 'use text format restricted_html'
   - 'view media'
-  - 'view term revisions in solution_types'
