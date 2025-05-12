@@ -1,0 +1,19 @@
+uuid: b7aa7852-ddd4-49be-b523-a7be0dcfc76a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_solution_key
+    - taxonomy.vocabulary.solution_types
+id: taxonomy_term.solution_types.field_solution_key
+field_name: field_solution_key
+entity_type: taxonomy_term
+bundle: solution_types
+label: 'Solution key'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

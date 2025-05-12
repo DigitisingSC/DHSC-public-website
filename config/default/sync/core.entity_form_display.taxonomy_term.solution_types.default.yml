@@ -1,20 +1,29 @@
-uuid: 8142cfb1-8330-4a4f-9135-4b52db847389
+uuid: da8d8cc8-d185-4d96-8546-0c61be4ef1e9
 langcode: en
 status: true
 dependencies:
   config:
-    - taxonomy.vocabulary.theme
+    - field.field.taxonomy_term.solution_types.field_solution_key
+    - taxonomy.vocabulary.solution_types
   module:
     - path
     - text
-id: taxonomy_term.theme.default
+id: taxonomy_term.solution_types.default
 targetEntityType: taxonomy_term
-bundle: theme
+bundle: solution_types
 mode: default
 content:
   description:
     type: text_textfield
     weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_solution_key:
+    type: string_textfield
+    weight: 101
     region: content
     settings:
       size: 60
