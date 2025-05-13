@@ -216,6 +216,13 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     }
   }
 
+  // Ensure that submission data is cleared if the reset button is used.
+  $trigger = $form_state->getTriggeringElement();
+  if ($trigger && $trigger['#value'] === 'Reset') {
+    $webform_id = $form['#webform_id'];
+    $webform_tool_service->clearSubmissionData($webform_id);
+  }
+
   if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
     // If the form is in 'edit mode' and the user is going back to edit the form
     // make sure a 'save edit' button is available.
@@ -237,6 +244,7 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
         '#theme_wrapper' => 'form_element',
         '#weight' => 10,
       ];
+      $form['actions']['reset']['#access'] = FALSE;
       $form['actions']['submit']['#access'] = FALSE;
       $form['actions']['wizard_next']['#access'] = FALSE;
     }
@@ -393,9 +401,13 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
       array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
     }
 
-    if (!$submission_id) {
-      // Create a draft submission.
-      $webform_tool_service->createDraftSubmission($webform_id);
+    if ($submission_id) {
+      $submission = WebformSubmission::load($submission_id);
+
+      if (!($submission instanceof WebformSubmissionInterface)) {
+        // Create a draft submission.
+        $webform_tool_service->createDraftSubmission($webform_id);
+      }
     }
 
     // Store last completed step
