@@ -1,0 +1,32 @@
+uuid: 837b335c-fc38-4d03-8146-603bfc9ba795
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.solution_types.field_solution_key
+    - taxonomy.vocabulary.solution_types
+  module:
+    - text
+id: taxonomy_term.solution_types.default
+targetEntityType: taxonomy_term
+bundle: solution_types
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_solution_key:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

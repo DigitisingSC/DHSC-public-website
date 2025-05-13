@@ -29,6 +29,7 @@ dependencies:
     - taxonomy.vocabulary.localgov_topic
     - taxonomy.vocabulary.skill_level
     - taxonomy.vocabulary.skill_method
+    - taxonomy.vocabulary.solution_types
     - taxonomy.vocabulary.theme
     - taxonomy.vocabulary.toolkit_theme
     - workflows.workflow.editorial_workflow
@@ -112,6 +113,7 @@ permissions:
   - 'create terms in localgov_topic'
   - 'create terms in skill_level'
   - 'create terms in skill_method'
+  - 'create terms in solution_types'
   - 'create terms in theme'
   - 'create url aliases'
   - 'create webform'
@@ -165,10 +167,12 @@ permissions:
   - 'delete skill revisions'
   - 'delete subtopic_page revisions'
   - 'delete supplier revisions'
+  - 'delete term revisions in solution_types'
   - 'delete terms in category'
   - 'delete terms in localgov_topic'
   - 'delete terms in skill_level'
   - 'delete terms in skill_method'
+  - 'delete terms in solution_types'
   - 'delete terms in theme'
   - 'display eu cookie compliance popup'
   - 'edit any article content'
@@ -212,6 +216,7 @@ permissions:
   - 'edit terms in localgov_topic'
   - 'edit terms in skill_level'
   - 'edit terms in skill_method'
+  - 'edit terms in solution_types'
   - 'edit terms in theme'
   - 'edit terms in toolkit_theme'
   - 'mark as hidden in editoria11y'
@@ -232,6 +237,7 @@ permissions:
   - 'revert skill revisions'
   - 'revert subtopic_page revisions'
   - 'revert supplier revisions'
+  - 'revert term revisions in solution_types'
   - 'schedule publishing of nodes'
   - 'update any media'
   - 'update media'
@@ -262,6 +268,7 @@ permissions:
   - 'view skill revisions'
   - 'view subtopic_page revisions'
   - 'view supplier revisions'
+  - 'view term revisions in solution_types'
   - 'view term revisions in toolkit_theme'
   - 'view the administration theme'
   - 'view unpublished paragraphs'
