@@ -9,24 +9,7 @@
  * @ingroup themeable
  */
 #}
-{% set spriteSrc = base_path ~ directory ~ '/stories/01-atoms/svg/sprite.svg' %}
-
-{% set icon %}
-
-  {% include '@atoms/svg/svg.twig' with {
-    'sprite': spriteSrc,
-    'icon': 'chevron-left',
-  } %}
-  {% endset %}
-
-  {% include '@molecules/back-link/back-link.twig' with {
-    label: 'Back',
-    icon: icon,
-    link: link,
-    variant: 'default'
-  } %}
-
-  <span id="main-content"></span>
+<span id="main-content"></span>
 
 <div class="themed-summary-tool-step tool-step">
 
