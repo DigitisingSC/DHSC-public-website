@@ -1,4 +1,7 @@
 import '../src/scss/tailwind.scss';
+import '../dist/css/components.css';
+import '../dist/css/global.css';
+import 'alpinejs';
 import Twig from 'twig';
 import { setupTwig } from './setupTwig';
 import './drupalBehaviors';
