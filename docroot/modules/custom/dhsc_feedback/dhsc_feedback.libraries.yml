@@ -1,0 +1,6 @@
+feedback:
+  js:
+    js/feedback.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
