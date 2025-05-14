@@ -2,6 +2,7 @@
 
 namespace Drupal\dhsc_result_viewer\Routing;
 
+use Drupal\Core\Url;
 use Drupal\dhsc_result_viewer\Service\WebformToolService;
 use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -109,7 +110,17 @@ class RouteSubscriber extends RouteSubscriberBase implements EventSubscriberInte
         $token = $submission->getToken();
 
         // Build the redirect URL.
-        $redirect_url = '/form/' . str_replace('_', '-', $webform_id) . '?token=' . $token;
+        $redirect_url = Url::fromRoute(
+          'entity.webform.canonical',
+          ['webform' => $webform_id],
+          [
+            'query' => [
+              'token' => $token,
+            ],
+            'absolute' => TRUE,
+          ]
+        )->toString();
+
         $response = new RedirectResponse($redirect_url);
         $event->setResponse($response);
       }
