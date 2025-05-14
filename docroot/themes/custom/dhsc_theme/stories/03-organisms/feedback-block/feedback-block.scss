@@ -1,0 +1,9 @@
+.feedback-block {
+  @apply block;
+  @apply p-5;
+  @apply bg-coolgrey-20;
+
+  .a-form-item__label {
+    @apply text-xs tablet:text-base;
+  }
+}

@@ -1,0 +1,69 @@
+<div{{ attributes.addClass(['feedback-block']) }}
+  x-data="feedbackWidget()"
+  x-init="init('{{ current_url|default('https://example.com')|e('js') }}')"
+  aria-live="polite"
+>
+  <template x-if="state === 'initial'">
+    <div
+      class="feedback-block--form-group flex flex-col tablet:flex-row tablet:items-center justify-between gap-3 tablet:gap-5 w-full">
+      <div class="flex items-center gap-3 tablet:gap-5 prose flex-wrap  w-full">
+        <h3 class="mb-0 basis-full tablet:basis-auto">{{ question_text|default('Is this page useful?') }}</h3>
+
+        <button type="button" class="a-button a-button--secondary !px-6 "
+                @click="submitWithType('yes')">{{ yes_text|default('Yes') }}</button>
+
+        <button type="button" class="a-button a-button--secondary !px-6"
+                @click="setFeedback('no')">{{ no_text|default('No') }}</button>
+      </div>
+
+      <button type="button" class="a-button a-button--secondary max-w-[300px] tablet:max-w-unset !px-4"
+              @click="setFeedback('problem')">{{ problem_link_text|default('Report a problem with this page') }}</button>
+    </div>
+  </template>
+
+  <template x-if="state === 'no'">
+    <div class="feedback-block--form-group prose">
+      <h3 class="mb-3">{{ 'Help us improve the Digitising Social Care website'|t }}</h3>
+      <p
+        class="mb-6">{{ 'We use your comments to improve our information. We cannot reply to comments left on this form. Don’t include personal information.'|t }}</p>
+
+      <div class="a-form-item">
+        <label for="suggestion"
+               class="mb-3 a-form-item__label">{{ improvement_label|default('How can we improve this page?'|t) }}</label>
+        <textarea id="suggestion" rows="5" class="a-form-item a-form-item--textarea"
+                  x-model="form.suggestion"></textarea>
+      </div>
+      <div class="flex gap-3 tablet:gap-5">
+        <button type="button" class="a-button a-button--primary" @click="submit()">Submit</button>
+        <button type="button" class="a-button a-button--secondary" @click="reset()">Cancel</button>
+      </div>
+    </div>
+  </template>
+
+  <template x-if="state === 'problem'">
+    <div class="feedback-block--form-group prose">
+      <h3 class="mb-3">{{ 'Help us improve the Digitising Social Care website'|t }}</h3>
+      <p
+        class="mb-6">{{ 'We use your comments to improve our information. We cannot reply to comments left on this form. Don’t include personal information.'|t }}</p>
+
+      <div class="a-form-item">
+        <label for="context" class="a-form-item__label">{{ context_label|default('What were you doing?') }}</label>
+        <textarea id="context" rows="2" class="a-form-item a-form-item--textarea" x-model="form.context"></textarea>
+      </div>
+
+      <div class="a-form-item">
+        <label for="description" class="a-form-item__label">{{ description_label|default('What went wrong?') }}</label>
+        <textarea id="description" rows="2" class="a-form-item--textarea" x-model="form.description"></textarea>
+      </div>
+
+      <div class="flex gap-3 tablet:gap-5">
+        <button type="button" class="a-button a-button--primary" @click="submit()">Submit</button>
+        <button type="button" class="a-button a-button--secondary" @click="reset()">Cancel</button>
+      </div>
+    </div>
+  </template>
+
+  <template x-if="state === 'submitted'">
+    <h4 class="govuk-body">{{ submitted_message|default('Thank you for your feedback.') }}</h4>
+  </template>
+</div>
