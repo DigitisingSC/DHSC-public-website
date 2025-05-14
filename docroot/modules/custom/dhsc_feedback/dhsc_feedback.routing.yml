@@ -1,0 +1,7 @@
+dhsc_feedback.submit:
+  path: '/dhsc-feedback/submit'
+  defaults:
+    _controller: '\Drupal\dhsc_feedback\Controller\FeedbackSubmitController::submit'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
