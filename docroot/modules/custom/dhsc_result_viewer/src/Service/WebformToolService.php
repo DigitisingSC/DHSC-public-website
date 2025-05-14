@@ -138,8 +138,9 @@ class WebformToolService {
     if (!$submission_id = $this->session->get('last_submission_' . $webform_id)) {
       $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
       if ($submission_token) {
-        $submission = $this->getSubmissionByToken($submission_token, $webform_id);
-        $submission_id = $submission->id();
+        if ($submission = $this->getSubmissionByToken($submission_token, $webform_id)) {
+          $submission_id = $submission->id();
+        }
       }
     }
 
