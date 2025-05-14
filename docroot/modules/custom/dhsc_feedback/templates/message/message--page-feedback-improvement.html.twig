@@ -1,0 +1,27 @@
+<article class="message message--feedback message--improvement">
+  <h2 class="govuk-heading-m">Page feedback: Improvement</h2>
+
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Page URL</dt>
+      <dd class="govuk-summary-list__value">{{ message.field_page_url.value }}</dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Feedback type</dt>
+      <dd class="govuk-summary-list__value">{{ message.field_feedback_type.value|capitalize }}</dd>
+    </div>
+
+    {% if message.field_improvement_suggestion.value %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Suggestion</dt>
+        <dd class="govuk-summary-list__value">{{ message.field_improvement_suggestion.value }}</dd>
+      </div>
+    {% endif %}
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">Submitted</dt>
+      <dd class="govuk-summary-list__value">{{ message.created.value|date('d M Y H:i') }}</dd>
+    </div>
+  </dl>
+</article>
