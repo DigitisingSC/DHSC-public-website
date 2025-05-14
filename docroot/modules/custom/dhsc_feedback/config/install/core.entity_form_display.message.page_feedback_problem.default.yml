@@ -1,0 +1,43 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.message.page_feedback_problem.field_feedback_type
+        - field.field.message.page_feedback_problem.field_page_url
+        - field.field.message.page_feedback_problem.field_problem_context
+        - field.field.message.page_feedback_problem.field_problem_description
+        - message.template.page_feedback_problem
+    module:
+        - text
+id: message.page_feedback_problem.default
+targetEntityType: message
+bundle: page_feedback_problem
+mode: default
+content:
+    field_feedback_type:
+        type: options_buttons
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+        region: content
+    field_page_url:
+        type: string_textfield
+        settings: {  }
+        third_party_settings: {  }
+        weight: 1
+        region: content
+    field_problem_context:
+        type: text_textarea
+        settings: {  }
+        third_party_settings: {  }
+        weight: 2
+        region: content
+    field_problem_description:
+        type: text_textarea
+        settings: {  }
+        third_party_settings: {  }
+        weight: 3
+        region: content
+hidden:
+    created: true
+    uid: true

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+    module:
+        - message
+id: page_feedback_improvement.
+label: 'Page Feedback (Improvement)'
+description: 'User feedback on whether the page was helpful'
+category: Feedback
+template: false

@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.field.message.page_feedback_improvement.field_feedback_type
+        - field.field.message.page_feedback_improvement.field_improvement_suggestion
+        - field.field.message.page_feedback_improvement.field_page_url
+        - message.template.page_feedback_improvement
+    module:
+        - text
+id: message.page_feedback_improvement.default
+targetEntityType: message
+bundle: page_feedback_improvement
+mode: default
+content:
+    field_feedback_type:
+        type: options_buttons
+        settings: {  }
+        third_party_settings: {  }
+        weight: 0
+        region: content
+    field_improvement_suggestion:
+        type: text_textarea
+        settings: {  }
+        third_party_settings: {  }
+        weight: 2
+        region: content
+    field_page_url:
+        type: string_textfield
+        settings: {  }
+        third_party_settings: {  }
+        weight: 1
+        region: content
+hidden:
+    created: true
+    uid: true

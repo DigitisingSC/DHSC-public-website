@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+template: page_feedback_problem
+label: 'Page Feedback (Problem)'
+description: 'Site problem feedback from users.'
+text: {  }
+settings:
+    'token options':
+        clear: false
+        'token replace': true
+    purge_override: false
+    purge_methods: {  }

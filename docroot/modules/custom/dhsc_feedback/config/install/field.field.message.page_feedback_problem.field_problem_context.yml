@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.message.field_problem_context
+        - message.template.page_feedback_problem
+    module:
+        - text
+id: message.page_feedback_problem.field_problem_context
+field_name: field_problem_context
+entity_type: message
+bundle: page_feedback_problem
+label: 'What were you doing?'
+description: 'Describes the user’s activity before the issue.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+    allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.message.field_page_url
+        - message.template.page_feedback_problem
+id: message.page_feedback_problem.field_page_url
+field_name: field_page_url
+entity_type: message
+bundle: page_feedback_problem
+label: 'Page URL'
+description: 'The URL of the page where the problem was reported.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
