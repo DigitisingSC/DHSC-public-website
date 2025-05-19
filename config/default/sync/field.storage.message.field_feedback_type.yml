@@ -1,0 +1,32 @@
+uuid: d1b50209-7a1b-4eac-93ea-4ca301cd4663
+langcode: en
+status: true
+dependencies:
+  module:
+    - message
+    - options
+_core:
+  default_config_hash: WWaS9lcld6MSa3OsuX3AV6gSJKkPl0Z4A2j96HZtMCo
+id: message.field_feedback_type
+field_name: field_feedback_type
+entity_type: message
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'no'
+      label: 'No'
+    -
+      value: 'yes'
+      label: 'Yes'
+    -
+      value: problem
+      label: Problem
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

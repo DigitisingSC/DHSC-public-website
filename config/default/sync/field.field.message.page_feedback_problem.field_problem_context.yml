@@ -1,0 +1,24 @@
+uuid: dab575fa-fbaa-411c-8e64-363c5935f4c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_problem_context
+    - message.template.page_feedback_problem
+  module:
+    - text
+_core:
+  default_config_hash: iY-6ma-excTtUqh5zCH2K3xPozLN_P-AnJHTIRrtstA
+id: message.page_feedback_problem.field_problem_context
+field_name: field_problem_context
+entity_type: message
+bundle: page_feedback_problem
+label: 'What were you doing?'
+description: 'Describes the user’s activity before the issue.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

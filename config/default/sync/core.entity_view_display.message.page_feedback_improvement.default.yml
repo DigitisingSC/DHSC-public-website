@@ -1,0 +1,56 @@
+uuid: 2c1b5df0-da96-4ab4-8ae2-bf32480c1df7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.message.page_feedback_improvement.field_feedback_type
+    - field.field.message.page_feedback_improvement.field_improvement_suggestion
+    - field.field.message.page_feedback_improvement.field_page_url
+    - message.template.page_feedback_improvement
+  module:
+    - options
+    - text
+_core:
+  default_config_hash: v1Wa1xe67495Pr6Qi9jcjWcli6_M8puOTisPe1VpzrA
+id: message.page_feedback_improvement.default
+targetEntityType: message
+bundle: page_feedback_improvement
+mode: default
+content:
+  created:
+    label: above
+    type: timestamp
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_feedback_type:
+    label: inline
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_improvement_suggestion:
+    label: above
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_page_url:
+    label: inline
+    type: string
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  uid:
+    label: hidden
+    type: author
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,21 @@
+uuid: af3b7d02-4db2-4f45-9023-fda158785481
+langcode: en
+status: true
+dependencies:
+  module:
+    - message
+    - text
+_core:
+  default_config_hash: y9TM1dt-aOafVuvRmifEQD8BXL4l0j5tjZ7web5mVk4
+id: message.field_problem_context
+field_name: field_problem_context
+entity_type: message
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

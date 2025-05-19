@@ -1,0 +1,21 @@
+uuid: 013a41eb-2b1b-4d26-85a0-d8e4ff66660e
+langcode: en
+status: true
+dependencies:
+  module:
+    - message
+    - text
+_core:
+  default_config_hash: 2eJa_tt--8908TvbBZz4WrIX0SbFrtDLydPDflrOoKo
+id: message.field_improvement_suggestion
+field_name: field_improvement_suggestion
+entity_type: message
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

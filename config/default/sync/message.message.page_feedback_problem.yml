@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: z3hH_S4_2Jg_4MP5WfQYGcsMKR-Ov1Ox8SK64NORgFE
+langcode: en
+status: true
+dependencies:
+  module:
+    - message
+id: page_feedback_problem
+label: 'Page Feedback (Problem)'
+description: 'User feedback reporting a problem with the page'
+category: Feedback
+template: false

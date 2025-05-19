@@ -1,0 +1,16 @@
+uuid: 11ffbf86-1b68-42ba-bc01-a69f2c2d45a7
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: j_ZT_fTpdZRLHZcv2olX_UtVqYIgLSz2ue_Xz9f5Pcc
+template: page_feedback_improvement
+label: 'Page Feedback (Improvement)'
+description: 'Site improvement feedback from users.'
+text: {  }
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

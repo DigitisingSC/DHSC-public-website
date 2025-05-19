@@ -1,0 +1,25 @@
+uuid: 4e90d61b-2bdc-4362-8366-19b15b7996e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_feedback_type
+    - message.template.page_feedback_problem
+  module:
+    - options
+_core:
+  default_config_hash: YgRJicLTXteQGk9fzg2RCiKcOOn5YIriugXn_l-4pn4
+id: message.page_feedback_problem.field_feedback_type
+field_name: field_feedback_type
+entity_type: message
+bundle: page_feedback_problem
+label: 'Feedback type'
+description: 'Problem report indicator.'
+required: true
+translatable: false
+default_value:
+  -
+    value: problem
+default_value_callback: ''
+settings: {  }
+field_type: list_string
