@@ -3,7 +3,6 @@
 namespace Drupal\dhsc_site\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\media\Entity\Media;
 
@@ -44,4 +43,5 @@ class FooterBrandingBlock extends BlockBase {
       '#site_slogan' => $site_slogan,
     ];
   }
+
 }

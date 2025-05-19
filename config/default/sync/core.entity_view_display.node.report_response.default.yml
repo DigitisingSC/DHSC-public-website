@@ -1,0 +1,57 @@
+uuid: a42a7d5a-0ae1-417d-a836-8c54ef556f1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.report_response.field_body_paragraphs
+    - field.field.node.report_response.field_skill_answer
+    - field.field.node.report_response.field_skill_reference
+    - field.field.node.report_response.field_themes
+    - node.type.report_response
+  module:
+    - entity_reference_revisions
+    - user
+id: node.report_response.default
+targetEntityType: node
+bundle: report_response
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_body_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_skill_reference:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_themes:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_skill_answer: true
+  langcode: true
+  search_api_excerpt: true
