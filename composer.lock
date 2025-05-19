@@ -71,7 +71,7 @@
                 "psr-4": {
                     "Acquia\\Blt\\": "src/",
                     "Acquia\\Blt\\Tests\\": "tests/phpunit/src/",
-                    "Acquia\\Blt\\Tests\\Robo\\": "tests/phpunit/Robo/"
+                    "Acquia\\Blt\\Tes   ts\\Robo\\": "tests/phpunit/Robo/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
