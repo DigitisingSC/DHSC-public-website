@@ -1,4 +1,4 @@
-name: DHSC-public-website-2
+name: DHSC-public-website
 type: drupal10
 docroot: docroot
 php_version: "8.2"
