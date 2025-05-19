@@ -45,7 +45,8 @@ class SocialMediaLinksBlock extends BlockBase {
             ];
           }
         }
-      } else {
+      }
+      else {
         $links[] = [
           'url'   => $social_links['uri'],
           'title' => $social_links['title'],

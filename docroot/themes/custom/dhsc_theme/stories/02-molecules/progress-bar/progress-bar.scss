@@ -1,0 +1,26 @@
+.m-progress-bar {
+  @apply w-full flex flex-col gap-1 mt-4 mb-6;
+
+  &--text {
+    @apply text-md font-bold text-forest;
+  }
+
+  &--indicator {
+    @apply appearance-none w-full h-2 rounded-full overflow-hidden mb-2;
+
+    // Background of the whole bar
+    background-color: theme('colors.coolgrey.40');
+
+    &::-webkit-progress-bar {
+      @apply bg-coolgrey-40 rounded-full;
+    }
+
+    &::-webkit-progress-value {
+      @apply bg-forest rounded-full;
+    }
+
+    &::-moz-progress-bar {
+      @apply bg-forest rounded-full;
+    }
+  }
+}

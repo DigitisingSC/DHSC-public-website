@@ -13,7 +13,8 @@ const Template = ({ attributes, title, url, answer, content }) =>
     title,
     url,
     answer,
-    content
+    content,
+    variant,
   });
 
 export const toolResult = Template.bind({});
