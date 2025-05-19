@@ -1,0 +1,16 @@
+uuid: 15c51fbf-0f62-437c-bba3-8d096c647117
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: sJt9RaDesrMiF-6BAldwHF6teEFYEJOdBjKlqyd2CAs
+template: page_feedback_problem
+label: 'Page Feedback (Problem)'
+description: 'Site problem feedback from users.'
+text: {  }
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

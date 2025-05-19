@@ -24,16 +24,18 @@ module:
   content_moderation: 0
   contextual: 0
   crop: 0
+  csv_serialization: 0
   datetime: 0
   datetime_range: 0
   dbal: 0
   default_content: 0
+  dhsc_feedback: 0
   dhsc_result_viewer: 0
   dhsc_result_viewer_default_content: 0
   dhsc_site: 0
   diff: 0
-  dynamic_entity_reference: 0
   disable_html5_validation: 0
+  dynamic_entity_reference: 0
   dynamic_page_cache: 0
   editor: 0
   editoria11y: 0
@@ -84,6 +86,7 @@ module:
   media_library_edit: 0
   menu_link_content: 0
   menu_ui: 0
+  message: 0
   metatag: 0
   metatag_open_graph: 0
   meu_node: 0
@@ -110,6 +113,7 @@ module:
   redirect: 0
   responsive_image: 0
   responsive_tables_filter: 0
+  rest: 0
   rh_media: 0
   rh_node: 0
   rh_taxonomy: 0
@@ -120,6 +124,7 @@ module:
   search_api: 0
   search_api_solr: 0
   seckit: 0
+  serialization: 0
   session_limit: 0
   simple_sitemap: 0
   site_settings: 0
@@ -138,6 +143,7 @@ module:
   update: 0
   user: 0
   views_bulk_operations: 0
+  views_data_export: 0
   viewsreference: 0
   webform: 0
   webform_ui: 0

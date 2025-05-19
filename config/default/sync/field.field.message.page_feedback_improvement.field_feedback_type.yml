@@ -1,0 +1,23 @@
+uuid: 42ab22f1-cb5f-4050-b3d3-a107bc62c26b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_feedback_type
+    - message.template.page_feedback_improvement
+  module:
+    - options
+_core:
+  default_config_hash: SMYltQmdvdYwtR3gCIH0wihpE4X3zQvw1Z5E6MD7w8I
+id: message.page_feedback_improvement.field_feedback_type
+field_name: field_feedback_type
+entity_type: message
+bundle: page_feedback_improvement
+label: 'Feedback type'
+description: 'Whether the user found the page helpful.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

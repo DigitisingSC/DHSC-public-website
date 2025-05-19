@@ -1,0 +1,24 @@
+uuid: b8cbdfcc-8cf5-4610-a62b-681d411d914b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_problem_description
+    - message.template.page_feedback_problem
+  module:
+    - text
+_core:
+  default_config_hash: 8j5HbmAqkgirt1mcjF2_l-to0lPexHngTrCEs8NE--0
+id: message.page_feedback_problem.field_problem_description
+field_name: field_problem_description
+entity_type: message
+bundle: page_feedback_problem
+label: 'What went wrong?'
+description: 'Details about the problem encountered.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,31 @@
+uuid: 08f5b3f9-1dd2-467b-af0a-3f823c82a9c3
+langcode: en
+status: true
+dependencies:
+  module:
+    - dhsc_feedback
+    - node
+  theme:
+    - dhsc_theme
+id: dhsc_theme_pagefeedback
+theme: dhsc_theme
+region: content_bottom
+weight: 0
+provider: null
+plugin: dhsc_feedback_block
+settings:
+  id: dhsc_feedback_block
+  label: 'Page Feedback'
+  label_display: '0'
+  provider: dhsc_feedback
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      article: article
+      content_page: content_page
+      localgov_guides_page: localgov_guides_page
+      subtopic_page: subtopic_page
