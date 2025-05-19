@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for DHSC Feedback module.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function dhsc_feedback_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] = 'dhsc_feedback/feedback';
+}

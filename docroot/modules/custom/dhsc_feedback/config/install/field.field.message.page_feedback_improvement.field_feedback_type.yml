@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.message.field_feedback_type
+        - message.template.page_feedback_improvement
+    module:
+        - options
+id: message.page_feedback_improvement.field_feedback_type
+field_name: field_feedback_type
+entity_type: message
+bundle: page_feedback_improvement
+label: 'Feedback type'
+description: 'Whether the user found the page helpful.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

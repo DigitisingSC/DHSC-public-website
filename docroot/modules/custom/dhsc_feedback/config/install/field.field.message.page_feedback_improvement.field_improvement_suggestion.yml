@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.message.field_improvement_suggestion
+        - filter.format.basic_html
+        - message.template.page_feedback_improvement
+    module:
+        - text
+id: message.page_feedback_improvement.field_improvement_suggestion
+field_name: field_improvement_suggestion
+entity_type: message
+bundle: page_feedback_improvement
+label: 'How could we improve this page?'
+description: 'User suggestion text (optional).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+    allowed_formats:
+        - basic_html
+field_type: text_long

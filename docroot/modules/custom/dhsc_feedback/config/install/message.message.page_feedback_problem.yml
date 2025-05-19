@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+    module:
+        - message
+id: page_feedback_problem
+label: 'Page Feedback (Problem)'
+description: 'User feedback reporting a problem with the page'
+category: Feedback
+template: false

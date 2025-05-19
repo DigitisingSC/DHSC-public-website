@@ -1,0 +1,12 @@
+name: 'DHSC Feedback'
+type: module
+description: 'Feature for collecting user feedback.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - message
+  - views
+  - rest
+  - serialization
+  - csv_serialization
+  - views_data_export

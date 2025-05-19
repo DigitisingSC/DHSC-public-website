@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the DHSC Feedback module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function dhsc_feedback_uninstall() {
+  // Remove field storage configs.
+  $fields = [
+    'field_feedback_type',
+    'field_page_url',
+    'field_improvement_suggestion',
+    'field_problem_context',
+    'field_problem_description',
+  ];
+
+  foreach ($fields as $field_name) {
+    $config_id = "field.storage.message.$field_name";
+    if (\Drupal::configFactory()->getEditable($config_id)->isNew() === FALSE) {
+      \Drupal::configFactory()->getEditable($config_id)->delete();
+    }
+  }
+
+  // Remove field instances.
+  $instances = [
+    'page_feedback_improvement.field_feedback_type',
+    'page_feedback_improvement.field_page_url',
+    'page_feedback_improvement.field_improvement_suggestion',
+    'page_feedback_problem.field_feedback_type',
+    'page_feedback_problem.field_page_url',
+    'page_feedback_problem.field_problem_context',
+    'page_feedback_problem.field_problem_description',
+  ];
+
+  foreach ($instances as $instance) {
+    $config_id = "field.field.message.$instance";
+    if (\Drupal::configFactory()->getEditable($config_id)->isNew() === FALSE) {
+      \Drupal::configFactory()->getEditable($config_id)->delete();
+    }
+  }
+
+  // Remove message bundles.
+  $bundles = [
+    'message.message.page_feedback_improvement',
+    'message.message.page_feedback_problem',
+  ];
+
+  foreach ($bundles as $bundle) {
+    if (\Drupal::configFactory()->getEditable($bundle)->isNew() === FALSE) {
+      \Drupal::configFactory()->getEditable($bundle)->delete();
+    }
+  }
+}

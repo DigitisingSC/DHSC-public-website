@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+    config:
+        - field.storage.message.field_feedback_type
+        - message.template.page_feedback_problem
+    module:
+        - options
+id: message.page_feedback_problem.field_feedback_type
+field_name: field_feedback_type
+entity_type: message
+bundle: page_feedback_problem
+label: 'Feedback type'
+description: 'Problem report indicator.'
+required: true
+translatable: false
+default_value:
+    -
+        value: problem
+default_value_callback: ''
+settings: {  }
+field_type: list_string
