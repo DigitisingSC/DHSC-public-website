@@ -12,8 +12,7 @@ use Drupal\taxonomy\TermInterface;
  *
  * @package Drupal\dhsc_self_assessment_result_viewer
  */
-class SelfAssessmentResultViewer implements SelfAssessmentInterface
-{
+class SelfAssessmentResultViewer implements SelfAssessmentInterface {
 
   /**
    * Entity type manager.
@@ -70,12 +69,14 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
+   *   The private temp store factory.
    */
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     ConfigFactoryInterface $config_factory,
-    PrivateTempStoreFactory $temp_store_factory
+    PrivateTempStoreFactory $temp_store_factory,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->nodeStorage = $entity_type_manager->getStorage('node');
@@ -89,16 +90,14 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * {@inheritdoc}
    */
-  public function getCategories()
-  {
-    return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);;
+  public function getCategories() {
+    return $this->taxonomyStorage->loadTree('category', 0, NULL, TRUE);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getResultsSummary($data)
-  {
+  public function getResultsSummary($data) {
     $nids = $this->getResultIds($data);
     if (!$nids) {
       return;
@@ -125,8 +124,7 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * {@inheritdoc}
    */
-  public function getSortsResultIds()
-  {
+  public function getSortsResultIds() {
     if ($data = $this->getSubmissionData()) {
       $nids = $this->getResultIds($data);
       if (!$nids) {
@@ -142,18 +140,15 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    *
    * @param array $data
    *   Webform values.
-   * @param bool $top_tips
-   *   Check if top tip.
    *
    * @return array
    *   Return result ids.
    */
-  protected function getResultIds(array $data)
-  {
+  protected function getResultIds(array $data) {
     $categories = $this->getCategories();
     $nids = [];
 
-    /** @var TermInterface $category */
+    /** @var \Drupal\taxonomy\TermInterface $category */
     foreach ($categories as $category) {
       if ($nid = $this->getResultId($category, $data)) {
         $nids[] = $nid;
@@ -174,18 +169,17 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
   /**
    * Get id of result node.
    *
-   * @param TermInterface $term
+   * @param \Drupal\taxonomy\TermInterface $term
    *   Category term.
    * @param array $data
    *   Webform values.
    *
-   * @return array|int|void
+   * @return int|void
    *   Return result ids.
    */
-  protected function getResultId(TermInterface $term, array $data)
-  {
+  protected function getResultId(TermInterface $term, array $data) {
     if ($term->bundle() != 'category') {
-      return;
+      return NULL;
     }
 
     if (!$term->get('field_answer_machine_name')->isEmpty()) {
@@ -199,41 +193,39 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
           ->execute();
       }
 
-      if (isset($result)) {
+      if (!empty($result)) {
         return reset($result);
       }
     }
+
+    return NULL;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSubmissionId()
-  {
+  public function getSubmissionId() {
     return $this->tempStore->get('sid');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllYes()
-  {
+  public function questionsAllYes() {
     return $this->tempStore->get('yes_to_all_questions');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function questionsAllReset()
-  {
+  public function questionsAllReset() {
     return $this->tempStore->set('yes_to_all_questions', NULL);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getSubmission()
-  {
+  public function getSubmission() {
     $sid = $this->getSubmissionId();
     if ($sid) {
       $submission = $this->entityTypeManager->getStorage('webform_submission')->load($sid);
@@ -241,15 +233,13 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
     }
   }
 
-
   /**
    * Get webform submission data.
    *
    * @return array
    *   Return webform submission data.
    */
-  protected function getSubmissionData()
-  {
+  protected function getSubmissionData() {
     /** @var \Drupal\webform\WebformSubmissionInterface $submission */
     if ($submission = $this->getSubmission()) {
       return $submission->getData();
@@ -262,10 +252,8 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return \Drupal\Core\GeneratedUrl|string
    *   Return webform url.
    */
-  protected function getWebFormUrl()
-  {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+  protected function getWebFormUrl() {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if ($webform) {
@@ -280,24 +268,23 @@ class SelfAssessmentResultViewer implements SelfAssessmentInterface
    * @return mixed|void
    *   Return webform confirmation page path.
    */
-  protected function getConfirmationPagePath()
-  {
-    /** @var \Drupal\webform\WebformSubmissionInterface $submission */
-    if ($submission = $this->getSubmission()) {
+  protected function getConfirmationPagePath() {
+    if ($this->getSubmission()) {
       /** @var \Drupal\webform\WebformInterface $webform */
       $webform = $this->getSubmission()->getWebform();
       if (!$webform) {
-        return;
+        return NULL;
       }
 
       $config_name = $webform->getConfigDependencyName();
       $config = $this->configFactory->get($config_name);
       if (!$config) {
-        return;
+        return NULL;
       }
       $raw_data = $config->getRawData();
 
       return $raw_data['settings']['page_confirm_path'];
     }
   }
+
 }

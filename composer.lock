@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ccec0ac7258273b278cfa2418aa77ff",
+    "content-hash": "c30cb3563f0b9cc42e18f4b3ec1b949f",
     "packages": [
         {
             "name": "acquia/blt",
@@ -71,7 +71,7 @@
                 "psr-4": {
                     "Acquia\\Blt\\": "src/",
                     "Acquia\\Blt\\Tests\\": "tests/phpunit/src/",
-                    "Acquia\\Blt\\Tests\\Robo\\": "tests/phpunit/Robo/"
+                    "Acquia\\Blt\\Tes   ts\\Robo\\": "tests/phpunit/Robo/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -25260,6 +25260,7 @@
         "alexku/blt-github-actions": 20,
         "drupal/advagg": 15,
         "drupal/components": 10,
+        "drupal/default_content": 15,
         "drupal/entity_usage": 10,
         "drupal/mimemail": 15,
         "drupal/paragraphs_ee": 15,

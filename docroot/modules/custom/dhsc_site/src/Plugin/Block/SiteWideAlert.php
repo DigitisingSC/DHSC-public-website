@@ -15,8 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   category = @Translation("DHSC Site")
  * )
  */
-class SiteWideAlert extends BlockBase
-{
+class SiteWideAlert extends BlockBase {
 
   /**
    * {@inheritdoc}
@@ -58,4 +57,5 @@ class SiteWideAlert extends BlockBase
     // Invalidate cache when the alert text field value is updated.
     Cache::invalidateTags(['alert_text_value']);
   }
+
 }

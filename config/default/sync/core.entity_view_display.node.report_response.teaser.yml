@@ -1,0 +1,35 @@
+uuid: f7f5387a-ca68-435c-af36-6e02fda293ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.report_response.field_body_paragraphs
+    - field.field.node.report_response.field_skill_answer
+    - field.field.node.report_response.field_skill_reference
+    - field.field.node.report_response.field_themes
+    - node.type.report_response
+  module:
+    - user
+id: node.report_response.teaser
+targetEntityType: node
+bundle: report_response
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_body_paragraphs: true
+  field_skill_answer: true
+  field_skill_reference: true
+  field_themes: true
+  langcode: true
+  search_api_excerpt: true
