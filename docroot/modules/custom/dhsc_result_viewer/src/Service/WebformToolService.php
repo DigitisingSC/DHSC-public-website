@@ -2,6 +2,8 @@
 
 namespace Drupal\dhsc_result_viewer\Service;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,6 +15,7 @@ use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Core\Url;
 use Drupal\webform\Entity\Webform;
 use Drupal\webform\Entity\WebformSubmission;
+use Drupal\webform\WebformSubmissionInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Render\RendererInterface;
@@ -26,6 +29,13 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class WebformToolService {
 
   use StringTranslationTrait;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected EntityTypeManagerInterface $entityTypeManager;
 
   /**
    * The session interface.
@@ -90,6 +100,8 @@ class WebformToolService {
    *   The renderer service.
    * @param \Drupal\Core\StringTranslation\TranslationInterface $stringTranslation
    *   The translation service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
+   *   The entity type manager service.
    */
   public function __construct(
     SessionInterface $session,
@@ -100,6 +112,7 @@ class WebformToolService {
     FormBuilderInterface $formBuilder,
     RendererInterface $renderer,
     TranslationInterface $stringTranslation,
+    EntityTypeManagerInterface $entityTypeManager,
   ) {
     $this->session = $session;
     $this->currentUser = $current_user;
@@ -109,6 +122,7 @@ class WebformToolService {
     $this->formBuilder = $formBuilder;
     $this->renderer = $renderer;
     $this->stringTranslation = $stringTranslation;
+    $this->entityTypeManager = $entityTypeManager;
   }
 
   /**
@@ -121,7 +135,15 @@ class WebformToolService {
    *   The SID
    */
   public function getSubmissionId(string $webform_id): ?int {
-    $submission_id = $this->session->get('last_submission_' . $webform_id);
+    if (!$submission_id = $this->session->get('last_submission_' . $webform_id)) {
+      $submission_token = $this->requestStack->getCurrentRequest()->query->get('token');
+      if ($submission_token) {
+        if ($submission = $this->getSubmissionByToken($submission_token, $webform_id)) {
+          $submission_id = $submission->id();
+        }
+      }
+    }
+
     $this->logMessage('Retrieved submission ID', $submission_id, $webform_id);
     return $submission_id;
   }
@@ -151,7 +173,7 @@ class WebformToolService {
    *   The step value.
    */
   public function getStepValue(string $webform_id): ?int {
-    $step_value = $this->session->get('last_step_' . $webform_id);
+    $step_value = $this->session->get('last_step_' . $webform_id) ?? 1;
     $this->logMessage('Retrieved step value', $step_value, $webform_id);
     return $step_value;
   }
@@ -186,7 +208,7 @@ class WebformToolService {
     $submission = WebformSubmission::create([
       'webform_id' => $webform_id,
       'uid' => $this->currentUser->id(),
-      'is_draft' => TRUE,
+      'in_draft' => TRUE,
       'data' => [],
     ]);
     $submission->save();
@@ -382,6 +404,39 @@ class WebformToolService {
     $this->session->remove('last_submission_' . $webform_id);
     $this->session->remove('last_step_' . $webform_id);
     $this->logMessage('Cleared session data', 'N/A', $webform_id);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSubmissionByToken(string $token, string $webform_id): ?WebformSubmissionInterface {
+    // Load the webform entity.
+    $webform = $this->entityTypeManager->getStorage('webform')->load($webform_id);
+
+    if ($webform) {
+      // Attempt to load submission using token.
+      $submission = $this->entityTypeManager->getStorage('webform_submission')
+        ->loadFromToken($token, $webform);
+
+      if ($submission) {
+        return $submission;
+      }
+
+      // Log a warning if submission not found.
+      $this->loggerFactory->get('dhsc_result_viewer')->warning(
+        'Invalid submission token: @token for webform: @webform_id',
+        ['@token' => $token, '@webform_id' => $webform_id]
+      );
+    }
+    else {
+      // Log a warning if the webform ID is invalid.
+      $this->loggerFactory->get('dhsc_result_viewer')->warning(
+        'Invalid webform ID provided: @webform_id',
+        ['@webform_id' => $webform_id]
+      );
+    }
+
+    return NULL;
   }
 
 }
