@@ -1,16 +1,10 @@
 adding:
-  status: false
+  status: true
   dependencies:
     config:
       - field.storage.node.field_skill_price
       - field.storage.node.field_skills_for_care_endorsed
       - field.storage.node.field_themes
-      - search_api.server.acquia_search_server
-    module:
-      - acquia_search
-  third_party_settings:
-    acquia_search:
-      use_edismax: false
   field_settings:
     field_skill_price:
       label: Price
@@ -32,11 +26,9 @@ adding:
       label: Themes
       datasource_id: 'entity:node'
       property_path: field_themes
-      type: string
+      type: integer
       dependencies:
         config:
           - field.storage.node.field_themes
-  server: acquia_search_server
 removing:
-  status: true
-  server: null
+  status: false
