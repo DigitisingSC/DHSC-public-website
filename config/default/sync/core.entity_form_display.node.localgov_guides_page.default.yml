@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.localgov_guides_page.field_body_paragraphs
     - field.field.node.localgov_guides_page.field_date
+    - field.field.node.localgov_guides_page.field_hide_nav_block
     - field.field.node.localgov_guides_page.field_image
     - field.field.node.localgov_guides_page.field_metatags
     - field.field.node.localgov_guides_page.field_search_keywords
@@ -33,6 +34,7 @@ third_party_settings:
     group_guide_page_details:
       children:
         - localgov_guides_section_title
+        - field_hide_nav_block
         - localgov_guides_parent
         - field_topic_term
         - field_date
@@ -109,9 +111,16 @@ content:
           dialog_style: tiles
   field_date:
     type: datetime_default
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_hide_nav_block:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_image:
     type: media_library_widget
@@ -138,7 +147,7 @@ content:
     third_party_settings: {  }
   field_search_weight:
     type: number
-    weight: 6
+    weight: 7
     region: content
     settings:
       placeholder: ''
@@ -185,7 +194,7 @@ content:
         maxlength_js_enforce: false
   field_topic_term:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -198,7 +207,7 @@ content:
     third_party_settings: {  }
   localgov_guides_parent:
     type: options_select
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

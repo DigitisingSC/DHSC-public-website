@@ -1,0 +1,21 @@
+uuid: 49a1a23c-19e1-41a2-8ba1-31b025e7b920
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_nav_block
+    - node.type.localgov_guides_page
+id: node.localgov_guides_page.field_hide_nav_block
+field_name: field_hide_nav_block
+entity_type: node
+bundle: localgov_guides_page
+label: 'Hide Navigation Block'
+description: 'Determines whether to display the guide block navigation below the title.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
