@@ -33,7 +33,7 @@ third_party_settings:
       label: 'Skill details'
       region: content
       parent_name: ''
-      weight: 14
+      weight: 13
       format_type: details
       format_settings:
         classes: ''
@@ -55,7 +55,7 @@ content:
     third_party_settings: {  }
   field_body_paragraphs:
     type: paragraphs
-    weight: 15
+    weight: 14
     region: content
     settings:
       title: Paragraph
@@ -167,12 +167,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp
-    weight: 26
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   simple_sitemap:
     weight: 11
     region: content
@@ -210,17 +204,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp
-    weight: 27
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
     weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  publish_on: true
   publish_state: true
+  unpublish_on: true
   unpublish_state: true
