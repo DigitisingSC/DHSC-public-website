@@ -320,7 +320,7 @@ function _generate_link_array($link_field_item) {
       $path = \Drupal::service('path_alias.manager')->getPathByAlias($url);
       if (preg_match('/node\/(\d+)/', $path, $matches)) {
         $node = Node::load($matches[1]);
-        $title = $node->getTitle();
+        $title = $node ? $node->getTitle() : '';
       }
       return [
         'title' => $title ?? '',
