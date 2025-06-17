@@ -1,37 +1,40 @@
-uuid: ce541529-8285-42b8-ba4b-cf87589368c2
+uuid: 3dd01dde-7ca2-40af-a931-6f121092a946
 langcode: en
 status: true
 dependencies:
   config:
-    - search_api.index.acquia_search_index
+    - field.storage.node.field_body_paragraphs
+    - search_api.index.local_search_solr_index
+    - system.menu.main
   module:
+    - entity_reference_revisions
     - search_api
     - user
-_core:
-  default_config_hash: JIxBaij5evEu3ChytesELBtWxfHKenw_tZk5oj854co
-id: acquia_search
-label: 'Acquia Search Solr'
+id: local_search
+label: 'Local search'
 module: views
 description: ''
 tag: ''
-base_table: search_api_index_acquia_search_index
+base_table: search_api_index_local_search_solr_index
 base_field: search_api_id
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Default
     display_plugin: default
     position: 0
     display_options:
       title: Search
       fields:
-        type:
-          id: type
-          table: search_api_index_acquia_search_index
-          field: type
+        field_body_paragraphs:
+          id: field_body_paragraphs
+          table: search_api_index_local_search_solr_index
+          field: field_body_paragraphs
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: null
+          entity_field: null
           plugin_id: search_api_field
           label: ''
           exclude: false
@@ -62,11 +65,11 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: em
+          element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -74,11 +77,10 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
+          click_sort_column: ''
+          type: entity_reference_revisions_entity_view
+          settings: {  }
+          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -88,19 +90,16 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          field_rendering: false
-          fallback_handler: search_api_entity
+          field_rendering: true
+          fallback_handler: search_api
           fallback_options:
             link_to_item: false
             use_highlighting: false
             multi_type: separator
             multi_separator: ', '
-            display_methods:
-              node_type:
-                display_method: label
         title:
           id: title
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: title
           relationship: none
           group_type: group
@@ -170,7 +169,7 @@ display:
             multi_separator: ', '
         search_api_excerpt:
           id: search_api_excerpt
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: search_api_excerpt
           relationship: none
           group_type: group
@@ -213,14 +212,87 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: '{{body}}'
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           link_to_item: false
-          use_highlighting: true
+          use_highlighting: false
           multi_type: separator
           multi_separator: ', '
+        type:
+          id: type
+          table: search_api_index_local_search_solr_index
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_field
+          label: Type
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          field_rendering: false
+          fallback_handler: search_api_entity
+          fallback_options:
+            link_to_item: false
+            use_highlighting: false
+            multi_type: separator
+            multi_separator: ', '
+            display_methods:
+              node_type:
+                display_method: label
       pager:
         type: full
         options:
@@ -242,7 +314,7 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
+          quantity: 3
       exposed_form:
         type: basic
         options:
@@ -277,7 +349,7 @@ display:
       sorts:
         search_api_relevance:
           id: search_api_relevance
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: search_api_relevance
           relationship: none
           group_type: group
@@ -286,7 +358,7 @@ display:
           order: DESC
           expose:
             label: ''
-            field_identifier: search_api_relevance
+            field_identifier: ''
           exposed: false
         field_search_keywords:
           id: field_search_keywords
@@ -303,13 +375,13 @@ display:
           exposed: false
         field_search_weight:
           id: field_search_weight
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: field_search_weight
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: search_api
-          order: DESC
+          order: ASC
           expose:
             label: ''
             field_identifier: ''
@@ -318,7 +390,7 @@ display:
       filters:
         status:
           id: status
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: status
           relationship: none
           group_type: group
@@ -356,7 +428,7 @@ display:
             group_items: {  }
         search_api_fulltext:
           id: search_api_fulltext
-          table: search_api_index_acquia_search_index
+          table: search_api_index_local_search_solr_index
           field: search_api_fulltext
           relationship: none
           group_type: group
@@ -387,7 +459,7 @@ display:
               localgov_user_manager: '0'
             expose_fields: false
             placeholder: ''
-            searched_fields_id: ''
+            searched_fields_id: search_api_fulltext_searched_fields
           is_grouped: false
           group_info:
             label: ''
@@ -408,14 +480,7 @@ display:
         groups:
           1: AND
       style:
-        type: html_list
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          type: ul
-          wrapper_class: item-list
-          class: ''
+        type: default
       row:
         type: search_api
         options:
@@ -429,6 +494,7 @@ display:
               localgov_guides_overview: search_index
               localgov_guides_page: search_index
               recommendation: search_index
+              skill: search_index
               subtopic_page: search_index
               supplier: search_index
       query:
@@ -436,7 +502,8 @@ display:
         options:
           bypass_access: false
           skip_access: false
-          parse_mode: terms
+          preserve_facet_query_args: false
+          query_tags: {  }
       relationships: {  }
       use_ajax: true
       header:
@@ -462,18 +529,27 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:search_api.index.acquia_search_index'
-        - 'search_api_list:acquia_search_index'
+        - 'config:field.storage.node.field_body_paragraphs'
+        - 'config:search_api.index.local_search_solr_index'
+        - 'search_api_list:local_search_solr_index'
   dhsc_search_page:
     id: dhsc_search_page
-    display_title: 'Acquia Search Solr Page'
+    display_title: Page
     display_plugin: page
     position: 1
     display_options:
-      display_description: ''
       exposed_block: false
       display_extenders: {  }
       path: search
+      menu:
+        type: normal
+        title: Search
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:
@@ -484,5 +560,6 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:search_api.index.acquia_search_index'
-        - 'search_api_list:acquia_search_index'
+        - 'config:field.storage.node.field_body_paragraphs'
+        - 'config:search_api.index.local_search_solr_index'
+        - 'search_api_list:local_search_solr_index'

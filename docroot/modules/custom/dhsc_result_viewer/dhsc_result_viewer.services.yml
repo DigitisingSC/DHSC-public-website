@@ -24,10 +24,10 @@ services:
 
   dhsc_result_viewer.route_subscriber:
     class: Drupal\dhsc_result_viewer\Routing\RouteSubscriber
-    arguments: ['@tempstore.private']
+    arguments: [ '@request_stack', '@dhsc_result_viewer.webform_tool_service' ]
     tags:
       - { name: event_subscriber }
 
   dhsc_result_viewer.webform_tool_service:
     class: Drupal\dhsc_result_viewer\Service\WebformToolService
-    arguments: ['@session', '@current_user', '@messenger', '@logger.factory', '@request_stack', '@form_builder', '@renderer', '@string_translation']
+    arguments: [ '@session', '@current_user', '@messenger', '@logger.factory', '@request_stack', '@form_builder', '@renderer', '@string_translation', '@entity_type.manager']
