@@ -13,3 +13,6 @@ ed11y_theme: sleekTheme
 shadow_components: ''
 disable_sync: false
 preserve_params: 'search,keys,page,language,language_content_entity'
+disable_live: false
+live_h2: 'form[id^="node-"] #edit-body-wrapper .ck-content'
+ck5_table_headers: row
