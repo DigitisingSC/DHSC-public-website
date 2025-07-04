@@ -23,42 +23,43 @@
 <div data-drupal-messages>
   {% block messages %}
     {% for type, messages in message_list %}
-      {%
-    set classes = [
-      'messages',
-      'messages--' ~ type,
-    ]
-  %}
-<div role="contentinfo" aria-label="{{ status_headings[type] }}" {{ attributes.addClass(classes)|without('role', 'aria-label') }}>
-  {% if type == 'error' %}
-    <div role="alert">
-    {% endif %}
-    {% if status_headings[type] %}
-      <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-    {% endif %}
-    {% if messages|length > 1 %}
-      <ul class="messages__list">
-        {% for message in messages %}
-          {% include '@molecules/alert/alert.twig' with {
-            attributes: attributes.removeClass(defaultClass),
-            text: message,
-            is_dismissible: true
-          } %}
-        {% endfor %}
-      </ul>
-    {% else %}
-      {% include '@molecules/alert/alert.twig' with {
-      attributes: attributes.removeClass(defaultClass),
-      text: messages|first,
-      is_dismissible: true
-    } %}
-    {% endif %}
-    {% if type == 'error' %}
-    </div>
-  {% endif %}
-</div>
-{# Remove type specific classes. #}
-{% set attributes = attributes.removeClass(classes) %}
-{% endfor %}
-{% endblock messages %}
+      {% set classes = [
+        'messages',
+        'messages--' ~ type,
+      ] %}
+
+      <div role="contentinfo"
+           aria-label="{{ status_headings[type] }}" {{ attributes.addClass(classes)|without('role', 'aria-label') }}>
+        {% if type == 'error' %}
+        <div role="alert">
+          {% endif %}
+          {% if status_headings[type] %}
+            <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
+          {% endif %}
+          {% if messages|length > 1 %}
+            <ul class="messages__list">
+              {% for message in messages %}
+                {% include '@molecules/alert/alert.twig' with {
+                  attributes: attributes.removeClass(defaultClass),
+                  text: message,
+                  is_dismissible: true
+                } %}
+              {% endfor %}
+            </ul>
+          {% else %}
+            {% include '@molecules/alert/alert.twig' with {
+              attributes: attributes.removeClass(defaultClass),
+              text: messages|first,
+              is_dismissible: true
+            } %}
+          {% endif %}
+          {% if type == 'error' %}
+        </div>
+        {% endif %}
+      </div>
+
+      {# Remove type specific classes. #}
+      {% set attributes = attributes.removeClass(classes) %}
+    {% endfor %}
+  {% endblock messages %}
 </div>
