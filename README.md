@@ -116,9 +116,9 @@ The website is using Solr as a search server. On dev, staging and production we 
 
 Local solr for development is accessible at `http://${project-name}.ddev.site:8983/solr/#/`.
 
+Local site link: https://dhsc-public-website.ddev.site/
+
 ## Make utilities
-
-
 
 *  `make install`: sets up your instance.
 
