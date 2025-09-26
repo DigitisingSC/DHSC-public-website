@@ -123,6 +123,20 @@ jobs:
     # For deployment steps below to work, the repository must have
     # deployment/ssh private key added as a secret with name: BLT_SSH_DEPLOYMENT_KEY
 
+    - name: Check deployment key presence (safe)
+      run: |
+        if [ -n "${{ env.SSH_DEPLOYMENT_KEY }}" ]; then
+          echo "SSH_DEPLOYMENT_KEY is set"
+        else
+          echo "SSH_DEPLOYMENT_KEY is NOT set"
+        fi
+
+    - name: Show ref and event (debug)
+      run: |
+        echo "event=${{ github.event_name }}"
+        echo "ref=$GITHUB_REF"
+        echo "ref_name=${GITHUB_REF##*/}"
+
     - name: Prepare deployment key
       run: |
         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
