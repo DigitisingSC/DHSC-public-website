@@ -210,5 +210,7 @@ content:
 hidden:
   field_answers_supplier: true
   field_non_possible_answers: true
+  publish_on: true
   publish_state: true
+  unpublish_on: true
   unpublish_state: true
