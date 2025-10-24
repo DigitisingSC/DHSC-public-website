@@ -124,9 +124,10 @@
         },
         "audit": {
             "ignore": {
-                "GHSA-mg8j-w93w-xjgc": "Drupal core has been upgraded to the latest patch version that fixes this issue."
-            },
-            "abandoned": "ignore"
+                "GHSA-mg8j-w93w-xjgc": "Drupal core has been upgraded to the latest patch version that fixes this issue.",
+                "doctrine/annotations": "Package is abandoned but required by Drupal core dependencies",
+                "doctrine/cache": "Package is abandoned but required by Drupal core dependencies"
+            }
         }
     },
     "autoload": {
