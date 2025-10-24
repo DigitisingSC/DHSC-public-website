@@ -1,0 +1,14 @@
+uuid: f162e70d-0add-4638-9773-421e1b4d23c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.super_admin
+  module:
+    - user
+id: user_remove_role_action.super_admin
+label: 'Remove the Super Admin role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: super_admin
