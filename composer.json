@@ -125,7 +125,8 @@
         "audit": {
             "ignore": {
                 "GHSA-mg8j-w93w-xjgc": "Drupal core has been upgraded to the latest patch version that fixes this issue."
-            }
+            },
+            "abandoned": "ignore"
         }
     },
     "autoload": {
