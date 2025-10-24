@@ -225,24 +225,7 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
     $webform_tool_service->clearSubmissionData($webform_id);
   }
 
-  // This functionality is only required by tools that save their progress
-  // after each step has been submitted.
   if ($webform_tool_service->isAutosaveToolSubmissionForm($form_id)) {
-    $webform_id = $form['#webform_id'];
-
-    // Auto-save progress on wizard step navigation.
-    if (isset($form['actions']['wizard_next'])) {
-      array_unshift($form['actions']['wizard_next']['#submit'], 'dhsc_result_viewer_store_draft_submission');
-    }
-
-    // Store last completed step.
-    $last_step = $webform_tool_service->getStepValue($webform_id) ?? 1;
-    $current_step = getCurrentStep($form_state);
-
-    if ($current_step > $last_step) {
-      $webform_tool_service->setStepValue($webform_id, $current_step);
-    }
-
     // If the form is in 'edit mode' and the user is going back to edit the form
     // make sure a 'save edit' button is available.
     $current_request = \Drupal::request();
@@ -254,63 +237,6 @@ function dhsc_result_viewer_form_alter(array &$form, FormStateInterface $form_st
       $submission_id = $webform_tool_service->getSubmissionId($webform_id);
       $webform_tool_service->setSubmissionId( $webform_id, $submission_id);
 
-      // Add save edit button.
-      $form['save_edit'] = [
-        '#type' => 'submit',
-        '#value' => t('Continue'),
-        '#limit_validation_errors' => [],
-        '#submit' => ['dhsc_result_viewer_save_edit_submit'],
-        '#attributes' => [
-          'class' => ['button', 'a-button', 'a-button--primary'],
-          'data-twig-suggestion' => 'save-and-edit',
-        ],
-        '#theme_wrapper' => 'form_element',
-        '#weight' => 10,
-      ];
-      $form['actions']['submit']['#access'] = FALSE;
-      $form['actions']['wizard_next']['#access'] = FALSE;
-    }
-  }
-
-  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
-    // If the form is in 'edit mode' and the user is going back to edit the form
-    // make sure a 'save edit' button is available.
-    $current_request = \Drupal::request();
-    $requested_step = (int) $current_request->query->get('edit-page') ?? NULL;
-
-    // Ensure the requested step is valid before setting it.
-    if ($requested_step > 0) {
-
-      $submission_id = $webform_tool_service->getSubmissionId($webform_id);
-      $webform_tool_service->setSubmissionId( $webform_id, $submission_id);
-
-      // Add save edit button.
-      $form['save_edit'] = [
-        '#type' => 'submit',
-        '#value' => t('Continue'),
-        '#limit_validation_errors' => [],
-        '#submit' => ['dhsc_result_viewer_save_edit_submit'],
-        '#attributes' => [
-          'class' => ['button', 'a-button', 'a-button--primary'],
-          'data-twig-suggestion' => 'save-and-edit',
-        ],
-        '#theme_wrapper' => 'form_element',
-        '#weight' => 10,
-      ];
-      $form['actions']['reset']['#access'] = FALSE;
-      $form['actions']['submit']['#access'] = FALSE;
-      $form['actions']['wizard_next']['#access'] = FALSE;
-    }
-  }
-
-  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
-    // If the form is in 'edit mode' and the user is going back to edit the form
-    // make sure a 'save edit' button is available.
-    $current_request = \Drupal::request();
-    $requested_step = (int) $current_request->query->get('edit-page') ?? NULL;
-
-    // Ensure the requested step is valid before setting it.
-    if ($requested_step > 0) {
       // Add save edit button.
       $form['save_edit'] = [
         '#type' => 'submit',
@@ -466,7 +392,7 @@ function dhsc_result_viewer_webform_submission_form_alter(array &$form, FormStat
       ];
     }
   }
-  if ($webform_tool_service->isThemedToolSubmissionForm($form_id)) {
+  if ($webform_tool_service->isAutosaveToolSubmissionForm($form_id)) {
     $webform_id = $form['#webform_id'];
     $submission_id = $webform_tool_service->getSubmissionId($webform_id);
 

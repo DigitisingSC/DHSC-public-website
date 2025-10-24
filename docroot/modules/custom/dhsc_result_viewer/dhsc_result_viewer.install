@@ -8,7 +8,7 @@
 /**
  * Create taxonomy terms for the solution_types vocabulary.
  */
-function dhsc_result_viewer_update_9001() {
+function dhsc_result_viewer_update_9010() {
 
   // List of terms with keys and human-readable labels.
   $terms = [
@@ -75,7 +75,7 @@ function dhsc_result_viewer_update_9001() {
 /**
  * Map existing supplier text field values to taxonomy terms.
  */
-function dhsc_result_viewer_update_9002() {
+function dhsc_result_viewer_update_9011() {
   $vid = 'solution_types';
 
   $term_map = [];
