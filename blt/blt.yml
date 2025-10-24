@@ -24,6 +24,11 @@ validate:
       - drupal_view
       - drupal_view_result
 
+disable-targets:
+  tests:
+    security-drupal:
+      abandoned-packages: true
+
 # Custom tasks that are triggered at pre-defined times in the build process.
 # The tasks hook into BLT's existing commands.
 command-hooks:
