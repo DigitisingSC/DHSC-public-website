@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c6af4b5b1ce711f7dcd459937a780ba",
+    "content-hash": "0f15e9b0eab19a8734bfc3995ecfb05a",
     "packages": [
         {
             "name": "acquia/blt",
@@ -5270,6 +5270,10 @@
             ],
             "authors": [
                 {
+                    "name": "anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
                     "name": "berdir",
                     "homepage": "https://www.drupal.org/user/214652"
                 },
@@ -5284,6 +5288,10 @@
                 {
                     "name": "Drupal Media Team",
                     "homepage": "https://www.drupal.org/user/3260690"
+                },
+                {
+                    "name": "grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
                 },
                 {
                     "name": "marcingy",
