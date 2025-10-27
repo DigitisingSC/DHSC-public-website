@@ -383,7 +383,22 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
                 // Get human-readable section/answer text for the conflicting
                 // answer.
                 $answer_value = $this->getFormElementValue($answer, $webform, $field_key);
-                $no_matches[$nid]['answers'][$answer_value['section']][] = $answer_value['answer'];
+                
+                // Only add to no_matches if we successfully got the answer value
+                if ($answer_value && isset($answer_value['section']) && isset($answer_value['answer'])) {
+                  $no_matches[$nid]['answers'][$answer_value['section']][] = $answer_value['answer'];
+                }
+                else {
+                  // Log when we can't get the answer value for debugging
+                  $this->loggerFactory->get('dhsc_result_viewer')->warning(
+                    'Could not get form element value for answer: @answer, field_key: @field_key, node: @node_title',
+                    [
+                      '@answer' => $answer,
+                      '@field_key' => $field_key ?? 'NULL',
+                      '@node_title' => $node_title,
+                    ]
+                  );
+                }
               }
             }
           }
@@ -557,11 +572,21 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
       return NULL;
     }
 
-    $section = $webform->getElement($element['#webform_parent_key'])['#title'];
+    // Check if parent key exists and get section title safely
+    if (!isset($element['#webform_parent_key'])) {
+      return NULL;
+    }
+    
+    $parent_element = $webform->getElement($element['#webform_parent_key']);
+    if (!$parent_element || !isset($parent_element['#title'])) {
+      return NULL;
+    }
+    
+    $section = $parent_element['#title'];
 
     if (isset($element['#type']) && $element['#type'] === 'checkbox_count') {
       // Use the title for checkbox fields.
-      $title = $element['#title'];
+      $title = $element['#title'] ?? '';
       return [
         'section' => $section,
         'answer' => $title,
@@ -569,18 +594,31 @@ class AssuredSolutionsResultViewer implements AssuredSolutionsInterface {
     }
     if (isset($element['#type']) && $element['#type'] === 'radios') {
       // Use the options text for radio fields.
-      $value = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
-      if (count($value) > 1) {
-        $item = $value;
+      if (!isset($element['#options'])) {
+        return NULL;
       }
-      elseif (count($value) === 1) {
-        $item = reset($value);
+      
+      $options_text = WebformOptionsHelper::getOptionsText((array) $value, $element['#options']);
+      $item = '';
+      
+      if (count($options_text) > 1) {
+        $item = implode(', ', $options_text);
       }
+      elseif (count($options_text) === 1) {
+        $item = reset($options_text);
+      }
+      
       return [
         'section' => $section,
         'answer' => $item,
       ];
     }
+    
+    // Fallback for other element types
+    return [
+      'section' => $section,
+      'answer' => $element['#title'] ?? $value,
+    ];
   }
 
   /**
