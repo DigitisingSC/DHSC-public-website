@@ -31,8 +31,13 @@ services:
     # and code at https://github.com/docker-solr/docker-solr
     # README: https://github.com/docker-solr/docker-solr/blob/master/README.md
     # It's almost impossible to work with it if you don't read the docs there
-    image: solr:7
+    # Using the 'slim' variant and manually copying ICU libs
+    image: solr:9.10.0
     restart: "no"
+    # Add memory limits to prevent OOM kills
+    # Note: System has only ~2GB total memory, so keeping limits conservative
+    mem_limit: 1536m
+    memswap_limit: 1536m
     # Solr is served from this port inside the container.
     expose:
       - 8983
@@ -47,6 +52,11 @@ services:
       # HTTP_EXPOSE exposes http traffic from the container port 8983
       # to the host port 8983 vid ddev-router reverse proxy.
       - HTTP_EXPOSE=8983:8983
+      # Set Java heap size for Solr 9 (minimum and maximum)
+      # Container has 1.5GB limit, Java heap set to 1GB to leave room for native memory
+      - SOLR_JAVA_MEM=-Xms256m -Xmx1024m
+      # Enable lib directives for loading ICU and other plugins (required for Solr 9+)
+      - SOLR_OPTS=-Dsolr.config.lib.enabled=true
     volumes:
       # solr core *data* is stored on the 'solr' docker volume
       # This mount is optional; without it your search index disappears
@@ -61,14 +71,15 @@ services:
 
       - ".:/mnt/ddev_config"
 
-      # solr-configupdate.sh copies fresh configuration files into the
-      # solr container on each
-      # startup, so if you change the config in .ddev/solr/conf
-      # it will be refreshed on `ddev start`. The file must be
-      # executable (`chmod +x .ddev/solr/solr-init.sh
-      - "./solr/solr-configupdate.sh:/docker-entrypoint-initdb.d/solr-configupdate.sh"
-
-    entrypoint: [ "sh", "-c", "docker-entrypoint.sh solr-precreate dev /solr-conf" ]
+    entrypoint:
+      - "sh"
+      - "-c"
+      - |
+        # Copy ICU analysis libraries to the core lib directory
+        mkdir -p /var/solr/data/lib
+        cp /opt/solr/modules/analysis-extras/lib/*.jar /var/solr/data/lib/ 2>/dev/null || true
+        # Start Solr with precreated core in background
+        docker-entrypoint.sh solr-precreate dev /solr-conf
 
     external_links:
       - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
